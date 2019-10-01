@@ -29,7 +29,7 @@
 
 > #### Instalējiet, izmantojot termināli
 
-`wget -qO- cinemapress.sh | bash`
+`bash <(wget -qO- cinemapress.sh)`
 
 <img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/cli.png" width="400" align="center" title="Instalējiet, izmantojot termināli" alt="Instalējiet, izmantojot termināli">
 

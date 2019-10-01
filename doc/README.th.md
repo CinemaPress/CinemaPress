@@ -29,7 +29,7 @@
 
 > #### ติดตั้งผ่านเทอร์มินัล
 
-`wget -qO- cinemapress.sh | bash`
+`bash <(wget -qO- cinemapress.sh)`
 
 <img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/cli.png" width="400" align="center" title="ติดตั้งผ่านเทอร์มินัล" alt="ติดตั้งผ่านเทอร์มินัล">
 

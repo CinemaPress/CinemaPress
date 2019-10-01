@@ -1202,6 +1202,7 @@ docker_run() {
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/default/config.js
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/process.json
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/${CP_DOMAIN}/config/production/config.js
+        git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /home/${CP_DOMAIN}/themes/${CP_THEME}
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
         echo "${CP_DOMAIN}:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
         if [ "${CP_DOMAIN_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/nginx.conf; fi
