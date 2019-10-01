@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%- page.language %>">
+<head>
+
+    <% include includes/head.ejs %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            TVwww.load('/episode.json?tv&id=<% if (typeof movie !== 'undefined' && movie.kp_id) { %><%- movie.kp_id %><% } %>');
+        });
+    </script>
+
+</head>
+<body>
+
+<% if (page.player) { %>
+<%- page.player %>
+<% } %>
+
+<%- page.codes.footer %>
+
+</body>
+</html>

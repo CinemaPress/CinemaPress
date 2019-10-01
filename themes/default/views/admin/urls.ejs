@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+    <style>
+        .secret-modal{width: 220px;margin: 0 auto;padding: 20px;border: 1px solid #2f374b;height: 140px;}.secret-placeholder{float:left;width:100%}.secret-modal .alert{height:40px;padding:5px;margin:-20px -20px 10px;background:#1a2035;border:0;text-align:center;border-radius:0 0 0 0}.secret-modal .alert img {height:30px;opacity:.6;}
+    </style>
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/urls" class="btn">
+                            <%= __('Изменение URL ссылок веб-сайта') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/urls.html" class="btn" title="<%= __('Информация о параметрах изменения URL различных страниц веб-сайта') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (config.urls) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Панель администратора') %>
+                                    </div>
+                                </div>
+                                <div class="inner-padding" style="padding-top: 0;">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="secret-modal">
+                                                <div class="alert"><img src="/themes/default/public/admin/images/logo.png" alt="Admin Panel"></div>
+                                                <div class="secret-placeholder">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">admin-</span>
+                                                        <input type="text" name="config.urls.admin" class="form-control input_url" value="<%= config.urls.admin.replace('admin-', '') %>">
+                                                    </div>
+                                                    <div class="spacer-10"></div>
+                                                    <a href="javascript:void(0)" class="btn btn-default btn-block" onclick="document.getElementById('save').click();this.innerHTML='<span class=\'fa fa-spinner fa-spin\'></span>'"><%= __('Сохранить изменения') %></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Страница фильма') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('Изменение URL страницы фильма') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.movie" value="<%= config.urls.movie %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%- config.urls.prefix_id %>299-the-matrix</span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.movie %>/</span><span class="visible-xs">/<%- config.urls.movie %>/</span></span>
+                                                <input class="form-control" name="config.urls.movie_url" value="<%= config.urls.movie_url %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Доступные параметры') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="helper-text-box text-left">
+                                                                    <p>
+                                                                        <code>[prefix_id]</code> - <%= __('обязательный праметр, отображает ID фильма, например «id299»') %>;<br>
+                                                                        <code>[separator]</code> - <%= __('разделитель между параметрами, например «-»') %>;<br>
+                                                                        <code>[title]</code> - <%= __('переведенное или оригинальное название фильма, например «the-matrix»') %>;<br>
+                                                                        <code>[title_ru]</code> - <%= __('переведенное название фильма в транслите, например «matrica»') %>;<br>
+                                                                        <code>[title_en]</code> - <%= __('оригинальное название фильма, например «the-matrix»') %>;<br>
+                                                                        <code>[genre]</code> - <%= __('жанр фильма в транслите, например «comedy»') %>;<br>
+                                                                        <code>[country]</code> - <%= __('страна фильма в транслите, например «usa»') %>;<br>
+                                                                        <code>[year]</code> - <%= __('год фильма, например «2020»') %>;<br>
+                                                                        <code>[actor]</code> - <%= __('главный актер в транслите, например «tom-cruise»') %>;<br>
+                                                                        <code>[director]</code> - <%= __('режиссер в транслите, например «tim-burton»') %>;<br>
+                                                                        <code>[random]</code> - <%= __('каждый день случайные 4 буквы, например «delo»') %>.<br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Онлайн»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <input class="form-control input_url" name="config.urls.movies.online" value="<%= config.urls.movies.online %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Онлайн»') %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Скачать»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <input class="form-control input_url" name="config.urls.movies.download" value="<%= config.urls.movies.download %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Скачать»') %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Трейлер»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <input class="form-control input_url" name="config.urls.movies.trailer" value="<%= config.urls.movies.trailer %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Трейлер»') %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Кадры»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <input class="form-control input_url" name="config.urls.movies.picture" value="<%= config.urls.movies.picture %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Кадры»') %>" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Уникализация URL фильма') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/admin/urls.html#separator" class="csstip" title="<%= __('Точечная уникализация URL, можно изменить разделитель между параметрами, префикс перед ID и изменить в большую или меньшую сторону идентификатор фильма (по умолчанию - 0, т.е. ID на веб-сайте совпадают с ID на KinoPoisk)') %>" target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-xs-12">
+                                                            <div>
+                                                                <a href="https://CinemaPress.io/admin/urls.html#separator" class="csstip text-muted" title="<%= __('Разделитель между параметрами в URL, будет подставлено в URL на месте [separator]') %>" target="_blank">
+                                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                                    <%= __('Разделитель:') %>
+                                                                </a>
+                                                            </div>
+                                                            <input type="text" value="<%= config.urls.separator %>" name="config.urls.separator" class="form-control input_url">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-xs-12">
+                                                            <div>
+                                                                <a href="https://CinemaPress.io/admin/urls.html#prefix_id" class="csstip text-muted" title="<%= __('Будет подставлено перед ID фильма %s', config.urls.prefix_id + '298') %>" target="_blank">
+                                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                                    <%= __('Префикс ID:') %>
+                                                                </a>
+                                                            </div>
+                                                            <input type="text" value="<%= config.urls.prefix_id %>" name="config.urls.prefix_id" class="form-control input_url">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-xs-12">
+                                                            <div>
+                                                                <a href="https://CinemaPress.io/admin/urls.html#unique_id" class="csstip text-muted" title="<%= __('Принимает значение от -297 до 297000 и изменяет идентификатор фильма на веб-сайте в большую или меньшую сторону.') %>" target="_blank">
+                                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                                    <%= __('Уникальный ID:') %>
+                                                                </a>
+                                                            </div>
+                                                            <input type="text" value="<%= config.urls.unique_id %>" name="config.urls.unique_id" class="form-control input_number">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-xs-12">
+                                                            <div>
+                                                                <a href="https://CinemaPress.io/admin/urls.html#translit" class="csstip text-muted" title="<%= __('Транслит URL категорий (комедия -> komediya)') %>" target="_blank">
+                                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                                    <%= __('Транслит:') %>
+                                                                </a>
+                                                            </div>
+                                                            <select name="config.urls.translit" class="form-control">
+                                                                <% if (config.urls.translit) { %>
+                                                                <% if (config.urls.translit === 1) { %>
+                                                                <option value="0">
+                                                                    <%= __('Нет') %>
+                                                                </option>
+                                                                <option value="1" selected="selected">
+                                                                    ISO 9
+                                                                </option>
+                                                                <option value="2">
+                                                                    <%= __('Кастомный') %>
+                                                                </option>
+                                                                <% } else { %>
+                                                                <option value="0">
+                                                                    <%= __('Нет') %>
+                                                                </option>
+                                                                <option value="1">
+                                                                    ISO 9
+                                                                </option>
+                                                                <option value="2" selected="selected">
+                                                                    <%= __('Кастомный') %>
+                                                                </option>
+                                                                <% } %>
+                                                                <% } else { %>
+                                                                <option value="0" selected="selected">
+                                                                    <%= __('Нет') %>
+                                                                </option>
+                                                                <option value="1">
+                                                                    ISO 9
+                                                                </option>
+                                                                <option value="2">
+                                                                    <%= __('Кастомный') %>
+                                                                </option>
+                                                                <% } %>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL неиндексируемых фильмов') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/admin/urls.html#noindex" class="csstip" title="<%= __('Если Вы хотите, чтобы индексировались только те фильмы, которым Вы пишите уникальные описания, заполните эту форму и добавьте этот URL в robots.txt, например Disallow: /noindex') %>" target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                                <input class="form-control input_url" name="config.urls.noindex" value="<%= config.urls.noindex %>" type="text" placeholder="noindex">
+                                                                <span class="input-group-addon text-muted">/<%- config.urls.prefix_id %>299-the-matrix</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL пути') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/urls.html#path" class="csstip" title="<%= __('URL пути, которые ставятся перед конкретной категорией') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.year" value="<%= config.urls.year %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%= __('2020') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.genre" value="<%= config.urls.genre %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%= __('комедия') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.country" value="<%= config.urls.country %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%= __('США') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.actor" value="<%= config.urls.actor %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%= __('Том Круз') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.director" value="<%= config.urls.director %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%= __('Тим Бертон') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.type" value="<%= config.urls.type %>" type="text">
+                                                <span class="input-group-addon text-muted">/<%- config.urls.types.movie %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="row">
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Фильмы:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.movie" value="<%= config.urls.types.movie %>" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Сериалы:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.serial" value="<%= config.urls.types.serial %>" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Мультфильмы:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.mult" value="<%= config.urls.types.mult %>" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Мультсериалы:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.multserial" value="<%= config.urls.types.multserial %>" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Аниме:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.anime" value="<%= config.urls.types.anime %>" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-sm-3 text-left">
+                                                    <label><%= __('Телепередачи:') %></label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <input class="form-control" name="config.urls.types.tv" value="<%= config.urls.types.tv %>" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.search" value="<%= config.urls.search %>" type="text">
+                                                <span class="input-group-addon text-muted">?q=<%= __('Игра престолов') %></span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                <input class="form-control input_url" name="config.urls.sitemap" value="<%= config.urls.sitemap %>" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

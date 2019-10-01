@@ -1,0 +1,88 @@
+<% if (typeof news === 'object' && news.length) { %>
+<div class="clear"></div>
+<% news.forEach(function (content) { %>
+<div class="cinemapress-news-block">
+    <div style="margin: 0; padding: 10px">
+        <a href="<%- content.url %>" class="cinemapress-news" style="background-image:url(<%- content.image %>);">
+            <div class="cinemapress-news-title">
+                <%= content.title %>
+            </div>
+        </a>
+    </div>
+</div>
+<% }); %>
+<div class="clear"></div>
+<% } %>
+
+<% if (typeof recent === 'object' && recent.length) { %>
+<% recent.forEach(function (comment) { %>
+<div style="margin: 10px;">
+    <div class="cinemapress-recent">
+        <div class="cinemapress-recent-head">
+            <% if (comment.avatar) { %>
+            <div class="cinemapress-recent-head-avatar">
+                <img src="<%- comment.avatar %>" alt="<%- comment.user %>">
+            </div>
+            <% } %>
+            <div class="cinemapress-recent-head-meta">
+                <div>
+                    <a href="<%- comment.url %>"><%= comment.title %></a>
+                </div>
+                <div>
+                        <span>
+                            <%- comment.user %>
+                        </span><span>
+                            <%- page.l.said %>
+                        </span><span>
+                            <%- comment.date %>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="cinemapress-recent-comment">
+            <%- comment.comment %>
+        </div>
+    </div>
+</div>
+<% }); %>
+<% } %>
+
+<% if (typeof page.adv == 'object' && page.adv.bottom) { %>
+<div style="text-align: center; margin: 10px auto;">
+    <%- page.adv.bottom %>
+</div>
+<div class="clear"></div>
+<% } %>
+
+<div class="info recentlyViewedBlock" style="display: none;">
+    <div><%- page.l.watched %>:</div>
+    <div id="recentlyViewed"></div>
+</div>
+
+<div class="clear"></div>
+
+<% if (page.social) { %>
+<div class="info">
+    <% if (page.social.vk) { %><a href="<%- page.social.vk %>" target="_blank"><%- page.l.vk %></a><% } %>
+    <% if (page.social.facebook) { %><span> | </span><a href="<%- page.social.facebook %>" target="_blank"><%- page.l.facebook %></a><% } %>
+    <% if (page.social.twitter) { %><span> | </span><a href="<%- page.social.twitter %>" target="_blank"><%- page.l.twitter %></a><% } %>
+    <% if (page.social.instagram) { %><span> | </span><a href="<%- page.social.instagram %>" target="_blank"><%- page.l.instagram %></a><% } %>
+    <% if (page.social.telegram) { %><span> | </span><a href="<%- page.social.telegram %>" target="_blank"><%- page.l.telegram %></a><% } %>
+    <% if (page.social.youtube) { %><span> | </span><a href="<%- page.social.youtube %>" target="_blank"><%- page.l.youtube %></a><% } %>
+</div>
+<% } %>
+
+<div class="info">
+    <a href="<%- page.url.replace('://m.', '://').replace('/mobile-version', '') %>?desktop">
+        <%- page.l.full %>
+    </a>
+</div>
+
+<div class="info">
+    <strong>&copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.io" target="_blank">CinemaPress</a></strong> | <span id="mylo">Activate JS</span><script>(function(d,i,l,r){d.getElementById(i).innerHTML=l+'@'+r;})(window.document,'mylo','<%- page.email.split('@')[0] %>','<%- page.email.split('@')[1] %>');</script>
+</div>
+
+<%- page.codes.footer %>
+
+</body>
+</html>

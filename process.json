@@ -1,0 +1,46 @@
+{
+  "apps": [
+    {
+      "name": "example.com",
+      "script": "./app.js",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "cwd": "./",
+      "error_file": "./log/err.log",
+      "out_file": "./log/out.log",
+      "node_args": "--max-old-space-size=768",
+      "max_memory_restart": "768M",
+      "watch": true,
+      "ignore_watch": [
+        "docker",
+        "doc",
+        "config",
+        "backup",
+        "files",
+        "log",
+        "node_modules",
+        "themes/*/public",
+        "themes/*/locales",
+        "themes/.*",
+        ".*",
+        "process.json",
+        "package.json",
+        "package-lock.json"
+      ],
+      "watch_options": {
+        "followSymlinks": false
+      },
+      "vizion": false,
+      "env": {
+        "NODE_ENV": "production",
+        "CP_ALL": "_example_com_",
+        "CP_XMLPIPE2": "xmlpipe2_example_com",
+        "CP_RT": "rt_example_com",
+        "CP_CONTENT": "content_example_com",
+        "CP_COMMENT": "comment_example_com",
+        "CP_USER": "user_example_com",
+        "CP_VER": "1"
+      }
+    }
+  ]
+}

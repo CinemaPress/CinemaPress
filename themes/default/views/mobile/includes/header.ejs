@@ -1,0 +1,51 @@
+<a href="<%- page.protocol + page.domain %>/">
+    <img src="/themes/default/public/mobile/logo.png?v=<%- page.ver %>" class="logo" alt="Logo">
+</a>
+
+<div class="info continueViewingBlock" style="float: right; display: none">
+    <a href="javascript:void(0)" id="continueViewing"><%- page.l.continue %>&nbsp;►</a>
+</div>
+
+<div class="randomMovieMenu">
+    <div class="info cinemapress-random-menu">
+        <a href="<%- page.protocol + page.domain %>/?random"><%- page.l.lucky %>&nbsp;⚀</a>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<form action="<%- page.protocol + page.domain %>/<%- page.urls.search %>" method="get">
+    <input class="submit" value="<%- page.l.menu %>" type="button" style="left: 10px; right: auto" onclick="openNav()">
+    <input type="text" class="text" name="q" value="" placeholder="<%- page.l.movieTitle %> ..." data-autocomplete="desktop">
+    <input type="submit" class="submit" value="<%- page.l.search %>">
+    <div class="cinemapress-autocomplete" data-autocomplete="desktop"></div>
+</form>
+
+<div id="menuSidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.genre %>"><%- page.l.genres %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.year %>"><%- page.l.years %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.country %>"><%- page.l.countries %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.actor %>"><%- page.l.actors %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.director %>"><%- page.l.directors %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.content %>?tag=<%- page.l.collections %>"><%- page.l.collections %></a>
+    <a href="<%- page.protocol + page.domain %>/<%- page.urls.content %>?tag=<%- page.l.news %>"><%- page.l.news %></a>
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById('menuSidenav').style.width = '100%';
+    }
+    function closeNav() {
+        document.getElementById('menuSidenav').style.width = '0';
+    }
+</script>
+
+<div class="clear"></div>
+
+<% if (typeof page.adv == 'object' && page.adv.top) { %>
+<div style="text-align: center; margin: 10px auto;">
+    <%- page.adv.top %>
+</div>
+<div class="clear"></div>
+<% } %>

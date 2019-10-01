@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include ../includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/slider" class="btn hidden-xs">
+                            <%= __('Модуль слайдера фильмов') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/slider.html" class="btn" title="<%= __('Информация о параметрах модуля слайдера фильмов') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.slider.status) { %>
+                        <a href="javascript:void(0)" data-module="slider" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="slider" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.slider.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="cinema-box">
+                                        <div class="cinema-box-header">
+                                            <div class="cinema-label">
+                                                <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайные фильмы') %>
+                                            </div>
+                                            <div class="cinema-label hidden-xs" style="float: right">
+                                                <a href="https://CinemaPress.io/admin/slider.html#random" class="csstip" title="<%= __('Случайные фильмы из определенной коллекции') %>" target="_blank">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="inner-padding">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-xs-4">
+                                                    <select name="modules.slider.data.count" class="form-control">
+                                                        <% for (var i = 0; i <= 30; i++) { %>
+                                                            <option value="<%= i %>" <% if (modules.slider.data.count == i) { %>selected="selected"<% } %>>
+                                                                <% if (i === 0) { %>
+                                                                    <%= __('Не показывать') %>
+                                                                <% } else { %>
+                                                                    <%- i %> <%= __('фильма(ов)') %>
+                                                                <% } %>
+                                                            </option>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-8 col-xs-8">
+                                                    <input class="form-control" type="text" name="modules.slider.data.url" placeholder="<%= __('URL-ключ коллекции из которой выбирать фильмы') %>" value="<%= modules.slider.data.url %>" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="<%= __('Идентификатор или ссылка на фильм') %>" data-add-id="modules.slider.data.movies">
+                                <span class="input-group-btn">
+                                    <a href="javascript:void(0)" class="btn btn-default" data-add-name="modules.slider.data.movies">
+                                        <span class="fa fa-plus"></span> <%= __('Добавить фильм') %>
+                                    </a>
+                                </span>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="advanced-textarea">
+
+                                <div class="thumbs-list thumbs-small">
+                                    <ul data-add-name="modules.slider.data.movies">
+                                        <% if (modules.slider.data.movies) { %>
+                                        <% modules.slider.data.movies.forEach(function (id) { %>
+                                        <li data-delete-id="<%- id %>" data-delete-name="modules.slider.data.movies">
+                                            <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
+                                        </li>
+                                        <% }); %>
+                                        <% } %>
+                                    </ul>
+                                </div>
+
+                                <div style="display: none" id="slider_ids">
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="text-muted">
+                                        <%= __('Фильмы:') %>
+                                    </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <textarea class="form-control input_ids" name="modules.slider.data.movies" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.slider.data.movies) { %><%- modules.slider.data.movies.join(',') %><% } %></textarea>
+
+                                    <div class="spacer-10"></div>
+
+                                </div>
+
+                                <div class="advanced-textarea-footer">
+                                    <div class="pull-right">
+                                        <a href="javascript:void(0)" onclick="document.querySelector('#slider_ids').style.display = 'block'" class="btn btn-default">
+                                            <%= __('Редактировать список ID') %>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль позволяет добавить на веб-сайт слайдер с фильмами.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

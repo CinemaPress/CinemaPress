@@ -1,0 +1,42 @@
+[DEFAULT]
+port = 0:65535
+filter = %(__name__)s
+[blacklist]
+enabled = true
+logpath  = /var/log/fail2ban.*
+filter = blacklist
+banaction = blacklist
+bantime  = 31536000   ; 1 year
+findtime = 31536000   ; 1 year
+maxretry = 10
+[ssh]
+enabled = true
+[ssh-ddos]
+enabled = true
+[nginx-http-auth]
+enabled = true
+[proftpd]
+enabled = true
+[nginxrepeatoffender]
+enabled   = true
+port      = http,https
+logpath   = /var/log/nginx/access*.log
+filter    = nginxrepeatoffender
+banaction = nginxrepeatoffender
+bantime   = 86400
+findtime  = 86400
+maxretry  = 10
+[nginx-x00]
+enabled  = true
+port     = http,https
+filter   = nginx-x00
+logpath  = /var/log/nginx/access*.log
+bantime  = 86400
+findtime = 86400
+maxretry = 2
+[webexploits]
+enabled  = true
+port     = http,https
+filter   = webexploits
+logpath = /var/log/nginx/access*.log
+maxretry = 3

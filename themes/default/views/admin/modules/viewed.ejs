@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include ../includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/viewed" class="btn hidden-xs">
+                            <%= __('Модуль просмотренных фильмов') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/viewed.html" class="btn" title="<%= __('Информация о параметрах модуля просмотренных фильмов') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.viewed.status) { %>
+                        <a href="javascript:void(0)" data-module="viewed" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="viewed" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.viewed.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="far fa-eye"></i>&nbsp;&nbsp;&nbsp;<%= __('Количество просмотренных фильмов') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/viewed.html" class="csstip" title="<%= __('Просмотренные пользователем фильмы отображаются внизу каждой страницы веб-сайта') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <select name="modules.viewed.data.count" class="form-control">
+                                                <% for (var i = 1; i <= 20; i++) { %>
+                                                <% if (modules.viewed.data.count == i) { %>
+                                                <option value="<%= i %>" selected="selected">
+                                                    <%- i %> <%= __('фильма(ов)') %>
+                                                </option>
+                                                <% } else { %>
+                                                <option value="<%= i %>">
+                                                    <%- i %> <%= __('фильма(ов)') %>
+                                                </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль добавляет внизу страницы список фильмов, которые были недавно просмотрены пользователем.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

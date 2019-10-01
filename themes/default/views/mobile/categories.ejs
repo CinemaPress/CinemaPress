@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="<%- page.language %>">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+
+<% include includes/header.ejs %>
+
+<div class="info">
+    <a href="<%- page.protocol + page.domain %>/"><%- page.l.home %></a> » <%= page.title %>
+</div>
+
+<div class="clear"></div>
+
+<h1><%- page.h1 %></h1>
+
+<% if (typeof categories == 'object' && categories.length) { %>
+
+<% categories.forEach(function (category) { %>
+
+<div class="info block">
+    <a href="<%- category.url %>" target="_blank">
+        <%- category.title %>
+    </a>
+</div>
+
+<% }); %>
+
+<% } %>
+
+<% include includes/footer.ejs %>

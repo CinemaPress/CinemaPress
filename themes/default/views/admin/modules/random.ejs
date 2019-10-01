@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include ../includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/random" class="btn hidden-xs">
+                            <%= __('Модуль случайного фильма') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/random.html" class="btn" title="<%= __('Информация о параметрах модуля выбора случайного фильма') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.random.status) { %>
+                        <a href="javascript:void(0)" data-module="random" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="random" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.random.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-dice-one"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный фильм в категориях веб-сайта') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/random.html" class="csstip" title="<%= __('Вверху на странице категории будет показана кнопка, при нажатии на которую, пользователь переходит на случайный фильм из этой категории') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="inline-labels text-center">
+                                                <label>
+                                                    <%= __('На страницах:') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="year" type="checkbox" <% if (modules.random.data.category.indexOf('year')+1) { %> checked="" <% } %>><span></span> <%= __('год') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="genre" type="checkbox" <% if (modules.random.data.category.indexOf('genre')+1) { %> checked="" <% } %>><span></span> <%= __('жанр') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="country" type="checkbox" <% if (modules.random.data.category.indexOf('country')+1) { %> checked="" <% } %>><span></span> <%= __('страна') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="actor" type="checkbox" <% if (modules.random.data.category.indexOf('actor')+1) { %> checked="" <% } %>><span></span> <%= __('актер') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="director" type="checkbox" <% if (modules.random.data.category.indexOf('director')+1) { %> checked="" <% } %>><span></span> <%= __('режиссер') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="type" type="checkbox" <% if (modules.random.data.category.indexOf('type')+1) { %> checked="" <% } %>><span></span> <%= __('тип') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="search" type="checkbox" <% if (modules.random.data.category.indexOf('search')+1) { %> checked="" <% } %>><span></span> <%= __('поиск') %>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.category" value="content" type="checkbox" <% if (modules.random.data.category.indexOf('content')+1) { %> checked="" <% } %>><span></span> <%= __('контент') %>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% if (modules.content.status) { %>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-dice-two"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный фильм в меню веб-сайта') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/random.html" class="csstip" title="<%= __('Укажите URL-ключ коллекции с которой выбрать случайный фильм, при нажатии на кнопку в меню') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label><%= __('Выбирать из коллекции:') %></label>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="modules.random.data.menu" value="<%= modules.random.data.menu %>" class="form-control" placeholder="<%= __('Например:') %> <%= __('filmy-pro-vampirov') %>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-dice-three"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный фильм на главной странице') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/random.html#index" class="csstip" title="<%= __('В каждом блоке на главной странице веб-сайта будет ссылка на случайный фильм в категории') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.random.data.index" value="1" <% if (modules.random.data.index) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Показывать') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.index" value="0" <% if (!modules.random.data.index) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Не показывать') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% if (modules.related.status) { %>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-dice-four"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный фильм в блоке связанных фильмов') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/random.html#related" class="csstip" title="<%= __('В каждом блоке связанных фильмов на веб-странице фильма будет ссылка на случайный фильм в категории') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.random.data.related" value="1" <% if (modules.random.data.related) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Показывать') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.random.data.related" value="0" <% if (!modules.random.data.related) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Не показывать') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль позволяет в каждой категории отображать кнопку перехода на случайный фильм из этой категории.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

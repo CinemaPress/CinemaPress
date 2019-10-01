@@ -1,0 +1,20 @@
+body,
+html {
+  background: body_bg;
+}
+#contents .contents .item {
+  color: contents_color;
+}
+#contents .contents .item.active .bg {
+  background: contents_active_bg;
+  border: 4px contents_active_bg solid;
+}
+#categories .categories .item {
+  color: categories_color;
+}
+#categories .categories .item.current .bg {
+  background: categories_current_bg;
+}
+#categories .categories .item.active .bg {
+  background: categories_active_bg;
+}

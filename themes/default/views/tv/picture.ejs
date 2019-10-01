@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="<%- page.language %>">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+
+<% if (page.player) { %>
+<%- page.player %>
+<% } %>
+
+<%- page.codes.footer %>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "cinemapress",
+  "version": "4.0.0",
+  "description": "CinemaPress - Watch Movies and TV Shows Online Streaming Portal CMS Open Source Script",
+  "license": "MIT",
+  "author": "CinemaPress <support@cinemapress.io>",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CinemaPress/CinemaPress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CinemaPress/CinemaPress/issues"
+  },
+  "homepage": "https://CinemaPress.io/",
+  "dependencies": {
+    "ip-range-check": "0.2.0",
+    "ua-parser-js": "0.7.20",
+    "base64-stream": "1.0.0",
+    "cookie-parser": "1.4.4",
+    "html-entities": "1.2.1",
+    "html-minifier": "4.0.0",
+    "body-parser": "1.19.0",
+    "cheerio": "1.0.0-rc.3",
+    "mailparser": "2.7.1",
+    "os-utils": "0.0.14",
+    "memcached": "2.2.2",
+    "request": "2.88.0",
+    "express": "4.17.1",
+    "maxmind": "3.1.2",
+    "moment": "2.24.0",
+    "multer": "1.4.2",
+    "mysql": "2.17.1",
+    "sharp": "0.23.1",
+    "sinoni": "1.2.5",
+    "imap": "0.8.19",
+    "isbot": "2.4.1",
+    "limax": "1.7.0",
+    "async": "3.1.0",
+    "i18n": "0.8.3",
+    "ejs": "2.7.1",
+    "md5": "2.2.1"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2"
+  }
+}

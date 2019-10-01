@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+    <style>.tagify__input{margin: 6px;}</style>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/movies" class="btn">
+                            <%= __('Список фильмов с уникальным описанием') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/movies.html" class="btn" title="<%= __('Информация о написании уникальных описаний для фильмов') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (movie) { %>
+                        <!--<a class="btn power-on autoComplete" href="https://greasyfork.org/en/scripts/375661-cinemapress">
+                            <span class="hidden-xs"><%= __('Автозаполнение информации') %></span>
+                        </a>-->
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (movie) {
+                        movie.kp_id = movie.kp_id && parseInt(movie.kp_id) <= 10000000
+                                ? movie.kp_id
+                                : '';
+                        var custom = {};
+                        var c;
+                        if (movie.custom) {
+                            try {
+                                c = JSON.parse(movie.custom);
+                                custom.tmdb_id = c.tmdb_id && c.tmdb_id.replace(/[^0-9]/g, '')
+                                        ? c.tmdb_id.replace(/[^0-9]/g, '')
+                                        : '';
+                                delete c.tmdb_id;
+                                custom.imdb_id = c.imdb_id && c.imdb_id.replace(/[^0-9]/g, '')
+                                        ? c.imdb_id.replace(/[^0-9]/g, '')
+                                        : '';
+                                delete c.imdb_id;
+                                custom.douban_id = c.douban_id && c.douban_id.replace(/[^0-9]/g, '')
+                                        ? c.douban_id.replace(/[^0-9]/g, '')
+                                        : '';
+                                delete c.douban_id;
+                                c = Object.keys(c).length ? JSON.stringify(c) : '';
+                            } catch (e) {
+                                console.error(e);
+                            }
+                        }
+                    %>
+
+                    <input name="movie.id" value="<% if (movie.id) { %><%- movie.id %><% } %>" type="hidden">
+                    <input name="lang" value="<%- config.language %>" type="hidden">
+
+                    <div class="row" style="margin-top: -10px">
+                        <% if (structure.url) { %>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" value="<%- structure.pathname %>" disabled="disabled">
+                                <span class="input-group-addon">
+                                    <a href="<%- structure.url %>" target="_blank">
+                                        <span class="fa fa-external-link-square-alt"></span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <% } else { %>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <% if (movie.kp_id) { %>
+                                    <a href="https://href.li/?https://www.kinopoisk.ru/film/<%- movie.kp_id %>/" class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                        <span class="fa fa-external-link-square-alt"></span> <%= __('ID KinoPoisk') %>
+                                    </a>
+                                    <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline" style="text-decoration:none;" onclick="window.open('https://href.li/?https://www.kinopoisk.ru/index.php?kp_query=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                        <span class="fa fa-search"></span> <%= __('ID KinoPoisk') %>
+                                    </a>
+                                    <% } %>
+                                </span>
+                                <input type="text" class="form-control input_number" name="movie.kp_id" value="<% if (movie.kp_id) { %><%- movie.kp_id %><% } %>" placeholder="<%= __('Укажите ID фильма') %>">
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <% if (custom.tmdb_id) { %>
+                                    <a href="https://href.li/?https://www.themoviedb.org/<%- movie.type ? 'tv' : 'movie' %>/<%- custom.tmdb_id %>" class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                        <span class="fa fa-external-link-square-alt"></span> <%= __('ID TMDb') %>
+                                    </a>
+                                    <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline" style="text-decoration:none;" onclick="window.open('https://href.li/?https://www.themoviedb.org/search?query=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                        <span class="fa fa-search"></span> <%= __('ID TMDb') %>
+                                    </a>
+                                    <% } %>
+                                </span>
+                                <input type="text" class="form-control input_number" name="movie.tmdb_id" placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.tmdb_id %>">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <% if (custom.imdb_id) { %>
+                                    <a href="https://href.li/?https://www.imdb.com/title/tt<%- custom.imdb_id %>" class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                        <span class="fa fa-external-link-square-alt"></span> <%= __('ID IMDb') %>
+                                    </a>
+                                    <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline" style="text-decoration:none;" onclick="window.open('https://href.li/?https://www.imdb.com/find?q=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                        <span class="fa fa-search"></span> <%= __('ID IMDb') %>
+                                    </a>
+                                    <% } %>
+                                </span>
+                                <input type="text" class="form-control input_number" name="movie.imdb_id" placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.imdb_id %>">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <% if (custom.douban_id) { %>
+                                    <a href="https://href.li/?https://movie.douban.com/subject/<%- custom.douban_id %>" class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                        <span class="fa fa-external-link-square-alt"></span> <%= __('ID Douban') %>
+                                    </a>
+                                    <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline" style="text-decoration:none;" onclick="window.open('https://href.li/?https://movie.douban.com/subject_search?search_text=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                        <span class="fa fa-search"></span> <%= __('ID Douban') %>
+                                    </a>
+                                    <% } %>
+                                </span>
+                                <input type="text" class="form-control input_number" name="movie.douban_id" placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.douban_id %>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-xs-2 text-center">
+                            <img src="<% if (typeof structure.poster === 'undefined') { %>/files/poster/no-poster.jpg<% } else { %><%= structure.poster %><% } %>" data-poster="src" style="height:70px;border-radius:4px" onclick="window.open(this.src)">
+                        </div>
+                        <div class="col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><%= __('Тип:') %></span>
+                                <select name="movie.type" class="form-control">
+                                    <option value="0" <% if (movie.type !== 1) { %>selected="selected"<% } %>>
+                                        <%= __('Фильм') %>
+                                    </option>
+                                    <option value="1" <% if (movie.type === 1) { %>selected="selected"<% } %>>
+                                        <%= __('Сериал') %>
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><%= __('URL постера:') %></span>
+                                <input type="text" class="form-control" name="movie.poster" data-poster="input" value="<% if (movie.poster) { %><%= movie.poster %><% } else { %>/files/poster/no-poster.jpg<% } %>" placeholder="<%= __('URL постера фильма') %>" style="font-weight: normal; font-size: 14px;">
+                                <span class="input-group-addon">
+                                    <label for="posterFile">
+                                        <span class="fa fa-plus"></span>
+                                    </label>
+                                </span>
+                            </div>
+                            <form id="posterForm" enctype="multipart/form-data" data-form="poster">
+                                <input type="file" name="poster" id="posterFile" data-renamed="<%- movie.kp_id %>">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="t">
+                                <%= __('Качество:') %>
+                            </div>
+                            <input type="text" class="form-control" name="movie.quality" value="<% if (movie.quality) { %><%- movie.quality %><% } %>" placeholder="<%= __('Например:') %> <%= __('1080p') %>" style="font-weight: normal; font-size: 14px;">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var mqs = document.querySelector('[name="movie.quality"]');
+                                    var mq = new Tagify(mqs, {whitelist: ["8K","4K","2K","1080p","720p","480p","360p","240p","CAM","CAMRip","TS","TC","SCR","DVDScr","DVDRip","VHSRip","HDTV","PDTV","DTH","TVRip","WP","DivX","R5","WEB-DL","WEBRip","Watermarks","PDVD","BDRip","BRRip","BD","HD","SD","UHD","BlueRay","HDTS","HDRip","DSR","DSRip","SATRip","DTHRip","DVBRip","HDTVRip"]});
+                                });
+                            </script>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="t">
+                                <%= __('Перевод / язык:') %>
+                            </div>
+                            <input type="text" class="form-control" name="movie.translate" value="<% if (movie.translate) { %><%- movie.translate %><% } %>" placeholder="<%= __('Например:') %> <%= __('Субтитры') %>" style="font-weight: normal; font-size: 14px;">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var mts = document.querySelector('[name="movie.translate"]');
+                                    var mt = new Tagify(mts, {whitelist: ["2x2","Agatha Studdio","Alexfilm","AlFair Studio","Alt Pro","AMC","Amedia","Ancord","AniDUB","AniLibria","Animedia","AveBrasil","AvePremier","AveTurk","AXN Sci-fi","BaibaKo","Coldfilm","CTC","D1","datynet","den904","Discovery","Diva Universal","DreamRecords","Filiza Studio","Flux-Team","FocusStudio","Fox","F-TRAIN","Gears Media","GladiolusTV","Good People","GREEN TEA","HamsterStudio ","HDrezka Studio","HTB","IdeaFilm","JAM","Jaskier","Jetvis Studio","Jimmy J.","JWA Project","KANSAI","Levelin","Lord32x","LostFilm","Lw13pro","MC Entertainment","napaBo3uk","Narkom Pro","Newstudio","Nice-Media","Novafilm","Novamedia","OMSKBIRD records","Onibaku","Ozz","Paramount Comedy","PashaUp","Portugal","Prichudiki","ProjektorShow","R.A.I.M","SDI Media","SET Russia","SHIZA Project","SoftBox","Sony Sci-Fi","Sony Turbo","STEPonee","StudioBand","Sunshine Studio","To4ka","Tycoon","Universal Russia","Victory-Films","ViruseProject","VO-production","xaros","xixidok","Zamez","АРК ТВ","Гаврилов","Гоблин","Дасевич","двухголосый закадровый","Дубляж","Есарев","Живов","Кравец","Кубик в Кубе","Кураж-бамбей","Матвеев","многоголосый закадровый","Невафильм","Несмертельное оружие","Не требуется","одноголосый закадровый","Первый канал","Сербин","Студия Райдо","Субтитры","Субтитры PhysKids","Сыендук","ТВ-3","Украинский","Шадинский","Subtitles","Albanian","Arabic","Bengali","Big 5 Code","B.Portuguese","Bulgarian","Chinese","Croatian","Czech","Danish","Dutch","English","Farsi/Persian","Finnish","French","German","Greek","Hebrew","Hungarian","Indonesian","Italian","Japanese","Korean","Lithuanian","Macedonian","Malay","Norwegian","Polish","Portuguese","Romanian","Russian","Serbian","Slovenian","Spanish","Swedish","Thai","Turkish","Urdu","Vietnamese","Latino","Hindi"]});
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row" style="position: relative">
+                        <div class="col-xs-12">
+                            <% if (movie.player) { %>
+                                <textarea class="form-control" name="movie.player" placeholder="<%= __('Embed/iframe код') %>" style="font-weight: normal; font-size: 14px; height: 71px"><% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %><% } %></textarea>
+                            <% } else { %>
+                                <textarea class="form-control" name="movie.player" placeholder="<%= __('Embed/iframe код') %>" style="font-weight: normal; font-size: 14px; height: 71px; display: none"><% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %><% } %></textarea>
+                                <div id="movie_player" class="t input-group-addon" style="border-left: 1px solid #2f374b; border-bottom-left-radius: 4px; border-top-left-radius: 4px;">
+                                    <span style="font-weight: bold"><%= __('Плеер') %>:</span> <span><% if (modules.player.data.display === 'yohoho') { %><%= modules.player.data.yohoho.player %><% } else { %><%- modules.player.data.display %><% } %></span> <span style="border-bottom: 1px dotted;cursor: pointer;font-weight: bold" onclick="document.querySelector('#movie_player').style.display='none';document.querySelector('[name=\'movie.player\']').style.display='block'"><%= __('изменить') %></span>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="advanced-textarea">
+
+                                <div class="t">
+                                    <span class="hidden-xs">&lt;title&gt; <%= __('тег на веб-странице фильма:') %></span><span class="visible-xs">&lt;title&gt;</span>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <input type="text" class="form-control" name="movie.title_page" value="<% if (movie.title_page) { %><%= movie.title_page %><% } %>" placeholder="<%= __('Название страницы фильма (до 70 символов)') %>" style="font-weight: normal; font-size: 14px;">
+
+                                <div class="t">
+                                    <span class="hidden-xs">&lt;meta name="description"&gt; <%= __('тег на веб-странице фильма:') %></span><span class="visible-xs">&lt;meta name="description"&gt;</span>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <input type="text" class="form-control" name="movie.description_short" value="<% if (movie.description_short) { %><%= movie.description_short %><% } %>" placeholder="<%= __('Короткое описание страницы фильма (до 200 символов)') %>" style="font-weight: normal; font-size: 14px;">
+
+                                <div class="t">
+                                    <%= __('Оригинальное название фильма:') %>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <input type="text" class="form-control" name="movie.title_en" value="<% if (movie.title_en) { %><%= movie.title_en %><% } %>" placeholder="<%= __('Например:') %> <%= __('Mission: Impossible - Fallout') %>" style="font-weight: normal; font-size: 14px;">
+
+                                <div class="t">
+                                    <%= __('Переведенное название фильма:') %>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <input type="text" class="form-control" name="movie.title_ru" value="<% if (movie.title_ru) { %><%= movie.title_ru %><% } %>" placeholder="<%= __('Например:') %> <%= __('Миссия невыполнима: Последствия') %>" style="font-weight: normal; font-size: 14px;">
+
+                                <div class="t">
+                                    <%= __('Описание фильма:') %>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <textarea class="form-control descriptions" name="movie.description" placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni"><% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                <div class="advanced-textarea-footer">
+                                    <div class="pull-left">
+                                        <div class="text text-muted" style="float: none;"><span id="movie.description">0</span> <%= __('символа(ов)') %></div>
+                                        <% if (structure.title) { %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- structure.title %>" class="btn btn-sm btn-default codes">
+                                            <%- structure.title %>
+                                        </a>
+                                        <% } %>
+                                        <% if (structure.year) { %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- structure.year %>" class="btn btn-sm btn-default codes">
+                                            <%- structure.year %>
+                                        </a>
+                                        <% } %>
+                                        <% if (structure.countries_arr && structure.countries_arr.length) { %>
+                                        <% structure.countries_arr.forEach(function (value) { %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-sm btn-default codes">
+                                            <%- value %>
+                                        </a>
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (structure.genres_arr && structure.genres_arr.length) { %>
+                                        <% structure.genres_arr.forEach(function (value) { %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-sm btn-default codes">
+                                            <%- value %>
+                                        </a>
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (structure.actors_arr && structure.actors_arr.length) { %>
+                                        <% structure.actors_arr.forEach(function (value) { value = value.trim(); %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-sm btn-default codes">
+                                            <%- value %>
+                                        </a>
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (structure.directors_arr && structure.directors_arr.length) { %>
+                                        <% structure.directors_arr.forEach(function (value) { value = value.trim(); %>
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-sm btn-default codes">
+                                            <%- value %>
+                                        </a>
+                                        <% }); %>
+                                        <% } %>
+                                    </div>
+                                    <% if (modules.rewrite.status && modules.rewrite.data.token) { %>
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="start-sinoni" style="float: right; margin:0"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
+                                    <script>
+                                        function sinoniReq() {
+                                            var self = this;
+                                            self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('В процессе работы') %> ...';
+                                            self.removeEventListener('click', sinoniReq);
+                                            var text_sinoni = document.querySelector('#text-sinoni');
+                                            var movie_custom = document.querySelector('[name="movie.custom"]');
+                                            if (text_sinoni && text_sinoni.value && text_sinoni.value.length >= 100) {
+                                                var params = 'text=' + encodeURIComponent(text_sinoni.value);
+                                                httpReq(params, function(err, result) {
+                                                    if (err) {
+                                                        console.error(err);
+                                                        self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                                        self.addEventListener('click', sinoniReq);
+                                                        return;
+                                                    }
+                                                    if (typeof result.percent !== 'undefined') {
+                                                        var custom = {};
+                                                        if (movie_custom && movie_custom.value) {
+                                                            custom = JSON.parse(movie_custom.value);
+                                                        }
+                                                        else {
+                                                            custom.unique = true;
+                                                        }
+                                                        custom.rewrite = {};
+                                                        if (typeof result.percent !== 'undefined') {
+                                                            custom.rewrite.percent = result.percent;
+                                                        }
+                                                        if (typeof result.words !== 'undefined') {
+                                                            custom.rewrite.words = result.words;
+                                                        }
+                                                        if (typeof result.spam !== 'undefined') {
+                                                            custom.rewrite.spam = result.spam;
+                                                        }
+                                                        if (typeof result.water !== 'undefined') {
+                                                            custom.rewrite.water = result.water;
+                                                        }
+                                                        movie_custom.value = JSON.stringify(custom);
+                                                        jsonPretty();
+                                                    }
+                                                    if (typeof result.rewrite !== 'undefined') {
+                                                        text_sinoni.value = result.rewrite;
+                                                    }
+                                                    self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                                    self.addEventListener('click', sinoniReq);
+                                                });
+                                            }
+                                        }
+                                        function httpReq(params, callback) {
+                                            var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+                                            var xhr = new XHR();
+                                            xhr.onreadystatechange = function() {
+                                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                                    callback(null, tryParseJSON(xhr.responseText));
+                                                }
+                                            };
+                                            xhr.timeout = 300 * 1000;
+                                            xhr.open('POST', '/<%- config.urls.admin %>/rewrite', true);
+                                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                            xhr.send(params);
+                                        }
+                                        function tryParseJSON(jsonString) {
+                                            try {
+                                                var o = typeof jsonString === 'object'
+                                                    ? jsonString
+                                                    : JSON.parse(jsonString);
+                                                if (o && typeof o === "object") {
+                                                    return o;
+                                                }
+                                            } catch (e) {}
+                                            return {}
+                                        }
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            var start_sinoni = document.querySelector('#start-sinoni');
+                                            if (start_sinoni) {
+                                                start_sinoni.addEventListener('click', sinoniReq);
+                                            }
+                                        });
+                                    </script>
+                                    <% } else { %>
+                                        <a href="/<%- config.urls.admin %>/rewrite" class="btn btn-primary btn-sm" style="float: right; margin:0"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
+                                    <% } %>
+                                </div>
+
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <fieldset>
+                                <legend><%= __('Информационные данные фильма') %></legend>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="">
+                                            <div class="t">
+                                                <%= __('Год:') %>
+                                            </div>
+                                            <input type="text" class="form-control" name="movie.year" value="<% if (movie.year) { %><%= movie.year %><% } else { %><%- new Date().toJSON().substr(0, 4) %><% } %>" placeholder="<%= __('Например:') %> <%= __('2020') %>" style="font-weight: normal; font-size: 14px;">
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Страна:') %>
+                                            </div>
+                                            <input type="text" class="form-control" name="movie.country" value="<% if (movie.country && movie.country !== '_empty') { %><%- movie.country %><% } %>" placeholder="<%= __('Например:') %> <%= __('США') %>" style="font-weight: normal; font-size: 14px;">
+
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Жанры фильма:') %>
+                                            </div>
+                                            <input type="text" class="form-control" name="movie.genre" value="<% if (movie.genre && movie.genre !== '_empty') { %><%- movie.genre %><% } %>" placeholder="<%= __('Например:') %> <%= __('боевик,триллер,приключения') %>" style="font-weight: normal; font-size: 14px;">
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Режиссер фильма:') %>
+                                            </div>
+                                            <input type="text" class="form-control" name="movie.director" value="<% if (movie.director && movie.director !== '_empty') { %><%- movie.director %><% } %>" placeholder="<%= __('Например:') %> <%= __('Кристофер МакКуорри') %>" style="font-weight: normal; font-size: 14px;">
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Актерский состав:') %>
+                                            </div>
+                                            <textarea class="form-control" name="movie.actor" placeholder="<%= __('Например:') %> <%= __('Том Круз,Саймон Пегг') %>" style="font-weight: normal; font-size: 14px; height: 50px; overflow: hidden"><% if (movie.actor && movie.actor !== '_empty') { %><%- movie.actor %><% } %></textarea>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Премьера фильма:') %>
+                                            </div>
+                                            <input type="text" class="form-control" name="movie.premiere" value="<% if (parseInt(movie.premiere)) { %><%- new Date(((parseInt(movie.premiere) - 719527) * 1000 * 60 * 60 * 24)).toJSON().substr(0, 10) %><% } %>" placeholder="<%= __('Например:') %> <%= __('2020-09-25') %>" style="font-weight: normal; font-size: 14px;">
+
+                                            <div class="col-sm-4 col-sm-offset-1" style="padding: 0;">
+                                                <div class="spacer-10"></div>
+                                                <div class="t">
+                                                    <%= __('Рейтинг на сайте KinoPoisk:') %>
+                                                </div>
+                                                <select name="movie.kp_rating" class="form-control">
+                                                    <option value="0" <% if (!movie.kp_rating) { %>selected="selected"<% } %>>0</option>
+                                                    <% for (var kp = 100; kp >= 10; kp--) { %>
+                                                    <option value="<%- kp %>" <% if (movie.kp_rating && parseInt(movie.kp_rating) === kp) { %>selected="selected"<% } %>><%- kp/10 %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-4" style="padding: 0;">
+                                                <div class="spacer-10"></div>
+                                                <div class="t">
+                                                    <%= __('Число голосов на сайте KinoPoisk:') %>
+                                                </div>
+                                                <input type="text" class="form-control input_number" name="movie.kp_vote" value="<% if (movie.kp_vote) {  %><%- movie.kp_vote %><% } else { %>0<% } %>" placeholder="<%= __('Например:') %> <%= __('309 или 89647') %>" style="font-weight: normal; font-size: 14px;">
+                                            </div>
+
+                                            <div class="col-sm-4 col-sm-offset-1" style="padding: 0;">
+                                                <div class="spacer-10"></div>
+                                                <div class="t">
+                                                    <%= __('Рейтинг на сайте IMDb:') %>
+                                                </div>
+                                                <select name="movie.imdb_rating" class="form-control">
+                                                    <option value="0" <% if (!movie.imdb_rating) { %>selected="selected"<% } %>>0</option>
+                                                    <% for (var imdb = 100; imdb >= 10; imdb--) { %>
+                                                    <option value="<%- imdb %>" <% if (movie.imdb_rating && parseInt(movie.imdb_rating) === imdb) { %>selected="selected"<% } %>><%- imdb/10 %></option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-4" style="padding: 0;">
+                                                <div class="spacer-10"></div>
+                                                <div class="t">
+                                                    <%= __('Число голосов на сайте IMDb:') %>
+                                                </div>
+                                                <input type="text" class="form-control input_number" name="movie.imdb_vote" value="<% if (movie.imdb_vote) {  %><%- movie.imdb_vote %><% } else { %>0<% } %>" placeholder="<%= __('Например:') %> <%= __('6534 или 8396') %>" style="font-weight: normal; font-size: 14px;">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('URL кадров:') %>
+                                            </div>
+                                            <div class="col-xs-10 text-center" style="padding: 0;">
+                                                <input type="text" class="form-control" name="movie.pictures" data-picture="input" value="<% if (movie.pictures) { %><%= movie.pictures %><% } %>" placeholder="<%= __('Например:') %> <%= __('URL.jpg или URL.jpg,URL.jpg,URL.jpg') %>" style="font-weight: normal; font-size: 14px;">
+                                            </div>
+                                            <div class="col-xs-2 text-center" style="padding-right: 0;">
+                                                <label class="btn btn-default btn-block" for="pictureFile">
+                                                    <span class="fa fa-plus"></span>
+                                                </label>
+                                            </div>
+                                            <form id="pictureForm" enctype="multipart/form-data" data-form="picture">
+                                                <input type="file" name="picture" id="pictureFile" data-multi="true">
+                                            </form>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="t">
+                                                <%= __('Настраиваемые поля:') %>
+                                            </div>
+                                            <div class="col-xs-4 custom-field">
+                                                <input type="text" class="form-control" placeholder="premiere.ru" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="customKey">
+                                            </div>
+                                            <div class="col-xs-1 double-dot">:</div>
+                                            <div class="col-xs-5 custom-field">
+                                                <input type="text" class="form-control" placeholder="2020-09-25" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="customValue">
+                                            </div>
+                                            <div class="col-xs-2" style="padding-right: 0;">
+                                                <a href="javascript:void(0)" class="btn btn-default btn-block" id="customAdd"><span class="fa fa-plus"></span></a>
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <textarea class="form-control custom" name="movie.custom" placeholder='{"name": "<%= __('Текст к этому полю') %>", "name2": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } else { %>{"unique": true}<% } %></textarea>
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    var json = document.querySelector('[name="movie.custom"]');
+                                                    if (json) {
+                                                        jsonPretty();
+                                                        json.oninput = function () {
+                                                            jsonPretty();
+                                                        };
+                                                    }
+
+                                                    var customAdd = document.querySelector('#customAdd');
+                                                    customAdd.addEventListener('click', function () {
+                                                        var customKey = document.querySelector('#customKey');
+                                                        var customValue = document.querySelector('#customValue');
+                                                        if (customKey && customKey.value && customValue && customValue.value) {
+                                                            var customString = document.querySelector('[name="movie.custom"]').value;
+                                                            var customJson = JSON.parse(customString);
+                                                            document.querySelector('[name="movie.custom"]').value =
+                                                                JSON.stringify(expand(
+                                                                    customJson,
+                                                                    customKey.value,
+                                                                    (customValue.value === 'true')
+                                                                        ? true
+                                                                        : (customValue.value === 'false')
+                                                                        ? false
+                                                                        : (!customValue.value.replace(/[0-9]/g, ''))
+                                                                            ? parseInt(customValue.value)
+                                                                            : /^\[.*]$/.test(customValue.value)
+                                                                                ? JSON.parse(customValue.value.replace(/'/g, '"'))
+                                                                                : customValue.value
+                                                                    )
+                                                                );
+                                                            jsonPretty();
+                                                            customKey.value = '';
+                                                            customValue.value = '';
+                                                        }
+                                                    });
+                                                });
+
+                                                function jsonPretty() {
+                                                    var ugly = document.querySelector('[name="movie.custom"]').value;
+                                                    if (!ugly) return;
+                                                    ugly = JSON.parse(ugly);
+                                                    var cnt = 0;
+                                                    c(ugly);
+                                                    document.querySelector('[name="movie.custom"]').style.height = (50 + cnt*20) + 'px';
+                                                    document.querySelector('[name="movie.custom"]').value =
+                                                        JSON.stringify(ugly, undefined, 4);
+
+                                                    function c(obj) {
+                                                        Object.keys(obj).forEach(function(val) {
+                                                            if (typeof obj[val] === 'object') {
+                                                                c(obj[val]);
+                                                                cnt++;
+                                                            }
+                                                            cnt++;
+                                                        });
+                                                    }
+                                                }
+
+                                                function expand(model, name, value) {
+                                                    var items = name.split('.');
+                                                    var output = model;
+                                                    var ref = output;
+                                                    for (var i = 0; i < items.length - 1; i++) {
+                                                        ref[items[i]] = (ref[items[i]])
+                                                            ? ref[items[i]]
+                                                            : {};
+                                                        ref = ref[items[i]];
+                                                    }
+                                                    ref[items[items.length - 1]] = value;
+                                                    return output;
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="row">
+                                <div class="col-xs-3 col-md-3">
+                                    <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>" class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" id="id" placeholder="<%= __('ID или ссылка на фильм') %>">
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="javascript:void(0)" class="btn btn-default btn-block" id="add"><span class="fa fa-plus"></span> <%= __('Добавить / изменить фильм') %></a>
+                            <script>
+                                (document.querySelector('#id')).addEventListener('keyup', function (event) {
+                                    event.preventDefault();
+                                    if (event.keyCode === 13) editMovie();
+                                });
+                                (document.querySelector('#add')).addEventListener('click', function () {
+                                    editMovie();
+                                });
+                                function editMovie () {
+                                    var idElem = document.querySelector('#id');
+                                    var type = '';
+                                    var kp_id = '';
+                                    var tmdb_id = '';
+                                    var imdb_id = '';
+                                    var douban_id = '';
+                                    var match = null;
+                                    if (idElem.value.indexOf('<%- config.domain %>')+1) {
+                                        var uniqueId = parseInt('<%- config.urls.unique_id %>') || 0;
+                                        var prefixId = '<%- config.urls.prefix_id %>' || '/';
+                                        var regexpId  = new RegExp(prefixId + '([0-9]{1,8})', 'ig');
+                                        var execId    = regexpId.exec(idElem.value);
+                                        var intId     = (execId) ? parseInt(execId[1]) : 0;
+                                        kp_id         = intId - uniqueId;
+                                    }
+                                    else if (idElem.value.indexOf('kinopoisk.ru')+1) {
+                                        match = /(film\/|movie\/).*?([0-9]{3,8})\//gi.exec(id.value);
+                                        kp_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    }
+                                    else if (idElem.value.indexOf('themoviedb.org')+1) {
+                                        match = /(tv\/|movie\/)([0-9]{1,8})/gi.exec(id.value);
+                                        type = (match) ? match[1].replace(/[^a-z]/g, '') : '';
+                                        if (type) type = type === 'movie' ? '0' : '1';
+                                        tmdb_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    }
+                                    else if (idElem.value.indexOf('imdb.com')+1) {
+                                        match = /(title\/tt)([0-9]{1,8})/gi.exec(id.value);
+                                        imdb_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    }
+                                    else if (idElem.value.indexOf('movie.douban.com')+1) {
+                                        match = /(subject\/)([0-9]{1,8})/gi.exec(id.value);
+                                        douban_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    }
+                                    else {
+                                        if (idElem && idElem.value) {
+                                            var idOne = idElem.value.trim();
+                                            var idTwo = idElem.value.replace(/[^0-9]/g, '');
+                                            if (idOne === idTwo) {
+                                                kp_id = idOne;
+                                            }
+                                        }
+                                    }
+                                    location.href = '/<%- config.urls.admin %>/movies?' +
+                                        'kp_id=' + kp_id + '&' +
+                                        'tmdb_id=' + tmdb_id + '&' +
+                                        'imdb_id=' + imdb_id + '&' +
+                                        'douban_id=' + douban_id + '&' +
+                                        'type=' + type;
+                                }
+                            </script>
+                        </div>
+                    </div>
+
+                    <% if (movies && movies.length) { %>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="table-content table-content-head">
+                                        <%= __('Фильмы с уникальным описанием') %>
+                                    </th>
+                                    <th class="table-settings"></th>
+                                    <th class="table-settings"></th>
+                                    <th class="table-settings"></th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>
+                                        <div style="margin: 0">
+                                            <% if (num-1) { %>
+                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num-1 %>" class="table-arrow"><i class="fa fa-chevron-left"></i></a>
+                                            <% } else { %>
+                                            <span class="table-arrow-h"><i class="fa fa-chevron-left"></i></span>
+                                            <% } %>
+                                            <% if (next) { %>
+                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num+1 %>" class="table-arrow"><i class="fa fa-chevron-right"></i></a>
+                                            <% } else { %>
+                                            <span class="table-arrow-h"><i class="fa fa-chevron-right"></i></span>
+                                            <% } %>
+                                        </div>
+                                    </th>
+                                    <th class="table-settings"></th>
+                                    <th class="table-settings"></th>
+                                    <th class="table-settings"></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <% movies.forEach(function(movie) { %>
+                                <tr>
+                                    <td class="table-content">
+                                        <span class="table-content-id">ID: <%- movie.id %></span> <span class="table-content-t"><a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><% if (movie.title) { %><%- movie.title %><% } else { %><%= __('Фильм с ID') %> <%- movie.kp_id %><% } %></a></span>
+                                    </td>
+                                    <td class="table-settings">
+                                        <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
+                                    </td>
+                                    <td class="table-settings">
+                                        <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><i class="fa fa-edit text-warning"></i></a>
+                                    </td>
+                                    <td class="table-settings">
+                                        <a href="<%- config.protocol + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

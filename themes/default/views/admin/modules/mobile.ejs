@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+    <script src="/themes/default/public/admin/js/jscolor.min.js"></script>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include ../includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/mobile" class="btn hidden-xs">
+                            <%= __('Модуль мобильной версии') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/mobile.html" class="btn" title="<%= __('Информация о параметрах модуля мобильной версии веб-сайта') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.mobile.status) { %>
+                        <a href="javascript:void(0)" data-module="mobile" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="mobile" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.mobile.status) { %>
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL мобильной версии') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/mobile.html#url" class="csstip" title="<%= __('Настройка URL для мобильной версии веб-сайта') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.mobile.data.subdomain" value="1" <% if (modules.mobile.data.subdomain) { %> checked="" <% } %> type="radio"><span></span>&nbsp;<code>m.<%- config.domain %> <a href="//m.<%- config.domain %>" target="_blank"><span class="fa fa-external-link-square-alt"></span></a></code>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.mobile.data.subdomain" value="0" <% if (!modules.mobile.data.subdomain) { %> checked="" <% } %> type="radio"><span></span>&nbsp;<code><%- config.domain %>/mobile-version <a href="//<%- config.domain %>/mobile-version" target="_blank"><span class="fa fa-external-link-square-alt"></span></a></code>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Светлая тема') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/mobile.html#light" class="csstip" title="<%= __('Светлая тема оформления мобильной версии веб-сайта') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-xs-1 text-center">
+                                            <div class="inline-labels">
+                                                <label style="margin: 5px;">
+                                                    <input name="modules.mobile.data.theme" value="light" <% if (modules.mobile.data.theme == 'light') { %> checked="" <% } %> type="radio"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 col-lg-11">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Скриншоты') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/light/light1.jpg">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/light/light2.jpg">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/light/light3.jpg">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="far fa-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Темная тема') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/mobile.html#dark" class="csstip" title="<%= __('Темная тема оформления мобильной версии веб-сайта') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-xs-1 text-center">
+                                            <div class="inline-labels">
+                                                <label style="margin: 5px;">
+                                                    <input name="modules.mobile.data.theme" value="dark" <% if (modules.mobile.data.theme == 'dark') { %> checked="" <% } %> type="radio"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 col-lg-11">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Скриншоты') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/dark/dark1.jpg">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/dark/dark2.jpg">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4">
+                                                                <div class="thumbnail">
+                                                                    <img src="/themes/default/public/mobile/dark/dark3.jpg">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-circle-notch"></i>&nbsp;&nbsp;&nbsp;<%= __('Своя тема') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/mobile.html#custom" class="csstip" title="<%= __('Своя тема оформления мобильной версии веб-сайта') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-xs-1 text-center">
+                                            <div class="inline-labels">
+                                                <label style="margin: 5px;">
+                                                    <input name="modules.mobile.data.theme" value="custom" <% if (modules.mobile.data.theme == 'custom') { %> checked="" <% } %> type="radio"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 col-lg-11">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Настроить') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет фона') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.body_bg" value="<%= modules.mobile.data.custom.body_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет фона') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет текста') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.body_color" value="<%= modules.mobile.data.custom.body_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет текста') %>">
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Фон заголовка') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.title_bg" value="<%= modules.mobile.data.custom.title_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон заголовка') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет заголовка') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.title_color" value="<%= modules.mobile.data.custom.title_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет заголовка') %>">
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Фон описания') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.description_bg" value="<%= modules.mobile.data.custom.description_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон описания') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет описания') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.description_color" value="<%= modules.mobile.data.custom.description_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет описания') %>">
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Фон кнопки') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.btn_bg" value="<%= modules.mobile.data.custom.btn_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон кнопки') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет кнопки') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.btn_color" value="<%= modules.mobile.data.custom.btn_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет кнопки') %>">
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Фон поиска') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.form" value="<%= modules.mobile.data.custom.form %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон поиска') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Фон блока') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.block" value="<%= modules.mobile.data.custom.block %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон блока') %>">
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('Цвет ссылок') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.a" value="<%= modules.mobile.data.custom.a %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет ссылок') %>">
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-xs-3">
+                                                                <label><%= __('При наведении') %></label>
+                                                            </div>
+                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                <input name="modules.mobile.data.custom.hover" value="<%= modules.mobile.data.custom.hover %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('При наведении') %>">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль говорит поисковым системам, что у веб-сайта есть версия веб-сайта для идеального отображения на мобильных устройствах.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

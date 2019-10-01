@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="<%- page.language %>">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+
+<% include includes/header.ejs %>
+
+<div class="info">
+    <a href="<%- page.protocol + page.domain %>/"><%- page.l.home %></a> » <%= page.title %>
+</div>
+
+<div class="clear"></div>
+
+<h1><%- page.h1 %></h1>
+
+<div class="clear"></div>
+
+<% if (typeof content === 'object') { %>
+<div class="cinemapress-content">
+    <% if (content.image) { %>
+    <img src="<%- content.image %>" class="cinemapress-content-image">
+    <% } %>
+    <% if (content.description) { %>
+    <div class="cinemapress-content-description">
+        <%- content.description %>
+    </div>
+    <% } %>
+    <div class="cinemapress-content-publish">
+        <% if (content.tags) { %>
+        <span class="cinemapress-content-publish-tags"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU1LjI1IDU1LjI1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1NS4yNSA1NS4yNTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiPgo8Zz4KCTxwYXRoIGQ9Ik0wLjUyMyw1MS45MzNsLTAuNDk3LDIuMDg1Yy0wLjAxNiwwLjA2Ny0wLjAyLDAuMTM1LTAuMDIyLDAuMjAyQzAuMDA0LDU0LjIzNCwwLDU0LjI0NiwwLDU0LjI1OSAgIGMwLjAwMSwwLjExNCwwLjAyNiwwLjIyNSwwLjA2NSwwLjMzMmMwLjAwOSwwLjAyNSwwLjAxOSwwLjA0NywwLjAzLDAuMDcxYzAuMDQ5LDAuMTA3LDAuMTEsMC4yMSwwLjE5NiwwLjI5NiAgIGMwLjA5NSwwLjA5NSwwLjIwNywwLjE2OCwwLjMyOCwwLjIxOGMwLjEyMSwwLjA1LDAuMjUsMC4wNzUsMC4zNzksMC4wNzVjMC4wNzcsMCwwLjE1NS0wLjAwOSwwLjIzMS0wLjAyN2wyLjA4Ni0wLjQ5NyAgIEwwLjUyMyw1MS45MzN6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8cGF0aCBkPSJNNTIuNjE4LDIuNjMxYy0zLjUxLTMuNTA4LTkuMjE5LTMuNTA4LTEyLjcyOSwwTDMuODI3LDM4LjY5M0MzLjgxLDM4LjcxLDMuOCwzOC43MzEsMy43ODUsMzguNzQ5ICAgYy0wLjAyMSwwLjAyNC0wLjAzOSwwLjA1LTAuMDU4LDAuMDc2Yy0wLjA1MywwLjA3NC0wLjA5NCwwLjE1My0wLjEyNSwwLjIzOWMtMC4wMDksMC4wMjYtMC4wMjIsMC4wNDktMC4wMjksMC4wNzUgICBjLTAuMDAzLDAuMDEtMC4wMDksMC4wMi0wLjAxMiwwLjAzbC0yLjQ5NSwxMC40OEw1LjYsNTQuMTgybDEwLjQ4LTIuNDk1YzAuMDI3LTAuMDA2LDAuMDUxLTAuMDIxLDAuMDc3LTAuMDMgICBjMC4wMzQtMC4wMTEsMC4wNjYtMC4wMjQsMC4wOTktMC4wMzljMC4wNzItMC4wMzMsMC4xMzktMC4wNzQsMC4yMDEtMC4xMjNjMC4wMjQtMC4wMTksMC4wNDktMC4wMzMsMC4wNzItMC4wNTQgICBjMC4wMDgtMC4wMDgsMC4wMTgtMC4wMTIsMC4wMjYtMC4wMmwzNi4wNjMtMzYuMDYzQzU2LjEyNywxMS44NSw1Ni4xMjcsNi4xNCw1Mi42MTgsMi42MzF6IE0xNy4xNTcsNDcuOTkybDAuMzU0LTMuMTgzICAgTDM5Ljg4OSwyMi40M2MwLjM5MS0wLjM5MSwwLjM5MS0xLjAyMywwLTEuNDE0cy0xLjAyMy0wLjM5MS0xLjQxNCwwTDE2LjA5Nyw0My4zOTVsLTQuNzczLDAuNTNsMC41My00Ljc3M2wyMi4zOC0yMi4zNzggICBjMC4zOTEtMC4zOTEsMC4zOTEtMS4wMjMsMC0xLjQxNHMtMS4wMjMtMC4zOTEtMS40MTQsMEwxMC40NCwzNy43MzhsLTMuMTgzLDAuMzU0TDM0Ljk0LDEwLjQwOWw5LjksOS45TDE3LjE1Nyw0Ny45OTJ6ICAgIE00Ni4yNTQsMTguODk1bC05LjktOS45bDEuNDE0LTEuNDE0bDkuOSw5LjlMNDYuMjU0LDE4Ljg5NXogTTQ5LjA4MiwxNi4wNjdsLTkuOS05LjlsMS40MTUtMS40MTVsOS45LDkuOUw0OS4wODIsMTYuMDY3eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" style="width: 10px;"> <%- content.tags %></span>
+        <% } %>
+        <% if (content.tags) { %>
+        <span class="cinemapress-content-publish-publish"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYwIDYwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2MCA2MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjE2cHgiPgo8Zz4KCTxjaXJjbGUgY3g9IjMwIiBjeT0iMjkuODc5IiByPSIyIiBmaWxsPSIjRkZGRkZGIi8+Cgk8cGF0aCBkPSJNMzAsMEMxMy40NTgsMCwwLDEzLjQ1OCwwLDMwczEzLjQ1OCwzMCwzMCwzMHMzMC0xMy40NTgsMzAtMzBTNDYuNTQyLDAsMzAsMHogTTI5LDcuODc5YzAtMC41NTMsMC40NDgtMSwxLTFzMSwwLjQ0NywxLDEgICB2MWMwLDAuNTUzLTAuNDQ4LDEtMSwxcy0xLTAuNDQ3LTEtMVY3Ljg3OXogTTksMzAuODc5SDhjLTAuNTUyLDAtMS0wLjQ0Ny0xLTFzMC40NDgtMSwxLTFoMWMwLjU1MiwwLDEsMC40NDcsMSwxICAgUzkuNTUyLDMwLjg3OSw5LDMwLjg3OXogTTE1Ljg1OCw0NS40MzZsLTAuNzA3LDAuNzA3Yy0wLjE5NSwwLjE5NS0wLjQ1MSwwLjI5My0wLjcwNywwLjI5M3MtMC41MTItMC4wOTgtMC43MDctMC4yOTMgICBjLTAuMzkxLTAuMzkxLTAuMzkxLTEuMDIzLDAtMS40MTRsMC43MDctMC43MDdjMC4zOTEtMC4zOTEsMS4wMjMtMC4zOTEsMS40MTQsMFMxNi4yNDksNDUuMDQ1LDE1Ljg1OCw0NS40MzZ6IE0xNS44NTgsMTUuNzM2ICAgYy0wLjE5NSwwLjE5NS0wLjQ1MSwwLjI5My0wLjcwNywwLjI5M3MtMC41MTItMC4wOTgtMC43MDctMC4yOTNsLTAuNzA3LTAuNzA3Yy0wLjM5MS0wLjM5MS0wLjM5MS0xLjAyMywwLTEuNDE0ICAgczEuMDIzLTAuMzkxLDEuNDE0LDBsMC43MDcsMC43MDdDMTYuMjQ5LDE0LjcxMywxNi4yNDksMTUuMzQ2LDE1Ljg1OCwxNS43MzZ6IE0zMSw1MS44NzljMCwwLjU1My0wLjQ0OCwxLTEsMXMtMS0wLjQ0Ny0xLTF2LTEgICBjMC0wLjU1MywwLjQ0OC0xLDEtMXMxLDAuNDQ3LDEsMVY1MS44Nzl6IE0zMCwzMy44NzljLTEuODU4LDAtMy40MTEtMS4yOC0zLjg1OC0zSDE5Yy0wLjU1MiwwLTEtMC40NDctMS0xczAuNDQ4LTEsMS0xaDcuMTQyICAgYzAuMzY0LTEuMzk5LDEuNDU5LTIuNDk0LDIuODU4LTIuODU4VjE1Ljg3OWMwLTAuNTUzLDAuNDQ4LTEsMS0xczEsMC40NDcsMSwxdjEwLjE0MmMxLjcyLDAuNDQ3LDMsMS45OTksMywzLjg1OCAgIEMzNCwzMi4wODUsMzIuMjA2LDMzLjg3OSwzMCwzMy44Nzl6IE00Ni4yNjMsNDYuMTQzYy0wLjE5NSwwLjE5NS0wLjQ1MSwwLjI5My0wLjcwNywwLjI5M3MtMC41MTItMC4wOTgtMC43MDctMC4yOTNsLTAuNzA3LTAuNzA3ICAgYy0wLjM5MS0wLjM5MS0wLjM5MS0xLjAyMywwLTEuNDE0czEuMDIzLTAuMzkxLDEuNDE0LDBsMC43MDcsMC43MDdDNDYuNjU0LDQ1LjExOSw0Ni42NTQsNDUuNzUyLDQ2LjI2Myw0Ni4xNDN6IE00Ni4yNjMsMTUuMDI5ICAgbC0wLjcwNywwLjcwN2MtMC4xOTUsMC4xOTUtMC40NTEsMC4yOTMtMC43MDcsMC4yOTNzLTAuNTEyLTAuMDk4LTAuNzA3LTAuMjkzYy0wLjM5MS0wLjM5MS0wLjM5MS0xLjAyMywwLTEuNDE0bDAuNzA3LTAuNzA3ICAgYzAuMzkxLTAuMzkxLDEuMDIzLTAuMzkxLDEuNDE0LDBTNDYuNjU0LDE0LjYzOSw0Ni4yNjMsMTUuMDI5eiBNNTIsMzAuODc5aC0xYy0wLjU1MiwwLTEtMC40NDctMS0xczAuNDQ4LTEsMS0xaDEgICBjMC41NTIsMCwxLDAuNDQ3LDEsMVM1Mi41NTIsMzAuODc5LDUyLDMwLjg3OXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" style="width: 10px;"> <%- content.publish %></span>
+        <% } %>
+    </div>
+</div>
+<div class="clear"></div>
+<% } %>
+
+<div class="randomMovieCategory">
+    <div class="cinemapress-random-category"
+         onclick="window.location.href='<%- page.url %>?random'">
+        <img src="/themes/default/public/mobile/dice.svg" alt="<%- page.l.random %>">
+        <span><%- page.l.lucky %></span>
+        <small><%- page.l.random %></small>
+    </div>
+</div>
+
+<% if (typeof page.sorting === 'object') { %>
+
+<div class="info block">
+
+    <% page.sorting.forEach(function (sort) { %>
+
+    <div class="clear"></div>
+
+    <% if (sort.active) { %>
+
+    <a href="<%- sort.url %>">
+        <strong><%- sort.name %></strong>
+    </a>
+
+    <% } else { %>
+
+    <a href="<%- sort.url %>">
+        <%- sort.name %>
+    </a>
+
+    <% } %>
+
+    <% }); %>
+
+</div>
+
+<% } %>
+
+<% if (typeof movies == 'object' && movies.length) { %>
+
+<% movies.forEach(function (movie) { %>
+
+<div class="clear"></div>
+
+<div class="poster">
+    <a href="<%- movie.url %>">
+        <img src="<%- movie.poster_min %>" alt="<%= movie.title %> (<%- movie.year %>)" title="<%= movie.title %> (<%- movie.year %>)">
+    </a>
+</div>
+<h3><a href="<%- movie.url %>"><%= movie.title %> (<%- movie.year %>) <% if (movie.season) { %> <%- movie.season %> <%- page.l.season %> <% } %> <% if (movie.episode) { %> <%- movie.episode %> <%- page.l.episode %><% } %> <% if (movie.translate) { %> <%- movie.translate %> <% } %></a></h3>
+
+<% if (movie.year_url) { %>
+
+<div class="info">
+    <%- page.l.year %>: <%- movie.year_url %>
+</div>
+
+<% } %>
+<% if (movie.countries_url) { %>
+
+<div class="info">
+    <%- page.l.countries %>: <%- movie.countries_url %>
+</div>
+
+<% } %>
+<% if (movie.genres_url) { %>
+
+<div class="info">
+    <%- page.l.genres %>: <%- movie.genres_url %>
+</div>
+
+<% } %>
+
+<div class="clear"></div>
+
+<div class="info">
+    <%
+    for (var kp = 1; kp <= 10; kp++) {
+        var star_kp = (Math.round(movie.kp_rating/10) >= kp)
+                ? '<div class="star-true"></div>'
+                : '<div class="star-false"></div>';
+    %>
+    <%- star_kp %>
+    <% } %><span style="color:#F56504; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.kp %></span>
+</div>
+<div class="info">
+    <%
+    for (var imdb = 1; imdb <= 10; imdb++) {
+        var star_imdb = (Math.round(movie.imdb_rating/10) >= imdb)
+                ? '<div class="star-true"></div>'
+                : '<div class="star-false"></div>';
+    %>
+    <%- star_imdb %>
+    <% } %><span style="color:#E3B71E; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.imdb %></span>
+</div>
+
+<% if (movie.quality) { %>
+
+<div class="info" style="line-height: 2;">
+    <%- page.l.quality %>: <%- movie.quality %>
+</div>
+
+<% } %>
+<% if (movie.translate) { %>
+
+<div class="info" style="line-height: 2;">
+    <%- page.l.translate %>: <%- movie.translate %>
+</div>
+
+<% } %>
+
+<% if (movie.description_short) { %>
+
+<div class="description">
+    <%- movie.description_short %>...
+</div>
+
+<% } %>
+
+<% }); %>
+
+<% } %>
+
+<% if (typeof page.pagination === 'object') { %>
+<div class="info block pagination">
+    <% if (page.pagination.first) { %><a href="<%- page.pagination.first.link %>" rel="nofollow"><%- page.pagination.first.number %></a><span class="dots">...</span><% } %><% if (page.pagination.prev.length) { %><% page.pagination.prev.forEach(function (prev) { %><a href="<%- prev.link %>" rel="nofollow"><%- prev.number %></a><% }); %><span class="dots">...</span><% } %><strong><span><%- page.pagination.current %></span></strong><% if (page.pagination.next.length) { %><span class="dots">...</span><% page.pagination.next.forEach(function (next) { %><a href="<%- next.link %>" rel="nofollow"><%- next.number %></a><% }); %><% } %><% if (page.pagination.last) { %><span class="dots">...</span><a href="<%- page.pagination.last.link %>" rel="nofollow"><%- page.pagination.last.number %></a><% } %>
+</div>
+<% } %>
+
+<% include includes/footer.ejs %>

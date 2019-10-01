@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/codes" class="btn">
+                            <%= __('Вставить код на веб-сайт') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/codes.html" class="btn" title="<%= __('Вставка кодов счетчиков, рекламы и т.п.') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (config.codes) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-code"></i>&nbsp;&nbsp;&nbsp;<%= __('Вставить код в верх веб-страницы') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/codes.html#head" class="csstip" title="<%= __('Вставка кода внутрь тега head') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <textarea class="form-control textarea" name="config.codes.head" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><%= config.codes.head %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-code"></i>&nbsp;&nbsp;&nbsp;<%= __('Вставить код в низ веб-страницы') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/codes.html#bottom" class="csstip" title="<%= __('Вставка кода перед закрывающимся тегом body') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <textarea class="form-control textarea" name="config.codes.footer" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><%= config.codes.footer %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-code"></i>&nbsp;&nbsp;&nbsp;<%= __('robots.txt') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/codes.html#robots" class="csstip" title="<%= __('Код файла robots.txt') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <textarea class="form-control textarea" name="config.codes.robots" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="border-bottom: 0; border-radius: 3px 3px 0 0; height: 380px !important;"><%- config.codes.robots %></textarea>
+                                            <div class="text-left sitemap-robots">
+                                                <div>
+                                                    Sitemap: <%- config.protocol + config.domain + '/' + config.urls.sitemap %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

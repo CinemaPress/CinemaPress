@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header-main.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <% include ../includes/header-sec.ejs %>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/rewrite" class="btn hidden-xs">
+                            <%= __('Модуль рерайта описаний') %>
+                        </a>
+                        <a href="https://CinemaPress.io/admin/rewrite.html" class="btn" title="<%= __('Модуль обработает описание к фильму и делает его более уникальным') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.rewrite.status) { %>
+                        <a href="javascript:void(0)" data-module="rewrite" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="rewrite" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.rewrite.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="far fa-hand-rock"></i>&nbsp;&nbsp;&nbsp;Rewriter.tools
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/rewrite.html#rewriter" class="csstip" title="<%= __('Настройка параметров в сервисе rewriter.tools') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label>
+                                            <%= __('Токен-ключ') %>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="modules.rewrite.data.token" value="<%= modules.rewrite.data.token %>" class="form-control" placeholder="<%= __('Токен-ключ') %>">
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-4">
+                                            <label>
+                                            <%= __('Двойной рерайт') %>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.rewrite.data.double" value="1" <% if (modules.rewrite.data.double) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.rewrite.data.double" value="0" <% if (!modules.rewrite.data.double) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-4">
+                                            <label>
+                                            <%= __('Проверка уникальности') %>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.rewrite.data.unique" value="1" <% if (modules.rewrite.data.unique) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.rewrite.data.unique" value="0" <% if (!modules.rewrite.data.unique) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;<%= __('Рерайт в автопубликации') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/rewrite.html#publish" class="csstip" title="<%= __('Делать рерайт описаний всем фильмам в автопубликации') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="inline-labels text-center">
+                                                <label>
+                                                    <input name="modules.rewrite.data.publish" value="1" <% if (modules.rewrite.data.publish) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.rewrite.data.publish" value="0" <% if (!modules.rewrite.data.publish) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль позволяет повысить уникальность текста в описаниях к фильму.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

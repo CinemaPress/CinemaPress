@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="<%- page.language %>">
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+
+<% include includes/header.ejs %>
+
+<% if (typeof index == 'object') {
+    for (var type in index) {
+        if (index.hasOwnProperty(type) && index[type].length) {
+            index[type].forEach(function (category) { %>
+
+<h2>
+    <%- category.name %>
+    <div class="randomMovieIndex">
+        <div class="cinemapress-random-index"
+             onclick="window.location.href='<%- category.url %>?random'"
+             title="<%- page.l.random %>">
+            <img src="/themes/default/public/mobile/dice.svg" alt="<%- page.l.random %>">
+        </div>
+    </div>
+</h2>
+
+<% if (category.movies.length) {
+    category.movies.forEach(function (movie) { %>
+
+<div class="clear"></div>
+
+<div class="poster">
+    <a href="<%- movie.url %>">
+        <img src="<%- movie.poster_min %>" alt="<%= movie.title %> (<%- movie.year %>)" title="<%= movie.title %> (<%- movie.year %>)">
+    </a>
+</div>
+<h3><a href="<%- movie.url %>"><%= movie.title %> (<%- movie.year %>) <% if (movie.season) { %> <%- movie.season %> <%- page.l.season %> <% } %> <% if (movie.episode) { %> <%- movie.episode %> <%- page.l.episode %><% } %></a></h3>
+
+<% if (movie.year_url) { %>
+
+<div class="info">
+    <%- page.l.year %>: <%- movie.year_url %>
+</div>
+
+<% } %>
+<% if (movie.countries_url) { %>
+
+<div class="info">
+    <%- page.l.countries %>: <%- movie.countries_url %>
+</div>
+
+<% } %>
+<% if (movie.genres_url) { %>
+
+<div class="info">
+    <%- page.l.genres %>: <%- movie.genres_url %>
+</div>
+
+<% } %>
+
+<div class="clear"></div>
+
+<div class="info">
+    <%
+    for (var kp = 1; kp <= 10; kp++) {
+        var star_kp = (Math.round(movie.kp_rating/10) >= kp)
+                ? '<div class="star-true"></div>'
+                : '<div class="star-false"></div>';
+    %>
+    <%- star_kp %>
+    <% } %><span style="color:#F56504; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.kp %></span>
+</div>
+<div class="info">
+    <%
+    for (var imdb = 1; imdb <= 10; imdb++) {
+        var star_imdb = (Math.round(movie.imdb_rating/10) >= imdb)
+                ? '<div class="star-true"></div>'
+                : '<div class="star-false"></div>';
+    %>
+    <%- star_imdb %>
+    <% } %><span style="color:#E3B71E; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.imdb %></span>
+</div>
+
+<% if (movie.quality) { %>
+
+<div class="info" style="line-height: 2;">
+    <%- page.l.quality %>: <%- movie.quality %>
+</div>
+
+<% } %>
+<% if (movie.translate) { %>
+
+<div class="info" style="line-height: 2;">
+    <%- page.l.translate %>: <%- movie.translate %>
+</div>
+
+<% } %>
+
+<% if (movie.description_short) { %>
+
+<div class="description">
+    <%- movie.description_short %>...
+</div>
+
+<% } }); } }); } } } %>
+
+<% if (typeof page.pagination === 'object') { %>
+<div class="info block pagination">
+    <% if (page.pagination.first) { %><a href="<%- page.pagination.first.link %>" rel="nofollow"><%- page.pagination.first.number %></a><span class="dots">...</span><% } %><% if (page.pagination.prev.length) { %><% page.pagination.prev.forEach(function (prev) { %><a href="<%- prev.link %>" rel="nofollow"><%- prev.number %></a><% }); %><span class="dots">...</span><% } %><strong><span><%- page.pagination.current %></span></strong><% if (page.pagination.next.length) { %><span class="dots">...</span><% page.pagination.next.forEach(function (next) { %><a href="<%- next.link %>" rel="nofollow"><%- next.number %></a><% }); %><% } %><% if (page.pagination.last) { %><span class="dots">...</span><a href="<%- page.pagination.last.link %>" rel="nofollow"><%- page.pagination.last.number %></a><% } %>
+</div>
+<% } %>
+
+<% include includes/footer.ejs %>
