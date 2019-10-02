@@ -79,7 +79,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.year.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.year.count == i) { %>
+                                                <% if (modules.related.data.types.year.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -104,7 +104,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.year.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.year.sorting == name) { %>
+                                                <% if (modules.related.data.types.year.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -143,7 +143,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.genre.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.genre.count == i) { %>
+                                                <% if (modules.related.data.types.genre.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -171,7 +171,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.genre.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.genre.sorting == name) { %>
+                                                <% if (modules.related.data.types.genre.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -210,7 +210,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.country.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.country.count == i) { %>
+                                                <% if (modules.related.data.types.country.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -238,7 +238,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.country.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.country.sorting == name) { %>
+                                                <% if (modules.related.data.types.country.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -277,7 +277,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.actor.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.actor.count == i) { %>
+                                                <% if (modules.related.data.types.actor.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -305,7 +305,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.actor.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.actor.sorting == name) { %>
+                                                <% if (modules.related.data.types.actor.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -344,7 +344,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.director.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.director.count == i) { %>
+                                                <% if (modules.related.data.types.director.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -372,7 +372,7 @@
                                         <div class="col-xs-6">
                                             <select name="modules.related.data.types.director.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.director.sorting == name) { %>
+                                                <% if (modules.related.data.types.director.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>

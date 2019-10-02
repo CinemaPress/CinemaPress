@@ -76,7 +76,7 @@
                                         <div class="col-lg-6 col-xs-6 text-center">
                                             <select name="modules.top.data.count" class="form-control">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.top.data.count == i) { %>
+                                                <% if (modules.top.data.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -91,7 +91,7 @@
                                         <div class="col-lg-6 col-xs-6 text-center">
                                             <select name="modules.top.data.sorting" class="form-control">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (modules.top.data.sorting == name) { %>
+                                                <% if (modules.top.data.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>

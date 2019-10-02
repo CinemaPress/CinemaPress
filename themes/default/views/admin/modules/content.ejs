@@ -339,7 +339,7 @@
                                                     <div class="col-sm-3">
                                                         <select name="modules.content.data.news.count" class="form-control without">
                                                             <% for (var i = 0; i <= 20; i++) { %>
-                                                            <% if (modules.content.data.news.count == i) { %>
+                                                            <% if (modules.content.data.news.count === i) { %>
                                                             <% if (i === 0) { %>
                                                             <option value="<%= i %>" selected="selected">
                                                                 <%= __('Не показывать') %>
@@ -392,7 +392,7 @@
                                                     <div class="col-sm-3">
                                                         <select name="modules.content.data.movie.count" class="form-control without">
                                                             <% for (var i = 0; i <= 20; i++) { %>
-                                                            <% if (modules.content.data.movie.count == i) { %>
+                                                            <% if (modules.content.data.movie.count === i) { %>
                                                             <% if (i === 0) { %>
                                                             <option value="<%= i %>" selected="selected">
                                                                 <%= __('Не показывать') %>
@@ -448,7 +448,7 @@
                                                     <div class="col-sm-2">
                                                         <select name="modules.content.data.index.order" class="form-control without">
                                                             <% for (var i = 1; i <= 10; i++) { %>
-                                                            <% if (modules.content.data.index.order == i) { %>
+                                                            <% if (modules.content.data.index.order === i) { %>
                                                             <option value="<%= i %>" selected="selected">
                                                                 <%= __('%s-й', i) %>
                                                             </option>
@@ -466,7 +466,7 @@
                                                     <div class="col-sm-3">
                                                         <select name="modules.content.data.index.count" class="form-control without">
                                                             <% for (var i = 1; i <= 20; i++) { %>
-                                                            <% if (modules.content.data.index.count == i) { %>
+                                                            <% if (modules.content.data.index.count === i) { %>
                                                             <option value="<%= i %>" selected="selected">
                                                                 <%- i %> <%= __('фильма(ов)') %>
                                                             </option>
@@ -524,7 +524,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.moonwalk_movies.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.moonwalk_movies.count == i) { %>
+                                                                                <% if (modules.content.data.auto.moonwalk_movies.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -603,7 +603,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.moonwalk_serials.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.moonwalk_serials.count == i) { %>
+                                                                                <% if (modules.content.data.auto.moonwalk_serials.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -700,7 +700,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.hdgo_movies.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.hdgo_movies.count == i) { %>
+                                                                                <% if (modules.content.data.auto.hdgo_movies.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -779,7 +779,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.hdgo_serials.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.hdgo_serials.count == i) { %>
+                                                                                <% if (modules.content.data.auto.hdgo_serials.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -876,7 +876,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.kodik_movies.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.kodik_movies.count == i) { %>
+                                                                                <% if (modules.content.data.auto.kodik_movies.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -955,7 +955,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.kodik_serials.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.kodik_serials.count == i) { %>
+                                                                                <% if (modules.content.data.auto.kodik_serials.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -1052,7 +1052,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.iframe_movies.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.iframe_movies.count == i) { %>
+                                                                                <% if (modules.content.data.auto.iframe_movies.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>
@@ -1131,7 +1131,7 @@
                                                                         <div class="col-sm-3">
                                                                             <select name="modules.content.data.auto.iframe_serials.count" class="form-control without">
                                                                                 <% for (var i = 0; i <= 100; i++) { %>
-                                                                                <% if (modules.content.data.auto.iframe_serials.count == i) { %>
+                                                                                <% if (modules.content.data.auto.iframe_serials.count === i) { %>
                                                                                 <% if (i === 0) { %>
                                                                                 <option value="<%= i %>" selected="selected">
                                                                                     <%= __('Не добавлять') %>

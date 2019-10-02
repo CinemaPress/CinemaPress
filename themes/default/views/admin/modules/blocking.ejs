@@ -76,7 +76,7 @@
                                         <div class="col-lg-1 col-xs-1 text-center">
                                             <div class="inline-labels">
                                                 <label style="margin: 5px;">
-                                                    <input name="modules.blocking.data.display" value="adv" <% if (modules.blocking.data.display == 'adv') { %> checked="" <% } %> type="radio"><span></span>
+                                                    <input name="modules.blocking.data.display" value="adv" <% if (modules.blocking.data.display === 'adv') { %> checked="" <% } %> type="radio"><span></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@
                                                             <div class="col-xs-6">
                                                                 <select name="modules.blocking.data.adv.time" class="form-control">
                                                                     <% for (var i = 10; i <= 600; i = i+10) { %>
-                                                                    <% if (modules.blocking.data.adv.time == i) { %>
+                                                                    <% if (modules.blocking.data.adv.time === i) { %>
                                                                     <option value="<%= i %>" selected="selected">
                                                                         <%- i %> <%= __('сек') %>
                                                                     </option>
@@ -175,7 +175,7 @@
                                         <div class="col-lg-1 col-xs-1 text-center">
                                             <div class="inline-labels">
                                                 <label style="margin: 5px;">
-                                                    <input name="modules.blocking.data.display" value="sub" <% if (modules.blocking.data.display == 'sub') { %> checked="" <% } %> type="radio"><span></span>
+                                                    <input name="modules.blocking.data.display" value="sub" <% if (modules.blocking.data.display === 'sub') { %> checked="" <% } %> type="radio"><span></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -259,7 +259,7 @@
                                         <div class="col-lg-1 col-xs-1 text-center">
                                             <div class="inline-labels">
                                                 <label style="margin: 5px;">
-                                                    <input name="modules.blocking.data.display" value="share" <% if (modules.blocking.data.display == 'share') { %> checked="" <% } %> type="radio"><span></span>
+                                                    <input name="modules.blocking.data.display" value="share" <% if (modules.blocking.data.display === 'share') { %> checked="" <% } %> type="radio"><span></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -278,7 +278,7 @@
                                                             <div class="col-xs-6">
                                                                 <select name="modules.blocking.data.share.time" class="form-control">
                                                                     <% for (var i = 10; i <= 600; i = i+10) { %>
-                                                                    <% if (modules.blocking.data.share.time == i) { %>
+                                                                    <% if (modules.blocking.data.share.time === i) { %>
                                                                     <option value="<%= i %>" selected="selected">
                                                                         <%- i %> <%= __('сек') %>
                                                                     </option>
@@ -338,7 +338,7 @@
                                         <div class="col-lg-1 col-xs-1 text-center">
                                             <div class="inline-labels">
                                                 <label style="margin: 5px;">
-                                                    <input name="modules.blocking.data.display" value="adblock" <% if (modules.blocking.data.display == 'adblock') { %> checked="" <% } %> type="radio"><span></span>
+                                                    <input name="modules.blocking.data.display" value="adblock" <% if (modules.blocking.data.display === 'adblock') { %> checked="" <% } %> type="radio"><span></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -358,7 +358,7 @@
                                                             <div class="col-xs-6">
                                                                 <select name="modules.blocking.data.adblock.time" class="form-control">
                                                                     <% for (var i = 10; i <= 600; i = i+10) { %>
-                                                                    <% if (modules.blocking.data.adblock.time == i) { %>
+                                                                    <% if (modules.blocking.data.adblock.time === i) { %>
                                                                     <option value="<%= i %>" selected="selected">
                                                                         <%- i %> <%= __('сек') %>
                                                                     </option>
@@ -420,7 +420,7 @@
                                         <div class="col-lg-1 col-xs-1 text-center">
                                             <div class="inline-labels">
                                                 <label style="margin: 5px;">
-                                                    <input name="modules.blocking.data.display" value="legal" <% if (modules.blocking.data.display == 'legal') { %> checked="" <% } %> type="radio"><span></span>
+                                                    <input name="modules.blocking.data.display" value="legal" <% if (modules.blocking.data.display === 'legal') { %> checked="" <% } %> type="radio"><span></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -440,7 +440,7 @@
                                                             <div class="col-xs-6">
                                                                 <select name="modules.blocking.data.legal.time" class="form-control">
                                                                     <% for (var i = 0; i <= 600; i = i+10) { %>
-                                                                    <% if (modules.blocking.data.legal.time == i) { %>
+                                                                    <% if (modules.blocking.data.legal.time === i) { %>
                                                                         <% if (i === 0) { %>
                                                                         <option value="<%= i %>" selected="selected">
                                                                             <%= __('Не показывать') %>

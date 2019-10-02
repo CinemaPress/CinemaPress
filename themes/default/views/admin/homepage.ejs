@@ -171,7 +171,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.ids.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                    <% if (config.index.ids.order == i) { %>
+                                                    <% if (config.index.ids.order === i) { %>
                                                         <option value="<%= i %>" selected="selected">
                                                             <%= __('%s-й', i) %>
                                                         </option>
@@ -189,7 +189,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.ids.count" class="form-control without">
                                                 <% for (var i = 0; i <= 20; i++) { %>
-                                                    <% if (config.index.ids.count == i) { %>
+                                                    <% if (config.index.ids.count === i) { %>
                                                         <% if (i === 0) { %>
                                                             <option value="<%= i %>" selected="selected">
                                                                 <%= __('Не показывать') %>
@@ -288,7 +288,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.type.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.type.order == i) { %>
+                                                <% if (config.index.type.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -306,7 +306,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.type.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.type.sorting == name) { %>
+                                                <% if (config.index.type.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -324,7 +324,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.type.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.type.count == i) { %>
+                                                <% if (config.index.type.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -366,7 +366,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.year.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.year.order == i) { %>
+                                                <% if (config.index.year.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -384,7 +384,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.year.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.year.sorting == name) { %>
+                                                <% if (config.index.year.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -402,7 +402,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.year.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.year.count == i) { %>
+                                                <% if (config.index.year.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -444,7 +444,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.genre.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.genre.order == i) { %>
+                                                <% if (config.index.genre.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -462,7 +462,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.genre.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.genre.sorting == name) { %>
+                                                <% if (config.index.genre.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -480,7 +480,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.genre.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.genre.count == i) { %>
+                                                <% if (config.index.genre.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -522,7 +522,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.country.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.country.order == i) { %>
+                                                <% if (config.index.country.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -540,7 +540,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.country.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.country.sorting == name) { %>
+                                                <% if (config.index.country.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -558,7 +558,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.country.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.country.count == i) { %>
+                                                <% if (config.index.country.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -600,7 +600,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.actor.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.actor.order == i) { %>
+                                                <% if (config.index.actor.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -618,7 +618,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.actor.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.actor.sorting == name) { %>
+                                                <% if (config.index.actor.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -636,7 +636,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.actor.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.actor.count == i) { %>
+                                                <% if (config.index.actor.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -678,7 +678,7 @@
                                         <div class="col-sm-2">
                                             <select name="config.index.director.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (config.index.director.order == i) { %>
+                                                <% if (config.index.director.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -696,7 +696,7 @@
                                         <div class="col-sm-4">
                                             <select name="config.index.director.sorting" class="form-control without">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.index.director.sorting == name) { %>
+                                                <% if (config.index.director.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -714,7 +714,7 @@
                                         <div class="col-sm-3">
                                             <select name="config.index.director.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (config.index.director.count == i) { %>
+                                                <% if (config.index.director.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -758,7 +758,7 @@
                                         <div class="col-sm-2">
                                             <select name="modules.episode.data.index.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (modules.episode.data.index.order == i) { %>
+                                                <% if (modules.episode.data.index.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -773,7 +773,7 @@
                                         <div class="col-sm-3">
                                             <select name="modules.episode.data.index.count" class="form-control without">
                                                 <% for (var i = 0; i <= 20; i++) { %>
-                                                <% if (modules.episode.data.index.count == i) { %>
+                                                <% if (modules.episode.data.index.count === i) { %>
                                                 <% if (i === 0) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Не показывать') %>
@@ -828,7 +828,7 @@
                                         <div class="col-sm-2">
                                             <select name="modules.content.data.index.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (modules.content.data.index.order == i) { %>
+                                                <% if (modules.content.data.index.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -846,7 +846,7 @@
                                         <div class="col-sm-3">
                                             <select name="modules.content.data.index.count" class="form-control without">
                                                 <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.content.data.index.count == i) { %>
+                                                <% if (modules.content.data.index.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -885,7 +885,7 @@
                                             <select name="config.index.count.type" class="form-control without">
                                                 <% var type = [{'type': 'type', 'name': __('Фильмы из типа:')}, {'type': 'year', 'name': __('Фильмы из года:')}, {'type': 'genre', 'name': __('Фильмы из жанра:')}, {'type': 'country', 'name': __('Фильмы из страны:')}, {'type': 'actor', 'name': __('Фильмы актера:')}, {'type': 'director', 'name': __('Фильмы режиссера:')}, {'type': 'content_url', 'name': __('Фильмы из коллекции:')}]; %>
                                                 <% for (var i = 0, len = type.length; i < len; i++) { %>
-                                                <% if (config.index.count.type == type[i].type) { %>
+                                                <% if (config.index.count.type === type[i].type) { %>
                                                 <option value="<%= type[i].type %>" selected="selected">
                                                     <%- type[i].name %>
                                                 </option>
@@ -902,7 +902,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.count.sorting" class="form-control without">
-                                                <% if (config.index.count.sorting == '') { %>
+                                                <% if (config.index.count.sorting === '') { %>
                                                 <option value="" selected="selected">
                                                     <%= __('По умолчанию') %>
                                                 </option>
@@ -912,7 +912,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% for (var name in config.sorting) { %>
-                                                <% if (config.index.count.sorting == name) { %>
+                                                <% if (config.index.count.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>

@@ -350,7 +350,7 @@
                                         <div class="col-sm-2">
                                             <select name="modules.episode.data.index.order" class="form-control without">
                                                 <% for (var i = 1; i <= 10; i++) { %>
-                                                <% if (modules.episode.data.index.order == i) { %>
+                                                <% if (modules.episode.data.index.order === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('%s-й', i) %>
                                                 </option>
@@ -365,7 +365,7 @@
                                         <div class="col-sm-3">
                                             <select name="modules.episode.data.index.count" class="form-control without">
                                                 <% for (var i = 0; i <= 20; i++) { %>
-                                                <% if (modules.episode.data.index.count == i) { %>
+                                                <% if (modules.episode.data.index.count === i) { %>
                                                 <% if (i === 0) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Не показывать') %>

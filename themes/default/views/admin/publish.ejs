@@ -47,7 +47,7 @@
 
                 <div class="inner-padding">
 
-                    <% if (typeof line == 'object') { %>
+                    <% if (typeof line === 'object') { %>
 
                     <div class="progress-project-header">
                         <h5><%= __('Опубликовано фильмов') %></h5><span><%- line.percent.top %>%</span>
@@ -72,7 +72,7 @@
 
                     <% } %>
 
-                    <% if (config.database.key == 'FREE' && (config.language == 'ru' || config.language == 'en')) { %>
+                    <% if (config.database.key === 'FREE' && (config.language === 'ru' || config.language === 'en')) { %>
 
                     <div class="spacer-10"></div>
 
@@ -183,7 +183,7 @@
                         </div>
                     </div>
 
-                    <% } else if (config.language == 'ru' || config.language == 'en') { %>
+                    <% } else if (config.language === 'ru' || config.language === 'en') { %>
 
                     <div class="spacer-10"></div>
 
@@ -271,7 +271,7 @@
                                         </div>
                                     </div>
 
-                                    <% if (typeof soon_id == 'object' && soon_id.length) { %>
+                                    <% if (typeof soon_id === 'object' && soon_id.length) { %>
 
                                     <div class="spacer-10"></div>
 
@@ -363,7 +363,7 @@
                                         <div class="col-lg-12 col-xs-12">
                                             <div class="stacked-labels">
                                                 <label>
-                                                    <input name="config.publish.required" value="" type="checkbox" <% if (!config.publish.required.length) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[value=poster]').checked = false;document.querySelector('input[value=title_ru]').checked = false;document.querySelector('input[value=description]').checked = false;}">
+                                                    <input name="config.publish.required" value="" type="checkbox" <% if (!config.publish.required.length) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[value=poster]').checked = false;document.querySelector('input[value=description]').checked = false; if (document.querySelector('input[value=title_ru]')) {document.querySelector('input[value=title_ru]').checked = false;}}">
                                                     <span></span>
                                                     <%= __('Не важно (публикация любых фильмов)') %>
                                                 </label>
@@ -372,7 +372,7 @@
                                                     <span></span>
                                                     <%= __('Только имеющие постер') %>
                                                 </label>
-                                                <% if (config.language == 'ru') { %>
+                                                <% if (config.language === 'ru') { %>
                                                 <label>
                                                     <input name="config.publish.required" value="title_ru" type="checkbox" <% if (config.publish.required.indexOf('title_ru')+1) { %> checked="" <% } %>>
                                                     <span></span>
@@ -411,13 +411,13 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <select name="config.publish.thematic.type" class="form-control">
-                                                <option value="0" <% if (config.publish.thematic.type == '0') { %>selected="selected"<% } %>>
+                                                <option value="0" <% if (config.publish.thematic.type === '0') { %>selected="selected"<% } %>>
                                                     <%= __('Фильмы') %>
                                                 </option>
-                                                <option value="1" <% if (config.publish.thematic.type == '1') { %>selected="selected"<% } %>>
+                                                <option value="1" <% if (config.publish.thematic.type === '1') { %>selected="selected"<% } %>>
                                                     <%= __('Сериалы') %>
                                                 </option>
-                                                <option value="" <% if (config.publish.thematic.type == '') { %>selected="selected"<% } %>>
+                                                <option value="" <% if (config.publish.thematic.type === '') { %>selected="selected"<% } %>>
                                                     <%= __('Все') %>
                                                 </option>
                                             </select>
@@ -435,7 +435,7 @@
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.kp_vote" class="form-control">
                                                 <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                    <% if (config.publish.thematic.kp_vote == i) { %>
+                                                    <% if (config.publish.thematic.kp_vote === i) { %>
                                                         <option value="<%= i %>" selected="selected">
                                                             <%- i %> <%= __('голос(ов)') %>
                                                         </option>
@@ -460,7 +460,7 @@
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.imdb_vote" class="form-control">
                                                 <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                    <% if (config.publish.thematic.imdb_vote == i) { %>
+                                                    <% if (config.publish.thematic.imdb_vote === i) { %>
                                                         <option value="<%= i %>" selected="selected">
                                                             <%- i %> <%= __('голос(ов)') %>
                                                         </option>

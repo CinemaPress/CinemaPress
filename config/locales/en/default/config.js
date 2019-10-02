@@ -55,8 +55,8 @@ module.exports = {
       "director": "",
       "query_id": "",
       "search": "",
-      "kp_vote": "",
-      "imdb_vote": ""
+      "kp_vote": 0,
+      "imdb_vote": 0
     }
   },
   "default": {

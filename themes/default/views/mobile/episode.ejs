@@ -105,7 +105,7 @@
 
 <div class="clear"></div>
 
-<% if (typeof page.adv == 'object' && page.adv.over) { %>
+<% if (typeof page.adv === 'object' && page.adv.over) { %>
 <div style="text-align: center; margin: 10px auto;">
     <%- page.adv.over %>
 </div>
@@ -181,7 +181,7 @@
 <div class="clear"></div>
 <% } %>
 
-<% if (typeof page.adv == 'object' && page.adv.under) { %>
+<% if (typeof page.adv === 'object' && page.adv.under) { %>
 <div style="text-align: center; margin: 10px auto;">
     <%- page.adv.under %>
 </div>
@@ -194,7 +194,7 @@
 
 <div class="clear"></div>
 
-<% if (typeof movies == 'object') {
+<% if (typeof movies === 'object') {
         for (var type in movies) {
 if (movies.hasOwnProperty(type) && movies[type].length) {
 movies[type].forEach(function (category) { %>

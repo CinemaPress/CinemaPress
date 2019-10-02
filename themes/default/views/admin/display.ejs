@@ -73,7 +73,7 @@
                                             </div>
                                             <select name="config.default.count" class="form-control">
                                                 <% for (var i = 1; i <= 30; i++) { %>
-                                                <% if (config.default.count == i) { %>
+                                                <% if (config.default.count === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('фильма(ов)') %>
                                                 </option>
@@ -94,7 +94,7 @@
                                             </div>
                                             <select name="config.default.sorting" class="form-control">
                                                 <% for (name in config.sorting) { %>
-                                                <% if (config.default.sorting == name) { %>
+                                                <% if (config.default.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
                                                 </option>
@@ -118,7 +118,7 @@
                                             </div>
                                             <select name="config.default.pages" class="form-control">
                                                 <% for (var i = 1; i <= 10; i++) { if (i%2) continue; %>
-                                                <% if (config.default.pages == i) { %>
+                                                <% if (config.default.pages === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%- i %> <%= __('номер(ов)') %>
                                                 </option>
@@ -192,7 +192,7 @@
                                             <select name="config.default.days" class="form-control">
                                                 <% for (var i = -35; i <= 728; i = i+7) { %>
                                                 <% if (i === -35) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Месяц назад') %>
                                                 </option>
@@ -202,7 +202,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === -7) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Неделю назад') %>
                                                 </option>
@@ -212,7 +212,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 0) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Сегодня') %>
                                                 </option>
@@ -222,7 +222,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 7) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через неделю') %>
                                                 </option>
@@ -232,7 +232,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 35) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через месяц') %>
                                                 </option>
@@ -242,7 +242,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 91) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через 3 месяца') %>
                                                 </option>
@@ -252,7 +252,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 182) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через пол года') %>
                                                 </option>
@@ -262,7 +262,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 364) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через год') %>
                                                 </option>
@@ -272,7 +272,7 @@
                                                 </option>
                                                 <% } %>
                                                 <% } else if (i === 364*2) { %>
-                                                <% if (config.default.days == i) { %>
+                                                <% if (config.default.days === i) { %>
                                                 <option value="<%= i %>" selected="selected">
                                                     <%= __('Через 2 года') %>
                                                 </option>
@@ -327,7 +327,7 @@
                                                                     </div>
                                                                     <select name="config.default.votes.imdb" class="form-control">
                                                                         <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                                        <% if (config.default.votes.imdb == i) { %>
+                                                                        <% if (config.default.votes.imdb === i) { %>
                                                                         <option value="<%= i %>" selected="selected">
                                                                             <%- i %> <%= __('голос(ов)') %>
                                                                         </option>
@@ -348,7 +348,7 @@
                                                                     </div>
                                                                     <select name="config.default.votes.kp" class="form-control">
                                                                         <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                                        <% if (config.default.votes.kp == i) { %>
+                                                                        <% if (config.default.votes.kp === i) { %>
                                                                         <option value="<%= i %>" selected="selected">
                                                                             <%- i %> <%= __('голос(ов)') %>
                                                                         </option>

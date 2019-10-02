@@ -9,7 +9,7 @@
 
 <% include includes/header.ejs %>
 
-<% if (typeof index == 'object') {
+<% if (typeof index === 'object') {
     for (var type in index) {
         if (index.hasOwnProperty(type) && index[type].length) {
             index[type].forEach(function (category) { %>

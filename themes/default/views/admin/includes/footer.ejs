@@ -252,7 +252,7 @@
 
     function databaseData() {
 
-        <% if (config.database.key == 'FREE') { %>
+        <% if (config.database.key === 'FREE') { %>
             if (!confirm('<%= __('База закрепится на сервере за доменом %s Импорт делается только один раз, дальнейшие импорты - это обновления.', config.domain.toUpperCase() + '\\n') %>')) {
                 return;
             }

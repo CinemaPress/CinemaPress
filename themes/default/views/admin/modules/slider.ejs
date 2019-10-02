@@ -79,7 +79,7 @@
                                                 <div class="col-lg-4 col-xs-4">
                                                     <select name="modules.slider.data.count" class="form-control">
                                                         <% for (var i = 0; i <= 30; i++) { %>
-                                                            <option value="<%= i %>" <% if (modules.slider.data.count == i) { %>selected="selected"<% } %>>
+                                                            <option value="<%= i %>" <% if (modules.slider.data.count === i) { %>selected="selected"<% } %>>
                                                                 <% if (i === 0) { %>
                                                                     <%= __('Не показывать') %>
                                                                 <% } else { %>

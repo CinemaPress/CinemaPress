@@ -100,7 +100,7 @@
                                                         <div class="col-xs-4">
                                                             <select name="modules.comments.data.disqus.recent.num_items" class="form-control">
                                                                 <% for (var i = 0; i <= 20; i++) { %>
-                                                                <% if (modules.comments.data.disqus.recent.num_items == i) { %>
+                                                                <% if (modules.comments.data.disqus.recent.num_items === i) { %>
                                                                     <% if (i === 0) { %>
                                                                     <option value="<%= i %>" selected="selected">
                                                                         <%= __('Не показывать') %>
@@ -128,7 +128,7 @@
                                                         <div class="col-xs-4">
                                                             <select name="modules.comments.data.disqus.recent.excerpt_length" class="form-control">
                                                                 <% for (var i = 50; i <= 500; i = i+50) { %>
-                                                                <% if (modules.comments.data.disqus.recent.excerpt_length == i) { %>
+                                                                <% if (modules.comments.data.disqus.recent.excerpt_length === i) { %>
                                                                 <option value="<%= i %>" selected="selected">
                                                                     <%= __('Макс. %s символов', i) %>
                                                                 </option>
@@ -234,7 +234,7 @@
                                                         <div class="col-xs-6">
                                                             <select name="modules.comments.data.hypercomments.recent.num_items" class="form-control">
                                                                 <% for (var i = 0; i <= 20; i++) { %>
-                                                                <% if (modules.comments.data.hypercomments.recent.num_items == i) { %>
+                                                                <% if (modules.comments.data.hypercomments.recent.num_items === i) { %>
                                                                 <% if (i === 0) { %>
                                                                 <option value="<%= i %>" selected="selected">
                                                                     <%= __('Не показывать') %>
@@ -262,7 +262,7 @@
                                                         <div class="col-xs-6">
                                                             <select name="modules.comments.data.hypercomments.recent.excerpt_length" class="form-control">
                                                                 <% for (var i = 50; i <= 500; i = i+50) { %>
-                                                                <% if (modules.comments.data.hypercomments.recent.excerpt_length == i) { %>
+                                                                <% if (modules.comments.data.hypercomments.recent.excerpt_length === i) { %>
                                                                 <option value="<%= i %>" selected="selected">
                                                                     <%= __('Макс. %s символов', i) %>
                                                                 </option>
