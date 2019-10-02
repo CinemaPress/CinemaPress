@@ -372,7 +372,7 @@ ip_install() {
 
         if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
             docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker restart nginx >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         else
             docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         fi
@@ -627,7 +627,7 @@ ip_install() {
     fi
     docker start ${CP_MIRROR} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
     docker exec ${CP_MIRROR} cinemapress container config >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-    docker restart nginx >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+    docker exec nginx nginx -s reload >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
 }
 8_remove() {
     T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
@@ -1479,7 +1479,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec ${CP_DOMAIN_} cinemapress container "${1}" "${CP_PASSWD}" \
                 >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
             sh_progress
-            docker restart nginx \
+            docker exec nginx nginx -s reload \
                 >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
             sh_progress 100
             exit 0

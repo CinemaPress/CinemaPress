@@ -128,7 +128,7 @@ function blockingPlayer(code, movie, options) {
           .replace(/\?&id=.*?"/i, '"');
         code.footer =
           code.footer +
-          '<style>.search-ggl span.g{color:#4285F4}.search-ggl span.o:nth-child(2){color:#EA4335}.search-ggl span.o:nth-child(3){color:#FBBC05}.search-ggl span.l{color:#34A853}.search-ggl span.e{color:#EA4335}.search-ynd span.y{color:#FF0000}.search-ggl, .search-ynd{float:left;width:50%;background:#333;padding:10px 0;cursor:pointer;text-align:center;color:#fff;}.search-ggl:hover, .search-ynd:hover{background:#444;}div.search-ggl{border-radius:5px 0 0 5px;}div.search-ynd{border-radius:0 5px 5px 0;}</style>';
+          '<style>.search-ggl span.g{color:#4285F4}.search-ggl span.o:nth-child(2){color:#EA4335}.search-ggl span.o:nth-child(3){color:#FBBC05}.search-ggl span.l{color:#34A853}.search-ggl span.e{color:#EA4335}.search-ynd span.y{color:#FF0000}.search-ggl,.search-ynd,.search-amz,.search-ivi,.search-knp{float:left;width:50%;background:#333;padding:10px 0;cursor:pointer;text-align:center;color:#fff;}.search-ggl:hover,.search-ynd:hover,.search-amz:hover,.search-ivi:hover,.search-knp:hover{background:#444;}div.search-ggl,div.search-ivi{border-radius:5px 0 0 5px;}div.search-ynd,div.search-amz,div.search-knp{border-radius:0 5px 5px 0;}.search-amz span.p{color:#00aae1}.search-knp span.h{color:#ff6600}.search-ivi span.i{color:#ec174f}</style>';
       }
     }
   }
