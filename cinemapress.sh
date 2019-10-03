@@ -737,6 +737,7 @@ read_domain() {
                 AGAIN=$((${AGAIN}+1))
             fi
         done
+        if [ "${CP_DOMAIN}" = "" ]; then exit 1; fi
     fi
 }
 read_mirror() {
@@ -778,6 +779,7 @@ read_mirror() {
                 AGAIN=$((${AGAIN}+1))
             fi
         done
+        if [ "${CP_MIRROR}" = "" ]; then exit 1; fi
     fi
 }
 read_theme() {
@@ -811,6 +813,7 @@ read_theme() {
                 fi
             fi
         done
+        if [ "${CP_THEME}" = "" ]; then exit 1; fi
     fi
 }
 read_password() {
@@ -836,6 +839,7 @@ read_password() {
                 AGAIN=$((${AGAIN}+1))
             fi
         done
+        if [ "${CP_PASSWD}" = "" ]; then exit 1; fi
     fi
 }
 read_key() {
@@ -877,6 +881,7 @@ read_key() {
                 AGAIN=$((${AGAIN}+1))
             fi
         done
+        if [ "${CP_KEY}" = "" ]; then exit 1; fi
     fi
 }
 read_lang() {
@@ -916,6 +921,7 @@ read_lang() {
                 fi
             fi
         done
+        if [ "${CP_LANG}" = "" ]; then exit 1; fi
     fi
 }
 read_cloudflare_email() {
@@ -946,6 +952,7 @@ read_cloudflare_email() {
                 fi
             fi
         done
+        if [ "${CLOUDFLARE_EMAIL}" = "" ]; then exit 1; fi
     fi
 }
 read_cloudflare_api_key() {
@@ -976,6 +983,7 @@ read_cloudflare_api_key() {
                 fi
             fi
         done
+        if [ "${CLOUDFLARE_API_KEY}" = "" ]; then exit 1; fi
     fi
 }
 read_mega_email() {
@@ -1006,6 +1014,7 @@ read_mega_email() {
                 fi
             fi
         done
+        if [ "${MEGA_EMAIL}" = "" ]; then exit 1; fi
     fi
 }
 read_mega_password() {
@@ -1028,6 +1037,7 @@ read_mega_password() {
                 AGAIN=10
             fi
         done
+        if [ "${MEGA_PASSWORD}" = "" ]; then exit 1; fi
     fi
 }
 
