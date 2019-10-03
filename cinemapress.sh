@@ -66,10 +66,9 @@ docker_install() {
                 dnf -y install sudo
                 sudo dnf -y install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-                yum install -y sudo wget curl
-                wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
-                rpm -ihv epel-release-7-11.noarch.rpm
-                sudo yum install -y nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
+                yum install -y epel-release
+                yum install -y sudo
+                sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
             fi
             if [ "`docker -v 2>/dev/null`" = "" ]; then
                 if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
@@ -1200,6 +1199,7 @@ _s() {
 docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         cp -rf /home/cinemapress/* /home/${CP_DOMAIN}
+        rm -rf /home/cinemapress/*
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:${NODE_PORT}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/nginx.conf
