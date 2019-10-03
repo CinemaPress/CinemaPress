@@ -2,22 +2,22 @@
 
 > Vytvorte webovú stránku s videom na sledovanie filmov a televíznych seriálov v počítači `Windows / iOS`, mobilnom zariadení `iPhone / Android` a televízii `Smart TV / Android TV / STB`
 
-<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sk.svg?sanitize=true" width="100" align="center" alt="SK" title="SK">
+![SK](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sk.svg?sanitize=true)
 
 `Vyberte si svoj jazyk`
 
-[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ru.svg?sanitize=true" width="50" alt="RU" title="RU">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ru.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/es.svg?sanitize=true" width="50" alt="ES" title="ES">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.es.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/de.svg?sanitize=true" width="50" alt="DE" title="DE">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.de.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/fr.svg?sanitize=true" width="50" alt="FR" title="FR">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.fr.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ja.svg?sanitize=true" width="50" alt="JA" title="JA">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ja.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/pt.svg?sanitize=true" width="50" alt="PT" title="PT">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.pt.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/it.svg?sanitize=true" width="50" alt="IT" title="IT">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.it.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/zh.svg?sanitize=true" width="50" alt="ZH" title="ZH">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.zh.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/pl.svg?sanitize=true" width="50" alt="PL" title="PL">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.pl.md)
-:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
-[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/nl.svg?sanitize=true" width="50" alt="NL" title="NL">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.nl.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/tr.svg?sanitize=true" width="50" alt="TR" title="TR">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.tr.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/cs.svg?sanitize=true" width="50" alt="CS" title="CS">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.cs.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ko.svg?sanitize=true" width="50" alt="KO" title="KO">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ko.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/vi.svg?sanitize=true" width="50" alt="VI" title="VI">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.vi.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sv.svg?sanitize=true" width="50" alt="SV" title="SV">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sv.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/hu.svg?sanitize=true" width="50" alt="HU" title="HU">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hu.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/el.svg?sanitize=true" width="50" alt="EL" title="EL">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.el.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ro.svg?sanitize=true" width="50" alt="RO" title="RO">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ro.md)
-[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/en.svg?sanitize=true" width="50" alt="EN" title="EN">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.en.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/da.svg?sanitize=true" width="50" alt="DA" title="DA">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.da.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/id.svg?sanitize=true" width="50" alt="ID" title="ID">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.id.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/fi.svg?sanitize=true" width="50" alt="FI" title="FI">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.fi.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/th.svg?sanitize=true" width="50" alt="TH" title="TH">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.th.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/bg.svg?sanitize=true" width="50" alt="BG" title="BG">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.bg.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/uk.svg?sanitize=true" width="50" alt="UK" title="UK">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.uk.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ar.svg?sanitize=true" width="50" alt="AR" title="AR">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ar.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sq.svg?sanitize=true" width="50" alt="SQ" title="SQ">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sq.md)
-[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/lt.svg?sanitize=true" width="50" alt="LT" title="LT">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.lt.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/hr.svg?sanitize=true" width="50" alt="HR" title="HR">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hr.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sr.svg?sanitize=true" width="50" alt="SR" title="SR">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sr.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/bn.svg?sanitize=true" width="50" alt="BN" title="BN">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.bn.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sl.svg?sanitize=true" width="50" alt="SL" title="SL">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sl.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/et.svg?sanitize=true" width="50" alt="ET" title="ET">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.et.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/lv.svg?sanitize=true" width="50" alt="LV" title="LV">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.lv.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/hi.svg?sanitize=true" width="50" alt="HI" title="HI">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hi.md)|[<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/sw.svg?sanitize=true" width="50" alt="SW" title="SW">](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sw.md)
+[![RU](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ru.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ru.md) | [![ES](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/es.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.es.md) | [![DE](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/de.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.de.md) | [![FR](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/fr.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.fr.md) | [![JA](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ja.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ja.md) | [![PT](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/pt.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.pt.md) | [![IT](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/it.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.it.md) | [![ZH](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/zh.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.zh.md) | [![PL](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/pl.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.pl.md)
+:---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+[![NL](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/nl.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.nl.md) | [![TR](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/tr.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.tr.md) | [![CS](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/cs.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.cs.md) | [![KO](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ko.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ko.md) | [![VI](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/vi.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.vi.md) | [![SV](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sv.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sv.md) | [![HU](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/hu.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hu.md) | [![EL](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/el.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.el.md) | [![RO](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ro.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ro.md)
+[![EN](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/en.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.en.md) | [![DA](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/da.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.da.md) | [![ID](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/id.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.id.md) | [![FI](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/fi.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.fi.md) | [![TH](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/th.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.th.md) | [![BG](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/bg.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.bg.md) | [![UK](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/uk.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.uk.md) | [![AR](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ar.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.ar.md) | [![SQ](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sq.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sq.md)
+[![LT](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/lt.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.lt.md) | [![HR](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/hr.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hr.md) | [![SR](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sr.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sr.md) | [![BN](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/bn.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.bn.md) | [![SL](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sl.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sl.md) | [![ET](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/et.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.et.md) | [![LV](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/lv.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.lv.md) | [![HI](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/hi.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.hi.md) | [![SW](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/sw.svg?sanitize=true)](https://github.com/CinemaPress/CinemaPress/blob/master/doc/README.sw.md)
 
 ![Admin-panel](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/screenshot.png)
 
-&nbsp;|Admin :factory:|Website :computer:|Mobile :iphone:|TV :tv:
-:---:|:---:|:---:|:---:|:---:
-<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/ru.svg?sanitize=true" width="50" alt="RU" title="RU">|<a href="http://RU.CinemaPress.io/admin" target="_blank">RU Admin</a>|<a href="http://RU.CinemaPress.io" target="_blank">RU Website</a>|<a href="http://RU.CinemaPress.io/mobile-version" target="_blank">RU Mobile</a>|<a href="http://RU.CinemaPress.io/tv-version" target="_blank">RU TV</a>
-<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/locales/en.svg?sanitize=true" width="50" alt="EN" title="EN">|<a href="http://EN.CinemaPress.io/admin" target="_blank">EN Admin</a>|<a href="http://EN.CinemaPress.io" target="_blank">EN Website</a>|<a href="http://EN.CinemaPress.io/mobile-version" target="_blank">EN Mobile</a>|<a href="http://EN.CinemaPress.io/tv-version" target="_blank">EN TV</a>
+· | Admin :factory: | Website :computer: | Mobile :iphone: | TV :tv:
+:---: | :---: | :---: | :---: | :---:
+![RU](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ru.svg?sanitize=true)|[RU Admin](http://RU.CinemaPress.io/admin)|[RU Website](http://RU.CinemaPress.io)|[RU Mobile](http://RU.CinemaPress.io/mobile-version)|[RU TV](http://RU.CinemaPress.io/tv-version)
+![EN](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/en.svg?sanitize=true)|[EN Admin](http://EN.CinemaPress.io/admin)|[EN Website](http://EN.CinemaPress.io)|[EN Mobile](http://EN.CinemaPress.io/mobile-version)|[EN TV](http://EN.CinemaPress.io/tv-version)
 
 ## Ako nainštalovať CinemaPress?
 
@@ -25,173 +25,173 @@
 
 `https://cinemapress.sh`
 
-<a href="https://cinemapress.sh" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/web.png" width="400" align="center" title="Nainštalujte prostredníctvom webových stránok" alt="Nainštalujte prostredníctvom webových stránok"></a>
+[![Nainštalujte prostredníctvom webových stránok](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### Inštalácia cez terminál
 
 `bash <(wget -qO- cinemapress.sh)`
 
-<img src="https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/cli.png" width="400" align="center" title="Inštalácia cez terminál" alt="Inštalácia cez terminál">
+![Inštalácia cez terminál](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 
 ## Kde kúpiť server VPS?
 
 > OS by mal byť **CentOS 7, Debian 9/10, Ubuntu 18/19, Fedora 28/29** bez ovládacích panelov!
 
-&nbsp;&nbsp;&nbsp;&nbsp; | UA-Hosting | Inferno | MyVPS | Zomro
+···· | UA-Hosting | Inferno | MyVPS | Zomro
 :---: | :---: | :---: | :---: | :---:
 :earth_americas: | `Netherlands` | `Netherlands` | `France` | `Netherlands`
 :computer: | `2x2700MHz` | `2x2600MHz` | `2x2600MHz` | `1x3300MHz`
 :rocket: | `4GB` | `2GB` | `2GB` | `2GB`
 :floppy_disk: | `60GB` |  `20GB` | `50GB` | `12GB`
 :dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
-&nbsp;&nbsp;&nbsp;&nbsp; | <a href="https://cinemapress.io/ref/ua-hosting.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/inferno.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/myvps.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/zomro.html" target="_blank">**VYBRAŤ**</a>
+···· | **[VYBRAŤ](https://cinemapress.io/ref/ua-hosting.html)** | **[VYBRAŤ](https://cinemapress.io/ref/inferno.html)** | **[VYBRAŤ](https://cinemapress.io/ref/myvps.html)** | **[VYBRAŤ](https://cinemapress.io/ref/zomro.html)**
 
 > `*` - **15%** zľava, promo kód: `CinemaPress15`
 
 ## Kde kúpiť názov domény?
 
-&nbsp;&nbsp;&nbsp;&nbsp; | Tonic | InternetBS | Pananames | Namecheap
+···· | Tonic | InternetBS | Pananames | Namecheap
 :---: | :---: | :---: | :---: | :---:
 :earth_americas: | `Tonga` | `Bahamas` | `Panama` | `USA`
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-&nbsp;&nbsp;&nbsp;&nbsp; | <a href="https://cinemapress.io/ref/tonic.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/internetbs.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/pananames.html" target="_blank">**VYBRAŤ**</a> | <a href="https://cinemapress.io/ref/namecheap.html" target="_blank">**VYBRAŤ**</a>
+···· | **[VYBRAŤ](https://cinemapress.io/ref/tonic.html)** | **[VYBRAŤ](https://cinemapress.io/ref/internetbs.html)** | **[VYBRAŤ](https://cinemapress.io/ref/pananames.html)** | **[VYBRAŤ](https://cinemapress.io/ref/namecheap.html)**
 
 > `*` - údaje nie sú odosielané do verejnej databázy WHOIS
 
 ## Téma «hodor»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Hodor/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Hodor/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-hodor/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Hodor/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com hodor`
 
-> **DEMO:** <a href="http://Hodor.CinemaPress.io/" target="_blank">Hodor.CinemaPress.io</a>
+> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
 
-<a href="http://Hodor.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png" title="šablóna «hodor»"></a>
+[![šablóna «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
 
 ## Téma «sansa»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Sansa/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Sansa/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-sansa/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Sansa/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Sansa/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Sansa/) / [BitBucket](https://bitbucket.org/cinemapress/theme-sansa/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com sansa`
 
-> **DEMO:** <a href="http://Sansa.CinemaPress.io/" target="_blank">Sansa.CinemaPress.io</a>
+> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
 
-<a href="http://Sansa.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png" title="šablóna «sansa»"></a>
+[![šablóna «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
 
 ## Téma «robb»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Robb/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Robb/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-robb/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Robb/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Robb/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Robb/) / [BitBucket](https://bitbucket.org/cinemapress/theme-robb/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com robb`
 
-> **DEMO:** <a href="http://Robb.CinemaPress.io/" target="_blank">Robb.CinemaPress.io</a>
+> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
 
-<a href="http://Robb.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png" title="šablóna «robb»"></a>
+[![šablóna «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
 
 ## Téma «ramsay»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Ramsay/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Ramsay/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-ramsay/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Ramsay/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Ramsay/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Ramsay/) / [BitBucket](https://bitbucket.org/cinemapress/theme-ramsay/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com ramsay`
 
-> **DEMO:** <a href="http://Ramsay.CinemaPress.io/" target="_blank">Ramsay.CinemaPress.io</a>
+> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
 
-<a href="http://Ramsay.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png" title="šablóna «ramsay»"></a>
+[![šablóna «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
 
 ## Téma «tyrion»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Tyrion/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Tyrion/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-tyrion/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Tyrion/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Tyrion/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tyrion/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tyrion/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com tyrion`
 
-> **DEMO:** <a href="http://Tyrion.CinemaPress.io/" target="_blank">Tyrion.CinemaPress.io</a>
+> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
 
-<a href="http://Tyrion.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png" title="šablóna «tyrion»"></a>
+[![šablóna «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
 
 ## Téma «cersei»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Cersei/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Cersei/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-cersei/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Cersei/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Cersei/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Cersei/) / [BitBucket](https://bitbucket.org/cinemapress/theme-cersei/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com cersei`
 
-> **DEMO:** <a href="http://Cersei.CinemaPress.io/" target="_blank">Cersei.CinemaPress.io</a>
+> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
 
-<a href="http://Cersei.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png" title="šablóna «cersei»"></a>
+[![šablóna «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
 
 ## Téma «joffrey»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Joffrey/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Joffrey/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-joffrey/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Joffrey/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Joffrey/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Joffrey/) / [BitBucket](https://bitbucket.org/cinemapress/theme-joffrey/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com joffrey`
 
-> **DEMO:** <a href="http://Joffrey.CinemaPress.io/" target="_blank">Joffrey.CinemaPress.io</a>
+> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
 
-<a href="http://Joffrey.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png" title="šablóna «joffrey»"></a>
+[![šablóna «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
 
 ## Téma «drogo»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Drogo/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Drogo/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-drogo/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Drogo/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Drogo/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Drogo/) / [BitBucket](https://bitbucket.org/cinemapress/theme-drogo/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com drogo`
 
-> **DEMO:** <a href="http://Drogo.CinemaPress.io/" target="_blank">Drogo.CinemaPress.io</a>
+> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
 
-<a href="http://Drogo.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png" title="šablóna «drogo»"></a>
+[![šablóna «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
 
 ## Téma «bran»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Bran/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Bran/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-bran/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Bran/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Bran/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Bran/) / [BitBucket](https://bitbucket.org/cinemapress/theme-bran/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com bran`
 
-> **DEMO:** <a href="http://Bran.CinemaPress.io/" target="_blank">Bran.CinemaPress.io</a>
+> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
 
-<a href="http://Bran.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png" title="šablóna «bran»"></a>
+[![šablóna «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
 
 ## Téma «arya»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Arya/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Arya/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-arya/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Arya/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Arya/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Arya/) / [BitBucket](https://bitbucket.org/cinemapress/theme-arya/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com arya`
 
-> **DEMO:** <a href="http://Arya.CinemaPress.io/" target="_blank">Arya.CinemaPress.io</a>
+> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
 
-<a href="http://Arya.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png" title="šablóna «arya»"></a>
+[![šablóna «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
 
 ## Téma «mormont»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Mormont/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Mormont/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-mormont/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Mormont/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Mormont/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Mormont/) / [BitBucket](https://bitbucket.org/cinemapress/theme-mormont/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com mormont`
 
-> **DEMO:** <a href="http://Mormont.CinemaPress.io/" target="_blank">Mormont.CinemaPress.io</a>
+> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
 
-<a href="http://Mormont.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png" title="šablóna «mormont»"></a>
+[![šablóna «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
 
 ## Téma «tarly»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Tarly/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Tarly/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-tarly/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Tarly/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Tarly/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tarly/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tarly/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com tarly`
 
-> **DEMO:** <a href="http://Tarly.CinemaPress.io/" target="_blank">Tarly.CinemaPress.io</a>
+> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
 
-<a href="http://Tarly.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png" title="šablóna «tarly»"></a>
+[![šablóna «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
 
 ## Téma «daenerys»
 
-> Inštalácia cez FTP: <a href="https://github.com/CinemaPress/Theme-Daenerys/" target="_blank">GitHub</a> / <a href="https://gitlab.com/CinemaPress/Theme-Daenerys/" target="_blank">GitLab</a> / <a href="https://bitbucket.org/cinemapress/theme-daenerys/" target="_blank">BitBucket</a> / <a href="https://coding.net/u/CinemaPress/p/Theme-Daenerys/" target="_blank">Coding</a>
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Daenerys/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Daenerys/) / [BitBucket](https://bitbucket.org/cinemapress/theme-daenerys/)
 
 > Inštalácia cez CLI: `cinemapress theme example.com daenerys`
 
-> **DEMO:** <a href="http://Daenerys.CinemaPress.io/" target="_blank">Daenerys.CinemaPress.io</a>
+> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
 
-<a href="http://Daenerys.CinemaPress.io/" target="_blank"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png" title="šablóna «daenerys»"></a>
+[![šablóna «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
 ## Možnosti a moduly CinemaPress
 
-Podrobné informácie o všetkých možnostiach a systémových moduloch nájdete v <a href="https://cinemapress.io/admin/admin.html">dokumentácii</a>.
+Podrobné informácie o všetkých možnostiach a systémových moduloch nájdete v [dokumentácii](https://CInemaPress.io/admin).
 
-> Copyright (c) 2014-.... [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
