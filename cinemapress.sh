@@ -66,8 +66,10 @@ docker_install() {
                 dnf -y install sudo
                 sudo dnf -y install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-                yum install -y sudo
-                sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
+                yum install -y sudo wget curl
+                wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
+                rpm -ihv epel-release-7-11.noarch.rpm
+                sudo yum install -y nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
             fi
             if [ "`docker -v 2>/dev/null`" = "" ]; then
                 if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
@@ -800,7 +802,8 @@ read_theme() {
             if [ "${CP_THEME}" = "" ]
             then
                 AGAIN=10
-                CP_THEME='default'
+                CP_THEME='tarly'
+                echo ": ${CP_LANG}"
             else
                 if [ "${CP_THEME}" = "default" ] || [ "${CP_THEME}" = "hodor" ] || [ "${CP_THEME}" = "sansa" ] || [ "${CP_THEME}" = "robb" ] || [ "${CP_THEME}" = "ramsay" ] || [ "${CP_THEME}" = "tyrion" ] || [ "${CP_THEME}" = "cersei" ] || [ "${CP_THEME}" = "joffrey" ] || [ "${CP_THEME}" = "drogo" ] || [ "${CP_THEME}" = "bran" ] || [ "${CP_THEME}" = "arya" ] || [ "${CP_THEME}" = "mormont" ] || [ "${CP_THEME}" = "tarly" ] || [ "${CP_THEME}" = "daenerys" ]
                 then
@@ -903,6 +906,7 @@ read_lang() {
             then
                 AGAIN=10
                 CP_LANG='en'
+                echo ": ${CP_LANG}"
             else
                 if [ "${CP_LANG}" = "ru" ] || [ "${CP_LANG}" = "en" ] || [ "${CP_LANG}" = "Русский" ] || [ "${CP_LANG}" = "English" ] || [ "${CP_LANG}" = "русский" ] || [ "${CP_LANG}" = "english" ]
                 then
