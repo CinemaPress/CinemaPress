@@ -399,7 +399,7 @@ ip_install() {
             _content
             _content "or configure for MEGA.nz cloud storage in one line:"
             _content
-            printf "root@vps:~# cinemapress backup create \"mega email\" \"mega pass\""
+            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} create \"mega email\" \"mega pass\""
             _br
             _content
             _s
@@ -582,7 +582,7 @@ ip_install() {
         _s
         exit 0
     fi
-    3_backup create
+    3_backup "create"
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
         docker stop ${CP_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         docker stop ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
@@ -1218,7 +1218,7 @@ docker_run() {
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/${CP_DOMAIN}/config/production/config.js
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /home/${CP_DOMAIN}/themes/${CP_THEME}
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
-        echo "${CP_DOMAIN}:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
+        echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
         if [ "${CP_DOMAIN_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/nginx.conf; fi
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
@@ -1332,7 +1332,7 @@ docker_rclone() {
 }
 docker_passwd() {
     OPENSSL=`echo "${1}" | openssl passwd -1 -stdin -salt CP`
-    echo "${CP_DOMAIN}:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
+    echo "admin:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
 }
 
 success_install(){
@@ -1355,7 +1355,7 @@ success_install(){
     _content "${CP_URL}/admin"
     if [ "${CP_DOMAIN_IP}" = "domain" ]; then
         _content
-        _content_l "USERNAME: ${CP_DOMAIN}"
+        _content_l "USERNAME: admin"
         _content_l "PASSWORD: ${CP_PASSWD}"
     fi
     _content
