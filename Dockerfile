@@ -25,9 +25,9 @@ ENV TZ=Europe/Helsinki
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
-RUN mkdir -p /home/cinemapress
-WORKDIR /home/cinemapress
-COPY package.json /home/cinemapress/package.json
+RUN mkdir -p /var/cinemapress
+WORKDIR /var/cinemapress
+COPY package.json /var/cinemapress/package.json
 RUN set -o pipefail \
     && apk update \
 #    && apk add -u --no-cache libpng librsvg libgsf giflib libjpeg-turbo musl \
@@ -52,22 +52,23 @@ RUN set -o pipefail \
     && npm cache clean --force \
     && apk del .build-dependencies \
     && rm -rf /var/cache/apk/*
-COPY . /home/cinemapress
+COPY . /var/cinemapress
 RUN set -o pipefail \
     && rm -rf doc .dockerignore .gitignore .prettierignore .prettierrc Dockerfile LICENSE.txt README.md \
-    && dos2unix /home/cinemapress/cinemapress.sh \
-    && cp /home/cinemapress/cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
-    && cp -rf /home/cinemapress/themes/default/public/admin/favicon.ico /home/cinemapress/favicon.ico \
-    && cp -rf /home/cinemapress/files/bbb.mp4 /var/local/balancer/bbb.mp4 \
-    && cp -rf /home/cinemapress/themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
-        /home/cinemapress/themes/default/public/desktop/img/player.png \
+    && dos2unix /var/cinemapress/cinemapress.sh \
+    && cp /var/cinemapress/cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
+    && rm -rf /var/cinemapress/cinemapress.sh \
+    && cp -rf /var/cinemapress/themes/default/public/admin/favicon.ico /var/cinemapress/favicon.ico \
+    && cp -rf /var/cinemapress/files/bbb.mp4 /var/local/balancer/bbb.mp4 \
+    && cp -rf /var/cinemapress/themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
+        /var/cinemapress/themes/default/public/desktop/img/player.png \
     && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
     && tar xfz geo.tar.gz \
-    && mv GeoLite2-City_*/GeoLite2-City.mmdb /home/cinemapress/files/GeoLite2-City.mmdb \
+    && mv GeoLite2-City_*/GeoLite2-City.mmdb /var/cinemapress/files/GeoLite2-City.mmdb \
     && rm -rf geo.tar.gz GeoLite2-City_* \
     && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
     && tar xfz geo.tar.gz \
-    && mv GeoLite2-Country_*/GeoLite2-Country.mmdb /home/cinemapress/files/GeoLite2-Country.mmdb \
+    && mv GeoLite2-Country_*/GeoLite2-Country.mmdb /var/cinemapress/files/GeoLite2-Country.mmdb \
     && rm -rf geo.tar.gz GeoLite2-Country_* \
     && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup > /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/daily/backup \

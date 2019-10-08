@@ -3,6 +3,7 @@
 process.env['UV_THREADPOOL_SIZE'] = '128';
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 process.env['CP_VER'] = new Date().getTime().toString();
+require('events').EventEmitter.defaultMaxListeners = 15;
 
 /**
  * Configuration dependencies.
@@ -78,19 +79,6 @@ app.enable('trust proxy');
 app.use(cookieParser());
 app.use(bodyParser.json({ limit: '64mb' }));
 app.use(bodyParser.urlencoded({ limit: '64mb', extended: true }));
-
-app.use(function(req, res, next) {
-  process.on('SIGINT', function() {
-    next({
-      status: 503,
-      message: 'Site under maintenance.'
-    });
-    setTimeout(function() {
-      process.exit();
-    }, 3000);
-  });
-  next();
-});
 
 app.use(nginx());
 app.use(

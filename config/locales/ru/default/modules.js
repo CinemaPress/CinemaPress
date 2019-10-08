@@ -84,11 +84,11 @@ module.exports = {
     "status": false,
     "data": {
       "vk": "https://vk.com/CinemaPress",
-      "facebook": "https://www.facebook.com/CinemaPress.io",
+      "facebook": "https://www.facebook.com/CinemaPress.org",
       "twitter": "https://twitter.com/CinemaPress_org",
       "telegram": "https://t.me/CinemaPress_org",
       "instagram": "https://www.instagram.com/CinemaPressOrg",
-      "youtube": "https://www.youtube.com/channel/UCRW63_nu-cWw2obv6k04Pow"
+      "youtube": "https://www.youtube.com/CinemaPressOrg"
     }
   },
   "related": {
