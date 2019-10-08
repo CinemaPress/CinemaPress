@@ -6,7 +6,7 @@ RUN mkdir -p \
 WORKDIR /etc/nginx
 COPY . /etc/nginx
 RUN rm -rf \
-    /etc/nginx/conf.d/nginx.conf \
+    /etc/nginx/conf.d/default.conf \
     /etc/nginx/cloudflare.ini \
     /etc/nginx/Dockerfile
 EXPOSE 80 443
