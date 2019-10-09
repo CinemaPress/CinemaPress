@@ -44,7 +44,7 @@ NODE_PORT_IP="-p ${NODE_PORT}:3000"
 
 docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
-    if [ "${CP_OS}" != "alpine" ]; then
+    if [ "${CP_OS}" != "alpine" ] && [ ! -f "/usr/bin/cinemapress" ]; then
         if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
             apt-get -y -qq install sudo
             sudo apt-get -y -qq update
@@ -580,8 +580,8 @@ ip_install() {
         _s
         exit 0
     fi
-    3_backup "create"
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
+        3_backup "create"
         docker stop ${CP_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         docker stop ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         rm -rf \
@@ -625,7 +625,6 @@ ip_install() {
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | ${CURRENT}\"/" /home/${CP_MIRROR}/process.json
     fi
     docker start ${CP_MIRROR} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-    docker exec ${CP_MIRROR} cinemapress container config >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
     docker exec nginx nginx -s reload >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
 }
 8_remove() {
@@ -1150,7 +1149,7 @@ sh_progress() {
 }
 
 _content_l() {
-    __C=${1}; _M=$((${#__C})); _L=1; _R=$((58-${_M})); L_=""; R_=""
+    __C=${1}; _M=$((${#__C})); _L=1; _R=$((57-${_M})); L_=""; R_=""
     if [ "$((${#__C}%2))" != "0" ]; then _R=$((${_R})); fi
     for ((l=1;l<=${_L};l++)); do L_=" ${L_}"; done
     for ((r=1;r<=${_R};r++)); do R_=" ${R_}"; done
@@ -1353,13 +1352,13 @@ success_install(){
     _content "${CP_URL}/admin"
     if [ "${CP_DOMAIN_IP}" = "domain" ]; then
         _content
-        _content_l "USERNAME: admin"
-        _content_l "PASSWORD: ${CP_PASSWD}"
+        _content "USERNAME: admin"
+        _content "PASSWORD: ${CP_PASSWD}"
     fi
     _content
     _content "We strongly recommend immediately"
     _content "setting up automatic backup!"
-    _content "RUN:~# cinemapress backup"
+    _content "root@vps:~# cinemapress backup"
     _content
     _content "You have questions?"
     _content "support@cinemapress.io"
