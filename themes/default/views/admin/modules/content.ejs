@@ -285,7 +285,7 @@
                                     <div class="col-sm-12">
                                         <div class="advanced-textarea">
                                             <div class="text-muted">
-                                                <%= __('Веб-страница со списком контента') %> <a href="<%- config.protocol + config.domain + '/' + modules.content.data.url %>" style="text-decoration:none;"><span class="fa fa-external-link-square-alt"></span></a> :
+                                                <%= __('Веб-страница со списком контента') %> <a href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url %>" style="text-decoration:none;"><span class="fa fa-external-link-square-alt"></span></a> :
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -1285,7 +1285,7 @@
                                         <a href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><i class="fa fa-edit text-warning"></i></a>
                                     </td>
                                     <td class="table-settings">
-                                        <a href="<%- config.protocol + config.domain + '/' + modules.content.data.url + '/' + decodeURIComponent(content.content_url) %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
+                                        <a href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url + '/' + decodeURIComponent(content.content_url) %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
                                     </td>
                                 </tr>
                                 <% }); %>

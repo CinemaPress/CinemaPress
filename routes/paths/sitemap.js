@@ -65,6 +65,7 @@ function allSitemap(options, callback) {
     if (y) {
       render.sitemaps.unshift(
         config.protocol +
+          config.subdomain +
           config.domain +
           '/' +
           config.urls.sitemap +
@@ -89,6 +90,7 @@ function allSitemap(options, callback) {
       if (c.hasOwnProperty(cat) && c[cat]) {
         render.sitemaps[render.sitemaps.length] =
           config.protocol +
+          config.subdomain +
           config.domain +
           '/' +
           config.urls.sitemap +
@@ -189,6 +191,7 @@ function oneSitemap(type, year, options, callback) {
       render.urls[render.urls.length] = {
         loc:
           config.protocol +
+          config.subdomain +
           config.domain +
           '/' +
           config.urls.type +

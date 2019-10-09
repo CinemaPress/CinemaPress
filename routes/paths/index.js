@@ -43,6 +43,8 @@ function dataIndex(options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   async.parallel(

@@ -32,7 +32,10 @@ router.get(
         console.error(err.message || err, req.originalUrl);
         return res.redirect(
           302,
-          config.protocol + config.domain + '/files/poster/no-poster.jpg'
+          config.protocol +
+            config.subdomain +
+            config.domain +
+            '/files/poster/no-poster.jpg'
         );
       })
       .pipe(res);

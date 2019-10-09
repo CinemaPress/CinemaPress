@@ -409,7 +409,10 @@ router.get('/:type?', function(req, res) {
             null,
             render.structure.poster
               ? render.structure.poster
-              : config.protocol + config.domain + '/files/poster/no-poster.jpg'
+              : config.protocol +
+                config.subdomain +
+                config.domain +
+                '/files/poster/no-poster.jpg'
           );
         } else {
           callback(null, render);

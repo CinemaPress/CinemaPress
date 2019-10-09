@@ -47,27 +47,18 @@ router.get('/?', function(req, res) {
 
   if (/^\/tv-version/i.test(req.originalUrl)) {
     req.userinfo.domain =
-      (modules.tv.data.subdomain
-        ? 'tv.'
-        : config.subdomain
-          ? config.subdomain + '.'
-          : '') +
+      (modules.tv.data.subdomain ? 'tv.' : config.subdomain) +
       config.domain +
       port +
       (modules.tv.data.subdomain ? '' : '/tv-version');
   } else if (/^\/mobile-version/i.test(req.originalUrl)) {
     req.userinfo.domain =
-      (modules.mobile.data.subdomain
-        ? 'm.'
-        : config.subdomain
-          ? config.subdomain + '.'
-          : '') +
+      (modules.mobile.data.subdomain ? 'm.' : config.subdomain) +
       config.domain +
       port +
       (modules.mobile.data.subdomain ? '' : '/mobile-version');
   } else {
-    req.userinfo.domain =
-      (config.subdomain ? config.subdomain + '.' : '') + config.domain + port;
+    req.userinfo.domain = config.subdomain + config.domain + port;
   }
 
   var options = {};

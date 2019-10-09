@@ -45,6 +45,8 @@ function dataMovie(id, type, options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var related = {};

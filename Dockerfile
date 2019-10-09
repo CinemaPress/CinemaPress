@@ -54,21 +54,21 @@ RUN set -o pipefail \
     && rm -rf /var/cache/apk/*
 COPY . /var/cinemapress
 RUN set -o pipefail \
-    && rm -rf doc .dockerignore .gitignore .prettierignore .prettierrc Dockerfile LICENSE.txt README.md \
-    && dos2unix /var/cinemapress/cinemapress.sh \
-    && cp /var/cinemapress/cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
-    && rm -rf /var/cinemapress/cinemapress.sh \
-    && cp -rf /var/cinemapress/themes/default/public/admin/favicon.ico /var/cinemapress/favicon.ico \
-    && cp -rf /var/cinemapress/files/bbb.mp4 /var/local/balancer/bbb.mp4 \
-    && cp -rf /var/cinemapress/themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
-        /var/cinemapress/themes/default/public/desktop/img/player.png \
+    && rm -rf package-lock.json doc .dockerignore .gitignore .prettierignore .prettierrc Dockerfile LICENSE.txt README.md \
+    && dos2unix cinemapress.sh \
+    && cp cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
+    && rm -rf cinemapress.sh \
+    && cp -rf themes/default/public/admin/favicon.ico favicon.ico \
+    && cp -rf files/bbb.mp4 /var/local/balancer/bbb.mp4 \
+    && cp -rf themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
+        themes/default/public/desktop/img/player.png \
     && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
     && tar xfz geo.tar.gz \
-    && mv GeoLite2-City_*/GeoLite2-City.mmdb /var/cinemapress/files/GeoLite2-City.mmdb \
+    && mv GeoLite2-City_*/GeoLite2-City.mmdb files/GeoLite2-City.mmdb \
     && rm -rf geo.tar.gz GeoLite2-City_* \
     && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
     && tar xfz geo.tar.gz \
-    && mv GeoLite2-Country_*/GeoLite2-Country.mmdb /var/cinemapress/files/GeoLite2-Country.mmdb \
+    && mv GeoLite2-Country_*/GeoLite2-Country.mmdb files/GeoLite2-Country.mmdb \
     && rm -rf geo.tar.gz GeoLite2-Country_* \
     && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup > /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/daily/backup \

@@ -97,6 +97,7 @@ app.use(loadavg());
 app.use(/^(?:\/mobile-version|\/tv-version|)?/, website);
 
 app.use(function(err, req, res, next) {
+  if (res.headersSent) return next();
   err.status = err.status ? err.status : 404;
   err.message = err.message ? err.message : 'Not Found';
   return res.status(err.status).render('error', {
@@ -108,6 +109,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.use(function(req, res) {
+  if (res.headersSent) return;
   return res.status(404).render('error', {
     search: config.urls.search,
     status: 404,

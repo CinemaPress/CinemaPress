@@ -43,6 +43,8 @@ function allContents(tag, options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var query = tag ? { content_tags: tag } : {};
@@ -216,6 +218,8 @@ function oneContent(url, page, sorting, options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   page = page ? page : 1;

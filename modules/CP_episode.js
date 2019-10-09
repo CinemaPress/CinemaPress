@@ -40,6 +40,8 @@ function indexEpisode(options, callback) {
   if (arguments.length === 1) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var source = {
@@ -260,6 +262,8 @@ function parseEpisode(type, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var regexpEpisode = new RegExp(

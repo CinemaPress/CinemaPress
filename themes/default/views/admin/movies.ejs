@@ -751,7 +751,7 @@
                                         <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><i class="fa fa-edit text-warning"></i></a>
                                     </td>
                                     <td class="table-settings">
-                                        <a href="<%- config.protocol + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
+                                        <a href="<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
                                     </td>
                                 </tr>
                                 <% }); %>

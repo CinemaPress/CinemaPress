@@ -28,6 +28,8 @@ function fullMovieSchema(page, movie, movies, options) {
   if (arguments.length === 3) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   if (!movie) return '';
@@ -214,6 +216,8 @@ function onlyMovieSchema(movie, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var result = {};
@@ -229,7 +233,7 @@ function onlyMovieSchema(movie, options) {
   result['image'] =
     movie.poster.indexOf('http') + 1
       ? movie.poster
-      : config.protocol + config.domain + movie.poster;
+      : config.protocol + config.subdomain + config.domain + movie.poster;
   result['sameAs'] = movie.url;
   result['url'] = options.url || movie.url;
   result['actor'] = [];
@@ -298,6 +302,8 @@ function categorySchema(page, movies, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var result = [];
@@ -390,6 +396,8 @@ function generalSchema(page, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var result = {};
@@ -471,6 +479,8 @@ function contentSchema(content, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   var result = {};
@@ -479,13 +489,17 @@ function contentSchema(content, options) {
   result['@type'] = 'NewsArticle';
   result['headline'] = content.title;
   result['name'] = content.title;
-  result['author'] = config.protocol + config.domain;
+  result['author'] = config.protocol + config.subdomain + config.domain;
   result['publisher'] = {
     '@type': 'Organization',
-    name: config.domain,
+    name: config.subdomain + config.domain,
     logo: {
       '@type': 'ImageObject',
-      url: config.protocol + config.domain + config.default.image
+      url:
+        config.protocol +
+        config.subdomain +
+        config.domain +
+        config.default.image
     }
   };
   result['description'] = content.description_short;
@@ -500,7 +514,7 @@ function contentSchema(content, options) {
   result['image'] =
     content.image.indexOf('http') + 1
       ? content.image
-      : config.protocol + config.domain + content.image;
+      : config.protocol + config.subdomain + config.domain + content.image;
   result['sameAs'] = content.url;
   result['url'] = options.url || content.url;
   result['mainEntityOfPage'] = {

@@ -10,6 +10,8 @@ module.exports = {
   "theme": "default",
   "country": "RU",
   "language": "ru",
+  "random": 0,
+  "homepage": "podari-zhizn.ru",
   "geolite2": {
     "countries": [],
     "ips": []

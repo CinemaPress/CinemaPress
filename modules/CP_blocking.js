@@ -26,6 +26,8 @@ function blockingPlayer(code, movie, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   if (

@@ -93,18 +93,47 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-xs-3 text-center">
-                                            <input name="config.subdomain" value="<%= config.subdomain %>" class="form-control input_url" type="text" placeholder="www">
-                                        </div>
-                                        <div class="col-xs-5 text-center">
+                                        <div class="col-xs-6 text-center">
                                             <input name="config.domain" value="<%= config.domain %>" class="form-control input_url" type="text" disabled="disabled">
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding: 5px;">
+                                        <div class="col-xs-6 text-center" style="padding: 5px;">
                                             <% if (config.database.key.length > 4) { %>
                                                 <%- config.database.key.slice(0, 3) + config.database.key.slice(-3) %>
                                             <% } else { %>
                                                 <%- config.database.key %>
                                             <% } %>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный поддомен каждый день') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-4 text-center">
+                                                            <input name="config.subdomain" value="<%= config.subdomain.replace(/\./g,'') %>" class="form-control input_url" type="text" placeholder="www">
+                                                        </div>
+                                                        <div class="col-sm-4 text-center">
+                                                            <div class="inline-labels">
+                                                                <label>
+                                                                    <input name="config.random" value="1" <% if (config.random) { %> checked="" <% } %> type="radio" onchange="if(this.checked){document.querySelector('[name=\'config.subdomain\']').value=dayToLetter()}"><span></span> <%= __('Да') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="config.random" value="0" <% if (!config.random) { %> checked="" <% } %> type="radio" onchange="if(this.checked){document.querySelector('[name=\'config.subdomain\']').value=''}"><span></span> <%= __('Нет') %>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4 text-center">
+                                                            <input name="config.homepage" value="<%= config.homepage %>" class="form-control input_url" type="text" placeholder="<%= __('Главная страница веб-сайта') %>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -541,6 +570,22 @@
                 setInterval(function(){
                     document.querySelector('#fifteen_loadavg').innerHTML = '15 min: ' + document.querySelector('#fifteen').value + '%';
                 }, 100);
+                function dayToLetter() {
+                  var now = new Date();
+                  var year = now.getFullYear();
+                  var start = new Date(year, 0, 0);
+                  var diff = now - start;
+                  var oneDay = 86400000;
+                  var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
+                  var letter1 = ['a', 'e', 'i', 'o', 'u'];
+                  var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm'];
+                  return (
+                    letter2[parseInt(day[0])] +
+                    letter1[parseInt(day[1]) % 5] +
+                    letter2[parseInt(day[2])] +
+                    letter1[year % 5]
+                  );
+                }
             </script>
 
             <% include includes/footer.ejs %>

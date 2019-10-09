@@ -28,7 +28,8 @@ var router = express.Router();
  */
 
 router.get('/?', function(req, res, next) {
-  var url = config.protocol + config.domain + req.originalUrl;
+  var url =
+    config.protocol + config.subdomain + config.domain + req.originalUrl;
   var urlHash = md5(url.toLowerCase());
 
   getRender(function(err, render) {

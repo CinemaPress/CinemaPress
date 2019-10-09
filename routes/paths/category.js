@@ -44,6 +44,8 @@ function allCategory(type, options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   switch (type) {
@@ -276,6 +278,8 @@ function oneCategory(type, key, page, sorting, options, callback) {
     callback = options;
     options = {};
     options.domain = '' + config.domain;
+    options.origin =
+      config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
   page = page ? page : 1;

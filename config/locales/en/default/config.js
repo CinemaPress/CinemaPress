@@ -10,6 +10,8 @@ module.exports = {
   "theme": "default",
   "country": "US",
   "language": "en",
+  "random": 0,
+  "homepage": "unitedway.org",
   "geolite2": {
     "countries": [],
     "ips": []
