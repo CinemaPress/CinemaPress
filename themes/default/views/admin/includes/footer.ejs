@@ -618,7 +618,7 @@
             }
             else if (data.config &&
               data.config.subdomain !== '<%- config.subdomain %>') {
-              location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' %>' + data.config.urls.admin;
+              location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
             }
             else if (data.content && !data.content.id) {
                 location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';

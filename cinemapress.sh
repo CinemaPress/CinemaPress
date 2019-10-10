@@ -28,19 +28,10 @@ MEGA_PASSWORD=${MEGA_PASSWORD:-${9}}
 CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 CP_MIRROR_=`echo ${CP_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g"`
 
-CP_DOMAIN_IP="domain"
+CP_IP="domain"
 
-MEMCACHED_PORT=${MEMCACHED_PORT:-11211}
-NODE_PORT=${NODE_PORT:-3000}
-SPHINX_PORT=${SPHINX_PORT:-9312}
-MYSQL_PORT=${MYSQL_PORT:-9306}
-
-MEMCACHED_ADDR=${MEMCACHED_ADDR:-127.0.0.1:${MEMCACHED_PORT}}
-NODE_ADDR=${NODE_ADDR:-127.0.0.1:${NODE_PORT}}
-SPHINX_ADDR=${SPHINX_ADDR:-127.0.0.1:${SPHINX_PORT}}
-MYSQL_ADDR=${MYSQL_ADDR:-127.0.0.1:${MYSQL_PORT}}
-
-NODE_PORT_IP="-p ${NODE_PORT}:3000"
+EXTERNAL_PORT=""
+EXTERNAL_DOCKER=""
 
 docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
@@ -80,7 +71,7 @@ docker_install() {
                     curl \
                     gnupg2 \
                     software-properties-common
-                sudo curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+                sudo curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
                 sudo apt-key fingerprint 0EBFCD88
                 if [ "${CP_ARCH}" = "amd64" ] || [ "${CP_ARCH}" = "x86_64" ] || [ "${CP_ARCH}" = "i386" ]
                 then
@@ -194,7 +185,7 @@ ip_install() {
     elif [ "`expr "${IP2}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then CP_DOMAIN="${IP2}"; \
     elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then CP_DOMAIN="${IP3}"; fi
     CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
-    CP_DOMAIN_IP="ip"
+    CP_IP="ip"
     CP_LANG="${1}"
     CP_THEME="arya"
     CP_PASSWD="test"
@@ -207,16 +198,6 @@ ip_install() {
 }
 
 1_install() {
-    if [ "${CP_DOMAIN_IP}" = "ip" ]; then
-        if [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
-        && [ "`netstat -tunlp | grep :::80`" = "" ]; then
-            NODE_PORT="80"
-        fi
-        NODE_PORT_IP="-p ${NODE_PORT}:3000"
-    elif [ "${CP_DOMAIN_IP}" = "domain" ]; then
-        NODE_PORT_IP=""
-    fi
-
     docker network create \
         --driver bridge \
         cinemapress >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
@@ -231,7 +212,6 @@ ip_install() {
         -e "CP_LANG=${CP_LANG}" \
         -e "CP_THEME=${CP_THEME}" \
         -e "CP_PASSWD=${CP_PASSWD}" \
-        -e "NODE_PORT=${NODE_PORT}" \
         -e "RCLONE_CONFIG=/home/${CP_DOMAIN}/config/production/rclone.conf" \
         -w /home/${CP_DOMAIN} \
         --restart always \
@@ -240,7 +220,7 @@ ip_install() {
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
         -v /var/local/images:/var/local/images \
         -v /home/${CP_DOMAIN}:/home/${CP_DOMAIN} \
-        ${NODE_PORT_IP} \
+        ${EXTERNAL_DOCKER} \
         cinemapress/docker >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
     WEBSITE_RUN=1
@@ -254,7 +234,7 @@ ip_install() {
 
     sh_progress
 
-    if [ "${CP_DOMAIN_IP}" = "domain" ] \
+    if [ "${CP_IP}" = "domain" ] \
     && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
     && [ "`netstat -tunlp | grep :::80`" = "" ]; then
 
@@ -325,8 +305,8 @@ ip_install() {
             --email support@${CP_DOMAIN} \
             --non-interactive \
             --agree-tos \
-            -d ${CP_DOMAIN} \
-            -d \*.${CP_DOMAIN} \
+            -d "${CP_DOMAIN}" \
+            -d "*.${CP_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
             --dry-run
 
@@ -570,15 +550,21 @@ ip_install() {
 }
 7_mirror() {
     if [ ! -f "/home/${CP_MIRROR}/process.json" ]; then
-        _line
-        _header "ERROR"
-        _content
-        _content "First create a mirror website ${CP_MIRROR},"
-        _content "import the movie database and"
-        _content "configure HTTPS on it (if you use it)."
-        _content
-        _s
-        exit 0
+        if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
+            CP_MIRROR="${CP_DOMAIN}"
+            CP_DOMAIN=""
+            CP_DOMAIN_=""
+        else
+            _line
+            _header "ERROR"
+            _content
+            _content "First create a mirror website ${CP_MIRROR},"
+            _content "import the movie database and"
+            _content "configure HTTPS on it (if you use it)."
+            _content
+            _s
+            exit 0
+        fi
     fi
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
         3_backup "create"
@@ -619,8 +605,9 @@ ip_install() {
         cp -r /home/${CP_DOMAIN}/themes/default/public/mobile/*  /home/${CP_MIRROR}/themes/default/public/mobile/
         cp -r /home/${CP_DOMAIN}/themes/default/views/mobile/*   /home/${CP_MIRROR}/themes/default/views/mobile/
         cp -r /home/${CP_DOMAIN}/files/*                         /home/${CP_MIRROR}/files/
+        sed -Ei "s/${CP_DOMAIN_}:3000/${CP_MIRROR_}:3000/g"      /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
     fi
-    if [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
+    if [ "${CP_DOMAIN_}" != "" ] && [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
         CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | ${CURRENT}\"/" /home/${CP_MIRROR}/process.json
     fi
@@ -721,7 +708,7 @@ read_domain() {
                 then
                     CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
                     if [ "`expr "${CP_DOMAIN}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then
-                        CP_DOMAIN_IP="ip"
+                        CP_IP="ip"
                     fi
                     AGAIN=10
                 else
@@ -1199,7 +1186,7 @@ docker_run() {
         rm -rf /var/cinemapress/*
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
-        sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:${NODE_PORT}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
@@ -1216,7 +1203,7 @@ docker_run() {
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /home/${CP_DOMAIN}/themes/${CP_THEME}
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
         echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
-        if [ "${CP_DOMAIN_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
+        if [ "${CP_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
         indexer --all
@@ -1334,15 +1321,17 @@ docker_passwd() {
 
 success_install(){
     CP_URL="${CP_DOMAIN}"
-    if [ "${CP_DOMAIN_IP}" = "ip" ] && [ "${NODE_PORT}" != "80" ]; then
-        CP_URL="${CP_DOMAIN}:${NODE_PORT}"
+    if [ "${CP_IP}" = "ip" ] && [ "${EXTERNAL_PORT}" != "80" ]; then
+        CP_URL="${CP_DOMAIN}:${EXTERNAL_PORT}"
+    else
+        docker exec -d nginx nginx -s reload
     fi
     clear
     _line
     _logo
     _header "${CP_DOMAIN}";
     _content
-    if [ "${CP_DOMAIN_IP}" = "domain" ]; then
+    if [ "${CP_IP}" = "domain" ]; then
         _content "Website successfully installed!"
     else
         _content "Test website successfully installed!"
@@ -1350,7 +1339,7 @@ success_install(){
     _content
     _content "${CP_URL}"
     _content "${CP_URL}/admin"
-    if [ "${CP_DOMAIN_IP}" = "domain" ]; then
+    if [ "${CP_IP}" = "domain" ]; then
         _content
         _content "USERNAME: admin"
         _content "PASSWORD: ${CP_PASSWD}"
@@ -1373,12 +1362,17 @@ if [ ${EUID} -ne 0 ]; then
 	exit 1
 fi
 if [ "`expr "${CP_DOMAIN}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then
-    CP_DOMAIN_IP="ip"
+    while [ "`netstat -tunlp 2>/dev/null | grep :${EXTERNAL_PORT}`" != "" ]; do
+        RND=`sh_random 1 9999`
+        EXTERNAL_PORT=$((30000+${RND}))
+    done
+    if [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
+    && [ "`netstat -tunlp | grep :::80`" = "" ]; then
+        EXTERNAL_PORT="80"
+    fi
+    EXTERNAL_DOCKER="-p ${EXTERNAL_PORT}:3000"
+    CP_IP="ip"
 fi
-while [ "`netstat -tunlp 2>/dev/null | grep :${NODE_PORT}`" != "" ]; do
-    RND=`sh_random 1 9999`
-    NODE_PORT=$((30000+${RND}))
-done
 
 docker_install
 
