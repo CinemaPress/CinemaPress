@@ -551,11 +551,12 @@ ip_install() {
 7_mirror() {
     if [ ! -f "/home/${CP_MIRROR}/process.json" ]; then
         if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
+            M_="${CP_MIRROR_}"
             CP_MIRROR="${CP_DOMAIN}"
+            CP_MIRROR_="${CP_DOMAIN_}"
             CP_DOMAIN=""
-            CP_DOMAIN_=""
+            CP_DOMAIN_="${M_}"
         else
-            _line
             _header "ERROR"
             _content
             _content "First create a mirror website ${CP_MIRROR},"
@@ -566,10 +567,13 @@ ip_install() {
             exit 0
         fi
     fi
+
+    sh_progress
+
+    docker stop ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
         3_backup "create"
         docker stop ${CP_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-        docker stop ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         rm -rf \
             /home/${CP_MIRROR}/config/comment \
             /home/${CP_MIRROR}/config/content \
@@ -578,27 +582,15 @@ ip_install() {
         cp -r \
             /home/${CP_DOMAIN}/config/comment \
             /home/${CP_MIRROR}/config/comment
-        for f in /home/${CP_MIRROR}/config/comment/comment_${CP_DOMAIN_}.*; do
-            mv "${f}" "`echo ${f} | sed s/comment_${CP_DOMAIN_}/comment_${CP_MIRROR_}/`"
-        done
         cp -r \
             /home/${CP_DOMAIN}/config/content \
             /home/${CP_MIRROR}/config/content
-        for f in /home/${CP_MIRROR}/config/content/content_${CP_DOMAIN_}.*; do
-            mv "${f}" "`echo ${f} | sed s/content_${CP_DOMAIN_}/content_${CP_MIRROR_}/`"
-        done
         cp -r \
             /home/${CP_DOMAIN}/config/rt \
             /home/${CP_MIRROR}/config/rt
-        for f in /home/${CP_MIRROR}/config/rt/rt_${CP_DOMAIN_}.*; do
-            mv "${f}" "`echo ${f} | sed s/rt_${CP_DOMAIN_}/rt_${CP_MIRROR_}/`"
-        done
         cp -r \
             /home/${CP_DOMAIN}/config/user \
             /home/${CP_MIRROR}/config/user
-        for f in /home/${CP_MIRROR}/config/user/user_${CP_DOMAIN_}.*; do 
-            mv "${f}" "`echo ${f} | sed s/user_${CP_DOMAIN_}/user_${CP_MIRROR_}/`"
-        done
         cp -r /home/${CP_DOMAIN}/config/production/config.js     /home/${CP_MIRROR}/config/production/config.js
         cp -r /home/${CP_DOMAIN}/config/production/modules.js    /home/${CP_MIRROR}/config/production/modules.js
         cp -r /home/${CP_DOMAIN}/themes/default/public/desktop/* /home/${CP_MIRROR}/themes/default/public/desktop/
@@ -607,12 +599,34 @@ ip_install() {
         cp -r /home/${CP_DOMAIN}/files/*                         /home/${CP_MIRROR}/files/
         sed -Ei "s/${CP_DOMAIN_}:3000/${CP_MIRROR_}:3000/g"      /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
     fi
-    if [ "${CP_DOMAIN_}" != "" ] && [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
-        CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | ${CURRENT}\"/" /home/${CP_MIRROR}/process.json
+    if [ "${CP_DOMAIN_}" != "" ]; then
+        for f in /home/${CP_MIRROR}/config/comment/comment_${CP_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/comment_${CP_DOMAIN_}/comment_${CP_MIRROR_}/`" 2>/dev/null
+        done
+        for f in /home/${CP_MIRROR}/config/content/content_${CP_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/content_${CP_DOMAIN_}/content_${CP_MIRROR_}/`" 2>/dev/null
+        done
+        for f in /home/${CP_MIRROR}/config/rt/rt_${CP_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/rt_${CP_DOMAIN_}/rt_${CP_MIRROR_}/`" 2>/dev/null
+        done
+        for f in /home/${CP_MIRROR}/config/user/user_${CP_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/user_${CP_DOMAIN_}/user_${CP_MIRROR_}/`" 2>/dev/null
+        done
+        if [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
+            CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+            sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | ${CURRENT}\"/" /home/${CP_MIRROR}/process.json
+        fi
     fi
-    docker start ${CP_MIRROR} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+
+    sh_progress
+
+    docker start ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+
+    sh_progress
+
     docker exec nginx nginx -s reload >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+
+    sh_progress
 }
 8_remove() {
     T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
@@ -688,6 +702,7 @@ option() {
 }
 
 read_domain() {
+    CP_DOMAIN=${CP_DOMAIN:-${1}}
     if [ "${CP_DOMAIN}" = "" ]; then
         _header "DOMAIN NAME OR IP"
         AGAIN=1
@@ -724,8 +739,22 @@ read_domain() {
         done
         if [ "${CP_DOMAIN}" = "" ]; then exit 1; fi
     fi
+    if [ "`expr "${CP_DOMAIN}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then
+        while [ "`netstat -tunlp 2>/dev/null | grep :${EXTERNAL_PORT}`" != "" ]; do
+            RND=`sh_random 1 9999`
+            EXTERNAL_PORT=$((30000+${RND}))
+        done
+        if [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
+        && [ "`netstat -tunlp | grep :::80`" = "" ]; then
+            EXTERNAL_PORT="80"
+        fi
+        EXTERNAL_DOCKER="-p ${EXTERNAL_PORT}:3000"
+        CP_IP="ip"
+    fi
+    CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 }
 read_mirror() {
+    CP_MIRROR=${CP_MIRROR:-${1}}
     if [ "${CP_MIRROR}" = "" ]; then
         _header "MIRROR WEBSITE"
         AGAIN=1
@@ -766,8 +795,10 @@ read_mirror() {
         done
         if [ "${CP_MIRROR}" = "" ]; then exit 1; fi
     fi
+    CP_MIRROR_=`echo ${CP_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
 }
 read_theme() {
+    CP_THEME=${CP_THEME:-${1}}
     if [ "${CP_THEME}" = "" ]; then
         _header "WEBSITE THEME"
         AGAIN=1
@@ -803,6 +834,7 @@ read_theme() {
     fi
 }
 read_password() {
+    CP_PASSWD=${CP_PASSWD:-${1}}
     if [ "${CP_PASSWD}" = "" ]; then
         _header "PASSWORD ADMIN PANEL"
         AGAIN=1
@@ -829,6 +861,7 @@ read_password() {
     fi
 }
 read_key() {
+    CP_KEY=${CP_KEY:-${1}}
     if [ "${CP_KEY}" = "" ]; then
         _header "DATABASE KEY"
         AGAIN=1
@@ -871,6 +904,7 @@ read_key() {
     fi
 }
 read_lang() {
+    CP_LANG=${CP_LANG:-${1}}
     if [ "${CP_LANG}" = "" ]; then
         _header "WEBSITE LANGUAGE"
         AGAIN=1
@@ -912,6 +946,7 @@ read_lang() {
     fi
 }
 read_cloudflare_email() {
+    CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-${1}}
     if [ "${CLOUDFLARE_EMAIL}" = "" ]; then
         _header "CLOUDFLARE EMAIL"
         AGAIN=1
@@ -943,6 +978,7 @@ read_cloudflare_email() {
     fi
 }
 read_cloudflare_api_key() {
+    CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-${1}}
     if [ "${CLOUDFLARE_API_KEY}" = "" ]; then
         _header "CLOUDFLARE API KEY"
         AGAIN=1
@@ -974,6 +1010,7 @@ read_cloudflare_api_key() {
     fi
 }
 read_mega_email() {
+    MEGA_EMAIL=${MEGA_EMAIL:-${1}}
     if [ "${MEGA_EMAIL}" = "" ]; then
         _header "MEGA EMAIL"
         AGAIN=1
@@ -1005,6 +1042,7 @@ read_mega_email() {
     fi
 }
 read_mega_password() {
+    MEGA_PASSWORD=${MEGA_PASSWORD:-${1}}
     if [ "${MEGA_PASSWORD}" = "" ]; then
         _header "MEGA PASSWORD"
         AGAIN=1
@@ -1360,18 +1398,6 @@ success_install(){
 if [ ${EUID} -ne 0 ]; then
 	printf "${R}WARNING:${NC} Run as root user! \n${NC}"
 	exit 1
-fi
-if [ "`expr "${CP_DOMAIN}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then
-    while [ "`netstat -tunlp 2>/dev/null | grep :${EXTERNAL_PORT}`" != "" ]; do
-        RND=`sh_random 1 9999`
-        EXTERNAL_PORT=$((30000+${RND}))
-    done
-    if [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
-    && [ "`netstat -tunlp | grep :::80`" = "" ]; then
-        EXTERNAL_PORT="80"
-    fi
-    EXTERNAL_DOCKER="-p ${EXTERNAL_PORT}:3000"
-    CP_IP="ip"
 fi
 
 docker_install
