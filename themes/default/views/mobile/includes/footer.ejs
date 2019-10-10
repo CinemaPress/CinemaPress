@@ -73,7 +73,7 @@
 <% } %>
 
 <div class="info">
-    <a href="<%- page.url.replace('://m.', '://').replace('/mobile-version', '') %>?desktop">
+    <a href="<%- page.url.replace('://m.', '://' + page.subdomain).replace('/mobile-version', '') %>?desktop">
         <%- page.l.full %>
     </a>
 </div>

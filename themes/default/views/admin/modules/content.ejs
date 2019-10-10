@@ -118,7 +118,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-xs-12 text-center">
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/<%- modules.content.data.url %>/</span><span class="visible-xs">/<%- modules.content.data.url %>/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %>/</span><span class="visible-xs">/<%- modules.content.data.url %>/</span></span>
                                                 <input class="form-control input_url" name="content.content_url" value="<% if (content.content_url) { %><%- content.content_url %><% } %>" placeholder="<%= __('Уникальный ключ для URL') %>" type="text">
                                             </div>
                                         </div>
@@ -268,7 +268,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-12 col-xs-12 text-center">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.domain %>/</span><span class="visible-xs">/</span></span>
+                                                            <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                             <input class="form-control input_url" name="modules.content.data.url" value="<%= modules.content.data.url %>" type="text">
                                                             <span class="input-group-addon text-muted"><span class="hidden-xs">/avatar-5-will-be-released-in-2027</span><span class="visible-xs">/avatar-5</span></span>
                                                         </div>

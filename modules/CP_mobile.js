@@ -26,7 +26,9 @@ function mobileVersion(url) {
   if (url.indexOf('://m.') + 1 || url.indexOf('/mobile-version') + 1) {
     data +=
       '<link rel="canonical" href="' +
-      url.replace('://m.', '://').replace('/mobile-version', '') +
+      url
+        .replace('://m.', '://' + config.subdomain)
+        .replace('/mobile-version', '') +
       '">';
     var css = fs.readFileSync(
       path.join(
@@ -63,10 +65,12 @@ function mobileVersion(url) {
         .replace(/custom_btn_color/gi, modules.mobile.data.custom.btn_color)
         .replace(/custom_btn_bg/gi, modules.mobile.data.custom.btn_bg);
     }
-  } else {
+  } else if (modules.mobile.status) {
     data +=
-      '<link rel="alternate" media="only screen and (max-width: 1000px)" href="' +
-      url.replace('://', '://m.').replace('/mobile-version', '') +
+      '<link rel="alternate" media="only screen and (max-width: 768px)" href="' +
+      (modules.mobile.data.subdomain
+        ? url.replace('://' + config.subdomain, '://m.')
+        : url.replace(config.domain, config.domain + '/mobile-version')) +
       '">';
   }
 

@@ -27,7 +27,9 @@ function tvVersion(url) {
   if (url.indexOf('://tv.') + 1 || url.indexOf('/tv-version') + 1) {
     data +=
       '<link rel="canonical" href="' +
-      url.replace('://tv.', '://').replace('/tv-version', '') +
+      url
+        .replace('://tv.', '://' + config.subdomain)
+        .replace('/tv-version', '') +
       '">';
 
     if (modules.tv.data.theme === 'custom') {
