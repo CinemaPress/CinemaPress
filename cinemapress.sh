@@ -1445,7 +1445,6 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "m"|"mirror"|7 )
             read_domain ${2}
-            sh_not
             read_mirror ${3}
             _s ${3}
             sh_progress
