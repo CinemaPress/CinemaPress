@@ -430,7 +430,7 @@ ip_install() {
 }
 5_database() {
     STS="http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}"
-    CHECK=`wget -qO /dev/null -o /dev/null "${STS}&status=CHECK"`
+    CHECK=`wget -qO- "${STS}&status=CHECK"`
     if [ "${CHECK}" = "" ]; then
         _line; _header "ERROR"
         _content
