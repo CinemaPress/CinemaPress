@@ -281,17 +281,17 @@
                         "restart": true
                     };
                     sendServer(data, function () {
-                        window.location.href = "<%- config.protocol %><%- config.domain %>/<%- config.urls.admin %>";
+                        window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
                     });
                 }, 15000);
                 setTimeout(function() {
-                    window.location.href = "<%- config.protocol %><%- config.domain %>/<%- config.urls.admin %>";
+                    window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
                 }, 20000);
             }
         });
 
         setTimeout(function() {
-            window.location.href = "<%- config.protocol %><%- config.domain %>/<%- config.urls.admin %>";
+            window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
         }, 1000*60*10);
 
     }
@@ -617,6 +617,7 @@
                 location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
             }
             else if (data.config &&
+              data.config.subdomain &&
               data.config.subdomain !== '<%- config.subdomain %>') {
               location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
             }
