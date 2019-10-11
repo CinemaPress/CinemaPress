@@ -12,6 +12,7 @@ OPTION=${1:-}
 GIT_SERVER="github.com"
 GIT_NAME="CinemaPress"
 CP_VER="4.0.0"
+CP_ALL=""
 PRC_=0
 
 CP_DOMAIN=${CP_DOMAIN:-${2}}

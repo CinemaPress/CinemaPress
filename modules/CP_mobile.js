@@ -4,6 +4,7 @@
  * Configuration dependencies.
  */
 
+var config = require('../config/production/config');
 var modules = require('../config/production/modules');
 
 /**
