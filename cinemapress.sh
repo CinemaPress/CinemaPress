@@ -313,10 +313,15 @@ ip_install() {
     A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
+    rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
     8_remove
     1_install
     3_backup "restore"
+    cp -rf /var/nginx /home/${CP_DOMAIN}/config/production/nginx && rm -rf /var/nginx
+    docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
+    sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+    chmod +x /usr/bin/cinemapress
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
             /home/${CP_DOMAIN}/process.json
