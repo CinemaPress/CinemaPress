@@ -324,10 +324,18 @@ ip_install() {
     sh_progress
 }
 2_update() {
+    A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
+    CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+    if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
     3_backup "create"
     8_remove
     1_install
     3_backup "restore"
+    if [ "${CP_ALL}" != "" ]; then
+        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
+            /home/${CP_DOMAIN}/process.json
+        docker restart ${CP_DOMAIN_}
+    fi
 }
 3_backup() {
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
@@ -478,7 +486,7 @@ ip_install() {
                 mv ${file} "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.${file##*.}"
             done
             sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-            /home/${CP_DOMAIN}/config/production/config.js
+                /home/${CP_DOMAIN}/config/production/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
                 /home/${CP_DOMAIN}/config/production/config.js
             sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \

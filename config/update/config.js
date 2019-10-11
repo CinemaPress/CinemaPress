@@ -100,6 +100,7 @@ function objReplace(obj_new, obj_old) {
           if (
             (key === 'addr' && cdn) ||
             (key === 'key' && cnt) ||
+            key === 'protocol' ||
             key === 'domain' ||
             key === 'date'
           )
