@@ -327,7 +327,6 @@ ip_install() {
             /home/${CP_DOMAIN}/process.json
         docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     fi
-    post_crontabs
 }
 3_backup() {
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
@@ -551,6 +550,8 @@ ip_install() {
         if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
             openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
+            sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\s*\"https:/" \
+                /home/${CP_DOMAIN}/config/production/config.js
             docker exec -d nginx nginx -s reload
         fi
 
@@ -1421,6 +1422,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress
             2_update
             sh_progress 100
+            post_crontabs
             exit 0
         ;;
         "b"|"backup"|3 )
