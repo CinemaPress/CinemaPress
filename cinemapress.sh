@@ -327,6 +327,7 @@ ip_install() {
             /home/${CP_DOMAIN}/process.json
         docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     fi
+    post_crontabs
 }
 3_backup() {
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
