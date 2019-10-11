@@ -236,6 +236,7 @@ ip_install() {
         -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
         -v /var/local/images:/var/local/images \
+        -v /var/local/balancer:/var/local/balancer \
         -v /home/${CP_DOMAIN}:/home/${CP_DOMAIN} \
         ${EXTERNAL_DOCKER} \
         cinemapress/docker >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
@@ -261,6 +262,8 @@ ip_install() {
             --restart always \
             --network cinemapress \
             -v /var/log/nginx:/var/log/nginx \
+            -v /var/local/images:/var/local/images \
+            -v /var/local/balancer:/var/local/balancer \
             -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
             -v /home:/home \
             -p 80:80 \
@@ -1208,6 +1211,7 @@ docker_run() {
         rm -rf /var/cinemapress/*
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
+        cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf

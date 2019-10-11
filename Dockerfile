@@ -57,7 +57,6 @@ RUN set -o pipefail \
     && cp cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
     && rm -rf cinemapress.sh \
     && cp -rf themes/default/public/admin/favicon.ico favicon.ico \
-    && cp -rf files/bbb.mp4 /var/local/balancer/bbb.mp4 \
     && cp -rf themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
         themes/default/public/desktop/img/player.png \
     && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
