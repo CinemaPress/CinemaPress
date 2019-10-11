@@ -309,7 +309,7 @@ ip_install() {
             -d "${CP_DOMAIN}" \
             -d "*.${CP_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log
+                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1
 
         sh_progress
 
@@ -334,7 +334,7 @@ ip_install() {
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
             /home/${CP_DOMAIN}/process.json
-        docker restart ${CP_DOMAIN_}
+        docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     fi
 }
 3_backup() {
@@ -474,9 +474,9 @@ ip_install() {
         if [ -f "${FILE_SPA}" ] && [ -f "${FILE_SPD}" ] && [ -f "${FILE_SPI}" ] && [ -f "${FILE_SPS}" ]; then
             _content "Installing ..."
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_stop >>/var/lib/sphinx/data/${NOW}.log
+                docker_stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${CP_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log
+                docker exec ${CP_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
             rm -rf /var/lib/sphinx/old/movies_${CP_DOMAIN_}.*
             cp -R /var/lib/sphinx/data/movies_${CP_DOMAIN_}.* /var/lib/sphinx/old/
@@ -500,9 +500,9 @@ ip_install() {
             fi
             _content "Starting ..."
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_start >>/var/lib/sphinx/data/${NOW}.log
+                docker_start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${CP_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log
+                docker exec ${CP_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
