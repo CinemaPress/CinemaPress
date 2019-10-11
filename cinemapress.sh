@@ -309,7 +309,7 @@ ip_install() {
             -d "${CP_DOMAIN}" \
             -d "*.${CP_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-            --dry-run
+                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log
 
         sh_progress
 
@@ -474,9 +474,9 @@ ip_install() {
         if [ -f "${FILE_SPA}" ] && [ -f "${FILE_SPD}" ] && [ -f "${FILE_SPI}" ] && [ -f "${FILE_SPS}" ]; then
             _content "Installing ..."
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_stop >> /var/lib/sphinx/data/${NOW}.log
+                docker_stop >>/var/lib/sphinx/data/${NOW}.log
             else
-                docker exec ${CP_DOMAIN_} cinemapress container stop >> /var/lib/sphinx/data/${NOW}.log
+                docker exec ${CP_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log
             fi
             rm -rf /var/lib/sphinx/old/movies_${CP_DOMAIN_}.*
             cp -R /var/lib/sphinx/data/movies_${CP_DOMAIN_}.* /var/lib/sphinx/old/
@@ -500,9 +500,9 @@ ip_install() {
             fi
             _content "Starting ..."
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_start >> /var/lib/sphinx/data/${NOW}.log
+                docker_start >>/var/lib/sphinx/data/${NOW}.log
             else
-                docker exec ${CP_DOMAIN_} cinemapress container start >> /var/lib/sphinx/data/${NOW}.log
+                docker exec ${CP_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log
             fi
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
@@ -655,16 +655,16 @@ ip_install() {
 
 post_crontabs() {
     if [ "`grep \"${CP_DOMAIN}_start\" /etc/crontab`" = "" ]; then
-        echo -e "\n" >> /etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >> /etc/crontab
-        echo "@reboot root /usr/bin/cinemapress autostart \"${CP_DOMAIN}\" >> /home/${CP_DOMAIN}/log/autostart_$(date '+%d_%m_%Y').log 2>&1" >> /etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >> /etc/crontab
+        echo -e "\n" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
+        echo "@reboot root /usr/bin/cinemapress autostart \"${CP_DOMAIN}\" >>/home/${CP_DOMAIN}/log/autostart_$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
     fi
     if [ "`grep \"${CP_DOMAIN}_ssl\" /etc/crontab`" = "" ]; then
-        echo -e "\n" >> /etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >> /etc/crontab
-        echo "0 23 * * * root docker run -it --rm -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet --post-hook \"docker exec -d nginx nginx -s reload\" --dry-run >> /home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1" >> /etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >> /etc/crontab
+        echo -e "\n" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+        echo "0 23 * * * root docker run -it --rm -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet --post-hook \"docker exec -d nginx nginx -s reload\" >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
     fi
 }
 
