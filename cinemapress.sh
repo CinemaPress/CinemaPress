@@ -34,6 +34,22 @@ CP_IP="domain"
 EXTERNAL_PORT=""
 EXTERNAL_DOCKER=""
 
+post_crontabs() {
+    if [ "`grep \"${CP_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
+    && [ -f "/home/${CP_DOMAIN}/process.json" ]; then
+        echo -e "\n" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
+        echo "@reboot root /usr/bin/cinemapress autostart \"${CP_DOMAIN}\" >>/home/${CP_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
+    fi
+    if [ "`grep \"${CP_DOMAIN}_ssl\" /etc/crontab`" = "" ] \
+    && [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ]; then
+        echo -e "\n" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+        echo "0 23 * * * root docker run -it --rm -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet --post-hook \"docker exec -d nginx nginx -s reload\" >>/home/${CP_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+    fi
+}
 docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
     if [ "${CP_OS}" != "alpine" ] && [ ! -f "/usr/bin/cinemapress" ]; then
@@ -521,9 +537,7 @@ ip_install() {
             -d "${CP_DOMAIN}" \
             -d "*.${CP_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1
-
-        sh_progress
+                >>/home/${CP_DOMAIN}/log/https_$(date '+%d_%m_%Y').log 2>&1
 
         if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
             openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
@@ -627,21 +641,6 @@ ip_install() {
     docker rmi cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     rm -rf /home/${CP_DOMAIN}
     sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
-}
-
-post_crontabs() {
-    if [ "`grep \"${CP_DOMAIN}_start\" /etc/crontab`" = "" ]; then
-        echo -e "\n" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
-        echo "@reboot root /usr/bin/cinemapress autostart \"${CP_DOMAIN}\" >>/home/${CP_DOMAIN}/log/autostart_$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
-    fi
-    if [ "`grep \"${CP_DOMAIN}_ssl\" /etc/crontab`" = "" ]; then
-        echo -e "\n" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
-        echo "0 23 * * * root docker run -it --rm -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet --post-hook \"docker exec -d nginx nginx -s reload\" >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
-    fi
 }
 
 option() {
@@ -1402,6 +1401,7 @@ while [ "${WHILE}" -lt "2" ]; do
             1_install
             sh_progress 100
             success_install
+            post_crontabs
             exit 0
         ;;
         "u"|"update"|2 )
@@ -1445,8 +1445,9 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             read_cloudflare_email ${3}
             read_cloudflare_api_key ${4}
-            _s ${3}
+            _s ${4}
             6_https
+            post_crontabs
             exit 0
         ;;
         "m"|"mirror"|7 )
