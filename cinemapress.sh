@@ -286,40 +286,7 @@ ip_install() {
 
     sh_progress
 
-    if [ "${CLOUDFLARE_EMAIL}" != "" ] \
-    && [ "${CLOUDFLARE_API_KEY}" != "" ]; then
-
-        NGX="/home/${CP_DOMAIN}/config/production/nginx"
-        echo -e "dns_cloudflare_email = \"${CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${CLOUDFLARE_API_KEY}\"" \
-            > ${NGX}/cloudflare.ini
-
-        docker run \
-            -it \
-            --rm \
-            -v ${NGX}/ssl.d:/etc/letsencrypt \
-            -v ${NGX}/letsencrypt:/var/lib/letsencrypt \
-            -v ${NGX}/cloudflare.ini:/cloudflare.ini \
-            certbot/dns-cloudflare \
-            certonly \
-            --dns-cloudflare \
-            --dns-cloudflare-credentials /cloudflare.ini \
-            --email support@${CP_DOMAIN} \
-            --non-interactive \
-            --agree-tos \
-            -d "${CP_DOMAIN}" \
-            -d "*.${CP_DOMAIN}" \
-            --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1
-
-        sh_progress
-
-        if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
-            openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
-            sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
-            docker exec -d nginx nginx -s reload
-        fi
-
-    fi
+    6_https
 
     sh_progress
 }
@@ -530,31 +497,40 @@ ip_install() {
         exit 0
     fi
 }
-6_posters() {
-    if [ -f "/var/local/images/poster/no-poster.jpg" ]; then
-        _br
-        wget --progress=bar:force -O /home/images.tar \
-            "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
-        if [ -f "/home/images.tar" ]; then
-            tar -xf /home/images.tar -C /var/local/images
+6_https() {
+    if [ "${CLOUDFLARE_EMAIL}" != "" ] \
+    && [ "${CLOUDFLARE_API_KEY}" != "" ]; then
+
+        NGX="/home/${CP_DOMAIN}/config/production/nginx"
+        echo -e "dns_cloudflare_email = \"${CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${CLOUDFLARE_API_KEY}\"" \
+            > ${NGX}/cloudflare.ini
+
+        docker run \
+            -it \
+            --rm \
+            -v ${NGX}/ssl.d:/etc/letsencrypt \
+            -v ${NGX}/letsencrypt:/var/lib/letsencrypt \
+            -v ${NGX}/cloudflare.ini:/cloudflare.ini \
+            certbot/dns-cloudflare \
+            certonly \
+            --dns-cloudflare \
+            --dns-cloudflare-credentials /cloudflare.ini \
+            --email support@${CP_DOMAIN} \
+            --non-interactive \
+            --agree-tos \
+            -d "${CP_DOMAIN}" \
+            -d "*.${CP_DOMAIN}" \
+            --server https://acme-v02.api.letsencrypt.org/directory \
+                >>/home/${CP_DOMAIN}/log/ssl_$(date '+%d_%m_%Y').log 2>&1
+
+        sh_progress
+
+        if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
+            openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
+            sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
+            docker exec -d nginx nginx -s reload
         fi
-    else
-        _br
-        wget --progress=bar:force -O /home/images.tar \
-            "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
-        mkdir -p /var/local/images/poster
-        cp -r /home/${CP_DOMAIN}/files/poster/no-poster.gif /var/local/images/poster/no-poster.gif
-        cp -r /home/${CP_DOMAIN}/files/poster/no-poster.jpg /var/local/images/poster/no-poster.jpg
-        if [ -f "/home/images.tar" ]; then
-            _line
-            _header "UNPACKING"
-            _content
-            _content "Please do not close the window."
-            _content "Unpacking may take several hours ..."
-            _content
-            _s
-            nohup tar -xf /home/images.tar -C /var/local/images &
-        fi
+
     fi
 }
 7_mirror() {
@@ -678,7 +654,7 @@ option() {
     printf "${C}---- ${G}3)${NC} backup ${S}-------------------- Backup System Master Data ${C}----\n"
     printf "${C}---- ${G}4)${NC} theme ${S}------------- Install / Update Website Template ${C}----\n"
     printf "${C}---- ${G}5)${NC} database ${S}------------- Import All Movies In The World ${C}----\n"
-    printf "${C}---- ${G}6)${NC} posters ${S}----------- Downloading Posters To Own Server ${C}----\n"
+    printf "${C}---- ${G}6)${NC} https ${S}-------------- Getting Wildcard SSL Certificate ${C}----\n"
     printf "${C}---- ${G}7)${NC} mirror ${S}------------------------- Moving To New Domain ${C}----\n"
     printf "${C}---- ${G}8)${NC} remove ${S}---------------------------- Uninstall Website ${C}----\n"
     _s
@@ -1464,12 +1440,13 @@ while [ "${WHILE}" -lt "2" ]; do
             5_database
             exit 0
         ;;
-        "p"|"posters"|6 )
+        "h"|"https"|6 )
             read_domain ${2}
             sh_not
-            read_key ${3}
+            read_cloudflare_email ${3}
+            read_cloudflare_api_key ${4}
             _s ${3}
-            6_posters
+            6_https
             exit 0
         ;;
         "m"|"mirror"|7 )
@@ -1521,6 +1498,35 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec nginx nginx -s reload \
                 >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
             sh_progress 100
+            exit 0
+        ;;
+        "images" )
+            _br
+            read_domain ${2}
+            sh_not
+            read_key ${3}
+            _s ${3}
+            if [ -f "/var/local/images/poster/no-poster.jpg" ]; then
+                wget --progress=bar:force -O /home/images.tar \
+                    "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
+                if [ -f "/home/images.tar" ]; then
+                    tar -xf /home/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1
+                fi
+            else
+                wget --progress=bar:force -O /home/images.tar \
+                    "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
+                mkdir -p /var/local/images/poster
+                cp -r /home/${CP_DOMAIN}/files/poster/no-poster.gif /var/local/images/poster/no-poster.gif
+                cp -r /home/${CP_DOMAIN}/files/poster/no-poster.jpg /var/local/images/poster/no-poster.jpg
+                if [ -f "/home/images.tar" ]; then
+                    _header "UNPACKING"
+                    _content
+                    _content "Unpacking may take several hours ..."
+                    _content
+                    _s
+                    nohup tar -xf /home/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1 &
+                fi
+            fi
             exit 0
         ;;
         "stop"|"start"|"restart" )
@@ -1598,6 +1604,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "               to a manual database (year, list of actors, list"; _br;
             printf "               of genres, list of countries, list of directors,"; _br;
             printf "               premiere date, rating and number of votes)"; _br; _br;
+            printf " images      - Downloading posters to own server (only RU)"; _br;
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
