@@ -107,27 +107,17 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     renderData(err, render);
   });
 
-  /**
-   * Get render.
-   *
-   * @param {Callback} callback
-   */
-
   function getRender(callback) {
-    return config.cache.time
-      ? getCache(function(err, render) {
-          return err ? callback(err) : callback(null, render);
-        })
-      : getSphinx(function(err, render) {
-          return err ? callback(err) : callback(null, render);
-        });
+    if (config.cache.time) {
+      getCache(function(err, render) {
+        return callback(err, render);
+      });
+    } else {
+      getSphinx(function(err, render) {
+        return callback(err, render);
+      });
+    }
   }
-
-  /**
-   * Get cache.
-   *
-   * @param {Callback} callback
-   */
 
   function getCache(callback) {
     CP_cache.get(urlHash, function(err, render) {
@@ -140,12 +130,6 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           });
     });
   }
-
-  /**
-   * Get sphinx.
-   *
-   * @param {Callback} callback
-   */
 
   function getSphinx(callback) {
     switch (template) {
@@ -220,7 +204,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         break;
       case 'category':
         if (typeof req.query.random !== 'undefined' && modules.random.status) {
-          return category.random(level1, level2, options, function(err, url) {
+          category.random(level1, level2, options, function(err, url) {
             if (err) {
               callback(err);
             } else if (!url) {
@@ -229,17 +213,18 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
               return res.redirect(302, url);
             }
           });
+        } else {
+          category.one(
+            level1,
+            level2,
+            parseInt(level3),
+            sorting,
+            options,
+            function(err, render) {
+              callback(err, render);
+            }
+          );
         }
-        category.one(
-          level1,
-          level2,
-          parseInt(level3),
-          sorting,
-          options,
-          function(err, render) {
-            callback(err, render);
-          }
-        );
         break;
       case 'categories':
         category.all(level1, options, function(err, render) {
@@ -248,7 +233,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         break;
       case 'content':
         if (typeof req.query.random !== 'undefined' && modules.random.status) {
-          return content.random(req.params.level2, options, function(err, url) {
+          content.random(req.params.level2, options, function(err, url) {
             if (err) {
               callback(err);
             } else if (!url) {
@@ -257,30 +242,33 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
               return res.redirect(302, url);
             }
           });
+        } else {
+          content.one(
+            req.params.level2,
+            parseInt(level3),
+            sorting,
+            options,
+            function(err, render) {
+              callback(err, render);
+            }
+          );
         }
-        content.one(
-          req.params.level2,
-          parseInt(level3),
-          sorting,
-          options,
-          function(err, render) {
-            callback(err, render);
-          }
-        );
         break;
       case 'contents':
         content.all(tag, options, function(err, render) {
           callback(err, render);
         });
         break;
-      case 'desktop/sitemap':
-        return level2
-          ? sitemap.one(level2, level3, options, function(err, render) {
-              callback(err, render);
-            })
-          : sitemap.all(options, function(err, render) {
-              callback(err, render);
-            });
+      case 'sitemap':
+        if (level2) {
+          sitemap.one(level2, level3, options, function(err, render) {
+            callback(err, render);
+          });
+        } else {
+          sitemap.all(options, function(err, render) {
+            callback(err, render);
+          });
+        }
         break;
       case 'index':
         if (
@@ -288,33 +276,25 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           modules.random.status &&
           modules.random.data.menu
         ) {
-          return content.random(modules.random.data.menu, options, function(
-            err,
-            url
-          ) {
+          content.random(modules.random.data.menu, options, function(err, red) {
             if (err) {
               callback(err);
-            } else if (!url) {
+            } else if (!red) {
               callback(config.l.notFound);
             } else {
-              return res.redirect(302, url);
+              return res.redirect(302, red);
             }
           });
+        } else {
+          index.data(options, function(err, render) {
+            callback(err, render);
+          });
         }
-        index.data(options, function(err, render) {
-          callback(err, render);
-        });
         break;
       default:
         callback(config.l.notFound);
     }
   }
-
-  /**
-   * Parse URL.
-   *
-   * @return {String}
-   */
 
   function parseUrl() {
     var parts = req.originalUrl.split('?');
@@ -352,12 +332,6 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     return CP_decode.text(url);
   }
 
-  /**
-   * Set template.
-   *
-   * @return {String}
-   */
-
   function setTemplate() {
     switch (level1) {
       case config.urls.noindex:
@@ -390,13 +364,6 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         return 'error';
     }
   }
-
-  /**
-   * Render data.
-   *
-   * @param {Object} err
-   * @param {Object} render
-   */
 
   function renderData(err, render) {
     if (err) {

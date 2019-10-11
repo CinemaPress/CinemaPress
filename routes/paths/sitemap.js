@@ -48,7 +48,7 @@ function allSitemap(options, callback) {
     var render = {};
     render.sitemaps = [];
 
-    var categories = CP_structure.categories('year', movies);
+    var categories = CP_structure.categories('year', movies, options);
 
     var y = new Date().getFullYear() + '';
 
@@ -115,7 +115,7 @@ function allSitemap(options, callback) {
  * Getting the data to render one sitemap page.
  *
  * @param {String} type
- * @param {String} year
+ * @param {number} year
  * @param {Object} options
  * @param {Callback} callback
  */
@@ -132,7 +132,6 @@ function oneSitemap(type, year, options, callback) {
         : getCategories('year', function(err, render) {
             return err ? callback(err) : callback(null, render);
           });
-      break;
     case config.urls.genre:
       getCategories('genre', function(err, render) {
         return err ? callback(err) : callback(null, render);
@@ -169,12 +168,6 @@ function oneSitemap(type, year, options, callback) {
       });
   }
 
-  /**
-   * Get types.
-   *
-   * @param {Callback} callback
-   */
-
   function getTypes(callback) {
     var render = {};
     render.urls = [];
@@ -203,13 +196,6 @@ function oneSitemap(type, year, options, callback) {
     callback(null, render);
   }
 
-  /**
-   * Get categories.
-   *
-   * @param {String} category
-   * @param {Callback} callback
-   */
-
   function getCategories(category, callback) {
     var query = {};
     query[category] = '!_empty';
@@ -222,7 +208,7 @@ function oneSitemap(type, year, options, callback) {
       var render = {};
       render.urls = [];
 
-      var categories = CP_structure.categories(category, movies);
+      var categories = CP_structure.categories(category, movies, options);
 
       for (var year in categories) {
         if (categories.hasOwnProperty(year)) {
@@ -254,7 +240,7 @@ function oneSitemap(type, year, options, callback) {
     var render = {};
     render.urls = [];
 
-    CP_get.contents({}, 500, function(err, contents) {
+    CP_get.contents({}, 500, 1, true, options, function(err, contents) {
       if (err) return callback(err);
 
       var render = {};
@@ -288,45 +274,53 @@ function oneSitemap(type, year, options, callback) {
    * Get movies.
    *
    * @param {String} year
-   * @param {Callback} callback
+   * @param {function(*=, *=): *} callback
    */
 
   function getMovies(year, callback) {
-    CP_get.movies({ year: year }, 2525, function(err, movies) {
-      if (options.debug) {
-        options.debug.detail.push({
-          type: 'sitemapMovies',
-          duration: new Date() - options.debug.duration.current + 'ms'
-        });
-        options.debug.duration.current = new Date();
-      }
-
-      if (err) return callback(err);
-
-      if (movies && movies.length) {
-        var render = {};
-        render.urls = [];
-
-        for (var i = 0; i < movies.length; i++) {
-          if (
-            !config.urls.noindex ||
-            !(movies[i].url.indexOf('/' + config.urls.noindex + '/') + 1)
-          ) {
-            render.urls[render.urls.length] = {
-              loc: movies[i].url,
-              lastmod:
-                movies[i].custom && movies[i].custom.lastmod
-                  ? movies[i].custom.lastmod.substr(0, 10)
-                  : ''
-            };
-          }
+    CP_get.movies(
+      { year: year },
+      2525,
+      'kinopoisk-vote-up',
+      1,
+      true,
+      options,
+      function(err, movies) {
+        if (options.debug) {
+          options.debug.detail.push({
+            type: 'sitemapMovies',
+            duration: new Date() - options.debug.duration.current + 'ms'
+          });
+          options.debug.duration.current = new Date();
         }
 
-        callback(null, render);
-      } else {
-        callback(null, { urls: [] });
+        if (err) return callback(err);
+
+        if (movies && movies.length) {
+          var render = {};
+          render.urls = [];
+
+          for (var i = 0; i < movies.length; i++) {
+            if (
+              !config.urls.noindex ||
+              !(movies[i].url.indexOf('/' + config.urls.noindex + '/') + 1)
+            ) {
+              render.urls[render.urls.length] = {
+                loc: movies[i].url,
+                lastmod:
+                  movies[i].custom && movies[i].custom.lastmod
+                    ? movies[i].custom.lastmod.substr(0, 10)
+                    : ''
+              };
+            }
+          }
+
+          callback(null, render);
+        } else {
+          callback(null, { urls: [] });
+        }
       }
-    });
+    );
   }
 }
 
