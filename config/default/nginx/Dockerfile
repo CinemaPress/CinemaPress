@@ -5,9 +5,10 @@ RUN mkdir -p \
     /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
-RUN rm -rf \
-    /etc/nginx/conf.d/default.conf \
-    /etc/nginx/cloudflare.ini \
-    /etc/nginx/Dockerfile
+RUN chmod +x nginx.sh \
+    && rm -rf \
+        conf.d/default.conf \
+        cloudflare.ini \
+        Dockerfile
 EXPOSE 80 443
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ["/etc/nginx/nginx.sh"]

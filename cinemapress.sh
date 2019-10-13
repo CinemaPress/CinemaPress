@@ -252,55 +252,59 @@ ip_install() {
 
     sh_progress
 
-    if [ "${CP_IP}" = "domain" ] \
-    && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
-    && [ "`netstat -tunlp | grep :::80`" = "" ]; then
+    if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
+        docker restart nginx
+    else
+        if [ "${CP_IP}" = "domain" ] \
+        && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
+        && [ "`netstat -tunlp | grep :::80`" = "" ]; then
 
-        docker run \
-            -d \
-            --name nginx \
-            --restart always \
-            --network cinemapress \
-            -v /var/log/nginx:/var/log/nginx \
-            -v /var/local/images:/var/local/images \
-            -v /var/local/balancer:/var/local/balancer \
-            -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
-            -v /home:/home \
-            -p 80:80 \
-            -p 443:443 \
-            cinemapress/nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            docker run \
+                -d \
+                --name nginx \
+                --restart always \
+                --network cinemapress \
+                -v /var/log/nginx:/var/log/nginx \
+                -v /var/local/images:/var/local/images \
+                -v /var/local/balancer:/var/local/balancer \
+                -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
+                -v /home:/home \
+                -p 80:80 \
+                -p 443:443 \
+                cinemapress/nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
-        NGINX_RUN=1
-        while [ "${NGINX_RUN}" != "50" ]; do
-            sleep 3
-            NGINX_RUN=$((1+${NGINX_RUN}))
-            if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
-                NGINX_RUN=50
-            fi
-        done
+            NGINX_RUN=1
+            while [ "${NGINX_RUN}" != "50" ]; do
+                sleep 3
+                NGINX_RUN=$((1+${NGINX_RUN}))
+                if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
+                    NGINX_RUN=50
+                fi
+            done
 
-        sh_progress
+            sh_progress
 
-        docker run \
-            -d \
-            --name fail2ban \
-            --restart always \
-            --network host \
-            --cap-add NET_ADMIN \
-            --cap-add NET_RAW \
-            -v /home/${CP_DOMAIN}/config/production/fail2ban:/data \
-            -v /var/log:/var/log:ro \
-            cinemapress/fail2ban >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            docker run \
+                -d \
+                --name fail2ban \
+                --restart always \
+                --network host \
+                --cap-add NET_ADMIN \
+                --cap-add NET_RAW \
+                -v /home/${CP_DOMAIN}/config/production/fail2ban:/data \
+                -v /var/log:/var/log:ro \
+                cinemapress/fail2ban >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
-        FAIL2BAN_RUN=1
-        while [ "${FAIL2BAN_RUN}" != "50" ]; do
-            sleep 3
-            FAIL2BAN_RUN=$((1+${FAIL2BAN_RUN}))
-            if [ "`docker ps -aq -f status=running -f name=^/fail2ban\$ 2>/dev/null`" != "" ]; then
-                FAIL2BAN_RUN=50
-            fi
-        done
+            FAIL2BAN_RUN=1
+            while [ "${FAIL2BAN_RUN}" != "50" ]; do
+                sleep 3
+                FAIL2BAN_RUN=$((1+${FAIL2BAN_RUN}))
+                if [ "`docker ps -aq -f status=running -f name=^/fail2ban\$ 2>/dev/null`" != "" ]; then
+                    FAIL2BAN_RUN=50
+                fi
+            done
 
+        fi
     fi
 
     sh_progress
