@@ -277,7 +277,7 @@ function codePlayer(type, movie, options) {
     if (player) {
       code.footer =
         '' +
-        '<script data-cfasync="false" src="//4h0y.github.io/yo.js"></script>' +
+        '<script data-cfasync="false" src="//cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js"></script>' +
         '<script>document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(t){if(t&&t.data){var a=document.querySelector(\'[data-yo="quality"]\'),e=document.querySelector(\'[data-yo="translate"]\');t.data.quality&&a&&(a.innerHTML=t.data.quality),t.data.translate&&e&&(e.innerHTML=t.data.translate)}})});</script>';
     } else if (param.cdn) {
       code.player =
