@@ -5,10 +5,12 @@ RUN mkdir -p \
     /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
-RUN chmod +x nginx.sh \
+RUN apk add bash dos2unix \
+    && dos2unix /etc/nginx/nginx.sh \
+    && chmod +x /etc/nginx/nginx.sh \
     && rm -rf \
-        conf.d/default.conf \
-        cloudflare.ini \
-        Dockerfile
+        /etc/nginx/conf.d/default.conf \
+        /etc/nginx/cloudflare.ini \
+        /etc/nginx/Dockerfile
 EXPOSE 80 443
 CMD ["/etc/nginx/nginx.sh"]
