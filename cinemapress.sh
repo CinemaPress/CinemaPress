@@ -253,7 +253,7 @@ ip_install() {
     sh_progress
 
     if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
-        docker restart nginx
+        docker restart nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
     else
         if [ "${CP_IP}" = "domain" ] \
         && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
@@ -319,7 +319,7 @@ ip_install() {
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
     rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
-    8_remove
+    8_remove "full"
     1_install
     3_backup "restore"
     cp -rf /var/nginx /home/${CP_DOMAIN}/config/production/nginx && rm -rf /var/nginx
@@ -653,6 +653,14 @@ ip_install() {
     docker stop ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker rm ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker rmi cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    if [ "${1}" != "" ]; then
+        docker stop nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rm nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rmi cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker stop fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rm fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rmi cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    fi
     rm -rf /home/${CP_DOMAIN}
     sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
 }
@@ -1319,16 +1327,8 @@ docker_backup() {
         --exclude=config/default \
         --exclude=config/locales \
         --exclude=config/production/fail2ban \
-        --exclude=config/production/memcached \
         --exclude=config/production/sphinx \
-        --exclude=config/production/nginx/bots.d \
-        --exclude=config/production/nginx/conf.d \
-        --exclude=config/production/nginx/html \
-        --exclude=config/production/nginx/letsencrypt \
-        --exclude=config/production/nginx/ssl.d \
-        --exclude=config/production/nginx/cloudflare.ini \
-        --exclude=config/production/nginx/Dockerfile \
-        --exclude=config/production/nginx/nginx.conf \
+        --exclude=config/production/nginx \
         -uf /var/${CP_DOMAIN}/config.tar config
     cd /home/${CP_DOMAIN} && \
     tar --exclude=files/GeoLite2-Country.mmdb \
@@ -1482,7 +1482,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             sh_progress
-            8_remove
+            8_remove ${3}
             sh_progress 100
             exit 0
         ;;
