@@ -79,6 +79,10 @@ try {
 var config_default = require(path.join(__dirname, '..', 'default', 'config.js'));
 var modules_default = require(path.join(__dirname, '..', 'default', 'modules.js'));
 
+var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d', 'live', config.domain))
+  ? ''
+  : 'protocol';
+
 var cdn = true;
 var cnt = true;
 
@@ -100,7 +104,7 @@ function objReplace(obj_new, obj_old) {
           if (
             (key === 'addr' && cdn) ||
             (key === 'key' && cnt) ||
-            key === 'protocol' ||
+            key === prt ||
             key === 'domain' ||
             key === 'date'
           )
