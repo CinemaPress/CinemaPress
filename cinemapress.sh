@@ -326,7 +326,7 @@ ip_install() {
     8_remove "full"
     1_install
     3_backup "restore"
-    cp -rf /var/nginx /home/${CP_DOMAIN}/config/production/nginx && rm -rf /var/nginx
+    cp -rf /var/nginx/* /home/${CP_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
     chmod +x /usr/bin/cinemapress

@@ -603,7 +603,7 @@
 
         if (data.config && data.config.subdomain) {
           data.config.subdomain = data.config.subdomain.replace(/\./g, '') + '.';
-          if (data.config.subdomain === 'www' || data.config.subdomain === 'tv' || data.config.subdomain === 'm') {
+          if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.') {
             alert('NOT «m.», «tv.», «www.»!');
             self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
             self.addEventListener('click', saveData);
