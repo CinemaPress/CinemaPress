@@ -221,6 +221,8 @@ ip_install() {
 
     sh_progress
 
+    # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
+
     docker run \
         -d \
         --name ${CP_DOMAIN_} \
@@ -258,6 +260,8 @@ ip_install() {
         if [ "${CP_IP}" = "domain" ] \
         && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
         && [ "`netstat -tunlp | grep :::80`" = "" ]; then
+            # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
+            # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
             docker run \
                 -d \
@@ -1226,6 +1230,7 @@ _s() {
 
 docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
+        find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
         rm -rf /var/cinemapress/*
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
