@@ -537,6 +537,8 @@ ip_install() {
         echo -e "dns_cloudflare_email = \"${CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${CLOUDFLARE_API_KEY}\"" \
             > ${NGX}/cloudflare.ini
 
+        _header "Generating ..."
+
         docker run \
             -it \
             --rm \
@@ -558,7 +560,7 @@ ip_install() {
         if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
             openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
-            sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\s*\"https:/" \
+            sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 /home/${CP_DOMAIN}/config/production/config.js
             sleep 5
         fi
