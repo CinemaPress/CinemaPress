@@ -101,7 +101,8 @@ app.use(function(err, req, res, next) {
   err.status = err.status ? err.status : 404;
   err.message = err.message ? err.message : 'Not Found';
   if (err.status === 301 || err.status === 302) {
-    return res.redirect(err.status, err.message);
+    res.writeHead(err.status, { Location: err.message });
+    return res.end();
   }
   return res.status(err.status).render('error', {
     search: config.urls.search,

@@ -556,7 +556,7 @@ ip_install() {
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\s*\"https:/" \
                 /home/${CP_DOMAIN}/config/production/config.js
-            docker exec -d nginx nginx -s reload
+            sleep 5
         fi
 
     fi
@@ -1225,12 +1225,14 @@ docker_run() {
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/default/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/process.json
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/config.js
