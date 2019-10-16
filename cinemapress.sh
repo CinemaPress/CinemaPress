@@ -434,14 +434,16 @@ ip_install() {
         else
             git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git \
                 /var/${CP_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
-            cp -r /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
+            mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
+            cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
             sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
                 /home/${CP_DOMAIN}/config/production/config.js
         fi
     else
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git \
             /var/${CP_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
-        cp -r /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
+        mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
+        cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
             /home/${CP_DOMAIN}/config/production/config.js
     fi
@@ -469,7 +471,7 @@ ip_install() {
             sh_progress "$((${io} * 10))"
             sleep 30
         done
-        _br; _br
+        _br
     fi
     mkdir -p /var/lib/sphinx/tmp /var/lib/sphinx/data /var/lib/sphinx/old
     _line
