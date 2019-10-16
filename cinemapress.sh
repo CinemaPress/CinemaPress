@@ -582,7 +582,7 @@ ip_install() {
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 /home/${CP_DOMAIN}/config/production/config.js
-            sleep 5
+            docker restart ${CP_DOMAIN_} >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
         fi
 
     fi
