@@ -194,6 +194,13 @@ router.get('/?', function(req, res) {
           : config.l.original;
         serial.translator_id = serial.translator_id ? serial.translator_id : '';
 
+        if (config.language === 'en') {
+          if (!/субт|subt|eng/i.test(serial.translator)) {
+            return callback();
+          }
+          serial.translator = 'English';
+        }
+
         serials[movie.kp_id + '_'][serial.translator] = {};
 
         var serial_episodes =
