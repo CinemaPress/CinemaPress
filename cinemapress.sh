@@ -319,11 +319,15 @@ ip_install() {
 }
 2_update() {
     A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
+    K=`grep "\"key\"" /home/${CP_DOMAIN}/config/default/config.js`
+    D=`grep "\"date\"" /home/${CP_DOMAIN}/config/default/config.js`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+    CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
+    CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
     rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
-    8_remove "full"
+    8_remove "full" "safe"
     1_install
     3_backup "restore"
     cp -rf /var/nginx/* /home/${CP_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
@@ -333,8 +337,20 @@ ip_install() {
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
             /home/${CP_DOMAIN}/process.json
-        docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     fi
+    if [ "${CP_KEY}" != "" ]; then
+        sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
+            /home/${CP_DOMAIN}/config/production/config.js
+        sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
+            /home/${CP_DOMAIN}/config/default/config.js
+    fi
+    if [ "${CP_DATE}" != "" ]; then
+        sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
+            /home/${CP_DOMAIN}/config/production/config.js
+        sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
+            /home/${CP_DOMAIN}/config/default/config.js
+    fi
+    docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
 }
 3_backup() {
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
@@ -648,14 +664,25 @@ ip_install() {
     sh_progress
 }
 8_remove() {
-    T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
-    L=`grep "\"language\"" /home/${CP_DOMAIN}/config/production/config.js`
-    CP_THEME=`echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
-    CP_LANG=`echo "${L}" | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
-    if [ "${CP_THEME}" = "" ] \
-    || [ "${CP_LANG}" = "" ] \
-    || [ "${CP_THEME}" = "${T}" ] \
-    || [ "${CP_LANG}" = "${L}" ]; then exit 0; fi
+    if [ -f "/home/${CP_DOMAIN}/config/production/config.js" ] && [ "${2}" = "safe" ]; then
+        T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
+        L=`grep "\"language\"" /home/${CP_DOMAIN}/config/production/config.js`
+        CP_THEME=`echo ${T} | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
+        CP_LANG=`echo ${L} | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
+        if [ "${CP_THEME}" = "" ] \
+        || [ "${CP_LANG}" = "" ] \
+        || [ "${CP_THEME}" = "${T}" ] \
+        || [ "${CP_LANG}" = "${L}" ]; then
+            _header "ERROR"
+            _content
+            _content "The field has an invalid value:"
+            _content "CP_THEME: ${CP_THEME}"
+            _content "CP_LANG: ${CP_LANG}"
+            _content
+            _line
+            exit 0
+        fi
+    fi
     docker stop ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker rm ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker rmi cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1

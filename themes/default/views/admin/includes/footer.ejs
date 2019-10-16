@@ -35,14 +35,6 @@
         if (restart)
             restart.addEventListener('click', restartData);
 
-        var nginx_restart = document.querySelector('#nginx_restart');
-        if (nginx_restart)
-            nginx_restart.addEventListener('click', restartNginx);
-
-        var hard_restart = document.querySelector('#hard_restart');
-        if (hard_restart)
-            hard_restart.addEventListener('click', restartHard);
-
         var flush = document.querySelector('#flush');
         if (flush)
             flush.addEventListener('click', flushData);
@@ -119,43 +111,9 @@
         };
 
         sendServer(data, function () {
-            self.innerHTML ='<span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>';
-            self.addEventListener('click', restartData);
-        });
-
-    }
-
-    function restartNginx() {
-
-        var self = this;
-        self.removeEventListener('click', restartNginx);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагружается') %>';
-
-        var data = {
-            "nginx_restart": true
-        };
-
-        sendServer(data, function () {
-            self.innerHTML ='<span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>';
-            self.addEventListener('click', restartNginx);
-        });
-
-    }
-
-    function restartHard() {
-
-        var self = this;
-        self.removeEventListener('click', restartHard);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагружается') %>';
-
-        var data = {
-            "hard_restart": true
-        };
-
-        sendServer(data, function () {
             setTimeout(function() {
                 self.innerHTML ='<span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>';
-                self.addEventListener('click', restartHard);
+                self.addEventListener('click', restartData);
             }, 1000*60*5);
         });
 
