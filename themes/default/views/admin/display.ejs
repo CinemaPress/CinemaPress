@@ -530,7 +530,7 @@
 
                                         <% for (var prop in config.l) { if (config.l.hasOwnProperty(prop)) { %>
 
-                                        <div class="col-sm-3"><code><span style="color:#ccc">&lt;%-</span> <%- 'page.l.' + prop %> <span style="color:#ccc">%&gt;</span></code></div>
+                                        <div class="col-sm-3" style="padding:5px 20px;"><code><span style="color:#ccc">&lt;%-</span> <%- 'page.l.' + prop %> <span style="color:#ccc">%&gt;</span></code></div>
                                         <div class="col-sm-9">
                                             <input type="text" name="<%- 'config.l.' + prop %>" value="<%= config.l[prop] %>" class="form-control">
                                         </div>

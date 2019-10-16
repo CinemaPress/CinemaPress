@@ -120,6 +120,13 @@ function indexEpisode(options, callback) {
                   ? moment(serial_moon.added_at.slice(0, 10)).format('LL')
                   : '';
 
+              if (config.language === 'en') {
+                if (!/субт|subt|eng/i.test(translate)) {
+                  continue;
+                }
+                translate = 'English';
+              }
+
               season_url = season_url <= 9 ? '0' + season_url : season_url;
               episode_url = episode_url <= 9 ? '0' + episode_url : episode_url;
               translate_url = translate_url ? '_' + translate_url : '';
