@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
+                                        <div class="col-lg-5 col-xs-5 text-center">
                                             <select name="modules.viewed.data.count" class="form-control">
                                                 <% for (var i = 1; i <= 20; i++) { %>
                                                 <% if (modules.viewed.data.count === i) { %>
@@ -87,6 +87,15 @@
                                                 <% } %>
                                                 <% } %>
                                             </select>
+                                        </div>
+                                        <div class="col-lg-3 col-xs-3">
+                                            <input name="modules.viewed.data.width" value="<%= modules.viewed.data.width %>" class="form-control text-right" type="text" placeholder="width">
+                                        </div>
+                                        <div class="col-lg-1 col-xs-1 text-center" style="padding: 5px;">
+                                            ×
+                                        </div>
+                                        <div class="col-lg-3 col-xs-3">
+                                            <input name="modules.viewed.data.height" value="<%= modules.viewed.data.height %>" class="form-control" type="text" placeholder="height">
                                         </div>
                                     </div>
                                 </div>

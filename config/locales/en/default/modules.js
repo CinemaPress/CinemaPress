@@ -137,7 +137,9 @@ module.exports = {
   "viewed": {
     "status": true,
     "data": {
-      "count": 20
+      "count": 20,
+      "width": "50px",
+      "height": "70px"
     }
   },
   "player": {
