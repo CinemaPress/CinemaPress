@@ -328,8 +328,10 @@ ip_install() {
     rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
     8_remove "full" "safe"
+    rm -rf /var/sphinx && cp -rf /var/lib/sphinx/data /var/sphinx
     1_install
     cp -rf /var/nginx/* /home/${CP_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
+    cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     3_backup "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
