@@ -799,5 +799,7 @@
 	"Список IP, которым запрещено посещать сайт": "Luettelo IP-osoitteista, joilla on kielletty käynti sivustolla",
 	"Embed/iframe код": "Upota / iframe-koodi",
 	"изменить": "muuttaa",
-	"Случайный поддомен каждый день": "Satunnainen aliverkkotunnus päivittäin"
+	"Случайный поддомен каждый день": "Satunnainen aliverkkotunnus päivittäin",
+	"Рерайт": "Kirjoittaa uudelleen",
+	"Рерайт описаний": "Uudelleenkirjoitus kuvaukset"
 }

@@ -799,5 +799,7 @@
 	"Список IP, которым запрещено посещать сайт": "Danh sách các IP bị cấm truy cập trang web",
 	"Embed/iframe код": "Mã nhúng / iframe",
 	"изменить": "thay đổi",
-	"Случайный поддомен каждый день": "Subdomain ngẫu nhiên mỗi ngày"
+	"Случайный поддомен каждый день": "Subdomain ngẫu nhiên mỗi ngày",
+	"Рерайт": "Viết lại",
+	"Рерайт описаний": "Giới thiệu viết lại"
 }

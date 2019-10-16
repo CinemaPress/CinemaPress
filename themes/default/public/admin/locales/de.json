@@ -799,5 +799,7 @@
 	"Список IP, которым запрещено посещать сайт": "Liste der IP-Adressen, denen der Besuch der Website untersagt ist",
 	"Embed/iframe код": "Embed / iframe-Code",
 	"изменить": "ändern",
-	"Случайный поддомен каждый день": "Zufällige sub-Domain täglich"
+	"Случайный поддомен каждый день": "Zufällige sub-Domain täglich",
+	"Рерайт": "Umschreiben",
+	"Рерайт описаний": "Rewrite-Beschreibungen"
 }

@@ -799,5 +799,7 @@
 	"Список IP, которым запрещено посещать сайт": "Azon IP-k listája, amelyek számára tilos a webhely látogatása",
 	"Embed/iframe код": "Beágyazás / iframe kód",
 	"изменить": "módosítására",
-	"Случайный поддомен каждый день": "Véletlen aldomain minden nap"
+	"Случайный поддомен каждый день": "Véletlen aldomain minden nap",
+	"Рерайт": "Átír",
+	"Рерайт описаний": "Újraírása leírások"
 }

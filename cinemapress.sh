@@ -858,7 +858,7 @@ read_theme() {
             then
                 AGAIN=10
                 CP_THEME='tarly'
-                echo ": ${CP_LANG}"
+                echo ": ${CP_THEME}"
             else
                 if [ "${CP_THEME}" = "default" ] || [ "${CP_THEME}" = "hodor" ] || [ "${CP_THEME}" = "sansa" ] || [ "${CP_THEME}" = "robb" ] || [ "${CP_THEME}" = "ramsay" ] || [ "${CP_THEME}" = "tyrion" ] || [ "${CP_THEME}" = "cersei" ] || [ "${CP_THEME}" = "joffrey" ] || [ "${CP_THEME}" = "drogo" ] || [ "${CP_THEME}" = "bran" ] || [ "${CP_THEME}" = "arya" ] || [ "${CP_THEME}" = "mormont" ] || [ "${CP_THEME}" = "tarly" ] || [ "${CP_THEME}" = "daenerys" ]
                 then
@@ -920,15 +920,7 @@ read_key() {
             then
                 if echo "${CP_KEY}" | grep -qE ^\-?[A-Za-z0-9]+$
                 then
-                    L=`grep "\"language\"" /home/${CP_DOMAIN}/config/production/config.js`
-                    CP_LANG=`echo "${L}" | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
-                    if [ "${CP_LANG}" = "" ] \
-                    || [ "${CP_LANG}" = "${L}" ]; then
-                        printf "${R}WARNING:${NC} Failed to determine \n "
-                        printf "${NC}         the language of the website. \n "
-                    else
-                        AGAIN=10
-                    fi
+                    AGAIN=10
                 else
                     printf "${NC}         You entered: ${R}${CP_KEY}${NC} \n "
                     printf "${R}WARNING:${NC} Only latin characters \n "
@@ -942,6 +934,20 @@ read_key() {
             fi
         done
         if [ "${CP_KEY}" = "" ]; then exit 1; fi
+    fi
+    if [ "${CP_LANG}" = "" ]; then
+        L=`grep "\"language\"" /home/${CP_DOMAIN}/config/production/config.js`
+        CP_LANG=`echo "${L}" | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
+        if [ "${CP_LANG}" = "" ] \
+        || [ "${CP_LANG}" = "${L}" ]; then
+            _header "ERROR";
+            _content
+            _content "Failed to determine"
+            _content "the language of the website."
+            _content
+            _s
+            exit 0
+        fi
     fi
 }
 read_lang() {

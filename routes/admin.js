@@ -836,8 +836,6 @@ router.post('/change', function(req, res) {
           'nohup /usr/bin/cinemapress database ' +
             config.domain +
             ' ' +
-            config.language +
-            ' ' +
             form.database +
             ' > ' +
             path.join(path.dirname(__filename), '..', 'log', 'database.log') +

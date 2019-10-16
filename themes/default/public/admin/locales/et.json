@@ -799,5 +799,7 @@
 	"Список IP, которым запрещено посещать сайт": "Nende IP-de loetelu, mille saidil on keelatud külastada",
 	"Embed/iframe код": "Manustamise / iframe'i kood",
 	"изменить": "muuta",
-	"Случайный поддомен каждый день": "Juhuslik alamdomeen iga päev"
+	"Случайный поддомен каждый день": "Juhuslik alamdomeen iga päev",
+	"Рерайт": "Ümber kirjutama",
+	"Рерайт описаний": "Ümberkirjutamine kirjelduse"
 }
