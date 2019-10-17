@@ -1305,6 +1305,7 @@ docker_run() {
     else
         searchd
         memcached -u root -d
+        node /home/${CP_DOMAIN}/config/update/config.js
     fi
     crond -L /var/log/cron.log
     cd /home/${CP_DOMAIN} && pm2-runtime start process.json
