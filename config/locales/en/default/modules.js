@@ -63,7 +63,7 @@ module.exports = {
       "status_code_country": 200,
       "status_code_list": 404,
       "message": "Viewing is prohibited, the site is subject<br>to copyright law in the digital age!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\">",
-      "movies": ["957762","927771","893880","893520","861616","838952","882285","948999","840818","932512","843821","908406","840234","839818"]
+      "movies": ["840372"]
     }
   },
   "top": {
