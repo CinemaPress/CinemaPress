@@ -27,7 +27,7 @@ moment.locale(config.language);
 function fullMovieSchema(page, movie, movies, options) {
   if (arguments.length === 3) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -215,7 +215,7 @@ function fullMovieSchema(page, movie, movies, options) {
 function onlyMovieSchema(movie, options) {
   if (arguments.length === 2) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -301,7 +301,7 @@ function onlyMovieSchema(movie, options) {
 function categorySchema(page, movies, options) {
   if (arguments.length === 2) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -395,7 +395,7 @@ function categorySchema(page, movies, options) {
 function generalSchema(page, options) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -478,7 +478,7 @@ function generalSchema(page, options) {
 function contentSchema(content, options) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }

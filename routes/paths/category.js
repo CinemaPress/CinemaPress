@@ -43,7 +43,7 @@ function allCategory(type, options, callback) {
   if (arguments.length === 2) {
     callback = options;
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -277,7 +277,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
   if (arguments.length === 5) {
     callback = options;
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }

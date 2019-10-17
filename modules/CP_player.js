@@ -25,7 +25,7 @@ var modules = require('../config/production/modules');
 function codePlayer(type, movie, options) {
   if (arguments.length === 2) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }

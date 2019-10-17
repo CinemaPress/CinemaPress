@@ -39,7 +39,7 @@ moment.locale(config.language);
 function indexEpisode(options, callback) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
@@ -270,7 +270,7 @@ function codeEpisode(type) {
 function parseEpisode(type, options) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }

@@ -44,7 +44,7 @@ function dataMovie(id, type, options, callback) {
   if (arguments.length === 3) {
     callback = options;
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }

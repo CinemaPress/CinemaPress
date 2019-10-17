@@ -42,7 +42,7 @@ function dataIndex(options, callback) {
   if (arguments.length === 1) {
     callback = options;
     options = {};
-    options.domain = '' + config.domain;
+    options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
