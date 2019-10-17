@@ -594,7 +594,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.year:
       CP_get.movies(
         { year: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -614,7 +614,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.genre:
       CP_get.movies(
         { genre: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -634,7 +634,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.country:
       CP_get.movies(
         { country: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -654,7 +654,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.actor:
       CP_get.movies(
         { actor: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -674,7 +674,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.director:
       CP_get.movies(
         { director: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -694,7 +694,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.type:
       CP_get.movies(
         { type: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,
@@ -714,7 +714,7 @@ function randomCategory(type, key, options, callback) {
     case config.urls.search:
       CP_get.movies(
         { search: key },
-        2525,
+        252,
         undefined,
         undefined,
         undefined,

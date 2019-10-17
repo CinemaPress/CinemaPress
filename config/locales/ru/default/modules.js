@@ -138,8 +138,8 @@ module.exports = {
     "status": true,
     "data": {
       "count": 20,
-      "width": "50px",
-      "height": "70px"
+      "width": "100px",
+      "height": "140px"
     }
   },
   "player": {
