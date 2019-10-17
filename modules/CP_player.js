@@ -158,7 +158,7 @@ function codePlayer(type, movie, options) {
     data.kinopoisk = movie.kp_id ? movie.kp_id : '';
     data.imdb = movie.custom.imdb_id ? movie.custom.imdb_id : '';
     data.tmdb = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';
-    data.videospider_tv = movie.type ? '1' : '0';
+    data.videospider_tv = '' + movie.type === '1' ? '1' : '0';
     data.season = serial.season ? serial.season : '';
     data.episode = serial.episode ? serial.episode : '';
     data.translate = serial.translate ? serial.translate : '';

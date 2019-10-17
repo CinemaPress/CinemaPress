@@ -129,7 +129,7 @@ router.get('/:id?/:title?', function(req, res) {
             tmdb +
             '" ' +
             'data-videospider_tv="' +
-            movies[0].type +
+            ('' + movies[0].type === '1' ? '1' : '0') +
             '" ' +
             'data-title="' +
             title +
