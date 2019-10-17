@@ -230,7 +230,7 @@ module.exports = {
       "description": "[title] [season] season [episode] episode in voice [translate]",
       "season": "season",
       "episode": "episode",
-      "translate": "Translate:",
+      "translate": "Voice:",
       "default": "Original",
       "source": "moonwalk",
       "index": {
