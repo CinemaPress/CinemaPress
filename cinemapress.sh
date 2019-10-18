@@ -389,7 +389,6 @@ ip_install() {
             MEGA_PASSWORD="${3}"
             docker exec ${CP_DOMAIN_} rclone config create CINEMAPRESS mega \
                 user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         else
             _header "RCLONE CONFIG"
             _content
@@ -403,7 +402,7 @@ ip_install() {
             _content
             _content "or configure for MEGA.nz cloud storage in one line:"
             _content
-            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} create \"email\" \"pass\""
+            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} config \"email\" \"pass\""
             _br
             _content
             _s
