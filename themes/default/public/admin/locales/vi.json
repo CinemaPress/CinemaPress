@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Mẫu trang web",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Tên của mẫu trang web có thư mục phải nằm trong thư mục chủ đề",
 	"ThemePrice": "49$",
-	"Своя тема": "Chủ đề riêng",
 	"Nginx сервер": "Máy chủ nginx",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Tham số này là thông tin và không thể thay đổi từ bảng quản trị",
 	"Sphinx сервер": "Máy chủ sphinx",
@@ -193,7 +192,6 @@
 	"Фильмов:": "Phim:",
 	"StartMovies": "---",
 	"Тема:": "Chủ đề:",
-	"общая": "chung",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Chủ đề phổ biến và cá nhân của CinemaPress là gì?",
 	"Обновление:": "Cập nhật:",
 	"каждое": "mọi",
@@ -801,5 +799,8 @@
 	"изменить": "thay đổi",
 	"Случайный поддомен каждый день": "Subdomain ngẫu nhiên mỗi ngày",
 	"Рерайт": "Viết lại",
-	"Рерайт описаний": "Giới thiệu viết lại"
+	"Рерайт описаний": "Giới thiệu viết lại",
+	"Премиум тема": "Chủ đề cao cấp",
+	"бесплатная": "tự do",
+	"премиум": "phí bảo hiểm"
 }

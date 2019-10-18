@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Webbplatsmall",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Namnet på webbplatsmallen vars mapp ska vara i teman mappen",
 	"ThemePrice": "49$",
-	"Своя тема": "Eget tema",
 	"Nginx сервер": "Nginx-server",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Denna parameter är informativ och kan inte ändras från adminpanelen",
 	"Sphinx сервер": "Sphinx-server",
@@ -193,7 +192,6 @@
 	"Фильмов:": "film:",
 	"StartMovies": "---",
 	"Тема:": "Ämne:",
-	"общая": "övergripande",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Vad är det gemensamma och individuella temat för CinemaPress?",
 	"Обновление:": "Uppdatering:",
 	"каждое": "varje",
@@ -801,5 +799,8 @@
 	"изменить": "ändra",
 	"Случайный поддомен каждый день": "Random domän varje dag",
 	"Рерайт": "Omskrivning",
-	"Рерайт описаний": "Omskrivning beskrivningar"
+	"Рерайт описаний": "Omskrivning beskrivningar",
+	"Премиум тема": "Premium tema",
+	"бесплатная": "gratis",
+	"премиум": "premie"
 }

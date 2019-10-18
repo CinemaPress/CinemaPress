@@ -143,11 +143,23 @@ function codePlayer(type, movie, options) {
   function yohohoPlayer(player) {
     var data = {};
 
-    data.player = player
-      ? player
-      : modules.player.data.yohoho.player
-        ? modules.player.data.yohoho.player
-        : '';
+    if (type === 'online') {
+      data.player = player
+        ? player
+            .replace(/,trailer|trailer,/gi, '')
+            .replace(/,torrent|torrent,/gi, '')
+        : modules.player.data.yohoho.player
+          ? modules.player.data.yohoho.player
+              .replace(/,trailer|trailer,/gi, '')
+              .replace(/,torrent|torrent,/gi, '')
+          : '';
+    } else {
+      data.player = player
+        ? player
+        : modules.player.data.yohoho.player
+          ? modules.player.data.yohoho.player
+          : '';
+    }
     data.bg = modules.player.data.yohoho.bg
       ? modules.player.data.yohoho.bg
       : '';

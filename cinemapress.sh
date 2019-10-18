@@ -1646,7 +1646,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start fail2ban
             exit 0
         ;;
-        "help"|"h"|"H"|"--help"|"-h"|"-H" )
+        "help"|"H"|"--help"|"-h"|"-H" )
             clear
             _line
             _logo
@@ -1654,21 +1654,21 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             printf " ~# cinemapress [OPTION]"; _br; _br;
             printf " OPTIONS:"; _br; _br;
-            printf " en          - Fast install EN website"; _br;
-            printf " ru          - Fast install RU website"; _br;
-            printf " install_ssl - Install an SSL certificate with automatic"; _br;
-            printf "               renewal using the CloudFlare API"; _br;
-            printf " passwd      - Change the password for access to the admin panel"; _br;
-            printf " stop        - Stop website (docker container)"; _br;
-            printf " start       - Start website (docker container)"; _br;
-            printf " restart     - Restart website (docker container)"; _br;
-            printf " reload      - Reload website (PM2)"; _br;
-            printf " zero        - Delete all data from the automatic database"; _br;
-            printf " actual      - Updating data from an automatic database"; _br;
-            printf "               to a manual database (year, list of actors, list"; _br;
-            printf "               of genres, list of countries, list of directors,"; _br;
-            printf "               premiere date, rating and number of votes)"; _br; _br;
-            printf " images      - Downloading posters to own server (only RU)"; _br;
+            printf " en      - Fast install EN website"; _br;
+            printf " ru      - Fast install RU website"; _br;
+            printf " is      - Install an SSL certificate with automatic"; _br;
+            printf "           renewal using the CloudFlare API"; _br;
+            printf " passwd  - Change the password for access to the admin panel"; _br;
+            printf " stop    - Stop website (docker container)"; _br;
+            printf " start   - Start website (docker container)"; _br;
+            printf " restart - Restart website (docker container)"; _br;
+            printf " reload  - Reload website (PM2)"; _br;
+            printf " zero    - Delete all data from the automatic database"; _br;
+            printf " actual  - Updating data from an automatic database"; _br;
+            printf "           to a manual database (year, list of actors, list"; _br;
+            printf "           of genres, list of countries, list of directors,"; _br;
+            printf "           premiere date, rating and number of votes)"; _br;
+            printf " images  - Downloading posters to own server (only RU)"; _br; _br;
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )

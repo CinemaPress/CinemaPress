@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Veebisaidi mall",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Veebisaidi malli nimi, mille kaust peaks olema teemakataloogis",
 	"ThemePrice": "49$",
-	"Своя тема": "Oma teema",
 	"Nginx сервер": "Nginxi server",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "See parameeter on informatiivne ja seda ei saa administraatori paneelilt muuta",
 	"Sphinx сервер": "Sphinxi server",
@@ -193,7 +192,6 @@
 	"Фильмов:": "filmid:",
 	"StartMovies": "---",
 	"Тема:": "Teema:",
-	"общая": "tavaline",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Mis on CinemaPressi ACMSi ühine ja individuaalne teema?",
 	"Обновление:": "Värskendamine:",
 	"каждое": "igaüks",
@@ -801,5 +799,8 @@
 	"изменить": "muuta",
 	"Случайный поддомен каждый день": "Juhuslik alamdomeen iga päev",
 	"Рерайт": "Ümber kirjutama",
-	"Рерайт описаний": "Ümberkirjutamine kirjelduse"
+	"Рерайт описаний": "Ümberkirjutamine kirjelduse",
+	"Премиум тема": "Premium teema",
+	"бесплатная": "tasuta",
+	"премиум": "preemia"
 }

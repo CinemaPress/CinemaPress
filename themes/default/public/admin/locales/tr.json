@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Websitesi şablonu",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Klasörünün temalar klasöründe olması gereken websitesi şablonunun adı",
 	"ThemePrice": "49$",
-	"Своя тема": "Kendi tema",
 	"Nginx сервер": "Nginx sunucusu",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Bu parametre bilgilidir ve yönetici panelinden değiştirilemez",
 	"Sphinx сервер": "Sfenks sunucusu",
@@ -193,7 +192,6 @@
 	"Фильмов:": "filmi:",
 	"StartMovies": "---",
 	"Тема:": "Konu:",
-	"общая": "tüm",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "CinemaPress'nin ortak ve bireysel teması nedir?",
 	"Обновление:": "Güncelleme:",
 	"каждое": "her",
@@ -801,5 +799,8 @@
 	"изменить": "değiştirmek",
 	"Случайный поддомен каждый день": "Her gün rastgele alt alan",
 	"Рерайт": "Yeniden yazmak",
-	"Рерайт описаний": "Yeniden yazma açıklamaları"
+	"Рерайт описаний": "Yeniden yazma açıklamaları",
+	"Премиум тема": "Prim tema",
+	"бесплатная": "ücretsiz",
+	"премиум": "prim"
 }

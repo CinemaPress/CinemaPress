@@ -60,8 +60,8 @@ module.exports = {
         "tls": 1
       },
       "country": 0,
-      "status_code_country": 200,
-      "status_code_list": 404,
+      "status_code_country": "200",
+      "status_code_list": "404",
       "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\">",
       "movies": ["840372"]
     }

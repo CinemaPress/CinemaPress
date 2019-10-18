@@ -218,8 +218,8 @@
                                         </div>
                                         <div class="col-sm-3 text-center">
                                             <select name="modules.abuse.data.status_code_country" class="form-control">
-                                                <option value="200" <% if (modules.abuse.data.status_code_country) { %>selected="selected"<% } %>>200 OK</option>
-                                                <option value="404" <% if (!modules.abuse.data.status_code_country) { %>selected="selected"<% } %>>404 Not Found</option>
+                                                <option value="200" <% if (modules.abuse.data.status_code_country === '200') { %>selected="selected"<% } %>>200 OK</option>
+                                                <option value="404" <% if (modules.abuse.data.status_code_country === '404') { %>selected="selected"<% } %>>404 Not Found</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
@@ -227,8 +227,8 @@
                                         </div>
                                         <div class="col-sm-3 text-center">
                                             <select name="modules.abuse.data.status_code_list" class="form-control">
-                                                <option value="200" <% if (modules.abuse.data.status_code_list) { %>selected="selected"<% } %>>200 OK</option>
-                                                <option value="404" <% if (!modules.abuse.data.status_code_list) { %>selected="selected"<% } %>>404 Not Found</option>
+                                                <option value="200" <% if (modules.abuse.data.status_code_list === '200') { %>selected="selected"<% } %>>200 OK</option>
+                                                <option value="404" <% if (modules.abuse.data.status_code_list === '404') { %>selected="selected"<% } %>>404 Not Found</option>
                                             </select>
                                         </div>
                                     </div>

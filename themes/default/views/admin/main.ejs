@@ -236,7 +236,7 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-xs-4 text-center">
+                                        <div class="col-xs-6 text-center">
                                             <select name="config.theme" class="form-control">
                                                 <% themes.forEach(function(theme) { %>
                                                     <% if (config.theme === theme) { %>
@@ -252,90 +252,8 @@
                                             </select>
                                         </div>
                                         <div class="col-xs-6 text-center">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/buy/theme.html" target="_blank" class="btn btn-block btn-default">
-                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('ThemePrice') %> <%= __('Своя тема') %>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-2 text-center">
-                                            <a href="https://CinemaPress.io/article/chto-takoe-individualnaya-tema.html" target="_blank" class="btn btn-block btn-default">
-                                                <span class="fa fa-question-circle"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-server"></i>&nbsp;&nbsp;&nbsp;<%= __('Nginx сервер') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#nginx" class="csstip" title="<%= __('Этот параметр носит информационный характер и не может быть изменен из админ-панели') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="config.nginx.addr" value="<%= config.nginx.addr %>" class="form-control" type="text" disabled="disabled">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;<%= __('Sphinx сервер') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#sphinx" class="csstip" title="<%= __('При высоких нагрузках Sphinx можно вынести на отдельный сервер, тем самым увеличив производительность веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="config.sphinx.addr" value="<%= config.sphinx.addr %>" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-rocket"></i>&nbsp;&nbsp;&nbsp;<%= __('Memcached сервер') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#memcached" class="csstip" title="<%= __('При высоких нагрузках Memcached можно вынести на отдельный сервер, тем самым увеличив производительность веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="config.cache.addr" value="<%= config.cache.addr %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <a href="javascript:void(0)" class="btn btn-block btn-default" id="flush">
-                                                <span class="fa fa-trash"></span>&nbsp;&nbsp;<%= __('Очистить кэш') %>
+                                            <a href="https://CinemaPress.io/<%- config.language %>/themes/" target="_blank" class="btn btn-block btn-default">
+                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('ThemePrice') %> <%= __('Премиум тема') %>
                                             </a>
                                         </div>
                                     </div>
@@ -477,32 +395,6 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
-                                        <i class="fa fa-retweet"></i>&nbsp;&nbsp;&nbsp;<%= __('Жесткая перезагрузка сервера') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#restart" class="csstip" title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <a href="javascript:void(0)" class="btn btn-block btn-default" id="restart">
-                                                <span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
                                         <i class="fa fa-gavel"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить доступ в странах') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
@@ -547,6 +439,32 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <textarea class="form-control" name="config.geolite2.ips" placeholder="192.168.0.1,192.168.1.0/24,2001:cdba::3257:9652/128" style="font-weight: normal; font-size: 14px; min-height: 50px"><%- config.geolite2.ips.join(',') %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-retweet"></i>&nbsp;&nbsp;&nbsp;<%= __('Жесткая перезагрузка сервера') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/main.html#restart" class="csstip" title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <a href="javascript:void(0)" class="btn btn-block btn-default" id="restart">
+                                                <span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

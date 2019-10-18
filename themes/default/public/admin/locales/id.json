@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Template situs web",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Nama templat situs web yang foldernya harus ada di folder tema",
 	"ThemePrice": "49$",
-	"Своя тема": "Tema sendiri",
 	"Nginx сервер": "Server nginx",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Parameter ini bersifat informatif dan tidak dapat diubah dari panel admin",
 	"Sphinx сервер": "Server sphinx",
@@ -193,7 +192,6 @@
 	"Фильмов:": "film:",
 	"StartMovies": "---",
 	"Тема:": "Subjek:",
-	"общая": "umum",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Apa tema umum dan individual dari CinemaPress?",
 	"Обновление:": "Pembaruan:",
 	"каждое": "setiap",
@@ -801,5 +799,8 @@
 	"изменить": "berubah",
 	"Случайный поддомен каждый день": "Subdomain acak setiap hari",
 	"Рерайт": "Menulis kembali",
-	"Рерайт описаний": "Deskripsi rewrite"
+	"Рерайт описаний": "Deskripsi rewrite",
+	"Премиум тема": "Tema premium",
+	"бесплатная": "gratis",
+	"премиум": "premi"
 }

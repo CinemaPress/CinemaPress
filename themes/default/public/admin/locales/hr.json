@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Predložak web stranice",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Naziv predloška web stranice čija mapa treba biti u mapi teme",
 	"ThemePrice": "49$",
-	"Своя тема": "Vlastita tema",
 	"Nginx сервер": "Nginx poslužitelj",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Ovaj je parametar informativan i ne može se mijenjati s admin panel",
 	"Sphinx сервер": "Sphinx poslužitelj",
@@ -193,7 +192,6 @@
 	"Фильмов:": "film:",
 	"StartMovies": "---",
 	"Тема:": "Tema:",
-	"общая": "cjelokupni",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Koja je zajednička i individualna tema CinemaPress-a?",
 	"Обновление:": "Ažuriranje:",
 	"каждое": "svaki",
@@ -801,5 +799,8 @@
 	"изменить": "ispraviti",
 	"Случайный поддомен каждый день": "Slučajna poddomena svaki dan",
 	"Рерайт": "Prepisati",
-	"Рерайт описаний": "Prepisati opisi"
+	"Рерайт описаний": "Prepisati opisi",
+	"Премиум тема": "Premium temu",
+	"бесплатная": "besplatno",
+	"премиум": "premija"
 }

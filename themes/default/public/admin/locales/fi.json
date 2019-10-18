@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Verkkosivun malli",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Sivuston mallipohjan nimi, jonka kansion pitäisi olla teemakansioissa",
 	"ThemePrice": "49$",
-	"Своя тема": "Oma teema",
 	"Nginx сервер": "Nginx-palvelin",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Tämä parametri on informatiivinen eikä sitä voi muuttaa hallintapaneelista",
 	"Sphinx сервер": "Sphinx-palvelin",
@@ -193,7 +192,6 @@
 	"Фильмов:": "Elokuva:",
 	"StartMovies": "---",
 	"Тема:": "Aihe:",
-	"общая": "yleinen",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Mikä on CinemaPress: n yhteinen ja yksilöllinen teema?",
 	"Обновление:": "Päivitys:",
 	"каждое": "kukin",
@@ -801,5 +799,8 @@
 	"изменить": "muuttaa",
 	"Случайный поддомен каждый день": "Satunnainen aliverkkotunnus päivittäin",
 	"Рерайт": "Kirjoittaa uudelleen",
-	"Рерайт описаний": "Uudelleenkirjoitus kuvaukset"
+	"Рерайт описаний": "Uudelleenkirjoitus kuvaukset",
+	"Премиум тема": "Premium teema",
+	"бесплатная": "ilmaiseksi",
+	"премиум": "palkkio"
 }

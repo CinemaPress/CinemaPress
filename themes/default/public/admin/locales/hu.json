@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Webhely sablon",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "A webes sablon neve, amelynek mappája a témák mappájában található",
 	"ThemePrice": "49$",
-	"Своя тема": "Saját téma",
 	"Nginx сервер": "Nginx szerver",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Ez a paraméter tájékoztató jellegű, és nem módosítható az admin panelről",
 	"Sphinx сервер": "Sphinx szerver",
@@ -193,7 +192,6 @@
 	"Фильмов:": "film:",
 	"StartMovies": "---",
 	"Тема:": "Téma:",
-	"общая": "teljes",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Mi a CinemaPress közös és egyedi témája?",
 	"Обновление:": "Frissítés:",
 	"каждое": "minden",
@@ -801,5 +799,8 @@
 	"изменить": "módosítására",
 	"Случайный поддомен каждый день": "Véletlen aldomain minden nap",
 	"Рерайт": "Átír",
-	"Рерайт описаний": "Újraírása leírások"
+	"Рерайт описаний": "Újraírása leírások",
+	"Премиум тема": "Premium theme",
+	"бесплатная": "ingyenes",
+	"премиум": "prémium"
 }

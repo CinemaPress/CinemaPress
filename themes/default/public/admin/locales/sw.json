@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Template ya tovuti",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Jina la template ya tovuti ambayo folda inapaswa kuwa katika folda ya mandhari",
 	"ThemePrice": "49$",
-	"Своя тема": "Mandhari yenyewe",
 	"Nginx сервер": "Seva ya nginx",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Kipindi hiki ni habari na haiwezi kubadilishwa kutoka kwa jopo la admin",
 	"Sphinx сервер": "Sphinx seva",
@@ -193,7 +192,6 @@
 	"Фильмов:": "Filamu:",
 	"StartMovies": "---",
 	"Тема:": "Somo:",
-	"общая": "kawaida",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Je, ni mandhari ya kawaida na ya mtu binafsi ya CinemaPress?",
 	"Обновление:": "Sasisha:",
 	"каждое": "kila",
@@ -801,5 +799,8 @@
 	"изменить": "mabadiliko",
 	"Случайный поддомен каждый день": "Random subdomain kila siku",
 	"Рерайт": "Kuandika upya",
-	"Рерайт описаний": "Maelezo ya kuandika upya"
+	"Рерайт описаний": "Maelezo ya kuandika upya",
+	"Премиум тема": "Premium mandhari",
+	"бесплатная": "free",
+	"премиум": "premium"
 }

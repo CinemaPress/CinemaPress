@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Plantilla de sitio web",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "El nombre de la plantilla del sitio web cuya carpeta debe estar en la carpeta de temas",
 	"ThemePrice": "49$",
-	"Своя тема": "Tema propio",
 	"Nginx сервер": "Servidor nginx",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Este parámetro es informativo y no se puede cambiar desde el panel de administración",
 	"Sphinx сервер": "Servidor esfinge",
@@ -193,7 +192,6 @@
 	"Фильмов:": "Películas:",
 	"StartMovies": "---",
 	"Тема:": "Asunto:",
-	"общая": "común",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "¿Cuál es el tema común e individual de CinemaPress?",
 	"Обновление:": "Actualización:",
 	"каждое": "cada",
@@ -801,5 +799,8 @@
 	"изменить": "cambiar",
 	"Случайный поддомен каждый день": "Subdominio al azar cada día",
 	"Рерайт": "Volver a escribir",
-	"Рерайт описаний": "Descripciones de reescritura"
+	"Рерайт описаний": "Descripciones de reescritura",
+	"Премиум тема": "Tema premium",
+	"бесплатная": "gratis",
+	"премиум": "prima"
 }

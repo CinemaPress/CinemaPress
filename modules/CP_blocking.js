@@ -84,7 +84,7 @@ function blockingPlayer(code, movie, options) {
         message +
         '</div></div><script src="/themes/default/public/desktop/js/ads.js" charset="utf-8"></script><script>window.addEventListener("load",function(){var e=document.getElementById("blockingTimer"),n=' +
         block.time +
-        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);if(document.getElementById("CinemaPressACMS")){var ee=document.getElementById("blocking");ee.parentElement.removeChild(ee);clearInterval(si)}});</script>' +
+        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);if(document.getElementById("CinemaPress")){var ee=document.getElementById("blocking");ee.parentElement.removeChild(ee);clearInterval(si)}});</script>' +
         code.player;
     } else if (modules.blocking.data.display === 'sub') {
       if (

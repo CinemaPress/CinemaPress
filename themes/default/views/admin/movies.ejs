@@ -282,7 +282,91 @@
                                 <input type="text" class="form-control" name="movie.title_ru" value="<% if (movie.title_ru) { %><%= movie.title_ru %><% } %>" placeholder="<%= __('Например:') %> <%= __('Миссия невыполнима: Последствия') %>" style="font-weight: normal; font-size: 14px;">
 
                                 <div class="t">
-                                    <%= __('Описание фильма:') %>
+                                    <span><%= __('Описание фильма:') %></span>
+                                    <% if (modules.rewrite.status && modules.rewrite.data.token) { %>
+                                        <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="start-sinoni" style="float:right;margin:0;height:18px;padding:1px 10px 0 10px;"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
+                                        <script>
+                                          function sinoniReq() {
+                                            var self = this;
+                                            self.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <%= __('В процессе работы') %> ...';
+                                            self.removeEventListener('click', sinoniReq);
+                                            var text_sinoni = document.querySelector('#text-sinoni');
+                                            var movie_custom = document.querySelector('[name="movie.custom"]');
+                                            if (text_sinoni && text_sinoni.value && text_sinoni.value.length >= 100) {
+                                              var params = 'text=' + encodeURIComponent(text_sinoni.value);
+                                              httpReq(params, function(err, result) {
+                                                if (err) {
+                                                  console.error(err);
+                                                  self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                                  self.addEventListener('click', sinoniReq);
+                                                  return;
+                                                }
+                                                if (typeof result.percent !== 'undefined') {
+                                                  var custom = {};
+                                                  if (movie_custom && movie_custom.value) {
+                                                    custom = JSON.parse(movie_custom.value);
+                                                  }
+                                                  else {
+                                                    custom.unique = true;
+                                                  }
+                                                  custom.rewrite = {};
+                                                  if (typeof result.percent !== 'undefined') {
+                                                    custom.rewrite.percent = result.percent;
+                                                  }
+                                                  if (typeof result.words !== 'undefined') {
+                                                    custom.rewrite.words = result.words;
+                                                  }
+                                                  if (typeof result.spam !== 'undefined') {
+                                                    custom.rewrite.spam = result.spam;
+                                                  }
+                                                  if (typeof result.water !== 'undefined') {
+                                                    custom.rewrite.water = result.water;
+                                                  }
+                                                  movie_custom.value = JSON.stringify(custom);
+                                                  jsonPretty();
+                                                }
+                                                if (typeof result.rewrite !== 'undefined') {
+                                                  text_sinoni.value = result.rewrite;
+                                                }
+                                                self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                                self.addEventListener('click', sinoniReq);
+                                              });
+                                            }
+                                          }
+                                          function httpReq(params, callback) {
+                                            var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+                                            var xhr = new XHR();
+                                            xhr.onreadystatechange = function() {
+                                              if (xhr.readyState === 4 && xhr.status === 200) {
+                                                callback(null, tryParseJSON(xhr.responseText));
+                                              }
+                                            };
+                                            xhr.timeout = 300 * 1000;
+                                            xhr.open('POST', '/<%- config.urls.admin %>/rewrite', true);
+                                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                            xhr.send(params);
+                                          }
+                                          function tryParseJSON(jsonString) {
+                                            try {
+                                              var o = typeof jsonString === 'object'
+                                                ? jsonString
+                                                : JSON.parse(jsonString);
+                                              if (o && typeof o === "object") {
+                                                return o;
+                                              }
+                                            } catch (e) {}
+                                            return {}
+                                          }
+                                          document.addEventListener('DOMContentLoaded', function () {
+                                            var start_sinoni = document.querySelector('#start-sinoni');
+                                            if (start_sinoni) {
+                                              start_sinoni.addEventListener('click', sinoniReq);
+                                            }
+                                          });
+                                        </script>
+                                    <% } else { %>
+                                        <a href="/<%- config.urls.admin %>/rewrite" class="btn btn-primary btn-sm" style="float:right;margin:0;height:18px;padding:1px 10px 0 10px;"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
+                                    <% } %>
                                 </div>
                                 <div class="spacer-10"></div>
                                 <textarea class="form-control descriptions" name="movie.description" placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni"><% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
@@ -328,90 +412,6 @@
                                         <% }); %>
                                         <% } %>
                                     </div>
-                                    <% if (modules.rewrite.status && modules.rewrite.data.token) { %>
-                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="start-sinoni" style="float: right; margin:0"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
-                                    <script>
-                                        function sinoniReq() {
-                                            var self = this;
-                                            self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('В процессе работы') %> ...';
-                                            self.removeEventListener('click', sinoniReq);
-                                            var text_sinoni = document.querySelector('#text-sinoni');
-                                            var movie_custom = document.querySelector('[name="movie.custom"]');
-                                            if (text_sinoni && text_sinoni.value && text_sinoni.value.length >= 100) {
-                                                var params = 'text=' + encodeURIComponent(text_sinoni.value);
-                                                httpReq(params, function(err, result) {
-                                                    if (err) {
-                                                        console.error(err);
-                                                        self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
-                                                        self.addEventListener('click', sinoniReq);
-                                                        return;
-                                                    }
-                                                    if (typeof result.percent !== 'undefined') {
-                                                        var custom = {};
-                                                        if (movie_custom && movie_custom.value) {
-                                                            custom = JSON.parse(movie_custom.value);
-                                                        }
-                                                        else {
-                                                            custom.unique = true;
-                                                        }
-                                                        custom.rewrite = {};
-                                                        if (typeof result.percent !== 'undefined') {
-                                                            custom.rewrite.percent = result.percent;
-                                                        }
-                                                        if (typeof result.words !== 'undefined') {
-                                                            custom.rewrite.words = result.words;
-                                                        }
-                                                        if (typeof result.spam !== 'undefined') {
-                                                            custom.rewrite.spam = result.spam;
-                                                        }
-                                                        if (typeof result.water !== 'undefined') {
-                                                            custom.rewrite.water = result.water;
-                                                        }
-                                                        movie_custom.value = JSON.stringify(custom);
-                                                        jsonPretty();
-                                                    }
-                                                    if (typeof result.rewrite !== 'undefined') {
-                                                        text_sinoni.value = result.rewrite;
-                                                    }
-                                                    self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
-                                                    self.addEventListener('click', sinoniReq);
-                                                });
-                                            }
-                                        }
-                                        function httpReq(params, callback) {
-                                            var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-                                            var xhr = new XHR();
-                                            xhr.onreadystatechange = function() {
-                                                if (xhr.readyState === 4 && xhr.status === 200) {
-                                                    callback(null, tryParseJSON(xhr.responseText));
-                                                }
-                                            };
-                                            xhr.timeout = 300 * 1000;
-                                            xhr.open('POST', '/<%- config.urls.admin %>/rewrite', true);
-                                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                                            xhr.send(params);
-                                        }
-                                        function tryParseJSON(jsonString) {
-                                            try {
-                                                var o = typeof jsonString === 'object'
-                                                    ? jsonString
-                                                    : JSON.parse(jsonString);
-                                                if (o && typeof o === "object") {
-                                                    return o;
-                                                }
-                                            } catch (e) {}
-                                            return {}
-                                        }
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            var start_sinoni = document.querySelector('#start-sinoni');
-                                            if (start_sinoni) {
-                                                start_sinoni.addEventListener('click', sinoniReq);
-                                            }
-                                        });
-                                    </script>
-                                    <% } else { %>
-                                        <a href="/<%- config.urls.admin %>/rewrite" class="btn btn-primary btn-sm" style="float: right; margin:0"><i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %></a>
-                                    <% } %>
                                 </div>
 
                             </div>

@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Šablona webových stránek",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Název šablony webových stránek, jejíž složka by měla být ve složce témat",
 	"ThemePrice": "49$",
-	"Своя тема": "Vlastní téma",
 	"Nginx сервер": "Nginx server",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Tento parametr je informativní a nelze jej změnit z administračního panelu",
 	"Sphinx сервер": "Sphinx server",
@@ -193,7 +192,6 @@
 	"Фильмов:": "filmy:",
 	"StartMovies": "---",
 	"Тема:": "Předmět:",
-	"общая": "společné",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Jaké je společné a individuální téma CinemaPress?",
 	"Обновление:": "Aktualizace:",
 	"каждое": "každý",
@@ -801,5 +799,8 @@
 	"изменить": "změnit",
 	"Случайный поддомен каждый день": "Random subdomény každý den",
 	"Рерайт": "Přepsat",
-	"Рерайт описаний": "Přepisování popisy"
+	"Рерайт описаний": "Přepisování popisy",
+	"Премиум тема": "Premium téma",
+	"бесплатная": "zdarma",
+	"премиум": "pojistné"
 }

@@ -171,7 +171,6 @@
 	"Шаблон веб-сайта": "Mājas lapas veidne",
 	"Название шаблона веб-сайта, папка которого должна быть в папке themes": "Tīmekļa vietnes veidnes nosaukums, kura mapei jābūt tēmu mapē",
 	"ThemePrice": "49$",
-	"Своя тема": "Pašu tēmu",
 	"Nginx сервер": "Nginx serveris",
 	"Этот параметр носит информационный характер и не может быть изменен из админ-панели": "Šis parametrs ir informatīvs un to nevar mainīt no admin paneļa",
 	"Sphinx сервер": "Sphinx serveris",
@@ -193,7 +192,6 @@
 	"Фильмов:": "filmas:",
 	"StartMovies": "---",
 	"Тема:": "Temats:",
-	"общая": "kopīgs",
 	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Kāda ir kopējā un atsevišķā CinemaPress tēma?",
 	"Обновление:": "Atjaunināšana:",
 	"каждое": "katrs",
@@ -801,5 +799,8 @@
 	"изменить": "mainīt",
 	"Случайный поддомен каждый день": "Random apakšdomēns katru dienu",
 	"Рерайт": "Pārrakstīt",
-	"Рерайт описаний": "Pārrakstīšanas apraksti"
+	"Рерайт описаний": "Pārrakstīšanas apraksti",
+	"Премиум тема": "Premium tēma",
+	"бесплатная": "bezmaksas",
+	"премиум": "prēmija"
 }
