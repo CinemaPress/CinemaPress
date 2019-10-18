@@ -24,7 +24,7 @@ var fs = require('fs');
 function mobileVersion(url) {
   var data = '';
 
-  if (url.indexOf('://m.') + 1 || url.indexOf('/mobile-version') + 1) {
+  if (/:\/\/m\.|\/mobile-version/i.test(url)) {
     data +=
       '<link rel="canonical" href="' +
       url

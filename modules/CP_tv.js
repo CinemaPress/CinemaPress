@@ -24,7 +24,7 @@ var fs = require('fs');
 function tvVersion(url) {
   var data = '';
 
-  if (url.indexOf('://tv.') + 1 || url.indexOf('/tv-version') + 1) {
+  if (/:\/\/tv\.|\/tv-version/i.test(url)) {
     data +=
       '<link rel="canonical" href="' +
       url
