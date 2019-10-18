@@ -166,6 +166,9 @@ function codePlayer(type, movie, options) {
     data.button = modules.player.data.yohoho.button
       ? modules.player.data.yohoho.button
       : '';
+    data.trailer = modules.player.data.yohoho.trailer
+      ? modules.player.data.yohoho.trailer
+      : '';
     data.title = title ? title : '';
     data.kinopoisk = movie.kp_id ? movie.kp_id : '';
     data.imdb = movie.custom.imdb_id ? movie.custom.imdb_id : '';

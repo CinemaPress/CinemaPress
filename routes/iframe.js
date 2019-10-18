@@ -134,6 +134,9 @@ router.get('/:id?/:title?', function(req, res) {
             'data-title="' +
             title +
             '" ' +
+            'data-trailer="' +
+            (modules.player.data.yohoho.trailer || '') +
+            '" ' +
             'data-player="' +
             (modules.player.data.yohoho.player || '') +
             '" ' +
