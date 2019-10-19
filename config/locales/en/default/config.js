@@ -31,6 +31,7 @@ module.exports = {
   "nginx": {
     "addr": "127.0.0.1:3000"
   },
+  "pagespeed": 0,
   "loadavg": {
     "one": 480,
     "five": 360,

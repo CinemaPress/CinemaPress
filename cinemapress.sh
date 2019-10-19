@@ -321,9 +321,11 @@ ip_install() {
     A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
     K=`grep "\"key\"" /home/${CP_DOMAIN}/config/default/config.js`
     D=`grep "\"date\"" /home/${CP_DOMAIN}/config/default/config.js`
+    P=`grep "\"pagespeed\"" /home/${CP_DOMAIN}/config/default/config.js`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
     CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
     CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
+    CP_SPEED=`echo ${P} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
     rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
@@ -351,6 +353,11 @@ ip_install() {
             /home/${CP_DOMAIN}/config/production/config.js
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
             /home/${CP_DOMAIN}/config/default/config.js
+    fi
+    if [ "${CP_SPEED}" != "" ]; then
+        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
+            /home/${CP_DOMAIN}/config/production/config.js
+        docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container speed ${CP_SPEED}
     fi
     docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
 }
@@ -1275,6 +1282,7 @@ docker_run() {
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
@@ -1282,6 +1290,7 @@ docker_run() {
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/default/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/process.json
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
@@ -1400,6 +1409,22 @@ docker_rclone() {
 docker_passwd() {
     OPENSSL=`echo "${1}" | openssl passwd -1 -stdin -salt CP`
     echo "admin:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
+}
+docker_speed_on() {
+    sed -Ei "s/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+}
+docker_speed_off() {
+    sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+}
+docker_ssl_on() {
+    sed -Ei "s/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+}
+docker_ssl_off() {
+    sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 
 success_install(){
@@ -1600,7 +1625,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker ${1} ${CP_DOMAIN_} >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
             exit 0
         ;;
-        "reload"|"zero"|"actual" )
+        "reload"|"zero"|"actual"|"speed" )
             _br
             read_domain ${2}
             sh_not
@@ -1631,6 +1656,18 @@ while [ "${WHILE}" -lt "2" ]; do
                     docker_restore
                 else
                     docker_backup
+                fi
+            elif [ "${2}" = "speed" ]; then
+                if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
+                    docker_speed_off
+                else
+                    docker_speed_on
+                fi
+            elif [ "${2}" = "protocol" ]; then
+                if [ "${3}" = "http://" ]; then
+                    docker_ssl_off
+                else
+                    docker_ssl_on
                 fi
             elif [ "${2}" = "passwd" ]; then
                 docker_passwd "${3}"
@@ -1667,6 +1704,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "           to a manual database (year, list of actors, list"; _br;
             printf "           of genres, list of countries, list of directors,"; _br;
             printf "           premiere date, rating and number of votes)"; _br;
+            printf " speed   - Enabled Nginx PageSpeed module"; _br;
             printf " images  - Downloading posters to own server (only RU)"; _br; _br;
             exit 0
         ;;

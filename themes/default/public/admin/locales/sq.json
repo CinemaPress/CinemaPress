@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Përshkrimet rishkruaj",
 	"Премиум тема": "Premium theme",
 	"бесплатная": "falas",
-	"премиум": "prim"
+	"премиум": "prim",
+	"Google PageSpeed оптимизация": "Google PageSpeed ​​optimization",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "Moduli pageSpeed ​​është projektuar për të optimizuar automatikisht performancën faqe duke ulur site ngarkimit kohë në shfletuesin",
+	"PageSpeed включен": "PageSpeed ​​përfshira",
+	"PageSpeed отключен": "PageSpeed ​​me aftësi të kufizuara"
 }

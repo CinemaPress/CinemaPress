@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Omskrivning af beskrivelser",
 	"Премиум тема": "Premium tema",
 	"бесплатная": "gratis",
-	"премиум": "præmie"
+	"премиум": "præmie",
+	"Google PageSpeed оптимизация": "Google PageSpeed ​​optimering",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​modul er designet til automatisk at optimere webstedet ydeevne ved at reducere indlæsningstiden webstedet i browseren",
+	"PageSpeed включен": "PageSpeed ​​inkluderet",
+	"PageSpeed отключен": "PageSpeed ​​deaktiveret"
 }

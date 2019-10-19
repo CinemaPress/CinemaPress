@@ -847,6 +847,32 @@ router.post('/change', function(req, res) {
           }
         );
       },
+      pagespeed: function(callback) {
+        if (!form.config || typeof form.config.pagespeed === 'undefined')
+          return callback(null, 'Null');
+        exec(
+          '/usr/bin/cinemapress container speed ' + form.config.pagespeed,
+          function(err) {
+            setTimeout(function() {
+              return err ? callback(err) : callback(null, 'PageSpeed');
+            }, 5000);
+          }
+        );
+      },
+      protocol: function(callback) {
+        if (!form.config || typeof form.config.protocol === 'undefined')
+          return callback(null, 'Null');
+        exec(
+          '/usr/bin/cinemapress container protocol "' +
+            form.config.protocol +
+            '"',
+          function(err) {
+            setTimeout(function() {
+              return err ? callback(err) : callback(null, 'Protocol');
+            }, 5000);
+          }
+        );
+      },
       restart: function(callback) {
         if (!form.restart) return callback(null, 'Null');
         exec('pm2 restart ' + config.domain + ' --update-env', function(err) {

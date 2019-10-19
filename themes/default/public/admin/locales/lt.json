@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Przepisujące aprašymai",
 	"Премиум тема": "Aukščiausios tema",
 	"бесплатная": "nemokamai",
-	"премиум": "premija"
+	"премиум": "premija",
+	"Google PageSpeed оптимизация": "«Google» puslapio spartos optimizavimas",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​modulis yra skirtas automatiškai optimizuoti svetainės našumą mažinant pakrovimo metu puslapį naršyklėje",
+	"PageSpeed включен": "PageSpeed ​​įtraukti",
+	"PageSpeed отключен": "PageSpeed ​​neįgaliesiems"
 }

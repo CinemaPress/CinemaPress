@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Újraírása leírások",
 	"Премиум тема": "Premium theme",
 	"бесплатная": "ingyenes",
-	"премиум": "prémium"
+	"премиум": "prémium",
+	"Google PageSpeed оптимизация": "Google PageSpeed ​​optimalizálás",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​modul célja, hogy automatikusan optimalizálja a webhely teljesítményének csökkentésével a letöltési idő helyén a böngésző",
+	"PageSpeed включен": "PageSpeed ​​benne",
+	"PageSpeed отключен": "PageSpeed ​​fogyatékkal"
 }

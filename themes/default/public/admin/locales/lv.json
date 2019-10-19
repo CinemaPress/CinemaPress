@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Pārrakstīšanas apraksti",
 	"Премиум тема": "Premium tēma",
 	"бесплатная": "bezmaksas",
-	"премиум": "prēmija"
+	"премиум": "prēmija",
+	"Google PageSpeed оптимизация": "Google PageSpeed ​​optimizācijas",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​modulis ir paredzēts, lai automātiski optimizētu vietnes darbību, samazinot ielādes laiku vietni pārlūkprogrammā",
+	"PageSpeed включен": "PageSpeed ​​iekļauts",
+	"PageSpeed отключен": "PageSpeed ​​invalīdiem"
 }

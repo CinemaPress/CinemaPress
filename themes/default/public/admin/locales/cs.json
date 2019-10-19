@@ -802,5 +802,9 @@
 	"Рерайт описаний": "Přepisování popisy",
 	"Премиум тема": "Premium téma",
 	"бесплатная": "zdarma",
-	"премиум": "pojistné"
+	"премиум": "pojistné",
+	"Google PageSpeed оптимизация": "Google PageSpeed ​​optimalizace",
+	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​modul je navržen tak, aby automaticky optimalizovat výkon webu tím, že snižuje čas místo nakládky v prohlížeči",
+	"PageSpeed включен": "PageSpeed ​​zahrnuty",
+	"PageSpeed отключен": "PageSpeed ​​zakázán"
 }
