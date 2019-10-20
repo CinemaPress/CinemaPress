@@ -264,7 +264,7 @@ ip_install() {
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
             BOTS=""
-            if [ ! -d "/var/nginx/bots.d" ]; then
+            if [ ! -d "/var/nginx/bots.d/" ]; then
                 mkdir -p /var/nginx/bots.d
                 cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /var/nginx/bots.d/
                 BOTS="-v /var/nginx/bots.d:/etc/nginx/bots.d"
@@ -338,7 +338,7 @@ ip_install() {
     rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
     3_backup "create"
     8_remove "full" "safe"
-    rm -rf /var/sphinx && cp -rf /var/lib/sphinx/data /var/sphinx
+    rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
     1_install
     cp -rf /var/nginx/* /home/${CP_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
