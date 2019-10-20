@@ -265,6 +265,7 @@ ip_install() {
 
             BOTS=""
             if [ ! -d "/var/nginx/bots.d" ]; then
+                mkdir -p /var/nginx/bots.d
                 cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /var/nginx/bots.d/
                 BOTS="-v /var/nginx/bots.d:/etc/nginx/bots.d"
             fi
