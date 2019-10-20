@@ -593,8 +593,10 @@
                 location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
             }
             else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
-                self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-                self.addEventListener('click', saveData);
+                setTimeout(function() {
+                    self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+                    self.addEventListener('click', saveData);
+                }, 2000);
             }
             else if (
                 (
@@ -611,15 +613,19 @@
                     parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
                 )
             ) {
+              setTimeout(function() {
                 self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
                 self.addEventListener('click', saveData);
+              }, 2000);
             }
             else if (err) {
                 self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
             }
             else {
+              setTimeout(function() {
                 self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
                 self.addEventListener('click', saveData);
+              }, 2000);
             }
         });
 

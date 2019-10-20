@@ -700,7 +700,7 @@ router.post('/change', function(req, res) {
       },
       config: function(callback) {
         if (!form.config) return callback(null, 'Null');
-        form.flush = true;
+        form.flush_memcached = true;
         if (
           (form.config.urls &&
             form.config.urls.admin &&
@@ -726,7 +726,7 @@ router.post('/change', function(req, res) {
       },
       modules: function(callback) {
         if (!form.modules) return callback(null, 'Null');
-        form.flush = true;
+        form.flush_memcached = true;
         configs.modules = parseData(configs.modules, form.modules);
         CP_save.save(configs.modules, 'modules', function(err, result) {
           return err ? callback(err) : callback(null, result);
@@ -734,7 +734,7 @@ router.post('/change', function(req, res) {
       },
       movie: function(callback) {
         if (!form.movie || !form.movie.id) return callback(null, 'Null');
-        form.flush = true;
+        form.flush_memcached = true;
         form.movie.search = form.movie.title_ru
           ? form.movie.title_ru +
             (form.movie.title_en ? ' / ' + form.movie.title_en : '')
@@ -782,7 +782,7 @@ router.post('/change', function(req, res) {
       switch: function(callback) {
         if (!form.switch || !form.switch.module || !modules[form.switch.module])
           return callback(null, 'Null');
-        form.flush = true;
+        form.flush_memcached = true;
         configs.modules[form.switch.module].status =
           form.switch.status === 'true';
         CP_save.save(configs.modules, 'modules', function(err, result) {
@@ -791,7 +791,7 @@ router.post('/change', function(req, res) {
       },
       content: function(callback) {
         if (!form.content) return callback(null, 'Null');
-        form.flush = true;
+        form.flush_memcached = true;
         if (form.delete) {
           if (!form.content.id) return callback(null, 'Null');
           form.content.delete = true;
@@ -828,6 +828,11 @@ router.post('/change', function(req, res) {
           }
         );
       },
+      flush: function(callback) {
+        if (!form.flush) return callback(null, 'Null');
+        form.flush_static = true;
+        form.flush_memcached = true;
+      },
       flush_static: function(callback) {
         if (!form.flush_static) return callback(null, 'Null');
         exec('touch /var/ngx_pagespeed_cache/cache.flush', function(err) {
@@ -844,20 +849,6 @@ router.post('/change', function(req, res) {
             ? parseInt(process.env.CP_VER) + 1
             : new Date().getTime().toString();
           return err ? callback(err) : callback(null, 'Flush');
-        });
-      },
-      flush: function(callback) {
-        if (!form.flush) return callback(null, 'Null');
-        CP_cache.flush(function(err) {
-          if (err) return callback(err);
-          exec('touch /var/ngx_pagespeed_cache/cache.flush', function(err) {
-            process.env.CP_VER = process.env.CP_VER
-              ? parseInt(process.env.CP_VER) + 1
-              : new Date().getTime().toString();
-            setTimeout(function() {
-              return err ? callback(err) : callback(null, 'Flush');
-            }, 5000);
-          });
         });
       },
       database: function(callback) {
