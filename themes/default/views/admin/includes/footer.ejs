@@ -576,11 +576,12 @@
         }
 
         sendServer(data, function (err, result) {
+          setTimeout(function() {
             if (data.config &&
-                data.config.urls &&
-                data.config.urls.admin &&
-                data.config.urls.admin !== '<%- config.urls.admin %>') {
-                location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
+              data.config.urls &&
+              data.config.urls.admin &&
+              data.config.urls.admin !== '<%- config.urls.admin %>') {
+              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
             }
             else if (data.config &&
               data.config.subdomain &&
@@ -588,46 +589,41 @@
               location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
             }
             else if (data.content && !data.content.id) {
-                location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';
+              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';
             }
             else if (data.movie && !data.movie.id) {
-                location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
+              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
             }
             else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
-                setTimeout(function() {
-                    self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-                    self.addEventListener('click', saveData);
-                }, 2000);
+              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+              self.addEventListener('click', saveData);
             }
             else if (
-                (
-                    data.modules &&
-                    data.modules.mobile &&
-                    data.modules.mobile.data &&
-                    data.modules.mobile.data.subdomain &&
-                    parseInt(data.modules.mobile.data.subdomain) !== parseInt('<%- modules.mobile.data.subdomain %>')
-                ) || (
-                    data.modules &&
-                    data.modules.tv &&
-                    data.modules.tv.data &&
-                    data.modules.tv.data.subdomain &&
-                    parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
-                )
+              (
+                data.modules &&
+                data.modules.mobile &&
+                data.modules.mobile.data &&
+                data.modules.mobile.data.subdomain &&
+                parseInt(data.modules.mobile.data.subdomain) !== parseInt('<%- modules.mobile.data.subdomain %>')
+              ) || (
+                data.modules &&
+                data.modules.tv &&
+                data.modules.tv.data &&
+                data.modules.tv.data.subdomain &&
+                parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
+              )
             ) {
-              setTimeout(function() {
-                self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-                self.addEventListener('click', saveData);
-              }, 2000);
+              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+              self.addEventListener('click', saveData);
             }
             else if (err) {
-                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+              self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
             }
             else {
-              setTimeout(function() {
-                self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-                self.addEventListener('click', saveData);
-              }, 2000);
+              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+              self.addEventListener('click', saveData);
             }
+          }, 3000);
         });
 
     }
