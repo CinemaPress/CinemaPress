@@ -698,11 +698,11 @@ ip_install() {
     docker rmi cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     if [ "${1}" != "" ]; then
         docker stop nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rm nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rmi cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rm -f nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rmi -f cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker stop fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rm fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rmi cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rm -f fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker rmi -f cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     fi
     rm -rf /home/${CP_DOMAIN}
     sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
@@ -1162,11 +1162,11 @@ sh_wget() {
     local flag=false c count cr=$'\r' nl=$'\n'
     while IFS='' read -d '' -rn 1 c
     do
-        if ${flag}
+        if $flag
         then
-            printf '%s' "${c}"
+            printf '%s' "$c"
         else
-            if [[ ${c} != ${cr} && ${c} != ${nl} ]]
+            if [[ $c != $cr && $c != $nl ]]
             then
                 count=0
             else
@@ -1595,24 +1595,24 @@ while [ "${WHILE}" -lt "2" ]; do
             read_key ${3}
             _s ${3}
             if [ -f "/var/local/images/poster/no-poster.jpg" ]; then
-                wget --progress=bar:force -O /home/images.tar \
+                wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
-                if [ -f "/home/images.tar" ]; then
-                    tar -xf /home/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1
+                if [ -f "/var/images.tar" ]; then
+                    tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1
                 fi
             else
-                wget --progress=bar:force -O /home/images.tar \
+                wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
                 mkdir -p /var/local/images/poster
                 cp -r /home/${CP_DOMAIN}/files/poster/no-poster.gif /var/local/images/poster/no-poster.gif
                 cp -r /home/${CP_DOMAIN}/files/poster/no-poster.jpg /var/local/images/poster/no-poster.jpg
-                if [ -f "/home/images.tar" ]; then
+                if [ -f "/var/images.tar" ]; then
                     _header "UNPACKING"
                     _content
                     _content "Unpacking may take several hours ..."
                     _content
                     _s
-                    nohup tar -xf /home/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1 &
+                    nohup tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1 &
                 fi
             fi
             exit 0
