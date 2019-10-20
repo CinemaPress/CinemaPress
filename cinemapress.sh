@@ -276,7 +276,7 @@ ip_install() {
                 --restart always \
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
-                -v /var/nginx/bots.d:/etc/nginx/bots.d \
+                -v /etc/nginx/bots.d:/etc/nginx/bots.d \
                 -v /var/local/balancer:/var/local/balancer \
                 -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
