@@ -263,6 +263,12 @@ ip_install() {
             # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
+            BOTS=""
+            if [ ! -d "/var/nginx/bots.d" ]; then
+                cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /var/nginx/bots.d/
+                BOTS="-v /var/nginx/bots.d:/etc/nginx/bots.d"
+            fi
+
             docker run \
                 -d \
                 --name nginx \
@@ -270,10 +276,10 @@ ip_install() {
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
                 -v /var/nginx/bots.d:/etc/nginx/bots.d \
-                -v /var/local/images:/var/local/images \
                 -v /var/local/balancer:/var/local/balancer \
                 -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
+                ${BOTS} \
                 -p 80:80 \
                 -p 443:443 \
                 cinemapress/nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
