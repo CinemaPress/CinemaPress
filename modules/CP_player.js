@@ -214,6 +214,13 @@ function codePlayer(type, movie, options) {
       modules.player.data.videocdn.token
         ? modules.player.data.videocdn.token
         : '';
+    data.collaps =
+      modules.player &&
+      modules.player.data &&
+      modules.player.data.collaps &&
+      modules.player.data.collaps.token
+        ? modules.player.data.collaps.token
+        : '';
     data.start_time = options.start_time ? options.start_time : '';
     data.start_episode = options.start_episode ? options.start_episode : '';
     data.moonlight =

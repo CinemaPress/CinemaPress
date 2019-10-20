@@ -104,6 +104,15 @@ router.get('/?', function(req, res) {
           callback(null, {});
         }
       },
+      collaps: function(callback) {
+        if (modules.player.data.collaps && modules.player.data.collaps.token) {
+          getCollaps(function(result) {
+            callback(null, result);
+          });
+        } else {
+          callback(null, {});
+        }
+      },
       yohoho: function(callback) {
         if (modules.player.data.yohoho.player) {
           getYohoho(function(result) {
@@ -479,6 +488,41 @@ router.get('/?', function(req, res) {
               ? json.data[0].translations[0]
               : '';
           iframe_quality = json.data[0].quality ? json.data[0].quality : '';
+        }
+        callback({
+          src: iframe_src,
+          translate: iframe_translate,
+          quality: iframe_quality
+        });
+      }
+    );
+  }
+
+  /**
+   * Get Collaps player.
+   */
+
+  function getCollaps(callback) {
+    api(
+      'https://apicollaps.cc/list?' +
+        'token=' +
+        modules.player.data.collaps.token.trim() +
+        '&' +
+        'kinopoisk_id=' +
+        id,
+      function(json) {
+        var iframe_src = '';
+        var iframe_translate = '';
+        var iframe_quality = '';
+        if (
+          json &&
+          json.results &&
+          json.results.length &&
+          json.results[0].iframe_url
+        ) {
+          iframe_src = json.results[0].iframe_url;
+          iframe_translate = '';
+          iframe_quality = '';
         }
         callback({
           src: iframe_src,

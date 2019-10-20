@@ -70,6 +70,9 @@ router.get('/:id?/:title?', function(req, res) {
         'data-kodik="' +
         (modules.player.data.kodik.token || '') +
         '" ' +
+        'data-collaps="' +
+        (modules.player.data.collaps.token || '') +
+        '" ' +
         'data-autoplay="' +
         autoplay +
         '" ' +
@@ -163,6 +166,9 @@ router.get('/:id?/:title?', function(req, res) {
             '" ' +
             'data-kodik="' +
             (modules.player.data.kodik.token || '') +
+            '" ' +
+            'data-collaps="' +
+            (modules.player.data.collaps.token || '') +
             '" ' +
             'data-autoplay="' +
             autoplay +

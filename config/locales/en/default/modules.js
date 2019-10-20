@@ -169,6 +169,9 @@ module.exports = {
       },
       "videocdn": {
         "token": ""
+      },
+      "collaps": {
+        "token": ""
       }
     }
   },
