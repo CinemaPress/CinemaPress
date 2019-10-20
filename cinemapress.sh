@@ -264,10 +264,10 @@ ip_install() {
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
             BOTS=""
-            if [ ! -d "/var/nginx/bots.d/" ]; then
-                mkdir -p /var/nginx/bots.d
-                cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /var/nginx/bots.d/
-                BOTS="-v /var/nginx/bots.d:/etc/nginx/bots.d"
+            if [ ! -d "/etc/nginx/bots.d/" ]; then
+                mkdir -p /etc/nginx/bots.d
+                cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /etc/nginx/bots.d/
+                BOTS="-v /etc/nginx/bots.d:/etc/nginx/bots.d"
             fi
 
             docker run \
@@ -335,7 +335,7 @@ ip_install() {
     CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
     CP_SPEED=`echo ${P} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
-    rm -rf /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx /var/nginx
+    rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx/* /var/nginx/
     3_backup "create"
     8_remove "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
