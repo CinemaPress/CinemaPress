@@ -1427,8 +1427,10 @@ docker_speed_off() {
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 docker_ssl_on() {
-    sed -Ei "s/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
-        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+    if [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ]; then
+        sed -Ei "s/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
+            "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+    fi
 }
 docker_ssl_off() {
     sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \

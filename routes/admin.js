@@ -800,6 +800,34 @@ router.post('/change', function(req, res) {
           return err ? callback(err) : callback(null, result);
         });
       },
+      pagespeed: function(callback) {
+        if (!form.config || typeof form.config.pagespeed === 'undefined')
+          return callback(null, 'Null');
+        exec(
+          '/usr/bin/cinemapress container speed ' + form.config.pagespeed,
+          function(err) {
+            setTimeout(function() {
+              form.flush = true;
+              return err ? callback(err) : callback(null, 'PageSpeed');
+            }, 5000);
+          }
+        );
+      },
+      protocol: function(callback) {
+        if (!form.config || typeof form.config.protocol === 'undefined')
+          return callback(null, 'Null');
+        exec(
+          '/usr/bin/cinemapress container protocol "' +
+            form.config.protocol +
+            '"',
+          function(err) {
+            setTimeout(function() {
+              form.flush = true;
+              return err ? callback(err) : callback(null, 'Protocol');
+            }, 5000);
+          }
+        );
+      },
       flush_static: function(callback) {
         if (!form.flush_static) return callback(null, 'Null');
         exec('touch /var/ngx_pagespeed_cache/cache.flush', function(err) {
@@ -826,7 +854,9 @@ router.post('/change', function(req, res) {
             process.env.CP_VER = process.env.CP_VER
               ? parseInt(process.env.CP_VER) + 1
               : new Date().getTime().toString();
-            return err ? callback(err) : callback(null, 'Flush');
+            setTimeout(function() {
+              return err ? callback(err) : callback(null, 'Flush');
+            }, 5000);
           });
         });
       },
@@ -844,32 +874,6 @@ router.post('/change', function(req, res) {
             setTimeout(function() {
               return err ? callback(err) : callback(null, 'Database');
             }, 1000 * 60 * 9.5);
-          }
-        );
-      },
-      pagespeed: function(callback) {
-        if (!form.config || typeof form.config.pagespeed === 'undefined')
-          return callback(null, 'Null');
-        exec(
-          '/usr/bin/cinemapress container speed ' + form.config.pagespeed,
-          function(err) {
-            setTimeout(function() {
-              return err ? callback(err) : callback(null, 'PageSpeed');
-            }, 5000);
-          }
-        );
-      },
-      protocol: function(callback) {
-        if (!form.config || typeof form.config.protocol === 'undefined')
-          return callback(null, 'Null');
-        exec(
-          '/usr/bin/cinemapress container protocol "' +
-            form.config.protocol +
-            '"',
-          function(err) {
-            setTimeout(function() {
-              return err ? callback(err) : callback(null, 'Protocol');
-            }, 5000);
           }
         );
       },
