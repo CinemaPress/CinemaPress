@@ -329,7 +329,7 @@ ip_install() {
     A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
     K=`grep "\"key\"" /home/${CP_DOMAIN}/config/default/config.js`
     D=`grep "\"date\"" /home/${CP_DOMAIN}/config/default/config.js`
-    P=`grep "\"pagespeed\"" /home/${CP_DOMAIN}/config/default/config.js`
+    P=`grep "\"pagespeed\"" /home/${CP_DOMAIN}/config/production/config.js`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
     CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
     CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
