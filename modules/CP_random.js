@@ -47,9 +47,9 @@ function codeRandom(page) {
     }
 
     code =
-      'document.addEventListener("DOMContentLoaded",function(){!function(){' +
+      'document.addEventListener("DOMContentLoaded",function(){(function(){' +
       code +
-      '}()});';
+      '})()});';
     code = '<script>' + code + '</script>';
   }
 
