@@ -717,7 +717,7 @@ router.post('/change', function(req, res) {
           form.config.urls.admin &&
           /^admin/.test(form.config.urls.admin) === false
         ) {
-          form.config.urls.admin = 'admin';
+          form.config.urls.admin = configs.config.urls.admin;
         }
         configs.config = parseData(configs.config, form.config);
         CP_save.save(configs.config, 'config', function(err, result) {
@@ -832,6 +832,7 @@ router.post('/change', function(req, res) {
         if (!form.flush) return callback(null, 'Null');
         form.flush_static = true;
         form.flush_memcached = true;
+        return callback(null, 'Flush');
       },
       flush_static: function(callback) {
         if (!form.flush_static) return callback(null, 'Null');
@@ -839,7 +840,7 @@ router.post('/change', function(req, res) {
           process.env.CP_VER = process.env.CP_VER
             ? parseInt(process.env.CP_VER) + 1
             : new Date().getTime().toString();
-          return err ? callback(err) : callback(null, 'Flush');
+          return err ? callback(err) : callback(null, 'FlushStatic');
         });
       },
       flush_memcached: function(callback) {
@@ -848,7 +849,7 @@ router.post('/change', function(req, res) {
           process.env.CP_VER = process.env.CP_VER
             ? parseInt(process.env.CP_VER) + 1
             : new Date().getTime().toString();
-          return err ? callback(err) : callback(null, 'Flush');
+          return err ? callback(err) : callback(null, 'FlushMemcached');
         });
       },
       database: function(callback) {
@@ -870,9 +871,14 @@ router.post('/change', function(req, res) {
       },
       restart: function(callback) {
         if (!form.restart) return callback(null, 'Null');
-        exec('pm2 restart ' + config.domain + ' --update-env', function(err) {
-          return err ? callback(err) : callback(null, 'Restart');
-        });
+        exec(
+          'cd /home/' +
+            config.domain +
+            ' && pm2 restart process.json --update-env',
+          function(err) {
+            return err ? callback(err) : callback(null, 'Restart');
+          }
+        );
       }
     },
     function(err, result) {
