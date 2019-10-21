@@ -206,7 +206,7 @@ router.get('/?', function(req, res) {
     api(
       'http://moonwalk.cc/api/videos.json?' +
         'api_token=' +
-        modules.player.data.moonwalk.token.trim() +
+        modules.player.data.moonwalk.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -269,6 +269,19 @@ router.get('/?', function(req, res) {
           } else {
             iframe_url = iframe_url + '?show_translations=1';
           }
+          if (modules.player.data.moonwalk.token.trim().split(':')[1]) {
+            if (iframe_url.indexOf('?') + 1) {
+              iframe_url =
+                iframe_url +
+                '&uid=' +
+                modules.player.data.moonwalk.token.trim().split(':')[1];
+            } else {
+              iframe_url =
+                iframe_url +
+                '?uid=' +
+                modules.player.data.moonwalk.token.trim().split(':')[1];
+            }
+          }
           iframe_src = iframe_url;
         }
         if (!iframe_src) {
@@ -326,7 +339,7 @@ router.get('/?', function(req, res) {
     api(
       'http://hdgo.cc/api/video.json?' +
         'token=' +
-        modules.player.data.hdgo.token.trim() +
+        modules.player.data.hdgo.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -340,6 +353,19 @@ router.get('/?', function(req, res) {
             .replace('http:', 'https:');
           iframe_translate = json[0].translator ? json[0].translator : '';
           iframe_quality = json[0].quality ? json[0].quality : '';
+          if (modules.player.data.hdgo.token.trim().split(':')[1]) {
+            if (iframe_src.indexOf('?') + 1) {
+              iframe_src =
+                iframe_src +
+                '&uid=' +
+                modules.player.data.hdgo.token.trim().split(':')[1];
+            } else {
+              iframe_src =
+                iframe_src +
+                '?uid=' +
+                modules.player.data.hdgo.token.trim().split(':')[1];
+            }
+          }
         }
         callback({
           src: iframe_src,
@@ -358,7 +384,7 @@ router.get('/?', function(req, res) {
     api(
       'https://iframe.video/api/videos.json?' +
         'api_token=' +
-        modules.player.data.iframe.token.trim() +
+        modules.player.data.iframe.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -416,6 +442,19 @@ router.get('/?', function(req, res) {
               iframe_url = iframe_url + '?start_time=' + start_time;
             }
           }
+          if (modules.player.data.iframe.token.trim().split(':')[1]) {
+            if (iframe_url.indexOf('?') + 1) {
+              iframe_url =
+                iframe_url +
+                '&uid=' +
+                modules.player.data.iframe.token.trim().split(':')[1];
+            } else {
+              iframe_url =
+                iframe_url +
+                '?uid=' +
+                modules.player.data.iframe.token.trim().split(':')[1];
+            }
+          }
           iframe_src = iframe_url;
         }
         callback({
@@ -435,7 +474,7 @@ router.get('/?', function(req, res) {
     api(
       'https://kodikapi.com/search?' +
         'token=' +
-        modules.player.data.kodik.token.trim() +
+        modules.player.data.kodik.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -455,6 +494,19 @@ router.get('/?', function(req, res) {
           iframe_quality = json.results[0].quality
             ? json.results[0].quality
             : '';
+          if (modules.player.data.kodik.token.trim().split(':')[1]) {
+            if (iframe_src.indexOf('?') + 1) {
+              iframe_src =
+                iframe_src +
+                '&uid=' +
+                modules.player.data.kodik.token.trim().split(':')[1];
+            } else {
+              iframe_src =
+                iframe_src +
+                '?uid=' +
+                modules.player.data.kodik.token.trim().split(':')[1];
+            }
+          }
         }
         callback({
           src: iframe_src,
@@ -473,7 +525,7 @@ router.get('/?', function(req, res) {
     api(
       'https://videocdn.tv/api/short?' +
         'api_token=' +
-        modules.player.data.videocdn.token.trim() +
+        modules.player.data.videocdn.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -488,6 +540,19 @@ router.get('/?', function(req, res) {
               ? json.data[0].translations[0]
               : '';
           iframe_quality = json.data[0].quality ? json.data[0].quality : '';
+          if (modules.player.data.videocdn.token.trim().split(':')[1]) {
+            if (iframe_src.indexOf('?') + 1) {
+              iframe_src =
+                iframe_src +
+                '&uid=' +
+                modules.player.data.videocdn.token.trim().split(':')[1];
+            } else {
+              iframe_src =
+                iframe_src +
+                '?uid=' +
+                modules.player.data.videocdn.token.trim().split(':')[1];
+            }
+          }
         }
         callback({
           src: iframe_src,
@@ -506,7 +571,7 @@ router.get('/?', function(req, res) {
     api(
       'https://apicollaps.cc/list?' +
         'token=' +
-        modules.player.data.collaps.token.trim() +
+        modules.player.data.collaps.token.trim().split(':')[0] +
         '&' +
         'kinopoisk_id=' +
         id,
@@ -523,6 +588,19 @@ router.get('/?', function(req, res) {
           iframe_src = json.results[0].iframe_url;
           iframe_translate = '';
           iframe_quality = '';
+          if (modules.player.data.collaps.token.trim().split(':')[1]) {
+            if (iframe_src.indexOf('?') + 1) {
+              iframe_src =
+                iframe_src +
+                '&uid=' +
+                modules.player.data.collaps.token.trim().split(':')[1];
+            } else {
+              iframe_src =
+                iframe_src +
+                '?uid=' +
+                modules.player.data.collaps.token.trim().split(':')[1];
+            }
+          }
         }
         callback({
           src: iframe_src,
