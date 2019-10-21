@@ -1362,7 +1362,8 @@ docker_restore() {
     rclone copy CINEMAPRESS:${CP_DOMAIN}/latest/themes.tar /var/${CP_DOMAIN}/
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
-    tar -xf /var/${CP_DOMAIN}/themes.tar
+    tar --exclude=themes/default/views/desktop \
+        -xf /var/${CP_DOMAIN}/themes.tar
     docker_start
 }
 docker_backup() {
@@ -1398,7 +1399,6 @@ docker_backup() {
         -uf /var/${CP_DOMAIN}/themes.tar \
         themes/default/public/desktop \
         themes/default/public/mobile \
-        themes/default/views/desktop \
         themes/default/views/mobile \
         themes/${THEME_NAME} \
         files
