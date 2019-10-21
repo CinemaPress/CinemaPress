@@ -288,7 +288,7 @@ router.get('/?', function(req, res) {
           api(
             'http://moonwalk.cc/api/videos.json?' +
               'api_token=' +
-              modules.player.data.moonwalk.token.trim() +
+              modules.player.data.moonwalk.token.trim().split(':')[0] +
               '&' +
               'kinopoisk_id=' +
               id +
@@ -592,12 +592,12 @@ router.get('/?', function(req, res) {
             if (iframe_src.indexOf('?') + 1) {
               iframe_src =
                 iframe_src +
-                '&uid=' +
+                '&host=' +
                 modules.player.data.collaps.token.trim().split(':')[1];
             } else {
               iframe_src =
                 iframe_src +
-                '?uid=' +
+                '?host=' +
                 modules.player.data.collaps.token.trim().split(':')[1];
             }
           }

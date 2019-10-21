@@ -51,8 +51,8 @@ function indexEpisode(options, callback) {
         : 'streamguard.cc',
     token:
       modules.episode.data.source === 'iframe'
-        ? modules.player.data.iframe.token.trim()
-        : modules.player.data.moonwalk.token.trim()
+        ? modules.player.data.iframe.token.trim().split(':')[0]
+        : modules.player.data.moonwalk.token.trim().split(':')[0]
   };
 
   var url =
