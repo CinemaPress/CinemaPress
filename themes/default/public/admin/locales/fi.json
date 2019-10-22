@@ -808,5 +808,6 @@
 	"PageSpeed включен": "PageSpeed ​​mukana",
 	"PageSpeed отключен": "PageSpeed ​​vammaisten",
 	"Обновления с videocdn": "Päivitykset videocdn",
-	"Случайный поддомен после скрытия": "Satunnainen aliverkkotunnus jälkeen piilota"
+	"Случайный поддомен после скрытия": "Satunnainen aliverkkotunnus jälkeen piilota",
+	"Белый список адресов электронной почты": "Whitelist sähköpostiosoitteet"
 }

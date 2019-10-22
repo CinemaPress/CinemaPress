@@ -807,5 +807,6 @@
   "PageSpeed включен": "PageSpeed enabled",
   "PageSpeed отключен": "PageSpeed disabled",
   "Обновления с videocdn": "Updates with videocdn",
-  "Случайный поддомен после скрытия": "Random subdomain after hiding"
+  "Случайный поддомен после скрытия": "Random subdomain after hiding",
+  "Белый список адресов электронной почты": "Email whitelist"
 }

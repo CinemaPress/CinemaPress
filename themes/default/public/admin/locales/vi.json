@@ -808,5 +808,6 @@
 	"PageSpeed включен": "Tốc độ trang bao gồm",
 	"PageSpeed отключен": "Tốc độ trang khuyết tật",
 	"Обновления с videocdn": "Cập nhật với videocdn",
-	"Случайный поддомен после скрытия": "Subdomain ngẫu nhiên sau khi trốn"
+	"Случайный поддомен после скрытия": "Subdomain ngẫu nhiên sau khi trốn",
+	"Белый список адресов электронной почты": "Địa chỉ email whitelist"
 }

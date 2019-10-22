@@ -58,6 +58,7 @@ module.exports = {
         "host": "",
         "port": 993,
         "tls": 1,
+        "from": [],
         "subdomain": 0
       },
       "country": 0,
