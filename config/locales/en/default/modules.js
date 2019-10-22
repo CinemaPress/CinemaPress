@@ -473,7 +473,7 @@ module.exports = {
         },
         "videocdn_movies": {
           "count": 12,
-          "url": "poslednie-obnovleniya-filmov",
+          "url": "latest-movie-updates",
           "quality": 0,
           "translate": 0
         },
