@@ -807,5 +807,6 @@
 	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "PageSpeed ​​moduli ni iliyoundwa kwa moja kuongeza tovuti ya utendaji na kupunguza muda wa kupakia tovuti katika browser",
 	"PageSpeed включен": "PageSpeed ​​pamoja",
 	"PageSpeed отключен": "PageSpeed ​​walemavu",
-	"Обновления с videocdn": "Taarifa na videocdn"
+	"Обновления с videocdn": "Taarifa na videocdn",
+	"Случайный поддомен после скрытия": "Random subdomain baada kujificha"
 }

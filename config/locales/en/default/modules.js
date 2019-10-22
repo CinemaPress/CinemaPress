@@ -57,7 +57,8 @@ module.exports = {
         "password": "",
         "host": "",
         "port": 993,
-        "tls": 1
+        "tls": 1,
+        "subdomain": 0
       },
       "country": 0,
       "status_code_country": "200",

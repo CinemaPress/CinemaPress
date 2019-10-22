@@ -807,5 +807,6 @@
 	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "Modul pageSpeed ​​dirancang untuk secara otomatis mengoptimalkan kinerja situs dengan mengurangi loading situs waktu di browser",
 	"PageSpeed включен": "PageSpeed ​​termasuk",
 	"PageSpeed отключен": "PageSpeed ​​dinonaktifkan",
-	"Обновления с videocdn": "Aplikasi videocdn"
+	"Обновления с videocdn": "Aplikasi videocdn",
+	"Случайный поддомен после скрытия": "Subdomain acak setelah hide"
 }

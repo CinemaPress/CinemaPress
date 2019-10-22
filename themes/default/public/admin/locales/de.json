@@ -807,5 +807,6 @@
 	"PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере": "Pagespeed-Modul wird entwickelt, um automatisch die leistung der website zu optimieren, indem die ladezeit website im browser zu reduzieren",
 	"PageSpeed включен": "Pagespeed enthalten",
 	"PageSpeed отключен": "Pagespeed behinderte",
-	"Обновления с videocdn": "Updates mit videocdn"
+	"Обновления с videocdn": "Updates mit videocdn",
+	"Случайный поддомен после скрытия": "Zufällige sub-Domain nach auszublenden"
 }

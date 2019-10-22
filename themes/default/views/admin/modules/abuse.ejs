@@ -155,6 +155,32 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="col-sm-12">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный поддомен после скрытия') %>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-sm-12 text-center">
+                                                        <div class="inline-labels">
+                                                            <label>
+                                                                <input name="modules.abuse.data.imap.subdomain" value="1" <% if (modules.abuse.data.imap.subdomain) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %>
+                                                            </label>
+                                                            <label>
+                                                                <input name="modules.abuse.data.imap.subdomain" value="0" <% if (!modules.abuse.data.imap.subdomain) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </article>
