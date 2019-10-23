@@ -149,7 +149,7 @@ module.exports = {
     "data": {
       "display": "yohoho",
       "yohoho": {
-        "player": "moonwalk,hdgo,kodik,iframe,videocdn,trailer",
+        "player": "videocdn,collaps,kodik,trailer",
         "trailer": "",
         "bg": "#14181C",
         "button": ""
