@@ -1628,6 +1628,11 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "upd" )
+            sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+            chmod +x /usr/bin/cinemapress
+            exit 0
+        ;;
         "stop"|"start"|"restart" )
             _br
             read_domain ${2}
