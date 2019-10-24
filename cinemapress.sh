@@ -405,6 +405,12 @@ ip_install() {
             MEGA_PASSWORD="${3}"
             docker exec ${CP_DOMAIN_} rclone config create CINEMAPRESS mega \
                 user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            if [ "${4}" = "2" ] || [ "${4}" = "restore" ]; then
+                docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            elif [ "${4}" = "1" ] || [ "${4}" = "create" ]; then
+                docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            fi
         else
             _header "RCLONE CONFIG"
             _content
@@ -419,6 +425,14 @@ ip_install() {
             _content "or configure for MEGA.nz cloud storage in one line:"
             _content
             printf "root@vps:~# cinemapress backup ${CP_DOMAIN} config \"email\" \"pass\""
+            _content
+            _content "email - your email on MEGA.nz"
+            _content "pass - your password on MEGA.nz"
+            _content
+            _content "after creating config, you can create/restore backup:"
+            _content
+            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} create"
+            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} restore"
             _br
             _content
             _s
@@ -1516,7 +1530,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             sh_progress
-            3_backup ${3} ${4} ${5}
+            3_backup ${3} ${4} ${5} ${6}
             sh_progress 100
             exit 0
         ;;
