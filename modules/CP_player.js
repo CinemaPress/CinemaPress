@@ -214,6 +214,13 @@ function codePlayer(type, movie, options) {
       modules.player.data.videocdn.token
         ? modules.player.data.videocdn.token
         : '';
+    data.hdvb =
+      modules.player &&
+      modules.player.data &&
+      modules.player.data.hdvb &&
+      modules.player.data.hdvb.token
+        ? modules.player.data.hdvb.token
+        : '';
     data.collaps =
       modules.player &&
       modules.player.data &&

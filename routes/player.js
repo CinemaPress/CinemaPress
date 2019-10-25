@@ -104,6 +104,15 @@ router.get('/?', function(req, res) {
           callback(null, {});
         }
       },
+      hdvb: function(callback) {
+        if (modules.player.data.hdvb && modules.player.data.hdvb.token) {
+          getHdvb(function(result) {
+            callback(null, result);
+          });
+        } else {
+          callback(null, {});
+        }
+      },
       collaps: function(callback) {
         if (modules.player.data.collaps && modules.player.data.collaps.token) {
           getCollaps(function(result) {
@@ -556,6 +565,40 @@ router.get('/?', function(req, res) {
         }
         callback({
           src: iframe_src,
+          translate: iframe_translate,
+          quality: iframe_quality
+        });
+      }
+    );
+  }
+
+  /**
+   * Get Hdvb player.
+   */
+
+  function getHdvb(callback) {
+    api(
+      'https://my-serials.info/api/videos.json?' +
+        'token=' +
+        modules.player.data.hdvb.token.trim().split(':')[0] +
+        '&' +
+        'id_kp=' +
+        id,
+      function(json) {
+        var iframe_url = '';
+        var iframe_translate = '';
+        var iframe_quality = '';
+        if (json && json.length && json[0].iframe_url) {
+          iframe_url = json[0].iframe_url;
+          iframe_translate = json[0].translator
+            ? decodeURIComponent(json[0].translator)
+            : '';
+          iframe_quality = json[0].quality
+            ? decodeURIComponent(json[0].quality)
+            : '';
+        }
+        callback({
+          src: iframe_url,
           translate: iframe_translate,
           quality: iframe_quality
         });

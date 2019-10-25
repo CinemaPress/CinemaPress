@@ -52,22 +52,26 @@ post_crontabs() {
 }
 docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
-    if [ "${CP_OS}" != "alpine" ] && [ ! -f "/usr/bin/cinemapress" ]; then
-        if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
-            apt-get -y -qq install sudo
-            sudo apt-get -y -qq update
-            sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
-        elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
-            apt-get -y -qq install sudo
-            sudo apt-get -y -qq update
-            sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
-        elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-            dnf -y install sudo
-            sudo dnf -y install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof
-        elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-            yum install -y epel-release
-            yum install -y sudo
-            sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools
+    if [ "${CP_OS}" != "alpine" ]; then
+        if [ "$0" != "/usr/bin/cinemapress" ]; then
+            echo -n "Installing packages ..."
+            if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
+                apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
+                apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
+                dnf -y install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo dnf -y install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+                yum install -y epel-release >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                yum install -y sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+            fi
+            echo -e "\\r                       "
         fi
         if [ "`docker -v 2>/dev/null`" = "" ]; then
             clear
@@ -187,9 +191,12 @@ docker_install() {
                 exit 0
             fi
         fi
-        sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
-        chmod +x /usr/bin/cinemapress
     fi
+    echo -n "Downloading new cinemapress.sh ..."
+    wget -T 10 --no-check-certificate -qO /usr/bin/cinemapress \
+        https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+    chmod +x /usr/bin/cinemapress
+    echo -e "\\r                                  "
 }
 ip_install() {
     IP1=`ip route get 1 | awk '{print $NF;exit}'`
@@ -377,27 +384,7 @@ ip_install() {
         cp -r /home/${CP_DOMAIN}/config/production/rclone.conf /var/rclone.conf
     fi
     RCS=`docker exec ${CP_DOMAIN_} cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
-    if [ "${RCS}" != "" ]; then
-        BKP="${1}"
-        if [ "${BKP}" = "" ]; then
-            _header "MAKE A CHOICE"
-            printf "${C}---- ${G}1)${NC} create ${S}-------------------- Create New Backup Website ${C}----\n"
-            printf "${C}---- ${G}2)${NC} restore ${S}------------ Restore Website From Last Backup ${C}----\n"
-            _s
-            read -e -p 'OPTION [1-2]: ' BKP
-            BKP=`echo ${BKP} | iconv -c -t UTF-8`
-            _br
-        fi
-
-        sh_progress
-
-        if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
-            docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-        else
-            docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-        fi
-    else
+    if [ "${1}" = "config" ] || [ "${RCS}" = "" ]; then
         if [ "${2}" != "" ] && [ "${3}" != "" ]; then
             sh_progress
 
@@ -406,7 +393,7 @@ ip_install() {
             docker exec ${CP_DOMAIN_} rclone config create CINEMAPRESS mega \
                 user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             if [ "${4}" = "2" ] || [ "${4}" = "restore" ]; then
-                docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                docker exec ${CP_DOMAIN_} cinemapress container backup restore "${5}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
                 docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${4}" = "1" ] || [ "${4}" = "create" ]; then
                 docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
@@ -437,6 +424,26 @@ ip_install() {
             _content
             _s
             exit 0
+        fi
+    elif [ "${RCS}" != "" ]; then
+        BKP="${1}"
+        if [ "${BKP}" = "" ]; then
+            _header "MAKE A CHOICE"
+            printf "${C}---- ${G}1)${NC} create ${S}-------------------- Create New Backup Website ${C}----\n"
+            printf "${C}---- ${G}2)${NC} restore ${S}------------ Restore Website From Last Backup ${C}----\n"
+            _s
+            read -e -p 'OPTION [1-2]: ' BKP
+            BKP=`echo ${BKP} | iconv -c -t UTF-8`
+            _br
+        fi
+
+        sh_progress
+
+        if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
+            docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+        else
+            docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         fi
     fi
 }
@@ -1370,11 +1377,13 @@ docker_cron() {
     node /home/${CP_DOMAIN}/lib/CP_cron.js
 }
 docker_restore() {
+    WEB_DIR="${1}"
+    if [ "${WEB_DIR}" = "" ]; then WEB_DIR="${CP_DOMAIN}"; fi
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    rclone copy CINEMAPRESS:${CP_DOMAIN}/latest/config.tar /var/${CP_DOMAIN}/
-    rclone copy CINEMAPRESS:${CP_DOMAIN}/latest/themes.tar /var/${CP_DOMAIN}/
+    rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
+    rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
@@ -1683,7 +1692,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_actual
             elif [ "${2}" = "backup" ]; then
                 if [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
-                    docker_restore
+                    docker_restore "${4}"
                 else
                     docker_backup
                 fi
@@ -1703,6 +1712,163 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_passwd "${3}"
             elif [ "${2}" = "rclone" ]; then
                 docker_rclone "${3}" "${4}"
+            fi
+            exit 0
+        ;;
+        "combine" )
+            if [ "${2}" = "chrm" ] || [ "${2}" = "create_https_restore_mirror" ]; then
+                read_domain ${3}
+                read_mirror ${4}
+                read_lang ${5}
+                read_theme ${6}
+                read_password ${7}
+                read_cloudflare_email ${8}
+                read_cloudflare_api_key ${9}
+                read_mega_email ${10}
+                read_mega_password ${11}
+                _s ${11}
+                sh_progress
+                read_domain ${4}
+                1_install
+                sh_progress
+                read_domain ${4}
+                6_https
+                sh_progress
+                read_domain ${4}
+                3_backup config "${10}" "${11}" restore "${3}"
+                sh_progress
+                read_domain ${3}
+                7_mirror
+                post_crontabs
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "crm" ] || [ "${2}" = "create_restore_mirror" ]; then
+                read_domain ${3}
+                read_mirror ${4}
+                read_lang ${5}
+                read_theme ${6}
+                read_password ${7}
+                read_mega_email ${8}
+                read_mega_password ${9}
+                _s ${9}
+                sh_progress
+                read_domain ${4}
+                1_install
+                sh_progress
+                read_domain ${4}
+                3_backup config "${8}" "${9}" restore "${3}"
+                sh_progress
+                read_domain ${3}
+                7_mirror
+                post_crontabs
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "chm" ] || [ "${2}" = "create_https_mirror" ]; then
+                read_domain ${3}
+                read_mirror ${4}
+                read_lang ${5}
+                read_theme ${6}
+                read_password ${7}
+                read_cloudflare_email ${8}
+                read_cloudflare_api_key ${9}
+                _s ${9}
+                sh_progress
+                read_domain ${4}
+                1_install
+                sh_progress
+                read_domain ${4}
+                6_https
+                sh_progress
+                read_domain ${3}
+                7_mirror
+                post_crontabs
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "chb" ] || [ "${2}" = "create_https_backup" ]; then
+                read_domain ${3}
+                sh_yes
+                read_lang ${4}
+                read_theme ${5}
+                read_password ${6}
+                read_cloudflare_email ${7}
+                read_cloudflare_api_key ${8}
+                read_mega_email ${9}
+                read_mega_password ${10}
+                _s ${10}
+                sh_progress
+                1_install
+                sh_progress
+                6_https
+                sh_progress
+                3_backup config "${9}" "${10}" create
+                post_crontabs
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "chr" ] || [ "${2}" = "create_https_restore" ]; then
+                read_domain ${3}
+                sh_yes
+                read_lang ${4}
+                read_theme ${5}
+                read_password ${6}
+                read_cloudflare_email ${7}
+                read_cloudflare_api_key ${8}
+                read_mega_email ${9}
+                read_mega_password ${10}
+                _s ${10}
+                sh_progress
+                1_install
+                sh_progress
+                6_https
+                sh_progress
+                3_backup config "${9}" "${10}" restore
+                post_crontabs
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "ch" ] || [ "${2}" = "create_https" ]; then
+                read_domain ${3}
+                sh_yes
+                read_lang ${4}
+                read_theme ${5}
+                read_password ${6}
+                read_cloudflare_email ${7}
+                read_cloudflare_api_key ${8}
+                _s ${8}
+                sh_progress
+                1_install
+                sh_progress
+                6_https
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "cb" ] || [ "${2}" = "create_backup" ]; then
+                read_domain ${3}
+                sh_yes
+                read_lang ${4}
+                read_theme ${5}
+                read_password ${6}
+                read_mega_email ${7}
+                read_mega_password ${8}
+                _s ${8}
+                sh_progress
+                1_install
+                sh_progress
+                3_backup config "${7}" "${8}" create
+                sh_progress 100
+                exit 0
+            elif [ "${2}" = "cr" ] || [ "${2}" = "create_restore" ]; then
+                read_domain ${3}
+                sh_yes
+                read_lang ${4}
+                read_theme ${5}
+                read_password ${6}
+                read_mega_email ${7}
+                read_mega_password ${8}
+                _s ${8}
+                sh_progress
+                1_install
+                sh_progress
+                3_backup config "${7}" "${8}" restore
+                sh_progress 100
+                exit 0
             fi
             exit 0
         ;;

@@ -64,6 +64,9 @@ router.get('/:id?/:title?', function(req, res) {
         'data-videocdn="' +
         (modules.player.data.videocdn.token || '') +
         '" ' +
+        'data-hdvb="' +
+        (modules.player.data.hdvb.token || '') +
+        '" ' +
         'data-youtube="' +
         (modules.player.data.youtube.token || '') +
         '" ' +
@@ -160,6 +163,9 @@ router.get('/:id?/:title?', function(req, res) {
             '" ' +
             'data-videocdn="' +
             (modules.player.data.videocdn.token || '') +
+            '" ' +
+            'data-hdvb="' +
+            (modules.player.data.hdvb.token || '') +
             '" ' +
             'data-youtube="' +
             (modules.player.data.youtube.token || '') +

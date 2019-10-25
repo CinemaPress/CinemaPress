@@ -306,6 +306,37 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
+                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Hdvb.cc
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/player.html#hdvb" class="csstip" title="<%= __('Указание токен-ключа плеера') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.player.data.display" value="hdvb" <% if (modules.player.data.display === 'hdvb') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <input name="modules.player.data.hdvb.token" value="<%= modules.player.data.hdvb.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
                                         <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;YouTube.com
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">

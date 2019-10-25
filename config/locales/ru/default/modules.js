@@ -149,7 +149,7 @@ module.exports = {
     "data": {
       "display": "yohoho",
       "yohoho": {
-        "player": "videocdn,collaps,kodik,trailer",
+        "player": "videocdn,collaps,hdvb,iframe,kodik,trailer",
         "trailer": "",
         "bg": "#14181C",
         "button": ""
@@ -170,6 +170,9 @@ module.exports = {
         "token": ""
       },
       "videocdn": {
+        "token": ""
+      },
+      "hdvb": {
         "token": ""
       },
       "collaps": {
