@@ -412,6 +412,7 @@ ip_install() {
             _content "or configure for MEGA.nz cloud storage in one line:"
             _content
             printf "root@vps:~# cinemapress backup ${CP_DOMAIN} config \"email\" \"pass\""
+            _br
             _content
             _content "email - your email on MEGA.nz"
             _content "pass - your password on MEGA.nz"
@@ -419,6 +420,7 @@ ip_install() {
             _content "after creating config, you can create/restore backup:"
             _content
             printf "root@vps:~# cinemapress backup ${CP_DOMAIN} create"
+            _br
             printf "root@vps:~# cinemapress backup ${CP_DOMAIN} restore"
             _br
             _content
