@@ -54,7 +54,7 @@ docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
     if [ "${CP_OS}" != "alpine" ]; then
         if [ "$0" != "/usr/bin/cinemapress" ]; then
-            echo -n "Installing packages ..."
+            echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
                 sudo apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
@@ -192,7 +192,7 @@ docker_install() {
             fi
         fi
     fi
-    echo -n "Downloading new cinemapress.sh ..."
+    echo ""; echo -n "Downloading new cinemapress.sh ..."
     wget -T 10 --no-check-certificate -qO /usr/bin/cinemapress \
         https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
     chmod +x /usr/bin/cinemapress
@@ -689,7 +689,14 @@ ip_install() {
         done
         if [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
             CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-            sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | ${CURRENT}\"/" /home/${CP_MIRROR}/process.json
+            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_ | //"`
+            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_ | //"`
+            CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_MIRROR_}_//"`
+            CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_DOMAIN_}_//"`
+            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_//"`
+            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_//"`
+            if [ "${CURRENT}" != "" ]; then CURRENT=" | ${CURRENT}"; fi
+            sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_MIRROR_}_ | _${CP_DOMAIN_}_${CURRENT}\"/" /home/${CP_MIRROR}/process.json
         fi
     fi
 

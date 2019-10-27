@@ -5,7 +5,7 @@ RUN mkdir -p \
     /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
-RUN apk add bash dos2unix \
+RUN apk add bash dos2unix logrotate \
     && dos2unix /etc/nginx/nginx.sh \
     && chmod +x /etc/nginx/nginx.sh \
     && rm -rf \
