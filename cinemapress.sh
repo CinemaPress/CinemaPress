@@ -192,11 +192,6 @@ docker_install() {
             fi
         fi
     fi
-    echo ""; echo -n "Downloading new cinemapress.sh ..."
-    wget -T 10 --no-check-certificate -qO /usr/bin/cinemapress \
-        https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
-    chmod +x /usr/bin/cinemapress
-    echo -e "\\r                                  "
 }
 ip_install() {
     IP1=`ip route get 1 | awk '{print $NF;exit}'`
@@ -1646,6 +1641,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "upd" )
+            echo ""; echo -n "Downloading new cinemapress.sh ..."; echo "";
             sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
             exit 0
