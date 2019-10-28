@@ -172,6 +172,9 @@ module.exports = {
       "videocdn": {
         "token": ""
       },
+      "hdvb": {
+        "token": ""
+      },
       "collaps": {
         "token": ""
       }
@@ -480,6 +483,18 @@ module.exports = {
           "translate": 0
         },
         "videocdn_serials": {
+          "count": 0,
+          "url": "",
+          "quality": 0,
+          "translate": 0
+        },
+        "hdvb_movies": {
+          "count": 12,
+          "url": "latest-movie-updates",
+          "quality": 0,
+          "translate": 0
+        },
+        "hdvb_serials": {
           "count": 0,
           "url": "",
           "quality": 0,

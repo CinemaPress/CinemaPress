@@ -487,6 +487,18 @@ module.exports = {
           "url": "",
           "quality": 0,
           "translate": 0
+        },
+        "hdvb_movies": {
+          "count": 12,
+          "url": "poslednie-obnovleniya-filmov",
+          "quality": 0,
+          "translate": 0
+        },
+        "hdvb_serials": {
+          "count": 0,
+          "url": "",
+          "quality": 0,
+          "translate": 0
         }
       },
       "scraper": ""
