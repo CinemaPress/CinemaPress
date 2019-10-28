@@ -335,11 +335,14 @@ ip_install() {
     K=`grep "\"key\"" /home/${CP_DOMAIN}/config/default/config.js`
     D=`grep "\"date\"" /home/${CP_DOMAIN}/config/default/config.js`
     P=`grep "\"pagespeed\"" /home/${CP_DOMAIN}/config/production/config.js`
+    S=`grep "\"admin\"" /home/${CP_DOMAIN}/config/production/config.js`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
     CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
     CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
     CP_SPEED=`echo ${P} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
+    CP_SECRET=`echo ${S} | sed 's/.*"admin":\s*"\(admin[a-zA-Z0-9_-]*\)".*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
+    if [ "${CP_SECRET}" = "" ] || [ "${CP_SECRET}" = "${S}" ]; then CP_SECRET=""; fi
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx/* /var/nginx/
     3_backup "create"
     8_remove "full" "safe"
@@ -369,6 +372,10 @@ ip_install() {
         sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
             /home/${CP_DOMAIN}/config/production/config.js
         docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container speed ${CP_SPEED}
+    fi
+    if [ "${CP_SECRET}" != "" ]; then
+        sed -E -i "s/\"admin\":\s*\"admin[a-zA-Z0-9_-]*\"/\"admin\":\"${CP_SECRET}\"/" \
+            /home/${CP_DOMAIN}/config/production/config.js
     fi
     docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
 }

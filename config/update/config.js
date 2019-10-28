@@ -85,6 +85,8 @@ var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d
 
 var cdn = true;
 var cnt = true;
+var mnw = true;
+var hdg = true;
 
 function objReplace(obj_new, obj_old) {
   obj_new = JSON.stringify(obj_new);
@@ -98,12 +100,15 @@ function objReplace(obj_new, obj_old) {
       if (typeof obj_new[key] === 'object' && !Array.isArray(obj_new[key])) {
         if (key === 'image') cdn = false;
         if (key === 'count') cnt = false;
+        if (key === 'moonwalk') mnw = false;
+        if (key === 'hdgo') hdg = false;
         obj_new[key] = objReplace(obj_new[key], obj_old[key]);
       } else {
         if (typeof obj_new[key] === typeof obj_old[key]) {
           if (
             (key === 'addr' && cdn) ||
             (key === 'key' && cnt) ||
+            (key === 'token' && (mnw || hdg)) ||
             key === 'admin' ||
             key === 'domain' ||
             key === 'date'

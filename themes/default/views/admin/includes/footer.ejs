@@ -550,6 +550,10 @@
             data.content.content_description = data.content.content_description.replace(/\n/ig, '<br>');
         }
 
+        if (data.movie && data.movie.actor) {
+            data.movie.actor = data.movie.actor.replace(/\n/ig, ',').replace(/\s?,\s?/ig, ',').replace(/,,/ig, ',');
+        }
+
         if (data.movie && data.movie.description) {
             data.movie.description = data.movie.description.replace(/\n/ig, '<br>');
         }
