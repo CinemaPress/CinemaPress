@@ -578,7 +578,11 @@ router.get('/?', function(req, res) {
 
   function getHdvb(callback) {
     api(
-      'https://my-serials.info/api/videos.json?' +
+      'http://' +
+        (modules.player.data.hdvb.token.trim().split(':')[1]
+          ? modules.player.data.hdvb.token.trim().split(':')[1]
+          : 'farsihd.info') +
+        '/api/videos.json?' +
         'token=' +
         modules.player.data.hdvb.token.trim().split(':')[0] +
         '&' +
