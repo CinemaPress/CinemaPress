@@ -744,6 +744,7 @@ ip_install() {
         docker stop fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker rm -f fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker pull cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        rm -rf /etc/nginx/bots.d
     fi
     rm -rf /home/${CP_DOMAIN}
     sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
