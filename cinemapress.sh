@@ -352,8 +352,6 @@ ip_install() {
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     3_backup "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
-    sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
-    chmod +x /usr/bin/cinemapress
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
             /home/${CP_DOMAIN}/process.json
