@@ -53,7 +53,7 @@ post_crontabs() {
 docker_install() {
     CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
     if [ "${CP_OS}" != "alpine" ]; then
-        if [ "$0" != "/usr/bin/cinemapress" ]; then
+        if [ "`basename "${0}"`" != "cinemapress" ]; then
             echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
