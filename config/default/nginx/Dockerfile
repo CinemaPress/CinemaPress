@@ -9,6 +9,7 @@ RUN apk add bash dos2unix logrotate \
     && dos2unix /etc/nginx/nginx.sh \
     && chmod +x /etc/nginx/nginx.sh \
     && cp -rf /etc/nginx/logrotate.d/* /etc/logrotate.d/ \
+    && touch /var/log/messages \
     && rm -rf \
         /etc/nginx/conf.d/default.conf \
         /etc/nginx/cloudflare.ini \
