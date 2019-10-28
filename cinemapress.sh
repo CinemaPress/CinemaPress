@@ -15,16 +15,18 @@ CP_VER="4.0.0"
 CP_ALL=""
 PRC_=0
 
-CP_DOMAIN=${CP_DOMAIN:-${2}}
-CP_LANG=${CP_LANG:-${3}}
-CP_THEME=${CP_THEME:-${4}}
-CP_PASSWD=${CP_PASSWD:-${5}}
-CP_MIRROR=${CP_MIRROR:-}
-CP_KEY=${CP_KEY:-}
-CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-${6}}
-CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-${7}}
-MEGA_EMAIL=${MEGA_EMAIL:-${8}}
-MEGA_PASSWORD=${MEGA_PASSWORD:-${9}}
+if [ "${1}" != "combine" ]; then
+    CP_DOMAIN=${CP_DOMAIN:-${2}}
+    CP_LANG=${CP_LANG:-${3}}
+    CP_THEME=${CP_THEME:-${4}}
+    CP_PASSWD=${CP_PASSWD:-${5}}
+    CP_MIRROR=${CP_MIRROR:-}
+    CP_KEY=${CP_KEY:-}
+    CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-${6}}
+    CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-${7}}
+    MEGA_EMAIL=${MEGA_EMAIL:-${8}}
+    MEGA_PASSWORD=${MEGA_PASSWORD:-${9}}
+fi
 
 CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 CP_MIRROR_=`echo ${CP_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g"`
@@ -1598,20 +1600,6 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress 100
             exit 0
         ;;
-        "is"|"install_ssl" )
-            read_domain ${2}
-            sh_yes
-            read_lang ${3}
-            read_theme ${4}
-            read_password ${5}
-            read_cloudflare_email ${6}
-            read_cloudflare_api_key ${7}
-            _s ${7}
-            sh_progress
-            1_install
-            sh_progress 100
-            exit 0
-        ;;
         "en"|"ru" )
             ip_install ${1}
             exit 0
@@ -1897,20 +1885,26 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " OPTIONS:"; _br; _br;
             printf " en      - Fast install EN website"; _br;
             printf " ru      - Fast install RU website"; _br;
-            printf " is      - Install an SSL certificate with automatic"; _br;
-            printf "           renewal using the CloudFlare API"; _br;
             printf " passwd  - Change the password for access to the admin panel"; _br;
             printf " stop    - Stop website (docker container)"; _br;
             printf " start   - Start website (docker container)"; _br;
             printf " restart - Restart website (docker container)"; _br;
             printf " reload  - Reload website (PM2)"; _br;
             printf " zero    - Delete all data from the automatic database"; _br;
+            printf " speed   - Enabled Nginx PageSpeed module"; _br;
+            printf " images  - Downloading posters to own server (only RU)"; _br; _br;
             printf " actual  - Updating data from an automatic database"; _br;
             printf "           to a manual database (year, list of actors, list"; _br;
             printf "           of genres, list of countries, list of directors,"; _br;
             printf "           premiere date, rating and number of votes)"; _br;
-            printf " speed   - Enabled Nginx PageSpeed module"; _br;
-            printf " images  - Downloading posters to own server (only RU)"; _br; _br;
+            printf " combine   create_https_restore_mirror"; _br;
+            printf " combine   create_restore_mirror"; _br;
+            printf " combine   create_https_mirror"; _br;
+            printf " combine   create_https_backup"; _br;
+            printf " combine   create_https_restore"; _br;
+            printf " combine   create_https"; _br;
+            printf " combine   create_backup"; _br;
+            printf " combine   create_restore"; _br; _br;
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
