@@ -71,6 +71,8 @@ docker_install() {
                 yum install -y sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
                 sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
             fi
+            sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+            chmod +x /usr/bin/cinemapress
             echo -e "\\r                       "
         fi
         if [ "`docker -v 2>/dev/null`" = "" ]; then
@@ -1640,7 +1642,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "upd" )
-            echo ""; echo -n "Downloading new cinemapress.sh ..."; echo "";
+            _br; echo -n "Downloading new cinemapress.sh ..."; _br; _br;
             sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
             exit 0
