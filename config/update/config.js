@@ -109,12 +109,13 @@ function objReplace(obj_new, obj_old) {
             (key === 'addr' && cdn) ||
             (key === 'key' && cnt) ||
             (key === 'token' && (mnw || hdg)) ||
-            key === 'admin' ||
             key === 'domain' ||
             key === 'date'
           )
             continue;
-          if (key === 'protocol') {
+          if (key === 'admin' && !(/^admin-/i.test(obj_old[key]))) {
+            continue;
+          } else if (key === 'protocol') {
             obj_new[key] = prt;
           } else {
             obj_new[key] = obj_old[key];
