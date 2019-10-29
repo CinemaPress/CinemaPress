@@ -83,11 +83,6 @@ var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d
   ? 'https://'
   : 'http://';
 
-var cdn = true;
-var cnt = true;
-var mnw = true;
-var hdg = true;
-
 function objReplace(obj_new, obj_old) {
   obj_new = JSON.stringify(obj_new);
   obj_new = JSON.parse(obj_new);
@@ -98,29 +93,10 @@ function objReplace(obj_new, obj_old) {
   for (var key in obj_new) {
     if (obj_new.hasOwnProperty(key) && obj_old.hasOwnProperty(key)) {
       if (typeof obj_new[key] === 'object' && !Array.isArray(obj_new[key])) {
-        if (key === 'image') cdn = false;
-        if (key === 'count') cnt = false;
-        if (key === 'moonwalk') mnw = false;
-        if (key === 'hdgo') hdg = false;
         obj_new[key] = objReplace(obj_new[key], obj_old[key]);
       } else {
         if (typeof obj_new[key] === typeof obj_old[key]) {
-          if (
-            (key === 'addr' && cdn) ||
-            (key === 'key' && cnt) ||
-            (key === 'token' && (mnw || hdg)) ||
-            key === 'domain' ||
-            key === 'date'
-          )
-            continue;
-          if (key === 'admin' && !(/^admin-/i.test(obj_old[key]))) {
-            continue;
-          } else if (key === 'protocol') {
-            obj_new[key] = prt;
-          } else {
-            obj_new[key] = obj_old[key];
-          }
-          cdn = true;
+          obj_new[key] = obj_old[key];
         }
       }
     }
@@ -152,8 +128,19 @@ function objAdd(obj_new, obj_old) {
 async.series(
   {
     config: function(callback) {
+      var c = objAdd(objReplace(config_default, config), config);
+      c.protocol = prt;
+      c.database = config_default.database
+        ? config_default.database
+        : c.database;
+      c.domain = config_default.domain
+        ? config_default.domain
+        : c.domain;
+      c.urls.admin = config_default.urls.admin && !(/^admin-/i.test(c.urls.admin))
+        ? config_default.urls.admin
+        : c.urls.admin;
       CP_save.save(
-        objAdd(objReplace(config_default, config), config),
+        c,
         'config',
         function(err, result) {
           return err ? callback(err) : callback(null, result);
@@ -161,8 +148,15 @@ async.series(
       );
     },
     modules: function(callback) {
+      var m = objAdd(objReplace(modules_default, modules), modules);
+      m.player.data.moonwalk = modules_default.player.data.moonwalk
+        ? modules_default.player.data.moonwalk
+        : m.player.data.moonwalk;
+      m.player.data.hdgo = modules_default.player.data.hdgo
+        ? modules_default.player.data.hdgo
+        : m.player.data.hdgo;
       CP_save.save(
-        objAdd(objReplace(modules_default, modules), modules),
+        m,
         'modules',
         function(err, result) {
           return err ? callback(err) : callback(null, result);
