@@ -129,7 +129,6 @@ async.series(
   {
     config: function(callback) {
       var c = objAdd(objReplace(config_default, config), config);
-      c.protocol = prt;
       c.database = config_default.database
         ? config_default.database
         : c.database;

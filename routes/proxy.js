@@ -21,9 +21,24 @@ var router = express.Router();
 router.get(
   /(\/t\/p\/(w92|w185|w300|w1280|original)|\/images\/(film_iphone|film_big|kadr))\/[a-z0-9\-_]*\.jpg/i,
   function(req, res) {
+    req.userinfo = {};
+
+    if (req.protocol === 'http') {
+      if (
+        req.get('x-cloudflare-proto') &&
+        req.get('x-cloudflare-proto').toLowerCase() === 'https'
+      ) {
+        req.userinfo.protocol = 'https';
+      } else {
+        req.userinfo.protocol = 'http';
+      }
+    } else {
+      req.userinfo.protocol = 'https';
+    }
+
     request
       .get({
-        url: req.protocol + ':/' + req.originalUrl,
+        url: req.userinfo.protocol + ':/' + req.originalUrl,
         timeout: 1000,
         agent: false,
         pool: { maxSockets: 100 }
