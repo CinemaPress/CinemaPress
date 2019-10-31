@@ -5,12 +5,12 @@
 // @description Button auto-complete movie information in CinemaPress.
 // @description:ru Кнопка автозаполнения информации о фильме в CinemaPress.
 // @description:zh CinemaPress电影信息自动完成按钮。
-// @author ExtensionsApp
+// @author zeldaroot
 // @homepageURL https://cinemapress.io/
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2019.6
+// @version 2019.10
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -96,12 +96,6 @@ function parseData() {
   }
 
   if (kp_id && (lang === 'ru' || (!imdb_id && !tmdb_id && !douban_id))) {
-    urls.push(
-      'https://streamguard.cc/api/videos.json?' +
-        'api_token=6eb82f15e2d7c6cbb2fdcebd05a197a2&' +
-        'kinopoisk_id=' +
-        kp_id
-    );
     urls.push('https://www.kinopoisk.ru/film/' + '' + kp_id);
   }
   if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
@@ -129,12 +123,6 @@ function parseData() {
     );
   }
   if (kp_id && lang !== 'ru') {
-    urls.push(
-      'https://streamguard.cc/api/videos.json?' +
-        'api_token=6eb82f15e2d7c6cbb2fdcebd05a197a2&' +
-        'kinopoisk_id=' +
-        kp_id
-    );
     urls.push('https://www.kinopoisk.ru/film/' + '' + kp_id);
   }
   if (douban_id && lang !== 'zh') {
@@ -154,11 +142,6 @@ function parseData() {
             if (
               url.indexOf('omdbapi.com') + 1 &&
               (r === 'imdb_rating' || r === 'imdb_vote')
-            ) {
-              movieData[r] = res[r];
-            } else if (
-              url.indexOf('streamguard.cc') + 1 &&
-              (r === 'kp_rating' || r === 'kp_vote')
             ) {
               movieData[r] = res[r];
             }
@@ -342,9 +325,7 @@ function getAPI(url, callback) {
           console.error(e);
         }
         var res = {};
-        if (url.indexOf('streamguard.cc') + 1) {
-          res = parseKP(result);
-        } else if (url.indexOf('kinopoisk.ru') + 1) {
+        if (url.indexOf('kinopoisk.ru') + 1) {
           res = result;
         } else if (url.indexOf('omdbapi.com') + 1) {
           res = parseOMDb(result);
