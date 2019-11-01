@@ -1055,7 +1055,7 @@ router.post('/rewrite', function(req, res) {
     })
     .catch(function(error) {
       console.error(error);
-      return res.status(404);
+      return res.status(404).json(error);
     });
 });
 

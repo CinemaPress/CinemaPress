@@ -290,12 +290,17 @@
                                             var self = this;
                                             self.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <%= __('В процессе работы') %> ...';
                                             self.removeEventListener('click', sinoniReq);
+                                            var se = setTimeout(function() {
+                                              self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                              self.addEventListener('click', sinoniReq);
+                                            }, 90000);
                                             var text_sinoni = document.querySelector('#text-sinoni');
                                             var movie_custom = document.querySelector('[name="movie.custom"]');
                                             if (text_sinoni && text_sinoni.value && text_sinoni.value.length >= 100) {
                                               var params = 'text=' + encodeURIComponent(text_sinoni.value);
                                               httpReq(params, function(err, result) {
                                                 if (err) {
+                                                  clearTimeout(se);
                                                   console.error(err);
                                                   self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
                                                   self.addEventListener('click', sinoniReq);
@@ -328,9 +333,17 @@
                                                 if (typeof result.rewrite !== 'undefined') {
                                                   text_sinoni.value = result.rewrite;
                                                 }
+                                                clearTimeout(se);
                                                 self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
                                                 self.addEventListener('click', sinoniReq);
                                               });
+                                            } else {
+                                              clearTimeout(se);
+                                              self.innerHTML = '<i class="fas fa-times"></i> <%= __('Текст от 100 символов!') %>';
+                                              setTimeout(function() {
+                                                self.innerHTML = '<i class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>';
+                                                self.addEventListener('click', sinoniReq);
+                                              }, 2000);
                                             }
                                           }
                                           function httpReq(params, callback) {
