@@ -71,7 +71,7 @@ post_crontabs() {
     fi
 }
 docker_install() {
-    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+    if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
         if [ "`basename "${0}"`" != "cinemapress" ]; then
             echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
