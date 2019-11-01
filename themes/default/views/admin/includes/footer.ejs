@@ -577,6 +577,16 @@
           }
         }
 
+        if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
+            if (typeof data.config.geolite2.ips === 'object') {
+                data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {
+                    return ip.replace(/"/ig, '').replace(/'/ig, '');
+                });
+            } else {
+                data.config.geolite2.ips = data.config.geolite2.ips.replace(/"/ig, '').replace(/'/ig, '');
+            }
+        }
+
         if (data.config && data.config.domain) {
             delete data.config.domain;
         }
