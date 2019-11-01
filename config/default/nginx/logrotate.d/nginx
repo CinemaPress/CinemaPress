@@ -1,5 +1,5 @@
 /var/log/nginx/*.log {
-    daily
+    size 50M
     missingok
     rotate 10
     compress
@@ -7,6 +7,7 @@
     notifempty
     sharedscripts
     postrotate
+        find /var/log/nginx -type f -name '*.log' -size +51M -exec rm -rf {} \; >/dev/null 2>&1
         [ -s /run/nginx.pid ] && kill -USR1 `cat /run/nginx.pid`
     endscript
 }

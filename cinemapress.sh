@@ -34,6 +34,26 @@ CP_IP="domain"
 EXTERNAL_PORT=""
 EXTERNAL_DOCKER=""
 
+CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
+
+if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
+   [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
+   [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ] || \
+   [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ] || \
+   [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+   CP_SUCCESS="yes"
+else
+    _line
+    _header "ERROR"
+    _content
+    _content "This operating system is not supported."
+    _content "Please reinstall to"
+    _content "CentOS 7 or Debian 9/10 or Ubuntu 18/19 or Fedora 28/29"
+    _content
+    _s
+    exit 0
+fi
+
 post_crontabs() {
     if [ "`grep \"${CP_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
     && [ -f "/home/${CP_DOMAIN}/process.json" ]; then
@@ -51,8 +71,7 @@ post_crontabs() {
     fi
 }
 docker_install() {
-    CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
-    if [ "${CP_OS}" != "alpine" ]; then
+    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
         if [ "`basename "${0}"`" != "cinemapress" ]; then
             echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
@@ -592,6 +611,7 @@ ip_install() {
             > ${NGX}/cloudflare.ini
 
         _header "Generating ..."
+        _br
 
         docker run \
             -it \
@@ -617,6 +637,14 @@ ip_install() {
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 /home/${CP_DOMAIN}/config/production/config.js
             docker restart ${CP_DOMAIN_} >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
+        else
+            _line
+            _header "ERROR"
+            _content
+            _content "SSL certificate is not generated,"
+            _content "check the correct Email and Global API Key."
+            _content
+            _s
         fi
 
     fi
@@ -1898,6 +1926,16 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress
             docker rmi -f cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
             sh_progress 100
+            exit 0
+        ;;
+        "clear_log"|"clean_log"|"clear_logs"|"clean_logs"|"logrotate" )
+            CP_SIZE=${2:-"+51M"}
+            find /var/log -type f -name '*.log' -size "${CP_SIZE}" -exec rm -rf {} \; \
+                >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+            if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
+                docker restart nginx >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+                docker restart fail2ban >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+            fi
             exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
