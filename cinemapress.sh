@@ -245,7 +245,7 @@ ip_install() {
         -v /var/local/balancer:/var/local/balancer \
         -v /home/${CP_DOMAIN}:/home/${CP_DOMAIN} \
         ${EXTERNAL_DOCKER} \
-        cinemapress/docker >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+        cinemapress/docker:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
     WEBSITE_RUN=1
     while [ "${WEBSITE_RUN}" != "50" ]; do
@@ -288,7 +288,7 @@ ip_install() {
                 ${BOTS} \
                 -p 80:80 \
                 -p 443:443 \
-                cinemapress/nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                cinemapress/nginx:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
             NGINX_RUN=1
             while [ "${NGINX_RUN}" != "50" ]; do
@@ -310,7 +310,7 @@ ip_install() {
                 --cap-add NET_RAW \
                 -v /home/${CP_DOMAIN}/config/production/fail2ban:/data \
                 -v /var/log:/var/log:ro \
-                cinemapress/fail2ban >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                cinemapress/fail2ban:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
             FAIL2BAN_RUN=1
             while [ "${FAIL2BAN_RUN}" != "50" ]; do
@@ -730,19 +730,16 @@ ip_install() {
     fi
     docker stop ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker rm -f ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    docker rmi -f cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    docker pull cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    docker pull cinemapress/docker:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
     rm -rf /home/${CP_DOMAIN}
     if [ "${1}" != "" ]; then
         docker stop nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker rm -f nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rmi -f cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker pull cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker pull cinemapress/nginx:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker stop fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker rm -f fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rmi -f cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker pull cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     fi
 }
 
@@ -1881,6 +1878,26 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start ${CP_DOMAIN_}
             docker start nginx
             docker start fail2ban
+            exit 0
+        ;;
+        "clear_vps"|"clean_vps" )
+            sh_progress
+            for D in /home/*; do
+                if [ -f "${D}/process.json" ]
+                then
+                    sh_progress
+                    CP_DOMAIN=`find ${D} -maxdepth 0 -printf "%f"`
+                    CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+                    8_remove "full"
+                fi
+            done
+            sh_progress
+            docker rmi -f cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            sh_progress
+            docker rmi -f cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            sh_progress
+            docker rmi -f cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            sh_progress 100
             exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
