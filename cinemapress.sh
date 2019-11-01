@@ -46,7 +46,7 @@ else
     _line
     _header "ERROR"
     _content
-    _content "This operating system is not supported."
+    _content "This OS is not supported."
     _content "Please reinstall to"
     _content "CentOS 7 or Debian 9/10 or Ubuntu 18/19 or Fedora 28/29"
     _content
