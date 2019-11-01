@@ -11,7 +11,7 @@ module.exports = {
   "country": "US",
   "language": "en",
   "random": 0,
-  "homepage": "unitedway.org",
+  "homepage": "127.0.0.1",
   "geolite2": {
     "countries": [],
     "ips": []

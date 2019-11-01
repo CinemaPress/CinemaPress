@@ -11,7 +11,7 @@ module.exports = {
   "country": "RU",
   "language": "ru",
   "random": 0,
-  "homepage": "podari-zhizn.ru",
+  "homepage": "127.0.0.1",
   "geolite2": {
     "countries": [],
     "ips": []

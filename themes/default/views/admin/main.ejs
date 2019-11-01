@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="col-xs-4 text-center" style="padding: 5px;">
                                             <% if (config.database.key.length > 4) { %>
-                                                <%- config.database.key.slice(0, 3) + config.database.key.slice(-3) %>
+                                                <%- config.database.key.slice(0, 3) + '...' + config.database.key.slice(-3) %>
                                             <% } else { %>
                                                 <%- config.database.key %>
                                             <% } %>
