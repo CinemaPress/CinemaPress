@@ -1696,8 +1696,8 @@ while [ "${WHILE}" -lt "2" ]; do
             _content "This command will delete all movies!"
             _content
             _s
-            if [ ${1} ]; then
-                YES=${1}
+            if [ ${3} ]; then
+                YES=${3}
                 YES=`echo ${YES} | iconv -c -t UTF-8`
                 echo "Delete? [NOT/yes] : ${YES}"
             else
