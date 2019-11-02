@@ -1939,6 +1939,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "clear_vps"|"clean_vps" )
+            _br
             sh_progress
             for D in /home/*; do
                 if [ -f "${D}/process.json" ]
