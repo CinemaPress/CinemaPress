@@ -663,10 +663,7 @@ router.get('/?', function(req, res) {
    */
 
   function getYohoho(callback) {
-    api('https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js', function(
-      json,
-      body
-    ) {
+    api('https://4h0y.gitlab.io/yo.js', function(json, body) {
       callback({
         src: body,
         translate: '',

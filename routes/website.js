@@ -456,7 +456,12 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         options.debug.duration.current = new Date();
       }
 
-      res.send(render);
+      if (template === 'sitemap') {
+        res.header('Content-Type', 'application/xml');
+        res.send(render);
+      } else {
+        res.send(render);
+      }
 
       if (options.debug) {
         options.debug.duration = new Date() - options.debug.duration.all + 'ms';

@@ -216,6 +216,7 @@ router.get('/?', function(req, res, next) {
         });
       }
     } else {
+      res.header('Content-Type', 'application/xml');
       res.send(render);
     }
   }
