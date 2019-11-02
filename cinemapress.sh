@@ -1686,7 +1686,34 @@ while [ "${WHILE}" -lt "2" ]; do
             docker ${1} ${CP_DOMAIN_} >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
             exit 0
         ;;
-        "reload"|"zero"|"actual"|"speed" )
+        "zero" )
+            _br
+            read_domain ${2}
+            sh_not
+            _s ${2}
+            _header "WARNING";
+            _content
+            _content "This command will delete all movies!"
+            _content
+            _s
+            if [ ${1} ]; then
+                YES=${1}
+                YES=`echo ${YES} | iconv -c -t UTF-8`
+                echo "Delete? [NOT/yes] : ${YES}"
+            else
+                read -e -p 'Delete? [NOT/yes] : ' YES
+                YES=`echo ${YES} | iconv -c -t UTF-8`
+            fi
+            _br
+
+            if [ "${YES}" != "ДА" ] && [ "${YES}" != "Да" ] && [ "${YES}" != "да" ] && [ "${YES}" != "YES" ] && [ "${YES}" != "Yes" ] && [ "${YES}" != "yes" ] && [ "${YES}" != "Y" ] && [ "${YES}" != "y" ]; then
+                exit 0
+            else
+                docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container zero \
+                    >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
+            fi
+        ;;
+        "reload"|"actual"|"speed" )
             _br
             read_domain ${2}
             sh_not
