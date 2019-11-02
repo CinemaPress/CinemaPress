@@ -713,18 +713,17 @@ ip_install() {
         for f in /home/${CP_MIRROR}/config/user/user_${CP_DOMAIN_}.*; do
             mv -f "${f}" "`echo ${f} | sed s/user_${CP_DOMAIN_}/user_${CP_MIRROR_}/`" 2>/dev/null
         done
-        if [ "`grep \"${CP_DOMAIN_}\" /home/${CP_MIRROR}/process.json`" = "" ]; then
-            CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_ | //"`
-            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_ | //"`
-            CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_MIRROR_}_//"`
-            CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_DOMAIN_}_//"`
-            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_//"`
-            CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_//"`
-            if [ "${CURRENT}" != "" ]; then CURRENT=" | ${CURRENT}"; fi
-            sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_MIRROR_}_ | _${CP_DOMAIN_}_${CURRENT}\"/" /home/${CP_MIRROR}/process.json
-        fi
     fi
+
+    CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_ | //"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_ | //"`
+    CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_MIRROR_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_DOMAIN_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_//"`
+    if [ "${CURRENT}" != "" ]; then CURRENT=" | ${CURRENT}"; fi
+    sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_MIRROR_}_ | _${CP_DOMAIN_}_${CURRENT}\"/" /home/${CP_MIRROR}/process.json
 
     sh_progress
 
