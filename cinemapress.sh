@@ -1710,7 +1710,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             else
                 docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container zero \
-                    >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
+                    >>/var/log/docker_zero_$(date '+%d_%m_%Y').log 2>&1
+                exit 0
             fi
         ;;
         "reload"|"actual"|"speed" )
