@@ -43,7 +43,6 @@ if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
    [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
    CP_SUCCESS="yes"
 else
-    _line
     _header "ERROR"
     _content
     _content "This OS is not supported."
@@ -202,8 +201,6 @@ docker_install() {
             fi
             if [ "`docker -v 2>/dev/null`" = "" ]; then
                 clear
-                _line
-                _logo
                 _header "ERROR"
                 _content
                 _content "Docker is not installed, try installing manually!"
@@ -513,7 +510,7 @@ ip_install() {
     STS="http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}"
     CHECK=`wget -qO- "${STS}&status=CHECK"`
     if [ "${CHECK}" = "" ]; then
-        _line; _header "ERROR"
+        _header "ERROR"
         _content
         _content "The database server is temporarily unavailable,"
         _content "please try again later."
@@ -582,7 +579,7 @@ ip_install() {
             exit 0
         else
             wget -qO /dev/null -o /dev/null "${STS}&status=FAIL"
-            _line; _header "ERROR"
+            _header "ERROR"
             _content
             _content "The downloaded database archive turned out to be empty,"
             _content "please try again later."
@@ -592,7 +589,6 @@ ip_install() {
         fi
     else
         wget -qO /dev/null -o /dev/null "${STS}&status=FAIL"
-        _line
         _header "ERROR"
         _content
         _content "The movie database has not been downloaded,"
@@ -638,7 +634,6 @@ ip_install() {
                 /home/${CP_DOMAIN}/config/production/config.js
             docker restart ${CP_DOMAIN_} >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
         else
-            _line
             _header "ERROR"
             _content
             _content "SSL certificate is not generated,"
