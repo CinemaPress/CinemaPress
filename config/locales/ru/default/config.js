@@ -61,6 +61,9 @@ module.exports = {
       "search": "",
       "kp_vote": 0,
       "imdb_vote": 0
+    },
+    "indexing": {
+      "condition": ""
     }
   },
   "default": {

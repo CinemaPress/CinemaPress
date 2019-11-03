@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Subdomeniu aleatorie după ascunde",
 	"Белый список адресов электронной почты": "Adrese e-mail lista albă",
 	"Обновления с hdvb": "Actualizări cu hdvb",
-	"Текст от 100 символов!": "Textul de 100 de caractere!"
+	"Текст от 100 символов!": "Textul de 100 de caractere!",
+	"Запретить индексацию": "Deny indexare",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Condiția pentru indexarea de către motoarele de căutare pot interzice anumite moviee (în cazul în care condiția este adevărată - indexare este interzisă)"
 }

@@ -21,6 +21,7 @@ var modules = require('../config/production/modules');
  */
 
 var md5 = require('md5');
+var _eval = require('eval');
 var express = require('express');
 var router = express.Router();
 
@@ -373,6 +374,27 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         status: 404,
         message: err
       });
+    }
+
+    if (
+      options.userinfo.bot &&
+      config.publish.indexing &&
+      config.publish.indexing.condition &&
+      /(movie|online|download|trailer|picture|episode)/i.test(template)
+    ) {
+      var condition = _eval(
+        'module.exports=function(movie){return !!(' +
+          config.publish.indexing.condition.toString() +
+          ');}'
+      );
+      if (condition(render.movie)) {
+        console.log('[Indexing is forbidden]', url);
+
+        return next({
+          status: 404,
+          message: err
+        });
+      }
     }
 
     if (typeof render === 'object') {

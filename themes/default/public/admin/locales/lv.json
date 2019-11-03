@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Random apakšdomēns pēc paslēpt",
 	"Белый список адресов электронной почты": "Baltā saraksta e-pasta adreses",
 	"Обновления с hdvb": "Atjauninājumi ar hdvb",
-	"Текст от 100 символов!": "Teksts 100 rakstzīmes!"
+	"Текст от 100 символов!": "Teksts 100 rakstzīmes!",
+	"Запретить индексацию": "Liegt indeksācija",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Nosacījums indeksēšanas meklētājprogrammas aizliegt konkrētas movieas (ja nosacījums ir patiess - indeksēšanu ir aizliegta)"
 }

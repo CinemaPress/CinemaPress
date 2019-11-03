@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Subdomain acak setelah hide",
 	"Белый список адресов электронной почты": "Alamat email whitelist",
 	"Обновления с hdvb": "Aplikasi hdvb",
-	"Текст от 100 символов!": "Teks 100 karakter!"
+	"Текст от 100 символов!": "Teks 100 karakter!",
+	"Запретить индексацию": "Deny pengindeksan",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Kondisi untuk mengindeks oleh search engine melarang movie tertentu (jika kondisi benar - pengindeksan dilarang)"
 }

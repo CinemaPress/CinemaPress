@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Tilfældig subdomæne efter skjul",
 	"Белый список адресов электронной почты": "Hvidlist e-mail adresser",
 	"Обновления с hdvb": "Opdateringer med hdvb",
-	"Текст от 100 символов!": "Teksten til 100 tegn!"
+	"Текст от 100 символов!": "Teksten til 100 tegn!",
+	"Запретить индексацию": "Afvis indeksering",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Betingelse for indeksering af søgemaskiner forbyde visse movie (hvis betingelsen er sand - indeksering er forbudt)"
 }

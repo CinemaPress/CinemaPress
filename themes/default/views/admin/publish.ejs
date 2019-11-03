@@ -434,14 +434,15 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.kp_vote" class="form-control">
-                                                <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                    <% if (config.publish.thematic.kp_vote === i) { %>
-                                                        <option value="<%= i %>" selected="selected">
-                                                            <%- i %> <%= __('голос(ов)') %>
+                                                <% var plusKp = 10; var k; for (k = 0; k <= 10000; k = k+plusKp) { %>
+                                                    <% if (k === 100) {plusKp = 100;} %>
+                                                    <% if (config.publish.thematic.kp_vote === k) { %>
+                                                        <option value="<%= k %>" selected="selected">
+                                                            > <%- k %> <%= __('голос(ов)') %>
                                                         </option>
                                                     <% } else { %>
-                                                        <option value="<%= i %>">
-                                                            <%- i %> <%= __('голос(ов)') %>
+                                                        <option value="<%= k %>">
+                                                            > <%- k %> <%= __('голос(ов)') %>
                                                         </option>
                                                     <% } %>
                                                 <% } %>
@@ -459,14 +460,15 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.imdb_vote" class="form-control">
-                                                <% for (var i = 0; i <= 10000; i = i+100) { %>
+                                                <% var plusImdb = 10; var i; for (i = 0; i <= 10000; i = i+plusImdb) { %>
+                                                    <% if (i === 100) {plusImdb = 100;} %>
                                                     <% if (config.publish.thematic.imdb_vote === i) { %>
                                                         <option value="<%= i %>" selected="selected">
-                                                            <%- i %> <%= __('голос(ов)') %>
+                                                            > <%- i %> <%= __('голос(ов)') %>
                                                         </option>
                                                     <% } else { %>
                                                         <option value="<%= i %>">
-                                                            <%- i %> <%= __('голос(ов)') %>
+                                                            > <%- i %> <%= __('голос(ов)') %>
                                                         </option>
                                                     <% } %>
                                                 <% } %>
@@ -564,6 +566,64 @@
                                             <input type="text" name="config.publish.thematic.search" value="<%= config.publish.thematic.search %>" class="form-control" placeholder="!&#34;erotic&#34; !&#34;porn&#34;">
                                         </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить индексацию') %></div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/publish.html#indexing" class="csstip" title="<%= __('Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="advanced-textarea">
+                                                <textarea class="form-control" name="config.publish.indexing.condition"><%= config.publish.indexing.condition %></textarea>
+                                                <div class="advanced-textarea-footer">
+                                                    <div class="pull-left">
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="&&" class="btn btn-sm btn-default codes">
+                                                            &&
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="||" class="btn btn-sm btn-default codes">
+                                                            ||
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.kp_rating > 70" class="btn btn-sm btn-default codes">
+                                                            movie.kp_rating > 70
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.imdb_rating > 60" class="btn btn-sm btn-default codes">
+                                                            movie.imdb_rating > 60
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.kp_vote > 100" class="btn btn-sm btn-default codes">
+                                                            movie.kp_vote > 100
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.imdb_vote > 50" class="btn btn-sm btn-default codes">
+                                                            movie.imdb_vote > 50
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.year >= 2019" class="btn btn-sm btn-default codes">
+                                                            movie.year >= 2019
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="typeof movie.custom === 'boolean'" class="btn btn-sm btn-default codes">
+                                                            typeof movie.custom.unique === 'boolean'
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.custom.unique === true" class="btn btn-sm btn-default codes">
+                                                            movie.custom.unique === true
+                                                        </a>
+                                                        <a href="javascript:void(0)" data-name="config.publish.indexing.condition" data-code="movie.type === 1" class="btn btn-sm btn-default codes">
+                                                            movie.type === 1
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

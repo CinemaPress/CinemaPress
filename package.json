@@ -22,6 +22,7 @@
     "cheerio": "1.0.0-rc.3",
     "cookie-parser": "1.4.4",
     "ejs": "2.7.1",
+    "eval": "0.1.4",
     "express": "4.17.1",
     "html-entities": "1.2.1",
     "html-minifier": "4.0.0",

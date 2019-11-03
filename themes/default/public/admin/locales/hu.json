@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Véletlen aldomain után elrejtése",
 	"Белый список адресов электронной почты": "Whitelist e-mail címek",
 	"Обновления с hdvb": "Frissítések hdvb",
-	"Текст от 100 символов!": "A szöveg a 100 karaktert!"
+	"Текст от 100 символов!": "A szöveg a 100 karaktert!",
+	"Запретить индексацию": "Deny indexelés",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Feltétel az indexelés a keresőmotorok betiltása egyes movieek (ha a feltétel igaz - indexelés tilos)"
 }

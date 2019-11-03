@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Sakla sonra rastgele alt alan",
 	"Белый список адресов электронной почты": "Beyaz liste e-posta adresleri",
 	"Обновления с hdvb": "Hdvb ile güncellemeler",
-	"Текст от 100 символов!": "100 karakterlik metin!"
+	"Текст от 100 символов!": "100 karakterlik metin!",
+	"Запретить индексацию": "Endeksleme reddet",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Arama motorları tarafından dizine eklenmesi için Durum (- indeksleme yasaktır koşul doğruysa), belirli movieleri yasaklamak"
 }

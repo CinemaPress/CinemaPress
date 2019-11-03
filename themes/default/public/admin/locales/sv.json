@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Random domän efter hide",
 	"Белый список адресов электронной почты": "Vitlista e-postadresser",
 	"Обновления с hdvb": "Uppdateringar med hdvb",
-	"Текст от 100 символов!": "Texten till 100 tecken!"
+	"Текст от 100 символов!": "Texten till 100 tecken!",
+	"Запретить индексацию": "Neka indexering",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Villkor för indexering av sökmotorer förbjuda vissa movieer (om villkoret är sant - indexering är förbjuden)"
 }

@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Satunnainen aliverkkotunnus jälkeen piilota",
 	"Белый список адресов электронной почты": "Whitelist sähköpostiosoitteet",
 	"Обновления с hdvb": "Päivitykset hdvb",
-	"Текст от 100 символов!": "Tekstissä 100 merkkiä!"
+	"Текст от 100 символов!": "Tekstissä 100 merkkiä!",
+	"Запретить индексацию": "Deny indeksointi",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Edellytys indeksointi hakukoneiden kieltää tietyt elokuvia (jos ehto on tosi - indeksointi on kielletty)"
 }

@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Random subdomény po kůži",
 	"Белый список адресов электронной почты": "Whitelist e-mailové adresy",
 	"Обновления с hdvb": "Aktualizace s hdvb",
-	"Текст от 100 символов!": "Text 100 znaků!"
+	"Текст от 100 символов!": "Text 100 znaků!",
+	"Запретить индексацию": "Popřít indexování",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Podmínkou pro indexování pomocí vyhledávačů zakázat některé moviey (v případě, že je splněna podmínka - indexování je zakázána)"
 }

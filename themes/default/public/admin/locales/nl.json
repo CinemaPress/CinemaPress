@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Random subdomein na hide",
 	"Белый список адресов электронной почты": "Whitelist e-mailadressen",
 	"Обновления с hdvb": "Updates met hDVB",
-	"Текст от 100 символов!": "De tekst van 100 tekens!"
+	"Текст от 100 символов!": "De tekst van 100 tekens!",
+	"Запретить индексацию": "Deny indexeren",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Voorwaarde voor indexering door zoekmachines te verbieden bepaalde movies (als de voorwaarde waar is - indexering is verboden)"
 }

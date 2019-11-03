@@ -91,7 +91,7 @@ function codePlayer(type, movie, options) {
     var list_abuse = modules.abuse.data.movies.indexOf('' + movie.kp_id) + 1;
     var country_abuse =
       modules.abuse.data.country &&
-      '' + movie.year === new Date().getFullYear() + '' &&
+      (movie.year && '' + movie.year === new Date().getFullYear() + '') &&
       movie.countries_arr.filter(function(c) {
         return new RegExp(options.userinfo.country, 'i').test(c);
       }).length;

@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Sottodominio a caso dopo nascondere",
 	"Белый список адресов электронной почты": "Indirizzi e-mail whitelist",
 	"Обновления с hdvb": "Offerte hDVB",
-	"Текст от 100 символов!": "Il testo di 100 caratteri!"
+	"Текст от 100 символов!": "Il testo di 100 caratteri!",
+	"Запретить индексацию": "Nega l'indicizzazione",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Condizione per l'indicizzazione da parte dei motori di ricerca vietare certi movie (se la condizione è vera - l'indicizzazione è vietata)"
 }

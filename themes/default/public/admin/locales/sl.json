@@ -811,5 +811,7 @@
 	"Случайный поддомен после скрытия": "Naključni poddomena po kožo",
 	"Белый список адресов электронной почты": "Seznamu dovoljenih e-poštnih naslovov",
 	"Обновления с hdvb": "Posodobitve z hdvb",
-	"Текст от 100 символов!": "Besedilo 100 znakov!"
+	"Текст от 100 символов!": "Besedilo 100 znakov!",
+	"Запретить индексацию": "Zavrni indeksiranje",
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Pogoj za indeksiranje z iskalniki prepoved določenih movieov (če je pogoj izpolnjen - indeksiranje je prepovedana)"
 }
