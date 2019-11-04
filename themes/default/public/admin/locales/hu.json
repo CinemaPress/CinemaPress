@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movieek a site map:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Adja meg, hány movieet fognak megjelenni minden kategóriában sitemap",
 	"Фильмов в общих страницах:": "Movieek összesen oldalak:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Adja meg, hány movieet fogják használni, így az oldalak összes színészek, rendezők, műfajok évek és országok"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Adja meg, hány movieet fogják használni, így az oldalak összes színészek, rendezők, műfajok évek és országok",
+	"Уровень вложенности URL": "Fészekrakó szintű URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Fészekrakó szintje száma osztásjeleket weboldal az URL-címe",
+	"2-й уровень": "2. szint",
+	"3-й уровень": "Harmadik szint"
 }

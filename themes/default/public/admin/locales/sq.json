@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviea në hartë site:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Specifikoni se sa moviea do të shfaqen në çdo kategori sitemap",
 	"Фильмов в общих страницах:": "Movieat në faqet totale:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specifikoni sa moviea do të përdoren për të formuar faqet e të gjithë aktorëve, drejtorëve, zhanret, vitet dhe vendet"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specifikoni sa moviea do të përdoren për të formuar faqet e të gjithë aktorëve, drejtorëve, zhanret, vitet dhe vendet",
+	"Уровень вложенности URL": "Niveli shturë URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Niveli i fole për numrin e godet faqen e internetit të URL-adresa",
+	"2-й уровень": "Niveli 2",
+	"3-й уровень": "Niveli i tretë"
 }

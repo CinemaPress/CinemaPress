@@ -442,9 +442,9 @@ function oneContent(url, page, sorting, options, callback) {
                 options.domain +
                 '/' +
                 modules.content.data.url +
-                '/' +
+                config.urls.slash +
                 url,
-              '/' + modules.content.data.url + '/' + url,
+              '/' + modules.content.data.url + config.urls.slash + url,
               function(err, comments) {
                 if (options.debug) {
                   options.debug.detail.push({

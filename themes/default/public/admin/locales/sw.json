@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Filamu katika ramani ya tovuti:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "TAJA jinsi filamu nyingi itaonyeshwa katika kila kitengo sitemap",
 	"Фильмов в общих страницах:": "Filamu katika kurasa jumla:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Taja jinsi filamu nyingi zitatumika kutengeneza kurasa za kila watendaji, wakurugenzi, muziki, miaka na nchi"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Taja jinsi filamu nyingi zitatumika kutengeneza kurasa za kila watendaji, wakurugenzi, muziki, miaka na nchi",
+	"Уровень вложенности URL": "Nesting URL cha",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Kiwango nesting kwa idadi ya mikwaju tovuti URL anwani",
+	"2-й уровень": "Kiwango cha 2",
+	"3-й уровень": "Ngazi ya tatu"
 }

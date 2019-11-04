@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movieas vietnes karte:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Norādīt, cik daudz movieas tiks parādīts katrā kategorijā sitemap",
 	"Фильмов в общих страницах:": "Movieas lapu skaits:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Norādiet cik daudz movieas tiks izmantoti, lai veidotu lapas visu aktieriem, režisoriem, žanrus gadiem un valstīm"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Norādiet cik daudz movieas tiks izmantoti, lai veidotu lapas visu aktieriem, režisoriem, žanrus gadiem un valstīm",
+	"Уровень вложенности URL": "Ligzdošanas līmeņa URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Ligzdošanas līmenis skaitu simbolos vietnes URL, adrese",
+	"2-й уровень": "2. līmenis",
+	"3-й уровень": "Trešais līmenis"
 }

@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Elokuvat sivustokartassa:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Kuinka monta elokuvaa näytetään jokaisessa luokassa sivukartta",
 	"Фильмов в общих страницах:": "Elokuvat yhteensä sivua:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Kuinka monta elokuvaa käytetään muodostamaan sivuille kaikkien, ohjaajille, lajityyppejä vuotta ja maissa"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Kuinka monta elokuvaa käytetään muodostamaan sivuille kaikkien, ohjaajille, lajityyppejä vuotta ja maissa",
+	"Уровень вложенности URL": "Sisäkkyystaso URL-",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Sisäkkyystaso lukumäärälle viiltää verkkosivuston URL-osoite",
+	"2-й уровень": "Taso 2",
+	"3-й уровень": "Kolmas taso"
 }

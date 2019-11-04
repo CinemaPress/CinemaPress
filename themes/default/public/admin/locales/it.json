@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movie nella mappa del sito:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Specificare quanti movie verrà mostrato in ogni categoria sitemap",
 	"Фильмов в общих страницах:": "Movie in pagine totali:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specificare quanti movie verrà utilizzato per formare le pagine di tutti gli attori, registi, generi, anni e paesi"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specificare quanti movie verrà utilizzato per formare le pagine di tutti gli attori, registi, generi, anni e paesi",
+	"Уровень вложенности URL": "URL livello di annidamento",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Il livello di nidificazione di un sito web per il numero di barre L'URL indirizzo",
+	"2-й уровень": "Livello 2",
+	"3-й уровень": "Terzo livello"
 }

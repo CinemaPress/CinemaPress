@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviee în harta site-ului:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Specificați cât de multe moviee vor fi afișate în fiecare categorie de sitemap",
 	"Фильмов в общих страницах:": "Moviee în total de pagini:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specificați cât de multe moviee vor fi folosite pentru a forma paginile tuturor actori, regizori, genuri, ani și țări"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specificați cât de multe moviee vor fi folosite pentru a forma paginile tuturor actori, regizori, genuri, ani și țări",
+	"Уровень вложенности URL": "Adresa URL la nivel de imbricare",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Nivel de imbricare pentru numărul de site-ul slash Adresa URL-adresa",
+	"2-й уровень": "Nivelul 2",
+	"3-й уровень": "Al treilea nivel"
 }

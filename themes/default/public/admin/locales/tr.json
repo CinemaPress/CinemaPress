@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Site haritası movieler:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Her kategori site haritasında kaç movie gösterilecektir belirtin",
 	"Фильмов в общих страницах:": "Toplam sayfalarında movieler:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tüm aktörler, yönetmenler, türler, yaş ve ülkelerin sayfalarını oluşturmak için kullanılacak kaç movie belirtin"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tüm aktörler, yönetmenler, türler, yaş ve ülkelerin sayfalarını oluşturmak için kullanılacak kaç movie belirtin",
+	"Уровень вложенности URL": "Yuvalama düzeyinde URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Kesikler websitesinin dizi URL adresi için Yuvalama seviyesi",
+	"2-й уровень": "Seviye 2",
+	"3-й уровень": "Üçüncü seviye"
 }

@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviey w mapa strony:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Określić, ile moviey zostaną pokazane w każdej kategorii sitemap",
 	"Фильмов в общих страницах:": "Moviey w całkowitych stronach:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Określić, ile movieów zostaną wykorzystane do utworzenia strony wszystkich aktorów, reżyserów, gatunków, lat i krajów"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Określić, ile movieów zostaną wykorzystane do utworzenia strony wszystkich aktorów, reżyserów, gatunków, lat i krajów",
+	"Уровень вложенности URL": "Poziom zagnieżdżenia URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Poziom zagnieżdżenia dla liczby ukośniki stronie URL-address",
+	"2-й уровень": "Poziom 2",
+	"3-й уровень": "Trzeci poziom"
 }

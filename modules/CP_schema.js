@@ -89,7 +89,7 @@ function fullMovieSchema(page, movie, movies, options) {
       '@id':
         '/' +
         encodeURIComponent(config.urls.genre) +
-        '/' +
+        config.urls.slash +
         encodeURIComponent(movie.genre),
       name: movie.genre,
       url:
@@ -97,7 +97,7 @@ function fullMovieSchema(page, movie, movies, options) {
         options.domain +
         '/' +
         encodeURIComponent(config.urls.genre) +
-        '/' +
+        config.urls.slash +
         encodeURIComponent(movie.genre)
     }
   });
@@ -258,7 +258,7 @@ function onlyMovieSchema(movie, options) {
           options.domain +
           '/' +
           encodeURIComponent(config.urls.actor) +
-          '/' +
+          config.urls.slash +
           encodeURIComponent(actor)
       });
     });
@@ -274,7 +274,7 @@ function onlyMovieSchema(movie, options) {
           options.domain +
           '/' +
           encodeURIComponent(config.urls.director) +
-          '/' +
+          config.urls.slash +
           encodeURIComponent(director)
       });
     });
@@ -413,7 +413,7 @@ function generalSchema(page, options) {
       options.domain +
       '/' +
       config.urls.search +
-      '/title?&q={query}',
+      '?q={query}',
     'query-input': 'required name=query'
   };
   if (modules.social.status) {

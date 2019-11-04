@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movie dalam peta situs:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Tentukan berapa banyak movie akan ditampilkan di setiap kategori sitemap",
 	"Фильмов в общих страницах:": "Movie total halaman:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tentukan berapa banyak movie akan digunakan untuk membentuk halaman semua aktor, sutradara, genre, tahun dan negara-negara"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tentukan berapa banyak movie akan digunakan untuk membentuk halaman semua aktor, sutradara, genre, tahun dan negara-negara",
+	"Уровень вложенности URL": "URL tingkat bersarang",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Tingkat bersarang untuk jumlah situs garis miring URL-alamat",
+	"2-й уровень": "Level 2",
+	"3-й уровень": "Tingkat ketiga"
 }

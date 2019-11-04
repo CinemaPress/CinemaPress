@@ -56,8 +56,13 @@ function allSitemap(options, callback) {
       if (categories.hasOwnProperty(year)) {
         if (categories[year].title === y) y = 0;
         render.sitemaps[render.sitemaps.length] = categories[year].url.replace(
-          config.domain,
-          config.domain + '/' + config.urls.sitemap
+          config.domain + '/' + config.urls.year + config.urls.slash,
+          config.domain +
+            '/' +
+            config.urls.sitemap +
+            '/' +
+            config.urls.year +
+            '/'
         );
       }
     }
@@ -188,7 +193,7 @@ function oneSitemap(type, year, options, callback) {
           config.domain +
           '/' +
           config.urls.type +
-          '/' +
+          config.urls.slash +
           encodeURIComponent(types[i])
       };
     }
@@ -303,7 +308,11 @@ function oneSitemap(type, year, options, callback) {
           for (var i = 0; i < movies.length; i++) {
             if (
               !config.urls.noindex ||
-              !(movies[i].url.indexOf('/' + config.urls.noindex + '/') + 1)
+              !(
+                movies[i].url.indexOf(
+                  '/' + config.urls.noindex + config.urls.slash
+                ) + 1
+              )
             ) {
               render.urls[render.urls.length] = {
                 loc: movies[i].url,

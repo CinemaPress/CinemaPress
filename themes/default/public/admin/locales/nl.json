@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movies in de site map:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Geef aan hoeveel movies worden getoond in elke categorie sitemap",
 	"Фильмов в общих страницах:": "Movies in totaal pagina's:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Geef aan hoe veel movies zullen worden gebruikt om de pagina's van de acteurs, regisseurs, genres, jaren en landen vormen"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Geef aan hoe veel movies zullen worden gebruikt om de pagina's van de acteurs, regisseurs, genres, jaren en landen vormen",
+	"Уровень вложенности URL": "Nestniveau URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Nestniveau voor het aantal schuine strepen De website van het URL-adres",
+	"2-й уровень": "Niveau 2",
+	"3-й уровень": "Derde niveau"
 }

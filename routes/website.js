@@ -49,6 +49,31 @@ var content = require('./paths/content');
  */
 
 router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
+  var levels = [
+    config.urls.movie,
+    config.urls.year,
+    config.urls.genre,
+    config.urls.country,
+    config.urls.actor,
+    config.urls.director,
+    config.urls.type,
+    config.urls.search,
+    modules.content.data.url
+  ];
+  if (config.urls.noindex) {
+    levels.push(config.urls.noindex);
+  }
+  var levels_first = new RegExp('^(' + levels.join('|') + ')-(.*)$', 'i');
+  if (req.params && req.params.level1 && levels_first.test(req.params.level1)) {
+    var l = req.params.level1.match(levels_first);
+    req.params.level1 = l[1];
+    if (req.params.level2) {
+      req.params.level3 = req.params.level2;
+      req.params.level2 = l[2];
+    } else {
+      req.params.level2 = l[2];
+    }
+  }
   var options = {};
   options.userinfo = req.userinfo;
   options.origin = req.userinfo.origin;
@@ -222,7 +247,20 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
             sorting,
             options,
             function(err, render) {
-              callback(err, render);
+              var levels_category = new RegExp(
+                '/' + level1 + config.urls.slash,
+                'i'
+              );
+              if (err) {
+                callback(err);
+              } else if (
+                level1 === config.urls.search ||
+                levels_category.test(url)
+              ) {
+                callback(null, render);
+              } else {
+                return res.redirect(301, render.page.url);
+              }
             }
           );
         }
@@ -250,7 +288,17 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
             sorting,
             options,
             function(err, render) {
-              callback(err, render);
+              var levels_content = new RegExp(
+                '/' + modules.content.data.url + config.urls.slash,
+                'i'
+              );
+              if (err) {
+                callback(err);
+              } else if (levels_content.test(url)) {
+                callback(null, render);
+              } else {
+                return res.redirect(301, render.page.url);
+              }
             }
           );
         }

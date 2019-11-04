@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Phim trong bản đồ trang web:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Chỉ định bao nhiêu bộ phim sẽ được trình bày trong mỗi thể loại sitemap",
 	"Фильмов в общих страницах:": "Phim in total pages:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Xác định có bao nhiêu bộ phim sẽ được sử dụng để tạo các trang của tất cả các diễn viên, đạo diễn, thể loại, năm và các nước"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Xác định có bao nhiêu bộ phim sẽ được sử dụng để tạo các trang của tất cả các diễn viên, đạo diễn, thể loại, năm và các nước",
+	"Уровень вложенности URL": "URL cấp làm tổ",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Mức độ làm tổ cho số trang web slashes URL-địa chỉ",
+	"2-й уровень": "Level 2",
+	"3-й уровень": "Mức thứ ba"
 }

@@ -424,7 +424,7 @@ function dataIndex(options, callback) {
                                       options.domain +
                                       '/' +
                                       modules.content.data.url +
-                                      '/' +
+                                      config.urls.slash +
                                       content_url
                                     : '';
                                   block.name = contents[0].title

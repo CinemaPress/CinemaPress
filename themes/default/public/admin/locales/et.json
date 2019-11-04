@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movieid saidi kaart:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Määrata, kuidas palju moviee näidatakse iga kategooria sitemap",
 	"Фильмов в общих страницах:": "Movieid kokku lehti:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Määrake, kui palju moviee kasutatakse moodustavad lehekülgi kõik näitlejad, lavastajad, žanrid aastat ja riikide"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Määrake, kui palju moviee kasutatakse moodustavad lehekülgi kõik näitlejad, lavastajad, žanrid aastat ja riikide",
+	"Уровень вложенности URL": "Pesastamistase URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Pesastamistase arvu kohta kaldkriipsud veebilehel URL-aadress",
+	"2-й уровень": "Tase 2",
+	"3-й уровень": "Kolmas tase"
 }

@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviei v kazalo:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Določite, koliko moviei bodo prikazani v vsaki kategoriji kazalo",
 	"Фильмов в общих страницах:": "Moviei na vseh straneh:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Določite, koliko movieov se bodo uporabili za izdelavo strani vseh udeležencev, direktorjev, zvrsti, leta in državah"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Določite, koliko movieov se bodo uporabili za izdelavo strani vseh udeležencev, direktorjev, zvrsti, leta in državah",
+	"Уровень вложенности URL": "URL Raven gnezdenja",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Raven gnezdenja za število spletni strani poševnice URL-naslov",
+	"2-й уровень": "Stopnja 2",
+	"3-й уровень": "Tretja raven"
 }

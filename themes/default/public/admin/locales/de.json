@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviee in der website:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Legen sie fest, wie viele moviee werden in jeder kategorie sitemap angezeigt werden",
 	"Фильмов в общих страницах:": "Moviee insgesamt seiten:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Gibt an, wie viele moviee werden die seiten verwendet werden zur bildung von allen schauspielern, regisseuren, genres, jahre und länder"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Gibt an, wie viele moviee werden die seiten verwendet werden zur bildung von allen schauspielern, regisseuren, genres, jahre und länder",
+	"Уровень вложенности URL": "Nesting Level-URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Verschachtelungsebene für die Anzahl der Schrägstriche Website Die URL-Adresse",
+	"2-й уровень": "Stufe 2",
+	"3-й уровень": "Dritte ebene"
 }

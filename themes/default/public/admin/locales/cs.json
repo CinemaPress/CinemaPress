@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Moviey v mapě stránek:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Určit, kolik moviey budou uvedeny v každé kategorii sitemap",
 	"Фильмов в общих страницах:": "Moviey v celkem stran:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Určit, kolik movieů budou použity k vytvoření stránek všech herců, režisérů, žánrů, roků a zemí"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Určit, kolik movieů budou použity k vytvoření stránek všech herců, režisérů, žánrů, roků a zemí",
+	"Уровень вложенности URL": "Úroveň vnoření URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Úroveň vnoření pro řadu internetových stránek lomítka URL-adresou",
+	"2-й уровень": "Level 2",
+	"3-й уровень": "Třetí úroveň"
 }

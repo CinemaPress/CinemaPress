@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movieer i platskartan:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Ange hur många movieer kommer att visas i varje kategori sitemap",
 	"Фильмов в общих страницах:": "Movieer i totalt antal sidor:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Ange hur många movieer kommer att användas för att bilda sidorna av alla skådespelare, regissörer, genrer år och länder"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Ange hur många movieer kommer att användas för att bilda sidorna av alla skådespelare, regissörer, genrer år och länder",
+	"Уровень вложенности URL": "Nesting nivå URL",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Häckande nivå för antalet snedstreck hemsidan URL-adress",
+	"2-й уровень": "Nivå 2",
+	"3-й уровень": "Tredje nivån"
 }

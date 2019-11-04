@@ -820,5 +820,9 @@
 	"Фильмов в карте сайта:": "Movieovi na site map:",
 	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Odrediti koliko movieovi će biti prikazani u svakoj kategoriji sitemap",
 	"Фильмов в общих страницах:": "Movieovi u ukupni broj stranica:",
-	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Odredite koliko movieovi će se koristiti za stvaranje stranice svih glumaca, redatelja, žanrova, godina i država"
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Odredite koliko movieovi će se koristiti za stvaranje stranice svih glumaca, redatelja, žanrova, godina i država",
+	"Уровень вложенности URL": "URL Razina gniježđenja",
+	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Razina gniježđenja za broj reže web stranice URL-adresu",
+	"2-й уровень": "Razina 2",
+	"3-й уровень": "Treća razina"
 }

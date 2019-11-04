@@ -100,13 +100,13 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movie" value="<%= config.urls.movie %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%- config.urls.prefix_id %>299-the-matrix</span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix</span>
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.movie %>/</span><span class="visible-xs">/<%- config.urls.movie %>/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %></span></span>
                                                 <input class="form-control" name="config.urls.movie_url" value="<%= config.urls.movie_url %>" type="text">
                                             </div>
 
@@ -145,28 +145,28 @@
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Онлайн»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Онлайн»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.online" value="<%= config.urls.movies.online %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Онлайн»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Скачать»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Скачать»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.download" value="<%= config.urls.movies.download %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Скачать»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Трейлер»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Трейлер»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.trailer" value="<%= config.urls.movies.trailer %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Трейлер»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Кадры»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %>/<%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Кадры»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.picture" value="<%= config.urls.movies.picture %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Кадры»') %>" type="text">
                                             </div>
                                         </div>
@@ -282,11 +282,42 @@
                                                             <div class="input-group">
                                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                                 <input class="form-control input_url" name="config.urls.noindex" value="<%= config.urls.noindex %>" type="text" placeholder="noindex">
-                                                                <span class="input-group-addon text-muted">/<%- config.urls.prefix_id %>299-the-matrix</span>
+                                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fas fa-route"></i>&nbsp;&nbsp;&nbsp;<%= __('Уровень вложенности URL') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/admin/urls.html#slash" class="csstip" title="<%= __('Уровень вложенности веб-сайта по числу слэшей в URL-адресе') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="config.urls.slash" value="-" <% if (config.urls.slash === '-') { %> checked="" <% } %> type="radio"><span></span> <%= __('2-й уровень') %>
+                                                </label>
+                                                <label>
+                                                    <input name="config.urls.slash" value="/" <% if (config.urls.slash === '/') { %> checked="" <% } %> type="radio"><span></span> <%= __('3-й уровень') %>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -314,7 +345,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.year" value="<%= config.urls.year %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%= __('2020') %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%= __('2020') %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -322,7 +353,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.genre" value="<%= config.urls.genre %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%= __('комедия') %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%= __('комедия') %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -330,7 +361,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.country" value="<%= config.urls.country %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%= __('США') %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%= __('США') %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -338,7 +369,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.actor" value="<%= config.urls.actor %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%= __('Том Круз') %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%= __('Том Круз') %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -346,7 +377,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.director" value="<%= config.urls.director %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%= __('Тим Бертон') %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%= __('Тим Бертон') %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -354,7 +385,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
                                                 <input class="form-control input_url" name="config.urls.type" value="<%= config.urls.type %>" type="text">
-                                                <span class="input-group-addon text-muted">/<%- config.urls.types.movie %></span>
+                                                <span class="input-group-addon text-muted"><%- config.urls.slash %><%- config.urls.types.movie %></span>
                                             </div>
 
                                             <div class="spacer-10"></div>
@@ -365,7 +396,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.movie" value="<%= config.urls.types.movie %>" type="text">
                                                     </div>
                                                 </div>
@@ -377,7 +408,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.serial" value="<%= config.urls.types.serial %>" type="text">
                                                     </div>
                                                 </div>
@@ -389,7 +420,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.mult" value="<%= config.urls.types.mult %>" type="text">
                                                     </div>
                                                 </div>
@@ -401,7 +432,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.multserial" value="<%= config.urls.types.multserial %>" type="text">
                                                     </div>
                                                 </div>
@@ -413,7 +444,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.anime" value="<%= config.urls.types.anime %>" type="text">
                                                     </div>
                                                 </div>
@@ -425,7 +456,7 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %>/</span><span class="visible-xs">/<%- config.urls.type %>/</span></span>
+                                                        <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- config.urls.type %><%- config.urls.slash %></span><span class="visible-xs">/<%- config.urls.type %><%- config.urls.slash %></span></span>
                                                         <input class="form-control" name="config.urls.types.tv" value="<%= config.urls.types.tv %>" type="text">
                                                     </div>
                                                 </div>

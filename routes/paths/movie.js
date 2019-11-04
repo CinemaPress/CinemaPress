@@ -474,9 +474,9 @@ function dataMovie(id, type, options, callback) {
  */
 
 function idMovie(url) {
-  url = '/' + url;
+  url = config.urls.slash + url;
 
-  var prefixId = config.urls.prefix_id || '/';
+  var prefixId = config.urls.prefix_id || config.urls.slash;
   var regexpId = new RegExp(CP_decode.text(prefixId) + '([0-9]{1,8})', 'ig');
   var execId = regexpId.exec(CP_decode.text(url));
   var intId = execId ? parseInt(execId[1]) : 0;
