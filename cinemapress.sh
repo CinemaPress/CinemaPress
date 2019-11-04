@@ -402,13 +402,18 @@ ip_install() {
 
             MEGA_EMAIL="${2}"
             MEGA_PASSWORD="${3}"
-            docker exec ${CP_DOMAIN_} rclone config create CINEMAPRESS mega \
-                user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec -it ${CP_DOMAIN_} rclone config delete CINEMAPRESS \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec -it ${CP_DOMAIN_} rclone config create CINEMAPRESS mega user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             if [ "${4}" = "2" ] || [ "${4}" = "restore" ]; then
-                docker exec ${CP_DOMAIN_} cinemapress container backup restore "${5}" >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-                docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                docker exec -it ${CP_DOMAIN_} cinemapress container backup restore "${5}" \
+                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                docker exec -it nginx nginx -s reload \
+                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${4}" = "1" ] || [ "${4}" = "create" ]; then
-                docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                docker exec -it ${CP_DOMAIN_} cinemapress container backup \
+                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             fi
         else
             _header "RCLONE CONFIG"
@@ -454,10 +459,13 @@ ip_install() {
         sh_progress
 
         if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
-            docker exec ${CP_DOMAIN_} cinemapress container backup restore >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec nginx nginx -s reload >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec -it ${CP_DOMAIN_} cinemapress container backup restore \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec -it nginx nginx -s reload \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         else
-            docker exec ${CP_DOMAIN_} cinemapress container backup >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            docker exec -it ${CP_DOMAIN_} cinemapress container backup \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         fi
     fi
 }
