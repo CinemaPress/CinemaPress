@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Frissítések hdvb",
 	"Текст от 100 символов!": "A szöveg a 100 karaktert!",
 	"Запретить индексацию": "Deny indexelés",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Feltétel az indexelés a keresőmotorok betiltása egyes movieek (ha a feltétel igaz - indexelés tilos)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Feltétel az indexelés a keresőmotorok betiltása egyes movieek (ha a feltétel igaz - indexelés tilos)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Adja meg, hány movieet kell használni a kiválasztási egy véletlen",
+	"Фильмов в выборке:": "Movieek a minta:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Adja meg a sort, amelyen movieeket lesz rendezve véletlen lista",
+	"Фильмов в карте сайта:": "Movieek a site map:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Adja meg, hány movieet fognak megjelenni minden kategóriában sitemap",
+	"Фильмов в общих страницах:": "Movieek összesen oldalak:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Adja meg, hány movieet fogják használni, így az oldalak összes színészek, rendezők, műfajok évek és országok"
 }

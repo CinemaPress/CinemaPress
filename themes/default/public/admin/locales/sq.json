@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Updates me hdvb",
 	"Текст от 100 символов!": "Teksti prej 100 karaktere!",
 	"Запретить индексацию": "Deny indeksimin",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Kusht për indeksimin nga motorët e kërkimit të ndaluar movieat caktuara (nëse gjendja është e vërtetë - indeksimi është e ndaluar)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Kusht për indeksimin nga motorët e kërkimit të ndaluar movieat caktuara (nëse gjendja është e vërtetë - indeksimi është e ndaluar)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Specifikoni se shumë moviea që do të përdoret në përzgjedhjen e një të rastit",
+	"Фильмов в выборке:": "Moviea në mostër:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Specifikoni llojin në të cilën moviea do të ndahen për listën rastit",
+	"Фильмов в карте сайта:": "Moviea në hartë site:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Specifikoni se sa moviea do të shfaqen në çdo kategori sitemap",
+	"Фильмов в общих страницах:": "Movieat në faqet totale:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Specifikoni sa moviea do të përdoren për të formuar faqet e të gjithë aktorëve, drejtorëve, zhanret, vitet dhe vendet"
 }

@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Hdvb ile güncellemeler",
 	"Текст от 100 символов!": "100 karakterlik metin!",
 	"Запретить индексацию": "Endeksleme reddet",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Arama motorları tarafından dizine eklenmesi için Durum (- indeksleme yasaktır koşul doğruysa), belirli movieleri yasaklamak"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Arama motorları tarafından dizine eklenmesi için Durum (- indeksleme yasaktır koşul doğruysa), belirli movieleri yasaklamak",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Rastgele seçiminde kaç movieler kullanılacak belirleme",
+	"Фильмов в выборке:": "Numunedeki movieler:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Movieler rastgele liste için sıralanır hangi tür belirtin",
+	"Фильмов в карте сайта:": "Site haritası movieler:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Her kategori site haritasında kaç movie gösterilecektir belirtin",
+	"Фильмов в общих страницах:": "Toplam sayfalarında movieler:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tüm aktörler, yönetmenler, türler, yaş ve ülkelerin sayfalarını oluşturmak için kullanılacak kaç movie belirtin"
 }

@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Uppdateringar med hdvb",
 	"Текст от 100 символов!": "Texten till 100 tecken!",
 	"Запретить индексацию": "Neka indexering",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Villkor för indexering av sökmotorer förbjuda vissa movieer (om villkoret är sant - indexering är förbjuden)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Villkor för indexering av sökmotorer förbjuda vissa movieer (om villkoret är sant - indexering är förbjuden)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Ange hur många movieer som ska användas vid valet av en slumpmässig",
+	"Фильмов в выборке:": "Movieer i provet:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Ange den typ som movieerna kommer att sorteras för slumpmässig lista",
+	"Фильмов в карте сайта:": "Movieer i platskartan:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Ange hur många movieer kommer att visas i varje kategori sitemap",
+	"Фильмов в общих страницах:": "Movieer i totalt antal sidor:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Ange hur många movieer kommer att användas för att bilda sidorna av alla skådespelare, regissörer, genrer år och länder"
 }

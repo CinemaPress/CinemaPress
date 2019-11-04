@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Aplikasi hdvb",
 	"Текст от 100 символов!": "Teks 100 karakter!",
 	"Запретить индексацию": "Deny pengindeksan",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Kondisi untuk mengindeks oleh search engine melarang movie tertentu (jika kondisi benar - pengindeksan dilarang)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Kondisi untuk mengindeks oleh search engine melarang movie tertentu (jika kondisi benar - pengindeksan dilarang)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Tentukan berapa banyak movie yang akan digunakan dalam pemilihan acak",
+	"Фильмов в выборке:": "Movie dalam sampel:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Tentukan jenis yang movie akan diurutkan untuk daftar acak",
+	"Фильмов в карте сайта:": "Movie dalam peta situs:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Tentukan berapa banyak movie akan ditampilkan di setiap kategori sitemap",
+	"Фильмов в общих страницах:": "Movie total halaman:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Tentukan berapa banyak movie akan digunakan untuk membentuk halaman semua aktor, sutradara, genre, tahun dan negara-negara"
 }

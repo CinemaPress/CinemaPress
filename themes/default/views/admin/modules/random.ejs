@@ -104,6 +104,51 @@
                                                 </label>
                                             </div>
                                         </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите сколько фильмов будут использоваться в выборе случайного') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Фильмов в выборке:') %>
+                                                </a>
+                                            </div>
+                                            <select name="modules.random.data.count" class="form-control">
+                                                <% for (var i = 0; i <= 300; i = i+10) { if (!i) continue; %>
+                                                <% if (modules.random.data.count === i) { %>
+                                                    <option value="<%= i %>" selected="selected">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } else { %>
+                                                    <option value="<%= i %>">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите сортировку по которой будут сортироваться фильмы для списка случайных') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Сортировка фильмов:') %>
+                                                </a>
+                                            </div>
+                                            <select name="modules.random.data.sorting" class="form-control">
+                                                <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                <% if (modules.random.data.sorting === name) { %>
+                                                    <option value="<%= name %>" selected="selected">
+                                                        <%- config.sorting[name] %>
+                                                    </option>
+                                                <% } else { %>
+                                                    <option value="<%= name %>">
+                                                        <%- config.sorting[name] %>
+                                                    </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

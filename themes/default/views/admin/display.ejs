@@ -64,6 +64,30 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите изображение, которое будет отображаться, когда люди будут делиться веб-сайтом в социальных сетях') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Изображение по умолчанию:') %>
+                                                </a>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-10 text-center">
+                                                    <input type="text" class="form-control" name="config.default.image" data-content="input" value="<% if (config.default.image) { %><%= config.default.image %><% } %>" placeholder="<%= __('URL изображения') %>" style="font-weight: normal; font-size: 14px;">
+                                                </div>
+                                                <div class="col-sm-2 text-center">
+                                                    <label class="btn btn-default btn-block" for="contentFile">
+                                                        <span class="fa fa-plus"></span>
+                                                    </label>
+                                                </div>
+                                                <form id="contentForm" enctype="multipart/form-data" data-form="content">
+                                                    <input type="file" name="content" id="contentFile">
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
                                         <div class="col-sm-6">
                                             <div>
                                                 <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории и результатах поиска') %>">
@@ -93,7 +117,7 @@
                                                 </a>
                                             </div>
                                             <select name="config.default.sorting" class="form-control">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
                                                 <% if (config.default.sorting === name) { %>
                                                 <option value="<%= name %>" selected="selected">
                                                     <%- config.sorting[name] %>
@@ -154,30 +178,6 @@
                                                 </option>
                                                 <% } %>
                                             </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-12">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите изображение, которое будет отображаться, когда люди будут делиться веб-сайтом в социальных сетях') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Изображение по умолчанию:') %>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-10 text-center">
-                                                    <input type="text" class="form-control" name="config.default.image" data-content="input" value="<% if (config.default.image) { %><%= config.default.image %><% } %>" placeholder="<%= __('URL изображения') %>" style="font-weight: normal; font-size: 14px;">
-                                                </div>
-                                                <div class="col-sm-2 text-center">
-                                                    <label class="btn btn-default btn-block" for="contentFile">
-                                                        <span class="fa fa-plus"></span>
-                                                    </label>
-                                                </div>
-                                                <form id="contentForm" enctype="multipart/form-data" data-form="content">
-                                                    <input type="file" name="content" id="contentFile">
-                                                </form>
-                                            </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
@@ -298,6 +298,52 @@
                                                     <input type="text" class="form-control" name="config.default.moment" value="<% if (config.default.moment) { %><%= config.default.moment %><% } %>" placeholder="<%= __('Например:') %> <%= __('YYYY-MM-DD') %>">
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории карты сайта') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Фильмов в карте сайта:') %>
+                                                </a>
+                                            </div>
+                                            <select name="config.default.loc" class="form-control">
+                                                <% for (var i = 0; i <= 3000; i = i+100) { if (!i) continue; %>
+                                                <% if (config.default.loc === i) { %>
+                                                    <option value="<%= i %>" selected="selected">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } else { %>
+                                                    <option value="<%= i %>">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Фильмов в общих страницах:') %>
+                                                </a>
+                                            </div>
+                                            <select name="config.default.tag" class="form-control">
+                                                <% for (var i = 0; i <= 3000; i = i+100) { if (!i) continue; %>
+                                                <% if (config.default.tag === i) { %>
+                                                    <option value="<%= i %>" selected="selected">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } else { %>
+                                                    <option value="<%= i %>">
+                                                        <%- i %> <%= __('фильма(ов)') %>
+                                                    </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
                                         </div>
 
                                         <div class="spacer-10"></div>

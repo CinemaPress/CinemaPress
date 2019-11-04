@@ -546,7 +546,9 @@ module.exports = {
       "category": ["year","country","genre","type","content"],
       "menu": "poslednie-obnovleniya-filmov",
       "index": 1,
-      "related": 1
+      "related": 1,
+      "count": 200,
+      "sorting": "kinopoisk-vote-up"
     }
   }
 };

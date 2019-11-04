@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Updates met hDVB",
 	"Текст от 100 символов!": "De tekst van 100 tekens!",
 	"Запретить индексацию": "Deny indexeren",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Voorwaarde voor indexering door zoekmachines te verbieden bepaalde movies (als de voorwaarde waar is - indexering is verboden)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Voorwaarde voor indexering door zoekmachines te verbieden bepaalde movies (als de voorwaarde waar is - indexering is verboden)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Geef aan hoe veel movies om te worden gebruikt bij de selectie van een willekeurige",
+	"Фильмов в выборке:": "Movies in de steekproef:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Geef het soort waarop movies worden gesorteerd voor willekeurige lijst",
+	"Фильмов в карте сайта:": "Movies in de site map:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Geef aan hoeveel movies worden getoond in elke categorie sitemap",
+	"Фильмов в общих страницах:": "Movies in totaal pagina's:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Geef aan hoe veel movies zullen worden gebruikt om de pagina's van de acteurs, regisseurs, genres, jaren en landen vormen"
 }

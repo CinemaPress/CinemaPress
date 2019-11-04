@@ -90,7 +90,9 @@ module.exports = {
       "anime": "anime",
       "tv": "show | news | real | ceremony | concert"
     },
-    "moment": "DD MMM YYYY"
+    "moment": "DD MMM YYYY",
+    "loc": 2000,
+    "tag": 2000
   },
   "codes": {
     "head": "",

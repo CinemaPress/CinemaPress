@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Aktualizace s hdvb",
 	"Текст от 100 символов!": "Text 100 znaků!",
 	"Запретить индексацию": "Popřít indexování",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Podmínkou pro indexování pomocí vyhledávačů zakázat některé moviey (v případě, že je splněna podmínka - indexování je zakázána)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Podmínkou pro indexování pomocí vyhledávačů zakázat některé moviey (v případě, že je splněna podmínka - indexování je zakázána)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Určit, kolik movieů, které mají být použity při výběru náhodné",
+	"Фильмов в выборке:": "Moviey ve vzorku:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Specifikovat druh, na kterém budou moviey seřazené pro náhodný seznam",
+	"Фильмов в карте сайта:": "Moviey v mapě stránek:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Určit, kolik moviey budou uvedeny v každé kategorii sitemap",
+	"Фильмов в общих страницах:": "Moviey v celkem stran:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Určit, kolik movieů budou použity k vytvoření stránek všech herců, režisérů, žánrů, roků a zemí"
 }

@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Taarifa na hdvb",
 	"Текст от 100 символов!": "Nakala ya herufi 100!",
 	"Запретить индексацию": "Kataa kuwekwa",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Hali kwa kuwekwa na injini za utafutaji marufuku filamu fulani (kama hali ni ya kweli - kuwekwa ni marufuku)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Hali kwa kuwekwa na injini za utafutaji marufuku filamu fulani (kama hali ni ya kweli - kuwekwa ni marufuku)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "TAJA jinsi filamu nyingi kutumika katika uteuzi wa random",
+	"Фильмов в выборке:": "Filamu katika sampuli:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Taja aina ambayo filamu litatatuliwa kwa orodha random",
+	"Фильмов в карте сайта:": "Filamu katika ramani ya tovuti:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "TAJA jinsi filamu nyingi itaonyeshwa katika kila kitengo sitemap",
+	"Фильмов в общих страницах:": "Filamu katika kurasa jumla:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Taja jinsi filamu nyingi zitatumika kutengeneza kurasa za kila watendaji, wakurugenzi, muziki, miaka na nchi"
 }

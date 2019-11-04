@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Actualizaciones con hDVB",
 	"Текст от 100 символов!": "El texto de 100 caracteres!",
 	"Запретить индексацию": "Negar la indexación",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Condición para la indexación por los motores de búsqueda prohibir ciertas películas (si la condición es verdadera - se prohíbe la indexación)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Condición para la indexación por los motores de búsqueda prohibir ciertas películas (si la condición es verdadera - se prohíbe la indexación)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Especificar el número de películas que se utilizará en la selección de una muestra aleatoria",
+	"Фильмов в выборке:": "Películas en la muestra:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Especificar el tipo en el que se ordenarán las películas de lista aleatoria",
+	"Фильмов в карте сайта:": "Películas en el mapa del sitio:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Especificar cuántas películas se mostrarán en cada categoría mapa del sitio",
+	"Фильмов в общих страницах:": "Movies en el total de páginas:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Especificar cuántas películas se utiliza para formar las páginas de todos los actores, directores, géneros, años y países"
 }

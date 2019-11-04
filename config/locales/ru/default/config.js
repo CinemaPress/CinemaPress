@@ -91,7 +91,9 @@ module.exports = {
       "anime": "аниме",
       "tv": "шоу | новости | реальное | церемония | концерт"
     },
-    "moment": "DD MMM YYYY"
+    "moment": "DD MMM YYYY",
+    "loc": 2000,
+    "tag": 2000
   },
   "codes": {
     "head": "",

@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Atnaujinimai su hdvb",
 	"Текст от 100 символов!": "100 simbolių tekstas!",
 	"Запретить индексацию": "Deny indeksavimo",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Būklė indeksuoti paieškos sistemose uždrausti tam tikrus movieus (jei sąlyga yra teisinga - indeksavimo draudžiama)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Būklė indeksuoti paieškos sistemose uždrausti tam tikrus movieus (jei sąlyga yra teisinga - indeksavimo draudžiama)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Nurodyti, kiek movieų bus naudojamas atsitiktinis atrankos",
+	"Фильмов в выборке:": "Movieai imties:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Nurodykite rūšiuoti pagal kurį movieai bus surūšiuoti atsitiktinio sąrašo",
+	"Фильмов в карте сайта:": "Movieai į svetainę žemėlapyje:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Nurodyti, kiek movieų bus parodyta kiekvienoje kategorijoje sitemap",
+	"Фильмов в общих страницах:": "Movieų iš viso puslapių:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Nurodykite, kiek movieų bus naudojamas suformuoti visų aktorių, režisierių, žanrų, metus ir šalių puslapių"
 }

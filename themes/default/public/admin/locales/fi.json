@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Päivitykset hdvb",
 	"Текст от 100 символов!": "Tekstissä 100 merkkiä!",
 	"Запретить индексацию": "Deny indeksointi",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Edellytys indeksointi hakukoneiden kieltää tietyt elokuvia (jos ehto on tosi - indeksointi on kielletty)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Edellytys indeksointi hakukoneiden kieltää tietyt elokuvia (jos ehto on tosi - indeksointi on kielletty)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Kuinka monta elokuvaa voidaan käyttää valinnassa satunnainen",
+	"Фильмов в выборке:": "Elokuvat näytteessä:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Määritä sellainen, jolle elokuvien ratkeaa satunnainen lista",
+	"Фильмов в карте сайта:": "Elokuvat sivustokartassa:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Kuinka monta elokuvaa näytetään jokaisessa luokassa sivukartta",
+	"Фильмов в общих страницах:": "Elokuvat yhteensä sivua:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Kuinka monta elokuvaa käytetään muodostamaan sivuille kaikkien, ohjaajille, lajityyppejä vuotta ja maissa"
 }

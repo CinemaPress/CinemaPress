@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Cập nhật với hdvb",
 	"Текст от 100 символов!": "Các văn bản của 100 ký tự!",
 	"Запретить индексацию": "Deny indexing",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Điều kiện để lập chỉ mục bởi các công cụ tìm kiếm cấm phim nhất định (nếu điều kiện là đúng - lập chỉ mục bị cấm)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Điều kiện để lập chỉ mục bởi các công cụ tìm kiếm cấm phim nhất định (nếu điều kiện là đúng - lập chỉ mục bị cấm)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Chỉ định bao nhiêu bộ phim sẽ được sử dụng trong việc lựa chọn ngẫu nhiên",
+	"Фильмов в выборке:": "Phim trong mẫu:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Xác định loại mà bộ phim sẽ được sắp xếp cho danh sách ngẫu nhiên",
+	"Фильмов в карте сайта:": "Phim trong bản đồ trang web:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Chỉ định bao nhiêu bộ phim sẽ được trình bày trong mỗi thể loại sitemap",
+	"Фильмов в общих страницах:": "Phim in total pages:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Xác định có bao nhiêu bộ phim sẽ được sử dụng để tạo các trang của tất cả các diễn viên, đạo diễn, thể loại, năm và các nước"
 }

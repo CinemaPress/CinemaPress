@@ -813,5 +813,12 @@
 	"Обновления с hdvb": "Uuendused hdvb",
 	"Текст от 100 символов!": "Tekst 100 tähemärki!",
 	"Запретить индексацию": "Keeldu indekseerimine",
-	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Seisund indekseerimise otsingumootorid keelata teatud movieide (kui tingimus on tõene - indekseerimine on keelatud)"
+	"Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)": "Seisund indekseerimise otsingumootorid keelata teatud movieide (kui tingimus on tõene - indekseerimine on keelatud)",
+	"Укажите сколько фильмов будут использоваться в выборе случайного": "Määrata, kuidas palju moviee, mida kasutatakse valik juhuslik",
+	"Фильмов в выборке:": "Movieid proovis:",
+	"Укажите сортировку по которой будут сортироваться фильмы для списка случайных": "Määrake sorteerida mis movieide sorditakse juhuslike nimekirja",
+	"Фильмов в карте сайта:": "Movieid saidi kaart:",
+	"Укажите какое число фильмов будет отображаться в каждой категории карты сайта": "Määrata, kuidas palju moviee näidatakse iga kategooria sitemap",
+	"Фильмов в общих страницах:": "Movieid kokku lehti:",
+	"Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран": "Määrake, kui palju moviee kasutatakse moodustavad lehekülgi kõik näitlejad, lavastajad, žanrid aastat ja riikide"
 }

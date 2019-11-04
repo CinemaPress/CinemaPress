@@ -39,7 +39,7 @@ moment.locale(config.language);
 function allSitemap(options, callback) {
   var query = {};
   query['year'] = '!_empty';
-  return CP_get.movies(query, 2424, 'kinopoisk-vote-up', 1, false, function(
+  return CP_get.movies(query, -2, 'kinopoisk-vote-up', 1, false, function(
     err,
     movies
   ) {
@@ -199,7 +199,7 @@ function oneSitemap(type, year, options, callback) {
   function getCategories(category, callback) {
     var query = {};
     query[category] = '!_empty';
-    return CP_get.movies(query, 2424, 'kinopoisk-vote-up', 1, false, function(
+    return CP_get.movies(query, -2, 'kinopoisk-vote-up', 1, false, function(
       err,
       movies
     ) {
@@ -280,7 +280,7 @@ function oneSitemap(type, year, options, callback) {
   function getMovies(year, callback) {
     CP_get.movies(
       { year: year },
-      2525,
+      -1,
       'kinopoisk-vote-up',
       1,
       true,
