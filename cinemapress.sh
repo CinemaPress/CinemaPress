@@ -512,7 +512,9 @@ ip_install() {
 
     sh_progress
 
-    docker restart ${CP_DOMAIN_} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+    if [ "`docker -v 2>/dev/null`" != "" ]; then
+        docker restart ${CP_DOMAIN_} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+    fi
 }
 5_database() {
     STS="http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}"
@@ -1587,7 +1589,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_theme ${3}
             _s ${3}
             sh_progress
-            4_theme
+            4_theme ${4}
             sh_progress 100
             exit 0
         ;;
