@@ -42,7 +42,8 @@
     "request": "2.88.0",
     "sharp": "0.23.1",
     "sinoni": "1.2.5",
-    "ua-parser-js": "0.7.20"
+    "ua-parser-js": "0.7.20",
+    "nodemailer": "6.3.1"
   },
   "devDependencies": {
     "prettier": "1.18.2"

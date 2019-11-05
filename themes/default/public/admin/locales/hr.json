@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL Razina gniježđenja",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Razina gniježđenja za broj reže web stranice URL-adresu",
 	"2-й уровень": "Razina 2",
-	"3-й уровень": "Treća razina"
+	"3-й уровень": "Treća razina",
+	"Автоматический ответ после скрытия": "Automatski odgovor nakon sakriti",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Unesite usluga e-pošte iz koje će biti poslane podatke odgovoriti na pisma",
+	"Параметры авторизации SMTP": "Parametri za provjeru autentičnosti SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Postavke ovlaštenja na poslužitelju SMTP mail",
+	"DKIM-подпись": "DKIM-potpis",
+	"Сообщение": "Poruka"
 }

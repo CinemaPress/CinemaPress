@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Nesting URL cha",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Kiwango nesting kwa idadi ya mikwaju tovuti URL anwani",
 	"2-й уровень": "Kiwango cha 2",
-	"3-й уровень": "Ngazi ya tatu"
+	"3-й уровень": "Ngazi ya tatu",
+	"Автоматический ответ после скрытия": "Moja kwa moja jibu baada kujificha",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Kuongeza yako ya barua huduma kutoka ambayo watapelekwa jibu la barua",
+	"Параметры авторизации SMTP": "SMTP vigezo uthibitisho",
+	"Параметры авторизации на почтовом SMTP сервере": "Mazingira idhini ya SMTP server pepe",
+	"DKIM-подпись": "DKIM-saini",
+	"Сообщение": "Ujumbe"
 }

@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Úroveň vnoření URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Úroveň vnoření pro řadu internetových stránek lomítka URL-adresou",
 	"2-й уровень": "Level 2",
-	"3-й уровень": "Třetí úroveň"
+	"3-й уровень": "Třetí úroveň",
+	"Автоматический ответ после скрытия": "Automatická odpověď po kůži",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Přidejte svůj e-mailovou službu, která bude zaslána odpověď na dopis",
+	"Параметры авторизации SMTP": "Parametry autentizace SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Nastavení autorizace na poštovní server SMTP",
+	"DKIM-подпись": "DKIM podpisu",
+	"Сообщение": "Zpráva"
 }

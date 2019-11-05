@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Nestniveau URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Nestniveau voor het aantal schuine strepen De website van het URL-adres",
 	"2-й уровень": "Niveau 2",
-	"3-й уровень": "Derde niveau"
+	"3-й уровень": "Derde niveau",
+	"Автоматический ответ после скрытия": "Automatisch opnemen na hide",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Voer de e-mail dienst waar de gegevens worden verzonden om te antwoorden op de brief",
+	"Параметры авторизации SMTP": "SMTP authenticatie parameters",
+	"Параметры авторизации на почтовом SMTP сервере": "Autorisatie instellingen op de SMTP-mailserver",
+	"DKIM-подпись": "DKIM-signature",
+	"Сообщение": "Bericht"
 }

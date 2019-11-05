@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL Raven gnezdenja",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Raven gnezdenja za število spletni strani poševnice URL-naslov",
 	"2-й уровень": "Stopnja 2",
-	"3-й уровень": "Tretja raven"
+	"3-й уровень": "Tretja raven",
+	"Автоматический ответ после скрытия": "Samodejni odgovor po kožo",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Dodajte svoj e-poštno storitev, od katerega bodo poslali odgovor na pismo",
+	"Параметры авторизации SMTP": "Parametri za preverjanje pristnosti SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Nastavitve za pridobitev dovoljenja na poštni strežnik SMTP",
+	"DKIM-подпись": "DKIM-podpis",
+	"Сообщение": "Sporočilo"
 }

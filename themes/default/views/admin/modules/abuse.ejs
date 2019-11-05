@@ -200,6 +200,150 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="col-sm-12">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="fas fa-reply"></i>&nbsp;&nbsp;&nbsp;<%= __('Автоматический ответ после скрытия') %>
+                                                </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/admin/abuse.html#auth" class="csstip" title="<%= __('Укажите данные почтового сервиса с которого будет отправляться ответ на письмо') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры авторизации SMTP') %>
+                                                                </div>
+                                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                                    <a href="https://CinemaPress.io/admin/abuse.html#auth" class="csstip" title="<%= __('Параметры авторизации на почтовом SMTP сервере') %>" target="_blank">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-lg-3 col-xs-3">
+                                                                        <label><%= __('Email') %></label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-xs-9 text-center">
+                                                                        <input type="text" name="modules.abuse.data.smtp.auth.user" value="<%= modules.abuse.data.smtp.auth.user %>" class="form-control" placeholder="support@<%- config.domain %>">
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-3 col-xs-3">
+                                                                        <label><%= __('Пароль') %></label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-xs-9 text-center">
+                                                                        <input type="text" name="modules.abuse.data.smtp.auth.pass" value="<%= modules.abuse.data.smtp.auth.pass %>" class="form-control" placeholder="<%= __('Ваш пароль от почтового ящика') %>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры почтового сервера') %>
+                                                                </div>
+                                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                                    <a href="https://CinemaPress.io/admin/abuse.html#server" class="csstip" title="<%= __('Параметры почтового сервера') %>" target="_blank">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-lg-3 col-xs-3">
+                                                                        <label><%= __('Сервер') %></label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-xs-9 text-center">
+                                                                        <input type="text" name="modules.abuse.data.smtp.host" value="<%= modules.abuse.data.smtp.host %>" class="form-control" placeholder="smtp.zoho.com">
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-3 col-xs-3">
+                                                                        <label><%= __('Порт') %></label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-xs-9 text-center">
+                                                                        <input type="text" name="modules.abuse.data.smtp.port" value="<%= modules.abuse.data.smtp.port %>" class="form-control">
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-3 col-xs-3">
+                                                                        <label><%= __('TLS') %></label>
+                                                                    </div>
+                                                                    <div class="col-lg-9 col-xs-9 text-center">
+                                                                        <select name="modules.abuse.data.smtp.secure" class="form-control">
+                                                                            <option value="1" <% if (modules.abuse.data.smtp.secure) { %>selected="selected"<% } %>>
+                                                                                <%= __('Да') %>
+                                                                            </option>
+                                                                            <option value="0" <% if (!modules.abuse.data.smtp.secure) { %>selected="selected"<% } %>>
+                                                                                <%= __('Нет') %>
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fas fa-key"></i>&nbsp;&nbsp;&nbsp;<%= __('DKIM-подпись') %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 text-center">
+                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.dkim" placeholder='{"domainName": "", "keySelector": "", "privateKey": ""}' style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.dkim) { %><%- modules.abuse.data.smtp.dkim %><% } %></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;&nbsp;<%= __('Сообщение') %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12 text-center">
+                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.message" style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message %><% } %></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </article>

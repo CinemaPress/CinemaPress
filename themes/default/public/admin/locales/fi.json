@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Sisäkkyystaso URL-",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Sisäkkyystaso lukumäärälle viiltää verkkosivuston URL-osoite",
 	"2-й уровень": "Taso 2",
-	"3-й уровень": "Kolmas taso"
+	"3-й уровень": "Kolmas taso",
+	"Автоматический ответ после скрытия": "Automaattinen vastaus jälkeen piilota",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Anna sähköpostipalvelu, josta data lähetetään vastata kirjeeseen",
+	"Параметры авторизации SMTP": "SMTP-autentikointiparametrit",
+	"Параметры авторизации на почтовом SMTP сервере": "Valtuutus asetukset SMTP",
+	"DKIM-подпись": "DKIM-allekirjoitus",
+	"Сообщение": "Viesti"
 }

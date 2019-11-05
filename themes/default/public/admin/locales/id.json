@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL tingkat bersarang",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Tingkat bersarang untuk jumlah situs garis miring URL-alamat",
 	"2-й уровень": "Level 2",
-	"3-й уровень": "Tingkat ketiga"
+	"3-й уровень": "Tingkat ketiga",
+	"Автоматический ответ после скрытия": "Jawab otomatis setelah hide",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Masukkan layanan e-mail dari data yang akan dikirim untuk membalas surat itu",
+	"Параметры авторизации SMTP": "Parameter otentikasi SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Pengaturan otorisasi pada mail server SMTP",
+	"DKIM-подпись": "DKIM-signature",
+	"Сообщение": "Pesan"
 }

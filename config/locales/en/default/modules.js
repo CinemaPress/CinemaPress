@@ -61,6 +61,17 @@ module.exports = {
         "from": [],
         "subdomain": 0
       },
+      "smtp": {
+        "host": "",
+        "port": 465,
+        "secure": 1,
+        "auth": {
+          "user": "",
+          "pass": ""
+        },
+        "dkim": "",
+        "message": "Greetings! Thank you for your appeal, we have fulfilled all the requirements and removed the indicated materials. We were glad to cooperate!"
+      },
       "country": 0,
       "status_code_country": "200",
       "status_code_list": "404",

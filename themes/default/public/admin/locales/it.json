@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL livello di annidamento",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Il livello di nidificazione di un sito web per il numero di barre L'URL indirizzo",
 	"2-й уровень": "Livello 2",
-	"3-й уровень": "Terzo livello"
+	"3-й уровень": "Terzo livello",
+	"Автоматический ответ после скрытия": "Risposta automatica dopo nascondere",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Inserire il servizio di posta elettronica da cui i dati saranno inviati a rispondere alla lettera",
+	"Параметры авторизации SMTP": "Parametri di autenticazione SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Impostazioni di autorizzazione sul server di posta SMTP",
+	"DKIM-подпись": "DKIM firma",
+	"Сообщение": "Messaggio"
 }

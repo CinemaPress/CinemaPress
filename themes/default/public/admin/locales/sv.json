@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Nesting nivå URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Häckande nivå för antalet snedstreck hemsidan URL-adress",
 	"2-й уровень": "Nivå 2",
-	"3-й уровень": "Tredje nivån"
+	"3-й уровень": "Tredje nivån",
+	"Автоматический ответ после скрытия": "Automatiskt svar efter hide",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Lägg din e-posttjänst som kommer att skickas ett svar på ett brev",
+	"Параметры авторизации SMTP": "SMTP autentiseringsparametrar",
+	"Параметры авторизации на почтовом SMTP сервере": "Behörighets inställningarna på SMTP-postservern",
+	"DKIM-подпись": "DKIM-signaturen",
+	"Сообщение": "Meddelande"
 }

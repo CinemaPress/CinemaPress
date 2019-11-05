@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Yuvalama düzeyinde URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Kesikler websitesinin dizi URL adresi için Yuvalama seviyesi",
 	"2-й уровень": "Seviye 2",
-	"3-й уровень": "Üçüncü seviye"
+	"3-й уровень": "Üçüncü seviye",
+	"Автоматический ответ после скрытия": "Sakla sonra otomatik cevap",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Bir mektuba bir cevap gönderilecektir hangi e-posta hizmetini ekle",
+	"Параметры авторизации SMTP": "SMTP kimlik parametreleri",
+	"Параметры авторизации на почтовом SMTP сервере": "SMTP posta sunucusu üzerinde yetkilendirme ayarları",
+	"DKIM-подпись": "DKIM imzası",
+	"Сообщение": "Mesaj"
 }

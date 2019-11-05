@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Pesastamistase URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Pesastamistase arvu kohta kaldkriipsud veebilehel URL-aadress",
 	"2-й уровень": "Tase 2",
-	"3-й уровень": "Kolmas tase"
+	"3-й уровень": "Kolmas tase",
+	"Автоматический ответ после скрытия": "Automaatne vastus pärast peida",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Lisa oma e-posti teenuse, mis saadetakse vastus kirja",
+	"Параметры авторизации SMTP": "SMTP autentimine parameetrid",
+	"Параметры авторизации на почтовом SMTP сервере": "Loa seaded SMTP mail server",
+	"DKIM-подпись": "DKIM-allkirja",
+	"Сообщение": "Sõnum"
 }

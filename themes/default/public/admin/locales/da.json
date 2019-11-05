@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL indlejringsniveau",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Nesting niveau for antallet af skråstreger website URL-adresse",
 	"2-й уровень": "Niveau 2",
-	"3-й уровень": "Tredje niveau"
+	"3-й уровень": "Tredje niveau",
+	"Автоматический ответ после скрытия": "Automatisk svar efter skjul",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Indtast e-mail-tjeneste, hvorfra data vil blive sendt til at svare på brevet",
+	"Параметры авторизации SMTP": "Parametre SMTP authentication",
+	"Параметры авторизации на почтовом SMTP сервере": "Indstillinger for godkendelse på SMTP-mailserver",
+	"DKIM-подпись": "DKIM-signatur",
+	"Сообщение": "Besked"
 }

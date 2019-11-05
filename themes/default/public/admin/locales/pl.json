@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Poziom zagnieżdżenia URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Poziom zagnieżdżenia dla liczby ukośniki stronie URL-address",
 	"2-й уровень": "Poziom 2",
-	"3-й уровень": "Trzeci poziom"
+	"3-й уровень": "Trzeci poziom",
+	"Автоматический ответ после скрытия": "Automatyczna odpowiedź po skórze",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Dodaj swoją usługę e-mail, z którego zostanie wysłana odpowiedź na list",
+	"Параметры авторизации SMTP": "Parametry uwierzytelniania SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Ustawienia autoryzacji na serwerze poczty SMTP",
+	"DKIM-подпись": "DKIM-podpis",
+	"Сообщение": "Wiadomość"
 }

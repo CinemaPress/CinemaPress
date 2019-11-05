@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Ligzdošanas līmeņa URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Ligzdošanas līmenis skaitu simbolos vietnes URL, adrese",
 	"2-й уровень": "2. līmenis",
-	"3-й уровень": "Trešais līmenis"
+	"3-й уровень": "Trešais līmenis",
+	"Автоматический ответ после скрытия": "Automātiskā atbilde pēc paslēpt",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Ievadiet e-pasta pakalpojumu, no kuras dati tiks nosūtīti atbildēt uz vēstuli",
+	"Параметры авторизации SMTP": "SMTP autentifikācijas parametri",
+	"Параметры авторизации на почтовом SMTP сервере": "Autorizācijas iestatījumi SMTP pasta serveri",
+	"DKIM-подпись": "DKIM-paraksts",
+	"Сообщение": "Ziņa"
 }

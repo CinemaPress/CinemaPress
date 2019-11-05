@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Lizdus lygis adresas",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Lizdus lygis už nerijos svetainėje numerį URL adresas",
 	"2-й уровень": "2 lygis",
-	"3-й уровень": "Trečias lygis"
+	"3-й уровень": "Trečias lygis",
+	"Автоматический ответ после скрытия": "Automatinis atsakymas po paslėpti",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Pridėti savo elektroninio pašto tarnybos, iš kurios bus išsiųstas atsakymas į laišką",
+	"Параметры авторизации SMTP": "SMTP autentifikavimo parametrai",
+	"Параметры авторизации на почтовом SMTP сервере": "Leidimų nustatymus SMTP pašto serverio",
+	"DKIM-подпись": "DKIM parašas",
+	"Сообщение": "Žinutė"
 }

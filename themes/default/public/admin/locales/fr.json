@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "URL de niveau Nesting",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Niveau Nesting pour le nombre de site de barres obliques L'adresse URL",
 	"2-й уровень": "Niveau 2",
-	"3-й уровень": "Troisième niveau"
+	"3-й уровень": "Troisième niveau",
+	"Автоматический ответ после скрытия": "Réponse automatique après peau",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Ajouter votre service e-mail à partir de laquelle sera envoyé une réponse à une lettre",
+	"Параметры авторизации SMTP": "Paramètres d'authentification SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Paramètres d'autorisation sur le serveur de messagerie SMTP",
+	"DKIM-подпись": "DKIM signature",
+	"Сообщение": "Message"
 }

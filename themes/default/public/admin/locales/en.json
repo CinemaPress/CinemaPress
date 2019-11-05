@@ -823,5 +823,11 @@
   "Уровень вложенности URL": "URL nesting level",
   "Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Website nesting level based on the number of slashes in the URL",
   "2-й уровень": "2nd level",
-  "3-й уровень": "3rd level"
+  "3-й уровень": "3rd level",
+  "Автоматический ответ после скрытия": "Automatic response after hiding",
+  "Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Specify the data of the mail service from which the reply to the letter will be sent",
+  "Параметры авторизации SMTP": "SMTP authorization options",
+  "Параметры авторизации на почтовом SMTP сервере": "Authorization options on mail SMTP server",
+  "DKIM-подпись": "DKIM signature",
+  "Сообщение": "Message"
 }

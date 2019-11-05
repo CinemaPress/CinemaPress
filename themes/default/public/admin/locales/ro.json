@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Adresa URL la nivel de imbricare",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Nivel de imbricare pentru numărul de site-ul slash Adresa URL-adresa",
 	"2-й уровень": "Nivelul 2",
-	"3-й уровень": "Al treilea nivel"
+	"3-й уровень": "Al treilea nivel",
+	"Автоматический ответ после скрытия": "Răspuns automat după ascunde",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Adăugați serviciul de e-mail de la care va fi trimis un răspuns la o scrisoare",
+	"Параметры авторизации SMTP": "Parametrii de autentificare SMTP",
+	"Параметры авторизации на почтовом SMTP сервере": "Setările de autorizare pe serverul de poștă electronică SMTP",
+	"DKIM-подпись": "DKIM-semnătură",
+	"Сообщение": "Mesaj"
 }

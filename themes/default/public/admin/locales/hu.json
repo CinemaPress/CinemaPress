@@ -824,5 +824,11 @@
 	"Уровень вложенности URL": "Fészekrakó szintű URL",
 	"Уровень вложенности веб-сайта по числу слешей в URL-адресе": "Fészekrakó szintje száma osztásjeleket weboldal az URL-címe",
 	"2-й уровень": "2. szint",
-	"3-й уровень": "Harmadik szint"
+	"3-й уровень": "Harmadik szint",
+	"Автоматический ответ после скрытия": "Automatikus válasz után elrejtése",
+	"Укажите данные почтового сервиса с которого будет отправляться ответ на письмо": "Add meg az e-mail szolgáltatás, amelyet megküldenek a választ írni",
+	"Параметры авторизации SMTP": "SMTP hitelesítés paraméterek",
+	"Параметры авторизации на почтовом SMTP сервере": "Engedélyt beállításokat a SMTP mail szerver",
+	"DKIM-подпись": "DKIM-aláírás",
+	"Сообщение": "Üzenet"
 }
