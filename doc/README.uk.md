@@ -60,6 +60,16 @@
 
 > `*` - дані не надсилаються до загальнодоступної бази даних WHOIS
 
+## Де купити VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[ВИБРАТИ](https://cinemapress.io/ref/surfshark.html)** | **[ВИБРАТИ](https://cinemapress.io/ref/cyberghost.html)** | **[ВИБРАТИ](https://cinemapress.io/ref/purevpn.html)**
+
 ## Тема «hodor»
 
 > Встановіть через FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

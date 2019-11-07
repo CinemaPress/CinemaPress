@@ -60,6 +60,16 @@
 
 > `*` - 공용 WHOIS 데이터베이스에 데이터가 전송되지 않음
 
+## VPN을 어디에서 사나?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[고르다](https://cinemapress.io/ref/surfshark.html)** | **[고르다](https://cinemapress.io/ref/cyberghost.html)** | **[고르다](https://cinemapress.io/ref/purevpn.html)**
+
 ## 어간 «hodor»
 
 > FTP를 통해 설치: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

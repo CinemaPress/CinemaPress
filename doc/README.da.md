@@ -60,6 +60,16 @@
 
 > `*` - data sendes ikke til den offentlige WHOIS-database
 
+## Hvor kan man købe en VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[VÆLG](https://cinemapress.io/ref/surfshark.html)** | **[VÆLG](https://cinemapress.io/ref/cyberghost.html)** | **[VÆLG](https://cinemapress.io/ref/purevpn.html)**
+
 ## Tema «hodor»
 
 > Installer via FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

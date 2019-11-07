@@ -60,6 +60,16 @@
 
 > `*` - Los datos no son enviados a la base de datos de WHOIS pública
 
+## ¿Dónde comprar un servidor VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[SELECCIONAR](https://cinemapress.io/ref/surfshark.html)** | **[SELECCIONAR](https://cinemapress.io/ref/cyberghost.html)** | **[SELECCIONAR](https://cinemapress.io/ref/purevpn.html)**
+
 ## Tema «hodor»
 
 > Instalar vía FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

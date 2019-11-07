@@ -60,6 +60,16 @@
 
 > `*` - डेटा को सार्वजनिक WHOIS डेटाबेस में नहीं भेजा जाता है
 
+## वीपीएन कहां से खरीदें?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[चुनते हैं](https://cinemapress.io/ref/surfshark.html)** | **[चुनते हैं](https://cinemapress.io/ref/cyberghost.html)** | **[चुनते हैं](https://cinemapress.io/ref/purevpn.html)**
+
 ## विषय «hodor»
 
 > एफ़टीपी के माध्यम से स्थापित करें [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

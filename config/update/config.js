@@ -135,6 +135,15 @@ async.series(
       c.domain = config_default.domain
         ? config_default.domain
         : c.domain;
+      c.cache = config_default.cache
+        ? config_default.cache
+        : c.cache;
+      c.sphinx = config_default.sphinx
+        ? config_default.sphinx
+        : c.sphinx;
+      c.nginx = config_default.nginx
+        ? config_default.nginx
+        : c.nginx;
       c.urls.admin = config_default.urls.admin && !(/^admin-/i.test(c.urls.admin))
         ? config_default.urls.admin
         : c.urls.admin;

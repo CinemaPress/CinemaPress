@@ -60,6 +60,16 @@
 
 > `*` - 数据不会发送到公共WHOIS数据库
 
+## 在哪里购买VPN？
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[选择](https://cinemapress.io/ref/surfshark.html)** | **[选择](https://cinemapress.io/ref/cyberghost.html)** | **[选择](https://cinemapress.io/ref/purevpn.html)**
+
 ## 主题 «hodor»
 
 > 通过FTP安装 [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

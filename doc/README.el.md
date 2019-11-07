@@ -60,6 +60,16 @@
 
 > `*` - τα δεδομένα δεν αποστέλλονται στη δημόσια βάση δεδομένων WHOIS
 
+## Πού να αγοράσετε ένα διακομιστή VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/surfshark.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/cyberghost.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/purevpn.html)**
+
 ## Θέμα «hodor»
 
 > Εγκαταστήστε μέσω FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

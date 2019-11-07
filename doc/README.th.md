@@ -60,6 +60,16 @@
 
 > `*` - ข้อมูลจะไม่ถูกส่งไปยังฐานข้อมูล WHOIS สาธารณะ
 
+## จะซื้อ VPN ได้ที่ไหน
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[เลือก](https://cinemapress.io/ref/surfshark.html)** | **[เลือก](https://cinemapress.io/ref/cyberghost.html)** | **[เลือก](https://cinemapress.io/ref/purevpn.html)**
+
 ## กระทู้ «hodor»
 
 > ติดตั้งผ่าน FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

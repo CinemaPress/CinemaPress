@@ -44,7 +44,7 @@
 :rocket: | `4GB` | `2GB` | `2GB` | `2GB`
 :floppy_disk: | `60GB` |  `20GB` | `50GB` | `12GB`
 :dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
-···· | **[SELECT](https://cinemapress.io/ref/ua-hosting.html)** | **[SELECT](https://cinemapress.io/ref/inferno.html)** | **[SELECT](https://cinemapress.io/ref/myvps.html)** | **[SELECT](https://cinemapress.io/ref/zomro.html)**
+···· | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/ua-hosting.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/inferno.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/myvps.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/zomro.html)**
 
 > `*` - **15%** отстъпка, промо код: `CinemaPress15`
 
@@ -56,9 +56,19 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[SELECT](https://cinemapress.io/ref/tonic.html)** | **[SELECT](https://cinemapress.io/ref/internetbs.html)** | **[SELECT](https://cinemapress.io/ref/pananames.html)** | **[SELECT](https://cinemapress.io/ref/namecheap.html)**
+···· | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/tonic.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/internetbs.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/pananames.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/namecheap.html)**
 
 > `*` - данните не се изпращат в публичната база данни WHOIS
+
+## Къде да закупите VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/surfshark.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/cyberghost.html)** | **[ИЗБЕРЕТЕ](https://cinemapress.io/ref/purevpn.html)**
 
 ## Тема «hodor»
 

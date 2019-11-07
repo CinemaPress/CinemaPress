@@ -62,6 +62,16 @@
 
 > `*` - لا يتم إرسال البيانات إلى قاعدة بيانات WHOIS العامة
 
+##أين تشتري VPN؟
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[تحديد](https://cinemapress.io/ref/surfshark.html)** | **[تحديد](https://cinemapress.io/ref/cyberghost.html)** | **[تحديد](https://cinemapress.io/ref/purevpn.html)**
+
 ## موضوع «hodor»
 
 > FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

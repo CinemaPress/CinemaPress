@@ -60,6 +60,16 @@
 
 > `*` - подаци се не шаљу у јавну WHOIS базу података
 
+## Где купити VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[ИЗАБРАТИ](https://cinemapress.io/ref/surfshark.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/cyberghost.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/purevpn.html)**
+
 ## Theme «hodor»
 
 > Инсталирајте преко FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)

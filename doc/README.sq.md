@@ -60,6 +60,16 @@
 
 > `*` - të dhënat nuk dërgohen në bazën publike të WHOIS
 
+## Ku mund të blini një VPN?
+
+···· | Surfshark | CyberGhost | PureVPN
+:---: | :---: | :---: | :---:
+:earth_americas: | `BVI` | `Romania` | `Hong Kong`
+:moneybag: | `Bitcoin` | `PayPal` | `QIWI`
+:see_no_evil: | :lock: | :lock: | :lock:
+:dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
+···· | **[ZGJEDH](https://cinemapress.io/ref/surfshark.html)** | **[ZGJEDH](https://cinemapress.io/ref/cyberghost.html)** | **[ZGJEDH](https://cinemapress.io/ref/purevpn.html)**
+
 ## Temë «hodor»
 
 > Instalo me FTP: [GitHub](https://github.com/CinemaPress/Theme-Hodor/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Hodor/) / [BitBucket](https://bitbucket.org/cinemapress/theme-hodor/)
