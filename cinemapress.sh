@@ -1428,6 +1428,8 @@ docker_restore() {
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
         -xf /var/${CP_DOMAIN}/themes.tar
+    mkdir -p /home/${CP_DOMAIN}/config/custom
+    cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
     docker_start
 }
 docker_backup() {
