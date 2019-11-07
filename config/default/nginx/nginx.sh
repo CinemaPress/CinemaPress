@@ -12,4 +12,4 @@ for NGINX_DIR in $(ls /home/*/config/production/nginx/conf.d/default.conf); do
         sleep 5
     done &
 done
-/usr/sbin/nginx -g 'daemon off;'
+crond && /usr/sbin/nginx -g 'daemon off;'
