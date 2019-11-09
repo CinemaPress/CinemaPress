@@ -11,6 +11,8 @@ var fs = require('fs');
  * Global env.
  */
 
+var cp_all = '';
+
 try {
   var p = tryParseJSON(
     fs.readFileSync(
@@ -19,6 +21,9 @@ try {
     )
   );
   var e = p.apps[0].env;
+  if (e && e['CP_ALL']) {
+    cp_all = e['CP_ALL'];
+  }
   for (var prop in e) {
     if (e.hasOwnProperty(prop)) {
       process.env[prop] = e[prop];
@@ -70,52 +75,77 @@ function tryParseJSON(jsonString) {
   return {};
 }
 
-(function upd(i) {
-  i = i || 1;
-  var ii = i + 1;
+var args = process.argv.slice(2);
 
-  if (i >= 1500) {
-    return process.exit();
-  }
+var index = args.indexOf(config.domain);
+if (index !== -1) args.splice(index, 1);
 
-  CP_get.movies(
-    { from: process.env.CP_RT, certainly: true, full: true },
-    2000,
-    '',
-    i,
-    false,
-    function(err, movies) {
-      if (err) return console.error(err);
+args.push(config.domain);
 
-      if (movies && movies.length) {
-        async.eachOfLimit(
-          movies,
-          1,
-          function(movie, key, callback) {
-            delete movie.year;
-            delete movie.actor;
-            delete movie.genre;
-            delete movie.country;
-            delete movie.director;
-            delete movie.premiere;
-            delete movie.kp_rating;
-            delete movie.kp_vote;
-            delete movie.imdb_rating;
-            delete movie.imdb_vote;
-            movie.id = movie.kp_id;
-            CP_save.save(movie, 'rt', function(err, result) {
-              console.log(result);
-              return callback(err);
-            });
-          },
-          function(err) {
-            console.error(err);
+args = args
+  .map(function(arg) {
+    return arg ? '_' + arg.trim().replace(/[^a-z0-9]/gi, '_') + '_' : false;
+  })
+  .filter(Boolean);
+
+async.eachOfLimit(
+  args,
+  1,
+  function(arg, key, callback) {
+    (function upd(i) {
+      i = i || 1;
+      var ii = i + 1;
+
+      if (i >= 2000 || !cp_all) {
+        return callback();
+      }
+
+      process.env.CP_ALL = arg;
+      CP_get.movies(
+        { from: process.env.CP_RT, certainly: true, full: true },
+        500,
+        '',
+        i,
+        false,
+        function(err, movies) {
+          if (err) return console.error(err);
+
+          if (movies && movies.length) {
+            async.eachOfLimit(
+              movies,
+              1,
+              function(movie, key, callback) {
+                delete movie.year;
+                delete movie.actor;
+                delete movie.genre;
+                delete movie.country;
+                delete movie.director;
+                delete movie.premiere;
+                delete movie.kp_rating;
+                delete movie.kp_vote;
+                delete movie.imdb_rating;
+                delete movie.imdb_vote;
+                movie.id = movie.kp_id;
+                process.env.CP_ALL = cp_all;
+                CP_save.save(movie, 'rt', function(err, result) {
+                  console.log(result);
+                  return callback(err);
+                });
+              },
+              function(err) {
+                console.error(err);
+                upd(ii);
+              }
+            );
+          } else {
             upd(ii);
           }
-        );
-      } else {
-        upd(ii);
-      }
-    }
-  );
-})();
+        }
+      );
+    })();
+  },
+  function(err) {
+    console.error(err);
+    return process.exit();
+  }
+);

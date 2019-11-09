@@ -1498,7 +1498,7 @@ docker_backup() {
     rm -rf /var/${CP_DOMAIN}
 }
 docker_actual() {
-    node /home/${CP_DOMAIN}/config/update/actual.js
+    node /home/${CP_DOMAIN}/config/update/actual.js ${1} ${2} ${3} ${4} ${5} ${6} ${7} ${8} ${9}
 }
 docker_rclone() {
     rclone "${1}" "${2}"
@@ -1744,7 +1744,16 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             fi
         ;;
-        "reload"|"actual"|"speed" )
+        "actual" )
+            _br
+            read_domain ${2}
+            sh_not
+            _s ${2}
+            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${2}" "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}" "${10}" \
+                >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
+            exit 0
+        ;;
+        "reload"|"speed" )
             _br
             read_domain ${2}
             sh_not
@@ -1769,7 +1778,7 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${2}" = "cron" ]; then
                 docker_cron
             elif [ "${2}" = "actual" ]; then
-                docker_actual
+                docker_actual "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}" "${10}" "${11}"
             elif [ "${2}" = "backup" ]; then
                 if [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
                     docker_restore "${4}"
@@ -1990,8 +1999,10 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "clear_log"|"clean_log"|"clear_logs"|"clean_logs"|"logrotate" )
-            CP_SIZE=${2:-"+51M"}
+            CP_SIZE=${2:-"+102400"}
             find /var/log -type f -name '*.log' -size "${CP_SIZE}" -exec rm -rf {} \; \
+                >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+            find /var/log -type f -name '*.gz' -exec rm -rf {} \; \
                 >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
                 docker restart nginx >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
