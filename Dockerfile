@@ -63,10 +63,10 @@ RUN set -o pipefail \
     && tar xfz geo.tar.gz \
     && mv GeoLite2-Country_*/GeoLite2-Country.mmdb files/GeoLite2-Country.mmdb \
     && rm -rf geo.tar.gz GeoLite2-Country_* \
-    && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup > /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
+    && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup >> /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/daily/backup \
     && chmod a+x /etc/periodic/daily/backup \
-    && echo -e "#!/bin/bash\n/usr/bin/cinemapress container cron > /home/\${CP_DOMAIN}/log/cron_\$(date '+%d_%m_%Y').log" \
+    && echo -e "#!/bin/bash\n/usr/bin/cinemapress container cron >> /home/\${CP_DOMAIN}/log/cron_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/hourly/cron \
     && chmod a+x /etc/periodic/hourly/cron
 EXPOSE 3000

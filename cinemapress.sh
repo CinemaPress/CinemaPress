@@ -406,6 +406,18 @@ ip_install() {
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             docker exec -it ${CP_DOMAIN_} rclone config create CINEMAPRESS mega user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            CHECK_MKDIR=`docker exec -it ${CP_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+            sleep 3
+            CHECK_PURGE=`docker exec -it ${CP_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+            if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+                _header "ERROR"
+                _content
+                _content "Cannot connect to backup storage."
+                _content
+                _s
+                exit 0
+            fi
+            cp -r /home/${CP_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${4}" = "2" ] || [ "${4}" = "restore" ]; then
                 docker exec -it ${CP_DOMAIN_} cinemapress container backup restore "${5}" \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
@@ -458,6 +470,17 @@ ip_install() {
 
         sh_progress
 
+        CHECK_MKDIR=`docker exec -it ${CP_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+        sleep 3
+        CHECK_PURGE=`docker exec -it ${CP_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+        if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+            _header "ERROR"
+            _content
+            _content "Cannot connect to backup storage."
+            _content
+            _s
+            exit 0
+        fi
         if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
             docker exec -it ${CP_DOMAIN_} cinemapress container backup restore \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
