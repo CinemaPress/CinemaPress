@@ -412,13 +412,13 @@ ip_install() {
 
             sh_progress
 
-            docker exec -it ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
+            docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec -it ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
+            docker exec ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            CHECK_MKDIR=`docker exec -it ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
             sleep 3
-            CHECK_PURGE=`docker exec -it ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
             if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
                 _header "ERROR"
                 _content
@@ -429,12 +429,12 @@ ip_install() {
             fi
             cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
-                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup create \
+                docker exec ${LOCAL_DOMAIN_} cinemapress container backup create \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
-                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+                docker exec ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-                docker exec -it nginx nginx -s reload \
+                docker exec nginx nginx -s reload \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             fi
         else
@@ -443,9 +443,9 @@ ip_install() {
             _content "Configure RCLONE for one of the cloud storage,"
             _content "in the «name» section write uppercase CINEMAPRESS"
             _content
-            printf "     ~# docker exec -it ${LOCAL_DOMAIN_} /bin/bash"
+            printf "     ~# docker exec -it ${LOCAL_DOMAIN_} /bin/sh"
             _br
-            printf "     bash-5.0# rclone config"
+            printf "     ~# rclone config"
             _br
             _content
             _content "or configure for MEGA.nz cloud storage in one line:"
@@ -479,9 +479,9 @@ ip_install() {
 
         sh_progress
 
-        CHECK_MKDIR=`docker exec -it ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
         sleep 3
-        CHECK_PURGE=`docker exec -it ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
         if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
             _header "ERROR"
             _content
@@ -491,12 +491,12 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup create \
+            docker exec ${LOCAL_DOMAIN_} cinemapress container backup create \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
-            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+            docker exec ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec -it nginx nginx -s reload \
+            docker exec nginx nginx -s reload \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         fi
     fi
@@ -2006,7 +2006,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -rf /home/${DD}
                 fi
             done
-            rm -rf /var/log/*
+            rm -rf /var/log/* /var/ngx_pagespeed_cache
             sh_progress 100
             exit 0
         ;;
