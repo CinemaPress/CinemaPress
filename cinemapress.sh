@@ -429,7 +429,7 @@ ip_install() {
             fi
             cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
-                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup \
+                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup create \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
                 docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
@@ -491,7 +491,7 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup \
+            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup create \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
             docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
@@ -732,7 +732,8 @@ ip_install() {
     docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
         3_backup "${LOCAL_DOMAIN}" "create"
-        docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+        docker stop ${LOCAL_DOMAIN_} \
+            >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         rm -rf \
             /home/${LOCAL_MIRROR}/config/comment \
             /home/${LOCAL_MIRROR}/config/content \
@@ -750,13 +751,27 @@ ip_install() {
         cp -r \
             /home/${LOCAL_DOMAIN}/config/user \
             /home/${LOCAL_MIRROR}/config/user
-        cp -r /home/${LOCAL_DOMAIN}/config/production/config.js     /home/${LOCAL_MIRROR}/config/production/config.js
-        cp -r /home/${LOCAL_DOMAIN}/config/production/modules.js    /home/${LOCAL_MIRROR}/config/production/modules.js
-        cp -r /home/${LOCAL_DOMAIN}/themes/default/public/desktop/* /home/${LOCAL_MIRROR}/themes/default/public/desktop/
-        cp -r /home/${LOCAL_DOMAIN}/themes/default/public/mobile/*  /home/${LOCAL_MIRROR}/themes/default/public/mobile/
-        cp -r /home/${LOCAL_DOMAIN}/themes/default/views/mobile/*   /home/${LOCAL_MIRROR}/themes/default/views/mobile/
-        cp -r /home/${LOCAL_DOMAIN}/files/*                         /home/${LOCAL_MIRROR}/files/
-        sed -Ei "s/${LOCAL_DOMAIN_}:3000/${LOCAL_MIRROR_}:3000/g"      /home/${LOCAL_DOMAIN}/config/production/nginx/conf.d/default.conf
+        cp -r \
+            /home/${LOCAL_DOMAIN}/config/production/config.js \
+            /home/${LOCAL_MIRROR}/config/production/config.js
+        cp -r \
+            /home/${LOCAL_DOMAIN}/config/production/modules.js \
+            /home/${LOCAL_MIRROR}/config/production/modules.js
+        cp -r \
+            /home/${LOCAL_DOMAIN}/themes/default/public/desktop/* \
+            /home/${LOCAL_MIRROR}/themes/default/public/desktop/
+        cp -r \
+            /home/${LOCAL_DOMAIN}/themes/default/public/mobile/* \
+            /home/${LOCAL_MIRROR}/themes/default/public/mobile/
+        cp -r \
+            /home/${LOCAL_DOMAIN}/themes/default/views/mobile/* \
+            /home/${LOCAL_MIRROR}/themes/default/views/mobile/
+        cp -r \
+            /home/${LOCAL_DOMAIN}/files/* \
+            /home/${LOCAL_MIRROR}/files/
+        sed -Ei \
+            "s/${LOCAL_DOMAIN_}:3000/${LOCAL_MIRROR_}:3000/g" \
+            /home/${LOCAL_DOMAIN}/config/production/nginx/conf.d/default.conf
     fi
     if [ "${LOCAL_DOMAIN_}" != "" ]; then
         for f in /home/${LOCAL_MIRROR}/config/comment/comment_${LOCAL_DOMAIN_}.*; do
