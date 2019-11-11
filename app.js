@@ -32,6 +32,11 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
+app.use(function(req, res, next) {
+  res.setHeader('X-Powered-By', 'CinemaPress');
+  next();
+});
+
 /**
  * Route dependencies.
  */

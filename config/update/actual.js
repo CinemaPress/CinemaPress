@@ -11,7 +11,7 @@ var fs = require('fs');
  * Global env.
  */
 
-var cp_all = '';
+var domain = '';
 
 try {
   var p = tryParseJSON(
@@ -21,8 +21,8 @@ try {
     )
   );
   var e = p.apps[0].env;
-  if (e && e['CP_ALL']) {
-    cp_all = e['CP_ALL'];
+  if (e && e['CP_RT']) {
+    domain = '_' + e['CP_RT'].replace('rt_', '') + '_';
   }
   for (var prop in e) {
     if (e.hasOwnProperty(prop)) {
@@ -75,77 +75,65 @@ function tryParseJSON(jsonString) {
   return {};
 }
 
-var args = process.argv.slice(2);
+(function upd_rt(i) {
+  i = i || 1;
+  var ii = i + 1;
 
-var index = args.indexOf(config.domain);
-if (index !== -1) args.splice(index, 1);
-
-args.push(config.domain);
-
-args = args
-  .map(function(arg) {
-    return arg ? '_' + arg.trim().replace(/[^a-z0-9]/gi, '_') + '_' : false;
-  })
-  .filter(Boolean);
-
-async.eachOfLimit(
-  args,
-  1,
-  function(arg, key, callback) {
-    (function upd(i) {
-      i = i || 1;
-      var ii = i + 1;
-
-      if (i >= 2000 || !cp_all) {
-        return callback();
-      }
-
-      process.env.CP_ALL = arg;
-      CP_get.movies(
-        { from: process.env.CP_RT, certainly: true, full: true },
-        500,
-        '',
-        i,
-        false,
-        function(err, movies) {
-          if (err) return console.error(err);
-
-          if (movies && movies.length) {
-            async.eachOfLimit(
-              movies,
-              1,
-              function(movie, key, callback) {
-                delete movie.year;
-                delete movie.actor;
-                delete movie.genre;
-                delete movie.country;
-                delete movie.director;
-                delete movie.premiere;
-                delete movie.kp_rating;
-                delete movie.kp_vote;
-                delete movie.imdb_rating;
-                delete movie.imdb_vote;
-                movie.id = movie.kp_id;
-                process.env.CP_ALL = cp_all;
-                CP_save.save(movie, 'rt', function(err, result) {
-                  console.log(result);
-                  return callback(err);
-                });
-              },
-              function(err) {
-                console.error(err);
-                upd(ii);
-              }
-            );
-          } else {
-            upd(ii);
-          }
-        }
-      );
-    })();
-  },
-  function(err) {
-    console.error(err);
+  if (i >= 2000 || !domain) {
     return process.exit();
   }
-);
+
+  CP_get.movies(
+    { from: process.env.CP_RT, certainly: true, full: true },
+    500,
+    '',
+    i,
+    false,
+    function(err, movies) {
+      if (err) {
+        console.error(err);
+        return process.exit();
+      }
+      if (movies && movies.length) {
+        async.eachOfLimit(
+          movies,
+          1,
+          function(movie, key, callback) {
+            var old = movie.all_movies;
+            delete movie.year;
+            delete movie.actor;
+            delete movie.genre;
+            delete movie.country;
+            delete movie.director;
+            delete movie.premiere;
+            delete movie.kp_rating;
+            delete movie.kp_vote;
+            delete movie.imdb_rating;
+            delete movie.imdb_vote;
+            delete movie.all_movies;
+            movie.id = movie.kp_id;
+            CP_save.save(movie, 'rt', function(err, result) {
+              if (old && old !== domain) {
+                console.log(
+                  result,
+                  old.replace(/(^_|_$)/gi, '') +
+                    ' -> ' +
+                    domain.replace(/(^_|_$)/gi, '')
+                );
+              } else {
+                console.log(result);
+              }
+              return callback(err);
+            });
+          },
+          function(err) {
+            if (err) console.error(err);
+            upd_rt(ii);
+          }
+        );
+      } else {
+        upd_rt(2000);
+      }
+    }
+  );
+})();

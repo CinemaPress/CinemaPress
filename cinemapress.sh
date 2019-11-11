@@ -218,10 +218,10 @@ ip_install() {
     if [ "`expr "${IP1}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" = "0" ] \
     && [ "`expr "${IP2}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" = "0" ] \
     && [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" = "0" ]; then exit 1; fi
-    if [ "`expr "${IP1}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then CP_DOMAIN="${IP1}"; \
-    elif [ "`expr "${IP2}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then CP_DOMAIN="${IP2}"; \
-    elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then CP_DOMAIN="${IP3}"; fi
-    CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    if [ "`expr "${IP1}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP1}"; \
+    elif [ "`expr "${IP2}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP2}"; \
+    elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP3}"; fi
+    IP_DOMAIN=`echo ${IP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
     CP_IP="ip"
     CP_LANG="${1}"
     CP_THEME="arya"
@@ -229,37 +229,41 @@ ip_install() {
     sh_yes
     _s
     sh_progress
-    1_install
+    1_install "${IP_DOMAIN}"
     sh_progress 100
     success_install
 }
 
 1_install() {
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_LANG=${2:-${CP_LANG}}
+    LOCAL_THEME=${3:-${CP_THEME}}
+    LOCAL_PASSWD=${4:-${CP_PASSWD}}
+
     docker network create \
         --driver bridge \
         cinemapress >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-
-    sh_progress
 
     # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
 
     docker run \
         -d \
-        --name ${CP_DOMAIN_} \
-        -e "CP_DOMAIN=${CP_DOMAIN}" \
-        -e "CP_DOMAIN_=${CP_DOMAIN_}" \
-        -e "CP_LANG=${CP_LANG}" \
-        -e "CP_THEME=${CP_THEME}" \
-        -e "CP_PASSWD=${CP_PASSWD}" \
-        -e "RCLONE_CONFIG=/home/${CP_DOMAIN}/config/production/rclone.conf" \
-        -w /home/${CP_DOMAIN} \
+        --name ${LOCAL_DOMAIN_} \
+        -e "CP_DOMAIN=${LOCAL_DOMAIN}" \
+        -e "CP_DOMAIN_=${LOCAL_DOMAIN_}" \
+        -e "CP_LANG=${LOCAL_LANG}" \
+        -e "CP_THEME=${LOCAL_THEME}" \
+        -e "CP_PASSWD=${LOCAL_PASSWD}" \
+        -e "RCLONE_CONFIG=/home/${LOCAL_DOMAIN}/config/production/rclone.conf" \
+        -w /home/${LOCAL_DOMAIN} \
         --restart always \
         --network cinemapress \
         -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
         -v /var/local/images:/var/local/images \
         -v /var/local/balancer:/var/local/balancer \
-        -v /home/${CP_DOMAIN}:/home/${CP_DOMAIN} \
+        -v /home/${LOCAL_DOMAIN}:/home/${LOCAL_DOMAIN} \
         ${EXTERNAL_DOCKER} \
         cinemapress/docker:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
@@ -267,7 +271,7 @@ ip_install() {
     while [ "${WEBSITE_RUN}" != "50" ]; do
         sleep 3
         WEBSITE_RUN=$((1+${WEBSITE_RUN}))
-        if [ "`docker ps -aq -f status=running -f name=^/${CP_DOMAIN_}\$ 2>/dev/null`" != "" ]; then
+        if [ "`docker ps -aq -f status=running -f name=^/${LOCAL_DOMAIN_}\$ 2>/dev/null`" != "" ]; then
             WEBSITE_RUN=50
         fi
     done
@@ -284,9 +288,9 @@ ip_install() {
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
             BOTS=""
-            if [ ! -d "/etc/nginx/bots.d/" ] && [ -d "/home/${CP_DOMAIN}/config/production/nginx/bots.d/" ]; then
+            if [ ! -d "/etc/nginx/bots.d/" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
                 mkdir -p /etc/nginx/bots.d
-                cp -rf /home/${CP_DOMAIN}/config/production/nginx/bots.d/* /etc/nginx/bots.d/
+                cp -rf /home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/* /etc/nginx/bots.d/
                 BOTS="-v /etc/nginx/bots.d:/etc/nginx/bots.d"
             fi
 
@@ -324,7 +328,7 @@ ip_install() {
                 --network host \
                 --cap-add NET_ADMIN \
                 --cap-add NET_RAW \
-                -v /home/${CP_DOMAIN}/config/production/fail2ban:/data \
+                -v /home/${LOCAL_DOMAIN}/config/production/fail2ban:/data \
                 -v /var/log:/var/log:ro \
                 cinemapress/fail2ban:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
 
@@ -339,76 +343,82 @@ ip_install() {
 
         fi
     fi
-
-    sh_progress
-
-    6_https
-
-    sh_progress
 }
 2_update() {
-    A=`grep "\"CP_ALL\"" /home/${CP_DOMAIN}/process.json`
-    K=`grep "\"key\"" /home/${CP_DOMAIN}/config/default/config.js`
-    D=`grep "\"date\"" /home/${CP_DOMAIN}/config/default/config.js`
-    P=`grep "\"pagespeed\"" /home/${CP_DOMAIN}/config/production/config.js`
-    S=`grep "\"admin\"" /home/${CP_DOMAIN}/config/production/config.js`
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+
+    A=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
+    K=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
+    D=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
+    P=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
+    S=`grep "\"admin\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
     CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
     CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
     CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
     CP_SPEED=`echo ${P} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
-    rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/${CP_DOMAIN}/config/production/nginx/* /var/nginx/
-    3_backup "create"
-    8_remove "full" "safe"
+    rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/${LOCAL_DOMAIN}/config/production/nginx/* /var/nginx/
+    3_backup "${LOCAL_DOMAIN}" "create"
+    8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
-    1_install
-    cp -rf /var/nginx/* /home/${CP_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
+    1_install "${LOCAL_DOMAIN}"
+    cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
-    3_backup "restore"
+    3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
-            /home/${CP_DOMAIN}/process.json
+            /home/${LOCAL_DOMAIN}/process.json
     fi
     if [ "${CP_KEY}" != "" ]; then
         sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-            /home/${CP_DOMAIN}/config/production/config.js
+            /home/${LOCAL_DOMAIN}/config/production/config.js
         sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-            /home/${CP_DOMAIN}/config/default/config.js
+            /home/${LOCAL_DOMAIN}/config/default/config.js
     fi
     if [ "${CP_DATE}" != "" ]; then
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
-            /home/${CP_DOMAIN}/config/production/config.js
+            /home/${LOCAL_DOMAIN}/config/production/config.js
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
-            /home/${CP_DOMAIN}/config/default/config.js
+            /home/${LOCAL_DOMAIN}/config/default/config.js
     fi
     if [ "${CP_SPEED}" != "" ]; then
         sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-            /home/${CP_DOMAIN}/config/production/config.js
-        docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container speed ${CP_SPEED}
+            /home/${LOCAL_DOMAIN}/config/production/config.js
+        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed ${CP_SPEED}
     fi
-    docker restart ${CP_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
+    docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
 }
 3_backup() {
-    if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
-        cp -r /var/rclone.conf /home/${CP_DOMAIN}/config/production/rclone.conf
-    elif [ -f "/home/${CP_DOMAIN}/config/production/rclone.conf" ]; then
-        cp -r /home/${CP_DOMAIN}/config/production/rclone.conf /var/rclone.conf
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_ACTION=${2} # 1 | 2 | 3 | create | restore | config
+    LOCAL_MEGA_EMAIL=${3:-${MEGA_EMAIL}}
+    LOCAL_MEGA_PASSWORD=${4:-${MEGA_PASSWORD}}
+    LOCAL_ACTION2=${5} # 1 | 2 | create | restore
+    LOCAL_DOMAIN2=${6:-${LOCAL_DOMAIN}}
+
+    if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
+        cp -r /var/rclone.conf /home/${LOCAL_DOMAIN}/config/production/rclone.conf
+    elif [ -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
+        cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
     fi
-    RCS=`docker exec ${CP_DOMAIN_} cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
-    if [ "${1}" = "config" ] || [ "${RCS}" = "" ]; then
-        if [ "${2}" != "" ] && [ "${3}" != "" ]; then
+
+    RCS=`docker exec ${LOCAL_DOMAIN_} cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
+
+    if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
+        if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
+
             sh_progress
 
-            MEGA_EMAIL="${2}"
-            MEGA_PASSWORD="${3}"
-            docker exec -it ${CP_DOMAIN_} rclone config delete CINEMAPRESS \
+            docker exec -it ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            docker exec -it ${CP_DOMAIN_} rclone config create CINEMAPRESS mega user "${MEGA_EMAIL}" pass "${MEGA_PASSWORD}" \
+            docker exec -it ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            CHECK_MKDIR=`docker exec -it ${CP_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_MKDIR=`docker exec -it ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
             sleep 3
-            CHECK_PURGE=`docker exec -it ${CP_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_PURGE=`docker exec -it ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
             if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
                 _header "ERROR"
                 _content
@@ -417,14 +427,14 @@ ip_install() {
                 _s
                 exit 0
             fi
-            cp -r /home/${CP_DOMAIN}/config/production/rclone.conf /var/rclone.conf
-            if [ "${4}" = "2" ] || [ "${4}" = "restore" ]; then
-                docker exec -it ${CP_DOMAIN_} cinemapress container backup restore "${5}" \
+            cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
+            if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
+                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup \
+                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+            elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
+                docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
                 docker exec -it nginx nginx -s reload \
-                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-            elif [ "${4}" = "1" ] || [ "${4}" = "create" ]; then
-                docker exec -it ${CP_DOMAIN_} cinemapress container backup \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             fi
         else
@@ -433,14 +443,14 @@ ip_install() {
             _content "Configure RCLONE for one of the cloud storage,"
             _content "in the «name» section write uppercase CINEMAPRESS"
             _content
-            printf "root@vps:~# docker exec -it ${CP_DOMAIN_} /bin/bash"
+            printf "     ~# docker exec -it ${LOCAL_DOMAIN_} /bin/bash"
             _br
-            printf "bash-5.0# rclone config"
+            printf "     bash-5.0# rclone config"
             _br
             _content
             _content "or configure for MEGA.nz cloud storage in one line:"
             _content
-            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} config \"email\" \"pass\""
+            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} config \"email\" \"pass\""
             _br
             _content
             _content "email - your email on MEGA.nz"
@@ -448,31 +458,30 @@ ip_install() {
             _content
             _content "after creating config, you can create/restore backup:"
             _content
-            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} create"
+            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} create"
             _br
-            printf "root@vps:~# cinemapress backup ${CP_DOMAIN} restore"
+            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} restore"
             _br
             _content
             _s
             exit 0
         fi
-    elif [ "${RCS}" != "" ]; then
-        BKP="${1}"
-        if [ "${BKP}" = "" ]; then
+    else
+        if [ "${LOCAL_ACTION}" = "" ]; then
             _header "MAKE A CHOICE"
             printf "${C}---- ${G}1)${NC} create ${S}-------------------- Create New Backup Website ${C}----\n"
             printf "${C}---- ${G}2)${NC} restore ${S}------------ Restore Website From Last Backup ${C}----\n"
             _s
-            read -e -p 'OPTION [1-2]: ' BKP
-            BKP=`echo ${BKP} | iconv -c -t UTF-8`
+            read -e -p 'OPTION [1-2]: ' LOCAL_ACTION
+            LOCAL_ACTION=`echo ${LOCAL_ACTION} | iconv -c -t UTF-8`
             _br
         fi
 
         sh_progress
 
-        CHECK_MKDIR=`docker exec -it ${CP_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_MKDIR=`docker exec -it ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
         sleep 3
-        CHECK_PURGE=`docker exec -it ${CP_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_PURGE=`docker exec -it ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
         if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
             _header "ERROR"
             _content
@@ -481,21 +490,25 @@ ip_install() {
             _s
             exit 0
         fi
-        if [ "${BKP}" = "2" ] || [ "${BKP}" = "restore" ]; then
-            docker exec -it ${CP_DOMAIN_} cinemapress container backup restore \
+        if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
+            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup \
+                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+        elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
+            docker exec -it ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             docker exec -it nginx nginx -s reload \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
-        else
-            docker exec -it ${CP_DOMAIN_} cinemapress container backup \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         fi
     fi
 }
 4_theme() {
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_THEME=${2:-${CP_THEME}}
+
     YES="NOT"
-    if [ -d "/home/${CP_DOMAIN}/themes/${CP_THEME}" ]; then
-        _header "${CP_THEME}";
+    if [ -d "/home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}" ]; then
+        _header "${LOCAL_THEME}";
         _content
         _content "This theme exists!"
         _content
@@ -515,32 +528,36 @@ ip_install() {
         then
             exit 0
         else
-            git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git \
-                /var/${CP_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
-            mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
-            cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
-            sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
-                /home/${CP_DOMAIN}/config/production/config.js
+            git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
+                /var/${LOCAL_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+            mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+            cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+            sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
+                /home/${LOCAL_DOMAIN}/config/production/config.js
         fi
     else
-        git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git \
-            /var/${CP_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
-        mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
-        cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
-        sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
-            /home/${CP_DOMAIN}/config/production/config.js
+        git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
+            /var/${LOCAL_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+        mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+        cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+        sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
+            /home/${LOCAL_DOMAIN}/config/production/config.js
     fi
 
-    rm -rf /var/${CP_THEME}
+    rm -rf /var/${LOCAL_THEME}
 
     sh_progress
 
     if [ "`docker -v 2>/dev/null`" != "" ]; then
-        docker restart ${CP_DOMAIN_} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+        docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
     fi
 }
 5_database() {
-    STS="http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}"
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_KEY=${2:-${CP_KEY}}
+
+    STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
     CHECK=`wget -qO- "${STS}&status=CHECK"`
     if [ "${CHECK}" = "" ]; then
         _header "ERROR"
@@ -561,14 +578,14 @@ ip_install() {
     mkdir -p /var/lib/sphinx/tmp /var/lib/sphinx/data /var/lib/sphinx/old
     _line
     _content "Downloading ..."
-    wget -qO "/var/lib/sphinx/tmp/${CP_KEY}.tar" "${STS}" || \
-    rm -rf "/var/lib/sphinx/tmp/${CP_KEY}.tar"
-    if [ -f "/var/lib/sphinx/tmp/${CP_KEY}.tar" ]; then
+    wget -qO "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" "${STS}" || \
+    rm -rf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar"
+    if [ -f "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" ]; then
         _content "Unpacking ..."
         NOW=$(date +%Y-%m-%d)
-        tar -xf "/var/lib/sphinx/tmp/${CP_KEY}.tar" -C "/var/lib/sphinx/tmp" &> \
+        tar -xf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" -C "/var/lib/sphinx/tmp" &> \
             /var/lib/sphinx/data/${NOW}.log
-        rm -rf "/var/lib/sphinx/tmp/${CP_KEY}.tar"
+        rm -rf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar"
         FILE_SPA=`find /var/lib/sphinx/tmp/*.* -type f | grep spa`
         FILE_SPD=`find /var/lib/sphinx/tmp/*.* -type f | grep spd`
         FILE_SPI=`find /var/lib/sphinx/tmp/*.* -type f | grep spi`
@@ -578,33 +595,33 @@ ip_install() {
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
                 docker_stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${CP_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec ${LOCAL_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
-            rm -rf /var/lib/sphinx/old/movies_${CP_DOMAIN_}.*
-            cp -R /var/lib/sphinx/data/movies_${CP_DOMAIN_}.* /var/lib/sphinx/old/
-            rm -rf /var/lib/sphinx/data/movies_${CP_DOMAIN_}.*
+            rm -rf /var/lib/sphinx/old/movies_${LOCAL_DOMAIN_}.*
+            cp -R /var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.* /var/lib/sphinx/old/
+            rm -rf /var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.*
             for file in `find /var/lib/sphinx/tmp/*.* -type f`
             do
-                mv ${file} "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.${file##*.}"
+                mv ${file} "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.${file##*.}"
             done
-            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-                /home/${CP_DOMAIN}/config/production/config.js
+            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
+                /home/${LOCAL_DOMAIN}/config/production/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/${CP_DOMAIN}/config/production/config.js
-            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-                /home/${CP_DOMAIN}/config/default/config.js
+                /home/${LOCAL_DOMAIN}/config/production/config.js
+            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
+                /home/${LOCAL_DOMAIN}/config/default/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/${CP_DOMAIN}/config/default/config.js
-            if [ "`grep \"_${CHECK}_\" /home/${CP_DOMAIN}/process.json`" = "" ]; then
-                CURRENT=`grep "CP_ALL" /home/${CP_DOMAIN}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+                /home/${LOCAL_DOMAIN}/config/default/config.js
+            if [ "`grep \"_${CHECK}_\" /home/${LOCAL_DOMAIN}/process.json`" = "" ]; then
+                CURRENT=`grep "CP_ALL" /home/${LOCAL_DOMAIN}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
                 sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CURRENT} | _${CHECK}_\"/" \
-                    /home/${CP_DOMAIN}/process.json
+                    /home/${LOCAL_DOMAIN}/process.json
             fi
             _content "Starting ..."
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
                 docker_start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${CP_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec ${LOCAL_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
@@ -632,11 +649,16 @@ ip_install() {
     fi
 }
 6_https() {
-    if [ "${CLOUDFLARE_EMAIL}" != "" ] \
-    && [ "${CLOUDFLARE_API_KEY}" != "" ]; then
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_CLOUDFLARE_EMAIL=${2:-${CLOUDFLARE_EMAIL}}
+    LOCAL_CLOUDFLARE_API_KEY=${3:-${CLOUDFLARE_API_KEY}}
 
-        NGX="/home/${CP_DOMAIN}/config/production/nginx"
-        echo -e "dns_cloudflare_email = \"${CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${CLOUDFLARE_API_KEY}\"" \
+    if [ "${LOCAL_CLOUDFLARE_EMAIL}" != "" ] \
+    && [ "${LOCAL_CLOUDFLARE_API_KEY}" != "" ]; then
+
+        NGX="/home/${LOCAL_DOMAIN}/config/production/nginx"
+        echo -e "dns_cloudflare_email = \"${LOCAL_CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${LOCAL_CLOUDFLARE_API_KEY}\"" \
             > ${NGX}/cloudflare.ini
 
         _header "Generating ..."
@@ -652,20 +674,22 @@ ip_install() {
             certonly \
             --dns-cloudflare \
             --dns-cloudflare-credentials /cloudflare.ini \
-            --email support@${CP_DOMAIN} \
+            --email support@${LOCAL_DOMAIN} \
             --non-interactive \
             --agree-tos \
-            -d "${CP_DOMAIN}" \
-            -d "*.${CP_DOMAIN}" \
+            -d "${LOCAL_DOMAIN}" \
+            -d "*.${LOCAL_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${CP_DOMAIN}/log/https_$(date '+%d_%m_%Y').log 2>&1
+                >>/home/${LOCAL_DOMAIN}/log/https_$(date '+%d_%m_%Y').log 2>&1
 
-        if [ -d "${NGX}/ssl.d/live/${CP_DOMAIN}/" ]; then
-            openssl dhparam -out ${NGX}/ssl.d/live/${CP_DOMAIN}/dhparam.pem 2048
+        if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
+            openssl dhparam -out ${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem 2048 \
+                >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
-                /home/${CP_DOMAIN}/config/production/config.js
-            docker restart ${CP_DOMAIN_} >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
+                /home/${LOCAL_DOMAIN}/config/production/config.js
+            docker restart ${LOCAL_DOMAIN_} \
+                >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
         else
             _header "ERROR"
             _content
@@ -678,17 +702,23 @@ ip_install() {
     fi
 }
 7_mirror() {
-    if [ ! -f "/home/${CP_MIRROR}/process.json" ]; then
-        if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
-            M_="${CP_MIRROR_}"
-            CP_MIRROR="${CP_DOMAIN}"
-            CP_MIRROR_="${CP_DOMAIN_}"
-            CP_DOMAIN=""
-            CP_DOMAIN_="${M_}"
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+
+    LOCAL_MIRROR=${2:-${CP_MIRROR}}
+    LOCAL_MIRROR_=`echo ${LOCAL_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g"`
+
+    if [ ! -f "/home/${LOCAL_MIRROR}/process.json" ]; then
+        if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
+            M_="${LOCAL_MIRROR_}"
+            LOCAL_MIRROR="${LOCAL_DOMAIN}"
+            LOCAL_MIRROR_="${LOCAL_DOMAIN_}"
+            LOCAL_DOMAIN=""
+            LOCAL_DOMAIN_="${M_}"
         else
             _header "ERROR"
             _content
-            _content "First create a mirror website ${CP_MIRROR},"
+            _content "First create a mirror website ${LOCAL_MIRROR},"
             _content "import the movie database and"
             _content "configure HTTPS on it (if you use it)."
             _content
@@ -699,77 +729,79 @@ ip_install() {
 
     sh_progress
 
-    docker stop ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-    if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
-        3_backup "create"
-        docker stop ${CP_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+    docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+    if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
+        3_backup "${LOCAL_DOMAIN}" "create"
+        docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
         rm -rf \
-            /home/${CP_MIRROR}/config/comment \
-            /home/${CP_MIRROR}/config/content \
-            /home/${CP_MIRROR}/config/rt \
-            /home/${CP_MIRROR}/config/user
+            /home/${LOCAL_MIRROR}/config/comment \
+            /home/${LOCAL_MIRROR}/config/content \
+            /home/${LOCAL_MIRROR}/config/rt \
+            /home/${LOCAL_MIRROR}/config/user
         cp -r \
-            /home/${CP_DOMAIN}/config/comment \
-            /home/${CP_MIRROR}/config/comment
+            /home/${LOCAL_DOMAIN}/config/comment \
+            /home/${LOCAL_MIRROR}/config/comment
         cp -r \
-            /home/${CP_DOMAIN}/config/content \
-            /home/${CP_MIRROR}/config/content
+            /home/${LOCAL_DOMAIN}/config/content \
+            /home/${LOCAL_MIRROR}/config/content
         cp -r \
-            /home/${CP_DOMAIN}/config/rt \
-            /home/${CP_MIRROR}/config/rt
+            /home/${LOCAL_DOMAIN}/config/rt \
+            /home/${LOCAL_MIRROR}/config/rt
         cp -r \
-            /home/${CP_DOMAIN}/config/user \
-            /home/${CP_MIRROR}/config/user
-        cp -r /home/${CP_DOMAIN}/config/production/config.js     /home/${CP_MIRROR}/config/production/config.js
-        cp -r /home/${CP_DOMAIN}/config/production/modules.js    /home/${CP_MIRROR}/config/production/modules.js
-        cp -r /home/${CP_DOMAIN}/themes/default/public/desktop/* /home/${CP_MIRROR}/themes/default/public/desktop/
-        cp -r /home/${CP_DOMAIN}/themes/default/public/mobile/*  /home/${CP_MIRROR}/themes/default/public/mobile/
-        cp -r /home/${CP_DOMAIN}/themes/default/views/mobile/*   /home/${CP_MIRROR}/themes/default/views/mobile/
-        cp -r /home/${CP_DOMAIN}/files/*                         /home/${CP_MIRROR}/files/
-        sed -Ei "s/${CP_DOMAIN_}:3000/${CP_MIRROR_}:3000/g"      /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+            /home/${LOCAL_DOMAIN}/config/user \
+            /home/${LOCAL_MIRROR}/config/user
+        cp -r /home/${LOCAL_DOMAIN}/config/production/config.js     /home/${LOCAL_MIRROR}/config/production/config.js
+        cp -r /home/${LOCAL_DOMAIN}/config/production/modules.js    /home/${LOCAL_MIRROR}/config/production/modules.js
+        cp -r /home/${LOCAL_DOMAIN}/themes/default/public/desktop/* /home/${LOCAL_MIRROR}/themes/default/public/desktop/
+        cp -r /home/${LOCAL_DOMAIN}/themes/default/public/mobile/*  /home/${LOCAL_MIRROR}/themes/default/public/mobile/
+        cp -r /home/${LOCAL_DOMAIN}/themes/default/views/mobile/*   /home/${LOCAL_MIRROR}/themes/default/views/mobile/
+        cp -r /home/${LOCAL_DOMAIN}/files/*                         /home/${LOCAL_MIRROR}/files/
+        sed -Ei "s/${LOCAL_DOMAIN_}:3000/${LOCAL_MIRROR_}:3000/g"      /home/${LOCAL_DOMAIN}/config/production/nginx/conf.d/default.conf
     fi
-    if [ "${CP_DOMAIN_}" != "" ]; then
-        for f in /home/${CP_MIRROR}/config/comment/comment_${CP_DOMAIN_}.*; do
-            mv -f "${f}" "`echo ${f} | sed s/comment_${CP_DOMAIN_}/comment_${CP_MIRROR_}/`" 2>/dev/null
+    if [ "${LOCAL_DOMAIN_}" != "" ]; then
+        for f in /home/${LOCAL_MIRROR}/config/comment/comment_${LOCAL_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/comment_${LOCAL_DOMAIN_}/comment_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${CP_MIRROR}/config/content/content_${CP_DOMAIN_}.*; do
-            mv -f "${f}" "`echo ${f} | sed s/content_${CP_DOMAIN_}/content_${CP_MIRROR_}/`" 2>/dev/null
+        for f in /home/${LOCAL_MIRROR}/config/content/content_${LOCAL_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/content_${LOCAL_DOMAIN_}/content_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${CP_MIRROR}/config/rt/rt_${CP_DOMAIN_}.*; do
-            mv -f "${f}" "`echo ${f} | sed s/rt_${CP_DOMAIN_}/rt_${CP_MIRROR_}/`" 2>/dev/null
+        for f in /home/${LOCAL_MIRROR}/config/rt/rt_${LOCAL_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/rt_${LOCAL_DOMAIN_}/rt_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${CP_MIRROR}/config/user/user_${CP_DOMAIN_}.*; do
-            mv -f "${f}" "`echo ${f} | sed s/user_${CP_DOMAIN_}/user_${CP_MIRROR_}/`" 2>/dev/null
+        for f in /home/${LOCAL_MIRROR}/config/user/user_${LOCAL_DOMAIN_}.*; do
+            mv -f "${f}" "`echo ${f} | sed s/user_${LOCAL_DOMAIN_}/user_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
     fi
-    CURRENT=`grep "CP_ALL" /home/${CP_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_ | //"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_ | //"`
-    CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_MIRROR_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/ | _${CP_DOMAIN_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_MIRROR_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${CP_DOMAIN_}_//"`
+    CURRENT=`grep "CP_ALL" /home/${LOCAL_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_MIRROR_}_ | //"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_DOMAIN_}_ | //"`
+    CURRENT=`echo "${CURRENT}" | sed "s/ | _${LOCAL_MIRROR_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/ | _${LOCAL_DOMAIN_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_MIRROR_}_//"`
+    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_DOMAIN_}_//"`
     if [ "${CURRENT}" != "" ]; then CURRENT=" | ${CURRENT}"; fi
-    if [ -f "/home/${CP_DOMAIN}/process.json" ] && [ ! -f "/home/${CP_MIRROR}/process.json" ]; then
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_DOMAIN_}_ | _${CP_MIRROR_}_${CURRENT}\"/" /home/${CP_MIRROR}/process.json
+    if [ -f "/home/${LOCAL_DOMAIN}/process.json" ] && [ ! -f "/home/${LOCAL_MIRROR}/process.json" ]; then
+        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${LOCAL_DOMAIN_}_ | _${LOCAL_MIRROR_}_${CURRENT}\"/" /home/${LOCAL_MIRROR}/process.json
     else
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${CP_MIRROR_}_ | _${CP_DOMAIN_}_${CURRENT}\"/" /home/${CP_MIRROR}/process.json
+        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${LOCAL_MIRROR_}_ | _${LOCAL_DOMAIN_}_${CURRENT}\"/" /home/${LOCAL_MIRROR}/process.json
     fi
 
     sh_progress
 
-    docker start ${CP_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-
-    sh_progress
-
-    docker exec nginx nginx -s reload >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
-
-    sh_progress
+    docker start ${LOCAL_MIRROR_} \
+        >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+    docker exec nginx nginx -s reload \
+        >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
 }
 8_remove() {
-    if [ -f "/home/${CP_DOMAIN}/config/production/config.js" ] && [ "${2}" = "safe" ]; then
-        T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
-        L=`grep "\"language\"" /home/${CP_DOMAIN}/config/production/config.js`
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_FULL=${2}
+    LOCAL_SAFE=${3}
+
+    if [ "${LOCAL_SAFE}" = "safe" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
+        T=`grep "\"theme\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
+        L=`grep "\"language\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
         CP_THEME=`echo ${T} | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
         CP_LANG=`echo ${L} | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
         if [ "${CP_THEME}" = "" ] \
@@ -786,12 +818,12 @@ ip_install() {
             exit 0
         fi
     fi
-    docker stop ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    docker rm -f ${CP_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    docker rm -f ${LOCAL_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     docker pull cinemapress/docker:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    sed -i "s/.*${CP_DOMAIN}.*//g" /etc/crontab &> /dev/null
-    rm -rf /home/${CP_DOMAIN}
-    if [ "${1}" != "" ]; then
+    sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
+    rm -rf /home/${LOCAL_DOMAIN}
+    if [ "${LOCAL_FULL}" != "" ]; then
         docker stop nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker rm -f nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker pull cinemapress/nginx:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
@@ -844,7 +876,7 @@ option() {
 }
 
 read_domain() {
-    CP_DOMAIN=${CP_DOMAIN:-${1}}
+    CP_DOMAIN=${1:-${CP_DOMAIN}}
     if [ "${CP_DOMAIN}" = "" ]; then
         _header "DOMAIN NAME OR IP"
         AGAIN=1
@@ -896,7 +928,7 @@ read_domain() {
     CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 }
 read_mirror() {
-    CP_MIRROR=${CP_MIRROR:-${1}}
+    CP_MIRROR=${1:-${CP_MIRROR}}
     if [ "${CP_MIRROR}" = "" ]; then
         _header "MIRROR WEBSITE"
         AGAIN=1
@@ -940,7 +972,7 @@ read_mirror() {
     CP_MIRROR_=`echo ${CP_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
 }
 read_theme() {
-    CP_THEME=${CP_THEME:-${1}}
+    CP_THEME=${1:-${CP_THEME}}
     if [ "${CP_THEME}" = "" ]; then
         _header "WEBSITE THEME"
         AGAIN=1
@@ -976,7 +1008,7 @@ read_theme() {
     fi
 }
 read_password() {
-    CP_PASSWD=${CP_PASSWD:-${1}}
+    CP_PASSWD=${1:-${CP_PASSWD}}
     if [ "${CP_PASSWD}" = "" ]; then
         _header "PASSWORD ADMIN PANEL"
         AGAIN=1
@@ -1003,7 +1035,7 @@ read_password() {
     fi
 }
 read_key() {
-    CP_KEY=${CP_KEY:-${1}}
+    CP_KEY=${1:-${CP_KEY}}
     if [ "${CP_KEY}" = "" ]; then
         _header "DATABASE KEY"
         AGAIN=1
@@ -1052,7 +1084,7 @@ read_key() {
     fi
 }
 read_lang() {
-    CP_LANG=${CP_LANG:-${1}}
+    CP_LANG=${1:-${CP_LANG}}
     if [ "${CP_LANG}" = "" ]; then
         _header "WEBSITE LANGUAGE"
         AGAIN=1
@@ -1094,7 +1126,7 @@ read_lang() {
     fi
 }
 read_cloudflare_email() {
-    CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-${1}}
+    CLOUDFLARE_EMAIL=${1:-${CLOUDFLARE_EMAIL}}
     if [ "${CLOUDFLARE_EMAIL}" = "" ]; then
         _header "CLOUDFLARE EMAIL"
         AGAIN=1
@@ -1126,7 +1158,7 @@ read_cloudflare_email() {
     fi
 }
 read_cloudflare_api_key() {
-    CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-${1}}
+    CLOUDFLARE_API_KEY=${1:-${CLOUDFLARE_API_KEY}}
     if [ "${CLOUDFLARE_API_KEY}" = "" ]; then
         _header "CLOUDFLARE API KEY"
         AGAIN=1
@@ -1158,7 +1190,7 @@ read_cloudflare_api_key() {
     fi
 }
 read_mega_email() {
-    MEGA_EMAIL=${MEGA_EMAIL:-${1}}
+    MEGA_EMAIL=${1:-${MEGA_EMAIL}}
     if [ "${MEGA_EMAIL}" = "" ]; then
         _header "MEGA EMAIL"
         AGAIN=1
@@ -1190,7 +1222,7 @@ read_mega_email() {
     fi
 }
 read_mega_password() {
-    MEGA_PASSWORD=${MEGA_PASSWORD:-${1}}
+    MEGA_PASSWORD=${1:-${MEGA_PASSWORD}}
     if [ "${MEGA_PASSWORD}" = "" ]; then
         _header "MEGA PASSWORD"
         AGAIN=1
@@ -1370,7 +1402,7 @@ docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
-        rm -rf /var/cinemapress/*
+        rm -rf /var/cinemapress/* /var/${CP_THEME}
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
@@ -1392,14 +1424,15 @@ docker_run() {
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/default/config.js
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/process.json
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/${CP_DOMAIN}/config/production/config.js
-        git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /home/${CP_DOMAIN}/themes/${CP_THEME}
+        git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /var/${CP_THEME}
+        mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
+        cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
         echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
         indexer --all
-        4_theme
         searchd
         memcached -u root -d
         node /home/${CP_DOMAIN}/config/update/default.js
@@ -1440,8 +1473,7 @@ docker_cron() {
     node /home/${CP_DOMAIN}/lib/CP_cron.js
 }
 docker_restore() {
-    WEB_DIR="${1}"
-    if [ "${WEB_DIR}" = "" ]; then WEB_DIR="${CP_DOMAIN}"; fi
+    WEB_DIR=${1:-${CP_DOMAIN}}
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
@@ -1498,7 +1530,7 @@ docker_backup() {
     rm -rf /var/${CP_DOMAIN}
 }
 docker_actual() {
-    node /home/${CP_DOMAIN}/config/update/actual.js ${1} ${2} ${3} ${4} ${5} ${6} ${7} ${8} ${9}
+    node /home/${CP_DOMAIN}/config/update/actual.js
 }
 docker_rclone() {
     rclone "${1}" "${2}"
@@ -1583,7 +1615,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_password ${5}
             _s ${5}
             sh_progress
-            1_install
+            1_install ${2} ${3} ${4} ${5}
             sh_progress 100
             success_install
             post_crontabs
@@ -1594,7 +1626,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             sh_progress
-            2_update
+            2_update ${2}
             sh_progress 100
             post_crontabs
             exit 0
@@ -1604,7 +1636,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             sh_progress
-            3_backup ${3} ${4} ${5} ${6}
+            3_backup ${2} ${3} ${4} ${5} ${6} ${7}
             sh_progress 100
             exit 0
         ;;
@@ -1614,7 +1646,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_theme ${3}
             _s ${3}
             sh_progress
-            4_theme ${4}
+            4_theme ${2} ${3}
             sh_progress 100
             exit 0
         ;;
@@ -1623,7 +1655,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             read_key ${3}
             _s ${3}
-            5_database
+            5_database ${2} ${3}
             exit 0
         ;;
         "h"|"https"|6 )
@@ -1632,7 +1664,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_cloudflare_email ${3}
             read_cloudflare_api_key ${4}
             _s ${4}
-            6_https
+            6_https ${2} ${3} ${4}
             post_crontabs
             exit 0
         ;;
@@ -1641,7 +1673,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_mirror ${3}
             _s ${3}
             sh_progress
-            7_mirror
+            7_mirror ${2} ${3}
             sh_progress 100
             exit 0
         ;;
@@ -1650,7 +1682,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             sh_progress
-            8_remove ${3}
+            8_remove ${2} ${3} ${4}
             sh_progress 100
             exit 0
         ;;
@@ -1744,16 +1776,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             fi
         ;;
-        "actual" )
-            _br
-            read_domain ${2}
-            sh_not
-            _s ${2}
-            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${2}" "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}" "${10}" \
-                >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
-            exit 0
-        ;;
-        "reload"|"speed" )
+        "reload"|"actual"|"speed" )
             _br
             read_domain ${2}
             sh_not
@@ -1778,12 +1801,16 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${2}" = "cron" ]; then
                 docker_cron
             elif [ "${2}" = "actual" ]; then
-                docker_actual "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}" "${10}" "${11}"
+                docker_actual
+            elif [ "${2}" = "passwd" ]; then
+                docker_passwd "${3}"
+            elif [ "${2}" = "rclone" ]; then
+                docker_rclone "${3}" "${4}"
             elif [ "${2}" = "backup" ]; then
-                if [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
-                    docker_restore "${4}"
-                else
+                if [ "${3}" = "create" ] || [ "${3}" = "1" ]; then
                     docker_backup
+                elif [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
+                    docker_restore "${4}"
                 fi
             elif [ "${2}" = "speed" ]; then
                 if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
@@ -1797,10 +1824,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 else
                     docker_ssl_on
                 fi
-            elif [ "${2}" = "passwd" ]; then
-                docker_passwd "${3}"
-            elif [ "${2}" = "rclone" ]; then
-                docker_rclone "${3}" "${4}"
             fi
             exit 0
         ;;
@@ -1827,17 +1850,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${11}
                 _s ${11}
                 sh_progress
-                read_domain ${4}
-                1_install
-                sh_progress
-                read_domain ${4}
-                6_https
-                sh_progress
-                read_domain ${4}
-                3_backup config "${10}" "${11}" restore "${3}"
-                sh_progress
-                read_domain ${3}
-                7_mirror
+                1_install "${CP_MIRROR}"
+                6_https "${CP_MIRROR}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+                3_backup "${CP_MIRROR}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore" "${CP_DOMAIN}"
+                7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
                 post_crontabs
                 sh_progress 100
                 exit 0
@@ -1851,14 +1867,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${9}
                 _s ${9}
                 sh_progress
-                read_domain ${4}
-                1_install
-                sh_progress
-                read_domain ${4}
-                3_backup config "${8}" "${9}" restore "${3}"
-                sh_progress
-                read_domain ${3}
-                7_mirror
+                1_install "${CP_MIRROR}"
+                3_backup "${CP_MIRROR}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore" "${CP_DOMAIN}"
+                7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
                 post_crontabs
                 sh_progress 100
                 exit 0
@@ -1872,14 +1883,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_cloudflare_api_key ${9}
                 _s ${9}
                 sh_progress
-                read_domain ${4}
-                1_install
-                sh_progress
-                read_domain ${4}
-                6_https
-                sh_progress
-                read_domain ${3}
-                7_mirror
+                1_install "${CP_MIRROR}"
+                6_https "${CP_MIRROR}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+                7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
                 post_crontabs
                 sh_progress 100
                 exit 0
@@ -1895,11 +1901,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${10}
                 _s ${10}
                 sh_progress
-                1_install
-                sh_progress
-                6_https
-                sh_progress
-                3_backup config "${9}" "${10}" create
+                1_install "${CP_DOMAIN}"
+                6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+                3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "create"
                 post_crontabs
                 sh_progress 100
                 exit 0
@@ -1915,11 +1919,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${10}
                 _s ${10}
                 sh_progress
-                1_install
-                sh_progress
-                6_https
-                sh_progress
-                3_backup config "${9}" "${10}" restore
+                1_install "${CP_DOMAIN}"
+                6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+                3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore"
                 post_crontabs
                 sh_progress 100
                 exit 0
@@ -1933,9 +1935,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_cloudflare_api_key ${8}
                 _s ${8}
                 sh_progress
-                1_install
-                sh_progress
-                6_https
+                1_install "${CP_DOMAIN}"
+                6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+                post_crontabs
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "cb" ] || [ "${2}" = "create_backup" ]; then
@@ -1948,9 +1950,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${8}
                 _s ${8}
                 sh_progress
-                1_install
-                sh_progress
-                3_backup config "${7}" "${8}" create
+                1_install "${CP_DOMAIN}"
+                3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "create"
+                post_crontabs
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "cr" ] || [ "${2}" = "create_restore" ]; then
@@ -1963,9 +1965,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_mega_password ${8}
                 _s ${8}
                 sh_progress
-                1_install
-                sh_progress
-                3_backup config "${7}" "${8}" restore
+                1_install "${CP_DOMAIN}"
+                3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore"
+                post_crontabs
                 sh_progress 100
                 exit 0
             fi
@@ -1980,21 +1982,9 @@ while [ "${WHILE}" -lt "2" ]; do
         "clear_vps"|"clean_vps" )
             _br
             sh_progress
-            for D in /home/*; do
-                if [ -f "${D}/process.json" ]
-                then
-                    sh_progress
-                    CP_DOMAIN=`find ${D} -maxdepth 0 -printf "%f"`
-                    CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
-                    8_remove "full"
-                fi
-            done
-            sh_progress
-            docker rmi -f cinemapress/docker >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-            sh_progress
-            docker rmi -f cinemapress/nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-            sh_progress
-            docker rmi -f cinemapress/fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            docker rm -f $(docker ps -aq) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            docker rmi -f $(docker images -q) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            rm -rf /var/log/*
             sh_progress 100
             exit 0
         ;;
@@ -2045,7 +2035,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
             printf "CinemaPress ${CP_VER}"
             _br
-            printf "Copyright (c) 2014-2019, CinemaPress System (https://cinemapress.io)"
+            printf "Copyright (c) 2014-2019, CinemaPress (https://cinemapress.io)"
             _br
             exit 0
         ;;

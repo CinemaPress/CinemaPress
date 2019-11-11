@@ -81,7 +81,17 @@ var modules_default = require(path.join(__dirname, '..', 'default', 'modules.js'
 
 var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d', 'live', config.domain))
   ? 'https://'
-  : 'http://';
+  : config.protocol;
+
+var thm = fs.existsSync(path.join(__dirname, '..', '..', 'themes', config.theme))
+  ? config.theme
+  : (fs.readdirSync(path.join(__dirname, '..', '..', 'themes'), { withFileTypes: true })
+    .filter(function(dirent) {
+      return dirent.isDirectory();
+    })
+    .map(function(dirent) {
+      return dirent.name !== 'default';
+    }))[0] || 'default';
 
 function objReplace(obj_new, obj_old) {
   obj_new = JSON.stringify(obj_new);
@@ -129,6 +139,8 @@ async.series(
   {
     config: function(callback) {
       var c = objAdd(objReplace(config_default, config), config);
+      c.theme = thm;
+      c.protocol = prt;
       c.database = config_default.database
         ? config_default.database
         : c.database;
