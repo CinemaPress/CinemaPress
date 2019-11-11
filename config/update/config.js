@@ -83,15 +83,10 @@ var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d
   ? 'https://'
   : config.protocol;
 
-var thm = fs.existsSync(path.join(__dirname, '..', '..', 'themes', config.theme))
+var thm = config.theme !== 'default' && fs.existsSync(path.join(__dirname, '..', '..', 'themes', config.theme))
   ? config.theme
-  : (fs.readdirSync(path.join(__dirname, '..', '..', 'themes'), { withFileTypes: true })
-    .filter(function(dirent) {
-      return dirent.isDirectory();
-    })
-    .map(function(dirent) {
-      return dirent.name !== 'default';
-    }))[0] || 'default';
+  : ((fs.readdirSync(path.join(__dirname, '..', '..', 'themes')))
+  .filter(function(dirent) {return dirent !== 'default';}))[0] || 'default';
 
 function objReplace(obj_new, obj_old) {
   obj_new = JSON.stringify(obj_new);
