@@ -1994,7 +1994,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start fail2ban
             exit 0
         ;;
-        "clear_vps"|"clean_vps" )
+        "clear_vps"|"clean_vps"|"flush_vps" )
             _br
             sh_progress
             docker rm -f $(docker ps -aq) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
@@ -2006,7 +2006,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -rf /home/${DD}
                 fi
             done
-            rm -rf /var/log/* /var/ngx_pagespeed_cache
+            rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx* /etc/nginx/bots.d
             sh_progress 100
             exit 0
         ;;
