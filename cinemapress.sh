@@ -1994,7 +1994,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start fail2ban
             exit 0
         ;;
-        "clear_vps"|"clean_vps"|"flush_vps" )
+        "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )
             _br
             sh_progress
             docker rm -f $(docker ps -aq) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
@@ -2030,28 +2030,29 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             printf " ~# cinemapress [OPTION]"; _br; _br;
             printf " OPTIONS:"; _br; _br;
-            printf " en      - Fast install EN website"; _br;
-            printf " ru      - Fast install RU website"; _br;
-            printf " passwd  - Change the password for access to the admin panel"; _br;
-            printf " stop    - Stop website (docker container)"; _br;
-            printf " start   - Start website (docker container)"; _br;
-            printf " restart - Restart website (docker container)"; _br;
-            printf " reload  - Reload website (PM2)"; _br;
-            printf " zero    - Delete all data from the automatic database"; _br;
-            printf " speed   - Enabled Nginx PageSpeed module"; _br;
-            printf " images  - Downloading posters to own server (only RU)"; _br; _br;
-            printf " actual  - Updating data from an automatic database"; _br;
-            printf "           to a manual database (year, list of actors, list"; _br;
-            printf "           of genres, list of countries, list of directors,"; _br;
-            printf "           premiere date, rating and number of votes)"; _br;
-            printf " combine   create_https_restore_mirror"; _br;
-            printf " combine   create_restore_mirror"; _br;
-            printf " combine   create_https_mirror"; _br;
-            printf " combine   create_https_backup"; _br;
-            printf " combine   create_https_restore"; _br;
-            printf " combine   create_https"; _br;
-            printf " combine   create_backup"; _br;
-            printf " combine   create_restore"; _br; _br;
+            printf " en        - Fast install EN website"; _br;
+            printf " ru        - Fast install RU website"; _br;
+            printf " passwd    - Change the password for access to the admin panel"; _br;
+            printf " stop      - Stop website (docker container)"; _br;
+            printf " start     - Start website (docker container)"; _br;
+            printf " restart   - Restart website (docker container)"; _br;
+            printf " reload    - Reload website (PM2)"; _br;
+            printf " zero      - Delete all data from the automatic database"; _br;
+            printf " speed     - Enabled Nginx PageSpeed module"; _br;
+            printf " images    - Downloading posters to own server (only RU)"; _br;
+            printf " actual    - Updating data from an automatic database"; _br;
+            printf "             to a manual database (year, list of actors, list"; _br;
+            printf "             of genres, list of countries, list of directors,"; _br;
+            printf "             premiere date, rating and number of votes)"; _br;
+            printf " clear_vps - Complete deletion of all data on the VPS"; _br; _br;
+            printf " combine create_https_restore_mirror"; _br;
+            printf " combine create_restore_mirror"; _br;
+            printf " combine create_https_mirror"; _br;
+            printf " combine create_https_backup"; _br;
+            printf " combine create_https_restore"; _br;
+            printf " combine create_https"; _br;
+            printf " combine create_backup"; _br;
+            printf " combine create_restore"; _br; _br;
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
