@@ -5,12 +5,12 @@
 // @description Button auto-complete movie information in CinemaPress.
 // @description:ru Кнопка автозаполнения информации о фильме в CinemaPress.
 // @description:zh CinemaPress电影信息自动完成按钮。
-// @author zeldaroot
+// @author CinemaPress
 // @homepageURL https://cinemapress.io/
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2019.10
+// @version 2019.11
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -326,7 +326,7 @@ function getAPI(url, callback) {
         }
         var res = {};
         if (url.indexOf('kinopoisk.ru') + 1) {
-          res = result;
+          res = parseKP(result);
         } else if (url.indexOf('omdbapi.com') + 1) {
           res = parseOMDb(result);
         } else if (url.indexOf('themoviedb.org') + 1) {
