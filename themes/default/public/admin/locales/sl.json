@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "Parametri za preverjanje pristnosti SMTP",
 	"Параметры авторизации на почтовом SMTP сервере": "Nastavitve za pridobitev dovoljenja na poštni strežnik SMTP",
 	"DKIM-подпись": "DKIM-podpis",
-	"Сообщение": "Sporočilo"
+	"Сообщение": "Sporočilo",
+	"Только имеющие embed/iframe": "Samo z embed / iframe"
 }

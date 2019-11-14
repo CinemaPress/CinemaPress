@@ -267,7 +267,7 @@ function codePlayer(type, movie, options) {
     param.translate = serial.translate ? serial.translate : '';
     param.start_time = options.start_time ? options.start_time : '';
     param.start_episode = options.start_episode ? options.start_episode : '';
-    param.player = movie.player ? movie.player : '';
+    param.player = movie.player && movie.player !== '1' ? movie.player : '';
     param.cdn =
       movie.player && /\.(mp4|mkv|avi|mov|flv)$/.test(movie.player)
         ? movie.player

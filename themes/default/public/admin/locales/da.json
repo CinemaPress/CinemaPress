@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "Parametre SMTP authentication",
 	"Параметры авторизации на почтовом SMTP сервере": "Indstillinger for godkendelse på SMTP-mailserver",
 	"DKIM-подпись": "DKIM-signatur",
-	"Сообщение": "Besked"
+	"Сообщение": "Besked",
+	"Только имеющие embed/iframe": "Kun med embed / iframe"
 }

@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "Parâmetros de autenticação SMTP",
 	"Параметры авторизации на почтовом SMTP сервере": "Configurações de autorização no servidor de correio SMTP",
 	"DKIM-подпись": "DKIM-signature",
-	"Сообщение": "Mensagem"
+	"Сообщение": "Mensagem",
+	"Только имеющие embed/iframe": "Só com o embed / iframe"
 }

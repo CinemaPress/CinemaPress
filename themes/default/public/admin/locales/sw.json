@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP vigezo uthibitisho",
 	"Параметры авторизации на почтовом SMTP сервере": "Mazingira idhini ya SMTP server pepe",
 	"DKIM-подпись": "DKIM-saini",
-	"Сообщение": "Ujumbe"
+	"Сообщение": "Ujumbe",
+	"Только имеющие embed/iframe": "Tu na kupachika / iframe"
 }

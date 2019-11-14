@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP hitelesítés paraméterek",
 	"Параметры авторизации на почтовом SMTP сервере": "Engedélyt beállításokat a SMTP mail szerver",
 	"DKIM-подпись": "DKIM-aláírás",
-	"Сообщение": "Üzenet"
+	"Сообщение": "Üzenet",
+	"Только имеющие embed/iframe": "Csak embed / iframe"
 }

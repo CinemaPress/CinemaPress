@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP-autentikointiparametrit",
 	"Параметры авторизации на почтовом SMTP сервере": "Valtuutus asetukset SMTP",
 	"DKIM-подпись": "DKIM-allekirjoitus",
-	"Сообщение": "Viesti"
+	"Сообщение": "Viesti",
+	"Только имеющие embed/iframe": "Vain upottaa / iframe"
 }

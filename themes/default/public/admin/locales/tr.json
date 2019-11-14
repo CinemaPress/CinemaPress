@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP kimlik parametreleri",
 	"Параметры авторизации на почтовом SMTP сервере": "SMTP posta sunucusu üzerinde yetkilendirme ayarları",
 	"DKIM-подпись": "DKIM imzası",
-	"Сообщение": "Mesaj"
+	"Сообщение": "Mesaj",
+	"Только имеющие embed/iframe": "Sadece ile embed / iframe"
 }

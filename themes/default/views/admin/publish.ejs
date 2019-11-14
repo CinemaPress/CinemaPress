@@ -384,6 +384,11 @@
                                                     <span></span>
                                                     <%= __('Только имеющие стандартное описание') %>
                                                 </label>
+                                                <label>
+                                                    <input name="config.publish.required" value="player" type="checkbox" <% if (config.publish.required.indexOf('player')+1) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
+                                                    <span></span>
+                                                    <%= __('Только имеющие embed/iframe') %>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>

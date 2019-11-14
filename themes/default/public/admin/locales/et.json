@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP autentimine parameetrid",
 	"Параметры авторизации на почтовом SMTP сервере": "Loa seaded SMTP mail server",
 	"DKIM-подпись": "DKIM-allkirja",
-	"Сообщение": "Sõnum"
+	"Сообщение": "Sõnum",
+	"Только имеющие embed/iframe": "Ainult embed / iframe"
 }

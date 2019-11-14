@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "Thông số xác thực SMTP",
 	"Параметры авторизации на почтовом SMTP сервере": "Thiết lập ủy quyền trên các máy chủ mail SMTP",
 	"DKIM-подпись": "DKIM-chữ ký",
-	"Сообщение": "Thông điệp"
+	"Сообщение": "Thông điệp",
+	"Только имеющие embed/iframe": "Chỉ với nhúng / iframe"
 }

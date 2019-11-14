@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "Parameter otentikasi SMTP",
 	"Параметры авторизации на почтовом SMTP сервере": "Pengaturan otorisasi pada mail server SMTP",
 	"DKIM-подпись": "DKIM-signature",
-	"Сообщение": "Pesan"
+	"Сообщение": "Pesan",
+	"Только имеющие embed/iframe": "Hanya dengan embed / iframe"
 }

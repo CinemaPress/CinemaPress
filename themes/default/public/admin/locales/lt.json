@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP autentifikavimo parametrai",
 	"Параметры авторизации на почтовом SMTP сервере": "Leidimų nustatymus SMTP pašto serverio",
 	"DKIM-подпись": "DKIM parašas",
-	"Сообщение": "Žinutė"
+	"Сообщение": "Žinutė",
+	"Только имеющие embed/iframe": "Tik su įterpti / iframe"
 }

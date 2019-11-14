@@ -175,7 +175,7 @@
 
                     <div class="row">
                         <div class="col-xs-2 text-center">
-                            <img src="<% if (typeof structure.poster === 'undefined') { %>/files/poster/no-poster.jpg<% } else { %><%= structure.poster %><% } %>" data-poster="src" style="height:70px;border-radius:4px" onclick="window.open(this.src)">
+                            <img src="<% if (typeof structure.poster === 'undefined' || !movie.poster) { %>/files/poster/no-poster.jpg<% } else { %><%= structure.poster %><% } %>" data-poster="src" style="height:70px;border-radius:4px" onclick="window.open(this.src)">
                         </div>
                         <div class="col-xs-10">
                             <div class="input-group">

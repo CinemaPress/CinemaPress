@@ -830,5 +830,6 @@
 	"Параметры авторизации SMTP": "SMTP autentifikācijas parametri",
 	"Параметры авторизации на почтовом SMTP сервере": "Autorizācijas iestatījumi SMTP pasta serveri",
 	"DKIM-подпись": "DKIM-paraksts",
-	"Сообщение": "Ziņa"
+	"Сообщение": "Ziņa",
+	"Только имеющие embed/iframe": "Tikai ar embed / iframe"
 }
