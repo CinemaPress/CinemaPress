@@ -405,7 +405,7 @@ ip_install() {
         cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
     fi
 
-    RCS=`docker exec ${LOCAL_DOMAIN_} cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
+    RCS=`docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
 
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
         if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
@@ -429,10 +429,10 @@ ip_install() {
             fi
             cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
-                docker exec ${LOCAL_DOMAIN_} cinemapress container backup create \
+                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
-                docker exec ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
                 docker exec nginx nginx -s reload \
                     >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
@@ -491,10 +491,10 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec ${LOCAL_DOMAIN_} cinemapress container backup create \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
-            docker exec ${LOCAL_DOMAIN_} cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
             docker exec nginx nginx -s reload \
                 >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
@@ -595,7 +595,7 @@ ip_install() {
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
                 docker_stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${LOCAL_DOMAIN_} cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
             rm -rf /var/lib/sphinx/old/movies_${LOCAL_DOMAIN_}.*
             cp -R /var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.* /var/lib/sphinx/old/
@@ -621,7 +621,7 @@ ip_install() {
             if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
                 docker_start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             else
-                docker exec ${LOCAL_DOMAIN_} cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
             fi
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
@@ -846,6 +846,7 @@ ip_install() {
         docker rm -f fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
     fi
+    docker rmi -f $(docker images -f "dangling=true" -q) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
 }
 
 option() {
@@ -1712,7 +1713,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_password ${3}
             _s ${3}
             sh_progress
-            docker exec ${CP_DOMAIN_} cinemapress container "${1}" "${CP_PASSWD}" \
+            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${CP_PASSWD}" \
                 >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
             sh_progress
             docker exec nginx nginx -s reload \
