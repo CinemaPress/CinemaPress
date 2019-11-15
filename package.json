@@ -32,6 +32,7 @@
     "isbot": "2.4.2",
     "limax": "2.0.0",
     "mailparser-mit": "1.0.0",
+    "mimemessage": "1.0.5",
     "maxmind": "3.1.2",
     "md5": "2.2.1",
     "memcached": "2.2.2",
