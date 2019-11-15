@@ -96,7 +96,13 @@ function parseData() {
   }
 
   if (kp_id && (lang === 'ru' || (!imdb_id && !tmdb_id && !douban_id))) {
-    urls.push('https://www.kinopoisk.ru/film/' + '' + kp_id);
+    urls.push(
+      'https://api1573848848.apicollaps.cc/franchise/details?' +
+        'token=6006bca37f7681fe1edf75fcf936aecc&' +
+        'kinopoisk_id=' +
+        '' +
+        kp_id
+    );
   }
   if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
     urls.push('https://api.douban.com/v2/movie/subject/' + '' + douban_id);
@@ -123,7 +129,13 @@ function parseData() {
     );
   }
   if (kp_id && lang !== 'ru') {
-    urls.push('https://www.kinopoisk.ru/film/' + '' + kp_id);
+    urls.push(
+      'https://api1573848848.apicollaps.cc/franchise/details?' +
+        'token=6006bca37f7681fe1edf75fcf936aecc&' +
+        'kinopoisk_id=' +
+        '' +
+        kp_id
+    );
   }
   if (douban_id && lang !== 'zh') {
     urls.push('https://movie.douban.com/subject/' + '' + douban_id);
@@ -188,12 +200,22 @@ function parseData() {
           movieData.pictures;
       }
       if (movieData.translate) {
-        document.querySelector('[name="movie.translate"]').value =
-          movieData.translate;
+        var t = document.querySelector('[name="movie.translate"]');
+        t.value = movieData.translate;
+        t.style.display = 'block';
+        var t1 = document.querySelectorAll('.tagify');
+        t1.forEach(function(t) {
+          t.style.display = 'none';
+        });
       }
       if (movieData.quality) {
-        document.querySelector('[name="movie.quality"]').value =
-          movieData.quality;
+        var q = document.querySelector('[name="movie.quality"]');
+        q.value = movieData.quality;
+        q.style.display = 'block';
+        var t2 = document.querySelectorAll('.tagify');
+        t2.forEach(function(t) {
+          t.style.display = 'none';
+        });
       }
       if (movieData.year) {
         document.querySelector('[name="movie.year"]').value = movieData.year;
@@ -325,7 +347,7 @@ function getAPI(url, callback) {
           console.error(e);
         }
         var res = {};
-        if (url.indexOf('kinopoisk.ru') + 1) {
+        if (url.indexOf('apicollaps.cc') + 1) {
           res = parseKP(result);
         } else if (url.indexOf('omdbapi.com') + 1) {
           res = parseOMDb(result);
@@ -470,87 +492,66 @@ function parseOMDb(res) {
 }
 
 function parseKP(r) {
-  if (!r.length) return {};
-
-  var result = {};
-
-  for (var i = 0; i < r.length; i++) {
-    if (
-      r[i].material_data &&
-      !/укр/i.test(r[i].translator || '') &&
-      !result.title_ru
-    ) {
-      var res = r[i];
-
-      result = {
-        title_ru: res.title_ru
-          ? res.title_ru
-              .split('(')[0]
-              .split('[')[0]
-              .trim()
-          : '',
-        title_en: res.title_en
-          ? res.title_en
-              .split('(')[0]
-              .split('[')[0]
-              .trim()
-          : '',
-        year: res.material_data.year
-          ? (res.material_data.year + '').split('-')[0].replace(/[^0-9]/g, '')
-          : '',
-        type: res.type && res.type === 'serial' ? '1' : '0',
-        genre: (res.material_data.genres
-          ? res.material_data.genres.map(function(v) {
-              return v;
-            })
-          : []
-        ).join(','),
-        country: (res.material_data.countries
-          ? res.material_data.countries.map(function(v) {
-              return v;
-            })
-          : []
-        ).join(','),
-        actor: (res.material_data.actors
-          ? res.material_data.actors.map(function(v, i) {
-              return i < 10 ? v : null;
-            })
-          : []
-        )
-          .filter(Boolean)
-          .join(','),
-        director: (res.material_data.directors
-          ? res.material_data.directors.map(function(v, i) {
-              return i < 10 ? v : null;
-            })
-          : []
-        )
-          .filter(Boolean)
-          .join(','),
-        description: res.material_data.description
-          ? res.material_data.description
-          : '',
-        poster: res.material_data.poster ? '1' : '',
-        kp_rating: res.material_data.kinopoisk_rating
-          ? Math.floor(res.material_data.kinopoisk_rating * 10)
-          : '',
-        kp_vote: res.material_data.kinopoisk_votes
-          ? Math.floor(res.material_data.kinopoisk_votes)
-          : '',
-        imdb_rating: res.material_data.imdb_rating
-          ? Math.floor(res.material_data.imdb_rating * 10)
-          : '',
-        imdb_vote: res.material_data.imdb_votes
-          ? Math.floor(res.material_data.imdb_votes)
-          : '',
-        translate: res.translator ? res.translator : '',
-        quality: res.source_type ? res.source_type : '',
-        premiere: res.premiere ? res.premiere : ''
-      };
-    }
-  }
-
-  return result;
+  if (!r.id) return {};
+  var res = r;
+  return {
+    title_ru: res.name
+      ? res.name
+          .split('(')[0]
+          .split('[')[0]
+          .trim()
+      : '',
+    title_en: res.name_eng
+      ? res.name_eng
+          .split('(')[0]
+          .split('[')[0]
+          .trim()
+      : '',
+    year: res.year ? (res.year + '').split('-')[0].replace(/[^0-9]/g, '') : '',
+    type: res.type && res.type === 'series' ? '1' : '0',
+    genre: (res.genre
+      ? res.genre.map(function(v) {
+          return v.toLowerCase();
+        })
+      : []
+    ).join(','),
+    country: (res.country
+      ? res.country.map(function(v) {
+          return v;
+        })
+      : []
+    ).join(','),
+    actor: (res.actors
+      ? res.actors.map(function(v, i) {
+          return i < 10 ? v : null;
+        })
+      : []
+    )
+      .filter(Boolean)
+      .join(','),
+    director: (res.director
+      ? res.director.map(function(v, i) {
+          return i < 10 ? v : null;
+        })
+      : []
+    )
+      .filter(Boolean)
+      .join(','),
+    description: res.description ? res.description : '',
+    poster: res.poster ? '1' : '',
+    kp_rating: res.kinopoisk ? Math.floor(res.kinopoisk * 10) : '',
+    kp_vote: '1000',
+    imdb_rating: res.imdb ? Math.floor(res.imdb * 10) : '',
+    imdb_vote: '1000',
+    translate:
+      res.voiceActing && res.voiceActing[0]
+        ? res.voiceActing.filter(function(voice) {
+            return !/(укр|eng)/i.test(voice);
+          })[0]
+        : '',
+    quality: res.quality ? res.quality : '',
+    premiere: res.premier ? res.premier : ''
+  };
 }
 
 function parseDouban(res) {
