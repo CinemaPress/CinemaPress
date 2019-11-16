@@ -2013,6 +2013,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ -f "${D}/process.json" ]
                 then
                     DD=`find ${D} -maxdepth 0 -printf "%f"`
+                    sed -i "s/.*${DD}.*//g" /etc/crontab &> /dev/null
                     rm -rf /home/${DD}
                 fi
             done
