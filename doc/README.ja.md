@@ -23,13 +23,13 @@
 
 > #### Webサイト経由でインストール
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![Webサイト経由でインストール](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### 端末経由でインストール
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![端末経由でインストール](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

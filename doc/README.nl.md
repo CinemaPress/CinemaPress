@@ -23,13 +23,13 @@
 
 > #### Installeer via website
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![Installeer via website](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### Installeren via terminal
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![Installeren via terminal](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

@@ -25,13 +25,13 @@
 
 > ####  تثبيت عبر الموقع
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![تثبيت عبر الموقع](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### تثبيت عبر المحطة
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![تثبيت عبر المحطة](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

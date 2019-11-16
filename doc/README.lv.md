@@ -23,13 +23,13 @@
 
 > #### Instalējiet, izmantojot tīmekļa vietni
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![Instalējiet, izmantojot tīmekļa vietni](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### Instalējiet, izmantojot termināli
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![Instalējiet, izmantojot termināli](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

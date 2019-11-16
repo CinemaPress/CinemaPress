@@ -23,13 +23,13 @@
 
 > #### Nainštalujte prostredníctvom webových stránok
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![Nainštalujte prostredníctvom webových stránok](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### Inštalácia cez terminál
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![Inštalácia cez terminál](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

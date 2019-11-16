@@ -23,13 +23,13 @@
 
 > #### ওয়েবসাইট মাধ্যমে ইনস্টল করুন
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![ওয়েবসাইট মাধ্যমে ইনস্টল করুন](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### টার্মিনাল মাধ্যমে ইনস্টল করুন
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![টার্মিনাল মাধ্যমে ইনস্টল করুন](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

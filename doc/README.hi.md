@@ -23,13 +23,13 @@
 
 > #### वेबसाइट के माध्यम से स्थापित करें
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![वेबसाइट के माध्यम से स्थापित करें](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### टर्मिनल के माध्यम से स्थापित करें
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![टर्मिनल के माध्यम से स्थापित करें](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

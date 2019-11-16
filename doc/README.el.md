@@ -23,13 +23,13 @@
 
 > #### Εγκατάσταση μέσω ιστότοπου
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![Εγκατάσταση μέσω ιστότοπου](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### Εγκαταστήστε μέσω τερματικού
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![Εγκαταστήστε μέσω τερματικού](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

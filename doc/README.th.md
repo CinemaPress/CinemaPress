@@ -23,13 +23,13 @@
 
 > #### ติดตั้งผ่านเว็บไซต์
 
-`https://cinemapress.sh`
+[https://cinemapress.sh](https://cinemapress.sh)
 
 [![ติดตั้งผ่านเว็บไซต์](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
 
 > #### ติดตั้งผ่านเทอร์มินัล
 
-`bash <(wget -qO- cinemapress.sh)`
+`bash <(wget cinemapress.sh -qO-)`
 
 ![ติดตั้งผ่านเทอร์มินัล](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 
