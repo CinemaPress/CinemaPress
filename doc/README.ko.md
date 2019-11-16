@@ -23,9 +23,9 @@
 
 > #### 웹 사이트를 통해 설치
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#ko](https://cinemapress.sh/#ko)
 
-[![웹 사이트를 통해 설치](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![웹 사이트를 통해 설치](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#ko)
 
 > #### 터미널을 통해 설치
 

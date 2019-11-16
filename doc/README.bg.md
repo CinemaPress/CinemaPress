@@ -23,9 +23,9 @@
 
 > #### Инсталирайте чрез уебсайт
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#bg](https://cinemapress.sh/#bg)
 
-[![Инсталирайте чрез уебсайт](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Инсталирайте чрез уебсайт](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#bg)
 
 > #### Инсталирайте чрез терминал
 

@@ -23,9 +23,9 @@
 
 > #### Instalējiet, izmantojot tīmekļa vietni
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#lv](https://cinemapress.sh/#lv)
 
-[![Instalējiet, izmantojot tīmekļa vietni](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Instalējiet, izmantojot tīmekļa vietni](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#lv)
 
 > #### Instalējiet, izmantojot termināli
 

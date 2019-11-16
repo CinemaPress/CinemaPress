@@ -23,9 +23,9 @@
 
 > #### Web sitesi üzerinden yükle
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#tr](https://cinemapress.sh/#tr)
 
-[![Web sitesi üzerinden yükle](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Web sitesi üzerinden yükle](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#tr)
 
 > #### Terminal aracılığıyla yükleyin
 

@@ -23,9 +23,9 @@
 
 > #### ติดตั้งผ่านเว็บไซต์
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#th](https://cinemapress.sh/#th)
 
-[![ติดตั้งผ่านเว็บไซต์](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![ติดตั้งผ่านเว็บไซต์](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#th)
 
 > #### ติดตั้งผ่านเทอร์มินัล
 

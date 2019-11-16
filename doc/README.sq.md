@@ -23,9 +23,9 @@
 
 > #### Instaloni nëpërmjet faqes së internetit
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#sq](https://cinemapress.sh/#sq)
 
-[![Instaloni nëpërmjet faqes së internetit](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Instaloni nëpërmjet faqes së internetit](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#sq)
 
 > #### Instaloni nëpërmjet terminalit
 

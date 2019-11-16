@@ -23,9 +23,9 @@
 
 > #### Installige veebisaidi kaudu
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#et](https://cinemapress.sh/#et)
 
-[![Installige veebisaidi kaudu](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Installige veebisaidi kaudu](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#et)
 
 > #### Installige terminali kaudu
 

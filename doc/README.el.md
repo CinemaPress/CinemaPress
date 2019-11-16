@@ -23,9 +23,9 @@
 
 > #### Εγκατάσταση μέσω ιστότοπου
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#el](https://cinemapress.sh/#el)
 
-[![Εγκατάσταση μέσω ιστότοπου](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Εγκατάσταση μέσω ιστότοπου](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#el)
 
 > #### Εγκαταστήστε μέσω τερματικού
 

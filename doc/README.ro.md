@@ -23,9 +23,9 @@
 
 > #### Instalați prin intermediul site-ului
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#ro](https://cinemapress.sh/#ro)
 
-[![Instalați prin intermediul site-ului](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Instalați prin intermediul site-ului](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#ro)
 
 > #### Instalați prin terminal
 

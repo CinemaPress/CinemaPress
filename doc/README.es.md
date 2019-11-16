@@ -23,9 +23,9 @@
 
 > #### Instalar vía web
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#es](https://cinemapress.sh/#es)
 
-[![Instalar vía web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Instalar vía web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#es)
 
 > #### Instalar vía terminal
 

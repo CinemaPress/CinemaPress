@@ -23,9 +23,9 @@
 
 > #### Cài đặt qua trang web
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#vi](https://cinemapress.sh/#vi)
 
-[![Cài đặt qua trang web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![Cài đặt qua trang web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#vi)
 
 > #### Cài đặt qua thiết bị đầu cuối
 

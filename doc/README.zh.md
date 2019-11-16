@@ -23,9 +23,9 @@
 
 > #### 通过网站安装
 
-[https://cinemapress.sh](https://cinemapress.sh)
+[https://cinemapress.sh/#zh](https://cinemapress.sh/#zh)
 
-[![通过网站安装](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh)
+[![通过网站安装](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#zh)
 
 > #### 通过终端安装
 
