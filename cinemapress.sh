@@ -53,20 +53,30 @@ else
     exit 0
 fi
 
-post_crontabs() {
-    if [ "`grep \"${CP_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
-    && [ -f "/home/${CP_DOMAIN}/process.json" ]; then
+post_commands() {
+    LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
+    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+
+    if [ "`grep \"${LOCAL_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
+    && [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
         echo -e "\n" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
-        echo "@reboot root /usr/bin/cinemapress autostart \"${CP_DOMAIN}\" >>/home/${CP_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
+        echo "@reboot root /usr/bin/cinemapress autostart \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
     fi
-    if [ "`grep \"${CP_DOMAIN}_ssl\" /etc/crontab`" = "" ] \
-    && [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ]; then
+    if [ "`grep \"${LOCAL_DOMAIN}_ssl\" /etc/crontab`" = "" ] \
+    && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
         echo -e "\n" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
-        echo "0 23 * * * root docker run -it --rm -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${CP_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
-        echo "# ----- ${CP_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+        echo "0 23 * * * root docker run -it --rm -v /home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${LOCAL_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+    fi
+    CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
+    if [ "${CP_SPEED}" != "" ]; then
+        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
+            /home/${LOCAL_DOMAIN}/config/production/config.js
+        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
+        docker exec nginx nginx -s reload >/dev/null
     fi
 }
 docker_install() {
@@ -348,16 +358,15 @@ ip_install() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 
-    A=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
-    K=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
-    D=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
-    P=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
-    S=`grep "\"admin\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
-    CP_ALL=`echo "${A}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-    CP_KEY=`echo ${K} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
-    CP_DATE=`echo ${D} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
-    CP_SPEED=`echo ${P} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
-    if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${A}" ]; then CP_ALL=""; fi
+    AA=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
+    KK=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
+    DD=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
+    PP=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
+    CP_ALL=`echo "${AA}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+    CP_KEY=`echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
+    CP_DATE=`echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
+    CP_SPEED=`echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
+    if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/${LOCAL_DOMAIN}/config/production/nginx/* /var/nginx/
     3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
@@ -386,7 +395,7 @@ ip_install() {
     if [ "${CP_SPEED}" != "" ]; then
         sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
             /home/${LOCAL_DOMAIN}/config/production/config.js
-        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed ${CP_SPEED}
+        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}"
     fi
     docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
 }
@@ -1634,7 +1643,7 @@ while [ "${WHILE}" -lt "2" ]; do
             1_install ${2} ${3} ${4} ${5}
             sh_progress 100
             success_install
-            post_crontabs
+            post_commands
             exit 0
         ;;
         "u"|"update"|2 )
@@ -1644,7 +1653,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress
             2_update ${2}
             sh_progress 100
-            post_crontabs
+            post_commands
             exit 0
         ;;
         "b"|"backup"|3 )
@@ -1681,7 +1690,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_cloudflare_api_key ${4}
             _s ${4}
             6_https ${2} ${3} ${4}
-            post_crontabs
+            post_commands
             exit 0
         ;;
         "m"|"mirror"|7 )
@@ -1870,7 +1879,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 6_https "${CP_MIRROR}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
                 3_backup "${CP_MIRROR}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore" "${CP_DOMAIN}"
                 7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
-                post_crontabs
+                post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "crm" ] || [ "${2}" = "create_restore_mirror" ]; then
@@ -1886,7 +1895,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 1_install "${CP_MIRROR}"
                 3_backup "${CP_MIRROR}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore" "${CP_DOMAIN}"
                 7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
-                post_crontabs
+                post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "chm" ] || [ "${2}" = "create_https_mirror" ]; then
@@ -1902,7 +1911,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 1_install "${CP_MIRROR}"
                 6_https "${CP_MIRROR}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
                 7_mirror "${CP_DOMAIN}" "${CP_MIRROR}"
-                post_crontabs
+                post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "chb" ] || [ "${2}" = "create_https_backup" ]; then
@@ -1920,7 +1929,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 1_install "${CP_DOMAIN}"
                 6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
                 3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "create"
-                post_crontabs
+                post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "chr" ] || [ "${2}" = "create_https_restore" ]; then
@@ -1938,7 +1947,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 1_install "${CP_DOMAIN}"
                 6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
                 3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore"
-                post_crontabs
+                post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "ch" ] || [ "${2}" = "create_https" ]; then
@@ -1953,7 +1962,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sh_progress
                 1_install "${CP_DOMAIN}"
                 6_https "${CP_DOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
-                post_crontabs
+                post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "cb" ] || [ "${2}" = "create_backup" ]; then
@@ -1968,7 +1977,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sh_progress
                 1_install "${CP_DOMAIN}"
                 3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "create"
-                post_crontabs
+                post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
             elif [ "${2}" = "cr" ] || [ "${2}" = "create_restore" ]; then
@@ -1983,7 +1992,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sh_progress
                 1_install "${CP_DOMAIN}"
                 3_backup "${CP_DOMAIN}" "config" "${MEGA_EMAIL}" "${MEGA_PASSWORD}" "restore"
-                post_crontabs
+                post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
             fi
