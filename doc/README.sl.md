@@ -23,7 +23,7 @@
 
 > #### Namestite prek spletnega mesta
 
-[https://cinemapress.sh/#sl](https://cinemapress.sh/#sl)
+[cinemapress.sh#sl](https://cinemapress.sh/#sl)
 
 [![Namestite prek spletnega mesta](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#sl)
 

@@ -23,7 +23,7 @@
 
 > #### Sakinisha kupitia tovuti
 
-[https://cinemapress.sh/#sw](https://cinemapress.sh/#sw)
+[cinemapress.sh#sw](https://cinemapress.sh/#sw)
 
 [![Sakinisha kupitia tovuti](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#sw)
 

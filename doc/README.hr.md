@@ -23,7 +23,7 @@
 
 > #### Instalirajte putem web-lokacije
 
-[https://cinemapress.sh/#hr](https://cinemapress.sh/#hr)
+[cinemapress.sh#hr](https://cinemapress.sh/#hr)
 
 [![Instalirajte putem web-lokacije](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#hr)
 

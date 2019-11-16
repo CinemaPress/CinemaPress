@@ -23,7 +23,7 @@
 
 > #### Instalar via website
 
-[https://cinemapress.sh/#pt](https://cinemapress.sh/#pt)
+[cinemapress.sh#pt](https://cinemapress.sh/#pt)
 
 [![Instalar via website](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#pt)
 

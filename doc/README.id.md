@@ -23,7 +23,7 @@
 
 > #### Instal melalui situs web
 
-[https://cinemapress.sh/#id](https://cinemapress.sh/#id)
+[cinemapress.sh#id](https://cinemapress.sh/#id)
 
 [![Instal melalui situs web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#id)
 

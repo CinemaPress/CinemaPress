@@ -23,7 +23,7 @@
 
 > #### Asenna verkkosivuston kautta
 
-[https://cinemapress.sh/#fi](https://cinemapress.sh/#fi)
+[cinemapress.sh#fi](https://cinemapress.sh/#fi)
 
 [![Asenna verkkosivuston kautta](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#fi)
 

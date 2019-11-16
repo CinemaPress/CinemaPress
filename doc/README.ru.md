@@ -23,7 +23,7 @@
 
 > #### Установка через веб-сайт
 
-[https://cinemapress.sh/#ru](https://cinemapress.sh/#ru)
+[cinemapress.sh#ru](https://cinemapress.sh/#ru)
 
 [![Установка через веб-сайт](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#ru)
 

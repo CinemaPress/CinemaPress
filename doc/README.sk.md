@@ -23,7 +23,7 @@
 
 > #### Nainštalujte prostredníctvom webových stránok
 
-[https://cinemapress.sh/#sk](https://cinemapress.sh/#sk)
+[cinemapress.sh#sk](https://cinemapress.sh/#sk)
 
 [![Nainštalujte prostredníctvom webových stránok](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#sk)
 
