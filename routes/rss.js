@@ -60,7 +60,7 @@ router.get('/?', function(req, res, next) {
 
   function getCache(callback) {
     CP_cache.get(urlHash, function(err, render) {
-      if (err) return callback(err);
+      if (err) console.error(err);
 
       return render
         ? callback(null, render)
