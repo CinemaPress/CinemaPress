@@ -10,7 +10,6 @@ NC='\033[0m'
 
 OPTION=${1:-}
 GIT_SERVER="github.com"
-GIT_NAME="CinemaPress"
 CP_VER="4.0.0"
 CP_ALL=""
 PRC_=0
@@ -41,7 +40,7 @@ if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
    [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ] || \
    [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ] || \
    [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-   CP_SUCCESS="yes"
+   true
 else
     _header "ERROR"
     _content
@@ -84,20 +83,16 @@ docker_install() {
         if [ "`basename "${0}"`" != "cinemapress" ]; then
             echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
-                apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
-                apt-get -y -qq install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo apt-get -y -qq install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-                dnf -y install sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo dnf -y install wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
                 yum install -y epel-release >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                yum install -y sudo >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                sudo yum install -y wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
             fi
             sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
@@ -114,9 +109,9 @@ docker_install() {
             _s
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
-                sudo apt-get -y -qq remove docker docker-engine docker.io containerd runc
-                sudo apt-get -y -qq update
-                sudo apt-get -y -qq install \
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
                     apt-transport-https \
                     ca-certificates \
                     curl \
@@ -135,16 +130,14 @@ docker_install() {
                     CP_ARCH="arm64"
                 fi
                 sudo add-apt-repository \
-                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/debian \
-                    $(lsb_release -cs) \
-                    stable"
-                sudo apt-get -y -qq update
-                sudo apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
-                sudo apt-get -y -qq remove docker docker-engine docker.io containerd runc
-                sudo apt-get -y -qq update
-                sudo apt-get -y -qq install \
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
                     apt-transport-https \
                     ca-certificates \
                     curl \
@@ -169,11 +162,9 @@ docker_install() {
                     CP_ARCH="s390x"
                 fi
                 sudo add-apt-repository \
-                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/ubuntu \
-                    $(lsb_release -cs) \
-                    stable"
-                sudo apt-get -y -qq update
-                sudo apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
                 sudo dnf -y remove docker \
                     docker-client \
