@@ -566,6 +566,10 @@
             data.movie.description = data.movie.description.replace(/\n/ig, '<br>');
         }
 
+        if (data.modules && data.modules.abuse && data.modules.abuse.data.smtp.message) {
+          data.modules.abuse.data.smtp.message = data.modules.abuse.data.smtp.message.replace(/\n/ig, '<br>');
+        }
+
         if (data.modules && data.modules.blocking && data.modules.blocking.data.sub.keys) {
             data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
         }

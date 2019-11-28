@@ -334,7 +334,7 @@
                                                             <div class="inner-padding">
                                                                 <div class="row">
                                                                     <div class="col-sm-12 text-center">
-                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.message" style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message %><% } %></textarea>
+                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.message" style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message.replace(/<br>/ig, '\n') %><% } %></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
