@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Engedélyt beállításokat a SMTP mail szerver",
 	"DKIM-подпись": "DKIM-aláírás",
 	"Сообщение": "Üzenet",
-	"Только имеющие embed/iframe": "Csak embed / iframe"
+	"Только имеющие embed/iframe": "Csak embed / iframe",
+	"Формат тегов:": "Címkeformátummal:",
+	"В таком формате будут показаны теги на странице фильма": "Ez a formátum jelenik meg a címkét a movie oldal",
+	"Категории тегов:": "Kategória címkék:",
+	"Укажите какие категории будут использоваться для составления тегов": "Határozza meg, mely kategóriák létrehozásához használt címkék"
 }

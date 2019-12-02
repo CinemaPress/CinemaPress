@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Loa seaded SMTP mail server",
 	"DKIM-подпись": "DKIM-allkirja",
 	"Сообщение": "Sõnum",
-	"Только имеющие embed/iframe": "Ainult embed / iframe"
+	"Только имеющие embed/iframe": "Ainult embed / iframe",
+	"Формат тегов:": "Tag formaat:",
+	"В таком формате будут показаны теги на странице фильма": "See formaat kuvatakse sildi moviei lehekülg",
+	"Категории тегов:": "Category:",
+	"Укажите какие категории будут использоваться для составления тегов": "Täpsustada, millist liiki kasutatakse, et luua silte"
 }

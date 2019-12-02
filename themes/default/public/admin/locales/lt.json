@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Leidimų nustatymus SMTP pašto serverio",
 	"DKIM-подпись": "DKIM parašas",
 	"Сообщение": "Žinutė",
-	"Только имеющие embed/iframe": "Tik su įterpti / iframe"
+	"Только имеющие embed/iframe": "Tik su įterpti / iframe",
+	"Формат тегов:": "Gairė formatas:",
+	"В таком формате будут показаны теги на странице фильма": "Šis formatas bus rodomas ant plėvelės puslapyje žyma",
+	"Категории тегов:": "Kategorija žymės:",
+	"Укажите какие категории будут использоваться для составления тегов": "Nurodykite, kokios kategorijos bus naudojama siekiant sukurti žymes"
 }

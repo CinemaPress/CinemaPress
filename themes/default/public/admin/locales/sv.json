@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Behörighets inställningarna på SMTP-postservern",
 	"DKIM-подпись": "DKIM-signaturen",
 	"Сообщение": "Meddelande",
-	"Только имеющие embed/iframe": "Endast med bädda / iframe"
+	"Только имеющие embed/iframe": "Endast med bädda / iframe",
+	"Формат тегов:": "Tag format:",
+	"В таком формате будут показаны теги на странице фильма": "Detta format kommer att visas på etiketten av movieen sidan",
+	"Категории тегов:": "Kategori taggar:",
+	"Укажите какие категории будут использоваться для составления тегов": "Ange vilka kategorier kommer att användas för att skapa taggar"
 }

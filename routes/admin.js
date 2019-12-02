@@ -585,11 +585,7 @@ router.get('/:type?', function(req, res) {
             function(err, stat) {
               if (err) return callback(err);
               if (stat.isDirectory()) {
-                if (this.file !== this.file.toLowerCase()) {
-                  callback('ERROR FOLDER');
-                } else {
-                  dirs.push(this.file);
-                }
+                dirs.push(this.file);
               }
               if (files.length === this.index + 1) {
                 return callback(null, dirs);

@@ -93,7 +93,11 @@ module.exports = {
     },
     "moment": "DD MMM YYYY",
     "loc": 2000,
-    "tag": 2000
+    "tag": 2000,
+    "tags": {
+      "list": ["year","genre"],
+      "format": "[Type] [year] [genre] [country]"
+    }
   },
   "codes": {
     "head": "",
@@ -168,7 +172,7 @@ module.exports = {
     "actors": "Самые популярные актеры",
     "director": "Фильмы которые срежиссировал [director] [sorting] [page]",
     "directors": "Самые популярные режиссеры",
-    "type": "[type] [sorting] [page]",
+    "type": "[Type] [year] [genre] [country] [sorting] [page]",
     "search": "Поиск фильма «[search]» [sorting] [page]",
     "num": "на странице [num]",
     "movie": {
@@ -205,7 +209,7 @@ module.exports = {
     "actors": "Самые популярные актеры",
     "director": "Фильмы которые срежиссировал [director] [sorting] [page]",
     "directors": "Самые популярные режиссеры",
-    "type": "[type] [sorting] [page]",
+    "type": "[Type] [year] [genre] [country] [sorting] [page]",
     "search": "Поиск фильма «[search]» [sorting] [page]",
     "num": "на странице [num]",
     "movie": {
@@ -242,7 +246,7 @@ module.exports = {
     "actors": "Самые популярные актеры",
     "director": "Фильмы которые срежиссировал [director]",
     "directors": "Самые популярные режиссеры",
-    "type": "[type]",
+    "type": "[Type] [year] [genre] [country]",
     "search" : "Поиск фильма «[search]»",
     "movie": {
       "movie": "Картина «[title]» была выпущена в [year] году и сразу завоевала внимание зрителей в разных [уголках Земли|частях планеты]. Киноленты из жанра [genre] всегда пользовались особой популярностью, к тому же, когда их снимают такие именитые режиссеры, как [director]. Страна, которая приложила руку к этому кинопроизведению считается [country], потому зрители уже могут приблизительно представить уровень [красочности|логики|картинки|искусства] по аналогичным творениям.",

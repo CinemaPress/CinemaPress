@@ -12,7 +12,7 @@ html {
   font-size: 14px;
 }
 body {
-  background: url(/themes/default/public/mobile/light/img/bg.png) #fff;
+  background: url('themes/default/public/mobile/light/img/bg.png') #fff;
   color: #000;
 }
 .poster {
@@ -32,7 +32,7 @@ h1,
 h2 {
   margin: 0 auto;
   padding: 10px;
-  background: url(/themes/default/public/mobile/light/img/bg2.png) #333;
+  background: url('themes/default/public/mobile/light/img/bg2.png') #333;
   color: #fff;
   line-height: 2;
 }
@@ -52,7 +52,7 @@ a:hover {
   color: #557fa3;
 }
 .description {
-  background: url(/themes/default/public/mobile/light/img/bg3.png) top center
+  background: url('themes/default/public/mobile/light/img/bg3.png') top center
     #ccc;
   border: 2px solid #f1f1f1;
   font-size: 14px;
@@ -75,7 +75,7 @@ a:hover {
   margin: 10px;
 }
 form {
-  background: url(/themes/default/public/mobile/light/img/bg5.png) #666;
+  background: url('themes/default/public/mobile/light/img/bg5.png') #666;
   position: relative;
   padding: 10px 106px;
   margin: 5px 10px;
@@ -103,7 +103,7 @@ form {
   background: #fff;
 }
 .block {
-  background: url(/themes/default/public/mobile/light/img/bg6.png) top center
+  background: url('themes/default/public/mobile/light/img/bg6.png') top center
     #ccc;
   border: 2px solid #f1f1f1;
   border-radius: 5px;
@@ -492,7 +492,7 @@ form {
 .cinemapress-random-category {
   position: relative;
   text-align: left;
-  background: url(/themes/default/public/mobile/light/img/bg2.png) #333;
+  background: url('themes/default/public/mobile/light/img/bg2.png') #333;
   border-radius: 5px;
   margin: 15px 10px 15px 70px;
   border: 2px #ccc solid;

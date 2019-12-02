@@ -92,7 +92,11 @@ module.exports = {
     },
     "moment": "DD MMM YYYY",
     "loc": 2000,
-    "tag": 2000
+    "tag": 2000,
+    "tags": {
+      "list": ["year","genre"],
+      "format": "[Type] [year] [genre] [country]"
+    }
   },
   "codes": {
     "head": "",
@@ -167,7 +171,7 @@ module.exports = {
     "actors": "Most popular actors",
     "director": "Movies that directed [director] [sorting] [page]",
     "directors": "Most popular directors",
-    "type": "[type] [sorting] [page]",
+    "type": "[Type] [year] [genre] [country] [sorting] [page]",
     "search" : "Search «[search]» [sorting] [page]",
     "num": "on page [num]",
     "movie": {
@@ -204,7 +208,7 @@ module.exports = {
     "actors": "Most popular actors",
     "director": "Movies that directed [director] [sorting] [page]",
     "directors": "Most popular directors",
-    "type": "[type] [sorting] [page]",
+    "type": "[Type] [year] [genre] [country] [sorting] [page]",
     "search" : "Search «[search]» [sorting] [page]",
     "num": "on page [num]",
     "movie": {
@@ -241,7 +245,7 @@ module.exports = {
     "actors": "Most popular actors",
     "director": "Movies that directed [director]",
     "directors": "Most popular directors",
-    "type": "[type]",
+    "type": "[Type] [year] [genre] [country]",
     "search" : "Search «[search]»",
     "movie": {
       "movie": "The picture «[title]» was released in [year] year and immediately won the attention of viewers in different parts of the earth. Film genre [genre] has always been very popular, moreover, when they are shot by such eminent directors as [director]. The country that put a hand to this film is considered [country], because viewers can already approximately imagine the level of [color|logic|art|pictures] for similar creations.",

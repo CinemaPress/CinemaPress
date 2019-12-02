@@ -365,6 +365,8 @@
                     'config.homepage',
                     'config.codes.head',
                     'config.codes.footer',
+                    'config.default.donotuse',
+                    'config.default.tags.list',
                     'config.publish.required',
                     'config.publish.thematic.country',
                     'config.publish.thematic.genre',
@@ -596,6 +598,10 @@
             } else {
                 data.config.geolite2.ips = data.config.geolite2.ips.replace(/"/ig, '').replace(/'/ig, '');
             }
+        }
+
+        if (data.config && data.config.default && data.config.default.tags && !data.config.default.tags.list) {
+            data.config.default.tags.list = '';
         }
 
         if (data.config && data.config.domain) {

@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Setările de autorizare pe serverul de poștă electronică SMTP",
 	"DKIM-подпись": "DKIM-semnătură",
 	"Сообщение": "Mesaj",
-	"Только имеющие embed/iframe": "Numai cu încorporați / iframe"
+	"Только имеющие embed/iframe": "Numai cu încorporați / iframe",
+	"Формат тегов:": "Format tag:",
+	"В таком формате будут показаны теги на странице фильма": "Acest format va fi afișat pe eticheta paginii de movie",
+	"Категории тегов:": "Categorie tag-uri:",
+	"Укажите какие категории будут использоваться для составления тегов": "A se preciza ce categorii vor fi folosite pentru a crea etichete"
 }

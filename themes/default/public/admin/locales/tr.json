@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "SMTP posta sunucusu üzerinde yetkilendirme ayarları",
 	"DKIM-подпись": "DKIM imzası",
 	"Сообщение": "Mesaj",
-	"Только имеющие embed/iframe": "Sadece ile embed / iframe"
+	"Только имеющие embed/iframe": "Sadece ile embed / iframe",
+	"Формат тегов:": "Etiket biçimi:",
+	"В таком формате будут показаны теги на странице фильма": "Bu biçim moviei sayfasının etiketi görüntülenir",
+	"Категории тегов:": "Kategori etiketler:",
+	"Укажите какие категории будут использоваться для составления тегов": "Etiketler oluşturmak için kullanılacak hangi kategorilere belirtin"
 }

@@ -286,37 +286,37 @@ function oneCategory(type, key, page, sorting, options, callback) {
 
   switch (type) {
     case config.urls.year:
-      getMovies({ year: key }, function(err, render) {
+      getMovies(Object.assign({ year: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.genre:
-      getMovies({ genre: key }, function(err, render) {
+      getMovies(Object.assign({ genre: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.country:
-      getMovies({ country: key }, function(err, render) {
+      getMovies(Object.assign({ country: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.actor:
-      getMovies({ actor: key }, function(err, render) {
+      getMovies(Object.assign({ actor: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.director:
-      getMovies({ director: key }, function(err, render) {
+      getMovies(Object.assign({ director: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.type:
-      getMovies({ type: key }, function(err, render) {
+      getMovies(Object.assign({ type: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.search:
-      getMovies({ search: key }, function(err, render) {
+      getMovies(Object.assign({ search: key }, options.query), function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
@@ -593,7 +593,7 @@ function randomCategory(type, key, options, callback) {
   switch (type) {
     case config.urls.year:
       CP_get.movies(
-        { year: key },
+        Object.assign({ year: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -613,7 +613,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.genre:
       CP_get.movies(
-        { genre: key },
+        Object.assign({ genre: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -633,7 +633,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.country:
       CP_get.movies(
-        { country: key },
+        Object.assign({ country: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -653,7 +653,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.actor:
       CP_get.movies(
-        { actor: key },
+        Object.assign({ actor: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -673,7 +673,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.director:
       CP_get.movies(
-        { director: key },
+        Object.assign({ director: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -693,7 +693,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.type:
       CP_get.movies(
-        { type: key },
+        Object.assign({ type: key }, options.query),
         -3,
         undefined,
         undefined,

@@ -58,6 +58,13 @@
 </div>
 
 <% } %>
+<% if (movie.tags_url) { %>
+
+<div class="info">
+    <%- page.l.tags %>: <%- movie.tags_url %>
+</div>
+
+<% } %>
 
 <div class="clear"></div>
 
@@ -167,7 +174,7 @@
 <% contents.forEach(function (content) { %>
 <div class="cinemapress-news-block">
     <div style="margin: 0; padding: 10px">
-        <a href="<%- content.url %>" class="cinemapress-news" style="background-image:url(<%- content.image %>);">
+        <a href="<%- content.url %>" class="cinemapress-news" style="background-image:url('<%- content.image %>');">
             <div class="cinemapress-news-title">
                 <%= content.title %>
             </div>

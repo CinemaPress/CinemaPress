@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Indstillinger for godkendelse på SMTP-mailserver",
 	"DKIM-подпись": "DKIM-signatur",
 	"Сообщение": "Besked",
-	"Только имеющие embed/iframe": "Kun med embed / iframe"
+	"Только имеющие embed/iframe": "Kun med embed / iframe",
+	"Формат тегов:": "Tag format:",
+	"В таком формате будут показаны теги на странице фильма": "Dette format vil blive vist på tag af movieen side",
+	"Категории тегов:": "Kategori tags:",
+	"Укажите какие категории будут использоваться для составления тегов": "Angiv, hvilke kategorier vil blive brugt til at skabe tags"
 }

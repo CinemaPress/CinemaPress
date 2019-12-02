@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Mazingira idhini ya SMTP server pepe",
 	"DKIM-подпись": "DKIM-saini",
 	"Сообщение": "Ujumbe",
-	"Только имеющие embed/iframe": "Tu na kupachika / iframe"
+	"Только имеющие embed/iframe": "Tu na kupachika / iframe",
+	"Формат тегов:": "Tag format:",
+	"В таком формате будут показаны теги на странице фильма": "Muundo huu itaonyeshwa kwenye tag ya ukurasa filamu",
+	"Категории тегов:": "Kundi vitambulisho:",
+	"Укажите какие категории будут использоваться для составления тегов": "Taja aina zipi zitatumika kujenga tags"
 }

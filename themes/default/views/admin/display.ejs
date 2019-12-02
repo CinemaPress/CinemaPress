@@ -348,6 +348,42 @@
 
                                         <div class="spacer-10"></div>
 
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('В таком формате будут показаны теги на странице фильма') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Формат тегов:') %>
+                                                </a>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-xs-12 text-center">
+                                                    <input type="text" class="form-control" name="config.default.tags.format" value="<% if (config.default.tags.format) { %><%= config.default.tags.format %><% } %>" placeholder="[Type] [year] [genre] [country]">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какие категории будут использоваться для составления тегов') %>">
+                                                    <i class="fa fa-info-circle text-muted"></i>
+                                                    <%= __('Категории тегов:') %>
+                                                </a>
+                                            </div>
+                                            <div class="inline-labels text-center">
+                                                <label>
+                                                    <input name="config.default.tags.list" value="year" type="checkbox" <% if (config.default.tags.list.indexOf('year')+1) { %> checked="" <% } %>><span></span> <%= __('год') %>
+                                                </label>
+                                                <label>
+                                                    <input name="config.default.tags.list" value="genre" type="checkbox" <% if (config.default.tags.list.indexOf('genre')+1) { %> checked="" <% } %>><span></span> <%= __('жанр') %>
+                                                </label>
+                                                <label>
+                                                    <input name="config.default.tags.list" value="country" type="checkbox" <% if (config.default.tags.list.indexOf('country')+1) { %> checked="" <% } %>><span></span> <%= __('страна') %>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
                                         <div class="col-xs-12">
                                             <div class="row">
                                                 <div class="col-sm-12">

@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Berechtigungseinstellungen für den SMTP-Mail-Server",
 	"DKIM-подпись": "DKIM-Signatur",
 	"Сообщение": "Nachricht",
-	"Только имеющие embed/iframe": "Nur mit embed / iframe"
+	"Только имеющие embed/iframe": "Nur mit embed / iframe",
+	"Формат тегов:": "Tag-Format:",
+	"В таком формате будут показаны теги на странице фильма": "Dieses format wird auf dem tag der movieseite angezeigt",
+	"Категории тегов:": "Kategorie tags:",
+	"Укажите какие категории будут использоваться для составления тегов": "Angeben, welche kategorien werden verwendet, um tags zu erstellen"
 }

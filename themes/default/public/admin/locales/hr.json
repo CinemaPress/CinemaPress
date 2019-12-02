@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Postavke ovlaštenja na poslužitelju SMTP mail",
 	"DKIM-подпись": "DKIM-potpis",
 	"Сообщение": "Poruka",
-	"Только имеющие embed/iframe": "Samo sa embed / iframe"
+	"Только имеющие embed/iframe": "Samo sa embed / iframe",
+	"Формат тегов:": "Oznaka formata:",
+	"В таком формате будут показаны теги на странице фильма": "Ovaj format će biti prikazan na oznaku stranice moviea",
+	"Категории тегов:": "Oznake kategorija:",
+	"Укажите какие категории будут использоваться для составления тегов": "Navedite koje kategorije će se koristiti za stvaranje oznake"
 }

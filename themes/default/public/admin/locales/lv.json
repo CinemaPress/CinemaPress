@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Autorizācijas iestatījumi SMTP pasta serveri",
 	"DKIM-подпись": "DKIM-paraksts",
 	"Сообщение": "Ziņa",
-	"Только имеющие embed/iframe": "Tikai ar embed / iframe"
+	"Только имеющие embed/iframe": "Tikai ar embed / iframe",
+	"Формат тегов:": "Tag formāts:",
+	"В таком формате будут показаны теги на странице фильма": "Šis formāts tiks parādīts taga movieu lapas",
+	"Категории тегов:": "Kategorija tags:",
+	"Укажите какие категории будут использоваться для составления тегов": "Norādiet, kuras kategorijas tiks izmantoti, lai izveidotu atzīmes"
 }

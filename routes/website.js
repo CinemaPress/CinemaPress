@@ -75,6 +75,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     }
   }
   var options = {};
+  options.query = {};
   options.userinfo = req.userinfo;
   options.origin = req.userinfo.origin;
   options.domain = req.userinfo.domain;
@@ -110,13 +111,19 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   var level1 = CP_regexp.str(req.params.level1) || null;
   var level2 =
     CP_regexp.str(req.query.q) ||
-    CP_regexp.str(CP_translit.text(req.params.level2, true)) ||
+    CP_regexp.str(CP_translit.text(req.params.level2 || '', true, level1)) ||
     null;
-  var level3 = CP_regexp.str(req.params.level3) || null;
+  var level3 = CP_regexp.str(req.params.level3 || '') || null;
   var sorting =
     CP_regexp.str(req.query.sorting) ||
     (level1 === modules.content.data.url ? '' : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
+
+  ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(t) {
+    if (req.query[t] && level1 !== config.urls[t]) {
+      options.query[t] = CP_regexp.str(CP_translit.text(req.query[t], true, config.urls[t]));
+    }
+  });
 
   var template = setTemplate();
 
@@ -370,6 +377,13 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           'tag=' +
           CP_regexp.str(req.query.tag);
       }
+      ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(t) {
+        if (req.query[t]) {
+          url +=
+            (url.indexOf('?') + 1 ? '&' : '?') +
+            t + '=' + req.query[t];
+        }
+      });
       if (typeof req.query.json !== 'undefined') {
         url += (url.indexOf('?') + 1 ? '&' : '?') + 'json=1';
       }

@@ -831,5 +831,9 @@
 	"Параметры авторизации на почтовом SMTP сервере": "Thiết lập ủy quyền trên các máy chủ mail SMTP",
 	"DKIM-подпись": "DKIM-chữ ký",
 	"Сообщение": "Thông điệp",
-	"Только имеющие embed/iframe": "Chỉ với nhúng / iframe"
+	"Только имеющие embed/iframe": "Chỉ với nhúng / iframe",
+	"Формат тегов:": "Định dạng thẻ:",
+	"В таком формате будут показаны теги на странице фильма": "Định dạng này sẽ được hiển thị trên thẻ của trang phim",
+	"Категории тегов:": "Thể loại thẻ:",
+	"Укажите какие категории будут использоваться для составления тегов": "Xác định các loại sẽ được sử dụng để tạo ra thẻ"
 }
