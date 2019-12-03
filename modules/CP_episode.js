@@ -46,7 +46,7 @@ function indexEpisode(options, callback) {
 
   var source = {
     url: 'iframe.video',
-    token: modules.player.data.iframe.token.trim().split(':')[0]
+    token: modules.player.data.iframe.token.trim()
   };
 
   var url =
@@ -238,11 +238,10 @@ function indexEpisode(options, callback) {
 /**
  * Adding a page episodes list id="#episodesList".
  *
- * @param {String} [type]
  * @return {Object}
  */
 
-function codeEpisode(type) {
+function codeEpisode() {
   var code = {};
 
   code.episodes =
@@ -250,9 +249,11 @@ function codeEpisode(type) {
 
   var li = '<style>.cinemapress_li:hover{opacity:1 !important}</style>';
 
-  return type
-    ? '<script>' + code[type] + '</script>' + li
-    : '<script>' + code.episodes + '</script>' + li;
+  return modules.player.data &&
+    modules.player.data.iframe &&
+    modules.player.data.iframe.token
+    ? '<script>' + code.episodes + '</script>' + li
+    : '';
 }
 
 /**
