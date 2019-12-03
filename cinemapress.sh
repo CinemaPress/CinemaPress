@@ -513,9 +513,9 @@ ip_install() {
         _content "This theme exists!"
         _content
         _s
-        if [ ${1} ]
+        if [ ${3} ]
         then
-            YES=${1}
+            YES=${3}
             YES=`echo ${YES} | iconv -c -t UTF-8`
             echo "Update? [YES/not] : ${YES}"
         else
@@ -1662,7 +1662,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_theme ${3}
             _s ${3}
             sh_progress
-            4_theme ${2} ${3}
+            4_theme ${2} ${3} ${4}
             sh_progress 100
             exit 0
         ;;
