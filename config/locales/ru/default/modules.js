@@ -165,12 +165,6 @@ module.exports = {
         "bg": "#14181C",
         "button": ""
       },
-      "moonwalk": {
-        "token": ""
-      },
-      "hdgo": {
-        "token": ""
-      },
       "iframe": {
         "token": ""
       },
@@ -251,7 +245,7 @@ module.exports = {
       "episode": "серия",
       "translate": "Перевод:",
       "default": "Оригинал",
-      "source": "moonwalk",
+      "source": "iframe",
       "index": {
         "name": "Новые серии сериалов",
         "count": 12,
@@ -439,30 +433,6 @@ module.exports = {
         "tags": "Обновления"
       },
       "auto": {
-        "moonwalk_movies": {
-          "count": 12,
-          "url": "poslednie-obnovleniya-filmov",
-          "quality": 0,
-          "translate": 0
-        },
-        "moonwalk_serials": {
-          "count": 0,
-          "url": "",
-          "quality": 0,
-          "translate": 0
-        },
-        "hdgo_movies": {
-          "count": 12,
-          "url": "poslednie-obnovleniya-filmov",
-          "quality": 0,
-          "translate": 0
-        },
-        "hdgo_serials": {
-          "count": 0,
-          "url": "",
-          "quality": 0,
-          "translate": 0
-        },
         "kodik_movies": {
           "count": 12,
           "url": "poslednie-obnovleniya-filmov",

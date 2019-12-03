@@ -164,12 +164,6 @@ async.series(
     },
     modules: function(callback) {
       var m = objAdd(objReplace(modules_default, modules), modules);
-      m.player.data.moonwalk = modules_default.player.data.moonwalk
-        ? modules_default.player.data.moonwalk
-        : m.player.data.moonwalk;
-      m.player.data.hdgo = modules_default.player.data.hdgo
-        ? modules_default.player.data.hdgo
-        : m.player.data.hdgo;
       CP_save.save(
         m,
         'modules',

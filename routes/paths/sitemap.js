@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var CP_translit = require('../../lib/CP_translit');
 var CP_structure = require('../../lib/CP_structure');
 var CP_get = require('../../lib/CP_get.min');
 
@@ -194,7 +195,7 @@ function oneSitemap(type, year, options, callback) {
           '/' +
           config.urls.type +
           config.urls.slash +
-          encodeURIComponent(types[i])
+          CP_translit.text(types[i], undefined, config.urls.type)
       };
     }
 

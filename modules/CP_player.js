@@ -149,16 +149,16 @@ function codePlayer(type, movie, options) {
             .replace(/,trailer|trailer,/gi, '')
             .replace(/,torrent|torrent,/gi, '')
         : modules.player.data.yohoho.player
-          ? modules.player.data.yohoho.player
-              .replace(/,trailer|trailer,/gi, '')
-              .replace(/,torrent|torrent,/gi, '')
-          : '';
+        ? modules.player.data.yohoho.player
+            .replace(/,trailer|trailer,/gi, '')
+            .replace(/,torrent|torrent,/gi, '')
+        : '';
     } else {
       data.player = player
         ? player
         : modules.player.data.yohoho.player
-          ? modules.player.data.yohoho.player
-          : '';
+        ? modules.player.data.yohoho.player
+        : '';
     }
     data.bg = modules.player.data.yohoho.bg
       ? modules.player.data.yohoho.bg
@@ -179,20 +179,6 @@ function codePlayer(type, movie, options) {
     data.translate = serial.translate ? serial.translate : '';
     data.country = config.country ? config.country : '';
     data.language = config.language ? config.language : '';
-    data.moonwalk =
-      modules.player &&
-      modules.player.data &&
-      modules.player.data.moonwalk &&
-      modules.player.data.moonwalk.token
-        ? modules.player.data.moonwalk.token
-        : '';
-    data.hdgo =
-      modules.player &&
-      modules.player.data &&
-      modules.player.data.hdgo &&
-      modules.player.data.hdgo.token
-        ? modules.player.data.hdgo.token
-        : '';
     data.youtube =
       modules.player &&
       modules.player.data &&

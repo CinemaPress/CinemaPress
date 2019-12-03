@@ -55,12 +55,6 @@ router.get('/:id?/:title?', function(req, res) {
         'data-language="' +
         (config.language || '') +
         '" ' +
-        'data-moonwalk="' +
-        (modules.player.data.moonwalk.token || '') +
-        '" ' +
-        'data-hdgo="' +
-        (modules.player.data.hdgo.token || '') +
-        '" ' +
         'data-videocdn="' +
         (modules.player.data.videocdn.token || '') +
         '" ' +
@@ -154,12 +148,6 @@ router.get('/:id?/:title?', function(req, res) {
             '" ' +
             'data-language="' +
             (config.language || '') +
-            '" ' +
-            'data-moonwalk="' +
-            (modules.player.data.moonwalk.token || '') +
-            '" ' +
-            'data-hdgo="' +
-            (modules.player.data.hdgo.token || '') +
             '" ' +
             'data-videocdn="' +
             (modules.player.data.videocdn.token || '') +

@@ -36,6 +36,10 @@ var router = express.Router();
  */
 
 router.get('/?', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (!req.query.id) return res.status(404).send('{"error": "404"}');
+
   var kp_id = parseInt(req.query.id) ? [parseInt(req.query.id)] : [];
   var tv = typeof req.query.tv !== 'undefined';
 
@@ -67,67 +71,34 @@ router.get('/?', function(req, res) {
   options.port = port;
 
   var source = {
-    url:
-      modules.episode.data.source === 'iframe'
-        ? 'iframe.video'
-        : 'streamguard.cc',
-    token:
-      modules.episode.data.source === 'iframe'
-        ? modules.player.data.iframe.token.trim()
-        : modules.player.data.moonwalk.token.trim()
+    url: 'iframe.video',
+    token: modules.player.data.iframe.token.trim()
   };
 
-  var url = kp_id.length
-    ? 'https://' +
-      source.url +
-      '/api/videos.json?api_token=' +
-      source.token +
-      '&kinopoisk_id=' +
-      kp_id[0]
-    : 'https://' +
-      source.url +
-      '/api/serials_updates.json?api_token=' +
-      source.token;
-
-  var type = kp_id.length ? 'serial' : 'serials';
-
-  res.setHeader('Content-Type', 'application/json');
+  var url =
+    'https://' +
+    source.url +
+    '/api/v2/serials?&include=seasons,translate&api_token=' +
+    source.token +
+    '&kp=' +
+    kp_id[0];
 
   getReq(url, function(err, list) {
     if (err) return res.status(404).send('{"error": "' + err + '"}');
-
-    if (!kp_id.length && list.updates) {
-      list.updates.forEach(function(serial) {
-        if (parseInt(serial.serial.kinopoisk_id)) {
-          kp_id.push(serial.serial.kinopoisk_id);
-        }
-      });
-    }
-
     CP_get.additional({ query_id: kp_id }, 'ids', options, function(
       err,
       movies
     ) {
       if (err) return res.status(404).send('{"error": "' + err + '"}');
-
       if (movies && movies.length) {
-        if (type === 'serial') {
-          getSerial(list, movies[0], function(err, result) {
-            if (err || isEmpty(result[movies[0].kp_id + '_'])) {
-              return res
-                .status(404)
-                .send('{"error": "' + (err || 'Empty') + '"}');
-            }
-            return res.send(tv ? CP_tv.episode(result, options) : result);
-          });
-        } else {
-          getSerials(list.updates, movies, function(err, result) {
-            if (err) {
-              return res.status(404).send('{"error": "' + err + '"}');
-            }
-            return res.send(result);
-          });
-        }
+        getSerial(list.results, movies[0], function(err, result) {
+          if (err || isEmpty(result[movies[0].kp_id + '_'])) {
+            return res
+              .status(404)
+              .send('{"error": "' + (err || 'Empty') + '"}');
+          }
+          return res.send(tv ? CP_tv.episode(result, options) : result);
+        });
       } else {
         return res.status(404).send('{"error": "' + config.l.notFound + '"}');
       }
@@ -142,18 +113,19 @@ router.get('/?', function(req, res) {
    */
 
   function getReq(url, callback) {
-    request(
-      { timeout: 500, agent: false, pool: { maxSockets: 100 }, url: url },
-      function(error, response, body) {
-        var result = body ? tryParseJSON(body) : {};
+    request({ timeout: 500, agent: false, url: url }, function(
+      error,
+      response,
+      body
+    ) {
+      var result = body ? tryParseJSON(body) : {};
 
-        if (error || response.statusCode !== 200 || result.error) {
-          return callback('Moonwalk/Iframe request error.');
-        }
-
-        callback(null, result);
+      if (error || response.statusCode !== 200 || result.error) {
+        return callback('Iframe request error.');
       }
-    );
+
+      callback(null, result);
+    });
   }
 
   /**
@@ -187,154 +159,63 @@ router.get('/?', function(req, res) {
     async.each(
       list,
       function(serial, callback) {
-        if (serial.type !== 'serial') return callback();
+        if (
+          serial.type !== 'serial' ||
+          !serial.seasons ||
+          !serial.seasons.length
+        )
+          return callback();
 
-        serial.translator = serial.translator
-          ? serial.translator
-          : config.l.original;
-        serial.translator_id = serial.translator_id ? serial.translator_id : '';
-
-        if (config.language === 'en') {
-          if (!/субт|subt|eng/i.test(serial.translator)) {
-            return callback();
+        serial.seasons.forEach(function(season) {
+          if (!season.episodes || !season.episodes.length) return;
+          season.translate = season.translate
+            ? season.translate
+            : config.l.original;
+          season.translate_id = season.translate_id ? season.translate_id : '';
+          if (config.language === 'en') {
+            if (!/субт|subt|eng/i.test(season.translate)) {
+              return callback();
+            }
+            season.translate = 'English';
           }
-          serial.translator = 'English';
-        }
-
-        serials[movie.kp_id + '_'][serial.translator] = {};
-
-        var serial_episodes =
-          'https://' +
-          source.url +
-          '/api/serial_episodes.json?' +
-          'api_token=' +
-          source.token +
-          '&' +
-          'kinopoisk_id=' +
-          movie.kp_id +
-          '&' +
-          'translator_id=' +
-          serial.translator_id;
-
-        getReq(serial_episodes, function(err, result) {
-          if (err) return callback(err);
-
-          if (
-            !result.season_episodes_count ||
-            !result.season_episodes_count.length
-          )
-            return callback();
-
-          result.season_episodes_count.forEach(function(episode) {
-            episode.episodes.sort(function(a, b) {
-              return parseInt(a) - parseInt(b);
-            });
-            var episodes = {};
-
-            episode.episodes.forEach(function(e) {
-              serial.season = episode.season_number;
-              serial.episode = e;
-
-              episodes[e] = structure(serial, movie);
-            });
-
-            serials[movie.kp_id + '_'][serial.translator][
-              episode.season_number
-            ] = episodes;
+          serials[movie.kp_id + '_'][season.translate] = serials[
+            movie.kp_id + '_'
+          ][season.translate]
+            ? serials[movie.kp_id + '_'][season.translate]
+            : {};
+          var episodes = {};
+          season.episodes.forEach(function(episode) {
+            season.season = season.season_num;
+            season.episode = episode;
+            episodes[episode] = structure(season, movie);
           });
-
-          callback();
+          serials[movie.kp_id + '_'][season.translate][
+            season.season
+          ] = episodes;
         });
+        return callback();
       },
       function(err) {
         if (err) {
           return callback(err);
         }
-
         callback(null, serials);
       }
     );
   }
 
   /**
-   * Get serials data.
-   *
-   * @param {Object} list
-   * @param {Array} movies
-   * @param {Callback} callback
-   */
-
-  function getSerials(list, movies, callback) {
-    var serials = {};
-
-    for (var i = 0, num = list.length; i < num; i++) {
-      for (var j = 0, len = movies.length; j < len; j++) {
-        if (
-          parseInt(list[i].serial.kinopoisk_id) === parseInt(movies[j].kp_id)
-        ) {
-          var serial_moon = JSON.stringify(list[i].serial) || '';
-          serial_moon = JSON.parse(serial_moon) || {};
-
-          var season_num = /season=([0-9]{1,4})/i.exec(
-            list[i].episode_iframe_url
-          );
-          var episode_num = /episode=([0-9]{1,4})/i.exec(
-            list[i].episode_iframe_url
-          );
-
-          if (!season_num || !episode_num) continue;
-
-          serial_moon.translator = serial_moon.translator
-            ? serial_moon.translator
-            : config.l.original;
-          serial_moon.season = season_num[1];
-          serial_moon.episode = episode_num[1];
-
-          serials[movies[j].kp_id + '_'] = serials[movies[j].kp_id + '_']
-            ? serials[movies[j].kp_id + '_']
-            : {};
-          serials[movies[j].kp_id + '_'][serial_moon.translator] = serials[
-            movies[j].kp_id + '_'
-          ][serial_moon.translator]
-            ? serials[movies[j].kp_id + '_'][serial_moon.translator]
-            : {};
-          serials[movies[j].kp_id + '_'][serial_moon.translator][
-            serial_moon.season
-          ] = serials[movies[j].kp_id + '_'][serial_moon.translator][
-            serial_moon.season
-          ]
-            ? serials[movies[j].kp_id + '_'][serial_moon.translator][
-                serial_moon.season
-              ]
-            : {};
-          serials[movies[j].kp_id + '_'][serial_moon.translator][
-            serial_moon.season
-          ][serial_moon.episode] = serials[movies[j].kp_id + '_'][
-            serial_moon.translator
-          ][serial_moon.season][serial_moon.episode]
-            ? serials[movies[j].kp_id + '_'][serial_moon.translator][
-                serial_moon.season
-              ][serial_moon.episode]
-            : structure(serial_moon, movies[j]);
-        }
-      }
-    }
-
-    callback(null, serials);
-  }
-
-  /**
    * Structure for serial data.
    *
-   * @param {Object} serial_moon
+   * @param {Object} serial_video
    * @param {Object} serial_data
    * @return {Object}
    */
 
-  function structure(serial_moon, serial_data) {
-    var season_url = parseInt(serial_moon.season);
-    var episode_url = parseInt(serial_moon.episode);
-    var translate_url = parseInt(serial_moon.translator_id);
+  function structure(serial_video, serial_data) {
+    var season_url = parseInt(serial_video.season);
+    var episode_url = parseInt(serial_video.episode);
+    var translate_url = parseInt(serial_video.translate_id);
 
     season_url = season_url <= 9 ? '0' + season_url : season_url;
     episode_url = episode_url <= 9 ? '0' + episode_url : episode_url;
@@ -343,16 +224,16 @@ router.get('/?', function(req, res) {
     return {
       title:
         config.language === 'en'
-          ? serial_moon.title_en || serial_moon.title_ru
-          : serial_moon.title_ru || serial_moon.title_en,
-      title_ru: serial_moon.title_ru,
-      title_en: serial_moon.title_en,
+          ? serial_video.title_en || serial_video.title_ru
+          : serial_video.title_ru || serial_video.title_en,
+      title_ru: serial_video.title_ru,
+      title_en: serial_video.title_en,
       kp_id: serial_data.kp_id,
       poster: serial_data.poster,
-      translate: modules.episode.data.translate + ' ' + serial_moon.translator,
-      translate_id: serial_moon.translator_id,
-      season: serial_moon.season + ' ' + modules.episode.data.season,
-      episode: serial_moon.episode + ' ' + modules.episode.data.episode,
+      translate: modules.episode.data.translate + ' ' + serial_video.translate,
+      translate_id: serial_video.translator_id,
+      season: serial_video.season + ' ' + modules.episode.data.season,
+      episode: serial_video.episode + ' ' + modules.episode.data.episode,
       pathname:
         serial_data.pathname +
         '/s' +

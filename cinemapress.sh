@@ -83,16 +83,16 @@ docker_install() {
         if [ "`basename "${0}"`" != "cinemapress" ]; then
             echo ""; echo -n "Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-                yum install -y epel-release >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
-                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                yum install -y epel-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
@@ -244,7 +244,7 @@ ip_install() {
 
     docker network create \
         --driver bridge \
-        cinemapress >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+        cinemapress >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
     # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
 
@@ -266,7 +266,7 @@ ip_install() {
         -v /var/local/balancer:/var/local/balancer \
         -v /home/${LOCAL_DOMAIN}:/home/${LOCAL_DOMAIN} \
         ${EXTERNAL_DOCKER} \
-        cinemapress/docker:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+        cinemapress/docker:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
     WEBSITE_RUN=1
     while [ "${WEBSITE_RUN}" != "50" ]; do
@@ -280,7 +280,7 @@ ip_install() {
     sh_progress
 
     if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
-        docker restart nginx >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+        docker restart nginx >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
     else
         if [ "${CP_IP}" = "domain" ] \
         && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
@@ -309,7 +309,7 @@ ip_install() {
                 ${BOTS} \
                 -p 80:80 \
                 -p 443:443 \
-                cinemapress/nginx:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                cinemapress/nginx:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
             NGINX_RUN=1
             while [ "${NGINX_RUN}" != "50" ]; do
@@ -331,7 +331,7 @@ ip_install() {
                 --cap-add NET_RAW \
                 -v /home/${LOCAL_DOMAIN}/config/production/fail2ban:/data \
                 -v /var/log:/var/log:ro \
-                cinemapress/fail2ban:latest >>/var/log/docker_install_$(date '+%d_%m_%Y').log 2>&1
+                cinemapress/fail2ban:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
             FAIL2BAN_RUN=1
             while [ "${FAIL2BAN_RUN}" != "50" ]; do
@@ -363,10 +363,10 @@ ip_install() {
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
     1_install "${LOCAL_DOMAIN}"
-    cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
+    cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     3_backup "${LOCAL_DOMAIN}" "restore"
-    docker exec nginx nginx -s reload >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
+    docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
             /home/${LOCAL_DOMAIN}/process.json
@@ -388,7 +388,7 @@ ip_install() {
             /home/${LOCAL_DOMAIN}/config/production/config.js
         docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}"
     fi
-    docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_$(date '+%d_%m_%Y').log 2>&1
+    docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
 }
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -413,9 +413,9 @@ ip_install() {
             sh_progress
 
             docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
             sleep 3
             CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
@@ -430,12 +430,12 @@ ip_install() {
             cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
                 docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
-                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                    >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
                 docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
-                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                    >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
                 docker exec nginx nginx -s reload \
-                    >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                    >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             fi
         else
             _header "RCLONE CONFIG"
@@ -492,12 +492,12 @@ ip_install() {
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
             docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
             docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec nginx nginx -s reload \
-                >>/var/log/docker_backup_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         fi
     fi
 }
@@ -529,7 +529,7 @@ ip_install() {
             exit 0
         else
             git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
-                /var/${LOCAL_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+                /var/${LOCAL_THEME} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
             mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
             cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
             sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
@@ -537,19 +537,19 @@ ip_install() {
         fi
     else
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
-            /var/${LOCAL_THEME} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+            /var/${LOCAL_THEME} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
         mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
         cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
             /home/${LOCAL_DOMAIN}/config/production/config.js
     fi
 
-    rm -rf /var/${LOCAL_THEME}
+    rm -rf /var/${LOCAL_THEME:?}
 
     sh_progress
 
     if [ "`docker -v 2>/dev/null`" != "" ]; then
-        docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_$(date '+%d_%m_%Y').log 2>&1
+        docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
     fi
 }
 5_database() {
@@ -680,16 +680,16 @@ ip_install() {
             -d "${LOCAL_DOMAIN}" \
             -d "*.${LOCAL_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${LOCAL_DOMAIN}/log/https_$(date '+%d_%m_%Y').log 2>&1
+                >>/home/${LOCAL_DOMAIN}/log/https_"$(date '+%d_%m_%Y')".log 2>&1
 
         if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
             openssl dhparam -out ${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem 2048 \
-                >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
             sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 /home/${LOCAL_DOMAIN}/config/production/config.js
             docker restart ${LOCAL_DOMAIN_} \
-                >>/var/log/https_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
         else
             _header "ERROR"
             _content
@@ -729,11 +729,11 @@ ip_install() {
 
     sh_progress
 
-    docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+    docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
         3_backup "${LOCAL_DOMAIN}" "create"
         docker stop ${LOCAL_DOMAIN_} \
-            >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+            >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
         rm -rf \
             /home/${LOCAL_MIRROR}/config/comment \
             /home/${LOCAL_MIRROR}/config/content \
@@ -804,9 +804,9 @@ ip_install() {
     sh_progress
 
     docker start ${LOCAL_MIRROR_} \
-        >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+        >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     docker exec nginx nginx -s reload \
-        >>/var/log/docker_mirror_$(date '+%d_%m_%Y').log 2>&1
+        >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
 }
 8_remove() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -833,20 +833,20 @@ ip_install() {
             exit 0
         fi
     fi
-    docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    docker rm -f ${LOCAL_DOMAIN_} >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-    docker pull cinemapress/docker:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    docker rm -f ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    docker pull cinemapress/docker:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
-    rm -rf /home/${LOCAL_DOMAIN}
+    rm -rf /home/${LOCAL_DOMAIN:?}
     if [ "${LOCAL_FULL}" != "" ]; then
-        docker stop nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rm -f nginx >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker pull cinemapress/nginx:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker stop fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker rm -f fail2ban >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+        docker stop nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker rm -f nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker pull cinemapress/nginx:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
-    docker rmi -f $(docker images -f "dangling=true" -q) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+    docker rmi -f $(docker images -f "dangling=true" -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 }
 
 option() {
@@ -1418,7 +1418,7 @@ docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
-        rm -rf /var/cinemapress/* /var/${CP_THEME}
+        rm -rf /var/cinemapress/* /var/${CP_THEME:?}
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
@@ -1520,7 +1520,7 @@ docker_backup() {
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
     echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
     echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
-    rm -rf /var/${CP_DOMAIN} && mkdir -p /var/${CP_DOMAIN}
+    rm -rf /var/${CP_DOMAIN:?} && mkdir -p /var/${CP_DOMAIN}
     cd /home/${CP_DOMAIN} && \
     tar --exclude=config/update \
         --exclude=config/default \
@@ -1543,7 +1543,7 @@ docker_backup() {
     rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
     rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
     rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    rm -rf /var/${CP_DOMAIN}
+    rm -rf /var/${CP_DOMAIN:?}
 }
 docker_actual() {
     node /home/${CP_DOMAIN}/config/update/actual.js
@@ -1714,10 +1714,10 @@ while [ "${WHILE}" -lt "2" ]; do
             _s ${3}
             sh_progress
             docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${CP_PASSWD}" \
-                >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_passwd_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
             docker exec nginx nginx -s reload \
-                >>/var/log/docker_passwd_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_passwd_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress 100
             exit 0
         ;;
@@ -1731,7 +1731,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
                 if [ -f "/var/images.tar" ]; then
-                    tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1
+                    tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1
                 fi
             else
                 wget --progress=bar:force -O /var/images.tar \
@@ -1745,7 +1745,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     _content "Unpacking may take several hours ..."
                     _content
                     _s
-                    nohup tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_$(date '+%d_%m_%Y').log 2>&1 &
+                    nohup tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
                 fi
             fi
             exit 0
@@ -1761,7 +1761,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_domain ${2}
             sh_not
             _s ${2}
-            docker ${1} ${CP_DOMAIN_} >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
+            docker ${1} ${CP_DOMAIN_} >>/var/log/docker_${1}_"$(date '+%d_%m_%Y')".log 2>&1
             exit 0
         ;;
         "zero" )
@@ -1788,7 +1788,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             else
                 docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container zero \
-                    >>/var/log/docker_zero_$(date '+%d_%m_%Y').log 2>&1
+                    >>/var/log/docker_zero_"$(date '+%d_%m_%Y')".log 2>&1
                 exit 0
             fi
         ;;
@@ -1798,7 +1798,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s ${2}
             docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" \
-                >>/var/log/docker_${1}_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_${1}_"$(date '+%d_%m_%Y')".log 2>&1
             exit 0
         ;;
         "container" )
@@ -1998,14 +1998,14 @@ while [ "${WHILE}" -lt "2" ]; do
         "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )
             _br
             sh_progress
-            docker rm -f $(docker ps -aq) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
-            docker rmi -f $(docker images -q) >>/var/log/docker_remove_$(date '+%d_%m_%Y').log 2>&1
+            docker rm -f $(docker ps -aq) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+            docker rmi -f $(docker images -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
             for D in /home/*; do
                 if [ -f "${D}/process.json" ]
                 then
                     DD=`find ${D} -maxdepth 0 -printf "%f"`
                     sed -i "s/.*${DD}.*//g" /etc/crontab &> /dev/null
-                    rm -rf /home/${DD}
+                    rm -rf /home/${DD:?}
                 fi
             done
             rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx* /etc/nginx/bots.d
@@ -2015,12 +2015,12 @@ while [ "${WHILE}" -lt "2" ]; do
         "clear_log"|"clean_log"|"clear_logs"|"clean_logs"|"logrotate" )
             CP_SIZE=${2:-"+102400"}
             find /var/log -type f -name '*.log' -size "${CP_SIZE}" -exec rm -rf {} \; \
-                >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             find /var/log -type f -name '*.gz' -exec rm -rf {} \; \
-                >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+                >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
-                docker restart nginx >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
-                docker restart fail2ban >>/var/log/docker_logrotate_$(date '+%d_%m_%Y').log 2>&1
+                docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+                docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             exit 0
         ;;
