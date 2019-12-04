@@ -289,7 +289,7 @@ ip_install() {
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 
             BOTS=""
-            if [ ! -d "/etc/nginx/bots.d/" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
+            if [ ! -f "/etc/nginx/bots.d/blacklist-user-agents.conf" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
                 mkdir -p /etc/nginx/bots.d
                 cp -rf /home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/* /etc/nginx/bots.d/
                 BOTS="-v /etc/nginx/bots.d:/etc/nginx/bots.d"
