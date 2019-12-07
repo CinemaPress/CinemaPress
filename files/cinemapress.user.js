@@ -51,15 +51,15 @@ function parseData() {
   tmdb = tmdb
     ? tmdb
     : document.querySelector('[name="tmdb"]')
-      ? document.querySelector('[name="tmdb"]').value
-      : '';
+    ? document.querySelector('[name="tmdb"]').value
+    : '';
   if (tmdb) setCookie('tmdb', tmdb, { expires: 3600000 });
 
   omdb = omdb
     ? omdb
     : document.querySelector('[name="omdb"]')
-      ? document.querySelector('[name="omdb"]').value
-      : '';
+    ? document.querySelector('[name="omdb"]').value
+    : '';
   if (omdb) setCookie('omdb', omdb, { expires: 3600000 });
 
   var src = document.querySelector('[data-poster="src"]');
@@ -96,6 +96,7 @@ function parseData() {
   }
 
   if (kp_id && (lang === 'ru' || (!imdb_id && !tmdb_id && !douban_id))) {
+    urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
     urls.push(
       'https://api1573848848.apicollaps.cc/franchise/details?' +
         'token=6006bca37f7681fe1edf75fcf936aecc&' +
@@ -129,6 +130,7 @@ function parseData() {
     );
   }
   if (kp_id && lang !== 'ru') {
+    urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
     urls.push(
       'https://api1573848848.apicollaps.cc/franchise/details?' +
         'token=6006bca37f7681fe1edf75fcf936aecc&' +
@@ -269,8 +271,8 @@ function parseData() {
               kp_id +
               '.jpg?width=180'
             : movieData.poster[0] === '/'
-              ? 'https://t.1poster.net/t/p/w185' + movieData.poster
-              : movieData.poster;
+            ? 'https://t.1poster.net/t/p/w185' + movieData.poster
+            : movieData.poster;
       }
 
       autoComplete();
@@ -317,6 +319,21 @@ function getAPI(url, callback) {
                 response.responseText
               );
 
+              var parser, xmlDoc;
+              if (window.DOMParser) {
+                parser = new DOMParser();
+                xmlDoc = parser.parseFromString(
+                  response.responseText,
+                  'text/xml'
+                );
+              } else {
+                xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+                xmlDoc.async = false;
+                xmlDoc.loadXML(response.responseText);
+              }
+
+              var rating = xmlDoc.getElementsByTagName('rating');
+
               if (
                 matchDate1 &&
                 !isNaN(new Date(matchDate1[2] + '').getFullYear())
@@ -338,6 +355,32 @@ function getAPI(url, callback) {
                 if (info && !isNaN(new Date(date).getFullYear())) {
                   result.premiere = date;
                 }
+              } else if (
+                rating &&
+                rating[0] &&
+                rating[0].childNodes &&
+                rating[0].childNodes[1]
+              ) {
+                var kp = rating[0].childNodes[0];
+                var imdb = rating[0].childNodes[1];
+
+                result = {
+                  kp_rating: Math.ceil(parseFloat(kp.textContent) * 10) || 0,
+                  kp_vote:
+                    kp.attributes &&
+                    kp.attributes[0] &&
+                    kp.attributes[0].textContent
+                      ? kp.attributes[0].textContent
+                      : '0',
+                  imdb_rating:
+                    Math.ceil(parseFloat(imdb.textContent) * 10) || 0,
+                  imdb_vote:
+                    imdb.attributes &&
+                    imdb.attributes[0] &&
+                    imdb.attributes[0].textContent
+                      ? imdb.attributes[0].textContent
+                      : '0'
+                };
               }
             } else {
               result = JSON.parse(response.responseText);
@@ -355,6 +398,8 @@ function getAPI(url, callback) {
           res = parseTMDb(result);
         } else if (url.indexOf('douban.com') + 1) {
           res = parseDouban(result);
+        } else if (url.indexOf('kinopoisk.ru') + 1) {
+          res = result;
         }
         console.log(url, result, res);
         callback(null, res);
@@ -372,13 +417,13 @@ function parseTMDb(res) {
     year: res.release_date
       ? res.release_date.substring(0, 4)
       : res.first_air_date
-        ? res.first_air_date.substring(0, 4)
-        : '',
+      ? res.first_air_date.substring(0, 4)
+      : '',
     premiere: res.release_date
       ? res.release_date
       : res.first_air_date
-        ? res.first_air_date
-        : '',
+      ? res.first_air_date
+      : '',
     type: res.number_of_seasons ? '1' : '0',
     genre: (res.genres
       ? res.genres.map(function(v) {
@@ -391,10 +436,10 @@ function parseTMDb(res) {
           return v.name;
         })
       : res.origin_country
-        ? res.origin_country.map(function(v) {
-            return v;
-          })
-        : []
+      ? res.origin_country.map(function(v) {
+          return v;
+        })
+      : []
     ).join(','),
     actor: (res.credits && res.credits.cast
       ? res.credits.cast.map(function(v, i) {
@@ -409,10 +454,10 @@ function parseTMDb(res) {
           return i < 10 ? v.name : null;
         })
       : res.credits && res.credits.crew
-        ? res.credits.crew.map(function(v) {
-            return v.job === 'Director' ? v.name : null;
-          })
-        : []
+      ? res.credits.crew.map(function(v) {
+          return v.job === 'Director' ? v.name : null;
+        })
+      : []
     )
       .filter(Boolean)
       .join(','),
@@ -471,10 +516,10 @@ function parseOMDb(res) {
           return i < 10 ? v.trim() : null;
         })
       : res.Writer && res.Writer !== 'N/A'
-        ? res.Writer.split(',').map(function(v, i) {
-            return i < 10 ? v.trim() : null;
-          })
-        : []
+      ? res.Writer.split(',').map(function(v, i) {
+          return i < 10 ? v.trim() : null;
+        })
+      : []
     )
       .filter(Boolean)
       .join(','),
@@ -510,9 +555,13 @@ function parseKP(r) {
     year: res.year ? (res.year + '').split('-')[0].replace(/[^0-9]/g, '') : '',
     type: res.type && res.type === 'series' ? '1' : '0',
     genre: (res.genre
-      ? res.genre.map(function(v) {
-          return v.toLowerCase();
-        })
+      ? res.genre
+          .map(function(v) {
+            return v.toLowerCase();
+          })
+          .filter(function(g) {
+            return g !== 'зарубежные';
+          })
       : []
     ).join(','),
     country: (res.country
@@ -609,8 +658,8 @@ function autoComplete() {
   var autoText = document.createElement('span');
   autoBtn.setAttribute('class', 'btn power-on autoComplete');
   autoBtn.setAttribute('href', 'javascript:void(0)');
-  autoSeparate.innerHTML = '&nbsp;&nbsp;';
-  autoText.innerHTML = 'Auto-fill information';
+  autoText.innerHTML = '';
+  autoSeparate.innerHTML = autoText.innerHTML ? '&nbsp;&nbsp;' : '';
   autoIcon.setAttribute('class', 'fa fa-video');
   autoBtn.appendChild(autoIcon);
   autoBtn.appendChild(autoSeparate);
