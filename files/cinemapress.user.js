@@ -85,13 +85,13 @@ function parseData() {
 
   if (!kp_id && !tmdb_id && !douban_id && !imdb_id) {
     icon.setAttribute('class', 'fa fa-bug');
-    text.innerHTML = 'IDs not filled!';
+    text.innerHTML = '&nbsp;&nbsp;IDs not filled!';
     return;
   }
 
   if ((!tmdb && tmdb_id) || (!omdb && imdb_id)) {
     icon.setAttribute('class', 'fa fa-bug');
-    text.innerHTML = 'API keys not filled!';
+    text.innerHTML = '&nbsp;&nbsp;API keys not filled!';
     return;
   }
 
@@ -166,7 +166,7 @@ function parseData() {
     } else {
       if (!movieData.title_ru && !movieData.title_en) {
         icon.setAttribute('class', 'fa fa-bug');
-        text.innerHTML = 'No information!';
+        text.innerHTML = '&nbsp;&nbsp;No information!';
         console.log(movieData);
         return;
       }
@@ -659,7 +659,7 @@ function autoComplete() {
   autoBtn.setAttribute('class', 'btn power-on autoComplete');
   autoBtn.setAttribute('href', 'javascript:void(0)');
   autoText.innerHTML = '';
-  autoSeparate.innerHTML = autoText.innerHTML ? '&nbsp;&nbsp;' : '';
+  autoSeparate.innerHTML = '';
   autoIcon.setAttribute('class', 'fa fa-video');
   autoBtn.appendChild(autoIcon);
   autoBtn.appendChild(autoSeparate);
