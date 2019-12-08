@@ -832,5 +832,6 @@
   "Формат тегов:": "Tag format:",
   "В таком формате будут показаны теги на странице фильма": "In this format, tags will be shown on the movie page",
   "Категории тегов:": "Tag categories:",
-  "Укажите какие категории будут использоваться для составления тегов": "Indicate which categories will be used for composing tags"
+  "Укажите какие категории будут использоваться для составления тегов": "Indicate which categories will be used for composing tags",
+  "Поддомен для ботов": "Subdomain for bots"
 }

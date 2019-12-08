@@ -833,5 +833,6 @@
 	"Формат тегов:": "Gairė formatas:",
 	"В таком формате будут показаны теги на странице фильма": "Šis formatas bus rodomas ant plėvelės puslapyje žyma",
 	"Категории тегов:": "Kategorija žymės:",
-	"Укажите какие категории будут использоваться для составления тегов": "Nurodykite, kokios kategorijos bus naudojama siekiant sukurti žymes"
+	"Укажите какие категории будут использоваться для составления тегов": "Nurodykite, kokios kategorijos bus naudojama siekiant sukurti žymes",
+	"Поддомен для ботов": "Subdomeną žinučių"
 }

@@ -833,5 +833,6 @@
 	"Формат тегов:": "Format tag:",
 	"В таком формате будут показаны теги на странице фильма": "Acest format va fi afișat pe eticheta paginii de movie",
 	"Категории тегов:": "Categorie tag-uri:",
-	"Укажите какие категории будут использоваться для составления тегов": "A se preciza ce categorii vor fi folosite pentru a crea etichete"
+	"Укажите какие категории будут использоваться для составления тегов": "A se preciza ce categorii vor fi folosite pentru a crea etichete",
+	"Поддомен для ботов": "Roboții pentru un subdomeniu în"
 }

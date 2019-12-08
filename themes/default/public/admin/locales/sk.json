@@ -833,5 +833,6 @@
 	"Формат тегов:": "Formát tag:",
 	"В таком формате будут показаны теги на странице фильма": "Tento formát sa zobrazí na štítku stránky movieu",
 	"Категории тегов:": "Kategória tagy:",
-	"Укажите какие категории будут использоваться для составления тегов": "Určiť, ktoré kategórie budú použité na vytvorenie značky"
+	"Укажите какие категории будут использоваться для составления тегов": "Určiť, ktoré kategórie budú použité na vytvorenie značky",
+	"Поддомен для ботов": "Subdoménu pre roboty"
 }

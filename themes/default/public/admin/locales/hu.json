@@ -833,5 +833,6 @@
 	"Формат тегов:": "Címkeformátummal:",
 	"В таком формате будут показаны теги на странице фильма": "Ez a formátum jelenik meg a címkét a movie oldal",
 	"Категории тегов:": "Kategória címkék:",
-	"Укажите какие категории будут использоваться для составления тегов": "Határozza meg, mely kategóriák létrehozásához használt címkék"
+	"Укажите какие категории будут использоваться для составления тегов": "Határozza meg, mely kategóriák létrehozásához használt címkék",
+	"Поддомен для ботов": "Aldomainje botok"
 }

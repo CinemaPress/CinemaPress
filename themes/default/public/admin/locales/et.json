@@ -833,5 +833,6 @@
 	"Формат тегов:": "Tag formaat:",
 	"В таком формате будут показаны теги на странице фильма": "See formaat kuvatakse sildi moviei lehekülg",
 	"Категории тегов:": "Category:",
-	"Укажите какие категории будут использоваться для составления тегов": "Täpsustada, millist liiki kasutatakse, et luua silte"
+	"Укажите какие категории будут использоваться для составления тегов": "Täpsustada, millist liiki kasutatakse, et luua silte",
+	"Поддомен для ботов": "Alamdomeen eest"
 }

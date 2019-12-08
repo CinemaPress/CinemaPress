@@ -833,5 +833,6 @@
 	"Формат тегов:": "Oznaka formata:",
 	"В таком формате будут показаны теги на странице фильма": "Ovaj format će biti prikazan na oznaku stranice moviea",
 	"Категории тегов:": "Oznake kategorija:",
-	"Укажите какие категории будут использоваться для составления тегов": "Navedite koje kategorije će se koristiti za stvaranje oznake"
+	"Укажите какие категории будут использоваться для составления тегов": "Navedite koje kategorije će se koristiti za stvaranje oznake",
+	"Поддомен для ботов": "Poddomena za robota"
 }

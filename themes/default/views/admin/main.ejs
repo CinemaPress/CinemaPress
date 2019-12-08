@@ -94,17 +94,23 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <input name="config.subdomain" value="<%= config.subdomain.replace(/\./g,'') %>" class="form-control input_url" type="text" placeholder="blog">
+                                            <input name="config.subdomain" value="<%= config.subdomain.replace(/\./g,'') %>" class="form-control input_url text-right" type="text" placeholder="blog">
                                         </div>
-                                        <div class="col-xs-5 text-center">
+                                        <div class="col-xs-5">
                                             <input name="config.domain" value="<%= config.domain %>" class="form-control input_url" type="text" disabled="disabled">
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding: 5px;">
-                                            <% if (config.database.key.length > 4) { %>
-                                                <%- config.database.key.slice(0, 3) + '...' + config.database.key.slice(-3) %>
-                                            <% } else { %>
-                                                <%- config.database.key %>
-                                            <% } %>
+                                        <div class="col-xs-4">
+                                            <input name="config.domain" value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3) + '...' + config.database.key.slice(-3) %><% } else { %><%- config.database.key %><% } %>" class="form-control text-center" type="text" disabled="disabled">
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
+                                                <input name="config.botdomain" value="<%= config.botdomain %>" class="form-control input_url text-right" type="text" placeholder="<%= config.language %>">
+                                                <span class="input-group-addon text-muted">.<%= config.domain %></span>
+                                            </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
@@ -546,13 +552,13 @@
                       if (this.value === '1') {
                         if (this.checked) {
                           document.querySelector('[name=\'config.subdomain\']').value = dayToLetter();
+                          document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
                           document.querySelector('#h').style.display = 'block';
                           document.querySelector('#h').setAttribute('class', 'col-sm-7');
                           document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
                         }
                       } else {
                         if (this.checked) {
-                          document.querySelector('[name=\'config.subdomain\']').value = '';
                           document.querySelector('#h').style.display='none';
                           document.querySelector('#h').setAttribute('class', '');
                           document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');

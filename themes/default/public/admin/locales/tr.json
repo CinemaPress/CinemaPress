@@ -833,5 +833,6 @@
 	"Формат тегов:": "Etiket biçimi:",
 	"В таком формате будут показаны теги на странице фильма": "Bu biçim moviei sayfasının etiketi görüntülenir",
 	"Категории тегов:": "Kategori etiketler:",
-	"Укажите какие категории будут использоваться для составления тегов": "Etiketler oluşturmak için kullanılacak hangi kategorilere belirtin"
+	"Укажите какие категории будут использоваться для составления тегов": "Etiketler oluşturmak için kullanılacak hangi kategorilere belirtin",
+	"Поддомен для ботов": "Botlar için bir alt alana"
 }

@@ -833,5 +833,6 @@
 	"Формат тегов:": "Tag-formaat:",
 	"В таком формате будут показаны теги на странице фильма": "Dit formaat wordt weergegeven op het label van de movie pagina",
 	"Категории тегов:": "Categorie tags:",
-	"Укажите какие категории будут использоваться для составления тегов": "Geef aan welke categorieën worden gebruikt om labels te creëren"
+	"Укажите какие категории будут использоваться для составления тегов": "Geef aan welke categorieën worden gebruikt om labels te creëren",
+	"Поддомен для ботов": "Subdomein bots"
 }

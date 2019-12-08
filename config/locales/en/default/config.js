@@ -5,13 +5,14 @@ module.exports = {
   },
   "protocol": "http://",
   "subdomain": "",
+  "botdomain": "",
   "domain": "example.com",
   "email": "support@example.com",
   "theme": "default",
   "country": "US",
   "language": "en",
   "random": 0,
-  "homepage": "example.com",
+  "homepage": "127.0.0.1",
   "geolite2": {
     "countries": [],
     "ips": []

@@ -833,5 +833,6 @@
 	"Формат тегов:": "Tag format:",
 	"В таком формате будут показаны теги на странице фильма": "Muundo huu itaonyeshwa kwenye tag ya ukurasa filamu",
 	"Категории тегов:": "Kundi vitambulisho:",
-	"Укажите какие категории будут использоваться для составления тегов": "Taja aina zipi zitatumika kujenga tags"
+	"Укажите какие категории будут использоваться для составления тегов": "Taja aina zipi zitatumika kujenga tags",
+	"Поддомен для ботов": "Subdomain kwa bots"
 }

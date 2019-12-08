@@ -833,5 +833,6 @@
 	"Формат тегов:": "Tag muoto:",
 	"В таком формате будут показаны теги на странице фильма": "Tämä muoto näkyy tag elokuvan sivun",
 	"Категории тегов:": "Category merkitsee:",
-	"Укажите какие категории будут использоваться для составления тегов": "Määritä, mikä luokat voidaan luoda tunnisteita"
+	"Укажите какие категории будут использоваться для составления тегов": "Määritä, mikä luokat voidaan luoda tunnisteita",
+	"Поддомен для ботов": "Aliverkkotunnusta botit"
 }
