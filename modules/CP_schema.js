@@ -201,7 +201,9 @@ function fullMovieSchema(page, movie, movies, options) {
   opengraph +=
     '<meta property="ya:ovs:upload_date" content="' + ya_date + '" />';
 
-  return schema + opengraph;
+  var canonical = '<link rel="canonical" href="' + movie.url + '"/>';
+
+  return schema + opengraph + canonical;
 }
 
 /**
@@ -379,7 +381,8 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta property="og:image:width" content="600" />';
   opengraph += '<meta property="og:image:height" content="400" />';
 
-  var canonical = '<link rel="canonical" href="' + page.url + '"/>';
+  var canonical =
+    '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '"/>';
 
   return schema + opengraph + canonical;
 }
@@ -464,7 +467,10 @@ function generalSchema(page, options) {
   opengraph += '<meta property="og:image:width" content="600" />';
   opengraph += '<meta property="og:image:height" content="400" />';
 
-  return schema + opengraph;
+  var canonical =
+    '<link rel="canonical" href="' + config.protocol + options.domain + '"/>';
+
+  return schema + opengraph + canonical;
 }
 
 /**

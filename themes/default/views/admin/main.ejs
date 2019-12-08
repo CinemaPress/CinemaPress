@@ -526,6 +526,12 @@
                   var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
                   var letter1 = ['a', 'e', 'i', 'o', 'u'];
                   var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm'];
+                  if ('<%- config.domain.split('.')[0] %>'.length % 2) {
+                    letter1 = letter1.reverse();
+                  }
+                  if ('<%- config.domain.split('.')[1] %>'.length % 2) {
+                    letter2 = letter2.reverse();
+                  }
                   return (
                     letter2[parseInt(day[0])] +
                     letter1[parseInt(day[1]) % 5] +

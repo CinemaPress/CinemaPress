@@ -1995,6 +1995,14 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start fail2ban
             exit 0
         ;;
+        "logs" )
+            _br
+            read_domain ${2}
+            sh_not
+            _s ${2}
+            docker exec -it ${CP_DOMAIN_} pm2 logs
+            exit 0
+        ;;
         "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )
             _br
             sh_progress
@@ -2042,6 +2050,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " zero      - Delete all data from the automatic database"; _br;
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " images    - Downloading posters to own server (only RU)"; _br;
+            printf " logs      - Show all logs"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;
             printf "             of genres, list of countries, list of directors,"; _br;
