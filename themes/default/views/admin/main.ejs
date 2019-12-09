@@ -100,7 +100,7 @@
                                             <input name="config.domain" value="<%= config.domain %>" class="form-control input_url" type="text" disabled="disabled">
                                         </div>
                                         <div class="col-xs-4">
-                                            <input name="config.domain" value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3) + '...' + config.database.key.slice(-3) %><% } else { %><%- config.database.key %><% } %>" class="form-control text-center" type="text" disabled="disabled">
+                                            <input name="config.domain" value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3).toUpperCase() + '...' + config.database.key.slice(-3).toUpperCase() %><% } else { %><%- config.database.key.toUpperCase() %><% } %>" class="form-control text-center" type="text" disabled="disabled">
                                         </div>
 
                                         <div class="spacer-10"></div>
@@ -108,7 +108,7 @@
                                         <div class="col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
-                                                <input name="config.botdomain" value="<%= config.botdomain %>" class="form-control input_url text-right" type="text" placeholder="<%= config.language %>">
+                                                <input name="config.botdomain" value="<%= config.botdomain.replace(/\./g,'') %>" class="form-control input_url text-right" type="text" placeholder="<%= config.language %>">
                                                 <span class="input-group-addon text-muted">.<%= config.domain %></span>
                                             </div>
                                         </div>
@@ -531,19 +531,21 @@
                   var oneDay = 86400000;
                   var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
                   var letter1 = ['a', 'e', 'i', 'o', 'u'];
-                  var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm'];
+                  var letter2 = ['b', 'c', 'd', 'p', 's', 'w', 'v', 'k', 'l', 'm'];
                   if ('<%- config.domain.split('.')[0] %>'.length % 2) {
                     letter1 = letter1.reverse();
                   }
                   if ('<%- config.domain.split('.')[1] %>'.length % 2) {
                     letter2 = letter2.reverse();
                   }
-                  return (
-                    letter2[parseInt(day[0])] +
+                  var result = letter2[parseInt(day[0])] +
                     letter1[parseInt(day[1]) % 5] +
                     letter2[parseInt(day[2])] +
-                    letter1[year % 5]
-                  );
+                    letter1[year % 5];
+                  if (now.getDate() % 2) {
+                    result = result.split('').reverse().join('');
+                  }
+                  return result;
                 }
                 var radios = document.querySelectorAll('[name=\'config.random\']');
                 if (radios) {
