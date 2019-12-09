@@ -35,7 +35,7 @@
                         <a href="/<%- config.urls.admin %>/homepage" class="btn">
                             <%= __('Главная страница веб-сайта') %>
                         </a>
-                        <a href="https://CinemaPress.io/admin/index.html" class="btn" title="<%= __('Информация о параметрах для главной страницы веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html" class="btn" title="<%= __('Информация о параметрах для главной страницы веб-сайта') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                                 <div class="cinema-box-header">
                                     <div class="cinema-label"><i class="fa fa-heading"></i>&nbsp;&nbsp;&nbsp;<%= __('Заголовок, описание и H1 веб-страницы') %></div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#titles" class="csstip" title="<%= __('Написание текста для заголовка, описания и H1 на главной странице веб-сайта') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#titles" class="csstip" title="<%= __('Написание текста для заголовка, описания и H1 на главной странице веб-сайта') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -161,7 +161,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.ids.order %>. <%= __('Блок со списком идентификаторов фильмов') %> <% if (!config.index.ids.count || !config.index.ids.keys) { %><%= __('пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#ids" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы с определенными идентификатором') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#ids" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы с определенными идентификатором') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -278,7 +278,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.type.order %>. <% if (config.index.type.keys) { %><%= __('Типы:') %> <%- config.index.type.keys %><% } else { %><%= __('Блок с типами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#type" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определенных типов:') %> <%- config.urls.types.movie %>, <%- config.urls.types.serial %>, <%- config.urls.types.mult %>, <%- config.urls.types.anime %> <%= __('или') %> <%- config.urls.types.tv %>." target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#type" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определенных типов:') %> <%- config.urls.types.movie %>, <%- config.urls.types.serial %>, <%- config.urls.types.mult %>, <%- config.urls.types.anime %> <%= __('или') %> <%- config.urls.types.tv %>." target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -356,7 +356,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.year.order %>. <% if (config.index.year.keys) { %><%= __('Годы:') %> <%- config.index.year.keys %><% } else { %><%= __('Блок с годами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#year" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных годов') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#year" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных годов') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -434,7 +434,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.genre.order %>. <% if (config.index.genre.keys) { %><%= __('Жанры:') %> <%- config.index.genre.keys %><% } else { %><%= __('Блок с жанрами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#genre" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных жанров') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#genre" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных жанров') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -512,7 +512,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.country.order %>. <% if (config.index.country.keys) { %><%= __('Страны:') %> <%- config.index.country.keys %><% } else { %><%= __('Блок со странами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#country" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных стран') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#country" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из определеных стран') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -590,7 +590,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.actor.order %>. <% if (config.index.actor.keys) { %><%= __('Актеры:') %> <%- config.index.actor.keys %><% } else { %><%= __('Блок с актерами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#actor" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы с участием определенных актеров') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#actor" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы с участием определенных актеров') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -668,7 +668,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- config.index.director.order %>. <% if (config.index.director.keys) { %><%= __('Режиссеры:') %> <%- config.index.director.keys %><% } else { %><%= __('Блок с режиссерами пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#director" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из фильмографии определенных режиссеров') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#director" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором фильмы из фильмографии определенных режиссеров') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -748,7 +748,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- modules.episode.data.index.order %>. <%= __('Блок с новыми сериями') %> <% if (!modules.episode.data.index.count) { %><%= __('пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/episode.html#index" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором будут появляться новые серии сериалов') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#index" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором будут появляться новые серии сериалов') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -818,7 +818,7 @@
                                         <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%- modules.content.data.index.order %>. <%= __('Блок с фильмами из коллекций') %> <% if (!modules.content.data.index.url) { %><%= __('пустой') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/content.html#index" class="csstip" title="<%= __('Блок с фильмами из новостей / коллекций на главной странице (перечислять через запятую URL-ключи)') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#index" class="csstip" title="<%= __('Блок с фильмами из новостей / коллекций на главной странице (перечислять через запятую URL-ключи)') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -874,7 +874,7 @@
                                         <i class="fa fa-hashtag"></i>&nbsp;&nbsp;&nbsp;<%= __('Пагинация') %> <% if (!config.index.count.key) { %><%= __('отключена') %><% } %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#count" class="csstip" title="<%= __('Внизу главной страницы будут цифры, укажите категорию в которую они будут вести') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#count" class="csstip" title="<%= __('Внизу главной страницы будут цифры, укажите категорию в которую они будут вести') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -938,7 +938,7 @@
                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Название в виде ссылки') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/index.html#link" class="csstip" title="<%= __('При нажатии на название категории, будет переход на страницу категории') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/homepage.html#link" class="csstip" title="<%= __('При нажатии на название категории, будет переход на страницу категории') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>

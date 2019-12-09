@@ -94,7 +94,7 @@ docker_install() {
                 yum install -y epel-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
                 yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             fi
-            sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+            wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
             echo -e "\\r                       "
         fi
@@ -109,16 +109,16 @@ docker_install() {
             _s
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
                     apt-transport-https \
                     ca-certificates \
                     curl \
                     gnupg2 \
                     software-properties-common
-                sudo curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-                sudo apt-key fingerprint 0EBFCD88
+                curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+                apt-key fingerprint 0EBFCD88
                 if [ "${CP_ARCH}" = "amd64" ] || [ "${CP_ARCH}" = "x86_64" ] || [ "${CP_ARCH}" = "i386" ]
                 then
                     CP_ARCH="amd64"
@@ -129,22 +129,22 @@ docker_install() {
                 then
                     CP_ARCH="arm64"
                 fi
-                sudo add-apt-repository \
+                add-apt-repository \
                     "deb [arch=${CP_ARCH}] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
                     apt-transport-https \
                     ca-certificates \
                     curl \
                     gnupg-agent \
                     software-properties-common
-                sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-                sudo apt-key fingerprint 0EBFCD88
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+                apt-key fingerprint 0EBFCD88
                 if [ "${CP_ARCH}" = "amd64" ] || [ "${CP_ARCH}" = "x86_64" ] || [ "${CP_ARCH}" = "i386" ]
                 then
                     CP_ARCH="amd64"
@@ -161,12 +161,12 @@ docker_install() {
                 then
                     CP_ARCH="s390x"
                 fi
-                sudo add-apt-repository \
+                add-apt-repository \
                     "deb [arch=${CP_ARCH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                sudo DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-                sudo dnf -y remove docker \
+                dnf -y remove docker \
                     docker-client \
                     docker-client-latest \
                     docker-common \
@@ -176,14 +176,14 @@ docker_install() {
                     docker-selinux \
                     docker-engine-selinux \
                     docker-engine
-                sudo dnf -y install dnf-plugins-core
-                sudo dnf config-manager \
+                dnf -y install dnf-plugins-core
+                dnf config-manager \
                     --add-repo \
                     https://download.docker.com/linux/fedora/docker-ce.repo
-                sudo dnf -y install docker-ce docker-ce-cli containerd.io
-                sudo systemctl start docker
+                dnf -y install docker-ce docker-ce-cli containerd.io
+                systemctl start docker
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-                sudo yum remove -y docker \
+                yum remove -y docker \
                     docker-client \
                     docker-client-latest \
                     docker-common \
@@ -191,14 +191,14 @@ docker_install() {
                     docker-latest-logrotate \
                     docker-logrotate \
                     docker-engine
-                sudo yum install -y yum-utils \
+                yum install -y yum-utils \
                     device-mapper-persistent-data \
                     lvm2
-                sudo yum-config-manager \
+                yum-config-manager \
                     --add-repo \
                     https://download.docker.com/linux/centos/docker-ce.repo
-                sudo yum install -y docker-ce docker-ce-cli containerd.io
-                sudo systemctl start docker
+                yum install -y docker-ce docker-ce-cli containerd.io
+                systemctl start docker
             fi
             if [ "`docker -v 2>/dev/null`" = "" ]; then
                 clear

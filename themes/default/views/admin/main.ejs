@@ -34,7 +34,7 @@
                         <a href="/<%- config.urls.admin %>/main" class="btn">
                             <%= __('Основные настройки веб-сайта') %>
                         </a>
-                        <a href="https://CinemaPress.io/admin/main.html" class="btn" title="<%= __('Информация о параметрах настройки веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="btn" title="<%= __('Информация о параметрах настройки веб-сайта') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                                         <i class="fab fa-expeditedssl"></i>&nbsp;&nbsp;&nbsp;<%= __('Протокол') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#protocol" class="csstip" title="<%= __('Основной протокол веб-сайта') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#protocol" class="csstip" title="<%= __('Основной протокол веб-сайта') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -86,7 +86,7 @@
                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Домен') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#domain" class="csstip" title="<%= __('Информационный параметр домена, за которым закрепляется ключ БД') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#domain" class="csstip" title="<%= __('Информационный параметр домена, за которым закрепляется ключ БД') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -161,7 +161,7 @@
                                         <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Email') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#email" class="csstip" title="<%= __('Ваш email для связи с администратором веб-сайта') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#email" class="csstip" title="<%= __('Ваш email для связи с администратором веб-сайта') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -185,7 +185,7 @@
                                         <i class="fa fa-globe"></i>&nbsp;&nbsp;&nbsp;<%= __('Язык и страна веб-сайта') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#language" class="csstip" title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#language" class="csstip" title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -238,7 +238,7 @@
                                         <i class="fa fa-image"></i>&nbsp;&nbsp;&nbsp;<%= __('Шаблон веб-сайта') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#theme" class="csstip" title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#theme" class="csstip" title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -261,8 +261,8 @@
                                             </select>
                                         </div>
                                         <div class="col-xs-6 text-center">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/themes/" target="_blank" class="btn btn-block btn-default">
-                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('ThemePrice') %> <%= __('Премиум тема') %>
+                                            <a href="https://CinemaPress.io/<%- config.language %>/themes/index.html" target="_blank" class="btn btn-block btn-default">
+                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('Премиум тема') %>
                                             </a>
                                         </div>
                                     </div>
@@ -281,7 +281,7 @@
                                         <i class="fa fa-images"></i>&nbsp;&nbsp;&nbsp;<%= __('Сервер картинок') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#image" class="csstip" title="<%= __('По умолчанию все картинки грузятся со сторонних источников, однако если Вы хотите чтобы постеры были загружены с Вашего веб-сайта, Вы можете «Загрузить на сервер» статические файлы и указать в этом поле адрес %s', config.domain) %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#image" class="csstip" title="<%= __('По умолчанию все картинки грузятся со сторонних источников, однако если Вы хотите чтобы постеры были загружены с Вашего веб-сайта, Вы можете «Загрузить на сервер» статические файлы и указать в этом поле адрес %s', config.domain) %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -341,7 +341,7 @@
                                         <i class="fa fa-space-shuttle"></i>&nbsp;&nbsp;&nbsp;<%= __('Google PageSpeed оптимизация') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#pagespeed" class="csstip" title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#pagespeed" class="csstip" title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -372,7 +372,7 @@
                                         <i class="fa fa-fire"></i>&nbsp;&nbsp;&nbsp;<%= __('Перегрузка сервера') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#loadavg" class="csstip" title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#loadavg" class="csstip" title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -438,7 +438,7 @@
                                         <i class="fa fa-gavel"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить доступ в странах') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#countries" class="csstip" title="<%= __('Список стран, которым запрещено посещать сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#countries" class="csstip" title="<%= __('Список стран, которым запрещено посещать сайт') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -470,7 +470,7 @@
                                         <i class="fas fa-shield-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить доступ для IP') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#ips" class="csstip" title="<%= __('Список IP, которым запрещено посещать сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#ips" class="csstip" title="<%= __('Список IP, которым запрещено посещать сайт') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -494,7 +494,7 @@
                                         <i class="fa fa-retweet"></i>&nbsp;&nbsp;&nbsp;<%= __('Жесткая перезагрузка сервера') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/main.html#restart" class="csstip" title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#restart" class="csstip" title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>

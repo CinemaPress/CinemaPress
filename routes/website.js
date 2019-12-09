@@ -119,9 +119,13 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     (level1 === modules.content.data.url ? '' : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
 
-  ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(t) {
+  ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(
+    t
+  ) {
     if (req.query[t] && level1 !== config.urls[t]) {
-      options.query[t] = CP_regexp.str(CP_translit.text(req.query[t], true, config.urls[t]));
+      options.query[t] = CP_regexp.str(
+        CP_translit.text(req.query[t], true, config.urls[t])
+      );
     }
   });
 
@@ -377,13 +381,13 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           'tag=' +
           CP_regexp.str(req.query.tag);
       }
-      ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(t) {
-        if (req.query[t]) {
-          url +=
-            (url.indexOf('?') + 1 ? '&' : '?') +
-            t + '=' + req.query[t];
+      ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(
+        function(t) {
+          if (req.query[t]) {
+            url += (url.indexOf('?') + 1 ? '&' : '?') + t + '=' + req.query[t];
+          }
         }
-      });
+      );
       if (typeof req.query.json !== 'undefined') {
         url += (url.indexOf('?') + 1 ? '&' : '?') + 'json=1';
       }

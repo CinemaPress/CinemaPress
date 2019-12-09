@@ -37,7 +37,7 @@
                         <a href="/<%- config.urls.admin %>/urls" class="btn">
                             <%= __('Изменение URL ссылок веб-сайта') %>
                         </a>
-                        <a href="https://CinemaPress.io/admin/urls.html" class="btn" title="<%= __('Информация о параметрах изменения URL различных страниц веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="btn" title="<%= __('Информация о параметрах изменения URL различных страниц веб-сайта') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -89,7 +89,7 @@
                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Страница фильма') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('Изменение URL страницы фильма') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#movie" class="csstip" title="<%= __('Изменение URL страницы фильма') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -145,28 +145,28 @@
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Онлайн»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#movie" class="csstip" title="<%= __('«Онлайн»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.online" value="<%= config.urls.movies.online %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Онлайн»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Скачать»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#movie" class="csstip" title="<%= __('«Скачать»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.download" value="<%= config.urls.movies.download %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Скачать»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Трейлер»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#movie" class="csstip" title="<%= __('«Трейлер»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.trailer" value="<%= config.urls.movies.trailer %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Трейлер»') %>" type="text">
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/admin/urls.html#movie" class="csstip" title="<%= __('«Кадры»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#movie" class="csstip" title="<%= __('«Кадры»') %>" target="_blank"><i class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                 <input class="form-control input_url" name="config.urls.movies.picture" value="<%= config.urls.movies.picture %>" placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Кадры»') %>" type="text">
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@
                                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Уникализация URL фильма') %>
                                                     </div>
                                                     <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/admin/urls.html#separator" class="csstip" title="<%= __('Точечная уникализация URL, можно изменить разделитель между параметрами, префикс перед ID и изменить в большую или меньшую сторону идентификатор фильма (по умолчанию - 0, т.е. ID на веб-сайте совпадают с ID на KinoPoisk)') %>" target="_blank">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#separator" class="csstip" title="<%= __('Точечная уникализация URL, можно изменить разделитель между параметрами, префикс перед ID и изменить в большую или меньшую сторону идентификатор фильма (по умолчанию - 0, т.е. ID на веб-сайте совпадают с ID на KinoPoisk)') %>" target="_blank">
                                                             <i class="fa fa-info-circle"></i>
                                                         </a>
                                                     </div>
@@ -189,7 +189,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-3 col-xs-12">
                                                             <div>
-                                                                <a href="https://CinemaPress.io/admin/urls.html#separator" class="csstip text-muted" title="<%= __('Разделитель между параметрами в URL, будет подставлено в URL на месте [separator]') %>" target="_blank">
+                                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#separator" class="csstip text-muted" title="<%= __('Разделитель между параметрами в URL, будет подставлено в URL на месте [separator]') %>" target="_blank">
                                                                     <i class="fa fa-info-circle text-muted"></i>
                                                                     <%= __('Разделитель:') %>
                                                                 </a>
@@ -198,7 +198,7 @@
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-xs-12">
                                                             <div>
-                                                                <a href="https://CinemaPress.io/admin/urls.html#prefix_id" class="csstip text-muted" title="<%= __('Будет подставлено перед ID фильма %s', config.urls.prefix_id + '298') %>" target="_blank">
+                                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#prefix_id" class="csstip text-muted" title="<%= __('Будет подставлено перед ID фильма %s', config.urls.prefix_id + '298') %>" target="_blank">
                                                                     <i class="fa fa-info-circle text-muted"></i>
                                                                     <%= __('Префикс ID:') %>
                                                                 </a>
@@ -207,7 +207,7 @@
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-xs-12">
                                                             <div>
-                                                                <a href="https://CinemaPress.io/admin/urls.html#unique_id" class="csstip text-muted" title="<%= __('Принимает значение от -297 до 297000 и изменяет идентификатор фильма на веб-сайте в большую или меньшую сторону.') %>" target="_blank">
+                                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#unique_id" class="csstip text-muted" title="<%= __('Принимает значение от -297 до 297000 и изменяет идентификатор фильма на веб-сайте в большую или меньшую сторону.') %>" target="_blank">
                                                                     <i class="fa fa-info-circle text-muted"></i>
                                                                     <%= __('Уникальный ID:') %>
                                                                 </a>
@@ -216,7 +216,7 @@
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-xs-12">
                                                             <div>
-                                                                <a href="https://CinemaPress.io/admin/urls.html#translit" class="csstip text-muted" title="<%= __('Транслит URL категорий (комедия -> komediya)') %>" target="_blank">
+                                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#translit" class="csstip text-muted" title="<%= __('Транслит URL категорий (комедия -> komediya)') %>" target="_blank">
                                                                     <i class="fa fa-info-circle text-muted"></i>
                                                                     <%= __('Транслит:') %>
                                                                 </a>
@@ -271,7 +271,7 @@
                                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL неиндексируемых фильмов') %>
                                                     </div>
                                                     <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/admin/urls.html#noindex" class="csstip" title="<%= __('Если Вы хотите, чтобы индексировались только те фильмы, которым Вы пишите уникальные описания, заполните эту форму и добавьте этот URL в robots.txt, например Disallow: /noindex') %>" target="_blank">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#noindex" class="csstip" title="<%= __('Если Вы хотите, чтобы индексировались только те фильмы, которым Вы пишите уникальные описания, заполните эту форму и добавьте этот URL в robots.txt, например Disallow: /noindex') %>" target="_blank">
                                                             <i class="fa fa-info-circle"></i>
                                                         </a>
                                                     </div>
@@ -303,7 +303,7 @@
                                         <i class="fas fa-route"></i>&nbsp;&nbsp;&nbsp;<%= __('Уровень вложенности URL') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/urls.html#slash" class="csstip" title="<%= __('Уровень вложенности веб-сайта по числу слэшей в URL-адресе') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#slash" class="csstip" title="<%= __('Уровень вложенности веб-сайта по числу слэшей в URL-адресе') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -334,7 +334,7 @@
                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL пути') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/admin/urls.html#path" class="csstip" title="<%= __('URL пути, которые ставятся перед конкретной категорией') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#path" class="csstip" title="<%= __('URL пути, которые ставятся перед конкретной категорией') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
