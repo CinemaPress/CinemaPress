@@ -127,7 +127,10 @@
                                                         <div class="col-sm-5 text-center" id="r">
                                                             <div class="inline-labels">
                                                                 <label>
-                                                                    <input name="config.random" value="1" <% if (config.random) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %>
+                                                                    <input name="config.random" value="3" <% if (config.random === 3) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 3
+                                                                </label>
+                                                                <label>
+                                                                    <input name="config.random" value="4" <% if (config.random === 4 || config.random === 1) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 4
                                                                 </label>
                                                                 <label>
                                                                     <input name="config.random" value="0" <% if (!config.random) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
@@ -523,7 +526,7 @@
                 setInterval(function(){
                     document.querySelector('#fifteen_loadavg').innerHTML = '15 min: ' + document.querySelector('#fifteen').value + '%';
                 }, 100);
-                function dayToLetter() {
+                function dayToLetter(random) {
                   var now = new Date();
                   var year = now.getFullYear();
                   var start = new Date(year, 0, 0);
@@ -531,17 +534,25 @@
                   var oneDay = 86400000;
                   var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
                   var letter1 = ['a', 'e', 'i', 'o', 'u'];
-                  var letter2 = ['b', 'c', 'd', 'p', 's', 'w', 'v', 'k', 'l', 'm'];
+                  var letter2 = ['b', 'c', 'd', 'p', 's', 'w', 'v', 'n', 'l', 'm'];
                   if ('<%- config.domain.split('.')[0] %>'.length % 2) {
                     letter1 = letter1.reverse();
                   }
                   if ('<%- config.domain.split('.')[1] %>'.length % 2) {
                     letter2 = letter2.reverse();
                   }
-                  var result = letter2[parseInt(day[0])] +
+                  var result =
+                    letter2[parseInt(day[0])] +
                     letter1[parseInt(day[1]) % 5] +
                     letter2[parseInt(day[2])] +
-                    letter1[year % 5];
+                    (parseInt(random) === 3 ? '' : letter1[year % 5]);
+                  if (parseInt(day[1]) >= 5) {
+                    result =
+                      letter1[parseInt(day[0]) % 5] +
+                      letter2[parseInt(day[1])] +
+                      letter1[parseInt(day[2]) % 5] +
+                      (parseInt(random) === 3 ? '' : letter2[year % 10]);
+                  }
                   if (now.getDate() % 2) {
                     result = result.split('').reverse().join('');
                   }
@@ -551,9 +562,9 @@
                 if (radios) {
                   radios.forEach(function(radio) {
                     radio.addEventListener('change', function() {
-                      if (this.value === '1') {
+                      if (this.value !== '0') {
                         if (this.checked) {
-                          document.querySelector('[name=\'config.subdomain\']').value = dayToLetter();
+                          document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
                           document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
                           document.querySelector('#h').style.display = 'block';
                           document.querySelector('#h').setAttribute('class', 'col-sm-7');
@@ -567,7 +578,7 @@
                         }
                       }
                     });
-                    if (radio.value === '1') {
+                    if (radio.value !== '0') {
                       if (radio.checked) {
                         document.querySelector('#h').style.display = 'block';
                         document.querySelector('#h').setAttribute('class', 'col-sm-7');
