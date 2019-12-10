@@ -267,9 +267,9 @@ function parseData() {
       if (movieData.poster) {
         src.src =
           movieData.poster === '1'
-            ? 'https://k.1poster.net/images/film_iphone/iphone_' +
+            ? 'https://k.1poster.net/images/film_iphone/iphone180_' +
               kp_id +
-              '.jpg?width=180'
+              '.jpg'
             : movieData.poster[0] === '/'
             ? 'https://t.1poster.net/t/p/w185' + movieData.poster
             : movieData.poster;

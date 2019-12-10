@@ -285,24 +285,19 @@ function parseEpisode(type, options) {
     execEpisode && execEpisode[2] ? '' + parseInt(execEpisode[2]) : '';
   serial.translate_id =
     execEpisode && execEpisode[4] ? '' + parseInt(execEpisode[4]) : '';
-  serial.translate = modules.episode.data.default;
 
   var translators = modules.episode.data.source
     ? require('../files/' + modules.episode.data.source + '.json')
-    : require('../files/translators.json');
-  if (translators && translators.length) {
-    for (var i = 0, len = translators.length; i < len; i++) {
-      if (parseInt(translators[i].id) === parseInt(serial.translate_id)) {
-        serial.translate = translators[i].name;
-        if (
-          config.language === 'en' &&
-          /субт|subt|eng/i.test(serial.translate)
-        ) {
-          serial.translate = 'English';
-        }
-        break;
-      }
-    }
+    : require('../files/iframe.json');
+  serial.translate =
+    serial.translate_id &&
+    translators &&
+    translators.results &&
+    translators.results[serial.translate_id]
+      ? translators.results[serial.translate_id]
+      : modules.episode.data.default;
+  if (config.language === 'en' && /субт|subt|eng/i.test(serial.translate)) {
+    serial.translate = 'English';
   }
 
   return serial;
