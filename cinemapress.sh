@@ -846,7 +846,7 @@ ip_install() {
         docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
-    docker rmi -f $(docker images -f "dangling=true" -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    docker rmi -f "$(docker images -f 'dangling=true' -q)" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 }
 
 option() {
