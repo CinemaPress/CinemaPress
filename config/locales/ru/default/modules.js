@@ -19,7 +19,7 @@ module.exports = {
         }
       },
       "disqus": {
-        "shortname": "cinemapress-ru",
+        "shortname": "cinemapress-demo-ru",
         "api_key": "",
         "recent": {
           "num_items": 5,
