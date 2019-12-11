@@ -79,22 +79,26 @@ function headComments() {
  *
  * @param {String} url
  * @param {String} pathname
+ * @param {String} [position]
  * @return {String}
  */
 
-function codesComments(url, pathname) {
+function codesComments(url, pathname, position) {
   var data = {};
+  var footer = '';
 
   if (modules.comments.data.cackle.id) {
-    data.cackle =
-      '<div id="mc-container"></div><script>cackle_widget=window.cackle_widget||[],cackle_widget.push({widget:"Comment",id:' +
+    data.cackle = '<div id="mc-container"></div>';
+    footer +=
+      '<script>cackle_widget=window.cackle_widget||[],cackle_widget.push({widget:"Comment",id:' +
       modules.comments.data.cackle.id +
       '}),function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https":"http")+"://cackle.me/widget.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b.nextSibling)}();</script>';
   }
 
   if (modules.comments.data.hypercomments.widget_id) {
-    data.hypercomments =
-      '<div id="hypercomments_widget"></div><script>_hcwp=window._hcwp||[],_hcwp.push({widget:"Stream",widget_id:' +
+    data.hypercomments = '<div id="hypercomments_widget"></div>';
+    footer +=
+      '<script>_hcwp=window._hcwp||[],_hcwp.push({widget:"Stream",widget_id:' +
       modules.comments.data.hypercomments.widget_id +
       ',xid:"' +
       pathname +
@@ -104,31 +108,36 @@ function codesComments(url, pathname) {
   }
 
   if (modules.comments.data.disqus.shortname) {
-    data.disqus =
-      '<div id="disqus_thread"></div><script>var disqus_config=function(){this.page.url="' +
+    data.disqus = '<div id="disqus_thread"></div>';
+    footer +=
+      '<script>var disqus_config=function(){this.page.url="' +
       url +
       '",this.page.identifier="' +
       pathname +
-      '"};!function(){var e=document,t=e.createElement("script");t.src="//' +
+      '"};!function(){var e=document,t=e.createElement("script");t.async=true;t.src="//' +
       modules.comments.data.disqus.shortname +
       '.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)}();</script>';
   }
 
   if (modules.comments.data.vk.app_id) {
-    data.vk =
-      '<div id="vk_comments"></div><script>if (typeof VK == "object") {VK.Widgets.Comments("vk_comments", {limit: 10, width: "auto", attach: "*", autoPublish: 1});}</script>';
+    data.vk = '<div id="vk_comments"></div>';
+    footer +=
+      '<script>if (typeof VK == "object") {VK.Widgets.Comments("vk_comments", {limit: 10, width: "auto", attach: "*", autoPublish: 1});}</script>';
   }
 
   if (modules.comments.data.facebook.admins) {
     data.facebook =
       '<div class="fb-comments" data-href="' +
       url +
-      '" data-numposts="10" data-width="auto"></div><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
+      '" data-numposts="10" data-width="auto"></div><div id="fb-root"></div>';
+    footer +=
+      '<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
   }
 
   if (modules.comments.data.sigcomments.host_id) {
-    data.sigcomments =
-      '<div id="sigCommentsBlock"></div><script>(function(){var host_id = "' +
+    data.sigcomments = '<div id="sigCommentsBlock"></div>';
+    footer +=
+      '<script>(function(){var host_id = "' +
       modules.comments.data.sigcomments.host_id +
       '";var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "//sigcomments.com/chat/?host_id="+host_id;var ss = document.getElementsByTagName("script")[0];ss.parentNode.insertBefore(script, ss);})();</script>';
   }
@@ -206,15 +215,15 @@ function codesComments(url, pathname) {
 
   buttons = single === 1 ? '' : buttons;
 
-  return (
-    '' +
-    '<div class="CP_buttons" style="margin:30px 0 !important; float: none !important;">' +
-    buttons +
-    '</div>' +
-    '<div class="CP_comments" style="margin:20px 0 !important; float: none !important;">' +
-    blocks +
-    '</div>'
-  );
+  return position
+    ? footer
+    : '' +
+        '<div class="CP_buttons" style="margin:30px 0 !important; float: none !important;">' +
+        buttons +
+        '</div>' +
+        '<div class="CP_comments" style="margin:20px 0 !important; float: none !important;">' +
+        blocks +
+        '</div>';
 }
 
 /**
@@ -378,14 +387,14 @@ function recentComments(service, options, callback) {
                       date.indexOf('hour') + 1
                         ? moment().subtract(num, 'hour')
                         : date.indexOf('day') + 1
-                          ? moment().subtract(num, 'day')
-                          : date.indexOf('week') + 1
-                            ? moment().subtract(num, 'week')
-                            : date.indexOf('month') + 1
-                              ? moment().subtract(num, 'month')
-                              : date.indexOf('year') + 1
-                                ? moment().subtract(num, 'year')
-                                : moment().subtract(num, 'minute');
+                        ? moment().subtract(num, 'day')
+                        : date.indexOf('week') + 1
+                        ? moment().subtract(num, 'week')
+                        : date.indexOf('month') + 1
+                        ? moment().subtract(num, 'month')
+                        : date.indexOf('year') + 1
+                        ? moment().subtract(num, 'year')
+                        : moment().subtract(num, 'minute');
                     r['date'] = date.fromNow();
                     r['time'] = date.valueOf();
                     r['kp_id'] = movie.id(r['url']);

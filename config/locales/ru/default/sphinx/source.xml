@@ -9,7 +9,7 @@
         <kp_vote><![CDATA[0]]></kp_vote>
         <imdb_rating><![CDATA[0]]></imdb_rating>
         <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[738218.875]]></premiere>
+        <premiere><![CDATA[738217.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Смертельная битва]]></title_ru>
         <title_en><![CDATA[Mortal Kombat]]></title_en>
@@ -24,7 +24,7 @@
         <country><![CDATA[Австралия,США]]></country>
         <director><![CDATA[Саймон Маккуойд]]></director>
         <genre><![CDATA[фантастика,фэнтези,боевик,триллер,приключения]]></genre>
-        <actor><![CDATA[Джессика МакНэми,Хироюки Санада,Льюис Тан,Луди Линь,Таданобу Асано]]></actor>
+        <actor><![CDATA[Джессика МакНэми,Таданобу Асано,Луди Линь,Льюис Тан,Хироюки Санада]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -36,10 +36,10 @@
         <query_id><![CDATA[462305]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[16563]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[104976]]></imdb_vote>
         <premiere><![CDATA[737693.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Ирландец]]></title_ru>
@@ -47,15 +47,15 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[История о Фрэнке Ширэне по прозвищу Ирландец, которому приписывают убийство 25 гангстеров, включая самого Джимми Хоффу.]]></description>
-        <pictures><![CDATA[3396207,3396206]]></pictures>
+            <![CDATA[В доме престарелых сильно пожилой мужчина по имени Фрэнк Ширан вспоминает свою жизнь. В 1950-е он работал простым водителем грузовика, совсем не хотел быть гангстером и думал, что маляры — это те, кто красит дома, когда случайно познакомился с криминальным авторитетом Расселом Буфалино. Тот взял парня под свое крыло, начал давать ему небольшие поручения, и вот уже Фрэнк по прозвищу Ирландец сам работает «маляром», мафиозным киллером. Вскоре Рассел сводит его с известным профсоюзным лидером Джимми Хоффой.]]></description>
+        <pictures><![CDATA[3441089,3441088,3441086]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Ирландец / The Irishman]]></search>
         <year><![CDATA[2019]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Мартин Скорсезе]]></director>
-        <genre><![CDATA[драма,криминал,биография]]></genre>
-        <actor><![CDATA[Роберт Де Ниро,Анна Пэкуин,Аль Пачино,Джо Пеши,Алекса Палладино]]></actor>
+        <genre><![CDATA[криминал,драма,биография]]></genre>
+        <actor><![CDATA[Роберт Де Ниро,Аль Пачино,Джо Пеши,Рэй Романо,Бобби Каннавале]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -68,9 +68,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[75]]></kp_rating>
-        <kp_vote><![CDATA[234410]]></kp_vote>
+        <kp_vote><![CDATA[236807]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[839942]]></imdb_vote>
+        <imdb_vote><![CDATA[848402]]></imdb_vote>
         <premiere><![CDATA[736348.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Дэдпул]]></title_ru>
@@ -99,9 +99,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[122203]]></kp_vote>
+        <kp_vote><![CDATA[127775]]></kp_vote>
         <imdb_rating><![CDATA[67]]></imdb_rating>
-        <imdb_vote><![CDATA[305818]]></imdb_vote>
+        <imdb_vote><![CDATA[314469]]></imdb_vote>
         <premiere><![CDATA[737332.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Веном]]></title_ru>
@@ -130,9 +130,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[70]]></kp_rating>
-        <kp_vote><![CDATA[35218]]></kp_vote>
+        <kp_vote><![CDATA[36945]]></kp_vote>
         <imdb_rating><![CDATA[73]]></imdb_rating>
-        <imdb_vote><![CDATA[135818]]></imdb_vote>
+        <imdb_vote><![CDATA[140627]]></imdb_vote>
         <premiere><![CDATA[737299.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Человек на Луне]]></title_ru>
@@ -161,9 +161,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[90]]></kp_rating>
-        <kp_vote><![CDATA[278374]]></kp_vote>
+        <kp_vote><![CDATA[282358]]></kp_vote>
         <imdb_rating><![CDATA[94]]></imdb_rating>
-        <imdb_vote><![CDATA[1592853]]></imdb_vote>
+        <imdb_vote><![CDATA[1611583]]></imdb_vote>
         <premiere><![CDATA[734608.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Игра престолов]]></title_ru>
@@ -192,9 +192,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[57]]></kp_rating>
-        <kp_vote><![CDATA[38433]]></kp_vote>
+        <kp_vote><![CDATA[39069]]></kp_vote>
         <imdb_rating><![CDATA[55]]></imdb_rating>
-        <imdb_vote><![CDATA[143751]]></imdb_vote>
+        <imdb_vote><![CDATA[146298]]></imdb_vote>
         <premiere><![CDATA[736825.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Спасатели Малибу]]></title_ru>
@@ -241,7 +241,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Адиль Эль Арби,Билал Фалла]]></director>
         <genre><![CDATA[боевик,триллер,комедия,криминал]]></genre>
-        <actor><![CDATA[Уилл Смит,Мартин Лоуренс,Александр Людвиг,Ванесса Энн Хадженс,Джо Пантольяно]]></actor>
+        <actor><![CDATA[Уилл Смит,Мартин Лоуренс,Ванесса Энн Хадженс,Дженнифер Баджер,Александр Людвиг]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -254,9 +254,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[46260]]></kp_vote>
+        <kp_vote><![CDATA[47506]]></kp_vote>
         <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[88460]]></imdb_vote>
+        <imdb_vote><![CDATA[90152]]></imdb_vote>
         <premiere><![CDATA[736911.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Тайна 7 сестер]]></title_ru>
@@ -284,10 +284,10 @@
         <query_id><![CDATA[489414]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[69]]></kp_rating>
-        <kp_vote><![CDATA[198]]></kp_vote>
-        <imdb_rating><![CDATA[73]]></imdb_rating>
-        <imdb_vote><![CDATA[1920]]></imdb_vote>
+        <kp_rating><![CDATA[68]]></kp_rating>
+        <kp_vote><![CDATA[13460]]></kp_vote>
+        <imdb_rating><![CDATA[72]]></imdb_rating>
+        <imdb_vote><![CDATA[33608]]></imdb_vote>
         <premiere><![CDATA[737705.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Zомбилэнд: Контрольный выстрел]]></title_ru>
@@ -296,11 +296,11 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Беспощадная и бесстрашная четверка охотников на зомби продолжает свое путешествие в глубь страны. На этот раз им предстоит сразиться не только с новыми видами живых мертвецов, но и вступить в схватку с другими выжившими, которые настроены совсем не дружелюбно. Кроме того, в собственных рядах охотников намечается серьезный разлад.]]></description>
-        <pictures><![CDATA[3395678]]></pictures>
+        <pictures><![CDATA[3442665,3442664,3442663]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Zомбилэнд: Контрольный выстрел / Zombieland: Double Tap]]></search>
         <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
+        <country><![CDATA[США,Канада]]></country>
         <director><![CDATA[Рубен Фляйшер]]></director>
         <genre><![CDATA[ужасы,боевик,комедия]]></genre>
         <actor><![CDATA[Джесси Айзенберг,Вуди Харрельсон,Эмма Стоун,Эбигейл Бреслин,Зои Дойч]]></actor>
@@ -316,9 +316,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[61]]></kp_rating>
-        <kp_vote><![CDATA[45171]]></kp_vote>
+        <kp_vote><![CDATA[47448]]></kp_vote>
         <imdb_rating><![CDATA[61]]></imdb_rating>
-        <imdb_vote><![CDATA[81803]]></imdb_vote>
+        <imdb_vote><![CDATA[86653]]></imdb_vote>
         <premiere><![CDATA[737397.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Хроники хищных городов]]></title_ru>
@@ -346,10 +346,10 @@
         <query_id><![CDATA[538225]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[74]]></kp_rating>
-        <kp_vote><![CDATA[119752]]></kp_vote>
+        <kp_rating><![CDATA[73]]></kp_rating>
+        <kp_vote><![CDATA[123568]]></kp_vote>
         <imdb_rating><![CDATA[75]]></imdb_rating>
-        <imdb_vote><![CDATA[316697]]></imdb_vote>
+        <imdb_vote><![CDATA[321727]]></imdb_vote>
         <premiere><![CDATA[737128.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Первому игроку приготовиться]]></title_ru>
@@ -377,10 +377,10 @@
         <query_id><![CDATA[591535]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[775]]></kp_vote>
-        <imdb_rating><![CDATA[50]]></imdb_rating>
-        <imdb_vote><![CDATA[153]]></imdb_vote>
+        <kp_rating><![CDATA[58]]></kp_rating>
+        <kp_vote><![CDATA[2309]]></kp_vote>
+        <imdb_rating><![CDATA[47]]></imdb_rating>
+        <imdb_vote><![CDATA[610]]></imdb_vote>
         <premiere><![CDATA[737679.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Зеровилль]]></title_ru>
@@ -409,9 +409,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[64]]></kp_rating>
-        <kp_vote><![CDATA[104119]]></kp_vote>
+        <kp_vote><![CDATA[106552]]></kp_vote>
         <imdb_rating><![CDATA[73]]></imdb_rating>
-        <imdb_vote><![CDATA[543904]]></imdb_vote>
+        <imdb_vote><![CDATA[554044]]></imdb_vote>
         <premiere><![CDATA[737087.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Черная Пантера]]></title_ru>
@@ -439,10 +439,10 @@
         <query_id><![CDATA[686898]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[50169]]></kp_vote>
-        <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[100222]]></imdb_vote>
+        <kp_rating><![CDATA[66]]></kp_rating>
+        <kp_vote><![CDATA[62075]]></kp_vote>
+        <imdb_rating><![CDATA[67]]></imdb_rating>
+        <imdb_vote><![CDATA[127076]]></imdb_vote>
         <premiere><![CDATA[737661.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Оно 2]]></title_ru>
@@ -450,8 +450,8 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[Проходит 27 лет после первой встречи ребят с демоническим Пеннивайзом. Они уже выросли, и у каждого своя жизнь. Но неожиданно их спокойное существование нарушает странный телефонный звонок, который заставляет старых друзей вновь собраться вместе.]]></description>
-        <pictures><![CDATA[3414076,3414075,3414074]]></pictures>
+            <![CDATA[Проходит 27 лет после первой встречи ребят с демоническим Пеннивайзом. Они выросли, покинули родной городок и практически забыли о тех страшных событиях, но неожиданно в их взрослые проблемы вторгается телефонный звонок. Майк никогда не покидал Дерри и все это время собирал информацию о жутком клоуне и ждал. Когда в городе начали происходить новые убийства, Майк просит старых друзей вновь собраться вместе и разобраться со злом города Дерри раз и навсегда.]]></description>
+        <pictures><![CDATA[3438492,3430581,3430580]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Оно 2 / It Chapter Two]]></search>
         <year><![CDATA[2019]]></year>
@@ -482,14 +482,14 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Джеймс Бонд оставил оперативную службу и наслаждается спокойной жизнью на Ямайке. Все меняется, когда на острове появляется его старый друг Феликс Лейтер из ЦРУ с просьбой о помощи. Миссия по спасению похищенного ученого оказывается опаснее, чем предполагалось изначально. Бонд попадает в ловушку к таинственному злодею, вооруженному опасным технологическим оружием.]]></description>
-        <pictures><![CDATA[3385252]]></pictures>
+        <pictures><![CDATA[3444916,3444915,3444914]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Не время умирать / No Time to Die]]></search>
         <year><![CDATA[2020]]></year>
         <country><![CDATA[Великобритания,США]]></country>
         <director><![CDATA[Кэри Фукунага]]></director>
         <genre><![CDATA[боевик,триллер,приключения]]></genre>
-        <actor><![CDATA[Ана де Армас,Рами Малек,Дэниэл Крэйг,Леа Сейду,Рэйф Файнс]]></actor>
+        <actor><![CDATA[Ана де Армас,Дэниэл Крэйг,Леа Сейду,Рами Малек,Рэйф Файнс]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -502,9 +502,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[48025]]></kp_vote>
+        <kp_vote><![CDATA[50378]]></kp_vote>
         <imdb_rating><![CDATA[75]]></imdb_rating>
-        <imdb_vote><![CDATA[76578]]></imdb_vote>
+        <imdb_vote><![CDATA[80090]]></imdb_vote>
         <premiere><![CDATA[737426.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Как приручить дракона 3]]></title_ru>
@@ -538,20 +538,20 @@
         <imdb_vote><![CDATA[0]]></imdb_vote>
         <premiere><![CDATA[737775.875]]></premiere>
         <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Звездные Войны: Скайуокер. Восход]]></title_ru>
-        <title_en><![CDATA[Star Wars: The Rise of Skywalker]]></title_en>
+        <title_ru><![CDATA[Звездные войны: Скайуокер. Восход]]></title_ru>
+        <title_en><![CDATA[Star Wars: Episode IX - The Rise of Skywalker]]></title_en>
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Фильм завершает невероятную историю семьи Скайуокеров, длящуюся уже более сорока лет, и обещает дать ответы на все загадки из предыдущих серий. Зрителя ожидают старые и новые герои, уникальные миры, увлекательные путешествия на край Галактики и грандиозный финал фантастической саги.]]></description>
-        <pictures><![CDATA[3352594,3352593,3352592]]></pictures>
+        <pictures><![CDATA[3424626,3424625,3424624]]></pictures>
         <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Звездные Войны: Скайуокер. Восход / Star Wars: The Rise of Skywalker]]></search>
+        <search><![CDATA[Звездные войны: Скайуокер. Восход / Star Wars: Episode IX - The Rise of Skywalker]]></search>
         <year><![CDATA[2019]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Джей Джей Абрамс]]></director>
         <genre><![CDATA[фантастика,фэнтези,боевик,приключения]]></genre>
-        <actor><![CDATA[Билли Лурд,Оскар Айзек,Дэйзи Ридли,Марк Хэмилл,Лупита Нионго]]></actor>
+        <actor><![CDATA[Дэйзи Ридли,Адам Драйвер,Билли Лурд,Кэрри Фишер,Марк Хэмилл]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -563,10 +563,10 @@
         <query_id><![CDATA[768561]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[66]]></kp_rating>
-        <kp_vote><![CDATA[20353]]></kp_vote>
-        <imdb_rating><![CDATA[70]]></imdb_rating>
-        <imdb_vote><![CDATA[59752]]></imdb_vote>
+        <kp_rating><![CDATA[65]]></kp_rating>
+        <kp_vote><![CDATA[27526]]></kp_vote>
+        <imdb_rating><![CDATA[68]]></imdb_rating>
+        <imdb_vote><![CDATA[83482]]></imdb_vote>
         <premiere><![CDATA[737664.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[К звездам]]></title_ru>
@@ -575,7 +575,7 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Недалекое будущее. Несколько лет назад человечество запустило программу поиска внеземной жизни «Проект «Лима»», во главе которой стоял капитан Клиффорд Макбрайд. Последний сигнал экспедиции был зафиксирован в районе Нептуна, и с тех пор о ее судьбе ничего не было известно. Сам капитан Макбрайд стал героем и самым известным космонавтом, вдохновившим многих на исследование космоса.Через 16 лет после исчезновения «Проекта «Лима»» на Земле начинают происходить странные вспышки энергии, выводящие из строя электросистемы и сеящие хаос и разрушения. По данным американского космического агентства сигнал идет с Нептуна, и теперь сыну знаменитого космонавта, майору Рою Макбрайду, поручается ответственная миссия. Он должен добраться до марсианской базы и оттуда попытаться связаться с предположительно живым отцом.]]></description>
-        <pictures><![CDATA[3409606,3409605,3409604]]></pictures>
+        <pictures><![CDATA[3426322,3426321,3426320]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[К звездам / Ad Astra]]></search>
         <year><![CDATA[2019]]></year>
@@ -613,7 +613,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Кейт Шортланд]]></director>
         <genre><![CDATA[фантастика,боевик,приключения]]></genre>
-        <actor><![CDATA[Флоренс Пью,Скарлетт Йоханссон,Роберт Дауни мл.,Дэвид Харбор,Рэйчел Вайс]]></actor>
+        <actor><![CDATA[Скарлетт Йоханссон,Флоренс Пью,Роберт Дауни мл.,Рэйчел Вайс,Дэвид Харбор]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -626,9 +626,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[8624]]></kp_vote>
+        <kp_vote><![CDATA[9160]]></kp_vote>
         <imdb_rating><![CDATA[67]]></imdb_rating>
-        <imdb_vote><![CDATA[38975]]></imdb_vote>
+        <imdb_vote><![CDATA[41711]]></imdb_vote>
         <premiere><![CDATA[737460.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[ЛЕГО Фильм 2]]></title_ru>
@@ -656,10 +656,10 @@
         <query_id><![CDATA[835086]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[35534]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[52192]]></imdb_vote>
         <premiere><![CDATA[737665.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Ford против Ferrari]]></title_ru>
@@ -668,14 +668,14 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Фильм рассказывает о взаимоотношениях американского автомобильного конструктора Кэрролла Шелби и отважного британского гонщика Кена Майлза, которые вместе бросили вызов корпорациям и собственным демонам, чтобы создать абсолютно новый спорткар, который смог конкурировать с Ferrari на чемпионате мира, прошедшем во Франции в середине 1960-х.]]></description>
-        <pictures><![CDATA[3372980,3372979,3372978]]></pictures>
+        <pictures><![CDATA[3444231,3444230,3444229]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Ford против Ferrari / Ford v Ferrari]]></search>
         <year><![CDATA[2019]]></year>
         <country><![CDATA[США,Франция]]></country>
         <director><![CDATA[Джеймс Мэнголд]]></director>
-        <genre><![CDATA[боевик,драма,биография,спорт]]></genre>
-        <actor><![CDATA[Кристиан Бэйл,Мэтт Дэймон,Катрина Балф,Джон Бернтал,Джей Джей Филд]]></actor>
+        <genre><![CDATA[биография,спорт,драма,боевик]]></genre>
+        <actor><![CDATA[Кристиан Бэйл,Мэтт Дэймон,Катрина Балф,Трэйси Леттс,Джон Бернтал]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -688,9 +688,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[49808]]></kp_vote>
+        <kp_vote><![CDATA[51908]]></kp_vote>
         <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[216235]]></imdb_vote>
+        <imdb_vote><![CDATA[220484]]></imdb_vote>
         <premiere><![CDATA[737214.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Суперсемейка 2]]></title_ru>
@@ -719,9 +719,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[56]]></kp_rating>
-        <kp_vote><![CDATA[36846]]></kp_vote>
+        <kp_vote><![CDATA[37918]]></kp_vote>
         <imdb_rating><![CDATA[54]]></imdb_rating>
-        <imdb_vote><![CDATA[102441]]></imdb_vote>
+        <imdb_vote><![CDATA[104553]]></imdb_vote>
         <premiere><![CDATA[737308.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Хищник]]></title_ru>
@@ -750,9 +750,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[93029]]></kp_vote>
+        <kp_vote><![CDATA[95456]]></kp_vote>
         <imdb_rating><![CDATA[66]]></imdb_rating>
-        <imdb_vote><![CDATA[181255]]></imdb_vote>
+        <imdb_vote><![CDATA[187151]]></imdb_vote>
         <premiere><![CDATA[737370.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Фантастические твари: Преступления Грин-де-Вальда]]></title_ru>
@@ -782,9 +782,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[78]]></kp_rating>
-        <kp_vote><![CDATA[167867]]></kp_vote>
+        <kp_vote><![CDATA[172238]]></kp_vote>
         <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[713194]]></imdb_vote>
+        <imdb_vote><![CDATA[729739]]></imdb_vote>
         <premiere><![CDATA[737171.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Мстители: Война бесконечности]]></title_ru>
@@ -813,9 +813,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[59]]></kp_rating>
-        <kp_vote><![CDATA[15625]]></kp_vote>
+        <kp_vote><![CDATA[16626]]></kp_vote>
         <imdb_rating><![CDATA[55]]></imdb_rating>
-        <imdb_vote><![CDATA[22075]]></imdb_vote>
+        <imdb_vote><![CDATA[24310]]></imdb_vote>
         <premiere><![CDATA[737357.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Репродукция]]></title_ru>
@@ -844,9 +844,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[81624]]></kp_vote>
-        <imdb_rating><![CDATA[70]]></imdb_rating>
-        <imdb_vote><![CDATA[353956]]></imdb_vote>
+        <kp_vote><![CDATA[87764]]></kp_vote>
+        <imdb_rating><![CDATA[69]]></imdb_rating>
+        <imdb_vote><![CDATA[379043]]></imdb_vote>
         <premiere><![CDATA[737481.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Капитан Марвел]]></title_ru>
@@ -874,10 +874,10 @@
         <query_id><![CDATA[846824]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[18496]]></kp_vote>
-        <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[108116]]></imdb_vote>
+        <kp_rating><![CDATA[76]]></kp_rating>
+        <kp_vote><![CDATA[25054]]></kp_vote>
+        <imdb_rating><![CDATA[79]]></imdb_rating>
+        <imdb_vote><![CDATA[136148]]></imdb_vote>
         <premiere><![CDATA[737585.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[История игрушек 4]]></title_ru>
@@ -905,11 +905,11 @@
         <query_id><![CDATA[903831]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737747.875]]></premiere>
+        <kp_rating><![CDATA[72]]></kp_rating>
+        <kp_vote><![CDATA[12050]]></kp_vote>
+        <imdb_rating><![CDATA[73]]></imdb_rating>
+        <imdb_vote><![CDATA[28914]]></imdb_vote>
+        <premiere><![CDATA[737734.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Холодное сердце 2]]></title_ru>
         <title_en><![CDATA[Frozen II]]></title_en>
@@ -924,7 +924,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Крис Бак,Дженнифер Ли]]></director>
         <genre><![CDATA[мультфильм,мюзикл,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[Джейсон Риттер,Кристен Белл,Джонатан Грофф,Эван Рэйчел Вуд,Идина Мензел]]></actor>
+        <actor><![CDATA[Идина Мензел,Кристен Белл,Джонатан Грофф,Джош Гад,Стерлинг К. Браун]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -955,7 +955,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Джош Бун]]></director>
         <genre><![CDATA[ужасы,фантастика,боевик]]></genre>
-        <actor><![CDATA[Аня Тейлор-Джой,Антонио Бандерас,Мэйси Уильямс,Алиси Брага,Чарли Хитон]]></actor>
+        <actor><![CDATA[Аня Тейлор-Джой,Мэйси Уильямс,Антонио Бандерас,Алиси Брага,Чарли Хитон]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -967,10 +967,10 @@
         <query_id><![CDATA[922029]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[66]]></kp_rating>
-        <kp_vote><![CDATA[4878]]></kp_vote>
-        <imdb_rating><![CDATA[63]]></imdb_rating>
-        <imdb_vote><![CDATA[2227]]></imdb_vote>
+        <kp_rating><![CDATA[65]]></kp_rating>
+        <kp_vote><![CDATA[8726]]></kp_vote>
+        <imdb_rating><![CDATA[62]]></imdb_rating>
+        <imdb_vote><![CDATA[6043]]></imdb_vote>
         <premiere><![CDATA[737674.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Щегол]]></title_ru>
@@ -999,9 +999,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[61]]></kp_rating>
-        <kp_vote><![CDATA[50732]]></kp_vote>
+        <kp_vote><![CDATA[51988]]></kp_vote>
         <imdb_rating><![CDATA[62]]></imdb_rating>
-        <imdb_vote><![CDATA[230420]]></imdb_vote>
+        <imdb_vote><![CDATA[234530]]></imdb_vote>
         <premiere><![CDATA[737199.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Мир Юрского периода 2]]></title_ru>
@@ -1030,9 +1030,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[71]]></kp_rating>
-        <kp_vote><![CDATA[54769]]></kp_vote>
+        <kp_vote><![CDATA[55983]]></kp_vote>
         <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[248738]]></imdb_vote>
+        <imdb_vote><![CDATA[253475]]></imdb_vote>
         <premiere><![CDATA[737251.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Миссия невыполнима: Последствия]]></title_ru>
@@ -1061,9 +1061,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[68]]></kp_rating>
-        <kp_vote><![CDATA[73952]]></kp_vote>
+        <kp_vote><![CDATA[75064]]></kp_vote>
         <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[262200]]></imdb_vote>
+        <imdb_vote><![CDATA[265690]]></imdb_vote>
         <premiere><![CDATA[737234.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Человек-муравей и Оса]]></title_ru>
@@ -1092,9 +1092,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[123740]]></kp_vote>
+        <kp_vote><![CDATA[128301]]></kp_vote>
         <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[412521]]></imdb_vote>
+        <imdb_vote><![CDATA[426920]]></imdb_vote>
         <premiere><![CDATA[737179.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Дэдпул 2]]></title_ru>
@@ -1122,10 +1122,10 @@
         <query_id><![CDATA[1007049]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[58213]]></kp_vote>
+        <kp_rating><![CDATA[72]]></kp_rating>
+        <kp_vote><![CDATA[66244]]></kp_vote>
         <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[142254]]></imdb_vote>
+        <imdb_vote><![CDATA[160867]]></imdb_vote>
         <premiere><![CDATA[737551.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Аладдин]]></title_ru>
@@ -1153,10 +1153,10 @@
         <query_id><![CDATA[1008445]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[68403]]></kp_vote>
-        <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[208920]]></imdb_vote>
+        <kp_rating><![CDATA[72]]></kp_rating>
+        <kp_vote><![CDATA[77005]]></kp_vote>
+        <imdb_rating><![CDATA[76]]></imdb_rating>
+        <imdb_vote><![CDATA[239867]]></imdb_vote>
         <premiere><![CDATA[737600.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Человек-паук: Вдали от дома]]></title_ru>
@@ -1188,7 +1188,7 @@
         <kp_vote><![CDATA[0]]></kp_vote>
         <imdb_rating><![CDATA[0]]></imdb_rating>
         <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[NaN]]></premiere>
+        <premiere><![CDATA[737777.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Ведьмак]]></title_ru>
         <title_en><![CDATA[The Witcher]]></title_en>
@@ -1200,7 +1200,7 @@
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Ведьмак / The Witcher]]></search>
         <year><![CDATA[2019]]></year>
-        <country><![CDATA[США,Польша]]></country>
+        <country><![CDATA[Польша,США]]></country>
         <director><![CDATA[Алик Сахаров,Шарлотта Брандстром,Алекс Гарсиа Лопес]]></director>
         <genre><![CDATA[фэнтези,боевик,драма,приключения]]></genre>
         <actor><![CDATA[Генри Кавилл,Фрейя Аллан,Джои Бэти,МайАнна Бёринг,Том Кэнтон]]></actor>
@@ -1227,14 +1227,14 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[«Kingsman» — организация супершпионов, действующая на благо человечества вдали от любопытных глаз. И один из первых и самых талантливых оперативников в истории организации — Конрад, молодой и наглый сын герцога Оксфордского. Как и многие его друзья он мечтал служить на благо Англии, но в итоге оказался втянутым в тайный мир шпионов и убийц.]]></description>
-        <pictures><![CDATA[3390244,3390243,3390242]]></pictures>
+        <pictures><![CDATA[3434589,3434588,3434586]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[King's man: Начало / The King's Man]]></search>
         <year><![CDATA[2020]]></year>
         <country><![CDATA[Великобритания,США]]></country>
         <director><![CDATA[Мэттью Вон]]></director>
         <genre><![CDATA[боевик,комедия,приключения]]></genre>
-        <actor><![CDATA[Джемма Артертон,Мэттью Гуд,Аарон Тейлор-Джонсон,Рэйф Файнс,Чарльз Дэнс]]></actor>
+        <actor><![CDATA[Мэттью Гуд,Джемма Артертон,Аарон Тейлор-Джонсон,Рэйф Файнс,Харрис Дикинсон]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -1247,9 +1247,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[61]]></kp_rating>
-        <kp_vote><![CDATA[15009]]></kp_vote>
+        <kp_vote><![CDATA[15575]]></kp_vote>
         <imdb_rating><![CDATA[62]]></imdb_rating>
-        <imdb_vote><![CDATA[51876]]></imdb_vote>
+        <imdb_vote><![CDATA[53283]]></imdb_vote>
         <premiere><![CDATA[737314.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Агент Джонни Инглиш 3.0]]></title_ru>
@@ -1277,10 +1277,10 @@
         <query_id><![CDATA[1047883]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[87641]]></kp_vote>
-        <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[215736]]></imdb_vote>
+        <kp_rating><![CDATA[76]]></kp_rating>
+        <kp_vote><![CDATA[106680]]></kp_vote>
+        <imdb_rating><![CDATA[79]]></imdb_rating>
+        <imdb_vote><![CDATA[268335]]></imdb_vote>
         <premiere><![CDATA[737564.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Однажды в… Голливуде]]></title_ru>
@@ -1308,10 +1308,10 @@
         <query_id><![CDATA[1048334]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[83]]></kp_rating>
-        <kp_vote><![CDATA[109903]]></kp_vote>
-        <imdb_rating><![CDATA[89]]></imdb_rating>
-        <imdb_vote><![CDATA[347052]]></imdb_vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[148857]]></kp_vote>
+        <imdb_rating><![CDATA[87]]></imdb_rating>
+        <imdb_vote><![CDATA[508358]]></imdb_vote>
         <premiere><![CDATA[737666.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Джокер]]></title_ru>
@@ -1320,7 +1320,7 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Готэм, начало 1980-х годов. Комик Артур Флек живет с больной матерью, которая с детства учит его «ходить с улыбкой». Пытаясь нести в мир хорошее и дарить людям радость, Артур сталкивается с человеческой жестокостью и постепенно приходит к выводу, что этот мир получит от него не добрую улыбку, а ухмылку злодея Джокера.]]></description>
-        <pictures><![CDATA[3421383,3421380,3421379]]></pictures>
+        <pictures><![CDATA[3440919,3440918,3431452]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Джокер / Joker]]></search>
         <year><![CDATA[2019]]></year>
@@ -1357,8 +1357,8 @@
         <year><![CDATA[2023]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Джеймс Кэмерон]]></director>
-        <genre><![CDATA[фантастика,фэнтези,боевик,драма,приключения]]></genre>
-        <actor><![CDATA[Сигурни Уивер,Сэм Уортингтон,Зои Салдана,Дэвид Тьюлис,Мишель Йео]]></actor>
+        <genre><![CDATA[фантастика,фэнтези,боевик,приключения]]></genre>
+        <actor><![CDATA[Зои Салдана,Сэм Уортингтон,Дэвид Тьюлис,Сигурни Уивер,Клифф Кёртис]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -1412,14 +1412,14 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[После принятия образа аватара солдат Джейк Салли становится предводителем народа на`ви и берет на себя миссию по защите новых друзей от корыстных бизнесменов с Земли. Теперь ему есть за кого бороться — с Джейком его прекрасная возлюбленная Нейтири. Когда на Пандору возвращаются до зубов вооруженные земляне, Джейк готов дать им отпор.]]></description>
-        <pictures><![CDATA[3375406,3375405,3013424]]></pictures>
+        <pictures><![CDATA[3435204,3375406,3375405]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Аватар 2 / Avatar 2]]></search>
         <year><![CDATA[2021]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Джеймс Кэмерон]]></director>
         <genre><![CDATA[фантастика,фэнтези,боевик,приключения]]></genre>
-        <actor><![CDATA[Кейт Уинслет,Сигурни Уивер,Сэм Уортингтон,Зои Салдана,Вин Дизель]]></actor>
+        <actor><![CDATA[Зои Салдана,Кейт Уинслет,Вин Дизель,Сэм Уортингтон,Дэвид Тьюлис]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -1510,7 +1510,7 @@
         <year><![CDATA[2021]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Том МакГрат]]></director>
-        <genre><![CDATA[мультфильм,фэнтези,комедия,семейный]]></genre>
+        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
         <actor><![CDATA[Алек Болдуин,Джеймс МакГрат]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
@@ -1587,7 +1587,7 @@
         <kp_vote><![CDATA[0]]></kp_vote>
         <imdb_rating><![CDATA[0]]></imdb_rating>
         <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[738140.875]]></premiere>
+        <premiere><![CDATA[738139.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Неизведанное: Удача Дрейка]]></title_ru>
         <title_en><![CDATA[Uncharted]]></title_en>
@@ -1602,7 +1602,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Трэвис Найт]]></director>
         <genre><![CDATA[боевик,приключения]]></genre>
-        <actor><![CDATA[Том Холланд]]></actor>
+        <actor><![CDATA[Том Холланд,Марк Уолберг]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -1845,7 +1845,7 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Жауме Кольет-Серра]]></director>
         <genre><![CDATA[фэнтези,приключения,семейный]]></genre>
-        <actor><![CDATA[Джесси Племонс,Эмили Блант,Дуэйн Джонсон,Джек Уайтхолл,Пол Джаматти]]></actor>
+        <actor><![CDATA[Джесси Племонс,Эмили Блант,Дуэйн Джонсон,Пол Джаматти,Эдгар Рамирес]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -1875,11 +1875,42 @@
         <country><![CDATA[Великобритания,Канада,США]]></country>
         <director><![CDATA[Кристофер Нолан]]></director>
         <genre><![CDATA[боевик,триллер,драма]]></genre>
-        <actor><![CDATA[Роберт Паттинсон,Элизабет Дебики,Аарон Тейлор-Джонсон,Химеш Патель,Майкл Кейн]]></actor>
+        <actor><![CDATA[Роберт Паттинсон,Клеманс Поэзи,Элизабет Дебики,Аарон Тейлор-Джонсон,Кеннет Брана]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"6723592","tmdb_id":"577922"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1199100">
+        <kp_id><![CDATA[1199100]]></kp_id>
+        <query_id><![CDATA[1199100]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737971.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Свободный]]></title_ru>
+        <title_en><![CDATA[Free Guy]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[У сотрудника крупного банка все идет по накатанной, пока он однажды не выясняет, что окружающий его мир — часть огромной видеоигры, где игроки могут делать все, что захотят. И только он может спасти этот мир от окончательного уничтожения.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Свободный / Free Guy]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Шон Леви]]></director>
+        <genre><![CDATA[фантастика,боевик,комедия,приключения]]></genre>
+        <actor><![CDATA[Тайка Вайтити,Райан Рейнольдс,Джоди Комер,Ченнинг Татум,Джо Кири]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6264654","tmdb_id":"550988"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="572032">
@@ -1905,11 +1936,42 @@
         <country><![CDATA[США,Гонконг]]></country>
         <director><![CDATA[Джозеф Косински]]></director>
         <genre><![CDATA[боевик,драма]]></genre>
-        <actor><![CDATA[Том Круз,Эд Харрис,Дженнифер Коннелли,Джон Хэмм,Вэл Килмер]]></actor>
+        <actor><![CDATA[Том Круз,Эд Харрис,Дженнифер Коннелли,Моника Барбаро,Джон Хэмм]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"1745960","tmdb_id":"361743"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="775273">
+        <kp_id><![CDATA[775273]]></kp_id>
+        <query_id><![CDATA[775273]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737958.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Душа]]></title_ru>
+        <title_en><![CDATA[Soul]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Школьный учитель музыки Джо Гарднер случайно попадает в мир, где зарождаются человеческие увлечения, мечты и интересы, и там он знакомится с молодой душой по имени 22.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Душа / Soul]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Пит Доктер,Кемп Пауэрс]]></director>
+        <genre><![CDATA[мультфильм,фантастика,приключения,семейный,музыка]]></genre>
+        <actor><![CDATA[Тина Фей,Джейми Фокс,Джон Ратценбергер,Давид Диггс,Филисия Рашад]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"2948372","tmdb_id":"508442"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="721545">
@@ -2014,21 +2076,22 @@
         <kp_vote><![CDATA[0]]></kp_vote>
         <imdb_rating><![CDATA[0]]></imdb_rating>
         <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737931.875]]></premiere>
+        <premiere><![CDATA[737930.875]]></premiere>
         <type><![CDATA[4]]></type>
-        <title_ru><![CDATA[Губка Боб 3]]></title_ru>
-        <title_en><![CDATA[It's a Wonderful Sponge]]></title_en>
+        <title_ru><![CDATA[Губка Боб в бегах]]></title_ru>
+        <title_en><![CDATA[The SpongeBob Movie: Sponge on the Run]]></title_en>
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
+        <description>
+            <![CDATA[Губка Боб и Патрик вынуждены отправиться в опасное путешествие, чтобы найти пропавшего питомца Гэри. Поиски похищенной улитки приводят друзей в манящий и обманчивый затерянный город Атлантик-Сити — обитель развлечений и порока. Но в конечном итоге любые неприятности помогут преодолеть сила дружбы.]]></description>
         <pictures><![CDATA[]]></pictures>
         <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Губка Боб 3 / It's a Wonderful Sponge]]></search>
+        <search><![CDATA[Губка Боб в бегах / The SpongeBob Movie: Sponge on the Run]]></search>
         <year><![CDATA[2020]]></year>
-        <country><![CDATA[США,Корея Южная]]></country>
+        <country><![CDATA[Корея Южная,США]]></country>
         <director><![CDATA[Тим Хилл]]></director>
-        <genre><![CDATA[мультфильм,фантастика,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[Клэнси Браун,Билл Фагербакки,Аквафина,Том Кенни,Лори Алан]]></actor>
+        <genre><![CDATA[мультфильм,комедия,приключения,семейный,мюзикл]]></genre>
+        <actor><![CDATA[Том Кенни,Билл Фагербакки,Роджер Бампасс,Клэнси Браун,Мистер Лоуренс]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -2097,6 +2160,36 @@
         <custom><![CDATA[]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="797697">
+        <kp_id><![CDATA[797697]]></kp_id>
+        <query_id><![CDATA[797697]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737922.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Скуби-ду]]></title_ru>
+        <title_en><![CDATA[Scoob!]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description><![CDATA[Начало величайшей мистической истории невероятной команды.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Скуби-ду / Scoob!]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Тони Червоне]]></director>
+        <genre><![CDATA[мультфильм,ужасы,комедия,детектив,приключения,семейный]]></genre>
+        <actor><![CDATA[Марк Уолберг,Зак Эфрон,Аманда Сайфред,Маккенна Грейс,Джейсон Айзекс]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"3152592","tmdb_id":"385103"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="819722">
         <kp_id><![CDATA[819722]]></kp_id>
         <query_id><![CDATA[819722]]></query_id>
@@ -2121,7 +2214,69 @@
         <country><![CDATA[Бельгия,Франция,Нидерланды,Люксембург,Израиль]]></country>
         <director><![CDATA[Ари Фольман]]></director>
         <genre><![CDATA[мультфильм,история]]></genre>
-        <actor><![CDATA[Скай Беннетт,Эмили Кэри,Себастьян Крофт,Стюарт Скудамор,Руби Стоукс]]></actor>
+        <actor><![CDATA[Эмили Кэри,Скай Беннетт,Себастьян Крофт,Стюарт Скудамор,Руби Стоукс]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1204003">
+        <kp_id><![CDATA[1204003]]></kp_id>
+        <query_id><![CDATA[1204003]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737916.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[100% Волк]]></title_ru>
+        <title_en><![CDATA[100% Wolf]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[История о Фредди Люпине, наследнике семьи оборотней. Отчаянно желая стать оборотнем, Фредди шокирован, когда в свой 13-й день рождения он оборачивается не волком, а… пуделем.]]></description>
+        <pictures><![CDATA[3440887]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[100% Волк / 100% Wolf]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Австралия]]></country>
+        <director><![CDATA[Алекс Стадерманн]]></director>
+        <genre><![CDATA[мультфильм]]></genre>
+        <actor><![CDATA[_empty]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1111424">
+        <kp_id><![CDATA[1111424]]></kp_id>
+        <query_id><![CDATA[1111424]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737896.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Оленьи рога]]></title_ru>
+        <title_en><![CDATA[Antlers]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[У школьника в доме происходит что-то странное. Он не торопится рассказывать об этом окружающим, и только учительница начинает подозревать, что мальчику угрожает опасность, и вместе с братом-полицейским решает разобраться в ситуации. Со временем они понимают, что речь идет не о безобидных детских страхах: в стенах старого дома притаилось нечто зловещее.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Оленьи рога / Antlers]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Скотт Купер]]></director>
+        <genre><![CDATA[ужасы]]></genre>
+        <actor><![CDATA[Кери Рассел,Джесси Племонс,Jeremy T. Thomas,Грэм Грин,Скотт Хэйз]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -2205,13 +2360,13 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[История о бесстрашной молодой девушке, которая выдает себя за мужчину, чтобы вступить в ряды армии, противостоящей Северным захватчикам, надвигающимся на Китай. Старшая дочь храброго воина Хуа, Мулан — энергичная и решительная девушка. Когда Император издает указ о том, что один мужчина из каждой семьи должен вступить в ряды Имперской армии, Мулан занимает место своего больного отца, еще не зная, что ей предстоит прославиться как одному из величайших воинов в истории Китая.]]></description>
-        <pictures><![CDATA[3386366,3386365,3386364]]></pictures>
+        <pictures><![CDATA[3445628,3445627,3445626]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Мулан / Mulan]]></search>
         <year><![CDATA[2020]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Ники Каро]]></director>
-        <genre><![CDATA[драма,приключения,фэнтези]]></genre>
+        <genre><![CDATA[драма,боевик,фэнтези]]></genre>
         <actor><![CDATA[Лю Ифэй,Донни Йен,Джет Ли,Гун Ли,Джейсон Скотт Ли]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
@@ -2230,24 +2385,55 @@
         <imdb_vote><![CDATA[0]]></imdb_vote>
         <premiere><![CDATA[737868.875]]></premiere>
         <type><![CDATA[4]]></type>
-        <title_ru><![CDATA[Тролли 2]]></title_ru>
+        <title_ru><![CDATA[Тролли. Мировой тур]]></title_ru>
         <title_en><![CDATA[Trolls World Tour]]></title_en>
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[Герои узнают, что за пределами их родной деревни существуют другие тролли со своими музыкальными вкусами. Чтобы спасти всю расу от новой глобальной напасти, они должны найти способ объединить разрозненные племена.]]></description>
+            <![CDATA[Поп-тролли в шоке — оказывается, мир музыки гораздо больше, чем они думали. Рейвы, оупен-эйры, классические концерты и, конечно, хип-хоп баттлы — впереди их ждет головокружительное веселье.Но неудержимая королева Рокс планирует уничтожить все… чтобы миром безоговорочно правил хард-рок!Розочка, Цветан и их новые друзья отправляются в невероятное путешествие: им предстоит объединить всех троллей и помешать Рокс.]]></description>
         <pictures><![CDATA[]]></pictures>
         <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Тролли 2 / Trolls World Tour]]></search>
+        <search><![CDATA[Тролли. Мировой тур / Trolls World Tour]]></search>
         <year><![CDATA[2020]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Уолт Дорн,Дэвид П. Смит]]></director>
         <genre><![CDATA[мультфильм,мюзикл,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[Анна Кендрик,Сэм Рокуэлл,Джейми Дорнан,Рэйчел Блум,Джеймс Корден]]></actor>
+        <actor><![CDATA[Джастин Тимберлейк,Анна Кендрик,Сэм Рокуэлл,Джейми Дорнан,Рэйчел Блум]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"6587640","tmdb_id":"446893"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1255550">
+        <kp_id><![CDATA[1255550]]></kp_id>
+        <query_id><![CDATA[1255550]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737867.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Верю в любовь]]></title_ru>
+        <title_en><![CDATA[I Still Believe]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Подчас на пути к профессиональному успеху и личному счастью реальная жизнь предлагает преодолеть трагические обстоятельства, оставляя лишь крохи надежды и веру в любовь.]]></description>
+        <pictures><![CDATA[3445943,3445942,3445941]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Верю в любовь / I Still Believe]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Эндрю Эрвин,Джон Эрвин]]></director>
+        <genre><![CDATA[драма,мелодрама,музыка]]></genre>
+        <actor><![CDATA[Бритт Робертсон,Кей Джей Апа,Мелисса Роксбур,Гэри Синиз,Шенайя Твейн]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"9779516","tmdb_id":"585244"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="1126786">
@@ -2313,6 +2499,37 @@
         <custom><![CDATA[]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1198524">
+        <kp_id><![CDATA[1198524]]></kp_id>
+        <query_id><![CDATA[1198524]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737854.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Вне игры]]></title_ru>
+        <title_en><![CDATA[The Way Back]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Джек Каннингэм, которого сыграл Бен Аффлек в школе был восходящей баскетбольной звездой, но в какой-то момент покончил со спортом. Спустя годы он запил и развелся с супругой. Вскоре жизнь дает Джеку второй шанс — он становится тренером школьной команды по баскетболу.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Вне игры / The Way Back]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Гэвин О'Коннор]]></director>
+        <genre><![CDATA[драма,спорт]]></genre>
+        <actor><![CDATA[Бен Аффлек,Янина Гаванкар,Хэйз МакАртур,Рейчал Карпани,Da'Vinchi]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1080513">
         <kp_id><![CDATA[1080513]]></kp_id>
         <query_id><![CDATA[1080513]]></query_id>
@@ -2337,225 +2554,11 @@
         <country><![CDATA[США]]></country>
         <director><![CDATA[Дэн Скэнлон]]></director>
         <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[Том Холланд,Крис Пратт,Октавия Спенсер,Джулия Луис-Дрейфус,Джон Ратценбергер]]></actor>
+        <actor><![CDATA[Том Холланд,Крис Пратт,Джон Ратценбергер,Джулия Луис-Дрейфус,Октавия Спенсер]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"7146812","tmdb_id":"508439"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1293037">
-        <kp_id><![CDATA[1293037]]></kp_id>
-        <query_id><![CDATA[1293037]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737846.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Страшные истории]]></title_ru>
-        <title_en><![CDATA[A Night of Horror: Nightmare Radio]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Страшные истории / A Night of Horror: Nightmare Radio]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Аргентина,Новая Зеландия]]></country>
-        <director><![CDATA[Оливер Парк,Jason Bognacki,А.Дж. Брионес]]></director>
-        <genre><![CDATA[ужасы]]></genre>
-        <actor><![CDATA[Clara Kovacic,Michelle Costello,James Wright,Kera Obryon,Ian Costello]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1252908">
-        <kp_id><![CDATA[1252908]]></kp_id>
-        <query_id><![CDATA[1252908]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737840.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Я потерял телефон 2]]></title_ru>
-        <title_en><![CDATA[Sumaho o Otoshita dake nanoni 2]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Я потерял телефон 2 / Sumaho o Otoshita dake nanoni 2]]></search>
-        <year><![CDATA[2020]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[Хидэо Наката]]></director>
-        <genre><![CDATA[триллер,детектив,криминал]]></genre>
-        <actor><![CDATA[Юдаи Тиба,Рё Нарита]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1281908">
-        <kp_id><![CDATA[1281908]]></kp_id>
-        <query_id><![CDATA[1281908]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737840.875]]></premiere>
-        <type><![CDATA[5]]></type>
-        <title_ru><![CDATA[Приключения дигимонов: Последняя эволюция]]></title_ru>
-        <title_en><![CDATA[Digimon Adventure: Last Evolution Kizuna]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search>
-            <![CDATA[Приключения дигимонов: Последняя эволюция / Digimon Adventure: Last Evolution Kizuna]]></search>
-        <year><![CDATA[2020]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[Томохиса Тагути]]></director>
-        <genre><![CDATA[аниме,мультфильм,боевик,приключения,комедия,фантастика]]></genre>
-        <actor><![CDATA[Дзюнко Такэути,Такахиро Сакурай,Нацуки Ханаэ,Ёсимаса Хосоя,Мао Итимити]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1226590">
-        <kp_id><![CDATA[1226590]]></kp_id>
-        <query_id><![CDATA[1226590]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737839.875]]></premiere>
-        <type><![CDATA[5]]></type>
-        <title_ru><![CDATA[Судьба/Великий приказ: Камелот]]></title_ru>
-        <title_en><![CDATA[Gekijouban Fate/Grand Order: Shinsei Entaku Ryouiki Camelot]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search>
-            <![CDATA[Судьба/Великий приказ: Камелот / Gekijouban Fate/Grand Order: Shinsei Entaku Ryouiki Camelot]]></search>
-        <year><![CDATA[2020]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[_empty]]></director>
-        <genre><![CDATA[аниме,мультфильм,боевик,драма,фантастика,фэнтези]]></genre>
-        <actor><![CDATA[Мамору Мияно,Миюки Савасиро,Симадзаки Нобунага,Аяко Кавасуми,Риэ Такахаси]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="512673">
-        <kp_id><![CDATA[512673]]></kp_id>
-        <query_id><![CDATA[512673]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737839.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Бладшот]]></title_ru>
-        <title_en><![CDATA[Bloodshot]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Главный герой — Анджело Морталли, современный Франкенштейн на службе правительства — был реанимирован и превращен в машину для убийства. Для этого ФБР стерло его память и запустило в кровь специальные микрокомпьютеры, которые помогают телу Анджело быстро заживлять раны и контролировать различные электронные устройства. И эта прокаченная машина выходит из-под контроля и объявляет войну своим прежним работодателям, лишившем его памяти.]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Бладшот / Bloodshot]]></search>
-        <year><![CDATA[2020]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Дэйв Уилсон]]></director>
-        <genre><![CDATA[фантастика,фэнтези,боевик,драма]]></genre>
-        <actor><![CDATA[Эйса Гонсалес,Сэм Хьюэн,Талула Райли,Вин Дизель,Тоби Кеббелл]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"1634106","tmdb_id":"338762"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="692232">
-        <kp_id><![CDATA[692232]]></kp_id>
-        <query_id><![CDATA[692232]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737833.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Как насчет любви?]]></title_ru>
-        <title_en><![CDATA[What About Love]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Амбициозный сенатор и его жена путешествуют по Европе, пока их дочь находится в больнице после ДТП со своим парнем. Этот опыт заставляет их пересмотреть свои взгляды на брак и разобраться в отношениях.]]></description>
-        <pictures><![CDATA[2087988,2087987]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Как насчет любви? / What About Love]]></search>
-        <year><![CDATA[2020]]></year>
-        <country><![CDATA[США,Румыния,Испания,Италия]]></country>
-        <director><![CDATA[Клаус Менцель]]></director>
-        <genre><![CDATA[драма,мелодрама]]></genre>
-        <actor><![CDATA[Шэрон Стоун,Энди Гарсиа,Иэн Глен,Розабелла Лауренти Селлерс,Хосе Коронадо]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"2263648","tmdb_id":"476928"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1074272">
-        <kp_id><![CDATA[1074272]]></kp_id>
-        <query_id><![CDATA[1074272]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[0]]></kp_rating>
-        <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[0]]></imdb_rating>
-        <imdb_vote><![CDATA[0]]></imdb_vote>
-        <premiere><![CDATA[737833.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Руководство по сексу на втором свидании]]></title_ru>
-        <title_en><![CDATA[A Guide to Second Date Sex]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Руководство по сексу на втором свидании / A Guide to Second Date Sex]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Великобритания]]></country>
-        <director><![CDATA[Rachel Hirons]]></director>
-        <genre><![CDATA[мелодрама,комедия]]></genre>
-        <actor><![CDATA[Джордж Маккэй,Александра Роуч,Майкл Сока,Эмма Ригби,Каэ Александр]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"7439748","tmdb_id":"525696"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="843650">
@@ -2564,9 +2567,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[138021]]></kp_vote>
+        <kp_vote><![CDATA[143303]]></kp_vote>
         <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[583670]]></imdb_vote>
+        <imdb_vote><![CDATA[616079]]></imdb_vote>
         <premiere><![CDATA[737535.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Мстители: Финал]]></title_ru>
@@ -2595,9 +2598,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[59207]]></kp_vote>
+        <kp_vote><![CDATA[62482]]></kp_vote>
         <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[183399]]></imdb_vote>
+        <imdb_vote><![CDATA[194903]]></imdb_vote>
         <premiere><![CDATA[737507.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Шазам!]]></title_ru>
@@ -2626,9 +2629,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[35531]]></kp_vote>
+        <kp_vote><![CDATA[38637]]></kp_vote>
         <imdb_rating><![CDATA[67]]></imdb_rating>
-        <imdb_vote><![CDATA[98349]]></imdb_vote>
+        <imdb_vote><![CDATA[105639]]></imdb_vote>
         <premiere><![CDATA[737545.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Покемон. Детектив Пикачу]]></title_ru>
@@ -2657,9 +2660,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[68]]></kp_rating>
-        <kp_vote><![CDATA[24207]]></kp_vote>
+        <kp_vote><![CDATA[27852]]></kp_vote>
         <imdb_rating><![CDATA[65]]></imdb_rating>
-        <imdb_vote><![CDATA[26198]]></imdb_vote>
+        <imdb_vote><![CDATA[31820]]></imdb_vote>
         <premiere><![CDATA[737567.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Тайная жизнь домашних животных 2]]></title_ru>
@@ -2682,66 +2685,35 @@
         <custom><![CDATA[{"imdb_id":"5113040","tmdb_id":"412117"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="840045">
-        <kp_id><![CDATA[840045]]></kp_id>
-        <query_id><![CDATA[840045]]></query_id>
+    <sphinx:document id="916498">
+        <kp_id><![CDATA[916498]]></kp_id>
+        <query_id><![CDATA[916498]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[58]]></kp_rating>
-        <kp_vote><![CDATA[19155]]></kp_vote>
-        <imdb_rating><![CDATA[62]]></imdb_rating>
-        <imdb_vote><![CDATA[90768]]></imdb_vote>
-        <premiere><![CDATA[737572.875]]></premiere>
+        <kp_rating><![CDATA[70]]></kp_rating>
+        <kp_vote><![CDATA[21889]]></kp_vote>
+        <imdb_rating><![CDATA[70]]></imdb_rating>
+        <imdb_vote><![CDATA[27992]]></imdb_vote>
+        <premiere><![CDATA[737712.875]]></premiere>
         <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Годзилла 2: Король монстров]]></title_ru>
-        <title_en><![CDATA[Godzilla: King of the Monsters]]></title_en>
+        <title_ru><![CDATA[Малефисента: Владычица тьмы]]></title_ru>
+        <title_en><![CDATA[Maleficent: Mistress of Evil]]></title_en>
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[История рассказывает о героических усилиях криптозоологического агентства «Монарх» по сдерживанию гигантских монстров. В этот раз против могучего Годзиллы выступают Мотра, Родан и ультимативный кайдзю — трехголовый монстр Кинг Гидора. Когда эти древние суперхищники, со временем превратившиеся в полузабытые мифы, восстают снова, чтобы сойтись в схватке, человечеству остается отойти в сторонку и постараться не погибнуть.]]></description>
-        <pictures><![CDATA[3369943,3369942,3369941]]></pictures>
+            <![CDATA[Действие происходит через несколько лет после того, как Малефисента наложила злые чары на принцессу Аврору. Фильм рассказывает про сложную взаимосвязь между темной феей и будущей королевой, о новых союзниках и противниках в деле защиты волшебного леса и магических существах, которые в нем обитают.]]></description>
+        <pictures><![CDATA[3420780,3420779,3420778]]></pictures>
         <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Годзилла 2: Король монстров / Godzilla: King of the Monsters]]></search>
+        <search><![CDATA[Малефисента: Владычица тьмы / Maleficent: Mistress of Evil]]></search>
         <year><![CDATA[2019]]></year>
-        <country><![CDATA[США,Япония]]></country>
-        <director><![CDATA[Майкл Догерти]]></director>
-        <genre><![CDATA[фантастика,фэнтези,боевик,приключения]]></genre>
-        <actor><![CDATA[Кайл Чандлер,Вера Фармига,Милли Бобби Браун,Кэн Ватанабэ,Чжан Цзыи]]></actor>
+        <country><![CDATA[США,Великобритания]]></country>
+        <director><![CDATA[Хоаким Роннинг]]></director>
+        <genre><![CDATA[фэнтези,приключения,семейный]]></genre>
+        <actor><![CDATA[Анджелина Джоли,Эль Фаннинг,Харрис Дикинсон,Мишель Пфайффер,Сэм Райли]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"3741700","tmdb_id":"373571"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="841636">
-        <kp_id><![CDATA[841636]]></kp_id>
-        <query_id><![CDATA[841636]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[18327]]></kp_vote>
-        <imdb_rating><![CDATA[63]]></imdb_rating>
-        <imdb_vote><![CDATA[46598]]></imdb_vote>
-        <premiere><![CDATA[737493.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Дамбо]]></title_ru>
-        <title_en><![CDATA[Dumbo]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Цирковой импресарио Макс Медичи назначает бывшую звезду цирка Холта Фэрриера и его детей Милли и Джо опекунами новорожденного слоненка, чьи невероятно большие уши сразу становятся предметом для постоянных шуток и насмешек коллег Холта по цеху. Внезапно узнав, что Дамбо умеет летать, владелец цирка решает нажиться на необычных способностях слоненка. К делу подключается энергичный предприниматель В. А. Вэндевер, который решает сделать из малыша Дамбо главную звезду своего нового грандиозного развлекательного предприятия «Сказочная страна».]]></description>
-        <pictures><![CDATA[3324841,3324840,3324839]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Дамбо / Dumbo]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Тим Бёртон]]></director>
-        <genre><![CDATA[фэнтези,семейный]]></genre>
-        <actor><![CDATA[Колин Фаррелл,Майкл Китон,Дэнни ДеВито,Ева Грин,Алан Аркин]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"3861390","tmdb_id":"329996"}]]></custom>
+        <custom><![CDATA[{"imdb_id":"4777008","tmdb_id":"420809"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="726805">
@@ -2750,9 +2722,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[17891]]></kp_vote>
+        <kp_vote><![CDATA[21554]]></kp_vote>
         <imdb_rating><![CDATA[66]]></imdb_rating>
-        <imdb_vote><![CDATA[55030]]></imdb_vote>
+        <imdb_vote><![CDATA[58577]]></imdb_vote>
         <premiere><![CDATA[737449.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Красивый, плохой, злой]]></title_ru>
@@ -2781,9 +2753,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[89]]></kp_rating>
-        <kp_vote><![CDATA[117792]]></kp_vote>
+        <kp_vote><![CDATA[125643]]></kp_vote>
         <imdb_rating><![CDATA[95]]></imdb_rating>
-        <imdb_vote><![CDATA[367174]]></imdb_vote>
+        <imdb_vote><![CDATA[388164]]></imdb_vote>
         <premiere><![CDATA[737549.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Чернобыль]]></title_ru>
@@ -2812,9 +2784,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[70]]></kp_rating>
-        <kp_vote><![CDATA[63222]]></kp_vote>
+        <kp_vote><![CDATA[71408]]></kp_vote>
         <imdb_rating><![CDATA[74]]></imdb_rating>
-        <imdb_vote><![CDATA[164516]]></imdb_vote>
+        <imdb_vote><![CDATA[174971]]></imdb_vote>
         <premiere><![CDATA[737459.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Алита: Боевой ангел]]></title_ru>
@@ -2823,7 +2795,7 @@
         <description_short><![CDATA[]]></description_short>
         <description>
             <![CDATA[Действие фильма происходит через 300 лет после Великой войны в XXVI веке. Доктор Идо находит останки женщины-киборга. После починки киборг ничего не помнит, но обнаруживает, что в состоянии пользоваться боевыми приемами киборгов. Начинаются поиски утерянных воспоминаний.]]></description>
-        <pictures><![CDATA[3394309,3394308,3394307]]></pictures>
+        <pictures><![CDATA[3435898,3435897,3394309]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Алита: Боевой ангел / Alita: Battle Angel]]></search>
         <year><![CDATA[2019]]></year>
@@ -2842,10 +2814,10 @@
         <query_id><![CDATA[1005878]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[72]]></kp_rating>
-        <kp_vote><![CDATA[46365]]></kp_vote>
+        <kp_rating><![CDATA[71]]></kp_rating>
+        <kp_vote><![CDATA[53806]]></kp_vote>
         <imdb_rating><![CDATA[70]]></imdb_rating>
-        <imdb_vote><![CDATA[117157]]></imdb_vote>
+        <imdb_vote><![CDATA[143728]]></imdb_vote>
         <premiere><![CDATA[737613.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Король Лев]]></title_ru>
@@ -2868,46 +2840,15 @@
         <custom><![CDATA[{"imdb_id":"6105098","tmdb_id":"420818"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="1009536">
-        <kp_id><![CDATA[1009536]]></kp_id>
-        <query_id><![CDATA[1009536]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[45860]]></kp_vote>
-        <imdb_rating><![CDATA[76]]></imdb_rating>
-        <imdb_vote><![CDATA[176348]]></imdb_vote>
-        <premiere><![CDATA[737558.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Джон Уик 3]]></title_ru>
-        <title_en><![CDATA[John Wick: Chapter 3 - Parabellum]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Суперкиллер Джон Уик после нарушения кодекса тайной гильдии ассасинов получает статус изгоя — экскомьюникадо. За его голову назначена цена в 14 миллионов долларов, и армия самых жестоких профессиональных убийц со всего мира открывает на него кровавую охоту.]]></description>
-        <pictures><![CDATA[3365754,3365753,3365752]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Джон Уик 3 / John Wick: Chapter 3 - Parabellum]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Чад Стахелски]]></director>
-        <genre><![CDATA[боевик,триллер,криминал]]></genre>
-        <actor><![CDATA[Киану Ривз,Холли Берри,Иэн МакШейн,Лоренс Фишбёрн,Марк Дакаскос]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"6146586","tmdb_id":"458156"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="1043758">
         <kp_id><![CDATA[1043758]]></kp_id>
         <query_id><![CDATA[1043758]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[38954]]></kp_vote>
-        <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[37666]]></imdb_vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[53361]]></kp_vote>
+        <imdb_rating><![CDATA[86]]></imdb_rating>
+        <imdb_vote><![CDATA[91643]]></imdb_vote>
         <premiere><![CDATA[737564.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Паразиты]]></title_ru>
@@ -2930,15 +2871,46 @@
         <custom><![CDATA[{"imdb_id":"6751668","tmdb_id":"496243"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1009536">
+        <kp_id><![CDATA[1009536]]></kp_id>
+        <query_id><![CDATA[1009536]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[67]]></kp_rating>
+        <kp_vote><![CDATA[52322]]></kp_vote>
+        <imdb_rating><![CDATA[76]]></imdb_rating>
+        <imdb_vote><![CDATA[198200]]></imdb_vote>
+        <premiere><![CDATA[737558.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Джон Уик 3]]></title_ru>
+        <title_en><![CDATA[John Wick: Chapter 3 - Parabellum]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Суперкиллер Джон Уик после нарушения кодекса тайной гильдии ассасинов получает статус изгоя — экскомьюникадо. За его голову назначена цена в 14 миллионов долларов, и армия самых жестоких профессиональных убийц со всего мира открывает на него кровавую охоту.]]></description>
+        <pictures><![CDATA[3365754,3365753,3365752]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Джон Уик 3 / John Wick: Chapter 3 - Parabellum]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Чад Стахелски]]></director>
+        <genre><![CDATA[боевик,триллер,криминал]]></genre>
+        <actor><![CDATA[Киану Ривз,Холли Берри,Иэн МакШейн,Лоренс Фишбёрн,Марк Дакаскос]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6146586","tmdb_id":"458156"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1012431">
         <kp_id><![CDATA[1012431]]></kp_id>
         <query_id><![CDATA[1012431]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[58]]></kp_rating>
-        <kp_vote><![CDATA[36801]]></kp_vote>
+        <kp_vote><![CDATA[41089]]></kp_vote>
         <imdb_rating><![CDATA[58]]></imdb_rating>
-        <imdb_vote><![CDATA[101459]]></imdb_vote>
+        <imdb_vote><![CDATA[113664]]></imdb_vote>
         <premiere><![CDATA[737579.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Люди Икс: Темный Феникс]]></title_ru>
@@ -2967,9 +2939,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[88]]></kp_rating>
-        <kp_vote><![CDATA[509265]]></kp_vote>
+        <kp_vote><![CDATA[516088]]></kp_vote>
         <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[693130]]></imdb_vote>
+        <imdb_vote><![CDATA[700550]]></imdb_vote>
         <premiere><![CDATA[734767.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[1+1]]></title_ru>
@@ -2998,9 +2970,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[89]]></kp_rating>
-        <kp_vote><![CDATA[472466]]></kp_vote>
+        <kp_vote><![CDATA[477805]]></kp_vote>
         <imdb_rating><![CDATA[88]]></imdb_rating>
-        <imdb_vote><![CDATA[1648869]]></imdb_vote>
+        <imdb_vote><![CDATA[1667944]]></imdb_vote>
         <premiere><![CDATA[728466.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Форрест Гамп]]></title_ru>
@@ -3029,9 +3001,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[86]]></kp_rating>
-        <kp_vote><![CDATA[366969]]></kp_vote>
+        <kp_vote><![CDATA[370083]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[25503]]></imdb_vote>
+        <imdb_vote><![CDATA[25727]]></imdb_vote>
         <premiere><![CDATA[729439.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Достучаться до небес]]></title_ru>
@@ -3060,9 +3032,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[86]]></kp_rating>
-        <kp_vote><![CDATA[348629]]></kp_vote>
+        <kp_vote><![CDATA[352893]]></kp_vote>
         <imdb_rating><![CDATA[89]]></imdb_rating>
-        <imdb_vote><![CDATA[1686273]]></imdb_vote>
+        <imdb_vote><![CDATA[1700392]]></imdb_vote>
         <premiere><![CDATA[728433.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Криминальное чтиво]]></title_ru>
@@ -3091,9 +3063,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[86]]></kp_rating>
-        <kp_vote><![CDATA[343964]]></kp_vote>
+        <kp_vote><![CDATA[348521]]></kp_vote>
         <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[958057]]></imdb_vote>
+        <imdb_vote><![CDATA[968454]]></imdb_vote>
         <premiere><![CDATA[725189.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Назад в будущее]]></title_ru>
@@ -3122,9 +3094,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[342826]]></kp_vote>
+        <kp_vote><![CDATA[346926]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[1240814]]></imdb_vote>
+        <imdb_vote><![CDATA[1253112]]></imdb_vote>
         <premiere><![CDATA[735212.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Джанго освобожденный]]></title_ru>
@@ -3153,9 +3125,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[312872]]></kp_vote>
+        <kp_vote><![CDATA[315610]]></kp_vote>
         <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[409469]]></imdb_vote>
+        <imdb_vote><![CDATA[411933]]></imdb_vote>
         <premiere><![CDATA[729515.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Пятый элемент]]></title_ru>
@@ -3184,9 +3156,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[309448]]></kp_vote>
+        <kp_vote><![CDATA[311878]]></kp_vote>
         <imdb_rating><![CDATA[76]]></imdb_rating>
-        <imdb_vote><![CDATA[554966]]></imdb_vote>
+        <imdb_vote><![CDATA[557942]]></imdb_vote>
         <premiere><![CDATA[734119.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Шерлок Холмс]]></title_ru>
@@ -3201,7 +3173,7 @@
         <year><![CDATA[2009]]></year>
         <country><![CDATA[США,Германия]]></country>
         <director><![CDATA[Гай Ричи]]></director>
-        <genre><![CDATA[боевик,триллер,драма,комедия,криминал,детектив,приключения]]></genre>
+        <genre><![CDATA[боевик,приключения,триллер,драма,комедия,криминал,детектив]]></genre>
         <actor><![CDATA[Роберт Дауни мл.,Джуд Лоу,Рэйчел МакАдамс,Марк Стронг,Эдди Марсан]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
@@ -3215,9 +3187,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[82]]></kp_rating>
-        <kp_vote><![CDATA[304761]]></kp_vote>
+        <kp_vote><![CDATA[307466]]></kp_vote>
         <imdb_rating><![CDATA[76]]></imdb_rating>
-        <imdb_vote><![CDATA[413683]]></imdb_vote>
+        <imdb_vote><![CDATA[419591]]></imdb_vote>
         <premiere><![CDATA[727145.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Один дома]]></title_ru>
@@ -3246,9 +3218,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[85]]></kp_rating>
-        <kp_vote><![CDATA[292853]]></kp_vote>
+        <kp_vote><![CDATA[296081]]></kp_vote>
         <imdb_rating><![CDATA[82]]></imdb_rating>
-        <imdb_vote><![CDATA[500143]]></imdb_vote>
+        <imdb_vote><![CDATA[503727]]></imdb_vote>
         <premiere><![CDATA[729988.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Карты, деньги, два ствола]]></title_ru>
@@ -3271,15 +3243,46 @@
         <custom><![CDATA[{"imdb_id":"0120735","tmdb_id":"100"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1219417">
+        <kp_id><![CDATA[1219417]]></kp_id>
+        <query_id><![CDATA[1219417]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[3889]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[4427]]></imdb_vote>
+        <premiere><![CDATA[737623.875]]></premiere>
+        <type><![CDATA[5]]></type>
+        <title_ru><![CDATA[Дитя погоды]]></title_ru>
+        <title_en><![CDATA[Tenki no ko]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Они встретились посреди Токио под нескончаемым дождем. Он мечтает начать новую жизнь в большом городе. А она никогда не унывает и обладает удивительным даром менять погоду силой мысли. Там, где она — всегда солнце. Вместе они изменят этот мир навсегда.]]></description>
+        <pictures><![CDATA[3431577,3431576,3431575]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Дитя погоды / Tenki no ko]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Япония]]></country>
+        <director><![CDATA[Макото Синкай]]></director>
+        <genre><![CDATA[аниме,мультфильм,мелодрама,фэнтези]]></genre>
+        <actor><![CDATA[Котаро Дайго,Нана Мори,Сюн Огури,Цубаса Хонда,Тиэко Байсё]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1179789">
         <kp_id><![CDATA[1179789]]></kp_id>
         <query_id><![CDATA[1179789]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[1112]]></kp_vote>
-        <imdb_rating><![CDATA[89]]></imdb_rating>
-        <imdb_vote><![CDATA[4809]]></imdb_vote>
+        <kp_vote><![CDATA[1363]]></kp_vote>
+        <imdb_rating><![CDATA[88]]></imdb_rating>
+        <imdb_vote><![CDATA[5908]]></imdb_vote>
         <premiere><![CDATA[737433.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Обещанный Неверленд]]></title_ru>
@@ -3308,9 +3311,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[1090]]></kp_vote>
-        <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[2792]]></imdb_vote>
+        <kp_vote><![CDATA[1331]]></kp_vote>
+        <imdb_rating><![CDATA[84]]></imdb_rating>
+        <imdb_vote><![CDATA[3191]]></imdb_vote>
         <premiere><![CDATA[737430.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Дороро]]></title_ru>
@@ -3338,10 +3341,10 @@
         <query_id><![CDATA[1220920]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[82]]></kp_rating>
-        <kp_vote><![CDATA[670]]></kp_vote>
-        <imdb_rating><![CDATA[90]]></imdb_rating>
-        <imdb_vote><![CDATA[4328]]></imdb_vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[1233]]></kp_vote>
+        <imdb_rating><![CDATA[89]]></imdb_rating>
+        <imdb_vote><![CDATA[6162]]></imdb_vote>
         <premiere><![CDATA[737519.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Клинок, рассекающий демонов]]></title_ru>
@@ -3369,9 +3372,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[68]]></kp_rating>
-        <kp_vote><![CDATA[625]]></kp_vote>
+        <kp_vote><![CDATA[660]]></kp_vote>
         <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[381]]></imdb_vote>
+        <imdb_vote><![CDATA[438]]></imdb_vote>
         <premiere><![CDATA[737463.875]]></premiere>
         <type><![CDATA[5]]></type>
         <title_ru><![CDATA[Код Гиас: Лелуш Воскресший]]></title_ru>
@@ -3399,10 +3402,10 @@
         <query_id><![CDATA[1232568]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[75]]></kp_rating>
-        <kp_vote><![CDATA[529]]></kp_vote>
-        <imdb_rating><![CDATA[73]]></imdb_rating>
-        <imdb_vote><![CDATA[373]]></imdb_vote>
+        <kp_rating><![CDATA[74]]></kp_rating>
+        <kp_vote><![CDATA[594]]></kp_vote>
+        <imdb_rating><![CDATA[72]]></imdb_rating>
+        <imdb_vote><![CDATA[461]]></imdb_vote>
         <premiere><![CDATA[737567.875]]></premiere>
         <type><![CDATA[5]]></type>
         <title_ru><![CDATA[Промар]]></title_ru>
@@ -3431,9 +3434,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[440]]></kp_vote>
-        <imdb_rating><![CDATA[79]]></imdb_rating>
-        <imdb_vote><![CDATA[1106]]></imdb_vote>
+        <kp_vote><![CDATA[489]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[1222]]></imdb_vote>
         <premiere><![CDATA[737435.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Госпожа Кагуя: В любви как на войне]]></title_ru>
@@ -3456,15 +3459,46 @@
         <custom><![CDATA[{"imdb_id":"9522300","tmdb_id":"83121"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1243061">
+        <kp_id><![CDATA[1243061]]></kp_id>
+        <query_id><![CDATA[1243061]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[66]]></kp_rating>
+        <kp_vote><![CDATA[472]]></kp_vote>
+        <imdb_rating><![CDATA[66]]></imdb_rating>
+        <imdb_vote><![CDATA[416]]></imdb_vote>
+        <premiere><![CDATA[737562.875]]></premiere>
+        <type><![CDATA[5]]></type>
+        <title_ru><![CDATA[Дети моря]]></title_ru>
+        <title_en><![CDATA[Kaijuu no Kodomo]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Однажды в океанариум, в котором работает отец Руки, привозят двух странных мальчиков — Уми и Сору. Они родились и выросли в море, и обладают сверхъестественными способностями. Между тем во всем мире происходит удивительное: из океанариумов исчезает вся живность, морские существа появляются в необычных для себя местах обитания. Рука пытается выяснить, как с этим связаны ее новые друзья.]]></description>
+        <pictures><![CDATA[3369933,3369932,3369931]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Дети моря / Kaijuu no Kodomo]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Япония]]></country>
+        <director><![CDATA[Аюму Ватанабэ]]></director>
+        <genre><![CDATA[аниме,мультфильм,фэнтези,приключения]]></genre>
+        <actor><![CDATA[Мана Асида,Хииро Исибаси,Сэисю Урагами,Уин Морисаки,Ю Аои]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1240735">
         <kp_id><![CDATA[1240735]]></kp_id>
         <query_id><![CDATA[1240735]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[275]]></kp_vote>
-        <imdb_rating><![CDATA[68]]></imdb_rating>
-        <imdb_vote><![CDATA[453]]></imdb_vote>
+        <kp_rating><![CDATA[68]]></kp_rating>
+        <kp_vote><![CDATA[311]]></kp_vote>
+        <imdb_rating><![CDATA[67]]></imdb_rating>
+        <imdb_vote><![CDATA[511]]></imdb_vote>
         <premiere><![CDATA[737435.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Домашняя девушка]]></title_ru>
@@ -3492,10 +3526,10 @@
         <query_id><![CDATA[1249511]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[150]]></kp_vote>
+        <kp_rating><![CDATA[77]]></kp_rating>
+        <kp_vote><![CDATA[280]]></kp_vote>
         <imdb_rating><![CDATA[83]]></imdb_rating>
-        <imdb_vote><![CDATA[1582]]></imdb_vote>
+        <imdb_vote><![CDATA[2180]]></imdb_vote>
         <premiere><![CDATA[737609.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Доктор Стоун]]></title_ru>
@@ -3518,76 +3552,15 @@
         <custom><![CDATA[{"imdb_id":"9679542","tmdb_id":"86031"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="1263137">
-        <kp_id><![CDATA[1263137]]></kp_id>
-        <query_id><![CDATA[1263137]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[69]]></kp_rating>
-        <kp_vote><![CDATA[141]]></kp_vote>
-        <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[214]]></imdb_vote>
-        <premiere><![CDATA[737523.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Заботливая 800-летняя жена!]]></title_ru>
-        <title_en><![CDATA[Sewayaki Kitsune no Senko-san]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Заботливая 800-летняя жена! / Sewayaki Kitsune no Senko-san]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[Томоаки Косида]]></director>
-        <genre><![CDATA[аниме,мультфильм,мелодрама,комедия,фэнтези]]></genre>
-        <actor><![CDATA[Дзюнъити Сувабэ,Адзуми Ваки,Аянэ Сакура,Маая Утида,Эри Китамура]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"9883346","tmdb_id":"87461"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1274280">
-        <kp_id><![CDATA[1274280]]></kp_id>
-        <query_id><![CDATA[1274280]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[138]]></kp_vote>
-        <imdb_rating><![CDATA[90]]></imdb_rating>
-        <imdb_vote><![CDATA[1681]]></imdb_vote>
-        <premiere><![CDATA[737612.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Сага о Винланде]]></title_ru>
-        <title_en><![CDATA[Vinland Saga]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн — сын одного из величайших викингов. Вот только вырос мальчик без отца, ведь тот погиб на поле боя. Желая отомстить, Торфинн поклялся убить виновного. Однако юноше еще только предстоит овладеть искусством битвы.]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Сага о Винланде / Vinland Saga]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[Сюхэй Ябута]]></director>
-        <genre><![CDATA[аниме,мультфильм,боевик,история,приключения]]></genre>
-        <actor><![CDATA[Юто Уэмура,Мицухиро Итики,Рёта Такэути,Наоя Утида,Синъя Такахаси]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"10233448","tmdb_id":"88803"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="566602">
         <kp_id><![CDATA[566602]]></kp_id>
         <query_id><![CDATA[566602]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[86]]></kp_rating>
-        <kp_vote><![CDATA[30536]]></kp_vote>
+        <kp_vote><![CDATA[30715]]></kp_vote>
         <imdb_rating><![CDATA[87]]></imdb_rating>
-        <imdb_vote><![CDATA[102523]]></imdb_vote>
+        <imdb_vote><![CDATA[103210]]></imdb_vote>
         <premiere><![CDATA[731507.8333333334]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Топ Гир]]></title_ru>
@@ -3616,9 +3589,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[88]]></kp_rating>
-        <kp_vote><![CDATA[7054]]></kp_vote>
+        <kp_vote><![CDATA[7186]]></kp_vote>
         <imdb_rating><![CDATA[87]]></imdb_rating>
-        <imdb_vote><![CDATA[56048]]></imdb_vote>
+        <imdb_vote><![CDATA[56789]]></imdb_vote>
         <premiere><![CDATA[736650.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Гранд тур]]></title_ru>
@@ -3647,9 +3620,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[3764]]></kp_vote>
+        <kp_vote><![CDATA[3813]]></kp_vote>
         <imdb_rating><![CDATA[81]]></imdb_rating>
-        <imdb_vote><![CDATA[5603]]></imdb_vote>
+        <imdb_vote><![CDATA[5682]]></imdb_vote>
         <premiere><![CDATA[736234.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Адам портит все]]></title_ru>
@@ -3678,9 +3651,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[2334]]></kp_vote>
+        <kp_vote><![CDATA[2358]]></kp_vote>
         <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[13997]]></imdb_vote>
+        <imdb_vote><![CDATA[14118]]></imdb_vote>
         <premiere><![CDATA[731830.8333333334]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Эллен: Шоу Эллен ДеДженерес]]></title_ru>
@@ -3709,9 +3682,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[2065]]></kp_vote>
+        <kp_vote><![CDATA[2088]]></kp_vote>
         <imdb_rating><![CDATA[67]]></imdb_rating>
-        <imdb_vote><![CDATA[12729]]></imdb_vote>
+        <imdb_vote><![CDATA[12910]]></imdb_vote>
         <premiere><![CDATA[731605.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Джимми Киммел в прямом эфире]]></title_ru>
@@ -3740,9 +3713,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[1906]]></kp_vote>
+        <kp_vote><![CDATA[1936]]></kp_vote>
         <imdb_rating><![CDATA[74]]></imdb_rating>
-        <imdb_vote><![CDATA[14571]]></imdb_vote>
+        <imdb_vote><![CDATA[14761]]></imdb_vote>
         <premiere><![CDATA[735645.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Ночное шоу с Джимми Фэллоном]]></title_ru>
@@ -3771,9 +3744,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[82]]></kp_rating>
-        <kp_vote><![CDATA[1730]]></kp_vote>
+        <kp_vote><![CDATA[1767]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[8974]]></imdb_vote>
+        <imdb_vote><![CDATA[9121]]></imdb_vote>
         <premiere><![CDATA[733093.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Шоу Грэма Нортона]]></title_ru>
@@ -3801,9 +3774,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[1696]]></kp_vote>
+        <kp_vote><![CDATA[1751]]></kp_vote>
         <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[5364]]></imdb_vote>
+        <imdb_vote><![CDATA[6153]]></imdb_vote>
         <premiere><![CDATA[733409.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Между двумя папоротниками с Заком Галифианакисом]]></title_ru>
@@ -3833,9 +3806,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[1494]]></kp_vote>
+        <kp_vote><![CDATA[1510]]></kp_vote>
         <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[12002]]></imdb_vote>
+        <imdb_vote><![CDATA[12079]]></imdb_vote>
         <premiere><![CDATA[733832.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Поздней ночью с Джимми Фэллоном]]></title_ru>
@@ -3863,9 +3836,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[69]]></kp_rating>
-        <kp_vote><![CDATA[1217]]></kp_vote>
+        <kp_vote><![CDATA[1230]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[7806]]></imdb_vote>
+        <imdb_vote><![CDATA[7934]]></imdb_vote>
         <premiere><![CDATA[730573.8333333334]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Али Джи шоу]]></title_ru>
@@ -3893,9 +3866,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[82]]></kp_rating>
-        <kp_vote><![CDATA[33753]]></kp_vote>
+        <kp_vote><![CDATA[36613]]></kp_vote>
         <imdb_rating><![CDATA[86]]></imdb_rating>
-        <imdb_vote><![CDATA[66749]]></imdb_vote>
+        <imdb_vote><![CDATA[70931]]></imdb_vote>
         <premiere><![CDATA[737497.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Любовь, смерть и роботы]]></title_ru>
@@ -3917,46 +3890,15 @@
         <custom><![CDATA[{"imdb_id":"9561862","tmdb_id":"86831"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="1047996">
-        <kp_id><![CDATA[1047996]]></kp_id>
-        <query_id><![CDATA[1047996]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[56]]></kp_rating>
-        <kp_vote><![CDATA[4146]]></kp_vote>
-        <imdb_rating><![CDATA[47]]></imdb_rating>
-        <imdb_vote><![CDATA[2435]]></imdb_vote>
-        <premiere><![CDATA[737439.875]]></premiere>
-        <type><![CDATA[4]]></type>
-        <title_ru><![CDATA[Королевский корги]]></title_ru>
-        <title_en><![CDATA[The Queen's Corgi]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Любимая порода собак у очень богатых и влиятельных людей — это корги. Маленькие собачки полностью погружены в жизнь своих больших хозяев. Спасаясь от политических интриг, любимец Британской Королевы вынужден покинуть Букингемский дворец. Теперь ему предстоит не только познакомиться с тайной жизнью улиц Лондона, но и доказать, что он настоящий Королевский Корги…]]></description>
-        <pictures><![CDATA[3302829,3302828,3302827]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Королевский корги / The Queen's Corgi]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Бельгия]]></country>
-        <director><![CDATA[Винсент Кестелут,Бен Стассен]]></director>
-        <genre><![CDATA[мультфильм,комедия,семейный]]></genre>
-        <actor><![CDATA[Расти Шэклфорд,Джо Уайатт,Leo Barakat,Джейн Алан,Дино Андраде]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"6563576","tmdb_id":"509730"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="1040441">
         <kp_id><![CDATA[1040441]]></kp_id>
         <query_id><![CDATA[1040441]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[66]]></kp_rating>
-        <kp_vote><![CDATA[3208]]></kp_vote>
-        <imdb_rating><![CDATA[65]]></imdb_rating>
-        <imdb_vote><![CDATA[4594]]></imdb_vote>
+        <kp_rating><![CDATA[65]]></kp_rating>
+        <kp_vote><![CDATA[6416]]></kp_vote>
+        <imdb_rating><![CDATA[64]]></imdb_rating>
+        <imdb_vote><![CDATA[10015]]></imdb_vote>
         <premiere><![CDATA[737637.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Angry Birds 2 в кино]]></title_ru>
@@ -3979,15 +3921,170 @@
         <custom><![CDATA[{"imdb_id":"6095472","tmdb_id":"454640"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="505841">
+        <kp_id><![CDATA[505841]]></kp_id>
+        <query_id><![CDATA[505841]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[63]]></kp_rating>
+        <kp_vote><![CDATA[6408]]></kp_vote>
+        <imdb_rating><![CDATA[59]]></imdb_rating>
+        <imdb_vote><![CDATA[7537]]></imdb_vote>
+        <premiere><![CDATA[737706.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Семейка Аддамс]]></title_ru>
+        <title_en><![CDATA[The Addams Family]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Папа любит долгие прогулки в ненастную погоду. Мама считает, что черный цвет самый яркий. У детей кладбище — любимая площадка для игр. Бабушка выпивает пару капель яда перед сном. Вы все еще думаете, что ваши родственники странные? Знакомьтесь — семейка Аддамс.]]></description>
+        <pictures><![CDATA[3400278,3400277,3400276]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Семейка Аддамс / The Addams Family]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Канада,США]]></country>
+        <director><![CDATA[Грег Тирнан,Конрад Вернон]]></director>
+        <genre><![CDATA[мультфильм,ужасы,фэнтези,комедия,семейный]]></genre>
+        <actor><![CDATA[Оскар Айзек,Шарлиз Терон,Хлоя Грейс Морец,Финн Вулфард,Ник Кролл]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1620981","tmdb_id":"481084"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1263399">
+        <kp_id><![CDATA[1263399]]></kp_id>
+        <query_id><![CDATA[1263399]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[5136]]></kp_vote>
+        <imdb_rating><![CDATA[88]]></imdb_rating>
+        <imdb_vote><![CDATA[1893]]></imdb_vote>
+        <premiere><![CDATA[737703.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Первобытный]]></title_ru>
+        <title_en><![CDATA[Primal]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Доисторические времена. Чуть было не став обедом гигантского крокодила, первобытный человек возвращается с рыбалки к родной пещере прямо в тот момент, когда стая хищных динозавров съедает его женщину и детей. Вскоре осиротевший мужчина неожиданно для себя объединяется с тираннозавром, пытающимся безуспешно защитить детенышей от тех же хищников, что убили и его семью. Это окажется началом необычной дружбы в мире, где все, что шевелится, или станет твоей добычей, или попытается тебя сожрать.]]></description>
+        <pictures><![CDATA[3446090,3446089,3446088]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Первобытный / Primal]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Генндий Тартаковский]]></director>
+        <genre><![CDATA[мультфильм,боевик]]></genre>
+        <actor><![CDATA[Аарон ЛаПланте,Том Кенни,Джон Олсон]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1047996">
+        <kp_id><![CDATA[1047996]]></kp_id>
+        <query_id><![CDATA[1047996]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[56]]></kp_rating>
+        <kp_vote><![CDATA[5125]]></kp_vote>
+        <imdb_rating><![CDATA[47]]></imdb_rating>
+        <imdb_vote><![CDATA[2946]]></imdb_vote>
+        <premiere><![CDATA[737439.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Королевский корги]]></title_ru>
+        <title_en><![CDATA[The Queen's Corgi]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Любимая порода собак у очень богатых и влиятельных людей — это корги. Маленькие собачки полностью погружены в жизнь своих больших хозяев. Спасаясь от политических интриг, любимец Британской Королевы вынужден покинуть Букингемский дворец. Теперь ему предстоит не только познакомиться с тайной жизнью улиц Лондона, но и доказать, что он настоящий Королевский Корги…]]></description>
+        <pictures><![CDATA[3302829,3302828,3302827]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Королевский корги / The Queen's Corgi]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Бельгия]]></country>
+        <director><![CDATA[Винсент Кестелут,Бен Стассен]]></director>
+        <genre><![CDATA[мультфильм,комедия,семейный]]></genre>
+        <actor><![CDATA[Расти Шэклфорд,Джо Уайатт,Leo Barakat,Джейн Алан,Дино Андраде]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6563576","tmdb_id":"509730"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1112514">
+        <kp_id><![CDATA[1112514]]></kp_id>
+        <query_id><![CDATA[1112514]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[74]]></kp_rating>
+        <kp_vote><![CDATA[4917]]></kp_vote>
+        <imdb_rating><![CDATA[82]]></imdb_rating>
+        <imdb_vote><![CDATA[987]]></imdb_vote>
+        <premiere><![CDATA[737756.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Харли Квинн]]></title_ru>
+        <title_en><![CDATA[Harley Quinn]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Харли Квинн разорвала отношения с Джокером и теперь пытается самостоятельно стать королевой преступного мира Готэма.]]></description>
+        <pictures><![CDATA[3325926]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Харли Квинн / Harley Quinn]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Сесилия Аранович,Мэтт Гарофало,Фрэнк Марино]]></director>
+        <genre><![CDATA[мультфильм,фантастика,фэнтези,боевик,комедия,криминал,детектив,приключения]]></genre>
+        <actor><![CDATA[Кейли Куоко,Лэйк Белл,Алан Тьюдик,Дидрих Бадер,Джим Рэш]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="957887">
+        <kp_id><![CDATA[957887]]></kp_id>
+        <query_id><![CDATA[957887]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[84]]></kp_rating>
+        <kp_vote><![CDATA[4574]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[19591]]></imdb_vote>
+        <premiere><![CDATA[737735.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Клаус]]></title_ru>
+        <title_en><![CDATA[Klaus]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Владелец почтовой империи, чтобы научить ленивого отпрыска по имени Джеспер уму-разуму, отправляет его на крайний север в город Смиренсбург. Тот должен организовать там почтовое отделение и за год обработать не менее 6000 писем. Прибыв на место, парень оказывается в зоне боевых действий: два семейных клана, так уж исторически сложилось, питают взаимную ненависть и свято чтут многовековую традицию при любой возможности мутузить друг друга и делать пакости. Разумеется, в такой обстановке не до писем, и почтовое отделение давно превратилось в курятник. Уже практически отчаявшись, Джеспер посещает лесного отшельника по имени Клаус, и их знакомство положит начало удивительным событиям.]]></description>
+        <pictures><![CDATA[3441015,3441014,3441013]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Клаус / Klaus]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Испания]]></country>
+        <director><![CDATA[Серхио Паблос]]></director>
+        <genre><![CDATA[мультфильм,семейный,комедия,приключения]]></genre>
+        <actor><![CDATA[Джейсон Шварцман,Дж.К. Симмонс,Джоан Кьюсак,Рашида Джонс,Уилл Сассо]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1118427">
         <kp_id><![CDATA[1118427]]></kp_id>
         <query_id><![CDATA[1118427]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[69]]></kp_rating>
-        <kp_vote><![CDATA[2101]]></kp_vote>
+        <kp_vote><![CDATA[2409]]></kp_vote>
         <imdb_rating><![CDATA[67]]></imdb_rating>
-        <imdb_vote><![CDATA[8405]]></imdb_vote>
+        <imdb_vote><![CDATA[9967]]></imdb_vote>
         <premiere><![CDATA[737518.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Потерянное звено]]></title_ru>
@@ -4010,138 +4107,15 @@
         <custom><![CDATA[{"imdb_id":"6348138","tmdb_id":"458253"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="1041723">
-        <kp_id><![CDATA[1041723]]></kp_id>
-        <query_id><![CDATA[1041723]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[1963]]></kp_vote>
-        <imdb_rating><![CDATA[58]]></imdb_rating>
-        <imdb_vote><![CDATA[6202]]></imdb_vote>
-        <premiere><![CDATA[737495.875]]></premiere>
-        <type><![CDATA[4]]></type>
-        <title_ru><![CDATA[Волшебный парк Джун]]></title_ru>
-        <title_en><![CDATA[Wonder Park]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Однажды фантазерка Джун обнаруживает, что придуманный ею чудесный Парк развлечений реален! Но его существование под угрозой, и Джун нужен план спасения ее Мечты. Помогут девочке ее новые друзья — волшебные звери Парка.]]></description>
-        <pictures><![CDATA[3288617]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Волшебный парк Джун / Wonder Park]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Испания,США]]></country>
-        <director><![CDATA[Dylan Brown]]></director>
-        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[София Мали,Дженнифер Гарнер,Кен Хадсон Кэмпбелл,Кенан Томпсон,Мила Кунис]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"6428676","tmdb_id":"400157"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1236282">
-        <kp_id><![CDATA[1236282]]></kp_id>
-        <query_id><![CDATA[1236282]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[1277]]></kp_vote>
-        <imdb_rating><![CDATA[72]]></imdb_rating>
-        <imdb_vote><![CDATA[5387]]></imdb_vote>
-        <premiere><![CDATA[737513.875]]></premiere>
-        <type><![CDATA[2]]></type>
-        <title_ru><![CDATA[Бэтмен против Черепашек-ниндзя]]></title_ru>
-        <title_en><![CDATA[Batman vs Teenage Mutant Ninja Turtles]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Бэтмен объединяется с Черепашками-ниндзя, чтобы остановить Шредера и Ра’с аль Гула.]]></description>
-        <pictures><![CDATA[3375906,3349228,3349227]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Бэтмен против Черепашек-ниндзя / Batman vs Teenage Mutant Ninja Turtles]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Jake Castorena]]></director>
-        <genre><![CDATA[мультфильм,фантастика,фэнтези,боевик,комедия,криминал,приключения]]></genre>
-        <actor><![CDATA[Трой Бэйкер,Эрик Бауза,Даррен Крисс,Кайл Муни,Барон Вон]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"9775360","tmdb_id":"581997"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1047167">
-        <kp_id><![CDATA[1047167]]></kp_id>
-        <query_id><![CDATA[1047167]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[64]]></kp_rating>
-        <kp_vote><![CDATA[961]]></kp_vote>
-        <imdb_rating><![CDATA[68]]></imdb_rating>
-        <imdb_vote><![CDATA[8121]]></imdb_vote>
-        <premiere><![CDATA[737433.875]]></premiere>
-        <type><![CDATA[2]]></type>
-        <title_ru><![CDATA[Господство Суперменов]]></title_ru>
-        <title_en><![CDATA[Reign of the Supermen]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[После смерти Супермена несколько новых людей заявляют о себе как о возможных преемниках.]]></description>
-        <pictures><![CDATA[]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Господство Суперменов / Reign of the Supermen]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Сэм Лью]]></director>
-        <genre><![CDATA[мультфильм,фантастика,боевик]]></genre>
-        <actor><![CDATA[Джерри О'Коннелл,Ребекка Ромейн,Рэйн Уилсон,Патрик Фабиан,Чарльз Халфорд]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"7167686","tmdb_id":"487672"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1189822">
-        <kp_id><![CDATA[1189822]]></kp_id>
-        <query_id><![CDATA[1189822]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[834]]></kp_vote>
-        <imdb_rating><![CDATA[70]]></imdb_rating>
-        <imdb_vote><![CDATA[7267]]></imdb_vote>
-        <premiere><![CDATA[737624.875]]></premiere>
-        <type><![CDATA[2]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[Batman: Hush]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description><![CDATA[]]></description>
-        <pictures><![CDATA[3407269,3407268,3407267]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Batman: Hush]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Justin Copeland]]></director>
-        <genre><![CDATA[мультфильм,фантастика,боевик,приключения]]></genre>
-        <actor><![CDATA[Джейсон О'Мара,Дженнифер Моррисон,Стюарт Аллан,Сачие Алессио,Джеффри Аренд]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"8752440","tmdb_id":"537056"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="1147693">
         <kp_id><![CDATA[1147693]]></kp_id>
         <query_id><![CDATA[1147693]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[22708]]></kp_vote>
+        <kp_vote><![CDATA[24791]]></kp_vote>
         <imdb_rating><![CDATA[83]]></imdb_rating>
-        <imdb_vote><![CDATA[76813]]></imdb_vote>
+        <imdb_vote><![CDATA[81113]]></imdb_vote>
         <premiere><![CDATA[737434.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Половое воспитание]]></title_ru>
@@ -4149,8 +4123,8 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[Отис — стеснительный и необщительный подросток-девственник, который живет со своей мамой — секс-терапевтом. Объединившись с одноклассницей Мэйв, Отис проводит сеансы терапии для своих сверстников, чтобы помочь им разобраться с неловкими и запутанными ситуациями.]]></description>
-        <pictures><![CDATA[3342671,3342670,3321447]]></pictures>
+            <![CDATA[Отис — стеснительный и необщительный подросток-девственник, который живет с мамой, секс-терапевтом. Объединившись с одноклассницей Мэйв, Отис проводит сеансы терапии для своих сверстников, чтобы помочь им разобраться с неловкими и запутанными ситуациями.]]></description>
+        <pictures><![CDATA[3439631,3439630,3439629]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Половое воспитание / Sex Education]]></search>
         <year><![CDATA[2019]]></year>
@@ -4170,9 +4144,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[18805]]></kp_vote>
+        <kp_vote><![CDATA[23389]]></kp_vote>
         <imdb_rating><![CDATA[88]]></imdb_rating>
-        <imdb_vote><![CDATA[92295]]></imdb_vote>
+        <imdb_vote><![CDATA[109520]]></imdb_vote>
         <premiere><![CDATA[737620.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Пацаны]]></title_ru>
@@ -4180,7 +4154,7 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[Действие сериала разворачивается в мире, где существуют супергерои. Именно они являются настоящими звездами. Их все знают и обожают. Но за идеальным фасадом скрывается гораздо более мрачный мир наркотиков и секса, а большинство героев — в жизни не самые приятные люди. Для контроля за супергероями ЦРУ создает специальный отряд, неофициально известный как «Пацаны», суровые члены которого всегда готовы поставить зазнавшегося героя на место самым жестоким способом.]]></description>
+            <![CDATA[Действие сериала разворачивается в мире, где существуют супергерои. Именно они являются настоящими звездами. Их все знают и обожают. Но за идеальным фасадом скрывается гораздо более мрачный мир наркотиков и секса, а большинство героев — в жизни не самые приятные люди. Противостоит им отряд, неофициально известный как «Пацаны».]]></description>
         <pictures><![CDATA[3400103,3400102,3400101]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Пацаны / The Boys]]></search>
@@ -4201,9 +4175,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[72]]></kp_rating>
-        <kp_vote><![CDATA[16005]]></kp_vote>
+        <kp_vote><![CDATA[19062]]></kp_vote>
         <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[4648]]></imdb_vote>
+        <imdb_vote><![CDATA[4956]]></imdb_vote>
         <premiere><![CDATA[737462.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Чудотворцы]]></title_ru>
@@ -4211,14 +4185,14 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[Небесная канцелярия Бога — масштабный офис с множеством отделов и сотрудников, работающих в атмосфере цейтнота и многозадачности. Есть даже HR или же напоминающий службу технической поддержки отдел обработки молитв. Именно его служащие, ангелы Элиза и Крэйг, берутся за спасение Земли, когда приунывший Господь вдруг решает ее погубить.Теперь у ангелов есть две недели, чтобы соединить несоединимое — двух одиноких людей в пару — и доказать, что человечество вовсе не безнадежно и достойно существования.]]></description>
+            <![CDATA[Небесная канцелярия Бога — масштабный офис с множеством отделов и сотрудников, работающих в атмосфере цейтнота и многозадачности. Есть даже HR и напоминающий службу технической поддержки отдел обработки молитв. Именно его служащие, ангелы Элиза и Крэйг, берутся за спасение Земли, когда приунывший Господь вдруг решает ее погубить.Теперь у ангелов есть две недели, чтобы соединить несоединимое — двух одиноких людей в пару — и доказать, что человечество вовсе не безнадежно и достойно существования.]]></description>
         <pictures><![CDATA[3326254,3326253,3326252]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Чудотворцы / Miracle Workers]]></search>
         <year><![CDATA[2019]]></year>
         <country><![CDATA[США]]></country>
         <director><![CDATA[Райан Кейс,Морис Мэрэбл,Йорма Такконе]]></director>
-        <genre><![CDATA[комедия]]></genre>
+        <genre><![CDATA[комедия,фэнтези]]></genre>
         <actor><![CDATA[Дэниэл Рэдклифф,Джеральдин Висванатхан,Каран Сони,Джон Басс,Саша Компере]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
@@ -4232,9 +4206,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[14822]]></kp_vote>
+        <kp_vote><![CDATA[16642]]></kp_vote>
         <imdb_rating><![CDATA[82]]></imdb_rating>
-        <imdb_vote><![CDATA[38394]]></imdb_vote>
+        <imdb_vote><![CDATA[41706]]></imdb_vote>
         <premiere><![CDATA[737574.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Благие знамения]]></title_ru>
@@ -4263,9 +4237,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[12157]]></kp_vote>
+        <kp_vote><![CDATA[15530]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[28031]]></imdb_vote>
+        <imdb_vote><![CDATA[32158]]></imdb_vote>
         <premiere><![CDATA[737590.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Эйфория]]></title_ru>
@@ -4288,15 +4262,46 @@
         <custom><![CDATA[{"imdb_id":"8772296","tmdb_id":"85552"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1197956">
+        <kp_id><![CDATA[1197956]]></kp_id>
+        <query_id><![CDATA[1197956]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[83]]></kp_rating>
+        <kp_vote><![CDATA[12364]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[4108]]></imdb_vote>
+        <premiere><![CDATA[737625.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Почему женщины убивают]]></title_ru>
+        <title_en><![CDATA[Why Women Kill]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Сериал расскажет о трех женщинах, каждая из которых сталкивается с изменой в браке: о домохозяйке 60-х, светской львице 80-х и адвокате из наших дней.]]></description>
+        <pictures><![CDATA[3439176,3439175,3439174]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Почему женщины убивают / Why Women Kill]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дэвид Гроссман,Дэвид Уоррен,Марк Уэбб]]></director>
+        <genre><![CDATA[драма,комедия,криминал]]></genre>
+        <actor><![CDATA[Люси Лью,Джиннифер Гудвин,Кирби Хауэлл-Баптист,Александра Даддарио,Сэм Джагер]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"9054904","tmdb_id":"87428"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="463401">
         <kp_id><![CDATA[463401]]></kp_id>
         <query_id><![CDATA[463401]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[75]]></kp_rating>
-        <kp_vote><![CDATA[10836]]></kp_vote>
+        <kp_vote><![CDATA[11581]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[83921]]></imdb_vote>
+        <imdb_vote><![CDATA[87398]]></imdb_vote>
         <premiere><![CDATA[737469.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Академия «Амбрелла»]]></title_ru>
@@ -4325,9 +4330,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[7914]]></kp_vote>
+        <kp_vote><![CDATA[8481]]></kp_vote>
         <imdb_rating><![CDATA[79]]></imdb_rating>
-        <imdb_vote><![CDATA[46915]]></imdb_vote>
+        <imdb_vote><![CDATA[49362]]></imdb_vote>
         <premiere><![CDATA[737455.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Жизни матрешки]]></title_ru>
@@ -4356,9 +4361,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[7102]]></kp_vote>
+        <kp_vote><![CDATA[8173]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[5073]]></imdb_vote>
+        <imdb_vote><![CDATA[5433]]></imdb_vote>
         <premiere><![CDATA[737439.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Уэйн]]></title_ru>
@@ -4381,15 +4386,46 @@
         <custom><![CDATA[{"imdb_id":"7765404","tmdb_id":"84231"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1118138">
+        <kp_id><![CDATA[1118138]]></kp_id>
+        <query_id><![CDATA[1118138]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[7517]]></kp_vote>
+        <imdb_rating><![CDATA[91]]></imdb_rating>
+        <imdb_vote><![CDATA[48105]]></imdb_vote>
+        <premiere><![CDATA[737739.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Мандалорец]]></title_ru>
+        <title_en><![CDATA[The Mandalorian]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Одинокий мандалорец-наемник живет на краю обитаемой галактики, куда не дотягивается закон Новой Республики. Представитель некогда могучей расы благородных воинов теперь вынужден влачить жалкое существование среди отбросов общества.]]></description>
+        <pictures><![CDATA[3445762,3445761,3445760]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Мандалорец / The Mandalorian]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дебора Чоу,Рик Фамуйива,Дэйв Филони]]></director>
+        <genre><![CDATA[фантастика,боевик,приключения]]></genre>
+        <actor><![CDATA[Педро Паскаль,Кайл Пацек,Джина Карано,Бернард Баллен,Александра Гилман]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"8111088","tmdb_id":"82856"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1138780">
         <kp_id><![CDATA[1138780]]></kp_id>
         <query_id><![CDATA[1138780]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[5782]]></kp_vote>
-        <imdb_rating><![CDATA[79]]></imdb_rating>
-        <imdb_vote><![CDATA[11506]]></imdb_vote>
+        <kp_vote><![CDATA[7121]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[13610]]></imdb_vote>
         <premiere><![CDATA[737574.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Болотная тварь]]></title_ru>
@@ -4412,108 +4448,15 @@
         <custom><![CDATA[{"imdb_id":"8362852","tmdb_id":"79240"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="1173629">
-        <kp_id><![CDATA[1173629]]></kp_id>
-        <query_id><![CDATA[1173629]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[4572]]></kp_vote>
-        <imdb_rating><![CDATA[76]]></imdb_rating>
-        <imdb_vote><![CDATA[5715]]></imdb_vote>
-        <premiere><![CDATA[737431.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Проект «Синяя книга»]]></title_ru>
-        <title_en><![CDATA[Project Blue Book]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Пятидесятые годы прошлого века. Астроном Дж. Аллен Хинек и капитан ВВС США Майкл Квинн разбираются со свидетельствами появления НЛО. В ходе расследования они натыкаются на правительственный заговор, скрывающий от населения правду.]]></description>
-        <pictures><![CDATA[3309786,3309785,3309784]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Проект «Синяя книга» / Project Blue Book]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США,Канада]]></country>
-        <director><![CDATA[Норма Бэйли,Томас Картер,Алекс Грейвз]]></director>
-        <genre><![CDATA[фантастика,триллер,драма,детектив]]></genre>
-        <actor><![CDATA[Эйдан Гиллен,Майкл Маларки,Лаура Меннелл,Ксения Соло,Нил МакДонаф]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"6632666","tmdb_id":"79649"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1179113">
-        <kp_id><![CDATA[1179113]]></kp_id>
-        <query_id><![CDATA[1179113]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[74]]></kp_rating>
-        <kp_vote><![CDATA[4315]]></kp_vote>
-        <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[12140]]></imdb_vote>
-        <premiere><![CDATA[737502.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Притворство]]></title_ru>
-        <title_en><![CDATA[The Act]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[14 июня 2015 года, небольшой городок штата Миссури. Встревоженная женщина вызывает полицию, так как увидела пугающий пост в Facebook соседей, а те не отвечают на телефон и не открывают дверь.Семь лет назад, пострадав от урагана Катрина, мама Ди Ди и ее больная дочь Джипси Роуз переехали в новый дом, построенный для них благотворительной организацией. Семейство сразу вызвало сочувствие окружающих, ведь девочка не встает из инвалидного кресла, и у нее целый букет неизлечимых заболеваний — от мышечной дистрофии до аллергии на сахар. И как можно не сочувствовать матери, жизнь положившей на уход за дочерью?]]></description>
-        <pictures><![CDATA[3367711,3367710,3367709]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Притворство / The Act]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Лор де Клермон-Тоннер,Стивен Пит,Адам Аркин]]></director>
-        <genre><![CDATA[драма,биография,криминал]]></genre>
-        <actor><![CDATA[Патриша Аркетт,Джои Кинг,Анна-София Робб,Хлоя Севиньи,Кэлам Уорси]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"8682948","tmdb_id":"82883"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1174219">
-        <kp_id><![CDATA[1174219]]></kp_id>
-        <query_id><![CDATA[1174219]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[4303]]></kp_vote>
-        <imdb_rating><![CDATA[79]]></imdb_rating>
-        <imdb_vote><![CDATA[1735]]></imdb_vote>
-        <premiere><![CDATA[737549.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Семейный брак]]></title_ru>
-        <title_en><![CDATA[State of the Union]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Почти все действие происходит за столиком паба в Лондоне. Раз в неделю здесь встречаются муж и жена, чтобы пропустить по бокалу вина и пинте пива перед сеансами у семейного психотерапевта, живущего через дорогу.]]></description>
-        <pictures><![CDATA[3356968,3356967,3356966]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Семейный брак / State of the Union]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[Великобритания]]></country>
-        <director><![CDATA[Стивен Фрирз]]></director>
-        <genre><![CDATA[драма,мелодрама,комедия]]></genre>
-        <actor><![CDATA[Крис О'Дауд,Розамунд Пайк,Джанет Эмсден,Джефф Роул,Лаура Каббитт]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"8708280","tmdb_id":"87984"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="891433">
         <kp_id><![CDATA[891433]]></kp_id>
         <query_id><![CDATA[891433]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[72]]></kp_rating>
-        <kp_vote><![CDATA[4256]]></kp_vote>
+        <kp_vote><![CDATA[5743]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[22873]]></imdb_vote>
+        <imdb_vote><![CDATA[28677]]></imdb_vote>
         <premiere><![CDATA[737665.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Карнивал Роу]]></title_ru>
@@ -4536,15 +4479,139 @@
         <custom><![CDATA[{"imdb_id":"0489974","tmdb_id":"90027"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1179113">
+        <kp_id><![CDATA[1179113]]></kp_id>
+        <query_id><![CDATA[1179113]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[74]]></kp_rating>
+        <kp_vote><![CDATA[5518]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[13024]]></imdb_vote>
+        <premiere><![CDATA[737502.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Притворство]]></title_ru>
+        <title_en><![CDATA[The Act]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[14 июня 2015 года, небольшой городок штата Миссури. Встревоженная женщина вызывает полицию, так как увидела пугающий пост в Facebook соседей, а те не отвечают на телефон и не открывают дверь.Семь лет назад, пострадав от урагана Катрина, мама Ди Ди и ее больная дочь Джипси Роуз переехали в новый дом, построенный для них благотворительной организацией. Семейство сразу вызвало сочувствие окружающих, ведь девочка не встает из инвалидного кресла, и у нее целый букет неизлечимых заболеваний — от мышечной дистрофии до аллергии на сахар. И как можно не сочувствовать матери, жизнь положившей на уход за дочерью?]]></description>
+        <pictures><![CDATA[3367711,3367710,3367709]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Притворство / The Act]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Лор де Клермон-Тоннер,Стивен Пит,Адам Аркин]]></director>
+        <genre><![CDATA[драма,биография,криминал]]></genre>
+        <actor><![CDATA[Патриша Аркетт,Джои Кинг,Анна-София Робб,Хлоя Севиньи,Кэлам Уорси]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"8682948","tmdb_id":"82883"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1142552">
+        <kp_id><![CDATA[1142552]]></kp_id>
+        <query_id><![CDATA[1142552]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[72]]></kp_rating>
+        <kp_vote><![CDATA[5239]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[4971]]></imdb_vote>
+        <premiere><![CDATA[737632.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Пенниуорт]]></title_ru>
+        <title_en><![CDATA[Pennyworth]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Альфред Пенниуорт — отставной офицер британского спецназа, который создает в Лондоне собственное охранное предприятие. Одним из его первых клиентов становится миллионер Томас Уэйн, отец будущего Бэтмена.]]></description>
+        <pictures><![CDATA[3375967]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Пенниуорт / Pennyworth]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дэнни Кэннон,Роб Бэйли,Билл Иглз]]></director>
+        <genre><![CDATA[боевик,драма,криминал]]></genre>
+        <actor><![CDATA[Джек Бэннон,Палома Фэйт,Бен Элдридж,Джейсон Флеминг,Хэйнсли Ллойд Беннетт]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"8425532","tmdb_id":"79588"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1174219">
+        <kp_id><![CDATA[1174219]]></kp_id>
+        <query_id><![CDATA[1174219]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[76]]></kp_rating>
+        <kp_vote><![CDATA[5211]]></kp_vote>
+        <imdb_rating><![CDATA[79]]></imdb_rating>
+        <imdb_vote><![CDATA[2020]]></imdb_vote>
+        <premiere><![CDATA[737549.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Семейный брак]]></title_ru>
+        <title_en><![CDATA[State of the Union]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Почти все действие происходит за столиком паба в Лондоне. Раз в неделю здесь встречаются муж и жена, чтобы пропустить по бокалу вина и пинте пива перед сеансами у семейного психотерапевта, живущего через дорогу.]]></description>
+        <pictures><![CDATA[3356968,3356967,3356966]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Семейный брак / State of the Union]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[Великобритания]]></country>
+        <director><![CDATA[Стивен Фрирз]]></director>
+        <genre><![CDATA[драма,мелодрама,комедия]]></genre>
+        <actor><![CDATA[Крис О'Дауд,Розамунд Пайк,Джанет Эмсден,Джефф Роул,Лаура Каббитт]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"8708280","tmdb_id":"87984"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1173629">
+        <kp_id><![CDATA[1173629]]></kp_id>
+        <query_id><![CDATA[1173629]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[67]]></kp_rating>
+        <kp_vote><![CDATA[5167]]></kp_vote>
+        <imdb_rating><![CDATA[76]]></imdb_rating>
+        <imdb_vote><![CDATA[6076]]></imdb_vote>
+        <premiere><![CDATA[737431.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Проект «Синяя книга»]]></title_ru>
+        <title_en><![CDATA[Project Blue Book]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Пятидесятые годы прошлого века. Астроном Дж. Аллен Хинек и капитан ВВС США Майкл Квинн разбираются со свидетельствами появления НЛО. В ходе расследования они натыкаются на правительственный заговор, скрывающий от населения правду.]]></description>
+        <pictures><![CDATA[3309786,3309785,3309784]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Проект «Синяя книга» / Project Blue Book]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США,Канада]]></country>
+        <director><![CDATA[Норма Бэйли,Томас Картер,Алекс Грейвз]]></director>
+        <genre><![CDATA[фантастика,триллер,драма,детектив]]></genre>
+        <actor><![CDATA[Эйдан Гиллен,Майкл Маларки,Лаура Меннелл,Ксения Соло,Нил МакДонаф]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6632666","tmdb_id":"79649"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1144179">
         <kp_id><![CDATA[1144179]]></kp_id>
         <query_id><![CDATA[1144179]]></query_id>
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[69]]></kp_rating>
-        <kp_vote><![CDATA[3967]]></kp_vote>
+        <kp_rating><![CDATA[70]]></kp_rating>
+        <kp_vote><![CDATA[4830]]></kp_vote>
         <imdb_rating><![CDATA[81]]></imdb_rating>
-        <imdb_vote><![CDATA[19121]]></imdb_vote>
+        <imdb_vote><![CDATA[21132]]></imdb_vote>
         <premiere><![CDATA[737469.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Роковой патруль]]></title_ru>
@@ -4565,68 +4632,6 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"8416494","tmdb_id":"79501"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1134613">
-        <kp_id><![CDATA[1134613]]></kp_id>
-        <query_id><![CDATA[1134613]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[3845]]></kp_vote>
-        <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[9942]]></imdb_vote>
-        <premiere><![CDATA[737560.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Уловка-22]]></title_ru>
-        <title_en><![CDATA[Catch-22]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[1944 год. Бомбардировочный полк, в котором служит капитан Йоссариан, дислоцировался на острове в Тирренском море. Чтобы выйти в запас, военнослужащему нужно совершить определенное количество боевых вылетов согласно норме, установленной в ВВС США. Однако командир полка, выслуживая очередной чин, постоянно повышает планку. Йоссариан пытается убраться подальше от войны и ссылается на сумасшествие, поскольку это заболевание является официальной причиной для отстранения от полетов. Но согласно некоему правительственному постановлению, «Уловке-22», всякий, кто называет себя сумасшедшим с целью освободиться от воинской обязанности, тем самым доказывает обратное, ведь подобное заявление явно свидетельствует о здравомыслии.]]></description>
-        <pictures><![CDATA[3316170,3316169,3316168]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Уловка-22 / Catch-22]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Джордж Клуни,Грант Хеслов,Эллен Кёрас]]></director>
-        <genre><![CDATA[драма,комедия,криминал,военный]]></genre>
-        <actor><![CDATA[Кристофер Эбботт,Кайл Чандлер,Дэниэл Дэвид Стюарт,Рафи Гаврон,Грэхэм Патрик Мартин]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"5056196","tmdb_id":"82744"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="1113116">
-        <kp_id><![CDATA[1113116]]></kp_id>
-        <query_id><![CDATA[1113116]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[3630]]></kp_vote>
-        <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[14311]]></imdb_vote>
-        <premiere><![CDATA[737509.875]]></premiere>
-        <type><![CDATA[1]]></type>
-        <title_ru><![CDATA[Чем мы заняты в тени]]></title_ru>
-        <title_en><![CDATA[What We Do in the Shadows]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Три главных героя делят дом, решают бытовые конфликты, ищут любовь — и свежую кровь, без которой им, вампирам, не прожить.]]></description>
-        <pictures><![CDATA[3345343,3345342,3345341]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Чем мы заняты в тени / What We Do in the Shadows]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Джемейн Клемент,Тайка Вайтити,Джеки ван Бик]]></director>
-        <genre><![CDATA[комедия,ужасы]]></genre>
-        <actor><![CDATA[Кайван Новак,Мэтт Берри,Натасия Деметриу,Харви Гильен,Марк Прокш]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"7908628","tmdb_id":"83631"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
 </sphinx:docset>

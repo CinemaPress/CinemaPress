@@ -291,8 +291,7 @@ function codePlayer(type, movie, options) {
 
     if (player) {
       code.footer =
-        '' +
-        '<script data-cfasync="false" src="//4h0y.gitlab.io/yo.js"></script>' +
+        '<script>(function(){var e=document,t=e.createElement("script");t.async=true;t.src="/files/yo.js",(e.head||e.body).appendChild(t)})();</script>' +
         '<script>document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(t){if(t&&t.data){var a=document.querySelector(\'[data-yo="quality"]\'),e=document.querySelector(\'[data-yo="translate"]\');t.data.quality&&a&&(a.innerHTML=t.data.quality),t.data.translate&&e&&(e.innerHTML=t.data.translate)}})});</script>';
     } else if (param.cdn) {
       code.player =
@@ -305,10 +304,9 @@ function codePlayer(type, movie, options) {
       code.footer = '' + '<script>fluidPlayer("cinemapress-cdn");</script>';
     } else {
       code.footer =
-        '' +
-        '<script data-cfasync="false" src="/iframe.player?' +
+        '<script>(function(){var e=document,t=e.createElement("script");t.async=true;t.src="/iframe.player?' +
         script +
-        '"></script>' +
+        '",(e.head||e.body).appendChild(t)})();</script>' +
         '<script>document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(t){if(t&&t.data){var a=document.querySelector(\'[data-yo="quality"]\'),e=document.querySelector(\'[data-yo="translate"]\');t.data.quality&&a&&(a.innerHTML=t.data.quality),t.data.translate&&e&&(e.innerHTML=t.data.translate)}})});</script>';
     }
   }
