@@ -299,6 +299,10 @@ function parseEpisode(type, options) {
   if (config.language === 'en' && /субт|subt|eng/i.test(serial.translate)) {
     serial.translate = 'English';
   }
+  var dbl = serial.translate.split('(');
+  if (dbl.length === 3) {
+    serial.translate = dbl[2].replace(')', '').trim();
+  }
 
   return serial;
 }
