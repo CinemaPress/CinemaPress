@@ -1,5 +1,3 @@
-window.addEventListener('load', ahoy_yo);
-
 function ahoy_key(event) {
   if (!event || (!event.key && !event.keyCode)) return;
   var key = '';
@@ -677,3 +675,5 @@ function resize() {
   yi.setAttribute('width', w.toString());
   yi.parentNode.style.width = w + 'px';
 }
+
+ahoy_yo();
