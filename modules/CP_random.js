@@ -46,10 +46,7 @@ function codeRandom(page) {
         'if(h)for(g=0;g<h.length;++g)h[g].outerHTML=h[g].innerHTML;';
     }
 
-    code =
-      'document.addEventListener("DOMContentLoaded",function(){(function(){' +
-      code +
-      '})()});';
+    code = '(function(){' + code + '})();';
     code = '<script>' + code + '</script>';
   }
 
