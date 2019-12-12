@@ -51,9 +51,9 @@ function blockingPlayer(code, movie, options) {
         config.default.image +
         ') 100% 100% no-repeat;background-size:100% 100%;z-index:10000;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center;text-shadow: 1px 1px #000;"><div id="blockingMessage" style="margin:80px auto 0;width:70%">' +
         message +
-        '</div><div id="blockingCode" style="margin:50px auto"><script src="/themes/default/public/desktop/js/yastatic.net/es5-shims.min.js" charset="utf-8"></script><script src="/themes/default/public/desktop/js/yastatic.net/share2.js" charset="utf-8"></script><div class="ya-share2" data-services="facebook,twitter,vkontakte,odnoklassniki,moimir" data-counter=""></div></div></div><script>window.addEventListener("load",function(){var e=document.getElementById("blockingTimer"),n=' +
+        '</div><div id="blockingCode" style="margin:50px auto"><script src="/themes/default/public/desktop/js/yastatic.net/es5-shims.min.js" charset="utf-8"></script><script src="/themes/default/public/desktop/js/yastatic.net/share2.js" charset="utf-8"></script><div class="ya-share2" data-services="facebook,twitter,vkontakte,odnoklassniki,moimir" data-counter=""></div></div></div><script>(function(){var e=document.getElementById("blockingTimer"),n=' +
         block.time +
-        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);var t=document.getElementById("blockingCode");t.addEventListener("click",function(){setTimeout(function(){var e=document.getElementById("blocking");e.parentElement.removeChild(e);clearInterval(si)},10e3)})});</script>' +
+        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);var t=document.getElementById("blockingCode");t.addEventListener("click",function(){setTimeout(function(){var e=document.getElementById("blocking");e.parentElement.removeChild(e);clearInterval(si)},10e3)})})();</script>' +
         code.player;
     } else if (modules.blocking.data.display === 'adv') {
       var skipText = modules.blocking.data.adv.skip;
@@ -70,11 +70,11 @@ function blockingPlayer(code, movie, options) {
         skipText +
         '</div><div id="blockingCode" style="margin:30px auto">' +
         block.code +
-        '</div></div><script>window.addEventListener("load",function(){var e=document.getElementById("blockingTimer"),n=' +
+        '</div></div><script>(function(){var e=document.getElementById("blockingTimer"),n=' +
         block.time +
         ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){' +
         skipCode +
-        'clearInterval(si)}},1e3);var s=document.getElementById("blockingSkip");s.addEventListener("click",function(){var t=document.getElementById("blocking");t.parentElement.removeChild(t);})});</script>' +
+        'clearInterval(si)}},1e3);var s=document.getElementById("blockingSkip");s.addEventListener("click",function(){var t=document.getElementById("blocking");t.parentElement.removeChild(t);})})();</script>' +
         code.player;
     } else if (modules.blocking.data.display === 'adblock' && !tv) {
       code.player =
@@ -82,9 +82,9 @@ function blockingPlayer(code, movie, options) {
         config.default.image +
         ') 100% 100% no-repeat;background-size:100% 100%;z-index:10000;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center;text-shadow: 1px 1px #000;"><div id="blockingMessage" style="margin:80px auto 0;width:70%">' +
         message +
-        '</div></div><script src="/themes/default/public/desktop/js/ads.js" charset="utf-8"></script><script>window.addEventListener("load",function(){var e=document.getElementById("blockingTimer"),n=' +
+        '</div></div><script src="/themes/default/public/desktop/js/ads.js" charset="utf-8"></script><script>(function(){var e=document.getElementById("blockingTimer"),n=' +
         block.time +
-        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);if(document.getElementById("CinemaPress")){var ee=document.getElementById("blocking");ee.parentElement.removeChild(ee);clearInterval(si)}});</script>' +
+        ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);if(document.getElementById("CinemaPress")){var ee=document.getElementById("blocking");ee.parentElement.removeChild(ee);clearInterval(si)}})();</script>' +
         code.player;
     } else if (modules.blocking.data.display === 'sub') {
       if (
@@ -99,7 +99,7 @@ function blockingPlayer(code, movie, options) {
           message +
           '</div><div id="blockingCode" style="margin:30px auto"> <input type="text" placeholder="CP8881160388831744" style="border: 0;padding: 10px;border-radius: 3px;background: #ccc;color: #000;" id="subscribeKey"><input type="button" style="border: 0;padding: 10px;border-radius: 3px;background: #000;color: #fff; cursor: pointer;" value="' +
           config.l.subscribe +
-          '" id="subscribe"></div></div><script>function setCookie(e,t,n){n=n||{};var o=n.expires;if("number"===typeof o&&o){var i=new Date;i.setTime(i.getTime()+1e3*o),o=n.expires=i}o&&o.toUTCString&&(n.expires=o.toUTCString()),t=encodeURIComponent(t);var r=e+"="+t;for(var a in n)if(n.hasOwnProperty(a)){r+="; "+a;var s=n[a];s!==!0&&(r+="="+s)}document.cookie=r}window.addEventListener("load",function(){var e=document.getElementById("subscribe");e.addEventListener("click",function(){var e=document.getElementById("subscribeKey");e&&e.value&&(setCookie("CP_subscribe",e.value,{expires:29549220,path:"/"}),setTimeout(function(){location.reload(!0)},1e3))})});</script>';
+          '" id="subscribe"></div></div><script>function setCookie(e,t,n){n=n||{};var o=n.expires;if("number"===typeof o&&o){var i=new Date;i.setTime(i.getTime()+1e3*o),o=n.expires=i}o&&o.toUTCString&&(n.expires=o.toUTCString()),t=encodeURIComponent(t);var r=e+"="+t;for(var a in n)if(n.hasOwnProperty(a)){r+="; "+a;var s=n[a];s!==!0&&(r+="="+s)}document.cookie=r}(function(){var e=document.getElementById("subscribe");e.addEventListener("click",function(){var e=document.getElementById("subscribeKey");e&&e.value&&(setCookie("CP_subscribe",e.value,{expires:29549220,path:"/"}),setTimeout(function(){location.reload(!0)},1e3))})})();</script>';
       }
     } else if (modules.blocking.data.display === 'legal') {
       if (
@@ -114,9 +114,9 @@ function blockingPlayer(code, movie, options) {
               config.default.image +
               ') 100% 100% no-repeat;background-size:100% 100%;z-index:10000;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center;text-shadow: 1px 1px #000;"><div id="blockingMessage" style="margin:80px auto 0;width:70%">' +
               message +
-              '</div></div><script>window.addEventListener("load",function(){var e=document.getElementById("blockingTimer"),n=' +
+              '</div></div><script>(function(){var e=document.getElementById("blockingTimer"),n=' +
               block.time +
-              ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);});</script>' +
+              ';var si=setInterval(function(){if(e.innerHTML=""+n,n=parseInt(n),n--,0>n){var t=document.getElementById("blocking");t.parentElement.removeChild(t);clearInterval(si)}},1e3);})();</script>' +
               code.player.replace(
                 /data-player="[a-z0-9,\s%]*?"/i,
                 'data-player="trailer"'
