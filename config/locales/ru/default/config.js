@@ -37,7 +37,7 @@ module.exports = {
     "one": 600,
     "five": 480,
     "fifteen": 360,
-    "message": "Сервер перегружен на <i>[percent]%</i> пожалуйста зайдите позже."
+    "message": "Сервер перегружен на [percent] пожалуйста зайдите позже."
   },
   "publish": {
     "start": 400000,

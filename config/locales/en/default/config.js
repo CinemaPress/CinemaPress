@@ -37,7 +37,7 @@ module.exports = {
     "one": 600,
     "five": 480,
     "fifteen": 360,
-    "message": "The server is overloaded by <i>[percent]%</i> please check back later."
+    "message": "The server is overloaded by [percent] please come back later."
   },
   "publish": {
     "start": 400000,
