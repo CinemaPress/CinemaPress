@@ -29,7 +29,9 @@ var router = express.Router();
 
 router.get('/?', function(req, res, next) {
   var url =
-    config.protocol + config.subdomain + config.domain + req.originalUrl;
+    (req.userinfo && req.userinfo.origin
+      ? req.userinfo.origin
+      : config.protocol + config.subdomain + config.domain) + req.originalUrl;
   var urlHash = md5(url.toLowerCase());
 
   getRender(function(err, render) {
@@ -146,8 +148,14 @@ router.get('/?', function(req, res, next) {
       }
     } else if (modules.content.status && tag) {
       var options = {};
-      options.protocol = config.protocol;
-      options.domain = config.domain;
+      options.protocol =
+        req.userinfo && req.userinfo.protocol
+          ? req.userinfo.origin
+          : config.protocol;
+      options.domain =
+        req.userinfo && req.userinfo.domain
+          ? req.userinfo.domain
+          : config.domain;
       options.content_image = config.default.image;
       CP_get.contents(tag, 100, 1, true, options, function(err, contents) {
         if (err) return callback(err);

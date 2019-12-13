@@ -203,7 +203,14 @@ function fullMovieSchema(page, movie, movies, options) {
 
   var canonical = '<link rel="canonical" href="' + movie.url + '"/>';
 
-  return schema + opengraph + canonical;
+  var opensearch =
+    '<link rel="search" type="application/opensearchdescription+xml" title="' +
+    config.domain +
+    '" href="//' +
+    config.domain +
+    '/opensearch.xml"/>';
+
+  return schema + opengraph + canonical + opensearch;
 }
 
 /**
@@ -384,7 +391,14 @@ function categorySchema(page, movies, options) {
   var canonical =
     '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '"/>';
 
-  return schema + opengraph + canonical;
+  var opensearch =
+    '<link rel="search" type="application/opensearchdescription+xml" title="' +
+    config.domain +
+    '" href="//' +
+    config.domain +
+    '/opensearch.xml"/>';
+
+  return schema + opengraph + canonical + opensearch;
 }
 
 /**
@@ -470,7 +484,14 @@ function generalSchema(page, options) {
   var canonical =
     '<link rel="canonical" href="' + config.protocol + options.domain + '"/>';
 
-  return schema + opengraph + canonical;
+  var opensearch =
+    '<link rel="search" type="application/opensearchdescription+xml" title="' +
+    config.domain +
+    '" href="//' +
+    config.domain +
+    '/opensearch.xml"/>';
+
+  return schema + opengraph + canonical + opensearch;
 }
 
 /**

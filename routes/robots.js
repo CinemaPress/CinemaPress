@@ -24,9 +24,9 @@ router.get('/?', function(req, res) {
     config.codes.robots +
       '\n\n' +
       'Sitemap: ' +
-      config.protocol +
-      config.subdomain +
-      config.domain +
+      (req.userinfo && req.userinfo.origin
+        ? req.userinfo.origin
+        : config.protocol + config.subdomain + config.domain) +
       '/' +
       config.urls.sitemap
   );
