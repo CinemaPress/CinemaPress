@@ -778,7 +778,7 @@
             for (i = 0; i < input_number.length; i++) {
                 input_number[i].oninput = function () {
                     var value = this.value;
-                    var rep = /[^0-9\-]/;
+                    var rep = /[^0-9\-]/g;
                     if (rep.test(value)) {
                         value = value.replace(rep, '');
                         this.value = value;
@@ -792,7 +792,7 @@
             for (i = 0; i < input_url.length; i++) {
                 input_url[i].oninput = function () {
                     var value = this.value;
-                    var rep = /[^0-9A-Za-z_.\-]/;
+                    var rep = /[^0-9A-Za-z_.\-]/g;
                     if (rep.test(value)) {
                         value = value.replace(rep, '');
                         this.value = value;
@@ -806,7 +806,7 @@
             for (i = 0; i < input_ids.length; i++) {
                 input_ids[i].oninput = function () {
                     var value = this.value;
-                    var rep = /[^0-9,]/;
+                    var rep = /[^0-9,]/g;
                     if (rep.test(value)) {
                         value = value.replace(rep, '');
                         this.value = value;
