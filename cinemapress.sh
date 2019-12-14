@@ -344,6 +344,14 @@ ip_install() {
 
         fi
     fi
+    DIR_SUCCESS=1
+    while [ "${DIR_SUCCESS}" != "10" ]; do
+        sleep 3
+        DIR_SUCCESS=$((1+${DIR_SUCCESS}))
+        if [ -d "/home/${LOCAL_DOMAIN}/" ]; then
+            DIR_SUCCESS=10
+        fi
+    done
 }
 2_update() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -389,6 +397,7 @@ ip_install() {
         docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}"
     fi
     docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
+    sleep 10
 }
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -500,6 +509,7 @@ ip_install() {
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         fi
     fi
+    sleep 10
 }
 4_theme() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -551,6 +561,7 @@ ip_install() {
     if [ "`docker -v 2>/dev/null`" != "" ]; then
         docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
     fi
+    sleep 10
 }
 5_database() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -647,6 +658,7 @@ ip_install() {
         _s
         exit 0
     fi
+    sleep 10
 }
 6_https() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -700,6 +712,7 @@ ip_install() {
         fi
 
     fi
+    sleep 10
 }
 7_mirror() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -807,6 +820,7 @@ ip_install() {
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     docker exec nginx nginx -s reload \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
+    sleep 10
 }
 8_remove() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -847,6 +861,7 @@ ip_install() {
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     docker rmi -f "$(docker images -f 'dangling=true' -q)" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    sleep 10
 }
 
 option() {

@@ -14,7 +14,7 @@ module.exports = {
   "random": 0,
   "homepage": "127.0.0.1",
   "geolite2": {
-    "countries": [],
+    "countries": ["Netherlands"],
     "ips": []
   },
   "image": {
