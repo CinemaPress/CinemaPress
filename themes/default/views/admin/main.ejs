@@ -9,7 +9,6 @@
 
     <% include includes/head.ejs %>
 
-</head>
 <body>
 <div id="container" class="clearfix">
 
@@ -145,6 +144,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="faq" id="subdomains">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left" id="header_subdomains">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Случайный поддомен каждый день') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix" id="div_subdomains">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="helper-text-box text-left list_subdomains1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="helper-text-box text-left list_subdomains2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="helper-text-box text-left list_subdomains3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
                                             </div>
                                         </div>
                                     </div>
@@ -526,8 +549,8 @@
                 setInterval(function(){
                     document.querySelector('#fifteen_loadavg').innerHTML = '15 min: ' + document.querySelector('#fifteen').value + '%';
                 }, 100);
-                function dayToLetter(random) {
-                  var now = new Date();
+                function dayToLetter(random, now) {
+                  now = now || new Date();
                   var year = now.getFullYear();
                   var start = new Date(year, 0, 0);
                   var diff = now - start;
@@ -566,12 +589,15 @@
                         if (this.checked) {
                           document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
                           document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
+                          document.querySelector('#subdomains').style.display = 'block';
                           document.querySelector('#h').style.display = 'block';
                           document.querySelector('#h').setAttribute('class', 'col-sm-7');
                           document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
+                          generate_domains(this.value);
                         }
                       } else {
                         if (this.checked) {
+                          document.querySelector('#subdomains').style.display = 'none';
                           document.querySelector('#h').style.display='none';
                           document.querySelector('#h').setAttribute('class', '');
                           document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
@@ -580,18 +606,59 @@
                     });
                     if (radio.value !== '0') {
                       if (radio.checked) {
+                        document.querySelector('#subdomains').style.display = 'block';
                         document.querySelector('#h').style.display = 'block';
                         document.querySelector('#h').setAttribute('class', 'col-sm-7');
                         document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
+                        generate_domains(radio.value);
                       }
                     } else {
                       if (radio.checked) {
+                        document.querySelector('#subdomains').style.display = 'none';
                         document.querySelector('#h').style.display='none';
                         document.querySelector('#h').setAttribute('class', '');
                         document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
                       }
                     }
                   })
+                }
+                function generate_domains(random) {
+                  var list_subdomains1 = document.querySelector('.list_subdomains1');
+                  var list_subdomains2 = document.querySelector('.list_subdomains2');
+                  var list_subdomains3 = document.querySelector('.list_subdomains3');
+                  list_subdomains1.innerHTML = '';
+                  list_subdomains2.innerHTML = '';
+                  list_subdomains3.innerHTML = '';
+                  for (var i = 1; i <= 183; i++) {
+                    var tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + i);
+                    var div = document.createElement('div');
+                    var day = document.createElement('span');
+                    var sub = document.createElement('code');
+                    day.innerHTML = formatDate(tomorrow);
+                    sub.innerHTML = dayToLetter(random, tomorrow);
+                    div.appendChild(day);
+                    div.appendChild(sub);
+                    if (i <= 61) {
+                      list_subdomains1.appendChild(div);
+                    } else if (i <= 122) {
+                      list_subdomains2.appendChild(div);
+                    } else if (i <= 183) {
+                      list_subdomains3.appendChild(div);
+                    }
+                  }
+                }
+                function formatDate(date) {
+                  var monthNames = [
+                    "January", "February", "March",
+                    "April", "May", "June", "July",
+                    "August", "September", "October",
+                    "November", "December"
+                  ];
+                  var day = date.getDate();
+                  var monthIndex = date.getMonth();
+                  var year = date.getFullYear();
+                  return day + ' ' + monthNames[monthIndex] + ' ' + year;
                 }
             </script>
 
