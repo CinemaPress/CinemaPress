@@ -19,7 +19,7 @@ module.exports = {
         }
       },
       "disqus": {
-        "shortname": "cinemapress-demo-ru",
+        "shortname": "",
         "api_key": "",
         "recent": {
           "num_items": 5,
@@ -38,6 +38,38 @@ module.exports = {
       },
       "sigcomments": {
         "host_id": ""
+      },
+      "fast": {
+        "active": 1,
+        "premoderate": 1,
+        "star_rating": 1,
+        "per_page": 50,
+        "sorting_page": "comment-publish-up",
+        "url_links": 0,
+        "url_links_text": "Запрещено вставлять ссылки",
+        "bb_codes": 1,
+        "bb_codes_text": "Запрещено вставлять BB-коды",
+        "html_tags": 0,
+        "html_tags_text": "Запрещено вставлять HTML-теги",
+        "min_symbols": 100,
+        "min_symbols_text": "Напишите еще не менее [num] символа(ов)",
+        "recaptcha_secret": "",
+        "recaptcha_sitekey": "",
+        "recaptcha_score": 20,
+        "recaptcha_text": "Google считает Вас роботом, измените IP",
+        "message": "Спасибо за Ваш комментарий, он появится на сайте в течении часа.",
+        "question": "Позвольте задать Вам вопрос, Вы смотрели фильм [title]?",
+        "question_yes": "Замечательно, мы очень ценим Ваше мнение. Не могли бы Вы написать комментарий на странице [url]. За это мы добавим любой фильм или серию сериала, которую Вы попросите.",
+        "question_not": "Отлично, когда у Вас будет время, посмотрите [url]. Вам должно понравиться!",
+        "stopworls": [],
+        "recent": {
+          "num_items": 5,
+          "excerpt_length": 250,
+          "hide_avatars": 0,
+          "display": [
+            "index"
+          ]
+        }
       }
     }
   },
@@ -58,7 +90,7 @@ module.exports = {
         "host": "",
         "port": 993,
         "tls": 1,
-        "from": [],
+        "from": ["nap@rkn.gov.ru"],
         "subdomain": 0
       },
       "smtp": {
@@ -75,7 +107,7 @@ module.exports = {
       "country": 0,
       "status_code_country": "200",
       "status_code_list": "404",
-      "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\">",
+      "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
       "movies": ["840372"]
     }
   },
@@ -217,7 +249,7 @@ module.exports = {
   "mobile": {
     "status": false,
     "data": {
-      "theme": "light",
+      "theme": "custom",
       "custom": {
         "a": "#99AABB",
         "hover": "#FFFFFF",

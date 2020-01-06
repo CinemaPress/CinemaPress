@@ -12,7 +12,7 @@ html {
   font-size: 14px;
 }
 body {
-  background: url('themes/default/public/mobile/light/img/bg.png') #fff;
+  background: url('/themes/default/public/mobile/light/img/bg.png') #fff;
   color: #000;
 }
 .poster {
@@ -32,7 +32,7 @@ h1,
 h2 {
   margin: 0 auto;
   padding: 10px;
-  background: url('themes/default/public/mobile/light/img/bg2.png') #333;
+  background: url('/themes/default/public/mobile/light/img/bg2.png') #333;
   color: #fff;
   line-height: 2;
 }
@@ -52,7 +52,7 @@ a:hover {
   color: #557fa3;
 }
 .description {
-  background: url('themes/default/public/mobile/light/img/bg3.png') top center
+  background: url('/themes/default/public/mobile/light/img/bg3.png') top center
     #ccc;
   border: 2px solid #f1f1f1;
   font-size: 14px;
@@ -68,14 +68,16 @@ a:hover {
 }
 .logo {
   margin: 10px 0 10px 10px;
-  width: 100px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background: url('/themes/default/public/mobile/light/img/bg2.png') #333;
 }
 .info {
   margin: 10px;
 }
 form {
-  background: url('themes/default/public/mobile/light/img/bg5.png') #666;
+  background: url('/themes/default/public/mobile/light/img/bg5.png') #666;
   position: relative;
   padding: 10px 106px;
   margin: 5px 10px;
@@ -103,7 +105,7 @@ form {
   background: #fff;
 }
 .block {
-  background: url('themes/default/public/mobile/light/img/bg6.png') top center
+  background: url('/themes/default/public/mobile/light/img/bg6.png') top center
     #ccc;
   border: 2px solid #f1f1f1;
   border-radius: 5px;
@@ -419,65 +421,6 @@ form {
     width: 33.33%;
   }
 }
-.cinemapress-recent {
-  background: #333;
-  color: #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 12px;
-  border: 2px solid #334;
-  margin: 3px auto;
-  clear: both;
-}
-.cinemapress-recent:hover {
-  background: #334;
-}
-.cinemapress-recent a {
-  color: #bbb;
-  text-decoration: none;
-  font-weight: 400;
-}
-.cinemapress-recent a:hover {
-  color: #fff;
-}
-.cinemapress-recent-head {
-  height: 49px;
-}
-.cinemapress-recent-head-avatar {
-  float: left;
-  border: 5px solid #444;
-  margin: 0 5px 0 0;
-  border-radius: 100% 100% 0 0;
-  background: #444;
-}
-.cinemapress-recent-head-avatar img {
-  width: 40px;
-  border-radius: 100%;
-  border: 0;
-}
-.cinemapress-recent-comment {
-  clear: both;
-  text-align: justify;
-  background: #444;
-  color: #ccc;
-  padding: 5px;
-  border-radius: 0 5px 5px;
-}
-.cinemapress-recent-head-meta > div {
-  white-space: nowrap;
-  overflow: hidden;
-}
-.cinemapress-recent-head-meta > div:first-child {
-  padding: 5px 0 0;
-  text-align: center;
-}
-.cinemapress-recent-head-meta > div:last-child,
-.cinemapress-recent-head-meta > div:last-child span {
-  text-align: right;
-  margin: 10px 0 0;
-  color: #666;
-  font-size: 10px;
-}
 @keyframes animationFrames {
   100% {
     transform: translate(0px, 0px) rotate(360deg);
@@ -492,7 +435,7 @@ form {
 .cinemapress-random-category {
   position: relative;
   text-align: left;
-  background: url('themes/default/public/mobile/light/img/bg2.png') #333;
+  background: url('/themes/default/public/mobile/light/img/bg2.png') #333;
   border-radius: 5px;
   margin: 15px 10px 15px 70px;
   border: 2px #ccc solid;
@@ -613,3 +556,4 @@ form {
 .cinemapress-autocomplete div:hover {
   background: #e4e4e4;
 }
+#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:65px;width:100%;position:absolute;bottom:0;background:#101010}.grecaptcha-badge{visibility:hidden}textarea{font-family:inherit;font-size:14px;border:none;overflow:auto;outline:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0}textarea::-webkit-input-placeholder,textarea:-moz-placeholder,textarea::-moz-placeholder,textarea:-ms-input-placeholder,textarea::placeholder{color:#fff;margin:0}body::after{position:absolute;width:0;height:0;overflow:hidden;z-index:-1;content:url('/themes/default/public/mobile/logo.svg') url('/themes/default/public/mobile/dice.svg') url('/themes/default/public/mobile/like-hover.svg') url('/themes/default/public/mobile/dislike-hover.svg') url('/themes/default/public/mobile/reply-hover.svg') url('/themes/default/public/mobile/question.svg')}#cinemapress-comments{position:relative;padding-top:10px;margin:10px auto;clear:both;line-height:1.3}.cinemapress-comment{color:#fff;text-align:justify;padding:5px 0;border-radius:5px;font-size:12px;margin:3px auto}.cinemapress-comment a{color:#1d5987;text-decoration:none;font-weight:400}.cinemapress-comment a:hover{color:#557fa3}.cinemapress-comment-h3{font-family:inherit;color:#ccc;margin:0 0 20px;font-weight:600;width:100%;display:inline-block;font-size:24px;line-height:1}.cinemapress-comment-bg-color{background:#333}.cinemapress-comment-bg{font-size:12px;color:#fff;background:#333;text-align:justify;border-radius:5px}.cinemapress-comment-head{height:49px}.cinemapress-comment-head-avatar{float:left;border:5px solid #333;margin:0 5px 0 0;border-radius:100% 100% 0 0;background:#333;line-height:normal}.cinemapress-comment-head-avatar img{width:40px;height:40px;border-radius:100%;border:0}.cinemapress-comment-head-meta>div{white-space:nowrap;overflow:hidden;line-height:1}.cinemapress-comment-user{text-align:right}.cinemapress-comment-user-name{font-weight:700}.cinemapress-comment-user-name,.cinemapress-comment-user-said,.cinemapress-comment-user-date,.cinemapress-comment-user-link{color:#666;font-size:10px;display:inline-block;margin-right:3px}.cinemapress-comment-head-meta-title{padding:0;text-align:center}.cinemapress-comment-radius{border-radius:0 5px 5px 5px;padding:5px}.cinemapress-comment-count{color:#fff;padding:5px 10px;font-size:20px;border-radius:0 5px}.cinemapress-comment-form{position:relative}.cinemapress-comment-form-bg{position:absolute;right:0;bottom:0;border-radius:5px;opacity:.1;margin:10px 10px 10px 0;text-align:center;height:90px;background-image:url('/themes/default/public/mobile/textarea.svg');background-size:contain;background-repeat:no-repeat;width:100px}.cinemapress-comment-textarea{width:100%;height:200px;border:0 !important;border-radius:5px;padding:5px}.cinemapress-comment-button-bg{position:absolute;right:0;bottom:3px;border-radius:5px;opacity:.8;margin:0;text-align:center;width:100px;line-height:1;padding:0 2px}.cinemapress-comment-button-bg.error-on{margin:0 10px 10px 0;height:42px;background:#a6003b;color:#fff;opacity:.8}.cinemapress-comment-button-bg.error-off{margin:0 10px 10px 0;height:42px;background:#000;color:#fff;opacity:.5}.hover-on:hover{opacity:1!important;cursor:pointer}.hover-off:hover{opacity:0!important;cursor:default}.cinemapress-comment-button-text{line-height:1;display:table-cell;vertical-align:middle;height:42px;width:100px;font-size:12px}.cinemapress-comment-button-text.error-on{margin:3px}.cinemapress-comment-button-text.error-off{margin:16px 0}.cinemapress-comment-head-meta-vote{text-align:right}.cinemapress-comment-like{border:0;padding:2px 0 2px 5px;cursor:pointer}.cinemapress-comment-dislike{border:0;padding:2px 5px 2px 0;cursor:pointer}.cinemapress-comment-reply{border:0;padding:2px 5px;cursor:pointer}.cinemapress-comment-like-number{line-height:1;color:#00815f!important;padding:0 5px;font-size:18px}.cinemapress-comment-like:hover .cinemapress-comment-like-number{color:#00a67b!important}.cinemapress-comment-dislike-number{line-height:1;color:#83002e!important;padding:0 5px;font-size:18px}.cinemapress-comment-dislike:hover .cinemapress-comment-dislike-number{color:#a6003b!important}.cinemapress-comment-dislike-icon{width:15px;height:15px;display:inline-block;background-size:cover;background-image:url('/themes/default/public/mobile/dislike.svg')}.cinemapress-comment-dislike:hover .cinemapress-comment-dislike-icon{background-image:url('/themes/default/public/mobile/dislike-hover.svg')}.cinemapress-comment-like-icon{width:15px;height:15px;display:inline-block;background-size:cover;background-image:url('/themes/default/public/mobile/like.svg')}.cinemapress-comment-like:hover .cinemapress-comment-like-icon{background-image:url('/themes/default/public/mobile/like-hover.svg')}.cinemapress-comment-reply-icon{width:15px;height:15px;display:inline-block;background-size:cover;background-image:url('/themes/default/public/mobile/reply.svg')}.cinemapress-comment-reply:hover .cinemapress-comment-reply-icon{background-image:url('/themes/default/public/mobile/reply-hover.svg')}.cinemapress-comment-admin{margin:0 0 0 50px;min-height:40px;position:relative;padding:0 0 0 40px;background:none}.cinemapress-comment-admin-bg{background-image:url('/themes/default/public/mobile/admin.svg');position:absolute;top:0;left:0;width:40px;height:40px;background-repeat:no-repeat;background-size:contain;border-radius:100%}.cinemapress-comment-admin-text{border-radius:5px;margin:5px 0 0;min-height:30px;border:2px #eac6bb dotted;border-top:2px #ed5564 dotted;border-bottom:2px #a0d468 dotted;padding:5px}.cinemapress-comment-textarea-div{position:relative}.cinemapress-comment-question{position:absolute;left:0;top:0;text-align:center;z-index:1;height:100%;width:100%;padding:20px 10px;margin:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.cinemapress-comment-question-bg{background-image:url('/themes/default/public/mobile/question.svg');background-position:left;background-repeat:no-repeat;background-size:contain;position:absolute;left:0;top:0;opacity:.1;width:100%;height:100%;z-index:-1}.cinemapress-comment-question-bg-poster{background-position:right;background-repeat:no-repeat;background-size:contain;position:absolute;right:0;top:0;opacity:.1;width:100%;height:100%;z-index:-1;border-radius:5px}.cinemapress-comment-question-text{text-align:center;margin:0 auto;padding:0;z-index:0}.cinemapress-comment-question-answer{text-align:center;margin:0 auto;padding:5px;z-index:0}.cinemapress-comment-question-answer-yes{background:#00815f;padding:5px 10px;border-radius:3px;margin:0;color:#fff;border-bottom:2px #00a67b solid;width:40px;display:inline-block}.cinemapress-comment-question-answer-not{background:#83002e;padding:5px 10px;border-radius:3px;margin:0;color:#fff;border-bottom:2px #a6003b solid;width:40px;display:inline-block}.cinemapress-comment-question div span:hover{border:0;cursor:pointer;opacity:.9}.cinemapress-comment-star{text-align:center;height:50px;position:absolute;right:0;top:0}.cinemapress-comment-star-up.selected,.cinemapress-comment-star-award.selected,.cinemapress-comment-star-down.selected{width:50px;height:50px;opacity:1;cursor:default}.cinemapress-comment-star-up:hover.selected,.cinemapress-comment-star-award:hover.selected,.cinemapress-comment-star-down:hover.selected{opacity:1;cursor:default}.cinemapress-comment-star-up{background-image:url('/themes/default/public/mobile/vote2.svg');background-size:contain;background-repeat:no-repeat}.cinemapress-comment-star-award{background-image:url('/themes/default/public/mobile/vote3.svg');background-size:contain;background-repeat:no-repeat}.cinemapress-comment-star-down{background-image:url('/themes/default/public/mobile/vote1.svg');background-size:contain;background-repeat:no-repeat}.cinemapress-comment-star-up{opacity:.5;width:30px;height:30px;display:inline-block}.cinemapress-comment-star-award{opacity:.5;width:50px;height:50px;display:inline-block}.cinemapress-comment-star-down{opacity:.5;width:30px;height:30px;display:inline-block}.cinemapress-comment-star-up:hover{opacity:.8;cursor:pointer}.cinemapress-comment-star-award:hover{opacity:.8;cursor:pointer}.cinemapress-comment-star-down:hover{opacity:.8;cursor:pointer}.cinemapress-comment-head-star div{float:left;margin:0 5px 0 0;width:40px;height:40px;opacity:.5!important;cursor:default!important}.cinemapress-comment-form-bb{height:25px}.cinemapress-comment-form-bb span{border-bottom:2px solid #333;padding:2px 5px 1px;border-radius:5px;cursor:pointer;opacity:.5}.cinemapress-comment-form-bb span:hover{opacity:1}.cinemapress-comment-spoiler,.cinemapress-comment-search{padding:2px 5px 1px;border-radius:5px;cursor:pointer}.cinemapress-comment-form-bb-b,.cinemapress-comment-b{font-weight:700}.cinemapress-comment-form-bb-i,.cinemapress-comment-i{font-style:italic}span.cinemapress-comment-form-bb-spoiler,.cinemapress-comment-spoiler{border-bottom:2px #83002e solid}.cinemapress-comment-spoiler:hover{border-bottom:2px #a6003b solid}span.cinemapress-comment-form-bb-search,.cinemapress-comment-search{border-bottom:2px #008083 solid}.cinemapress-comment-search:hover{border-bottom:2px #00a5a8 solid}.cinemapress-comment-form-anonymous{float:right;border:0 !important;width:130px;height:20px;border-radius:5px;padding:0 3px;font-size:12px}.cinemapress-comment-user span{opacity:.9;cursor:pointer}.cinemapress-comment-arrow{text-align:center}.cinemapress-prev-comments{background:url('/themes/default/public/mobile/left-arrow.svg');width:30px;height:30px;display:inline-block;opacity:.6;text-align:center;border-radius:5px;margin:0 5px}.cinemapress-next-comments{background:url('/themes/default/public/mobile/right-arrow.svg');width:30px;height:30px;display:inline-block;opacity:.6;text-align:center;border-radius:5px;margin:0 5px}.cinemapress-prev-comments:hover,.cinemapress-next-comments:hover{opacity:1;cursor:pointer}@media (max-width:420px) {.cinemapress-comment-form-bb-b,.cinemapress-comment-form-bb-i{display:none}}

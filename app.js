@@ -50,6 +50,7 @@ var opensearch = require('./routes/opensearch');
 var rss = require('./routes/rss');
 var admin = require('./routes/admin');
 var website = require('./routes/website');
+var api = require('./routes/api');
 
 /**
  * Middleware dependencies.
@@ -63,8 +64,7 @@ var nginx = require('./lib/CP_nginx');
  * Port.
  */
 
-var port =
-  process.env.PORT || parseInt(config.nginx.addr.split(':')[1]) || 3000;
+var port = process.env.PORT || 3000;
 
 /**
  * Template engine.
@@ -101,6 +101,7 @@ app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe.*$/, iframe);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/rss\.xml.*$/, rss);
 app.use('/' + config.urls.admin, admin);
 app.use(loadavg());
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/api/, api);
 app.use(/^(?:\/mobile-version|\/tv-version|)?/, website);
 
 app.use(function(err, req, res, next) {

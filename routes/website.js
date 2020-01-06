@@ -89,21 +89,11 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           detail: []
         }
       : null;
-
-  req.query.start_time = req.query.start_time || '';
-  options.start_time = '';
-  if (req.query.start_time && req.query.start_time.replace(/[^0-9]/gi, '')) {
-    options.start_time = req.query.start_time.replace(/[^0-9]/gi, '');
-  }
-
-  req.query.start_episode = req.query.start_episode || '';
-  options.start_episode = '';
-  if (
-    req.query.start_episode &&
-    req.query.start_episode.replace(/[^0-9a-z|]/gi, '')
-  ) {
-    options.start_episode = req.query.start_episode.replace(/[^0-9a-z|]/gi, '');
-  }
+  options.comments = {
+    page: req.query.page ? CP_regexp.str(req.query.page) : null,
+    sorting: req.query.sorting ? CP_regexp.str(req.query.sorting) : null,
+    num: req.query.num ? CP_regexp.str(req.query.num) : null
+  };
 
   var url = parseUrl();
   var urlHash = md5(JSON.stringify(options) + url.toLowerCase());
@@ -299,16 +289,26 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
             sorting,
             options,
             function(err, render) {
+              if (err || !render) {
+                return callback(err);
+              }
               var levels_content = new RegExp(
-                '/' + modules.content.data.url + config.urls.slash,
-                'i'
+                '/' +
+                  modules.content.data.url +
+                  config.urls.slash +
+                  render.content.slug,
+                ''
               );
-              if (err) {
-                callback(err);
-              } else if (levels_content.test(url)) {
+              if (levels_content.test(url)) {
                 callback(null, render);
               } else {
-                return res.redirect(301, render.page.url);
+                return res.redirect(
+                  301,
+                  '/' +
+                    modules.content.data.url +
+                    config.urls.slash +
+                    render.content.slug
+                );
               }
             }
           );

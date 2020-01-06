@@ -20,11 +20,12 @@ moment.locale(config.language);
  * @param {Object} page
  * @param {Object} movie
  * @param {Object} movies - The related movies.
+ * @param {Object} comments
  * @param {Object} [options]
  * @return {String}
  */
 
-function fullMovieSchema(page, movie, movies, options) {
+function fullMovieSchema(page, movie, movies, comments, options) {
   if (arguments.length === 3) {
     options = {};
     options.domain = config.subdomain + '' + config.domain;
@@ -52,7 +53,7 @@ function fullMovieSchema(page, movie, movies, options) {
             schemaItemList['itemListElement'].push({
               '@type': 'ListItem',
               position: key + 1,
-              item: onlyMovieSchema(movie, options)
+              item: onlyMovieSchema(movie, {}, options)
             });
           });
 
@@ -131,7 +132,7 @@ function fullMovieSchema(page, movie, movies, options) {
           'YYYY-MM-DDTHH:mm:ss'
         );
 
-  result.push(onlyMovieSchema(movie, options));
+  result.push(onlyMovieSchema(movie, comments, options));
   result.push(schemaBreadcrumbList);
 
   var schema =
@@ -201,7 +202,7 @@ function fullMovieSchema(page, movie, movies, options) {
   opengraph +=
     '<meta property="ya:ovs:upload_date" content="' + ya_date + '" />';
 
-  var canonical = '<link rel="canonical" href="' + movie.url + '"/>';
+  var canonical = '<link rel="canonical" href="' + page.url + '"/>';
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
@@ -217,11 +218,12 @@ function fullMovieSchema(page, movie, movies, options) {
  * Create schema data for one movie.
  *
  * @param {Object} movie
+ * @param {Object} comments
  * @param {Object} [options]
  * @return {Object}
  */
 
-function onlyMovieSchema(movie, options) {
+function onlyMovieSchema(movie, comments, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain = config.subdomain + '' + config.domain;
@@ -248,6 +250,7 @@ function onlyMovieSchema(movie, options) {
   result['actor'] = [];
   result['director'] = [];
   result['genre'] = [];
+  result['review'] = [];
   result['aggregateRating'] = movie.rating
     ? {
         '@type': 'AggregateRating',
@@ -295,6 +298,28 @@ function onlyMovieSchema(movie, options) {
     });
   }
 
+  if (comments && comments.list && comments.list.length) {
+    comments.list.forEach(function(comment) {
+      result['review'].push({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: comment.user
+        },
+        datePublished: moment(comment.time).format('YYYY-MM-DDTHH:mm:ss'),
+        reviewBody: comment.plain,
+        reviewRating: comment.star
+          ? {
+              '@type': 'Rating',
+              bestRating: '3',
+              ratingValue: '' + comment.star,
+              worstRating: '0'
+            }
+          : null
+      });
+    });
+  }
+
   return result;
 }
 
@@ -328,7 +353,7 @@ function categorySchema(page, movies, options) {
   schemaItemList['itemListElement'] = [];
 
   movies.forEach(function(movie, key) {
-    var item = onlyMovieSchema(movie, options);
+    var item = onlyMovieSchema(movie, {}, options);
     item['description'] = '';
     item['actor'] = [];
     item['url'] = page.url + '#' + (key + 1);

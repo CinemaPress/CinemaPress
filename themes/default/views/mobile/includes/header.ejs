@@ -1,5 +1,5 @@
 <a href="<%- page.protocol %><%- page.domain %>/">
-    <img src="/themes/default/public/mobile/logo.png?v=<%- page.ver %>" class="logo" alt="Logo">
+    <img src="/themes/default/public/mobile/logo.svg?v=<%- page.ver %>" class="logo" alt="Logo">
 </a>
 
 <div class="info continueViewingBlock" style="float: right; display: none">
@@ -33,19 +33,19 @@
 </div>
 
 <script>
-    function openNav() {
-        document.getElementById('menuSidenav').style.width = '100%';
-    }
-    function closeNav() {
-        document.getElementById('menuSidenav').style.width = '0';
-    }
+  function openNav() {
+    document.getElementById('menuSidenav').style.width = '100%';
+  }
+  function closeNav() {
+    document.getElementById('menuSidenav').style.width = '0';
+  }
 </script>
 
 <div class="clear"></div>
 
 <% if (typeof page.adv === 'object' && page.adv.top) { %>
-<div style="text-align: center; margin: 10px auto;">
-    <%- page.adv.top %>
-</div>
-<div class="clear"></div>
+    <div style="text-align: center; margin: 10px auto;">
+        <%- page.adv.top %>
+    </div>
+    <div class="clear"></div>
 <% } %>

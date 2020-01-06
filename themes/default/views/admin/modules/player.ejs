@@ -7,7 +7,7 @@
 <!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
 <head>
 
-    <% include ../includes/head.ejs %>
+    <%- include('../includes/head.ejs'); -%>
 
     <script src="/themes/default/public/admin/js/jscolor.min.js"></script>
 
@@ -15,17 +15,17 @@
 <body>
 <div id="container" class="clearfix">
 
-    <% include ../includes/left.ejs %>
+    <%- include('../includes/left.ejs'); -%>
 
-    <% include ../includes/right.ejs %>
+    <%- include('../includes/right.ejs'); -%>
 
     <div id="main" class="clearfix">
 
-        <% include ../includes/header-main.ejs %>
+        <%- include('../includes/header-main.ejs'); -%>
 
         <div id="content" class="clearfix">
 
-            <% include ../includes/header-sec.ejs %>
+            <%- include('../includes/header-sec.ejs'); -%>
 
             <div class="window">
                 <div class="actionbar">
@@ -182,7 +182,7 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Videocdn.com
+                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Videocdn.tv
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#videocdn" class="csstip" title="<%= __('Указание api_token-ключа плеера') %>" target="_blank">
@@ -317,7 +317,7 @@
                 </div>
             </div>
 
-            <% include ../includes/footer.ejs %>
+            <%- include('../includes/footer.ejs'); -%>
 
         </div>
     </div>

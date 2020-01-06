@@ -286,37 +286,58 @@ function oneCategory(type, key, page, sorting, options, callback) {
 
   switch (type) {
     case config.urls.year:
-      getMovies(Object.assign({ year: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ year: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.genre:
-      getMovies(Object.assign({ genre: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ genre: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.country:
-      getMovies(Object.assign({ country: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ country: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.actor:
-      getMovies(Object.assign({ actor: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ actor: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.director:
-      getMovies(Object.assign({ director: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ director: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.type:
-      getMovies(Object.assign({ type: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ type: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
     case config.urls.search:
-      getMovies(Object.assign({ search: key }, options.query), function(err, render) {
+      getMovies(Object.assign({ search: key }, options.query), function(
+        err,
+        render
+      ) {
         return err ? callback(err) : callback(null, render);
       });
       break;
@@ -507,6 +528,13 @@ function oneCategory(type, key, page, sorting, options, callback) {
           ) {
             service.push('hypercomments');
           }
+          if (
+            modules.comments.status &&
+            modules.comments.data.fast.active &&
+            modules.comments.data.fast.recent.display.indexOf('category') + 1
+          ) {
+            service.push('fast');
+          }
           return service.length
             ? CP_comments.recent(service, options, function(err, comments) {
                 if (options.debug) {
@@ -603,11 +631,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -623,11 +651,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -643,11 +671,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -663,11 +691,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -683,11 +711,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -703,11 +731,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;
@@ -723,11 +751,11 @@ function randomCategory(type, key, options, callback) {
           return err
             ? callback(err)
             : movies && movies.length
-              ? callback(
-                  null,
-                  movies[Math.floor(Math.random() * movies.length)].url
-                )
-              : callback(null, '');
+            ? callback(
+                null,
+                movies[Math.floor(Math.random() * movies.length)].url
+              )
+            : callback(null, '');
         }
       );
       break;

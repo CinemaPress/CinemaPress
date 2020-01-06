@@ -7,7 +7,7 @@
 <!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
 <head lang="<% if (typeof language !== 'undefined') { %><%- language %><% } else { %>en<% } %>">
 
-    <% include admin/includes/head.ejs %>
+    <%- include('admin/includes/head.ejs'); -%>
 
     <style>
         html{height:100%;min-height:100%;margin:0;padding:0}body{position:relative;height:100%;min-height:100%;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px}#error-container{height:100%;min-height:100%;width:100%;background-image: url("/themes/default/public/admin/images/404.jpg");background-size:cover;}#error-box{height:100%;min-height:100%;width:380px;padding:60px 40px 40px}header h1{width:100%;float:left;font-size:80px;font-weight:700;line-height:80px;margin:5px 0}header h2{width:100%;float:left;font-size:16px;font-weight:400;margin:0}.error-content{float:left;width:100%;margin:30px 0;text-align:center}.breadcrumb{float:left;width:100%;margin:30px 0 0}.breadcrumb a:hover{text-decoration:underline}.p{background:#000;border-radius:4px;padding:5px 10px;color:#f00;margin:10px 3px}.w{background:#000;border-radius:4px;padding:5px 10px;color:#fff;margin:10px 3px}

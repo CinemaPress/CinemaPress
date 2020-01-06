@@ -83,6 +83,19 @@ router.get('/?', function(req, res, next) {
       return callback('RSS is disabled!');
     }
 
+    var options = {};
+    options.protocol =
+      req.userinfo && req.userinfo.protocol
+        ? req.userinfo.protocol
+        : config.protocol;
+    options.domain =
+      req.userinfo && req.userinfo.domain ? req.userinfo.domain : config.domain;
+    options.origin =
+      req.userinfo && req.userinfo.origin
+        ? req.userinfo.origin
+        : config.protocol + config.subdomain + config.domain;
+    options.content_image = config.default.image;
+
     var render = {};
     render.config = config;
     render.movies = [];
@@ -105,17 +118,22 @@ router.get('/?', function(req, res, next) {
             query_id.push(item + '^' + (parseInt(arr.length) - parseInt(i)));
           });
           var query = { query_id: query_id.join('|') };
-          CP_get.movies(query, contents[0].movies.length, '', 1, function(
-            err,
-            movies
-          ) {
-            if (err) {
-              return callback(err);
-            }
+          CP_get.movies(
+            query,
+            contents[0].movies.length,
+            '',
+            1,
+            true,
+            options,
+            function(err, movies) {
+              if (err) {
+                return callback(err);
+              }
 
-            render.movies = sortingIds(query_id, movies);
-            callback(null, render);
-          });
+              render.movies = sortingIds(query_id, movies);
+              callback(null, render);
+            }
+          );
         } else {
           return callback('Collection is empty!');
         }
@@ -135,7 +153,10 @@ router.get('/?', function(req, res, next) {
           query_id.push(item + '^' + (arr.length - i));
         });
         var query = { query_id: query_id.join('|') };
-        CP_get.movies(query, items.length, '', 1, function(err, movies) {
+        CP_get.movies(query, items.length, '', 1, true, options, function(
+          err,
+          movies
+        ) {
           if (err) {
             return callback(err);
           }
@@ -147,16 +168,6 @@ router.get('/?', function(req, res, next) {
         return callback('No data!');
       }
     } else if (modules.content.status && tag) {
-      var options = {};
-      options.protocol =
-        req.userinfo && req.userinfo.protocol
-          ? req.userinfo.origin
-          : config.protocol;
-      options.domain =
-        req.userinfo && req.userinfo.domain
-          ? req.userinfo.domain
-          : config.domain;
-      options.content_image = config.default.image;
       CP_get.contents(tag, 100, 1, true, options, function(err, contents) {
         if (err) return callback(err);
 

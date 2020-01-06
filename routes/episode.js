@@ -78,7 +78,7 @@ router.get('/?', function(req, res) {
   var url =
     'https://' +
     source.url +
-    '/api/v2/serials?&include=seasons,translate&api_token=' +
+    '/api/v2/serials?&include=seasons%2Ctranslate&api_token=' +
     source.token +
     '&kp=' +
     kp_id[0];
@@ -121,6 +121,7 @@ router.get('/?', function(req, res) {
       var result = body ? tryParseJSON(body) : {};
 
       if (error || response.statusCode !== 200 || result.error) {
+        console.log(url, error.code || '');
         return callback('Iframe request error.');
       }
 

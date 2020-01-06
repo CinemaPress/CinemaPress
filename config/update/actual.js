@@ -192,6 +192,58 @@ async.series(
           return callback();
         }
       );
+    },
+    function(callback) {
+      var i = 1;
+      async.forever(
+        function(next) {
+          CP_get.comments(
+            { from: process.env.CP_RT, certainly: true },
+            500,
+            i,
+            false,
+            function(err, comments) {
+              i++;
+              if (err) {
+                console.error(err);
+                return next('STOP');
+              }
+              if (comments && comments.length) {
+                async.eachOfLimit(
+                  comments,
+                  1,
+                  function(comment, key, callback) {
+                    var old = comment.all_comments;
+                    delete comment.all_comments;
+                    CP_save.save(comment, 'comment', function(err, result) {
+                      if (old && old !== domain) {
+                        console.log(
+                          result,
+                          old.replace(/(^_|_$)/gi, '') +
+                            ' -> ' +
+                            domain.replace(/(^_|_$)/gi, '')
+                        );
+                      } else {
+                        console.log(result);
+                      }
+                      return callback(err);
+                    });
+                  },
+                  function(err) {
+                    if (err) console.error(err);
+                    return next();
+                  }
+                );
+              } else {
+                return next('STOP');
+              }
+            }
+          );
+        },
+        function() {
+          return callback();
+        }
+      );
     }
   ],
   function() {

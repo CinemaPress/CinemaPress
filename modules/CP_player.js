@@ -214,15 +214,6 @@ function codePlayer(type, movie, options) {
       modules.player.data.collaps.token
         ? modules.player.data.collaps.token
         : '';
-    data.start_time = options.start_time ? options.start_time : '';
-    data.start_episode = options.start_episode ? options.start_episode : '';
-    data.moonlight =
-      modules.player &&
-      modules.player.data &&
-      modules.player.data.moonlight &&
-      modules.player.data.moonlight.domain
-        ? modules.player.data.moonlight.domain
-        : '';
     data.tv =
       modules.tv &&
       modules.tv.status &&
@@ -251,8 +242,6 @@ function codePlayer(type, movie, options) {
     param.season = serial.season ? serial.season : '';
     param.episode = serial.episode ? serial.episode : '';
     param.translate = serial.translate ? serial.translate : '';
-    param.start_time = options.start_time ? options.start_time : '';
-    param.start_episode = options.start_episode ? options.start_episode : '';
     param.player = movie.player && movie.player !== '1' ? movie.player : '';
     param.cdn =
       movie.player && /\.(mp4|mkv|avi|mov|flv)$/.test(movie.player)

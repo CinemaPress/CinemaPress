@@ -56,6 +56,11 @@
             for (i = 0; i < del.length; i++)
                 del[i].addEventListener('click', delData);
 
+        var suc = document.querySelectorAll('.suc');
+        if (suc)
+            for (i = 0; i < suc.length; i++)
+                suc[i].addEventListener('click', sucData);
+
         var addId = document.querySelectorAll('a[data-add-name]');
         if (addId)
             for (i = 0; i < addId.length; i++)
@@ -281,6 +286,32 @@
 
     }
 
+    function sucData() {
+
+      var self = this;
+      self.removeEventListener('click', sucData);
+      self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+
+      var comment_confirm = self.className.indexOf('suc-one') + 1 ? 0 : 1;
+      self.className = self.className.replace(comment_confirm ? 'suc-zero' : 'suc-one', comment_confirm ? 'suc-one' : 'suc-zero');
+
+      var data = {};
+      data[self.dataset.type] = {};
+      data[self.dataset.type].id = self.dataset.id;
+      data[self.dataset.type].comment_confirm = '' + comment_confirm;
+
+      sendServer(data, function (err, result) {
+        if (err) {
+          self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+        }
+        else {
+          self.innerHTML ='<span class="fa fa-circle ' + (comment_confirm ? 'text-success' : 'text-muted') + '"></span>';
+        }
+        self.addEventListener('click', sucData);
+      });
+
+    }
+
     function delIdList() {
         var self = this;
         self.parentNode.removeChild(self);
@@ -406,6 +437,13 @@
                     'modules.comments.data.facebook.admins',
                     'modules.comments.data.vk.app_id',
                     'modules.comments.data.sigcomments.host_id',
+                    'modules.comments.data.fast.message',
+                    'modules.comments.data.fast.question',
+                    'modules.comments.data.fast.question_yes',
+                    'modules.comments.data.fast.question_not',
+                    'modules.comments.data.fast.recaptcha_secret',
+                    'modules.comments.data.fast.recaptcha_sitekey',
+                    'modules.comments.data.fast.stopworls',
                     'modules.slider.data.url',
                     'modules.abuse.data.imap.user',
                     'modules.abuse.data.imap.password',
@@ -448,6 +486,8 @@
                     'modules.blocking.data.adblock.message',
                     'modules.blocking.data.legal.countries',
                     'modules.blocking.data.legal.message',
+                    'modules.episode.data.default',
+                    'modules.episode.data.translate',
                     'modules.episode.data.index.name',
                     'modules.content.data.news.tags',
                     'modules.content.data.index.url',
@@ -537,12 +577,6 @@
 
         if (data.content && data.content.content_movies && data.content.content_movies.split(',').length > 100) {
             self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
-        }
-
-        if (data.movie && !data.movie.id && !data.movie.kp_id && !data.movie.imdb_id && !data.movie.douban_id) {
-            self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-            self.addEventListener('click', saveData)
-            return;
         }
 
         if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {

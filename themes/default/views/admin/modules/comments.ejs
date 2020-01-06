@@ -7,23 +7,23 @@
 <!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
 <head>
 
-    <% include ../includes/head.ejs %>
+    <%- include('../includes/head.ejs'); -%>
 
 </head>
 <body>
 <div id="container" class="clearfix">
 
-    <% include ../includes/left.ejs %>
+    <%- include('../includes/left.ejs'); -%>
 
-    <% include ../includes/right.ejs %>
+    <%- include('../includes/right.ejs'); -%>
 
     <div id="main" class="clearfix">
 
-        <% include ../includes/header-main.ejs %>
+        <%- include('../includes/header-main.ejs'); -%>
 
         <div id="content" class="clearfix">
 
-            <% include ../includes/header-sec.ejs %>
+            <%- include('../includes/header-sec.ejs'); -%>
 
             <div class="window">
                 <div class="actionbar">
@@ -58,7 +58,766 @@
 
                     <% if (modules.comments.status) { %>
 
+                    <% if (comment) { %>
+
+                            <input name="comment.id" value="<% if (comment.id) { %><%- comment.id %><% } %>" type="hidden">
+
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12 text-center">
+                                    <div class="inline-labels">
+                                        <label>
+                                            <input name="comment.comment_confirm" value="1" <% if (comment.comment_confirm) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Показывать') %></span>
+                                        </label>
+                                        <label>
+                                            <input name="comment.comment_confirm" value="0" <% if (!comment.comment_confirm) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Не показывать') %></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Название') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_title" value="<%- comment.comment_title %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('URL') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_url" value="<%- comment.comment_url %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Имя пользователя') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_anonymous" value="<%- comment.comment_anonymous %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Эмоция комментария') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.comment_star" value="<%- comment.comment_star %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Аватар') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_avatar" value="<%- comment.comment_avatar %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('IP пользователя') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_ip" value="<%- comment.comment_ip %>">
+                                        <span class="input-group-addon">
+                                            <a href="https://whois.domaintools.com/<%- comment.comment_ip %>" target="_blank"><i class="fas fa-user-secret"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('ID комментария') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.comment_id" value="<%- comment.comment_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('ID ответа') %>
+                                        </span>
+                                        <input type="text" class="form-control" name="comment.reply_id" value="<%- comment.reply_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('ID фильма') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.movie_id" value="<%- comment.movie_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('ID контента') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.content_id" value="<%- comment.content_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Сезон') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.season_id" value="<%- comment.season_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Серия') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.episode_id" value="<%- comment.episode_id %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Нравится') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.comment_like" value="<%- comment.comment_like %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('Не нравится') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.comment_dislike" value="<%- comment.comment_dislike %>">
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="col-sm-12">
+                                    <div class="advanced-textarea">
+                                        <div class="text-muted">
+                                            <%= __('Текст комментария') %>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <textarea class="form-control descriptions" name="comment.comment_text"><% if (comment.comment_text) { %><%- comment.comment_text.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+
+                                        <div class="text-muted">
+                                            <%= __('Ответ администратора') %>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <textarea class="form-control descriptions" name="comment.comment_admin"><% if (comment.comment_admin) { %><%- comment.comment_admin.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <% } else { %>
+
                     <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-comment"></i>&nbsp;&nbsp;&nbsp;<%= __('Быстрые комментарии') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt1" class="csstip" title="<%= __('Все комментарии будут храниться на Вашем сервере и каждый день отправляться в бэкап') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.comments.data.fast.active" value="1" <% if (modules.comments.data.fast.active) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Показывать') %></span>
+                                                </label>
+                                                <label>
+                                                    <input name="modules.comments.data.fast.active" value="0" <% if (!modules.comments.data.fast.active) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Не показывать') %></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Настройка быстрых комментариев') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Модерация каждого комментария перед публикацией на веб-сайте') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Премодерация комментариев') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.premoderate" value="1" <% if (modules.comments.data.fast.premoderate) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.premoderate" value="0" <% if (!modules.comments.data.fast.premoderate) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Над формой ввода комментария, Вы можете указать, какую эмоцию или оценку Вы вкладываете в текст комментария') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Эмоция комментария') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.star_rating" value="1" <% if (modules.comments.data.fast.star_rating) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.star_rating" value="0" <% if (!modules.comments.data.fast.star_rating) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, после того как он оставил новый комментарий') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <textarea name="modules.comments.data.fast.message" class="form-control"><%- modules.comments.data.fast.message %></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Небольшой опрос, после того как пользователь оставил комментарий') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Опрос после комментария') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <textarea name="modules.comments.data.fast.question" class="form-control"><%- modules.comments.data.fast.question %></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Текст после того как пользователь ответил «Да»') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Ответ «Да»') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <textarea name="modules.comments.data.fast.question_yes" class="form-control"><%- modules.comments.data.fast.question_yes %></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Текст после того как пользователь ответил «Нет»') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Ответ «Нет»') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <textarea name="modules.comments.data.fast.question_not" class="form-control"><%- modules.comments.data.fast.question_not %></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Защита от спама, введите секрет от Google reCAPTCHA v3') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Секрет reCAPTCHA v3') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.recaptcha_secret" value="<%- modules.comments.data.fast.recaptcha_secret %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Защита от спама, введите sitekey от Google reCAPTCHA v3') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Ключ сайта reCAPTCHA v3') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.recaptcha_sitekey" value="<%- modules.comments.data.fast.recaptcha_sitekey %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Настройка параметра «score» для блокировки ботов, 1.0 - высокая вероятность, что комментарий написан человеком, 0.0 - высокая вероятность, что комментарий написан ботом') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Score reCAPTCHA v3') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <select name="modules.comments.data.fast.recaptcha_score" class="form-control">
+                                                                        <% for (var i = 0; i <= 1.0; i = Math.round((i + 0.1) * 100)/100) { %>
+                                                                            <option value="<%= i * 100 %>" <% if (modules.comments.data.fast.recaptcha_score === i * 100) { %>selected="selected"<% } %>>
+                                                                                <%- i %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, который не прошел проверку Google reCAPTCHA v3') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.recaptcha_text" value="<%- modules.comments.data.fast.recaptcha_text %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6 text-center">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Принимать комментарии, которые содержат ссылки') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Разрешить URL-ссылки') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.url_links" value="1" <% if (modules.comments.data.fast.url_links) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.url_links" value="0" <% if (!modules.comments.data.fast.url_links) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, который вставил URL-ссылку в комментарий') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.url_links_text" value="<%- modules.comments.data.fast.url_links_text %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6 text-center">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Принимать комментарии, которые содержат BB-коды') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Разрешить BB-коды') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.bb_codes" value="1" <% if (modules.comments.data.fast.bb_codes) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.bb_codes" value="0" <% if (!modules.comments.data.fast.bb_codes) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, который вставил BB-код в комментарий') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.bb_codes_text" value="<%- modules.comments.data.fast.bb_codes_text %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6 text-center">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Принимать комментарии, которые содержат HTML-теги') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Разрешить HTML-теги') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.html_tags" value="1" <% if (modules.comments.data.fast.html_tags) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.comments.data.fast.html_tags" value="0" <% if (!modules.comments.data.fast.html_tags) {%>checked=""<% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, который вставил HTML-теги в комментарий') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.html_tags_text" value="<%- modules.comments.data.fast.html_tags_text %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Принимать комментарии, в которых количество символов больше указанного числа') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Минимум символов') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <select name="modules.comments.data.fast.min_symbols" class="form-control">
+                                                                        <% for (var i = 0; i <= 500; i++) { %>
+                                                                            <% if (i%20) continue; %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>" <% if (modules.comments.data.fast.min_symbols === i) { %>selected="selected"<% } %>>
+                                                                                    <%= __('Нет') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>" <% if (modules.comments.data.fast.min_symbols === i) { %>selected="selected"<% } %>>
+                                                                                    <%- i %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сообщение для пользователя, который написал меньше минимального количества символов в комментарии') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сообщение для пользователя') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <input name="modules.comments.data.fast.min_symbols_text" value="<%- modules.comments.data.fast.min_symbols_text %>" class="form-control" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Сортировка комментариев по умолчанию') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Сортировка') %>
+                                                                    </a>
+                                                                </div>
+                                                                <select name="modules.comments.data.fast.sorting_page" class="form-control">
+                                                                    <% var sort = ['comment-like-up', 'comment-like-down', 'comment-dislike-up', 'comment-dislike-down', 'comment-publish-up', 'comment-publish-down']; %>
+                                                                    <% for (var i = 0; i <= 5; i++) { %>
+                                                                        <option value="<%= sort[i] %>" <% if (modules.comments.data.fast.sorting_page === sort[i]) { %>selected="selected"<% } %>>
+                                                                            <%= sort[i] %>
+                                                                        </option>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Максимальное количество комментариев на одной странице') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Комментариев на странице') %>
+                                                                    </a>
+                                                                </div>
+                                                                <select name="modules.comments.data.fast.per_page" class="form-control">
+                                                                    <% for (var i = 0; i <= 100; i++) { %>
+                                                                        <% if (i%10) continue; %>
+                                                                        <% if (i === 0) { %>
+                                                                            <option value="<%= i %>" <% if (modules.comments.data.fast.per_page === i) { %>selected="selected"<% } %>>
+                                                                                <%= __('Нет') %>
+                                                                            </option>
+                                                                        <% } else { %>
+                                                                            <option value="<%= i %>" <% if (modules.comments.data.fast.per_page === i) { %>selected="selected"<% } %>>
+                                                                                <%- i %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div>
+                                                                    <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Стоп-слова при обнаружении которых, комментарий не будет принят') %>">
+                                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                                        <%= __('Стоп-слова') %>
+                                                                    </a>
+                                                                </div>
+                                                                <div>
+                                                                    <textarea name="modules.comments.data.fast.stopworls" class="form-control"><%- modules.comments.data.fast.stopworls.join(',') %></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+
+                                        <% if (comments.length) { %>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-8">
+                                                <input class="form-control" type="text" id="comment_id" placeholder="<%= __('ID или ссылка на комментарий') %>">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <a href="javascript:void(0)" class="btn btn-default btn-block" id="comment_add"><span class="fas fa-user-edit"></span>&nbsp;&nbsp;<span><%= __('Изменить комментарий') %></span></a>
+                                                <script>
+                                                  (document.querySelector('#comment_id')).addEventListener('keyup', function (event) {
+                                                    event.preventDefault();
+                                                    if (event.keyCode === 13) editComment();
+                                                  });
+                                                  (document.querySelector('#comment_add')).addEventListener('click', function () {
+                                                    editComment();
+                                                  });
+                                                  function editComment() {
+                                                    var comment_id = document.querySelector('#comment_id').value;
+                                                    if (!comment_id) return;
+                                                    location.href = '/<%- config.urls.admin %>/comments?comment_id=' +
+                                                      (comment_id.indexOf('#')+1 ? comment_id.split('#')[1] : comment_id)
+                                                        .replace(/[^0-9]*/ig, '')
+                                                  }
+                                                </script>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-xs-12">
+                                                <table class="table table-bordered table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="table-content table-content-head">
+                                                            <%= __('Комментарии на веб-сайте') %>
+                                                        </th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                    <tr>
+                                                        <th>
+                                                            <div style="margin: 0">
+                                                                <% if (num-1) { %>
+                                                                    <a href="/<%- config.urls.admin %>/comments?num=<%- num-1 %>" class="table-arrow"><i class="fa fa-chevron-left"></i></a>
+                                                                <% } else { %>
+                                                                    <span class="table-arrow-h"><i class="fa fa-chevron-left"></i></span>
+                                                                <% } %>
+                                                                <% if (next) { %>
+                                                                    <a href="/<%- config.urls.admin %>/comments?num=<%- num+1 %>" class="table-arrow"><i class="fa fa-chevron-right"></i></a>
+                                                                <% } else { %>
+                                                                    <span class="table-arrow-h"><i class="fa fa-chevron-right"></i></span>
+                                                                <% } %>
+                                                            </div>
+                                                        </th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                        <th class="table-settings"></th>
+                                                    </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                    <% comments.forEach(function(comment) { %>
+                                                        <% var text = comment.comment_text
+                                                                .replace(/[<][^>]*?>/gi, '')
+                                                                .replace(/[\[][^\]]*?]/gi, '')
+                                                                .replace(/\s+/g, ' ')
+                                                                .replace(/(^\s*)|(\s*)$/g, '') %>
+                                                        <tr>
+                                                            <td class="table-content" style="text-align: justify">
+                                                                <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                                                    <span class="table-content-key"><%- comment.comment_anonymous %></span> |
+                                                                    <span class="table-content-key"><%- comment.comment_title %></span>
+                                                                </div>
+                                                                <span><%= (text.length >= 300
+                                                                            ? text.slice(0, 300) + '...'
+                                                                            : text) %></span>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <% if (modules.comments.data.fast.premoderate && !comment.comment_confirm) { %>
+                                                                <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.id %>" class="suc suc-zero"><i class="fa fa-circle text-muted"></i></a>
+                                                                <% } else { %>
+                                                                    <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.id %>" class="suc suc-one"><i class="fa fa-circle text-success"></i></a>
+                                                                <% } %>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.id %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>"><i class="fa fa-edit text-warning"></i></a>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <a href="<%- comment.comment_url %>#c<%- comment.id %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    <% }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        <% } %>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last1" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-xs-4">
+                                                            <select name="modules.comments.data.fast.recent.num_items" class="form-control">
+                                                                <% for (var i = 0; i <= 20; i++) { %>
+                                                                    <% if (modules.comments.data.fast.recent.num_items === i) { %>
+                                                                        <% if (i === 0) { %>
+                                                                            <option value="<%= i %>" selected="selected">
+                                                                                <%= __('Не показывать') %>
+                                                                            </option>
+                                                                        <% } else { %>
+                                                                            <option value="<%= i %>" selected="selected">
+                                                                                <%- i %> <%= __('комментария(ев)') %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    <% } else { %>
+                                                                        <% if (i === 0) { %>
+                                                                            <option value="<%= i %>">
+                                                                                <%= __('Не показывать') %>
+                                                                            </option>
+                                                                        <% } else { %>
+                                                                            <option value="<%= i %>">
+                                                                                <%- i %> <%= __('комментария(ев)') %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                <% } %>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-xs-4">
+                                                            <select name="modules.comments.data.fast.recent.excerpt_length" class="form-control">
+                                                                <% for (var i = 50; i <= 500; i = i+50) { %>
+                                                                    <% if (modules.comments.data.fast.recent.excerpt_length === i) { %>
+                                                                        <option value="<%= i %>" selected="selected">
+                                                                            <%= __('Макс. %s символов', i) %>
+                                                                        </option>
+                                                                    <% } else { %>
+                                                                        <option value="<%= i %>">
+                                                                            <%= __('Макс. %s символов', i) %>
+                                                                        </option>
+                                                                    <% } %>
+                                                                <% } %>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-xs-4">
+                                                            <select name="modules.comments.data.fast.recent.hide_avatars" class="form-control">
+                                                                <% if (modules.comments.data.fast.recent.hide_avatars) { %>
+                                                                    <option value="1" selected="selected">
+                                                                        <%= __('без аватара') %>
+                                                                    </option>
+                                                                    <option value="0">
+                                                                        <%= __('с аватаром') %>
+                                                                    </option>
+                                                                <% } else { %>
+                                                                    <option value="1">
+                                                                        <%= __('без аватара') %>
+                                                                    </option>
+                                                                    <option value="0" selected="selected">
+                                                                        <%= __('с аватаром') %>
+                                                                    </option>
+                                                                <% } %>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                            <div class="inline-labels">
+                                                                <label>
+                                                                    <%= __('На страницах:') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="modules.comments.data.fast.recent.display" value="index" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="modules.comments.data.fast.recent.display" value="category" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="modules.comments.data.fast.recent.display" value="content" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="modules.comments.data.fast.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
@@ -402,6 +1161,8 @@
                         </div>
                     </div>
 
+                    <% } %>
+
                     <% } else { %>
 
                     <div class="row">
@@ -423,7 +1184,7 @@
                 </div>
             </div>
 
-            <% include ../includes/footer.ejs %>
+            <%- include('../includes/footer.ejs'); -%>
 
         </div>
     </div>

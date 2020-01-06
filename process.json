@@ -10,22 +10,13 @@
       "out_file": "./log/out.log",
       "node_args": "--max-old-space-size=768",
       "max_memory_restart": "768M",
-      "watch": true,
-      "ignore_watch": [
-        "docker",
-        "doc",
-        "config",
-        "backup",
-        "files",
-        "log",
-        "node_modules",
-        "themes/*/public",
-        "themes/*/locales",
-        "themes/.*",
-        ".*",
+      "watch": [
         "process.json",
-        "package.json",
-        "package-lock.json"
+        "app.js",
+        "themes/*/views",
+        "lib",
+        "modules",
+        "routes"
       ],
       "watch_options": {
         "followSymlinks": false

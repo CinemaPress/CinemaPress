@@ -2,12 +2,12 @@
 <html lang="<%- page.language %>">
 <head>
 
-    <% include includes/head.ejs %>
+    <%- include('includes/head.ejs'); -%>
 
 </head>
 <body>
 
-<% include includes/header.ejs %>
+<%- include('includes/header.ejs'); -%>
 
 <div class="info">
     <a href="<%- page.protocol %><%- page.domain %>/"><%- page.l.home %></a> » <%= page.title %>
@@ -19,16 +19,16 @@
 
 <% if (typeof categories === 'object' && categories.length) { %>
 
-<% categories.forEach(function (category) { %>
+    <% categories.forEach(function (category) { %>
 
-<div class="info block">
-    <a href="<%- category.url %>" target="_blank">
-        <%- category.title %>
-    </a>
-</div>
+        <div class="info block">
+            <a href="<%- category.url %>" target="_blank">
+                <%- category.title %>
+            </a>
+        </div>
 
-<% }); %>
+    <% }); %>
 
 <% } %>
 
-<% include includes/footer.ejs %>
+<%- include('includes/footer.ejs'); -%>

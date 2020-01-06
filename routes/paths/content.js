@@ -225,11 +225,16 @@ function oneContent(url, page, sorting, options, callback) {
   page = page ? page : 1;
   var query = '';
 
+  var related = {};
+
   async.series(
     {
       content: function(callback) {
         return CP_get.contents(
-          { content_url: url },
+          {
+            id: url.replace(/[^0-9]/g, '') === url ? url : '',
+            content_url: url.replace(/[^0-9]/g, '') === url ? '' : url
+          },
           1,
           1,
           true,
@@ -258,6 +263,8 @@ function oneContent(url, page, sorting, options, callback) {
               });
               query = { query_id: query_id.join('|') };
             }
+
+            if (contents && contents.length) related = contents[0];
 
             return contents && contents.length
               ? callback(null, contents[0])
@@ -419,6 +426,13 @@ function oneContent(url, page, sorting, options, callback) {
         ) {
           service.push('hypercomments');
         }
+        if (
+          modules.comments.status &&
+          modules.comments.data.fast.active &&
+          modules.comments.data.fast.recent.display.indexOf('content') + 1
+        ) {
+          service.push('fast');
+        }
         return service.length
           ? CP_comments.recent(service, options, function(err, comments) {
               if (options.debug) {
@@ -476,6 +490,29 @@ function oneContent(url, page, sorting, options, callback) {
 
           return num ? callback(null, num) : callback(null, 0);
         });
+      },
+      comments: function(callback) {
+        modules.comments.data.fast.active && !/NoComment/i.test(related.tags)
+          ? CP_comments.comments(
+              { content_id: related.id, comment_confirm: 1 },
+              null,
+              null,
+              null,
+              options,
+              function(err, comments) {
+                if (options.debug) {
+                  options.debug.detail.push({
+                    type: 'comments',
+                    duration: new Date() - options.debug.duration.current + 'ms'
+                  });
+                  options.debug.duration.current = new Date();
+                }
+                if (err) return callback(err);
+
+                return comments ? callback(null, comments) : callback(null, {});
+              }
+            )
+          : callback(null, {});
       }
     },
     function(err, result) {
@@ -500,8 +537,13 @@ function oneContent(url, page, sorting, options, callback) {
           });
           options.debug.duration.current = new Date();
         }
-        if (result.page.comments) {
+        if (result.page.comments && typeof result.page.comments === 'string') {
           result.page.comments = indexer + result.page.comments;
+        } else if (
+          result.page.comments &&
+          typeof result.page.comments === 'object'
+        ) {
+          result.page.comments.indexer = indexer;
         }
         callback(err, result);
       });
@@ -519,7 +561,10 @@ function oneContent(url, page, sorting, options, callback) {
 
 function randomContent(url, options, callback) {
   CP_get.contents(
-    { content_url: url },
+    {
+      id: url.replace(/[^0-9]/g, '') === url ? url : '',
+      content_url: url.replace(/[^0-9]/g, '') === url ? '' : url
+    },
     undefined,
     undefined,
     undefined,
@@ -531,27 +576,27 @@ function randomContent(url, options, callback) {
           contents.length &&
           contents[0].movies &&
           contents[0].movies.length
-          ? CP_get.movies(
-              {
-                query_id:
-                  contents[0].movies[
-                    Math.floor(Math.random() * contents[0].movies.length)
-                  ]
-              },
-              undefined,
-              undefined,
-              undefined,
-              undefined,
-              options,
-              function(err, movies) {
-                return err
-                  ? callback(err)
-                  : movies && movies.length
-                    ? callback(null, movies[0].url)
-                    : callback(null, '');
-              }
-            )
-          : callback(null, '');
+        ? CP_get.movies(
+            {
+              query_id:
+                contents[0].movies[
+                  Math.floor(Math.random() * contents[0].movies.length)
+                ]
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            options,
+            function(err, movies) {
+              return err
+                ? callback(err)
+                : movies && movies.length
+                ? callback(null, movies[0].url)
+                : callback(null, '');
+            }
+          )
+        : callback(null, '');
     }
   );
 }

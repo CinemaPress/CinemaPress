@@ -99,7 +99,7 @@ function blockingPlayer(code, movie, options) {
           message +
           '</div><div id="blockingCode" style="margin:30px auto"> <input type="text" placeholder="CP8881160388831744" style="border: 0;padding: 10px;border-radius: 3px;background: #ccc;color: #000;" id="subscribeKey"><input type="button" style="border: 0;padding: 10px;border-radius: 3px;background: #000;color: #fff; cursor: pointer;" value="' +
           config.l.subscribe +
-          '" id="subscribe"></div></div><script>function setCookie(e,t,n){n=n||{};var o=n.expires;if("number"===typeof o&&o){var i=new Date;i.setTime(i.getTime()+1e3*o),o=n.expires=i}o&&o.toUTCString&&(n.expires=o.toUTCString()),t=encodeURIComponent(t);var r=e+"="+t;for(var a in n)if(n.hasOwnProperty(a)){r+="; "+a;var s=n[a];s!==!0&&(r+="="+s)}document.cookie=r}(function(){var e=document.getElementById("subscribe");e.addEventListener("click",function(){var e=document.getElementById("subscribeKey");e&&e.value&&(setCookie("CP_subscribe",e.value,{expires:29549220,path:"/"}),setTimeout(function(){location.reload(!0)},1e3))})})();</script>';
+          '" id="subscribe"></div></div><script>(function(){var e=document.getElementById("subscribe");e.addEventListener("click",function(){var e=document.getElementById("subscribeKey");e&&e.value&&(setCookieCinemaPress("CP_subscribe",e.value,{expires:29549220,path:"/"}),setTimeout(function(){location.reload(!0)},1e3))})})();</script>';
       }
     } else if (modules.blocking.data.display === 'legal') {
       if (

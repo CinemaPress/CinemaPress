@@ -19,7 +19,7 @@ module.exports = {
         }
       },
       "disqus": {
-        "shortname": "cinemapress-demo-en",
+        "shortname": "",
         "api_key": "",
         "recent": {
           "num_items": 5,
@@ -38,6 +38,38 @@ module.exports = {
       },
       "sigcomments": {
         "host_id": ""
+      },
+      "fast": {
+        "active": 1,
+        "premoderate": 1,
+        "star_rating": 1,
+        "per_page": 50,
+        "sorting_page": "comment-publish-up",
+        "url_links": 0,
+        "url_links_text": "Forbidden to insert links",
+        "bb_codes": 1,
+        "bb_codes_text": "Forbidden to insert BB-codes",
+        "html_tags": 0,
+        "html_tags_text": "Forbidden to insert HTML-tags",
+        "min_symbols": 100,
+        "min_symbols_text": "Write at least [num] more characters",
+        "recaptcha_secret": "",
+        "recaptcha_sitekey": "",
+        "recaptcha_score": 20,
+        "recaptcha_text": "Google considers you a robot, change IP",
+        "message": "Thank you for your comment, it will appear on the website within an hour.",
+        "question": "Let me ask you a question, did you watch the movie [title]?",
+        "question_yes": "Great, we really appreciate your feedback. Could you write a comment on the [url] page. For this, we will add any film or series of the series that you ask.",
+        "question_not": "Great, when you have time, check out [url]. You should like it!",
+        "stopworls": [],
+        "recent": {
+          "num_items": 5,
+          "excerpt_length": 250,
+          "hide_avatars": 0,
+          "display": [
+            "index"
+          ]
+        }
       }
     }
   },
@@ -75,7 +107,7 @@ module.exports = {
       "country": 0,
       "status_code_country": "200",
       "status_code_list": "404",
-      "message": "Viewing is prohibited, the site is subject<br>to copyright law in the digital age!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\">",
+      "message": "Viewing is prohibited, the site is subject<br>to copyright law in the digital age!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
       "movies": ["840372"]
     }
   },
@@ -217,7 +249,7 @@ module.exports = {
   "mobile": {
     "status": false,
     "data": {
-      "theme": "light",
+      "theme": "custom",
       "custom": {
         "a": "#99AABB",
         "hover": "#FFFFFF",

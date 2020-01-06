@@ -57,4 +57,43 @@ router.get(
   }
 );
 
+router.get('/avatar/:id.svg', function(req, res) {
+  req.userinfo = {};
+
+  if (req.protocol === 'http') {
+    if (
+      req.get('x-cloudflare-proto') &&
+      req.get('x-cloudflare-proto').toLowerCase() === 'https'
+    ) {
+      req.userinfo.protocol = 'https';
+    } else {
+      req.userinfo.protocol = 'http';
+    }
+  } else {
+    req.userinfo.protocol = 'https';
+  }
+
+  request
+    .get({
+      url:
+        'https://avatars.dicebear.com/v2/avataaars/' +
+        encodeURIComponent(req.params.id) +
+        '.svg',
+      timeout: 1000,
+      agent: false,
+      pool: { maxSockets: 100 }
+    })
+    .on('error', function(err) {
+      console.error(err.message || err, req.originalUrl);
+      return res.redirect(
+        302,
+        config.protocol +
+          config.subdomain +
+          config.domain +
+          '/files/poster/no-avatar.svg'
+      );
+    })
+    .pipe(res);
+});
+
 module.exports = router;

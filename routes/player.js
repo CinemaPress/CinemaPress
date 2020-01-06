@@ -27,14 +27,10 @@ router.get('/?', function(req, res) {
   var translate = parseInt(req.query.translate)
     ? parseInt(req.query.translate)
     : null;
-  var start_time = parseInt(req.query.start_time)
-    ? parseInt(req.query.start_time)
-    : 0;
-  var start_episode = req.query.start_episode ? req.query.start_episode : '';
   var autoplay = req.query.autoplay ? '?&autoplay=1' : '';
 
   var script =
-    'function player(){var e,t,r,n=document.querySelector("#yohoho");if(!n)return!1;for(var a=document.createElement("div"),o=Array.prototype.slice.call(n.attributes);r=o.pop();)a.setAttribute(r.nodeName,r.nodeValue);a.innerHTML=n.innerHTML,n.parentNode.replaceChild(a,n);var i=document.createElement("iframe");i.setAttribute("id","player-iframe"),i.setAttribute("frameborder","0"),i.setAttribute("allowfullscreen","allowfullscreen"),i.setAttribute("src",decodeURIComponent("iframe-src")),a.appendChild(i);var s="width:"+(e=parseInt(a.offsetWidth)?parseInt(a.offsetWidth):parseInt(a.parentNode.offsetWidth)?a.parentNode.offsetWidth:610)+"px;height:"+(t=parseInt(a.offsetHeight)&&parseInt(a.offsetHeight)<370?parseInt(a.parentNode.offsetHeight)&&370<=parseInt(a.parentNode.offsetHeight)?parseInt(a.parentNode.offsetHeight):370:parseInt(a.offsetHeight)&&e/3<parseInt(a.offsetHeight)?parseInt(a.offsetHeight):parseInt(a.parentNode.offsetHeight)&&e/3<parseInt(a.parentNode.offsetHeight)?parseInt(a.parentNode.offsetHeight):e/2)+"px;border:0;margin:0;padding:0;overflow:hidden;position:relative";i.setAttribute("style",s),i.setAttribute("width",e),i.setAttribute("height",t),a.setAttribute("style",s)}document.addEventListener("DOMContentLoaded",player),document.addEventListener("DOMContentLoaded",function(){document.querySelector("#player-translate");document.querySelector("#player-quality")});';
+    'function player(){var e,t,r,n=document.querySelector("#yohoho");if(!n)return!1;for(var a=document.createElement("div"),o=Array.prototype.slice.call(n.attributes);r=o.pop();)a.setAttribute(r.nodeName,r.nodeValue);a.innerHTML=n.innerHTML,n.parentNode.replaceChild(a,n);var i=document.createElement("iframe");i.setAttribute("id","player-iframe"),i.setAttribute("frameborder","0"),i.setAttribute("allowfullscreen","allowfullscreen"),i.setAttribute("src",decodeURIComponent("iframe-src")),a.appendChild(i);var s="width:"+(e=parseInt(a.offsetWidth)?parseInt(a.offsetWidth):parseInt(a.parentNode.offsetWidth)?a.parentNode.offsetWidth:610)+"px;height:"+(t=parseInt(a.offsetHeight)&&parseInt(a.offsetHeight)<370?parseInt(a.parentNode.offsetHeight)&&370<=parseInt(a.parentNode.offsetHeight)?parseInt(a.parentNode.offsetHeight):370:parseInt(a.offsetHeight)&&e/3<parseInt(a.offsetHeight)?parseInt(a.offsetHeight):parseInt(a.parentNode.offsetHeight)&&e/3<parseInt(a.parentNode.offsetHeight)?parseInt(a.parentNode.offsetHeight):e/2)+"px;border:0;margin:0;padding:0;overflow:hidden;position:relative";i.setAttribute("style",s),i.setAttribute("width",e),i.setAttribute("height",t),a.setAttribute("style",s)}player(),(function(){document.querySelector("#player-translate");document.querySelector("#player-quality")})();';
 
   if (req.query.player) {
     res.setHeader('Content-Type', 'application/javascript');
@@ -212,31 +208,6 @@ router.get('/?', function(req, res) {
                 iframe_quality = json[i].source_type ? json[i].source_type : '';
                 added = publish;
               }
-            }
-          }
-          if (iframe_url && start_episode) {
-            var se = start_episode.match(
-              /^([a-z0-9]*?)\|([0-9]*?)\|([0-9]*?)$/i
-            );
-            if (se && se.length === 4) {
-              iframe_url = iframe_url.replace(
-                /serial\/([a-z0-9]*?)\//i,
-                'serial/' + se[1] + '/'
-              );
-              if (iframe_url.indexOf('?') + 1) {
-                iframe_url =
-                  iframe_url + '&season=' + se[2] + '&episode=' + se[3];
-              } else {
-                iframe_url =
-                  iframe_url + '?season=' + se[2] + '&episode=' + se[3];
-              }
-            }
-          }
-          if (iframe_url && start_time) {
-            if (iframe_url.indexOf('?') + 1) {
-              iframe_url = iframe_url + '&start_time=' + start_time;
-            } else {
-              iframe_url = iframe_url + '?start_time=' + start_time;
             }
           }
           if (modules.player.data.iframe.token.trim().split(':')[1]) {
@@ -451,13 +422,16 @@ router.get('/?', function(req, res) {
    */
 
   function getYohoho(callback) {
-    api('/files/yo.js', function(json, body) {
-      callback({
-        src: body,
-        translate: '',
-        quality: ''
-      });
-    });
+    api(
+      config.protocol + config.subdomain + config.domain + '/files/yo.js',
+      function(json, body) {
+        callback({
+          src: body,
+          translate: '',
+          quality: ''
+        });
+      }
+    );
   }
 
   /**

@@ -17,12 +17,12 @@
         <div class="btn-group-justified">
             <div class="dropdown dropdown-lang change-lang">
                 <a class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown" href="javascript:void(0)">
-                    <img src="/themes/default/public/admin/images/locales/<%- language %>.svg" alt="<%- language %>">
+                    <img src="/themes/default/public/admin/images/locales/<%- language %>.svg" alt="<%= language %>">
                     <i class="fa fa-caret-down caret-lang"></i>
                 </a>
                 <ul role="menu" class="dropdown-menu ext-flags ul-lang">
                     <% for (var i = 0; i < languages.length; i++) { if (languages[i] === language) continue; %>
-                    <li onclick="window.location.href='<%- url + '?language=' + languages[i] %>'"><a href="<%- url + '?language=' + languages[i] %>" style="font-size:12px;border-radius: 3px;"><span><%- languages[i].toUpperCase() %></span> <img src="/themes/default/public/admin/images/locales/<%- languages[i] %>.svg" alt="<%- languages[i] %>"></a></li>
+                    <li onclick="window.location.href='<%- url + '?language=' + languages[i] %>'"><a href="<%- url + '?language=' + languages[i] %>" style="font-size:12px;border-radius: 3px;"><span><%- languages[i].toUpperCase() %></span> <img src="/themes/default/public/admin/images/locales/<%- languages[i] %>.svg" alt="<%= languages[i] %>"></a></li>
                     <% } %>
                 </ul>
             </div>

@@ -7,23 +7,23 @@
 <!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
 <head>
 
-    <% include includes/head.ejs %>
+    <%- include('includes/head.ejs'); -%>
 
 </head>
 <body>
 <div id="container" class="clearfix">
 
-    <% include includes/left.ejs %>
+    <%- include('includes/left.ejs'); -%>
 
-    <% include includes/right.ejs %>
+    <%- include('includes/right.ejs'); -%>
 
     <div id="main" class="clearfix">
 
-        <% include includes/header-main.ejs %>
+        <%- include('includes/header-main.ejs'); -%>
 
         <div id="content" class="clearfix">
 
-            <% include includes/header-sec.ejs %>
+            <%- include('includes/header-sec.ejs'); -%>
 
             <div class="window">
                 <div class="actionbar">
@@ -1097,7 +1097,7 @@
                 </div>
             </div>
 
-            <% include includes/footer.ejs %>
+            <%- include('includes/footer.ejs'); -%>
 
         </div>
     </div>

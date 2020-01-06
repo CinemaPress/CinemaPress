@@ -25,8 +25,8 @@ CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-}
 MEGA_EMAIL=${MEGA_EMAIL:-}
 MEGA_PASSWORD=${MEGA_PASSWORD:-}
 
-CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
-CP_MIRROR_=`echo ${CP_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g"`
+CP_DOMAIN_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
+CP_MIRROR_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
 CP_IP="domain"
 
@@ -182,6 +182,7 @@ docker_install() {
                     https://download.docker.com/linux/fedora/docker-ce.repo
                 dnf -y install docker-ce docker-ce-cli containerd.io
                 systemctl start docker
+                systemctl enable docker
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
                 yum remove -y docker \
                     docker-client \
@@ -199,6 +200,7 @@ docker_install() {
                     https://download.docker.com/linux/centos/docker-ce.repo
                 yum install -y docker-ce docker-ce-cli containerd.io
                 systemctl start docker
+                systemctl enable docker
             fi
             if [ "`docker -v 2>/dev/null`" = "" ]; then
                 clear
@@ -222,7 +224,6 @@ ip_install() {
     if [ "`expr "${IP1}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP1}"; \
     elif [ "`expr "${IP2}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP2}"; \
     elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP3}"; fi
-    IP_DOMAIN=`echo ${IP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
     CP_IP="ip"
     CP_LANG="${1}"
     CP_THEME="arya"
@@ -230,7 +231,7 @@ ip_install() {
     sh_yes
     _s
     sh_progress
-    1_install "${IP_DOMAIN}"
+    1_install "${IP_DOMAIN}" "${CP_LANG}" "${CP_THEME}" "${CP_PASSWD}"
     sh_progress 100
     success_install
 }
@@ -242,9 +243,11 @@ ip_install() {
     LOCAL_THEME=${3:-${CP_THEME}}
     LOCAL_PASSWD=${4:-${CP_PASSWD}}
 
-    docker network create \
-        --driver bridge \
-        cinemapress >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+    if [ ! "$(docker network ls | grep cinemapress)" ]; then
+        docker network create \
+            --driver bridge \
+            cinemapress >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+    fi
 
     # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
 
@@ -278,6 +281,15 @@ ip_install() {
     done
 
     sh_progress
+
+    DIR_SUCCESS=1
+    while [ "${DIR_SUCCESS}" != "10" ]; do
+        sleep 3
+        DIR_SUCCESS=$((1+${DIR_SUCCESS}))
+        if [ -d "/home/${LOCAL_DOMAIN}/" ]; then
+            DIR_SUCCESS=10
+        fi
+    done
 
     if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
         docker restart nginx >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
@@ -344,14 +356,6 @@ ip_install() {
 
         fi
     fi
-    DIR_SUCCESS=1
-    while [ "${DIR_SUCCESS}" != "10" ]; do
-        sleep 3
-        DIR_SUCCESS=$((1+${DIR_SUCCESS}))
-        if [ -d "/home/${LOCAL_DOMAIN}/" ]; then
-            DIR_SUCCESS=10
-        fi
-    done
 }
 2_update() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -544,6 +548,8 @@ ip_install() {
             cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
             sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
                 /home/${LOCAL_DOMAIN}/config/production/config.js
+            docker exec ${LOCAL_DOMAIN_} node optimal.js "${LOCAL_THEME}" \
+                >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
         fi
     else
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
@@ -552,6 +558,8 @@ ip_install() {
         cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
             /home/${LOCAL_DOMAIN}/config/production/config.js
+        docker exec ${LOCAL_DOMAIN_} node optimal.js "${LOCAL_THEME}" \
+            >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
     fi
 
     rm -rf /var/${LOCAL_THEME:?}
@@ -860,7 +868,7 @@ ip_install() {
         docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
-    docker rmi -f "$(docker images -f 'dangling=true' -q)" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
 
@@ -1174,7 +1182,7 @@ read_cloudflare_email() {
             fi
             if [ "${CLOUDFLARE_EMAIL}" != "" ]
             then
-                if echo "${CLOUDFLARE_EMAIL}" | grep -qE ^\-?[.a-zA-Z0-9@-]+$
+                if echo "${CLOUDFLARE_EMAIL}" | grep -qE ^\-?[.a-zA-Z0-9@_-]+$
                 then
                     AGAIN=10
                 else
@@ -1274,6 +1282,42 @@ read_mega_password() {
             fi
         done
         if [ "${MEGA_PASSWORD}" = "" ]; then exit 1; fi
+    fi
+}
+read_cms() {
+    NAME_CMS=${1:-${NAME_CMS}}
+    if [ "${NAME_CMS}" = "" ]; then
+        _header "NAME CMS"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                NAME_CMS=${1}
+                NAME_CMS=`echo ${NAME_CMS} | iconv -c -t UTF-8`
+                echo ": ${NAME_CMS}"
+            else
+                read -e -p ': ' -i "php-mysql" NAME_CMS
+                NAME_CMS=`echo ${NAME_CMS} | iconv -c -t UTF-8`
+            fi
+            if [ "${NAME_CMS}" = "" ]
+            then
+                AGAIN=10
+                NAME_CMS='php-mysql'
+                echo ": ${NAME_CMS}"
+            else
+                if [ "${NAME_CMS}" = "php-mysql" ] || [ "${NAME_CMS}" = "wordpress" ]  || [ "${NAME_CMS}" = "drupal" ]  || [ "${NAME_CMS}" = "joomla" ]
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         There is no such CMS! \n"
+                    printf "${R}WARNING:${NC} Currently there are \n"
+                    printf "${NC}         CMS: wordpress, drupal, joomla and php-mysql. \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${NAME_CMS}" = "" ]; then exit 1; fi
     fi
 }
 
@@ -1516,6 +1560,14 @@ docker_restore() {
         -xf /var/${CP_DOMAIN}/themes.tar
     mkdir -p /home/${CP_DOMAIN}/config/custom
     cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
+    COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
+    if [ "${COMMENTSIZE}" -le 100 ]; then
+      rm -rf "/home/${CP_DOMAIN}/config/comment/*";
+    fi
+    USERSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram")
+    if [ "${USERSIZE}" -le 100 ]; then
+      rm -rf "/home/${CP_DOMAIN}/config/user/*";
+    fi
     docker_start
 }
 docker_backup() {
@@ -1571,10 +1623,14 @@ docker_passwd() {
     echo "admin:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
 }
 docker_speed_on() {
+    sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip\.d\/default\.conf;/    #gzip include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
     sed -Ei "s/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 docker_speed_off() {
+    sed -Ei "s/    #gzip include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip.d\/default.conf;/" \
+        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
     sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
@@ -2010,6 +2066,15 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start fail2ban
             exit 0
         ;;
+        "optimal" )
+            _br
+            read_domain ${2}
+            read_theme ${3}
+            sh_not
+            _s ${3}
+            docker exec -it ${CP_DOMAIN_} node optimal.js "${CP_THEME}"
+            exit 0
+        ;;
         "logs" )
             _br
             read_domain ${2}
@@ -2045,6 +2110,208 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
+            exit 0
+        ;;
+        "cms" )
+            read_domain ${2}
+            sh_yes
+            read_cms "${3}"
+            _s ${2}
+            NAME_CMS=${NAME_CMS:-}
+            MYSQL_ROOT_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            MYSQL_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            MYSQL_DATABASE="${CP_DOMAIN_}"
+            MYSQL_USER="${CP_DOMAIN_}"
+            PMA_USER="cinemaadmin"
+            PMA_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            if [ "${4}" = "backup" ]; then
+                if [ -f "/var/lib/cinemapress/dump/cinemapress.sql" ]; then
+                    echo "ERROR: Backup file found /var/lib/cinemapress/dump/backup.sql"
+                    exit 0
+                fi
+                docker exec mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' \
+                    > "/var/lib/cinemapress/dump/backup.sql"
+                echo "SUCCESS: Backup file /var/lib/cinemapress/dump/backup.sql"
+                exit 0
+            fi
+            if [ "${4}" = "restore" ]; then
+                if [ ! -f "/var/lib/cinemapress/dump/restore.sql" ]; then
+                    echo "ERROR: Restore file not found /var/lib/cinemapress/dump/restore.sql"
+                    exit 0
+                fi
+                docker exec -i mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' \
+                    < "/var/lib/cinemapress/dump/restore.sql"
+                echo "SUCCESS: Restore file /var/lib/cinemapress/dump/restore.sql"
+                exit 0
+            fi
+            sh_progress
+            mkdir -p /var/lib/cinemapress/php
+            mkdir -p /var/lib/cinemapress/mysql
+            mkdir -p /var/lib/cinemapress/dump
+            mkdir -p /home/${CP_DOMAIN}/config/production/nginx/conf.d
+            sh_progress
+            if [ ! "$(docker ps -a | grep php)" ]; then
+                docker run \
+                    -d \
+                    --name php \
+                    --restart always \
+                    --network cinemapress \
+                    -v /var/lib/cinemapress/php:/var/lib/php \
+                    -v /home:/home \
+                    chialab/php:7.4-fpm
+            fi
+            sh_progress
+            if [ ! "$(docker ps -a | grep mysql)" ]; then
+                docker run \
+                    -d \
+                    --name mysql \
+                    --restart always \
+                    --network cinemapress \
+                    -v /var/lib/cinemapress/mysql:/var/lib/mysql \
+                    -e MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}" \
+                    mariadb:10 \
+                    --character-set-server=utf8mb4 \
+                    --collation-server=utf8mb4_unicode_ci
+            fi
+            MYSQL_ROOT_PASSWORD=""
+            docker exec mysql sh -c \
+              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"CREATE DATABASE ${MYSQL_DATABASE} /*\!40100 DEFAULT CHARACTER SET utf8mb4 */;\""
+            docker exec mysql sh -c \
+              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"CREATE USER ${MYSQL_USER}@localhost IDENTIFIED BY '${MYSQL_PASSWORD}';\""
+            docker exec mysql sh -c \
+              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'localhost';\""
+            docker exec mysql sh -c \
+              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"FLUSH PRIVILEGES;\""
+            if [ ! "$(docker ps -a | grep phpmyadmin)" ]; then
+                docker run \
+                    -d \
+                    --name phpmyadmin \
+                    --network cinemapress \
+                    -e PMA_HOST=mysql \
+                    -e PMA_ABSOLUTE_URI="http://${CP_DOMAIN}/cinemaadmin" \
+                    -e PMA_USER="${PMA_USER}" \
+                    -e PMA_PASSWORD="${PMA_PASSWORD}" \
+                    phpmyadmin/phpmyadmin:latest
+            else
+                PMA_USER="$(docker exec phpmyadmin sh -c 'echo $PMA_USER')"
+                PMA_PASSWORD="$(docker exec phpmyadmin sh -c 'echo $PMA_PASSWORD')"
+            fi
+            sh_progress
+            if [ "${NAME_CMS}" = "wordpress" ]; then
+                wget -O "wordpress.tar.gz" "https://wordpress.org/wordpress-latest.tar.gz"
+                tar -xzf "wordpress.tar.gz" -C /var
+                rm -rf "wordpress.tar.gz"
+                cp -rf /var/wordpress/* /home/${CP_DOMAIN}/
+            elif [ "${NAME_CMS}" = "drupal" ]; then
+                wget -O "drupal.tar.gz" "https://www.drupal.org/download-latest/tar.gz"
+                tar -xzf "drupal.tar.gz" -C /var
+                rm -rf "drupal.tar.gz"
+                cp -rf /var/drupal-*/* /home/${CP_DOMAIN}/
+            elif [ "${NAME_CMS}" = "joomla" ]; then
+                wget -O "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-9-14/Joomla_3-9-14-Stable-Full_Package.tar.gz?format=gz"
+                tar -xzf "joomla3.tar.gz" -C /home/${CP_DOMAIN}/
+                rm -rf "joomla3.tar.gz"
+            elif [ "${MYSQL_USER}" != "" ] && [ "${MYSQL_PASSWORD}" != "" ] && [ "${MYSQL_DATABASE}" != "" ]; then
+                {
+                    echo "<html>"
+                    echo "<head>"
+                    echo "    <title>Hello CinemaPress</title>"
+                    echo "</head>"
+                    echo "<body>"
+                    echo "    <?php"
+                    echo "        \$link = mysqli_connect('mysql', '${MYSQL_USER}', '${MYSQL_PASSWORD}', '${MYSQL_DATABASE}');"
+                    echo "        if (!\$link) {"
+                    echo "            die('ERROR: ' . mysqli_error());"
+                    echo "        }"
+                    echo "        echo 'Hello, CinemaPress!';"
+                    echo "        mysqli_close(\$link);"
+                    echo "    ?>"
+                    echo "</body>"
+                    echo "</html>"
+                } >> /home/${CP_DOMAIN}/index.php
+            else
+                {
+                    echo "<html>"
+                    echo "<head>"
+                    echo "    <title>Hello CinemaPress</title>"
+                    echo "</head>"
+                    echo "<body>"
+                    echo "    <?php"
+                    echo "        echo 'Hello, CinemaPress!';"
+                    echo "    ?>"
+                    echo "</body>"
+                    echo "</html>"
+                } >> /home/${CP_DOMAIN}/index.php
+            fi
+            {
+                echo "server {"
+                echo "    listen 80;"
+                echo "    listen [::]:80;"
+                echo "    # listen 443;"
+                echo "    # listen [::]:443;"
+                echo "    root /home/${CP_DOMAIN};"
+                echo "    index index.php index.html index.htm;"
+                echo "    server_name .${CP_DOMAIN};"
+                echo "    access_log /var/log/nginx/access_${CP_DOMAIN}.log;"
+                echo "    include /etc/nginx/bots.d/ddos.conf;"
+                echo "    include /etc/nginx/bots.d/blockbots.conf;"
+                echo "    keepalive_timeout 10;"
+                echo "    client_max_body_size 64m;"
+                echo "    location / {"
+                echo "        try_files \$uri \$uri/ /index.php?\$query_string;"
+                echo "    }"
+                echo "    if ( \$request_method !~ ^(GET|POST)$ ) {"
+                echo "        return 444;"
+                echo "    }"
+                echo "    location ~* ^/(bin|.*\.sh|.*\.conf)($|\/) {"
+                echo "        return 404;"
+                echo "    }"
+                echo "    location ~* \.php$ {"
+                echo "        try_files \$uri \$uri/ /index.php last;"
+                echo "        fastcgi_split_path_info (.+?\.php)(/.*)$;"
+                echo "        fastcgi_pass php:9000;"
+                echo "        fastcgi_index index.php;"
+                echo "        include fastcgi_params;"
+                echo "        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;"
+                echo "        fastcgi_param PATH_INFO \$fastcgi_path_info;"
+                echo "    }"
+                echo "    location ~* .php/ { rewrite  (.*.php)/ \$1 last; }"
+                echo "    location  ~ \/cinemaadmin {"
+                echo "        rewrite ^/cinemaadmin(/.*)$ \$1 break;"
+                echo "        proxy_redirect off;"
+                echo "        proxy_set_header X-Real-IP  \$remote_addr;"
+                echo "        proxy_set_header X-Forwarded-For \$remote_addr;"
+                echo "        proxy_set_header X-Forwarded-For \$remote_addr;"
+                echo "        proxy_set_header Host \$host;"
+                echo "        proxy_pass http://phpmyadmin/;"
+                echo "        proxy_read_timeout 90;"
+                echo "    }"
+                echo "    location ~ /\.ht {"
+                echo "        deny all;"
+                echo "    }"
+                echo "    location = /favicon.ico {"
+                echo "        log_not_found off; access_log off;"
+                echo "    }"
+                echo "    location = /robots.txt {"
+                echo "        log_not_found off; access_log off; allow all;"
+                echo "    }"
+                echo "    location ~* \.(css|gif|ico|jpeg|jpg|js|png)$ {"
+                echo "        expires max; log_not_found off;"
+                echo "    }"
+                echo "}"
+            } >> /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+            sh_progress 100
+            _line
+            _header "${NAME_CMS}"
+            _br
+            echo "Website: http://${CP_DOMAIN}"
+            if [ "${MYSQL_DATABASE}" != "" ]; then echo "MYSQL DATABASE: ${MYSQL_DATABASE}"; fi;
+            if [ "${MYSQL_USER}" != "" ]; then echo "MYSQL USER: ${MYSQL_USER}"; fi;
+            if [ "${MYSQL_PASSWORD}" != "" ]; then echo "MYSQL PASSWORD: ${MYSQL_PASSWORD}"; fi;
+            echo "PhpMyAdmin: http://${CP_DOMAIN}/cinemaadmin"
+            if [ "${PMA_USER}" != "" ]; then echo "USER: ${PMA_USER}"; fi;
+            if [ "${PMA_PASSWORD}" != "" ]; then echo "PASSWORD: ${PMA_PASSWORD}"; fi;
+            _line
             exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )

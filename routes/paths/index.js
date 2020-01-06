@@ -179,6 +179,13 @@ function dataIndex(options, callback) {
         ) {
           service.push('hypercomments');
         }
+        if (
+          modules.comments.status &&
+          modules.comments.data.fast.active &&
+          modules.comments.data.fast.recent.display.indexOf('index') + 1
+        ) {
+          service.push('fast');
+        }
         return service.length
           ? CP_comments.recent(service, options, function(err, comments) {
               if (options.debug) {

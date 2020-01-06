@@ -17,6 +17,8 @@ var modules = require('../config/production/modules');
  * Node dependencies.
  */
 
+var fs = require('fs');
+var path = require('path');
 var request = require('request');
 var moment = require('moment');
 moment.locale(config.language);
@@ -52,7 +54,7 @@ function indexEpisode(options, callback) {
   var url =
     'https://' +
     source.url +
-    '/api/v2/updates?limit=100&type=serial&api_token=' +
+    '/api/v2/updates?limit=99&type=serial&api_token=' +
     source.token;
 
   getReq(url, function(err, list) {
@@ -199,23 +201,28 @@ function indexEpisode(options, callback) {
    */
 
   function getReq(url, callback) {
-    request(
-      { timeout: 500, agent: false, pool: { maxSockets: 100 }, url: url },
-      function(error, response, body) {
-        var result = body ? tryParseJSON(body) : {};
-
-        try {
-          if (error || response.statusCode !== 200 || result.error) {
-            console.log(url, error.code || '', result.error || '');
-            return callback('Iframe request error.');
-          }
-
-          callback(null, result);
-        } catch (err) {
-          callback(null, err);
+    request({ timeout: 500, agent: false, url: url }, function(
+      error,
+      response,
+      body
+    ) {
+      var result = body ? tryParseJSON(body) : null;
+      var episodes = path.join(
+        path.dirname(__filename),
+        '..',
+        'files',
+        'episodes.json'
+      );
+      if (error || response.statusCode !== 200 || !result) {
+        console.log(url, error.code || '');
+        if (fs.existsSync(episodes)) {
+          return callback(null, require(episodes));
         }
+        return callback('Iframe request error.');
       }
-    );
+      fs.writeFileSync(episodes, JSON.stringify(result));
+      callback(null, result);
+    });
   }
 
   /**

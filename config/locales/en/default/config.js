@@ -6,6 +6,7 @@ module.exports = {
   "protocol": "http://",
   "subdomain": "",
   "botdomain": "",
+  "botdomains": "",
   "domain": "example.com",
   "email": "support@example.com",
   "theme": "default",
@@ -23,14 +24,7 @@ module.exports = {
     "proxy": 0
   },
   "cache": {
-    "time": 3600,
-    "addr": "127.0.0.1:11211"
-  },
-  "sphinx": {
-    "addr": "127.0.0.1:9306"
-  },
-  "nginx": {
-    "addr": "127.0.0.1:3000"
+    "time": 3600
   },
   "pagespeed": 0,
   "loadavg": {
@@ -380,6 +374,17 @@ module.exports = {
     "said": "said",
     "full": "Full version",
     "original": "Original",
+    "submit": "Submit",
+    "like": "Like",
+    "dislike": "Dislike",
+    "reply": "Reply",
+    "bold": "bold",
+    "italic": "italic",
+    "spoiler": "spoiler",
+    "username": "User name",
+    "yes": "Yes",
+    "not": "Not",
+    "comment": "Comment...",
     "notFound": "This page is not on the site. Maybe you made a mistake in the URL or it is an internal site error, which the administrator already knows and is taking steps to fix it.",
     "notMobile": "Mobile version of the site is not activated. The site adapts to the screen and is equally beautifully displayed, both on large screens and on mobile devices running iOS, Android or WindowsPhone.",
     "notTv": "TV version of the site is not activated.",

@@ -72,7 +72,11 @@ function parseData() {
 
   var kp_id = document.querySelector('[name="movie.kp_id"]')
     ? document.querySelector('[name="movie.kp_id"]').value
-    : '';
+    : document.querySelector('[data-movie_kp_id]')
+      ? document.querySelector('[data-movie_kp_id]').dataset.movie_kp_id
+      : document.querySelector('[data-id]')
+        ? document.querySelector('[data-id]').dataset.id
+        : '';
   var tmdb_id = document.querySelector('[name="movie.tmdb_id"]')
     ? document.querySelector('[name="movie.tmdb_id"]').value
     : '';
@@ -271,7 +275,7 @@ function parseData() {
               kp_id +
               '.jpg'
             : movieData.poster[0] === '/'
-            ? 'https://t.1poster.net/t/p/w185' + movieData.poster
+            ? 'https://image.tmdb.org/t/p/w185' + movieData.poster
             : movieData.poster;
       }
 
@@ -401,7 +405,6 @@ function getAPI(url, callback) {
         } else if (url.indexOf('kinopoisk.ru') + 1) {
           res = result;
         }
-        console.log(url, result, res);
         callback(null, res);
       } else {
         callback(null, {});

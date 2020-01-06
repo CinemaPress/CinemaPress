@@ -174,8 +174,8 @@ router.get('/:type?', function(req, res) {
   var kp_id = req.query.kp_id
     ? req.query.kp_id.replace(/[^0-9]/g, '')
     : req.query.id
-      ? req.query.id.replace(/[^0-9]/g, '')
-      : '';
+    ? req.query.id.replace(/[^0-9]/g, '')
+    : '';
   var imdb_id = req.query.imdb_id
     ? req.query.imdb_id.replace(/[^0-9]/g, '')
     : '';
@@ -185,6 +185,7 @@ router.get('/:type?', function(req, res) {
   var douban_id = req.query.douban_id
     ? req.query.douban_id.replace(/[^0-9]/g, '')
     : '';
+  var comment_id = req.query.comment_id ? req.query.comment_id : null;
   var url = req.query.url ? req.query.url : null;
   var num = req.query.num ? parseInt(req.query.num) : 1;
   var type = req.query.type ? parseInt(req.query.type) : '';
@@ -259,7 +260,9 @@ router.get('/:type?', function(req, res) {
       break;
     case 'comments':
       render.title = res.__('Комментарии');
-      res.render('admin/modules/comments', render);
+      getComment(function(err, render) {
+        res.render('admin/modules/comments', render);
+      });
       break;
     case 'related':
       render.title = res.__('Связанные');
@@ -410,9 +413,9 @@ router.get('/:type?', function(req, res) {
             render.structure.poster
               ? render.structure.poster
               : config.protocol +
-                config.subdomain +
-                config.domain +
-                '/files/poster/no-poster.jpg'
+                  config.subdomain +
+                  config.domain +
+                  '/files/poster/no-poster.jpg'
           );
         } else {
           callback(null, render);
@@ -480,6 +483,50 @@ router.get('/:type?', function(req, res) {
         if (contents && contents.length) {
           render.next = !(contents.length % 50) ? 1 : 0;
           render.contents = contents;
+        }
+
+        callback(null, render);
+      });
+    }
+  }
+
+  /**
+   * Get comments.
+   *
+   * @param {Callback} callback
+   */
+
+  function getComment(callback) {
+    render.num = num;
+    render.all = num;
+    render.comment = null;
+    render.comments = null;
+
+    if (comment_id) {
+      CP_get.comments({ comment_id: comment_id }, 1, '', 1, function(
+        err,
+        comments
+      ) {
+        if (err) console.error(err);
+
+        render.comment = {};
+        render.comment.id = comment_id;
+
+        if (comments && comments.length) {
+          render.comment = comments[0];
+        }
+
+        callback(null, render);
+      });
+    } else {
+      CP_get.comments({}, 10, '', num, function(err, comments) {
+        if (err) console.error(err);
+
+        render.comments = [];
+
+        if (comments && comments.length) {
+          render.next = !(comments.length % 10) ? 1 : 0;
+          render.comments = comments;
         }
 
         callback(null, render);
@@ -600,6 +647,7 @@ router.get('/:type?', function(req, res) {
 
 router.post('/change', function(req, res) {
   var form = req.body;
+  console.log(form);
   var configs = {
     config: config,
     modules: modules
@@ -735,8 +783,8 @@ router.post('/change', function(req, res) {
           ? form.movie.title_ru +
             (form.movie.title_en ? ' / ' + form.movie.title_en : '')
           : form.movie.title_en
-            ? form.movie.title_en
-            : '';
+          ? form.movie.title_en
+          : '';
         form.movie.premiere =
           form.movie.premiere &&
           !isNaN(new Date(form.movie.premiere).getFullYear())
@@ -793,6 +841,17 @@ router.post('/change', function(req, res) {
           form.content.delete = true;
         }
         CP_save.save(form.content, 'content', function(err, result) {
+          return err ? callback(err) : callback(null, result);
+        });
+      },
+      comment: function(callback) {
+        if (!form.comment) return callback(null, 'Null');
+        form.flush_memcached = true;
+        if (form.delete) {
+          if (!form.comment.id) return callback(null, 'Null');
+          form.comment.delete = true;
+        }
+        CP_save.save(form.comment, 'comment', function(err, result) {
           return err ? callback(err) : callback(null, result);
         });
       },

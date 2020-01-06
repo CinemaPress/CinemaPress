@@ -7,22 +7,22 @@
 <!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
 <head>
 
-    <% include includes/head.ejs %>
+    <%- include('includes/head.ejs'); -%>
 
 <body>
 <div id="container" class="clearfix">
 
-    <% include includes/left.ejs %>
+    <%- include('includes/left.ejs'); -%>
 
-    <% include includes/right.ejs %>
+    <%- include('includes/right.ejs'); -%>
 
     <div id="main" class="clearfix">
 
-        <% include includes/header-main.ejs %>
+        <%- include('includes/header-main.ejs'); -%>
 
         <div id="content" class="clearfix">
 
-            <% include includes/header-sec.ejs %>
+            <%- include('includes/header-sec.ejs'); -%>
 
             <div class="window">
                 <div class="actionbar">
@@ -109,6 +109,30 @@
                                                 <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
                                                 <input name="config.botdomain" value="<%= config.botdomain.replace(/\./g,'') %>" class="form-control input_url text-right" type="text" placeholder="<%= config.language %>">
                                                 <span class="input-group-addon text-muted">.<%= config.domain %></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %></div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="csstip" title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>" target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="advanced-textarea">
+                                                                <textarea class="form-control" name="config.botdomains" placeholder="if (id === 301) { 'matrix' } else if (id > 500 && id < 1000) { 'cinema' } else { 'press' }"><%= config.botdomains %></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -662,7 +686,7 @@
                 }
             </script>
 
-            <% include includes/footer.ejs %>
+            <%- include('includes/footer.ejs'); -%>
 
         </div>
     </div>

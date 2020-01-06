@@ -237,6 +237,13 @@ function dataMovie(id, type, options, callback) {
         ) {
           service.push('hypercomments');
         }
+        if (
+          modules.comments.status &&
+          modules.comments.data.fast.active &&
+          modules.comments.data.fast.recent.display.indexOf('movie') + 1
+        ) {
+          service.push('fast');
+        }
         return service.length
           ? CP_comments.recent(service, options, function(err, comments) {
               if (options.debug) {
@@ -261,7 +268,7 @@ function dataMovie(id, type, options, callback) {
             ) {
               if (options.debug) {
                 options.debug.detail.push({
-                  type: 'comments',
+                  type: 'indexer',
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -273,6 +280,7 @@ function dataMovie(id, type, options, callback) {
           : callback(null, '');
       },
       movies: function(callback) {
+        options.random_movies = [];
         return related.id && modules.related.status
           ? async.parallel(
               {
@@ -439,10 +447,65 @@ function dataMovie(id, type, options, callback) {
                   options.debug.duration.current = new Date();
                 }
 
+                if (
+                  !err &&
+                  result &&
+                  modules.comments.data.fast.active &&
+                  (modules.comments.data.fast.question_yes ||
+                    modules.comments.data.fast.question_not)
+                ) {
+                  var categories = Object.keys(result).filter(function(c) {
+                    return result[c] && result[c].length;
+                  });
+                  var c =
+                    categories[Math.floor(Math.random() * categories.length)];
+                  var random_category =
+                    result[c][Math.floor(Math.random() * result[c].length)];
+                  if (random_category && random_category.movies) {
+                    random_category.movies.forEach(function(movie) {
+                      if (movie.kp_id === related.kp_id) return;
+                      options.random_movies.push({
+                        title: movie.title,
+                        poster: movie.poster,
+                        url: movie.url
+                      });
+                    });
+                  }
+                }
+
                 return err ? callback(err) : callback(err, result);
               }
             )
           : callback(null, null);
+      },
+      comments: function(callback) {
+        var q = { movie_id: related.id, comment_confirm: 1 };
+        var regexpEpisode = new RegExp(
+          '^s([0-9]{1,4})e([0-9]{1,4})(_([0-9]{1,3})|)$',
+          'ig'
+        );
+        var execEpisode = regexpEpisode.exec(type);
+        q.season_id =
+          execEpisode && execEpisode[1] ? '' + parseInt(execEpisode[1]) : '0';
+        q.episode_id =
+          execEpisode && execEpisode[2] ? '' + parseInt(execEpisode[2]) : '0';
+        modules.comments.data.fast.active
+          ? CP_comments.comments(q, null, null, null, options, function(
+              err,
+              comments
+            ) {
+              if (options.debug) {
+                options.debug.detail.push({
+                  type: 'comments',
+                  duration: new Date() - options.debug.duration.current + 'ms'
+                });
+                options.debug.duration.current = new Date();
+              }
+              if (err) return callback(err);
+
+              return comments ? callback(null, comments) : callback(null, {});
+            })
+          : callback(null, {});
       }
     },
     function(err, result) {
@@ -457,8 +520,13 @@ function dataMovie(id, type, options, callback) {
       var indexer = result.indexer ? result.indexer : '';
 
       CP_page.movie(result, type, options, function(err, result) {
-        if (result.page.comments) {
+        if (result.page.comments && typeof result.page.comments === 'string') {
           result.page.comments = indexer + result.page.comments;
+        } else if (
+          result.page.comments &&
+          typeof result.page.comments === 'object'
+        ) {
+          result.page.comments.indexer = indexer;
         }
         callback(err, result);
       });
@@ -507,7 +575,7 @@ function typeMovie(type) {
 
   var regexpEpisode = new RegExp(
     '^(s[0-9]{1,4}e[0-9]{1,4}(_[0-9]{1,3}|))$',
-    'ig'
+    'g'
   );
   var execEpisode = regexpEpisode.exec(type);
 

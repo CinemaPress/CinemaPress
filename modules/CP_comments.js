@@ -1,6 +1,13 @@
 'use strict';
 
 /**
+ * Module dependencies.
+ */
+
+var CP_get = require('../lib/CP_get.min');
+var CP_structure = require('../lib/CP_structure');
+
+/**
  * Configuration dependencies.
  */
 
@@ -36,7 +43,9 @@ moment.locale(config.language);
 function headComments() {
   var start = 'none_comments';
 
-  if (modules.comments.data.cackle.id) {
+  if (modules.comments.data.fast.active) {
+    start = 'fast_comment';
+  } else if (modules.comments.data.cackle.id) {
     start = 'cack_comment';
   } else if (modules.comments.data.hypercomments.widget_id) {
     start = 'hycm_comment';
@@ -79,11 +88,11 @@ function headComments() {
  *
  * @param {String} url
  * @param {String} pathname
- * @param {String} [position]
+ * @param {Object} [ids]
  * @return {String}
  */
 
-function codesComments(url, pathname, position) {
+function codesComments(url, pathname, ids) {
   var data = {};
   var footer = '';
 
@@ -140,6 +149,76 @@ function codesComments(url, pathname, position) {
       '<script>(function(){var host_id = "' +
       modules.comments.data.sigcomments.host_id +
       '";var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "//sigcomments.com/chat/?host_id="+host_id;var ss = document.getElementsByTagName("script")[0];ss.parentNode.insertBefore(script, ss);})();</script>';
+  }
+
+  if (modules.comments.data.fast.active) {
+    if (modules.comments.data.fast.recaptcha_sitekey) {
+      footer +=
+        '<script src="//www.google.com/recaptcha/api.js?render=' +
+        modules.comments.data.fast.recaptcha_sitekey +
+        '"></script>';
+    }
+    footer +=
+      '<script>' +
+      'var cinemapress_comments={' +
+      'domain:"' +
+      (config.domain || '') +
+      '",' +
+      'submit:"' +
+      (config.l.submit || '') +
+      '",' +
+      'search:"' +
+      (config.urls.search || '') +
+      '",' +
+      'movie_id:"' +
+      ((ids && ids.movie_id) || '') +
+      '",' +
+      'season_id:"' +
+      ((ids && ids.season_id) || '') +
+      '",' +
+      'episode_id:"' +
+      ((ids && ids.episode_id) || '') +
+      '",' +
+      'content_id:"' +
+      ((ids && ids.content_id) || '') +
+      '",' +
+      'recaptcha_sitekey:"' +
+      (modules.comments.data.fast.recaptcha_sitekey || '') +
+      '",' +
+      'recaptcha_text:"' +
+      (modules.comments.data.fast.recaptcha_text || '') +
+      '",' +
+      'min_symbols:parseInt("' +
+      (modules.comments.data.fast.min_symbols || '') +
+      '"),' +
+      'min_symbols_text:"' +
+      (modules.comments.data.fast.min_symbols_text || '') +
+      '",' +
+      'url_links:parseInt("' +
+      (modules.comments.data.fast.url_links || '') +
+      '"),' +
+      'url_links_text:"' +
+      (modules.comments.data.fast.url_links_text || '') +
+      '",' +
+      'bb_codes:parseInt("' +
+      (modules.comments.data.fast.bb_codes || '') +
+      '"),' +
+      'bb_codes_text:"' +
+      (modules.comments.data.fast.bb_codes_text || '') +
+      '",' +
+      'html_tags:parseInt("' +
+      (modules.comments.data.fast.html_tags || '') +
+      '"),' +
+      'html_tags_text:"' +
+      (modules.comments.data.fast.html_tags_text || '') +
+      '",' +
+      'stopworls:"' +
+      (modules.comments.data.fast.stopworls.join(',').replace(/"/g, '\\"') ||
+        '') +
+      '"' +
+      '};' +
+      '!function(h){var s=document.querySelector(\'[name="comment_text"]\');if(s){var o=document.querySelector(".cinemapress-comment-button-bg"),i=document.querySelector(".cinemapress-comment-button-text"),e=document.querySelectorAll(".cinemapress-comment-spoiler"),t=document.querySelectorAll(".cinemapress-comment-search"),a=document.querySelectorAll(".cinemapress-comment-star div"),n=document.querySelectorAll("[data-bb-code]"),r=document.querySelectorAll(\'[data-comment-type="like"],[data-comment-type="dislike"]\'),c=document.querySelector(\'[name="comment_anonymous"]\'),l=getCookieCinemaPress("CP_anonymous");c&&l&&(c.value=l),r.forEach(function(e){e.addEventListener("click",g,!0)}),e.forEach(function(e){e.addEventListener("click",function(){this.innerHTML=this.dataset.commentSpoiler},!0)}),t.forEach(function(e){e.addEventListener("click",function(){window.open("/"+h.search+"?q="+encodeURIComponent(this.dataset.commentSearch))},!0)}),a.forEach(function(e){e.addEventListener("click",function(){var t=this;s.dataset.commentStar=t.dataset.commentStar,document.querySelectorAll(".cinemapress-comment-star div").forEach(function(e){e.dataset.commentStar===t.dataset.commentStar?e.setAttribute("class",e.getAttribute("class")+" selected"):e.style.display="none"})})}),n.forEach(function(e){e.addEventListener("click",function(){var e=document.querySelector(\'[name="comment_text"]\');if(this.dataset.bbValue)e.value=(h.bb_codes?"["+this.dataset.bbCode+"]":"")+this.dataset.bbValue+(h.bb_codes?"[/"+this.dataset.bbCode+"], ":", "),e.focus(),e.dataset.replyId=this.dataset.replyId,window.location.hash="#cinemapress-comments";else if(this.dataset.bbCode){var t=e.selectionStart,s=e.selectionEnd,a=e.value.substring(t,s);e.value=e.value.substring(0,t)+(h.bb_codes?"["+this.dataset.bbCode+"]":"")+a+(h.bb_codes?"[/"+this.dataset.bbCode+"]":"")+e.value.substring(s),e.focus(),e.selectionEnd=s+(2*this.dataset.bbCode.length+5)}})});var f=!0;s.addEventListener("input",function(){var t=this;t.value=t.value.replace(/\\[(b|i|spoiler|search)([^\\]]*?)]\\[\\/(b|i|spoiler|search)]/gi,"[$1]$2[/$3]").replace(/\\[(b|i|spoiler|search)]\\[([^\\]]*?)\\/(b|i|spoiler|search)]/gi,"[$1]$2[/$3]").replace(/\\[(b|i|spoiler|search)]\\[\\/([^\\]]*?)(b|i|spoiler|search)]/gi,"[$1]$2[/$3]").replace(/\\[(b|i|spoiler|search)]\\s*([^\\[]*?)\\s*\\[\\/(b|i|spoiler|search)]/gi,"[$1]$2[/$3]").replace(/([a-zа-яё0-9]+)\\[(b|i|spoiler|search)]([^\\[]*?)\\[\\/(b|i|spoiler|search)]/gi,"$1 [$2]$3[/$4]").replace(/\\[(b|i|spoiler|search)]([^\\[]*?)\\[\\/(b|i|spoiler|search)]([a-zа-яё0-9]+)/gi,"[$1]$2[/$3] $4"),/\\[\\/(b|i|spoiler|search)]$/i.test(t.value)&&(t.focus(),t.selectionEnd=t.value.lastIndexOf("[/"));var e=t.value.replace(/[<][^>]*?>/gi,"").replace(/[\\[][^\\]]*?]/gi,"").replace(/\\s+/g," ").replace(/(^\\s*)|(\\s*)$/g,"");t.value=t.value.replace(/\\s{3,}/g," ");var s=h.stopworls?h.stopworls.split(",").filter(function(e){return new RegExp(e,"i").test(t.value)}):[],a=h.min_symbols&&e.length<h.min_symbols,n=!h.url_links&&/[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\\.[a-zA-Z]{2,})+/i.test(t.value),r=!h.bb_codes&&/\\[[^\\]]*?]/i.test(t.value),c=!h.html_tags&&/<[^>]*?>/i.test(t.value);a||n||r||c||s.length?(f=!0,o.className=o.className.replace(/hover-on/gi,"hover-off").replace(/\\serror-off/gi,"").replace(/\\serror-on/gi,""),i.className=i.className.replace(/\\serror-off/gi,"").replace(/\\serror-on/gi,""),o.setAttribute("class",o.getAttribute("class")+" error-on"),i.setAttribute("class",i.getAttribute("class")+" error-on"),a?i.innerHTML=h.min_symbols_text.replace("[num]",""+(h.min_symbols-e.length)):n?i.innerHTML=h.url_links_text:r?i.innerHTML=h.bb_codes_text:c?i.innerHTML=h.html_tags_text:s.length?i.innerHTML="«"+s.join("», «")+"»":i.innerHTML="o_0",o.removeEventListener("click",g,!0)):t.value&&(o.className=o.className.replace(/hover-off/gi,"hover-on"),o.className=o.className.replace(/\\serror-off/gi,""),o.className=o.className.replace(/\\serror-on/gi,""),i.className=i.className.replace(/\\serror-off/gi,""),i.className=i.className.replace(/\\serror-on/gi,""),o.setAttribute("class",o.getAttribute("class")+" error-off"),i.setAttribute("class",i.getAttribute("class")+" error-off"),i.innerHTML=h.submit,f&&(f=!1,o.addEventListener("click",g,!0)))}),document.addEventListener("DOMContentLoaded",function(e){_()}),setInterval(function(){_()},6e4)}function g(){var e={},a=this;a.removeEventListener("click",g,!0);var t,s,n,r=document.querySelector("#cinemapress-comments");if(r&&r.dataset&&r.dataset.recaptcha&&(e.comment_recaptcha=r.dataset.recaptcha),"submit"===a.dataset.commentType){e.movie_id=h.movie_id,e.season_id=h.season_id,e.episode_id=h.episode_id,e.content_id=h.content_id,e.comment_title=document.title;var c=document.querySelector(\'[name="comment_text"]\'),o=document.querySelector(\'[name="comment_anonymous"]\');o&&o.value&&(e.comment_anonymous=o.value,setCookieCinemaPress("CP_anonymous",o.value,{expires:864e5,path:"/",domain:"."+h.domain})),e.reply_id=c.dataset.replyId,e.comment_text=c.value,e.comment_star=c.dataset.commentStar,c.value="",c.dataset.replyId="",c.dataset.commentStar="";var i=document.querySelector(".cinemapress-comment-count");i&&(i.innerHTML=""+(parseInt(i.innerHTML)+1));var l=document.querySelector(".cinemapress-comment-star");l&&(l.style.visibility="hidden");var m=document.querySelector(".cinemapress-comment-question");if(m){var d=document.querySelector(".cinemapress-comment-form-bb");d&&(d.style.visibility="hidden"),m.style.display="block"}var u=document.querySelector(".cinemapress-comment-question-text");u&&(u.style.display="block");var p=document.querySelector(".cinemapress-comment-question-answer");p&&(p.style.display="block");var y=document.querySelector(".cinemapress-comment-question-answer-yes");y&&y.addEventListener("click",function(){p.style.display="none",u.style.display="none",document.querySelector(".cinemapress-comment-question-text-yes").style.display="block"},!1);var b=document.querySelector(".cinemapress-comment-question-answer-not");b&&b.addEventListener("click",function(){p.style.display="none",u.style.display="none",document.querySelector(".cinemapress-comment-question-text-not").style.display="block"},!1),f=!0}else if("like"===a.dataset.commentType||"dislike"===a.dataset.commentType){e.comment_id=a.dataset.commentId,e.comment_type=a.dataset.commentType;var v=a.querySelector(".cinemapress-comment-"+a.dataset.commentType+"-number");v.innerHTML=""+(parseInt(v.innerHTML)+1)}t=e,s=function(e){if("object"==typeof e)if("like"===a.dataset.commentType||"dislike"===a.dataset.commentType){if("success"!==e.status){var t=a.querySelector(".cinemapress-comment-"+a.dataset.commentType+"-number");t.innerHTML=""+(parseInt(t.innerHTML)-1)}var s=document.querySelector(\'[data-comment-type="\'+(a.dataset.commentType&&"like"===a.dataset.commentType?"dislike":"like")+\'"][data-comment-id="\'+a.dataset.commentId+\'"]\');s&&s.removeEventListener("click",g,!0)}else"error"===e.status&&(3===e.code?(console.log(e.message),alert(h.recaptcha_text)):alert(e.message));else console.log(e);_()},(n=new XMLHttpRequest).open("POST","/api/comments",!0),n.setRequestHeader("Content-type","application/json; charset=UTF-8"),n.onreadystatechange=function(){4===n.readyState&&200===n.status&&s("string"==typeof n.responseText?JSON.parse(n.responseText):n.responseText)},n.send(JSON.stringify(t))}function _(){h.recaptcha_sitekey&&grecaptcha.ready(function(){grecaptcha.execute(h.recaptcha_sitekey).then(function(e){var t=document.querySelector("#cinemapress-comments");t&&t.setAttribute("data-recaptcha",e)})})}}(cinemapress_comments);' +
+      '</script>';
   }
 
   var buttons = '';
@@ -213,9 +292,9 @@ function codesComments(url, pathname, position) {
     single++;
   }
 
-  buttons = single === 1 ? '' : buttons;
+  buttons = single <= 1 ? '' : buttons;
 
-  return position
+  return ids
     ? footer
     : '' +
         '<div class="CP_buttons" style="margin:30px 0 !important; float: none !important;">' +
@@ -487,29 +566,62 @@ function recentComments(service, options, callback) {
               callback(null, []);
             }
           });
+        },
+        function(callback) {
+          if (!(service.indexOf('fast') + 1)) return callback(null, []);
+
+          CP_get.comments(
+            { comment_confirm: 1 },
+            modules.comments.data.fast.recent.num_items,
+            '',
+            1,
+            options,
+            function(err, comments) {
+              if (err) console.error(err);
+
+              var comments0 = [];
+
+              if (comments && comments.length) {
+                comments0 = CP_structure.comment(comments, true);
+              }
+
+              callback(null, comments0);
+            }
+          );
         }
       ],
       function(err, res) {
-        var result = res[0].concat(res[1]);
-
-        result.sort(function(x, y) {
-          return parseInt(y.time) - parseInt(x.time);
-        });
+        var result = [];
 
         var file = path.join(__dirname, '..', 'files', 'comments.json');
-        if ((!result || !result.length) && fs.existsSync(file)) {
-          var c = fs.readFileSync(file);
-          try {
-            result = JSON.parse(c);
-            console.log(
-              '[modules/CP_comments.js:recentComments] Get from comments.json'
-            );
-          } catch (e) {
-            console.error(e);
-          }
-        }
 
-        callback(err, result);
+        if (
+          service.indexOf('hypercomments') + 1 ||
+          service.indexOf('disqus') + 1
+        ) {
+          result = res[0].concat(res[1]);
+
+          result.sort(function(x, y) {
+            return parseInt(y.time) - parseInt(x.time);
+          });
+
+          if ((!result || !result.length) && fs.existsSync(file)) {
+            var c = fs.readFileSync(file);
+            try {
+              result = JSON.parse(c);
+              console.log(
+                '[modules/CP_comments.js:recentComments] Get from comments.json'
+              );
+            } catch (e) {
+              console.error(e);
+            }
+          }
+
+          callback(err, result);
+        } else if (service.indexOf('fast') + 1) {
+          result = res[2];
+          callback(err, result);
+        }
 
         if (config.cache.time && result && result.length) {
           fs.writeFile(file, JSON.stringify(result), function(err) {
@@ -679,7 +791,109 @@ function indexerComments(thread, pathname, callback) {
 }
 
 /**
- * Valid JSON.
+ * Get comments to page.
+ *
+ * @param {Object} query
+ * @param {Number} count
+ * @param {String} sorting
+ * @param {Number} page
+ * @param {Object} options
+ * @param {Callback} callback
+ */
+
+function getComments(query, count, sorting, page, options, callback) {
+  async.parallel(
+    [
+      function(callback) {
+        if (!modules.comments.data.fast.active) return callback(null, {});
+
+        count = count ? count : modules.comments.data.fast.per_page;
+        sorting = sorting ? sorting : modules.comments.data.fast.sorting_page;
+        page = page ? page : 1;
+
+        if (options && options.comments) {
+          count =
+            options.comments.count && parseInt(options.comments.count)
+              ? parseInt(options.comments.count)
+              : count;
+          sorting = options.comments.sorting
+            ? options.comments.sorting
+            : sorting;
+          page =
+            options.comments.page && parseInt(options.comments.page)
+              ? parseInt(options.comments.page)
+              : page;
+        }
+
+        CP_get.comments(query, count, sorting, page, options, function(
+          err,
+          comments
+        ) {
+          if (err) console.error(err);
+
+          var render = {};
+
+          render.list = [];
+          render.config = Object.assign({}, modules.comments.data.fast);
+
+          if (
+            options &&
+            options.random_movies &&
+            options.random_movies.length
+          ) {
+            var movie =
+              options.random_movies[
+                Math.floor(Math.random() * options.random_movies.length)
+              ];
+            if (render.config.question) {
+              ['question', 'question_yes', 'question_not'].forEach(function(q) {
+                render.config[q] = render.config[q]
+                  .replace(/\.\s+/gi, '.<br>')
+                  .replace('[title]', '<strong>«' + movie.title + '»</strong>')
+                  .replace(
+                    '[url]',
+                    '<strong>«' +
+                      '<a href="' +
+                      movie.url +
+                      '">' +
+                      movie.title +
+                      '</a>' +
+                      '»</strong>'
+                  );
+              });
+              render.config.question =
+                render.config.message + '<br>' + render.config.question;
+              render.config.question_poster = movie.poster || '';
+            }
+          } else {
+            render.config.question = render.config.message;
+            render.config.question_yes = '';
+            render.config.question_not = '';
+          }
+
+          if (comments && comments.length) {
+            render.list = CP_structure.comment(comments);
+          }
+          render.prev = page > 1 ? page - 1 : 0;
+          render.next =
+            comments &&
+            comments.length &&
+            !(comments.length % modules.comments.data.fast.per_page)
+              ? page + 1
+              : 0;
+          render.count = render.list.length;
+          callback(null, render);
+        });
+      }
+    ],
+    function(err, results) {
+      callback(err, results[0]);
+    }
+  );
+}
+
+/**
+ * Parse JSON.
  *
  * @param {String} jsonString
  */
@@ -698,5 +912,6 @@ module.exports = {
   codes: codesComments,
   head: headComments,
   recent: recentComments,
-  indexer: indexerComments
+  indexer: indexerComments,
+  comments: getComments
 };
