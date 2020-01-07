@@ -1550,7 +1550,6 @@ docker_backup() {
         "config"
     cd "/home/${CP_DOMAIN}" && \
     tar --exclude=files/GeoLite2-Country.mmdb \
-        --exclude=files/GeoLite2-City.mmdb \
         --exclude=files/bbb.mp4 \
         -uf "/var/${CP_DOMAIN}/themes.tar" \
         "themes/default/public/desktop" \
