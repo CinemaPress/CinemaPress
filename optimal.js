@@ -34,6 +34,7 @@ if (['arya'].indexOf(theme) + 1) {
 
 if (['bran'].indexOf(theme) + 1) {
   modules.comments.data.disqus.recent.display = [];
+  modules.comments.data.fast.recent.display = [];
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;

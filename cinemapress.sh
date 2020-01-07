@@ -1504,6 +1504,7 @@ docker_run() {
         cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
         echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
+        echo "${CP_DOMAIN}:${OPENSSL}" >> /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
@@ -1620,6 +1621,7 @@ docker_rclone() {
 docker_passwd() {
     OPENSSL=`echo "${1}" | openssl passwd -1 -stdin -salt CP`
     echo "admin:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
+    echo "${CP_DOMAIN}:${OPENSSL}" >> "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
 }
 docker_speed_on() {
     sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip\.d\/default\.conf;/    #gzip include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip.d\/default.conf;/" \
@@ -2121,8 +2123,8 @@ while [ "${WHILE}" -lt "2" ]; do
             MYSQL_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
             MYSQL_DATABASE="${CP_DOMAIN_}"
             MYSQL_USER="${CP_DOMAIN_}"
-            PMA_USER="cinemaadmin"
-            PMA_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            ADMIN_USER="cinemaadmin"
+            ADMIN_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
             if [ "${4}" = "backup" ]; then
                 if [ -f "/var/lib/cinemapress/dump/cinemapress.sql" ]; then
                     echo "ERROR: Backup file found /var/lib/cinemapress/dump/backup.sql"
@@ -2143,12 +2145,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "SUCCESS: Restore file /var/lib/cinemapress/dump/restore.sql"
                 exit 0
             fi
-            sh_progress
             mkdir -p /var/lib/cinemapress/php
             mkdir -p /var/lib/cinemapress/mysql
             mkdir -p /var/lib/cinemapress/dump
             mkdir -p /home/${CP_DOMAIN}/config/production/nginx/conf.d
-            sh_progress
+            mkdir -p /home/${CP_DOMAIN}/config/production/nginx/pass.d
             if [ ! "$(docker ps -a | grep php)" ]; then
                 docker run \
                     -d \
@@ -2159,7 +2160,6 @@ while [ "${WHILE}" -lt "2" ]; do
                     -v /home:/home \
                     chialab/php:7.4-fpm
             fi
-            sh_progress
             if [ ! "$(docker ps -a | grep mysql)" ]; then
                 docker run \
                     -d \
@@ -2172,6 +2172,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     --character-set-server=utf8mb4 \
                     --collation-server=utf8mb4_unicode_ci
             fi
+            sleep 60
             MYSQL_ROOT_PASSWORD=""
             docker exec mysql sh -c \
               "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"CREATE DATABASE ${MYSQL_DATABASE} /*\!40100 DEFAULT CHARACTER SET utf8mb4 */;\""
@@ -2181,21 +2182,17 @@ while [ "${WHILE}" -lt "2" ]; do
               "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'localhost';\""
             docker exec mysql sh -c \
               "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"FLUSH PRIVILEGES;\""
-            if [ ! "$(docker ps -a | grep phpmyadmin)" ]; then
+            if [ ! "$(docker ps -a | grep adminer)" ]; then
                 docker run \
                     -d \
-                    --name phpmyadmin \
+                    --name adminer \
                     --network cinemapress \
-                    -e PMA_HOST=mysql \
-                    -e PMA_ABSOLUTE_URI="http://${CP_DOMAIN}/cinemaadmin" \
-                    -e PMA_USER="${PMA_USER}" \
-                    -e PMA_PASSWORD="${PMA_PASSWORD}" \
-                    phpmyadmin/phpmyadmin:latest
-            else
-                PMA_USER="$(docker exec phpmyadmin sh -c 'echo $PMA_USER')"
-                PMA_PASSWORD="$(docker exec phpmyadmin sh -c 'echo $PMA_PASSWORD')"
+                    -e ADMINER_DEFAULT_SERVER=mysql \
+                    -e ADMINER_DESIGN='galkaev' \
+                    adminer:fastcgi
+                OPENSSL=`echo "${ADMIN_PASSWORD}" | openssl passwd -1 -stdin -salt CP`
+                echo "cinemaadmin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
             fi
-            sh_progress
             if [ "${NAME_CMS}" = "wordpress" ]; then
                 wget -O "wordpress.tar.gz" "https://wordpress.org/wordpress-latest.tar.gz"
                 tar -xzf "wordpress.tar.gz" -C /var
@@ -2276,14 +2273,16 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    }"
                 echo "    location ~* .php/ { rewrite  (.*.php)/ \$1 last; }"
                 echo "    location  ~ \/cinemaadmin {"
+                echo "        auth_basic \"Login Adminer!\";"
+                echo "        auth_basic_user_file /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass;"
                 echo "        rewrite ^/cinemaadmin(/.*)$ \$1 break;"
-                echo "        proxy_redirect off;"
-                echo "        proxy_set_header X-Real-IP  \$remote_addr;"
-                echo "        proxy_set_header X-Forwarded-For \$remote_addr;"
-                echo "        proxy_set_header X-Forwarded-For \$remote_addr;"
-                echo "        proxy_set_header Host \$host;"
-                echo "        proxy_pass http://phpmyadmin/;"
-                echo "        proxy_read_timeout 90;"
+                echo "        try_files \$uri \$uri/ /index.php last;"
+                echo "        fastcgi_split_path_info (.+?\.php)(/.*)$;"
+                echo "        fastcgi_pass adminer:9000;"
+                echo "        fastcgi_index index.php;"
+                echo "        include fastcgi_params;"
+                echo "        fastcgi_param SCRIPT_FILENAME /var/www/html/index.php;"
+                echo "        fastcgi_param DOCUMENT_ROOT /var/www/html/;"
                 echo "    }"
                 echo "    location ~ /\.ht {"
                 echo "        deny all;"
@@ -2299,17 +2298,17 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    }"
                 echo "}"
             } >> /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
-            sh_progress 100
             _line
             _header "${NAME_CMS}"
-            _br
+            _line
             echo "Website: http://${CP_DOMAIN}"
+            echo "MYSQL HOST: mysql"
             if [ "${MYSQL_DATABASE}" != "" ]; then echo "MYSQL DATABASE: ${MYSQL_DATABASE}"; fi;
             if [ "${MYSQL_USER}" != "" ]; then echo "MYSQL USER: ${MYSQL_USER}"; fi;
             if [ "${MYSQL_PASSWORD}" != "" ]; then echo "MYSQL PASSWORD: ${MYSQL_PASSWORD}"; fi;
-            echo "PhpMyAdmin: http://${CP_DOMAIN}/cinemaadmin"
-            if [ "${PMA_USER}" != "" ]; then echo "USER: ${PMA_USER}"; fi;
-            if [ "${PMA_PASSWORD}" != "" ]; then echo "PASSWORD: ${PMA_PASSWORD}"; fi;
+            echo "Adminer: http://${CP_DOMAIN}/cinemaadmin"
+            if [ "${ADMIN_USER}" != "" ]; then echo "USER: ${ADMIN_USER}"; fi;
+            if [ "${ADMIN_PASSWORD}" != "" ]; then echo "PASSWORD: ${ADMIN_PASSWORD}"; fi;
             _line
             exit 0
         ;;
@@ -2350,7 +2349,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
             printf "CinemaPress ${CP_VER}"
             _br
-            printf "Copyright (c) 2014-2019, CinemaPress (https://cinemapress.io)"
+            printf "Copyright (c) 2014-2020, CinemaPress (https://cinemapress.io)"
             _br
             exit 0
         ;;

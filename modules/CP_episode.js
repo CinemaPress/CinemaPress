@@ -201,7 +201,7 @@ function indexEpisode(options, callback) {
    */
 
   function getReq(url, callback) {
-    request({ timeout: 500, agent: false, url: url }, function(
+    request({ timeout: 100, agent: false, url: url }, function(
       error,
       response,
       body
@@ -214,14 +214,15 @@ function indexEpisode(options, callback) {
         'episodes.json'
       );
       if (error || response.statusCode !== 200 || !result) {
-        console.log(url, error.code || '');
+        console.log(url, error && error.code ? error.code : '');
         if (fs.existsSync(episodes)) {
-          return callback(null, require(episodes));
+          var e = fs.readFileSync(episodes);
+          return callback(null, tryParseJSON(e));
         }
         return callback('Iframe request error.');
       }
-      fs.writeFileSync(episodes, JSON.stringify(result));
       callback(null, result);
+      fs.writeFileSync(episodes, JSON.stringify(result));
     });
   }
 

@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2019.11
+// @version 2020.1
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
