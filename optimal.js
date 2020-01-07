@@ -20,7 +20,7 @@ let process_file = path.join(__dirname, 'process.json');
 
 let config = require(config_file);
 let modules = require(modules_file);
-let process = require(process_file);
+let process_json = require(process_file);
 
 config.index.year.keys = new Date().getFullYear() + '';
 
@@ -96,9 +96,9 @@ let mem = parseInt('' + os.totalmem() / 1000000);
 let cpu = os.cpus() ? os.cpus().length : 1;
 let max = parseInt('' + mem / cpu);
 
-process.apps[0].node_args = '--max-old-space-size=' + max;
-process.apps[0].max_memory_restart = max + 'M';
-//process.apps[0].instances = cpu + '';
+process_json.apps[0].node_args = '--max-old-space-size=' + max;
+process_json.apps[0].max_memory_restart = max + 'M';
+//process_json.apps[0].instances = cpu + '';
 
 fs.writeFileSync(
   config_file,
@@ -108,4 +108,4 @@ fs.writeFileSync(
   modules_file,
   'module.exports = ' + JSON.stringify(modules, null, '\t') + ';'
 );
-fs.writeFileSync(process_file, JSON.stringify(process, null, '\t'));
+fs.writeFileSync(process_file, JSON.stringify(process_json, null, '\t'));
