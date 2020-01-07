@@ -55,14 +55,6 @@ RUN set -o pipefail \
     && cp -rf themes/default/public/admin/favicon.ico favicon.ico \
     && cp -rf themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
         themes/default/public/desktop/img/player.png \
-    && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
-    && tar xfz geo.tar.gz \
-    && mv GeoLite2-City_*/GeoLite2-City.mmdb files/GeoLite2-City.mmdb \
-    && rm -rf geo.tar.gz GeoLite2-City_* \
-    && wget -qO geo.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
-    && tar xfz geo.tar.gz \
-    && mv GeoLite2-Country_*/GeoLite2-Country.mmdb files/GeoLite2-Country.mmdb \
-    && rm -rf geo.tar.gz GeoLite2-Country_* \
     && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup create >> /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/daily/backup \
     && chmod a+x /etc/periodic/daily/backup \
