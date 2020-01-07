@@ -1561,12 +1561,20 @@ docker_restore() {
         -xf /var/${CP_DOMAIN}/themes.tar
     mkdir -p /home/${CP_DOMAIN}/config/custom
     cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
-    COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
-    if [ "${COMMENTSIZE}" -le 100 ]; then
+    if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
+      COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
+      if [ ${COMMENTSIZE} -le 100 ]; then
+        rm -rf "/home/${CP_DOMAIN}/config/comment/*";
+      fi
+    else
       rm -rf "/home/${CP_DOMAIN}/config/comment/*";
     fi
-    USERSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram")
-    if [ "${USERSIZE}" -le 100 ]; then
+    if [ -f "/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram" ]; then
+      USERSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram")
+      if [ ${USERSIZE} -le 100 ]; then
+        rm -rf "/home/${CP_DOMAIN}/config/user/*";
+      fi
+    else
       rm -rf "/home/${CP_DOMAIN}/config/user/*";
     fi
     docker_start
