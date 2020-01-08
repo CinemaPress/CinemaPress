@@ -861,13 +861,20 @@ ip_install() {
     sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
     rm -rf /home/${LOCAL_DOMAIN:?}
     if [ "${LOCAL_FULL}" != "" ]; then
+        echo "STOP NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker stop nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "RM NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker rm -f nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "PULL NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/nginx:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "STOP FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "RM FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
+    echo "RMI OLD" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
@@ -1553,8 +1560,8 @@ docker_restore() {
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
-    rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
+    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
+    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
@@ -1589,9 +1596,9 @@ docker_backup() {
     T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
     THEME_NAME=`echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
-    rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
+    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
     if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
-    rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
+    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
     PORT_DOMAIN=`grep "mysql41" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/'`
     echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
@@ -1615,17 +1622,17 @@ docker_backup() {
         themes/default/views/mobile \
         themes/${THEME_NAME} \
         files
-    rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
     rm -rf /var/${CP_DOMAIN:?}
 }
 docker_actual() {
     node /home/${CP_DOMAIN}/config/update/actual.js
 }
 docker_rclone() {
-    rclone "${1}" "${2}"
+    sleep 3; rclone "${1}" "${2}"
 }
 docker_passwd() {
     OPENSSL=`echo "${1}" | openssl passwd -1 -stdin -salt CP`
