@@ -25,7 +25,7 @@ let process_json = require(process_file);
 var d = new Date();
 d.setDate(d.getDate()-31);
 
-config.index.year.keys = d.getFullYear() + '';
+config.index.year.keys = config.index.year.keys ? d.getFullYear() + '' : '';
 
 if (['arya'].indexOf(theme) + 1) {
   config.default.count = 12;
