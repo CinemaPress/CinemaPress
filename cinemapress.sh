@@ -1561,6 +1561,7 @@ docker_restore() {
         -xf /var/${CP_DOMAIN}/themes.tar
     mkdir -p /home/${CP_DOMAIN}/config/custom
     cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
+    sleep 5
     if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
       COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
       if [ ${COMMENTSIZE} -le 100 ]; then
