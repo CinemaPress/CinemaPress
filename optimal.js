@@ -22,7 +22,10 @@ let config = require(config_file);
 let modules = require(modules_file);
 let process_json = require(process_file);
 
-config.index.year.keys = new Date().getFullYear() + '';
+var d = new Date();
+d.setDate(d.getDate()-31);
+
+config.index.year.keys = d.getFullYear() + '';
 
 if (['arya'].indexOf(theme) + 1) {
   config.default.count = 12;

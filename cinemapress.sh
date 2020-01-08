@@ -1564,7 +1564,7 @@ docker_restore() {
     sleep 5
     if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
       COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
-      if [ ${COMMENTSIZE} -le 20 ]; then
+      if [ "${COMMENTSIZE}" -le "20" ]; then
         rm -rf "/home/${CP_DOMAIN}/config/comment/*";
       fi
     else
@@ -1572,7 +1572,7 @@ docker_restore() {
     fi
     if [ -f "/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram" ]; then
       USERSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram")
-      if [ ${USERSIZE} -le 20 ]; then
+      if [ "${USERSIZE}" -le "20" ]; then
         rm -rf "/home/${CP_DOMAIN}/config/user/*";
       fi
     else
