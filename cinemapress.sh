@@ -2123,6 +2123,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             find /var/log -type f -name '*.gz' -exec rm -rf {} \; \
                 >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+            rm -rf /var/ngx_pagespeed_cache/*
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
