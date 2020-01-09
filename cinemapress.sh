@@ -1383,7 +1383,7 @@ read_app() {
             then
                 if echo "${APP_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
                 then
-                    APP_DOMAIN=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
+                    APP_DOMAIN_=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
                     AGAIN=10
                 else
                     printf "${NC}         You entered: ${R}${APP_DOMAIN}${NC} \n"
@@ -2229,7 +2229,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 --ignore-certificate \
                 --insecure \
                 --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io" \
-                --hide-window-frame \
                 --disable-context-menu \
                 --disable-dev-tools \
                 --single-instance \
@@ -2240,7 +2239,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 "http://${APP_DOMAIN}/" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
-            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz /home/${CP_DOMAIN}/config/app/${NAME_OS}/
+            cd /home/${CP_DOMAIN}/config/app/${NAME_OS}/ && \
+            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz .
             sh_progress 100
             _br
             _line
