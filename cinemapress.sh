@@ -1327,6 +1327,79 @@ read_cms() {
         if [ "${NAME_CMS}" = "" ]; then exit 1; fi
     fi
 }
+read_os() {
+    NAME_OS=${1:-${NAME_OS}}
+    if [ "${NAME_OS}" = "" ]; then
+        _header "NAME OS"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                NAME_OS=${1}
+                NAME_OS=`echo ${NAME_OS} | iconv -c -t UTF-8`
+                echo ": ${NAME_OS}"
+            else
+                read -e -p ': ' -i "windows" NAME_OS
+                NAME_OS=`echo ${NAME_OS} | iconv -c -t UTF-8`
+            fi
+            if [ "${NAME_OS}" = "" ]
+            then
+                AGAIN=10
+                NAME_OS='windows'
+                echo ": ${NAME_OS}"
+            else
+                if [ "${NAME_OS}" = "windows" ] || [ "${NAME_OS}" = "linux" ]  || [ "${NAME_OS}" = "osx" ]
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         There is no such OS! \n"
+                    printf "${R}WARNING:${NC} Currently there are \n"
+                    printf "${NC}         OS: windows, linux and osx. \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${NAME_OS}" = "" ]; then exit 1; fi
+    fi
+}
+read_app() {
+    APP_DOMAIN=${1:-${APP_DOMAIN}}
+    if [ "${APP_DOMAIN}" = "" ]; then
+        _header "DOMAIN NAME FOR APP"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                APP_DOMAIN=${1}
+                APP_DOMAIN=`echo ${APP_DOMAIN} | iconv -c -t UTF-8`
+                echo ": ${APP_DOMAIN}"
+            else
+                read -e -p ': ' APP_DOMAIN
+                APP_DOMAIN=`echo ${APP_DOMAIN} | iconv -c -t UTF-8`
+            fi
+            if [ "${APP_DOMAIN}" != "" ]
+            then
+                if echo "${APP_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
+                then
+                    APP_DOMAIN=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${APP_DOMAIN}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin lowercase characters, \n"
+                    printf "${NC}         numbers, dots, and hyphens are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            else
+                printf "${R}WARNING:${NC} Domain name cannot be blank. \n"
+                AGAIN=$((${AGAIN}+1))
+            fi
+        done
+        if [ "${APP_DOMAIN}" = "" ]; then exit 1; fi
+    fi
+    APP_DOMAIN_=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+}
 
 sh_yes() {
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
@@ -2129,6 +2202,42 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             exit 0
+        ;;
+        "app" )
+            read_domain "${2}"
+            sh_yes
+            read_app "${3}"
+            read_os "${4}"
+            _s "${4}"
+            docker run \
+                -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
+                -v /home/"${CP_DOMAIN}"/config/app/${NAME_OS}:/app \
+                cinemapress/app:latest \
+                --name "${CP_DOMAIN_}" \
+                --platform "${NAME_OS}" \
+                --arch "x64" \
+                --app-copyright "CinemaPress App" \
+                --app-version "4" \
+                --icon "/icons/icon.png" \
+                --width "1280px" \
+                --height "800px" \
+                --min-width "0" \
+                --min-height "0" \
+                --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0 CinemaPress App" \
+                --ignore-certificate \
+                --insecure \
+                --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io" \
+                --hide-window-frame \
+                --disable-context-menu \
+                --disable-dev-tools \
+                --single-instance \
+                --clear-cache \
+                --darwin-dark-mode-support \
+                --background-color "#1a2035" \
+                --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
+                "http://${APP_DOMAIN}/" \
+                >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
+            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz /home/${CP_DOMAIN}/config/app/${NAME_OS}
         ;;
         "cms" )
             read_domain ${2}

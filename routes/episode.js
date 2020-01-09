@@ -121,7 +121,7 @@ router.get('/?', function(req, res) {
       var result = body ? tryParseJSON(body) : {};
 
       if (error || response.statusCode !== 200 || result.error) {
-        console.log(url, error.code || '');
+        console.log(url, error && error.code ? error.code : '');
         return callback('Iframe request error.');
       }
 
