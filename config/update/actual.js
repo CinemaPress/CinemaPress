@@ -200,8 +200,8 @@ async.series(
           CP_get.comments(
             { from: process.env.CP_RT, certainly: true },
             500,
+            '',
             i,
-            false,
             function(err, comments) {
               i++;
               if (err) {
