@@ -458,9 +458,14 @@ function dataMovie(id, type, options, callback) {
                     return result[c] && result[c].length;
                   });
                   var c =
-                    categories[Math.floor(Math.random() * categories.length)];
-                  var random_category =
-                    result[c][Math.floor(Math.random() * result[c].length)];
+                    categories && categories.length
+                      ? categories[
+                          Math.floor(Math.random() * categories.length)
+                        ]
+                      : '';
+                  var random_category = c
+                    ? result[c][Math.floor(Math.random() * result[c].length)]
+                    : '';
                   if (random_category && random_category.movies) {
                     random_category.movies.forEach(function(movie) {
                       if (movie.kp_id === related.kp_id) return;

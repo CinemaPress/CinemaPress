@@ -2205,10 +2205,12 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "app" )
             read_domain "${2}"
-            sh_yes
+            sh_not
             read_app "${3}"
             read_os "${4}"
             _s "${4}"
+            sh_progress
+            sh_progress
             docker run \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
                 -v /home/"${CP_DOMAIN}"/config/app/${NAME_OS}:/app \
@@ -2237,7 +2239,14 @@ while [ "${WHILE}" -lt "2" ]; do
                 --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
                 "http://${APP_DOMAIN}/" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
-            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz /home/${CP_DOMAIN}/config/app/${NAME_OS}
+            sh_progress
+            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz /home/${CP_DOMAIN}/config/app/${NAME_OS}/
+            sh_progress 100
+            _br
+            _line
+            _header "${CP_DOMAIN}/files/${NAME_OS}.tar.gz"
+            _line
+            exit 0
         ;;
         "cms" )
             read_domain ${2}
