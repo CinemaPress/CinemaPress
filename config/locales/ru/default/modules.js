@@ -562,5 +562,26 @@ module.exports = {
       "count": 200,
       "sorting": "kinopoisk-vote-up"
     }
+  },
+  "app": {
+    "status": false,
+    "data": {
+      "theme": "custom",
+      "custom": {
+        "a": "#99AABB",
+        "hover": "#FFFFFF",
+        "body_color": "#FFFFFF",
+        "body_bg": "#14181C",
+        "title_color": "#FFFFFF",
+        "title_bg": "#445566",
+        "description_color": "#FFFFFF",
+        "description_bg": "#242D35",
+        "block": "#2C3641",
+        "form": "#2C3641",
+        "btn_color": "#FFFFFF",
+        "btn_bg": "#14181C"
+      },
+      "subdomain": 0
+    }
   }
 };
