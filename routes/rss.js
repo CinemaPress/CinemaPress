@@ -62,7 +62,11 @@ router.get('/?', function(req, res, next) {
 
   function getCache(callback) {
     CP_cache.get(urlHash, function(err, render) {
-      if (err) console.error(err);
+      if (err) {
+        if ((err + '').indexOf('not available') === -1) {
+          console.error(err);
+        }
+      }
 
       return render
         ? callback(null, render)
@@ -223,7 +227,7 @@ router.get('/?', function(req, res, next) {
               if (err) {
                 if ((err + '').indexOf('1048576') + 1) {
                   console.log('[routes/rss.js:renderData] Cache Length Error');
-                } else {
+                } else if ((err + '').indexOf('not available') === -1) {
                   console.log(
                     '[routes/rss.js:renderData] Cache Set Error:',
                     err

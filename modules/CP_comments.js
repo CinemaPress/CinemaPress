@@ -639,7 +639,7 @@ function recentComments(service, options, callback) {
                 console.log(
                   '[modules/CP_comments.js:recentComments] Cache Length Error'
                 );
-              } else {
+              } else if ((err + '').indexOf('not available') === -1) {
                 console.log(
                   '[modules/CP_comments.js:recentComments] Cache Set Error:',
                   err
