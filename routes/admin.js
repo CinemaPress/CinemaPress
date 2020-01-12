@@ -647,7 +647,6 @@ router.get('/:type?', function(req, res) {
 
 router.post('/change', function(req, res) {
   var form = req.body;
-  console.log(form);
   var configs = {
     config: config,
     modules: modules

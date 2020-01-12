@@ -92,7 +92,7 @@ app.use(
   express.static(path.join(path.dirname(__filename), '/'))
 );
 app.use(userinfo(lookup));
-app.use(/^(?:\/k\.1poster\.net|\/t\.1poster\.net)?/, proxy);
+app.use(/^(?:\/k\.1poster\.net|\/image\.tmdb\.org)?/, proxy);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe\.player.*$/, player);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode\.json.*$/, episode);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/robots\.txt$/, robots);

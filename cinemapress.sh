@@ -2211,6 +2211,7 @@ while [ "${WHILE}" -lt "2" ]; do
             _s "${4}"
             sh_progress
             sh_progress
+            sh_progress
             docker run \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
                 -v /home/"${CP_DOMAIN}"/config/app/${NAME_OS}:/app \
@@ -2219,7 +2220,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 --platform "${NAME_OS}" \
                 --arch "x64" \
                 --app-copyright "CinemaPress App" \
-                --app-version "4" \
+                --app-version "${CP_VER}" \
                 --icon "/icons/icon.png" \
                 --width "1280px" \
                 --height "800px" \
@@ -2239,13 +2240,20 @@ while [ "${WHILE}" -lt "2" ]; do
                 "http://${APP_DOMAIN}/" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
-            cd /home/${CP_DOMAIN}/config/app/${NAME_OS}/ && \
-            tar -czf /home/${CP_DOMAIN}/files/${NAME_OS}.tar.gz .
+            rm -rf /home/${CP_DOMAIN}/files/"${NAME_OS}"
+            mkdir -p /home/${CP_DOMAIN}/files/"${NAME_OS}"
+            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/"${CP_DOMAIN_}"-* \
+                /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app
+            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe \
+                /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/app.exe
+            cd /home/${CP_DOMAIN}/config/app/"${NAME_OS}" && \
+            tar -czf /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".tar.gz app
+            rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
             sh_progress 100
+            _line
+            _header "${CP_DOMAIN}/files/${NAME_OS}/app.tar.gz"
+            _line
             _br
-            _line
-            _header "${CP_DOMAIN}/files/${NAME_OS}.tar.gz"
-            _line
             exit 0
         ;;
         "cms" )

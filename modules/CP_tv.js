@@ -120,7 +120,11 @@ function tvIndex(data, options) {
                 ok: movie.url,
                 image: movie.poster,
                 title: movie.title,
-                top: movie.year ? movie.year : '',
+                top: movie.translate
+                  ? movie.translate
+                  : movie.year
+                  ? movie.year
+                  : '',
                 bottom:
                   (movie.season
                     ? movie.season + ' ' + config.l.season + ' '
@@ -270,7 +274,7 @@ function tvCategory(data, page, options) {
         ok: movie.url,
         image: movie.poster,
         title: movie.title,
-        top: movie.year ? movie.year : '',
+        top: movie.translate ? movie.translate : movie.year ? movie.year : '',
         bottom:
           (movie.season ? movie.season + ' ' + config.l.season + ' ' : '') +
           (movie.episode ? movie.episode + ' ' + config.l.episode + ' ' : '') +

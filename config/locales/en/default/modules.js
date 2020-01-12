@@ -223,26 +223,25 @@ module.exports = {
       "display": "legal",
       "share": {
         "time": 60,
-        "message": "Share the movie with one of the social networks to start watching or wait [timer] seconds and the message disappears."
+        "message": "Share the movie page on one of the social networks."
       },
       "sub": {
         "keys": ["CP06368342850052267","CP10020891099182505","CP46955642915431706"],
-        "message": "Viewing is available only by subscription. Get a subscription and activate the key. <p><a href=\"https://digiseller.ru/\" target=\"_blank\" style=\"color:white;\">Buy subscription</a></p>"
+        "message": "Viewing is available only by subscription. Get a subscription and activate the key. <p style=\"margin:20px auto 0 auto\"><a href=\"https://digiseller.ru/\" target=\"_blank\" style=\"color:white;background:#16494e;border-radius: 5px;padding: 10px;\">Buy subscription</a></p>"
       },
       "adv": {
         "time": 10,
-        "code": "<div class=rklma>Block with your advertisement in the player</div>",
-        "message": "Advertising allows you to watch movies for free. Please treat this with understanding. You can start viewing in [timer] seconds.",
-        "skip": ""
+        "message": "<iframe src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1\" allow=\"autoplay; encrypted-media\" allowfullscreen style=\"width:100%;height:370px;border:0\"></iframe>",
+        "skip": "Continue"
       },
       "adblock": {
         "time": 60,
-        "message": "You use AdBlock or other ad blockers. Please disable them on our website in order not to wait. You can start viewing in [timer] seconds."
+        "message": "You are using AdBlock, please disable it and you won’t have to wait any longer."
       },
       "legal": {
         "time": 20,
         "countries": [],
-        "message": "The trailer will appear after [timer] seconds. To display the movie player on this location, turn off the <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">in the admin panel, the «Blocking» module</a>.\n\n<br><br>\n\n<div class=search-ggl onclick=\"window.open('https://href.li/?https://google.com/search?&tbm=vid&q=[title] [year] watch online','_blank')\">Watch online on <span class=g>G</span><span class=o>o</span><span class=o>o</span><span class=g>g</span><span class=l>l</span><span class=e>e</span></div>\n\n<div class=search-ynd  onclick=\"window.open('https://href.li/?https://yandex.fr/video/search?text=[title] [year] watch online','_blank')\">Watch online on <span class=y>Y</span>andex</div>\n\n<br><br><br>\n\n<div class=search-ggl onclick=\"window.open('https://href.li/?https://play.google.com/store/search?c=movies&q=[title]','_blank')\">Buy on <span class=g>G</span><span class=o>o</span><span class=o>o</span><span class=g>g</span><span class=l>l</span><span class=e>e</span> Play</div>\n\n<div class=search-amz onclick=\"window.open('https://href.li/?https://www.amazon.com/s?i=instant-video&k=[title]','_blank')\">Buy on amazon <span class=p>prime</span></div>"
+        "message": "The function of the movie information catalog has been activated. To display the player, <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">disable the «Blocking» module in the admin panel</a>."
       }
     }
   },

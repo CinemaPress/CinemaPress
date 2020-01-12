@@ -223,26 +223,25 @@ module.exports = {
       "display": "legal",
       "share": {
         "time": 60,
-        "message": "Поделитесь фильмом в одну из социальных сетей чтобы начать просмотр или подождите [timer] секунд и данное сообщение исчезнет."
+        "message": "Поделитесь страницей фильма в одной из социальных сетей."
       },
       "sub": {
         "keys": ["CP06368342850052267","CP10020891099182505","CP46955642915431706"],
-        "message": "Просмотр доступен только по подписке. Приобретите подписку и активируйте ключ. <p><a href=\"https://digiseller.ru/\" target=\"_blank\" style=\"color:white;\">Купить подписку</a></p>"
+        "message": "Просмотр доступен только по подписке. Приобретите подписку и активируйте ключ. <p style=\"margin:20px auto 0 auto\"><a href=\"https://digiseller.ru/\" target=\"_blank\" style=\"color:white;background:#16494e;border-radius: 5px;padding: 10px;\">Купить подписку</a></p>"
       },
       "adv": {
         "time": 10,
-        "code": "<div class=rklma>Блок с Вашей рекламой в плеере</div>",
-        "message": "Реклама позволяет Вам смотреть фильмы бесплатно. Пожалуйста отнеситесь к этому с пониманием. Вы сможете начать просмотр через [timer] секунд.",
-        "skip": ""
+        "message": "<iframe src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1\" allow=\"autoplay; encrypted-media\" allowfullscreen style=\"width:100%;height:370px;border:0\"></iframe>",
+        "skip": "Пропустить"
       },
       "adblock": {
         "time": 60,
-        "message": "Вы используете AdBlock или другие блокировщики рекламы. Пожалуйста отключите их на Нашем сайте чтобы не ждать. Вы сможете начать просмотр через [timer] секунд."
+        "message": "Вы используете AdBlock, пожалуйста, отключите его и Вам больше не придется ждать."
       },
       "legal": {
         "time": 20,
         "countries": [],
-        "message": "Трейлер появится, через [timer] секунд. Чтобы отображать на этом месте плеер фильма, отключите <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">в админ-панели модуль «Блокировка»</a>.\n\n<br><br>\n\n<div class=search-ggl onclick=\"window.open('https://href.li/?https://google.com/search?&tbm=vid&q=[title] [year] смотреть онлайн','_blank')\">Смотреть онлайн в <span class=g>G</span><span class=o>o</span><span class=o>o</span><span class=g>g</span><span class=l>l</span><span class=e>e</span></div>\n\n<div class=search-ynd  onclick=\"window.open('https://href.li/?https://yandex.fr/video/search?text=[title] [year] смотреть онлайн','_blank')\">Смотреть онлайн в <span class=y>Я</span>ндекс</div>\n\n<br><br><br>\n\n<div class=search-ivi onclick=\"window.open('https://href.li/?https://www.ivi.ru/search/?q=[title]','_blank')\">Купить в <span class=i>ivi</span></div>\n\n<div class=search-knp onclick=\"window.open('https://href.li/?https://www.kinopoisk.ru/film/[kp_id]/watch/?from_block=button_online','_blank')\">Купить в КиноПоиск <span class=h>HD</span></div>"
+        "message": "Активирована функция информационного каталога фильмов.<br><br>Для показа плеера, отключите <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">в админ-панели модуль «Блокировка»</a>."
       }
     }
   },

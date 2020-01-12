@@ -13,7 +13,9 @@
       "watch": [
         "process.json",
         "app.js",
-        "themes/*/views",
+        "themes/*/views/*",
+        "themes/*/views/*/*",
+        "themes/*/views/*/*/*",
         "lib",
         "modules",
         "routes"

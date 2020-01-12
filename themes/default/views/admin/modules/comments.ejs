@@ -89,6 +89,11 @@
                                             <%= __('URL') %>
                                         </span>
                                         <input type="text" class="form-control" name="comment.comment_url" value="<%- comment.comment_url %>">
+                                        <span class="input-group-addon">
+                                            <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/app-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.comment_id %>" target="_blank">
+                                                <span class="fa fa-external-link-square-alt"></span>
+                                            </a>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -126,7 +131,9 @@
                                         </span>
                                         <input type="text" class="form-control" name="comment.comment_ip" value="<%- comment.comment_ip %>">
                                         <span class="input-group-addon">
-                                            <a href="https://whois.domaintools.com/<%- comment.comment_ip %>" target="_blank"><i class="fas fa-user-secret"></i></a>
+                                            <a href="https://ipapi.co/<%- comment.comment_ip %>" target="_blank">
+                                                <span class="fas fa-user-secret"></span>
+                                            </a>
                                         </span>
                                     </div>
                                 </div>
@@ -215,7 +222,7 @@
 
                                         <textarea class="form-control descriptions" name="comment.comment_text"><% if (comment.comment_text) { %><%- comment.comment_text.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
 
-                                        <div class="text-muted">
+                                        <div class="text-muted" id="comment-admin">
                                             <%= __('Ответ администратора') %>
                                         </div>
 
@@ -223,6 +230,12 @@
 
                                         <textarea class="form-control descriptions" name="comment.comment_admin"><% if (comment.comment_admin) { %><%- comment.comment_admin.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
                                     </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="col-xs-3 col-md-3">
+                                    <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.comment_id %>" class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
                                 </div>
                             </div>
 
@@ -672,8 +685,21 @@
                                                                 .replace(/[\[][^\]]*?]/gi, '')
                                                                 .replace(/\s+/g, ' ')
                                                                 .replace(/(^\s*)|(\s*)$/g, '') %>
+                                                        <% var admin = comment.comment_admin
+                                                                .replace(/[<][^>]*?>/gi, '')
+                                                                .replace(/[\[][^\]]*?]/gi, '')
+                                                                .replace(/\s+/g, ' ')
+                                                                .replace(/(^\s*)|(\s*)$/g, '') %>
+                                                         <% var today = new Date(parseInt(comment.comment_publish) - 719527 * 1000 * 60 * 60 * 24)
+                                                                 .toJSON()
+                                                         %>
                                                         <tr>
                                                             <td class="table-content" style="text-align: justify">
+                                                                <div style="float: right">
+                                                                    <span class="table-content-key"><%- today.split('T')[0] + ' ' + today.split('T')[1].split('.')[0] %></span>
+                                                                    <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>#comment-admin"><i class="fas fa-reply-all" style="color:#008083"></i></a>
+                                                                </div>
+                                                                <style>.fa-reply-all:hover{opacity: .6}</style>
                                                                 <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
                                                                     <span class="table-content-key"><%- comment.comment_anonymous %></span> |
                                                                     <span class="table-content-key"><%- comment.comment_title %></span>
@@ -681,9 +707,14 @@
                                                                 <span><%= (text.length >= 300
                                                                             ? text.slice(0, 300) + '...'
                                                                             : text) %></span>
+                                                                <% if (admin) { %>
+                                                                <span style="display: block;padding: 5px;border-radius: 5px;border:2px #2f374b dotted;margin: 5px 0 0 0;"><%= (admin.length >= 300
+                                                                            ? admin.slice(0, 300) + '...'
+                                                                            : admin) %></span>
+                                                                <% } %>
                                                             </td>
                                                             <td class="table-settings">
-                                                                <% if (modules.comments.data.fast.premoderate && !comment.comment_confirm) { %>
+                                                                <% if (!comment.comment_confirm) { %>
                                                                 <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.id %>" class="suc suc-zero"><i class="fa fa-circle text-muted"></i></a>
                                                                 <% } else { %>
                                                                     <a href="javascript:void(0)" data-type="comment" data-id="<%- comment.id %>" class="suc suc-one"><i class="fa fa-circle text-success"></i></a>
@@ -696,7 +727,7 @@
                                                                 <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>"><i class="fa fa-edit text-warning"></i></a>
                                                             </td>
                                                             <td class="table-settings">
-                                                                <a href="<%- comment.comment_url %>#c<%- comment.id %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a>
+                                                                <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/app-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.id %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a>
                                                             </td>
                                                         </tr>
                                                     <% }); %>

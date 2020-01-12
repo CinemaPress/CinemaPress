@@ -130,7 +130,7 @@ var cinemapress_comments = {
         '[$1]$2[/$3]'
       )
       .replace(
-        /\[(b|i|spoiler|search)]\s*([^\[]*?)\s*\[\/(b|i|spoiler|search)]/gi,
+        /\[(b|i|spoiler|search)]\s*([^\[]*?)\[\/(b|i|spoiler|search)]/gi,
         '[$1]$2[/$3]'
       )
       .replace(

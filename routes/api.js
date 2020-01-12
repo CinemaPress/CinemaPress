@@ -93,7 +93,9 @@ router.post('/comments', function(req, res) {
               !verify ||
               !verify.success ||
               parseFloat('' + verify.score) <=
-                parseFloat('' + modules.comments.data.fast.recaptcha_score / 10)
+                parseFloat(
+                  '' + modules.comments.data.fast.recaptcha_score / 100
+                )
             ) {
               return callback({
                 status: 'error',
@@ -104,7 +106,7 @@ router.post('/comments', function(req, res) {
                       verify.score +
                       ' <= ' +
                       parseFloat(
-                        '' + modules.comments.data.fast.recaptcha_score / 10
+                        '' + modules.comments.data.fast.recaptcha_score / 100
                       )
                     : 'Recaptcha error'
               });
@@ -274,7 +276,7 @@ router.post('/comments', function(req, res) {
           form.comment_anonymous =
             config.language === 'ru' && one_length && two_length
               ? decodeURIComponent(
-              first[one_num % one_length] + ' ' + last[two_num % two_length]
+                  first[one_num % one_length] + ' ' + last[two_num % two_length]
                 )
               : 'Anonymous' + fore_num;
         }
