@@ -95,7 +95,7 @@ function blockingPlayer(code, movie, options) {
       '    <svg><circle r="18" cx="20" cy="20"></circle></svg>' +
       '  </div>' +
       '</div>' +
-      '<style>#blockingPlayer{display:block}#blockingMessage{position:absolute;z-index:100001;text-align:center;width:100%}#blockingMessageText{margin: 70px auto 0 auto;width: 70%;background:#000;padding: 20px;border-radius: 5px;border-right: 5px#16494e solid;border-left: 5px#16494e solid;opacity:.8}#blockingTimer{background:#000;color:#ccc;padding: 10px 20px;border-radius: 0 3px 3px 0;font-family: monospace,sans-serif;position: absolute;left: 0;bottom: 10px;font-size: 20px;font-weight: bold;border-right: 5px#ccc solid;border-top: 1px#ccc dotted;border-bottom: 1px#ccc dotted;z-index:100001;}#blockingBg{position:absolute;background:#000 url(' +
+      '<style>#blockingPlayer{display:block}#blockingMessage{position:absolute;z-index:100001;text-align:center;width:100%}#blockingMessageText{margin: 70px auto 0 auto;width: 70%;background:#000;color:#fff;padding: 20px;border-radius: 5px;border-right: 5px#16494e solid;border-left: 5px#16494e solid;opacity:.8}#blockingTimer{background:#000;color:#ccc;padding: 10px 20px;border-radius: 0 3px 3px 0;font-family: monospace,sans-serif;position: absolute;left: 0;bottom: 10px;font-size: 20px;font-weight: bold;border-right: 5px#ccc solid;border-top: 1px#ccc dotted;border-bottom: 1px#ccc dotted;z-index:100001;}#blockingBg{position:absolute;background:#000 url(' +
       img +
       ') 100% 100% no-repeat;background-size:100% 100%;z-index:10000;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center;text-shadow: 1px 1px #000;}</style>';
     var countdown =
