@@ -135,12 +135,12 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   });
 
   function getRender(callback) {
-    if (config.cache.time) {
-      getCache(function(err, render) {
+    if (typeof req.query.random !== 'undefined' && modules.random.status) {
+      getSphinx(function(err, render) {
         return callback(err, render);
       });
     } else {
-      getSphinx(function(err, render) {
+      getCache(function(err, render) {
         return callback(err, render);
       });
     }

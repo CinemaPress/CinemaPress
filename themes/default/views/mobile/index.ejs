@@ -18,7 +18,7 @@ index[type].forEach(function (category) { %>
         <%- category.name %>
         <div class="randomMovieIndex">
             <div <% if (!category.url) { %>style="display:none"<% } %> class="cinemapress-random-index"
-                 onclick="window.location.href='<%- (category.url && category.url.indexOf('?')+1 ? category.url + '&random' : category.url + '?random') %>'"
+                 onclick="window.location.href='<%- (category.url && category.url.indexOf('?')+1 ? category.url + '&random=' : category.url + '?random=') %><%- Math.random() %>'"
                  title="<%= page.l.random %>">
                 <img src="/themes/default/public/mobile/dice.svg" alt="<%= page.l.random %>">
             </div>

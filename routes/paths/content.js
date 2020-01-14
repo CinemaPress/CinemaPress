@@ -576,25 +576,18 @@ function randomContent(url, options, callback) {
           contents.length &&
           contents[0].movies &&
           contents[0].movies.length
-        ? CP_get.movies(
-            {
-              query_id:
+        ? callback(
+            null,
+            '/' +
+              config.urls.movie +
+              config.urls.slash +
+              config.urls.prefix_id +
+              (parseInt(
                 contents[0].movies[
                   Math.floor(Math.random() * contents[0].movies.length)
                 ]
-            },
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            options,
-            function(err, movies) {
-              return err
-                ? callback(err)
-                : movies && movies.length
-                ? callback(null, movies[0].url)
-                : callback(null, '');
-            }
+              ) +
+                parseInt('' + config.urls.unique_id))
           )
         : callback(null, '');
     }
