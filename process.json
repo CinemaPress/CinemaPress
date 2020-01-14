@@ -26,6 +26,7 @@
       "vizion": false,
       "env": {
         "NODE_ENV": "production",
+        "TZ": "Europe/Helsinki",
         "CP_ALL": "_example_com_",
         "CP_XMLPIPE2": "xmlpipe2_example_com",
         "CP_RT": "rt_example_com",
