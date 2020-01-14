@@ -19,7 +19,7 @@ ARG CP_KEY=""
 ENV CP_KEY=${CP_KEY}
 ARG RCLONE_CONFIG=""
 ENV RCLONE_CONFIG=${RCLONE_CONFIG}
-ENV TZ=Europe/Helsinki
+ENV TZ=Europe/Moscow
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
@@ -32,8 +32,8 @@ RUN set -o pipefail \
     && apk add -u --no-cache sudo python wget curl tar gzip unzip git sed bash nano openrc openssl dos2unix busybox-extras tzdata \
     && apk add -u --no-cache npm mysql-client memcached sphinx=2.2.11-r1 \
     && wget -qO - https://rclone.org/install.sh | bash \
-    && cp /usr/share/zoneinfo/Europe/Helsinki /etc/localtime \
-    && echo "Europe/Helsinki" > /etc/timezone \
+    && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
+    && echo "Europe/Moscow" > /etc/timezone \
     && npm i node-gyp -g \
     && npm i pm2 -g \
     && npm i \

@@ -8,8 +8,8 @@ COPY . /etc/nginx
 RUN apk add bash dos2unix gzip \
     && dos2unix /etc/nginx/nginx.sh \
     && chmod +x /etc/nginx/nginx.sh \
-    && cp /usr/share/zoneinfo/Europe/Helsinki /etc/localtime \
-    && echo "Europe/Helsinki" > /etc/timezone \
+    && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
+    && echo "Europe/Moscow" > /etc/timezone \
     && rm -rf \
         /etc/nginx/conf.d/default.conf \
         /etc/nginx/cloudflare.ini \
