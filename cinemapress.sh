@@ -2229,11 +2229,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0 CinemaPress App" \
                 --ignore-certificate \
                 --insecure \
-                --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io" \
+                --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io|.*?\.netlify\.com|.*?\.appspot\.com|.*?\.surge\.sh|.*?\.updog\.co|.*?\.neocities\.org" \
                 --disable-context-menu \
                 --disable-dev-tools \
                 --single-instance \
-                --clear-cache \
                 --darwin-dark-mode-support \
                 --background-color "#1a2035" \
                 --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
