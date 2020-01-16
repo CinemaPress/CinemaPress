@@ -26,7 +26,7 @@ moment.locale(config.language);
  */
 
 function fullMovieSchema(page, movie, movies, comments, options) {
-  if (arguments.length === 3) {
+  if (arguments.length === 4) {
     options = {};
     options.domain = config.subdomain + '' + config.domain;
     options.origin =

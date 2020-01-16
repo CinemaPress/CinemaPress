@@ -1392,13 +1392,50 @@ read_app() {
                     AGAIN=$((${AGAIN}+1))
                 fi
             else
-                printf "${R}WARNING:${NC} Domain name cannot be blank. \n"
+                printf "${R}WARNING:${NC} Domain name for app cannot be blank. \n"
                 AGAIN=$((${AGAIN}+1))
             fi
         done
         if [ "${APP_DOMAIN}" = "" ]; then exit 1; fi
     fi
     APP_DOMAIN_=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+}
+read_import() {
+    IMPORT_DOMAIN=${1:-${IMPORT_DOMAIN}}
+    if [ "${IMPORT_DOMAIN}" = "" ]; then
+        _header "IMPORT DOMAIN NAME"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                IMPORT_DOMAIN=${1}
+                IMPORT_DOMAIN=`echo ${IMPORT_DOMAIN} | iconv -c -t UTF-8`
+                echo ": ${IMPORT_DOMAIN}"
+            else
+                read -e -p ': ' IMPORT_DOMAIN
+                IMPORT_DOMAIN=`echo ${IMPORT_DOMAIN} | iconv -c -t UTF-8`
+            fi
+            if [ "${IMPORT_DOMAIN}" != "" ]
+            then
+                if echo "${IMPORT_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
+                then
+                    IMPORT_DOMAIN_=`echo ${IMPORT_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${IMPORT_DOMAIN}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin lowercase characters, \n"
+                    printf "${NC}         numbers, dots, and hyphens are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            else
+                printf "${R}WARNING:${NC} Import domain name cannot be blank. \n"
+                AGAIN=$((${AGAIN}+1))
+            fi
+        done
+        if [ "${IMPORT_DOMAIN}" = "" ]; then exit 1; fi
+    fi
+    IMPORT_DOMAIN_=`echo ${IMPORT_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 }
 
 sh_yes() {
@@ -2200,6 +2237,50 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+            fi
+            exit 0
+        ;;
+        "import" )
+            if [ "${2}" = "dle" ]; then
+                read_domain "${3}"
+                sh_not
+                read_import "${4}"
+                _s "${4}"
+                FILE_EXPORT="http://${IMPORT_DOMAIN}/uploads/files/${CP_DOMAIN}.xml"
+                CREATE_EXPORT=$(wget -qO- "http://${IMPORT_DOMAIN}/dle2cinemapress.php?domain=${CP_DOMAIN}")
+                if [ "${CREATE_EXPORT}" != "ok" ]; then
+                    _header "ERROR"
+                    _content
+                    _content "The website ${IMPORT_DOMAIN} is temporarily unavailable,"
+                    _content "please try again later."
+                    _content "http://${IMPORT_DOMAIN}/dle2cinemapress.php?domain=${CP_DOMAIN}"
+                    _content
+                    _s
+                    exit 0
+                else
+                    sleep 2
+                fi
+                _line
+                _content "Downloading ..."
+                wget -qO "/home/${CP_DOMAIN}/config/production/sphinx/export.xml" "${FILE_EXPORT}" || \
+                rm -rf "/home/${CP_DOMAIN}/config/production/sphinx/export.xml"
+                if [ -f "/home/${CP_DOMAIN}/config/production/sphinx/export.xml" ]; then
+                    _content "Import ..."
+                    rm -rf "/home/${CP_DOMAIN}/config/production/sphinx/source.xml"
+                    mv "/home/${CP_DOMAIN}/config/production/sphinx/export.xml" \
+                        "/home/${CP_DOMAIN}/config/production/sphinx/source.xml"
+                    docker exec "${CP_DOMAIN_}" indexer "xmlpipe2_${CP_DOMAIN_}" --rotate >/dev/null
+                    _content "Done!"
+                else
+                    _header "ERROR"
+                    _content
+                    _content "Failed to download export file,"
+                    _content "please try again later."
+                    _content "${FILE_EXPORT}"
+                    _content
+                    _s
+                    exit 0
+                fi
             fi
             exit 0
         ;;
