@@ -889,5 +889,9 @@
   "Стоп-слова": "Stop words",
   "Комментарии на веб-сайте": "Comments on the website",
   "ID или ссылка на комментарий": "ID or link to comment",
-  "Изменить комментарий": "Edit comment"
+  "Изменить комментарий": "Edit comment",
+  "Настройка перенаправления URL": "Configure URL redirection",
+  "Перенаправление с одного URL-адреса на другой": "Redirect from one URL to another",
+  "Перенаправить с URL": "Redirect from URL",
+  "Перенаправить на URL": "Redirect to URL"
 }

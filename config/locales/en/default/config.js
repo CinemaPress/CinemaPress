@@ -14,6 +14,10 @@ module.exports = {
   "language": "en",
   "random": 0,
   "homepage": "127.0.0.1",
+  "redirect": {
+    "from": [],
+    "to": []
+  },
   "geolite2": {
     "countries": [],
     "ips": []

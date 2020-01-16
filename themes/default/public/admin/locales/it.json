@@ -890,5 +890,9 @@
 	"Стоп-слова": "Parole di stop",
 	"Комментарии на веб-сайте": "Commenti sul sito web",
 	"ID или ссылка на комментарий": "ID o un riferimento a un commento",
-	"Изменить комментарий": "Modifica commento"
+	"Изменить комментарий": "Modifica commento",
+	"Настройка перенаправления URL": "Reindirizzamento URL Configurazione",
+	"Перенаправление с одного URL-адреса на другой": "Redirect da un URL-indirizzo ad un altro",
+	"Перенаправить с URL": "Reindirizzare a un URL",
+	"Перенаправить на URL": "Reindirizzare a un URL"
 }

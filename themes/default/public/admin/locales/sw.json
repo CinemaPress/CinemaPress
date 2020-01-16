@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop maneno",
 	"Комментарии на веб-сайте": "Maoni kwenye tovuti",
 	"ID или ссылка на комментарий": "ID au kumbukumbu ya maoni",
-	"Изменить комментарий": "Badilisha maoni"
+	"Изменить комментарий": "Badilisha maoni",
+	"Настройка перенаправления URL": "Configuring URL redirection",
+	"Перенаправление с одного URL-адреса на другой": "Kuelekeza kutoka kwa mmoja URL anwani hadi nyingine",
+	"Перенаправить с URL": "Kuelekeza kwa URL",
+	"Перенаправить на URL": "Kuelekeza kwa URL"
 }

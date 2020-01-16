@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stoppord",
 	"Комментарии на веб-сайте": "Kommentarer på webbplatsen",
 	"ID или ссылка на комментарий": "ID eller en hänvisning till en kommentar",
-	"Изменить комментарий": "Redigera kommentar"
+	"Изменить комментарий": "Redigera kommentar",
+	"Настройка перенаправления URL": "Konfigurera URL omdirigering",
+	"Перенаправление с одного URL-адреса на другой": "Omdirigering från en URL-adress till en annan",
+	"Перенаправить с URL": "Omdirigerar till en webbadress",
+	"Перенаправить на URL": "Omdirigerar till en webbadress"
 }

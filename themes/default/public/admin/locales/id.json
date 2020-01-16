@@ -890,5 +890,9 @@
 	"Стоп-слова": "Berhenti kata-kata",
 	"Комментарии на веб-сайте": "Komentar pada website",
 	"ID или ссылка на комментарий": "ID atau referensi untuk komentar",
-	"Изменить комментарий": "Mengedit komentar"
+	"Изменить комментарий": "Mengedit komentar",
+	"Настройка перенаправления URL": "Konfigurasi URL redirection",
+	"Перенаправление с одного URL-адреса на другой": "Redirect dari satu URL-alamat lain",
+	"Перенаправить с URL": "Redirect ke URL",
+	"Перенаправить на URL": "Redirect ke URL"
 }

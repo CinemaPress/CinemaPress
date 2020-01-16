@@ -890,5 +890,9 @@
 	"Стоп-слова": "Hukkasanat",
 	"Комментарии на веб-сайте": "Kommentteja sivuilla",
 	"ID или ссылка на комментарий": "ID tai viittaus kommentti",
-	"Изменить комментарий": "Muokkaa kommenttia"
+	"Изменить комментарий": "Muokkaa kommenttia",
+	"Настройка перенаправления URL": "Määrittäminen URL uudelleenohjaus",
+	"Перенаправление с одного URL-адреса на другой": "Uudelleenohjauksen yksi URL-osoite-osoitteen toiseen",
+	"Перенаправить с URL": "Uudelleenohjaus URL",
+	"Перенаправить на URL": "Uudelleenohjaus URL"
 }

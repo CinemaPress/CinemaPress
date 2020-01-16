@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop words",
 	"Комментарии на веб-сайте": "Komentāri par tīmekļa vietni",
 	"ID или ссылка на комментарий": "ID vai atsauce uz komentāru",
-	"Изменить комментарий": "Rediģēt komentāru"
+	"Изменить комментарий": "Rediģēt komentāru",
+	"Настройка перенаправления URL": "Konfigurēšana URL novirzīšana",
+	"Перенаправление с одного URL-адреса на другой": "Novirzīt no vienas URL-pasta adresi uz citu",
+	"Перенаправить с URL": "Novirzīt uz URL",
+	"Перенаправить на URL": "Novirzīt uz URL"
 }

@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stopp words",
 	"Комментарии на веб-сайте": "Kommentaarid veebilehel",
 	"ID или ссылка на комментарий": "ID või viide kommentaari",
-	"Изменить комментарий": "Muuda kommentaari"
+	"Изменить комментарий": "Muuda kommentaari",
+	"Настройка перенаправления URL": "Seadistamine URL ümbersuunamine",
+	"Перенаправление с одного URL-адреса на другой": "Suuna ühest URL-aadress teisele",
+	"Перенаправить с URL": "Suuna URL",
+	"Перенаправить на URL": "Suuna URL"
 }

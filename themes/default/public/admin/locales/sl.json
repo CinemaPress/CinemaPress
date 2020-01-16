@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop besede",
 	"Комментарии на веб-сайте": "Komentarji na spletno stran",
 	"ID или ссылка на комментарий": "ID ali sklic na komentar",
-	"Изменить комментарий": "Uredi komentar"
+	"Изменить комментарий": "Uredi komentar",
+	"Настройка перенаправления URL": "Konfiguracija URL preusmeritve",
+	"Перенаправление с одного URL-адреса на другой": "Preusmeritev iz enega URL-naslov v drugo",
+	"Перенаправить с URL": "Preusmeritev na URL",
+	"Перенаправить на URL": "Preusmeritev na URL"
 }

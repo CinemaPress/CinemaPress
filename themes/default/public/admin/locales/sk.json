@@ -890,5 +890,9 @@
 	"Стоп-слова": "Zakázaných slov",
 	"Комментарии на веб-сайте": "Komentáre k webovej stránke",
 	"ID или ссылка на комментарий": "ID alebo odkaz na komentár",
-	"Изменить комментарий": "Upraviť komentár"
+	"Изменить комментарий": "Upraviť komentár",
+	"Настройка перенаправления URL": "Presmerovanie URL Konfigurácia",
+	"Перенаправление с одного URL-адреса на другой": "Presmerovanie z jedného URL adresu na inú",
+	"Перенаправить с URL": "Presmerovať na adresu URL",
+	"Перенаправить на URL": "Presmerovať na adresu URL"
 }

@@ -890,5 +890,9 @@
 	"Стоп-слова": "Dur kelimeler",
 	"Комментарии на веб-сайте": "Websitesinde yorumlar",
 	"ID или ссылка на комментарий": "İD veya yorum bir referans",
-	"Изменить комментарий": "Yorum düzenle"
+	"Изменить комментарий": "Yorum düzenle",
+	"Настройка перенаправления URL": "Yapılandırma URL yönlendirmesi",
+	"Перенаправление с одного URL-адреса на другой": "Başka bir URL adresinden yönlendir",
+	"Перенаправить с URL": "Bir URL'ye yönlendir",
+	"Перенаправить на URL": "Bir URL'ye yönlendir"
 }

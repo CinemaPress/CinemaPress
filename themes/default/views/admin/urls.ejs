@@ -481,6 +481,42 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="far fa-compass"></i>&nbsp;&nbsp;&nbsp;<%= __('Настройка перенаправления URL') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/urls.html#redirect" class="csstip" title="<%= __('Перенаправление с одного URL-адреса на другой') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <label><%= __('Перенаправить с URL') %></label>
+                                        </div>
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <label><%= __('Перенаправить на URL') %></label>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-lg-6 col-xs-6">
+                                            <textarea class="form-control textarea" name="config.redirect.from" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="/from/url"><%- config.redirect.from.join('\n') %></textarea>
+                                        </div>
+                                        <div class="col-lg-6 col-xs-6">
+                                            <textarea class="form-control textarea" name="config.redirect.to" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="/to/url"><%- config.redirect.to.join('\n') %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <% } %>

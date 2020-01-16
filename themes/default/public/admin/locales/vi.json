@@ -890,5 +890,9 @@
 	"Стоп-слова": "Dừng words",
 	"Комментарии на веб-сайте": "Các bình luận về trang web",
 	"ID или ссылка на комментарий": "ID hoặc một tham chiếu đến một lời nhận xét",
-	"Изменить комментарий": "Chỉnh sửa nhận xét"
+	"Изменить комментарий": "Chỉnh sửa nhận xét",
+	"Настройка перенаправления URL": "Chuyển hướng Cấu hình URL",
+	"Перенаправление с одного URL-адреса на другой": "Chuyển từ một URL-địa chỉ khác",
+	"Перенаправить с URL": "Chuyển hướng đến một URL",
+	"Перенаправить на URL": "Chuyển hướng đến một URL"
 }

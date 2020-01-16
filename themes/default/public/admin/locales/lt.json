@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stotelė žodžiai",
 	"Комментарии на веб-сайте": "Komentarai apie svetainę",
 	"ID или ссылка на комментарий": "ID arba nuorodą į komentarą",
-	"Изменить комментарий": "Redaguoti komentarą"
+	"Изменить комментарий": "Redaguoti komentarą",
+	"Настройка перенаправления URL": "Konfigūravimas URL nukreipimas",
+	"Перенаправление с одного URL-адреса на другой": "Nukreipimo iš vienos URL adresą į kitą",
+	"Перенаправить с URL": "Nukreipti į URL",
+	"Перенаправить на URL": "Nukreipti į URL"
 }

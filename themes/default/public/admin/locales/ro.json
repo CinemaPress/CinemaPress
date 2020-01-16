@@ -890,5 +890,9 @@
 	"Стоп-слова": "Cuvinte de oprire",
 	"Комментарии на веб-сайте": "Comentarii despre site-ul web",
 	"ID или ссылка на комментарий": "ID-ul sau o trimitere la un comentariu",
-	"Изменить комментарий": "Editare comentariu"
+	"Изменить комментарий": "Editare comentariu",
+	"Настройка перенаправления URL": "Configurarea URL de redirecționare",
+	"Перенаправление с одного URL-адреса на другой": "Redirect de la o adresă URL-adresă la alta",
+	"Перенаправить с URL": "Redirecționarea către o adresă URL",
+	"Перенаправить на URL": "Redirecționarea către o adresă URL"
 }

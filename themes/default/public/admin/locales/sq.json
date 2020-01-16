@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop words",
 	"Комментарии на веб-сайте": "Komentet në faqen e internetit",
 	"ID или ссылка на комментарий": "ID ose një referencë për një koment",
-	"Изменить комментарий": "Edit koment"
+	"Изменить комментарий": "Edit koment",
+	"Настройка перенаправления URL": "Configuring URL redirection",
+	"Перенаправление с одного URL-адреса на другой": "Redirect nga një URL-adresë në një tjetër",
+	"Перенаправить с URL": "Redirect në një URL",
+	"Перенаправить на URL": "Redirect në një URL"
 }

@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop szavak",
 	"Комментарии на веб-сайте": "Megjegyzések a honlapon",
 	"ID или ссылка на комментарий": "Azonosító vagy utalás egy megjegyzést",
-	"Изменить комментарий": "Megjegyzés szerkesztése"
+	"Изменить комментарий": "Megjegyzés szerkesztése",
+	"Настройка перенаправления URL": "Konfigurálása URL átirányítás",
+	"Перенаправление с одного URL-адреса на другой": "Átirányítás egy URL-címet egy másik",
+	"Перенаправить с URL": "Átirányítás egy URL-",
+	"Перенаправить на URL": "Átirányítás egy URL-"
 }

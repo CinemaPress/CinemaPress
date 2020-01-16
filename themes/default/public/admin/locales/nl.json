@@ -890,5 +890,9 @@
 	"Стоп-слова": "Stop woorden",
 	"Комментарии на веб-сайте": "Reacties op de website",
 	"ID или ссылка на комментарий": "ID of een verwijzing naar een reactie",
-	"Изменить комментарий": "Reactie bewerken"
+	"Изменить комментарий": "Reactie bewerken",
+	"Настройка перенаправления URL": "Configureren URL redirection",
+	"Перенаправление с одного URL-адреса на другой": "Redirect van de ene URL-adres naar het andere",
+	"Перенаправить с URL": "Omleiden naar een URL",
+	"Перенаправить на URL": "Omleiden naar een URL"
 }
