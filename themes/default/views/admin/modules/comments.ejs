@@ -229,6 +229,25 @@
                                         <div class="spacer-10"></div>
 
                                         <textarea class="form-control descriptions" name="comment.comment_admin"><% if (comment.comment_admin) { %><%- comment.comment_admin.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                        <div class="advanced-textarea-footer">
+                                            <div class="pull-left">
+                                                <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='[b][/b]' class="btn btn-sm btn-default codes">
+                                                    <%= '[b]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='[i][/i]' class="btn btn-sm btn-default codes">
+                                                    <%= '[i]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='[spoiler][/spoiler]' class="btn btn-sm btn-default codes">
+                                                    <%= '[spoiler]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='[search][/search]' class="btn btn-sm btn-default codes">
+                                                    <%= '[search]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='<a href="URL" target="_blank">TEXT</a>' class="btn btn-sm btn-default codes">
+                                                    <%= '<a>' %>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

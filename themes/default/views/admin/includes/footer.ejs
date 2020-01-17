@@ -618,6 +618,10 @@
             }
         }
 
+        if (data.modules && data.modules.comment && data.modules.comment.comment_admin) {
+            data.modules.comment.comment_admin = data.modules.comment.comment_admin.replace(/(https?:\/\/|\/\/).*?\//ig, '/');
+        }
+
         if (data.config && data.config.urls && data.config.urls.admin) {
             data.config.urls.admin = 'admin-' + data.config.urls.admin;
         }
