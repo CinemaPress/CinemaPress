@@ -4,18 +4,8 @@ const path = require('path');
 
 let theme = process && process.argv && process.argv[2] ? process.argv[2] : '';
 
-let config_file = path.join(
-  __dirname,
-  'config',
-  'production',
-  'config.js'
-);
-let modules_file = path.join(
-  __dirname,
-  'config',
-  'production',
-  'modules.js'
-);
+let config_file = path.join(__dirname, 'config', 'production', 'config.js');
+let modules_file = path.join(__dirname, 'config', 'production', 'modules.js');
 let process_file = path.join(__dirname, 'process.json');
 
 let config = require(config_file);
@@ -23,7 +13,7 @@ let modules = require(modules_file);
 let process_json = require(process_file);
 
 var d = new Date();
-d.setDate(d.getDate()-31);
+d.setDate(d.getDate() - 31);
 
 config.index.year.keys = config.index.year.keys ? d.getFullYear() + '' : '';
 
@@ -98,7 +88,7 @@ if (['mormont'].indexOf(theme) + 1) {
 
 let mem = parseInt('' + os.totalmem() / 1000000);
 let cpu = os.cpus() ? os.cpus().length : 1;
-let max = parseInt('' + mem / cpu);
+let max = parseInt('' + mem / (cpu > 1 ? cpu : 2));
 
 process_json.apps[0].node_args = '--max-old-space-size=' + max;
 process_json.apps[0].max_memory_restart = max + 'M';

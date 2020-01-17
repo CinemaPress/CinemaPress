@@ -1,6 +1,3 @@
-[DEFAULT]
-port = 0:65535
-filter = %(__name__)s
 [blacklist]
 enabled = true
 logpath  = /var/log/fail2ban.*
@@ -38,5 +35,5 @@ maxretry = 2
 enabled  = true
 port     = http,https
 filter   = webexploits
-logpath = /var/log/nginx/access*.log
+logpath  = /var/log/nginx/access*.log
 maxretry = 3

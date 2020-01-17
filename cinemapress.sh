@@ -1750,14 +1750,10 @@ docker_passwd() {
     echo "${CP_DOMAIN}:${OPENSSL}" >> "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
 }
 docker_speed_on() {
-    sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip\.d\/default\.conf;/    #gzip include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip.d\/default.conf;/" \
-        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
     sed -Ei "s/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 docker_speed_off() {
-    sed -Ei "s/    #gzip include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/gzip.d\/default.conf;/" \
-        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
     sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
@@ -2342,7 +2338,6 @@ while [ "${WHILE}" -lt "2" ]; do
             read_cms "${3}"
             _s ${2}
             NAME_CMS=${NAME_CMS:-}
-            MYSQL_ROOT_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
             MYSQL_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
             MYSQL_DATABASE="${CP_DOMAIN_}"
             MYSQL_USER="${CP_DOMAIN_}"
@@ -2390,21 +2385,17 @@ while [ "${WHILE}" -lt "2" ]; do
                     --restart always \
                     --network cinemapress \
                     -v /var/lib/cinemapress/mysql:/var/lib/mysql \
-                    -e MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}" \
+                    -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
                     mariadb:10 \
                     --character-set-server=utf8mb4 \
                     --collation-server=utf8mb4_unicode_ci
             fi
-            sleep 60
-            MYSQL_ROOT_PASSWORD=""
+            sleep 30
             docker exec mysql sh -c \
-              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"CREATE DATABASE ${MYSQL_DATABASE} /*\!40100 DEFAULT CHARACTER SET utf8mb4 */;\""
+                "exec mysql -uroot -e \"FLUSH PRIVILEGES;CREATE DATABASE ${MYSQL_DATABASE} /*\!40100 DEFAULT CHARACTER SET utf8mb4 */;CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';FLUSH PRIVILEGES;\""
+            sleep 30
             docker exec mysql sh -c \
-              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"CREATE USER ${MYSQL_USER}@localhost IDENTIFIED BY '${MYSQL_PASSWORD}';\""
-            docker exec mysql sh -c \
-              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'localhost';\""
-            docker exec mysql sh -c \
-              "exec mysql -uroot -p\"\$MYSQL_ROOT_PASSWORD\" -e \"FLUSH PRIVILEGES;\""
+                "exec mysql -uroot -e \"FLUSH PRIVILEGES;DROP USER '${MYSQL_USER}'@'%';CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';FLUSH PRIVILEGES;\""
             if [ ! "$(docker ps -a | grep adminer)" ]; then
                 docker run \
                     -d \
