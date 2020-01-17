@@ -1313,13 +1313,13 @@ read_cms() {
                 NAME_CMS='php-mysql'
                 echo ": ${NAME_CMS}"
             else
-                if [ "${NAME_CMS}" = "php-mysql" ] || [ "${NAME_CMS}" = "wordpress" ]  || [ "${NAME_CMS}" = "drupal" ]  || [ "${NAME_CMS}" = "joomla" ]
+                if [ "${NAME_CMS}" = "php-mysql" ] || [ "${NAME_CMS}" = "wordpress" ] || [ "${NAME_CMS}" = "drupal" ] || [ "${NAME_CMS}" = "joomla" ] || [ "${NAME_CMS}" = "dle" ]
                 then
                     AGAIN=10
                 else
                     printf "${NC}         There is no such CMS! \n"
                     printf "${R}WARNING:${NC} Currently there are \n"
-                    printf "${NC}         CMS: wordpress, drupal, joomla and php-mysql. \n"
+                    printf "${NC}         CMS: wordpress, drupal, joomla, dle and php-mysql. \n"
                     AGAIN=$((${AGAIN}+1))
                 fi
             fi
@@ -2421,6 +2421,22 @@ while [ "${WHILE}" -lt "2" ]; do
                 wget -O "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-9-14/Joomla_3-9-14-Stable-Full_Package.tar.gz?format=gz"
                 tar -xzf "joomla3.tar.gz" -C /home/${CP_DOMAIN}/
                 rm -rf "joomla3.tar.gz"
+            elif [ "${NAME_CMS}" = "dle" ]; then
+                wget -O "dle_trial.zip" "https://dle-news.ru/files/dle_trial.zip"
+                mkdir -p /var/dle
+                unzip "dle_trial.zip" -d /var/dle/
+                rm -rf "dle_trial.zip"
+                cp -rf /var/dle/upload/* /home/${CP_DOMAIN}/
+                chmod 777 /home/${CP_DOMAIN}/templates
+                chmod 777 $(find /home/${CP_DOMAIN}/templates -type d)
+                chmod 666 $(find /home/${CP_DOMAIN}/templates -type f)
+                chmod 777 /home/${CP_DOMAIN}/backup
+                chmod 777 $(find /home/${CP_DOMAIN}/backup -type d)
+                chmod 777 /home/${CP_DOMAIN}/uploads
+                chmod 777 $(find /home/${CP_DOMAIN}/uploads -type d)
+                chmod 777 /home/${CP_DOMAIN}/engine/data
+                chmod 777 /home/${CP_DOMAIN}/engine/cache
+                chmod 777 /home/${CP_DOMAIN}/engine/cache/system
             elif [ "${MYSQL_USER}" != "" ] && [ "${MYSQL_PASSWORD}" != "" ] && [ "${MYSQL_DATABASE}" != "" ]; then
                 {
                     echo "<html>"

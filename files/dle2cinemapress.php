@@ -25,10 +25,8 @@ define('DATALIFEENGINE', true);
 define('ROOT_DIR', dirname (__FILE__));
 define('ENGINE_DIR', ROOT_DIR.'/engine');
 
-// require_once (ENGINE_DIR . '/classes/plugins.class.php');
-// require_once (DLEPlugins::Check(ENGINE_DIR.'/inc/include/functions.inc.php'));
-
-include ENGINE_DIR.'/data/dbconfig.php';
+require_once (ENGINE_DIR . '/classes/plugins.class.php');
+require_once (DLEPlugins::Check(ENGINE_DIR.'/inc/include/functions.inc.php'));
 
 date_default_timezone_set ( $config['date_adjust'] );
 
@@ -38,7 +36,7 @@ if ($_REQUEST['domain'] != 'example.com') {
     die( "Wrong domain!" );
 }
 
-if ( !$db->connect(DBNUSER, DBPASS, DBNAME, DBHOST, false) ) {
+if ( !$db->connect(DBUSER, DBPASS, DBNAME, DBHOST, false) ) {
     die("Невозможно соединиться с MySQL сервером по указанным доступам. Введите корректные данные доступа для соединения с БД MySQL. У вас возникла ошибка:<br><br>".$db->query_errors_list[0]['error']);
 }
 
@@ -64,40 +62,43 @@ while ( $row = $db->get_row() ) {
     $movie['custom'] = '';
     $movie['rating'] = '0';
     $movie['vote'] = '0';
-    $movie['all_movies'] = '_' . str_replace('/[^a-z0-9]+/i', '_', $_REQUEST['domain']) . '_';
-    while ( $xfields = preg_split("/\|\|/", $row['xfields']) ) {
-        $xfield = preg_split("/\|/", $xfields); $key = $xfield[0]; $value = $xfield[1];
-        if ($key == 'kinopoisk_id' || $key == 'kp_id' || $key == 'id_kinopoisk' || $key == 'id_kp' || $key == 'kinopoisk') {
-            $movie['kp_id'] = str_replace('/[^0-9]+/i', '', $value);
-            $movie['query_id'] = str_replace('/[^0-9]+/i', '', $value);
-        } else if ($key == 'poster') {
-            $movie['poster'] = $value;
-        } else if ($key == 'world_title' || $key == 'title_en' || $key == 'english_title') {
-            $movie['title_en'] = $value;
-        } else if ($key == 'actors' || $key == 'actor' || $key == 'cast') {
-            $movie['actor'] = str_replace('/,\s*/i', ',', $value);
-        } else if ($key == 'directors' || $key == 'director') {
-            $movie['director'] = str_replace('/,\s*/i', ',', $value);
-        } else if ($key == 'countries' || $key == 'country') {
-            $movie['country'] = str_replace('/,\s*/i', ',', $value);
-        } else if ($key == 'genres' || $key == 'genre') {
-            $movie['genre'] = str_replace('/,\s*/i', ',', $value);
-        } else if ($key == 'year') {
-            $movie['year'] = str_replace('/[^0-9]+/i', '', $value);
-        } else if ($key == 'kinopoisk_rating' || $key == 'kp_rating') {
-            $movie['kp_rating'] = round((float) $value * 10);
-        } else if ($key == 'kinopoisk_votes' || $key == 'kp_votes' || $key == 'kinopoisk_vote' || $key == 'kp_vote') {
-            $movie['kp_vote'] = str_replace('/[^0-9]+/i', '', $value);
-        } else if ($key == 'imdb_rating') {
-            $movie['imdb_rating'] = round((float) $value * 10);
-        } else if ($key == 'imdb_votes' || $key == 'imdb_vote') {
-            $movie['imdb_vote'] = str_replace('/[^0-9]+/i', '', $value);
-        } else if ($key == 'world_title' || $key == 'title_en' || $key == 'english_title') {
-            $movie['title_en'] = $value;
-        } else if ($key == 'quality') {
-            $movie['quality'] = $value;
-        } else if ($key == 'translator' || $key == 'translate' || $key == 'voice') {
-            $movie['translate'] = $value;
+    $movie['all_movies'] = '_' . preg_replace('/[^a-z0-9]+/i', '_', $_REQUEST['domain']) . '_';
+    if ($row['xfields']) {
+        $xfields = preg_split("/\|\|/", $row['xfields']);
+        foreach ($xfields as $xfield) {
+            $xf = preg_split("/\|/", $xfield); $key = $xf[0]; $value = $xf[1];
+            if ($key == 'kinopoisk_id' || $key == 'kp_id' || $key == 'id_kinopoisk' || $key == 'id_kp' || $key == 'kinopoisk') {
+                $movie['kp_id'] = preg_replace('/[^0-9]+/i', '', $value);
+                $movie['query_id'] = preg_replace('/[^0-9]+/i', '', $value);
+            } elseif ($key == 'poster') {
+                $movie['poster'] = $value;
+            } elseif ($key == 'world_title' || $key == 'title_en' || $key == 'english_title') {
+                $movie['title_en'] = $value;
+            } elseif ($key == 'actors' || $key == 'actor' || $key == 'cast') {
+                $movie['actor'] = preg_replace('/,\s*/i', ',', $value);
+            } elseif ($key == 'directors' || $key == 'director') {
+                $movie['director'] = preg_replace('/,\s*/i', ',', $value);
+            } elseif ($key == 'countries' || $key == 'country') {
+                $movie['country'] = preg_replace('/,\s*/i', ',', $value);
+            } elseif ($key == 'genres' || $key == 'genre') {
+                $movie['genre'] = preg_replace('/,\s*/i', ',', $value);
+            } elseif ($key == 'year') {
+                $movie['year'] = preg_replace('/[^0-9]+/i', '', $value);
+            } elseif ($key == 'kinopoisk_rating' || $key == 'kp_rating') {
+                $movie['kp_rating'] = round((float) $value * 10);
+            } elseif ($key == 'kinopoisk_votes' || $key == 'kp_votes' || $key == 'kinopoisk_vote' || $key == 'kp_vote') {
+                $movie['kp_vote'] = preg_replace('/[^0-9]+/i', '', $value);
+            } elseif ($key == 'imdb_rating') {
+                $movie['imdb_rating'] = round((float) $value * 10);
+            } elseif ($key == 'imdb_votes' || $key == 'imdb_vote') {
+                $movie['imdb_vote'] = preg_replace('/[^0-9]+/i', '', $value);
+            } elseif ($key == 'world_title' || $key == 'title_en' || $key == 'english_title') {
+                $movie['title_en'] = $value;
+            } elseif ($key == 'quality') {
+                $movie['quality'] = $value;
+            } elseif ($key == 'translator' || $key == 'translate' || $key == 'voice') {
+                $movie['translate'] = $value;
+            }
         }
     }
     foreach($movie AS $key => $value){
