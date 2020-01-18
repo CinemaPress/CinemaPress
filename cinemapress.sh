@@ -2336,19 +2336,19 @@ while [ "${WHILE}" -lt "2" ]; do
             read_domain ${2}
             sh_yes
             read_cms "${3}"
-            _s ${2}
+            _s ${3}
             NAME_CMS=${NAME_CMS:-}
-            MYSQL_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            MYSQL_PASSWORD="$(date +%s%N | sha256sum | base64 | head -c 12)"
             MYSQL_DATABASE="${CP_DOMAIN_}"
             MYSQL_USER="${CP_DOMAIN_}"
             ADMIN_USER="cinemaadmin"
-            ADMIN_PASSWORD="$(date +%s | sha256sum | base64 | head -c 12)"
+            ADMIN_PASSWORD="$(date +%s%N | sha256sum | base64 | head -c 12)"
             if [ "${4}" = "backup" ]; then
-                if [ -f "/var/lib/cinemapress/dump/cinemapress.sql" ]; then
+                if [ -f "/var/lib/cinemapress/dump/backup.sql" ]; then
                     echo "ERROR: Backup file found /var/lib/cinemapress/dump/backup.sql"
                     exit 0
                 fi
-                docker exec mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' \
+                docker exec mysql sh -c 'exec mysqldump -A -uroot' \
                     > "/var/lib/cinemapress/dump/backup.sql"
                 echo "SUCCESS: Backup file /var/lib/cinemapress/dump/backup.sql"
                 exit 0
@@ -2358,7 +2358,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     echo "ERROR: Restore file not found /var/lib/cinemapress/dump/restore.sql"
                     exit 0
                 fi
-                docker exec -i mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' \
+                docker exec -i mysql sh -c 'exec mysql -uroot' \
                     < "/var/lib/cinemapress/dump/restore.sql"
                 echo "SUCCESS: Restore file /var/lib/cinemapress/dump/restore.sql"
                 exit 0

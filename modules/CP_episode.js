@@ -5,6 +5,7 @@
  */
 
 var CP_get = require('../lib/CP_get.min');
+var CP_cache = require('../lib/CP_cache');
 
 /**
  * Configuration dependencies.
@@ -57,140 +58,175 @@ function indexEpisode(options, callback) {
     '/api/v2/updates?limit=99&type=serial&api_token=' +
     source.token;
 
-  getReq(url, function(err, list) {
-    if (err || !list.results || !list.results.length) {
-      return callback(null, null);
+  var hash = url;
+
+  CP_cache.get(hash, function(err, render) {
+    if (err) {
+      if ((err + '').indexOf('not available') === -1) {
+        console.error(err);
+      }
     }
+    return render
+      ? callback(null, render)
+      : getReq(url, function(err, list) {
+          if (err || !list.results || !list.results.length) {
+            return callback(null, null);
+          }
 
-    var serials = list.results;
-    var query_id = {};
+          var serials = list.results;
+          var query_id = {};
 
-    serials.forEach(function(serial) {
-      if (parseInt(serial.kinopoisk_id)) {
-        query_id[serial.kinopoisk_id] = {};
-      }
-    });
+          serials.forEach(function(serial) {
+            if (parseInt(serial.kinopoisk_id)) {
+              query_id[serial.kinopoisk_id] = {};
+            }
+          });
 
-    CP_get.additional(
-      { query_id: Object.keys(query_id) },
-      'ids',
-      options,
-      function(err, movies) {
-        if (err || !movies.length) {
-          return callback(null, null);
-        }
+          CP_get.additional(
+            { query_id: Object.keys(query_id) },
+            'ids',
+            options,
+            function(err, movies) {
+              if (err || !movies.length) {
+                return callback(null, null);
+              }
 
-        var result = {};
-        result.name = modules.episode.data.index.name;
-        result.movies = [];
+              var result = {};
+              result.name = modules.episode.data.index.name;
+              result.movies = [];
 
-        for (var i = 0, num1 = serials.length; i < num1; i++) {
-          for (var j = 0, num2 = movies.length; j < num2; j++) {
-            if (
-              parseInt(serials[i].kinopoisk_id) === parseInt(movies[j].kp_id)
-            ) {
-              var serial_video = JSON.stringify(serials[i]) || '';
-              serial_video = JSON.parse(serial_video) || {};
+              for (var i = 0, num1 = serials.length; i < num1; i++) {
+                for (var j = 0, num2 = movies.length; j < num2; j++) {
+                  if (
+                    parseInt(serials[i].kinopoisk_id) ===
+                    parseInt(movies[j].kp_id)
+                  ) {
+                    var serial_video = JSON.stringify(serials[i]) || '';
+                    serial_video = JSON.parse(serial_video) || {};
 
-              var serial_base = JSON.stringify(movies[j]) || '';
-              serial_base = JSON.parse(serial_base) || {};
+                    var serial_base = JSON.stringify(movies[j]) || '';
+                    serial_base = JSON.parse(serial_base) || {};
 
-              var added = serial_video.added;
+                    var added = serial_video.added;
 
-              if (!added || !added.length) continue;
+                    if (!added || !added.length) continue;
 
-              var last = added[added.length - 1];
+                    var last = added[added.length - 1];
 
-              var season_num = last['SxEx']
-                ? last['SxEx'].split('E')[0].replace(/[^0-9]/g, '')
-                : '';
-              var episode_num = last['SxEx']
-                ? last['SxEx'].split('E')[1].replace(/[^0-9]/g, '')
-                : '';
+                    var season_num = last['SxEx']
+                      ? last['SxEx'].split('E')[0].replace(/[^0-9]/g, '')
+                      : '';
+                    var episode_num = last['SxEx']
+                      ? last['SxEx'].split('E')[1].replace(/[^0-9]/g, '')
+                      : '';
 
-              if (!season_num || !episode_num) continue;
+                    if (!season_num || !episode_num) continue;
 
-              var season_url = parseInt(season_num);
-              var episode_url = parseInt(episode_num);
-              var translate_url = parseInt(last.translate_id);
-              var translate = last.translator
-                ? last.translator
-                : modules.episode.data.default;
-              var premiere =
-                last.date && !isNaN(new Date(last.date).getFullYear())
-                  ? moment(last.date.slice(0, 10)).format('LL')
-                  : '';
+                    var season_url = parseInt(season_num);
+                    var episode_url = parseInt(episode_num);
+                    var translate_url = parseInt(last.translate_id);
+                    var translate = last.translator
+                      ? last.translator
+                      : modules.episode.data.default;
+                    var premiere =
+                      last.date && !isNaN(new Date(last.date).getFullYear())
+                        ? moment(last.date.slice(0, 10)).format('LL')
+                        : '';
 
-              if (config.language === 'en') {
-                if (!/субт|subt|eng/i.test(translate)) {
-                  continue;
+                    if (config.language === 'en') {
+                      if (!/субт|subt|eng/i.test(translate)) {
+                        continue;
+                      }
+                      translate = 'English';
+                    }
+
+                    season_url =
+                      season_url <= 9 ? '0' + season_url : season_url;
+                    episode_url =
+                      episode_url <= 9 ? '0' + episode_url : episode_url;
+                    translate_url = translate_url ? '_' + translate_url : '';
+
+                    serial_base.translate = translate;
+                    serial_base.season = season_num;
+                    serial_base.episode = episode_num;
+                    serial_base.premiere = premiere;
+                    serial_base.year = premiere
+                      ? new Date(premiere).getFullYear()
+                      : new Date().getFullYear();
+                    serial_base.url =
+                      serial_base.url +
+                      '/s' +
+                      season_url +
+                      'e' +
+                      episode_url +
+                      translate_url;
+                    serial_base.year2 =
+                      serial_base.season && serial_base.episode
+                        ? serial_base.season +
+                          ' ' +
+                          config.l.season +
+                          ' ' +
+                          serial_base.episode +
+                          ' ' +
+                          config.l.episode
+                        : serial_base.year;
+                    serial_base.year3 =
+                      serial_base.season && serial_base.episode
+                        ? 'S' + serial_base.season + 'E' + serial_base.episode
+                        : serial_base.year;
+
+                    result.movies.push(serial_base);
+                  }
                 }
-                translate = 'English';
               }
 
-              season_url = season_url <= 9 ? '0' + season_url : season_url;
-              episode_url = episode_url <= 9 ? '0' + episode_url : episode_url;
-              translate_url = translate_url ? '_' + translate_url : '';
+              var sort_result = [];
 
-              serial_base.translate = translate;
-              serial_base.season = season_num;
-              serial_base.episode = episode_num;
-              serial_base.premiere = premiere;
-              serial_base.year = premiere
-                ? new Date(premiere).getFullYear()
-                : new Date().getFullYear();
-              serial_base.url =
-                serial_base.url +
-                '/s' +
-                season_url +
-                'e' +
-                episode_url +
-                translate_url;
-              serial_base.year2 =
-                serial_base.season && serial_base.episode
-                  ? serial_base.season +
-                    ' ' +
-                    config.l.season +
-                    ' ' +
-                    serial_base.episode +
-                    ' ' +
-                    config.l.episode
-                  : serial_base.year;
-              serial_base.year3 =
-                serial_base.season && serial_base.episode
-                  ? 'S' + serial_base.season + 'E' + serial_base.episode
-                  : serial_base.year;
-
-              result.movies.push(serial_base);
-            }
-          }
-        }
-
-        var sort_result = [];
-
-        unique: for (var k = 0, num3 = result.movies.length; k < num3; k++) {
-          if (modules.episode.data.index.latest) {
-            for (var l = 0, num4 = sort_result.length; l < num4; l++) {
-              if (
-                parseInt(sort_result[l].kp_id) ===
-                  parseInt(result.movies[k].kp_id) &&
-                modules.episode.data.index.count > k
+              unique: for (
+                var k = 0, num3 = result.movies.length;
+                k < num3;
+                k++
               ) {
-                sort_result[l] = result.movies[k];
-                continue unique;
+                if (modules.episode.data.index.latest) {
+                  for (var l = 0, num4 = sort_result.length; l < num4; l++) {
+                    if (
+                      parseInt(sort_result[l].kp_id) ===
+                        parseInt(result.movies[k].kp_id) &&
+                      modules.episode.data.index.count > k
+                    ) {
+                      sort_result[l] = result.movies[k];
+                      continue unique;
+                    }
+                  }
+                }
+                if (modules.episode.data.index.count > k) {
+                  sort_result.push(result.movies[k]);
+                }
+              }
+
+              result.movies = sort_result;
+
+              callback(null, [result]);
+
+              if (config.cache.time && result) {
+                CP_cache.set(hash, [result], config.cache.time, function(err) {
+                  if (err) {
+                    if ((err + '').indexOf('1048576') + 1) {
+                      console.log(
+                        '[lib/CP_episode.js:CP_cache.set] Cache Length Error'
+                      );
+                    } else if ((err + '').indexOf('not available') === -1) {
+                      console.log(
+                        '[lib/CP_episode.js:CP_cache.set] Cache Set Error:',
+                        err
+                      );
+                    }
+                  }
+                });
               }
             }
-          }
-          if (modules.episode.data.index.count > k) {
-            sort_result.push(result.movies[k]);
-          }
-        }
-
-        result.movies = sort_result;
-
-        callback(null, [result]);
-      }
-    );
+          );
+        });
   });
 
   /**
