@@ -609,8 +609,8 @@
             data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
         }
 
-        if (data.modules && data.modules.comment && data.modules.comment.comment_admin) {
-            data.modules.comment.comment_admin = data.modules.comment.comment_admin.replace(/(https?:\/\/|\/\/).*?\//ig, '/');
+        if (data.comment && data.comment.comment_admin) {
+            data.comment.comment_admin = data.comment.comment_admin.replace(/(https?:\/\/|\/\/).*?\//ig, '/');
         }
 
         if (data.config && data.config.redirect && data.config.redirect.from && data.config.redirect.to) {

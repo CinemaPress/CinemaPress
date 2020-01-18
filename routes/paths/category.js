@@ -625,7 +625,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -633,7 +633,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -645,7 +652,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -653,7 +660,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -665,7 +679,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -673,7 +687,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -685,7 +706,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -693,7 +714,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -705,7 +733,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -713,7 +741,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -725,7 +760,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -733,7 +768,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
@@ -745,7 +787,7 @@ function randomCategory(type, key, options, callback) {
         -3,
         undefined,
         undefined,
-        undefined,
+        false,
         options,
         function(err, movies) {
           return err
@@ -753,7 +795,14 @@ function randomCategory(type, key, options, callback) {
             : movies && movies.length
             ? callback(
                 null,
-                movies[Math.floor(Math.random() * movies.length)].url
+                '/' +
+                  config.urls.movie +
+                  config.urls.slash +
+                  config.urls.prefix_id +
+                  (parseInt(
+                    movies[Math.floor(Math.random() * movies.length)].kp_id
+                  ) +
+                    parseInt('' + config.urls.unique_id))
               )
             : callback(null, '');
         }
