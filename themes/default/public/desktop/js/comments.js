@@ -1,5 +1,6 @@
 var cinemapress_comments = {
   domain: '',
+  spoiler: '',
   submit: '',
   search: '',
   movie_id: '',
@@ -50,7 +51,11 @@ var cinemapress_comments = {
     spoiler.addEventListener(
       'click',
       function() {
-        this.innerHTML = this.dataset.commentSpoiler;
+        if (this.innerHTML === cc.spoiler) {
+          this.innerHTML = this.dataset.commentSpoiler;
+        } else {
+          this.innerHTML = cc.spoiler;
+        }
       },
       true
     );

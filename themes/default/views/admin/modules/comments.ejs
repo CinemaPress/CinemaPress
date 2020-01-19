@@ -220,7 +220,7 @@
 
                                         <div class="spacer-10"></div>
 
-                                        <textarea class="form-control descriptions" name="comment.comment_text"><% if (comment.comment_text) { %><%- comment.comment_text.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                        <textarea class="form-control descriptions" name="comment.comment_text"><% if (comment.comment_text) { %><%- comment.comment_text.trim().replace(/\[br]/ig, '\n') %><% } %></textarea>
 
                                         <div class="text-muted" id="comment-admin">
                                             <%= __('Ответ администратора') %>
@@ -228,7 +228,7 @@
 
                                         <div class="spacer-10"></div>
 
-                                        <textarea class="form-control descriptions" name="comment.comment_admin"><% if (comment.comment_admin) { %><%- comment.comment_admin.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                        <textarea class="form-control descriptions" name="comment.comment_admin"><% if (comment.comment_admin) { %><%- comment.comment_admin.trim().replace(/\[br]/ig, '\n') %><% } %></textarea>
                                         <div class="advanced-textarea-footer">
                                             <div class="pull-left">
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin" data-code='[b][/b]' class="btn btn-sm btn-default codes">
@@ -700,11 +700,13 @@
                                                     <tbody>
                                                     <% comments.forEach(function(comment) { %>
                                                         <% var text = comment.comment_text
+                                                                .replace(/\[br]/gi, ' ')
                                                                 .replace(/[<][^>]*?>/gi, '')
                                                                 .replace(/[\[][^\]]*?]/gi, '')
                                                                 .replace(/\s+/g, ' ')
                                                                 .replace(/(^\s*)|(\s*)$/g, '') %>
                                                         <% var admin = comment.comment_admin
+                                                                .replace(/\[br]/gi, ' ')
                                                                 .replace(/[<][^>]*?>/gi, '')
                                                                 .replace(/[\[][^\]]*?]/gi, '')
                                                                 .replace(/\s+/g, ' ')
