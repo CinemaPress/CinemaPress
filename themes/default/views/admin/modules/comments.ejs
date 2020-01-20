@@ -711,17 +711,16 @@
                                                                 .replace(/[\[][^\]]*?]/gi, '')
                                                                 .replace(/\s+/g, ' ')
                                                                 .replace(/(^\s*)|(\s*)$/g, '') %>
-                                                         <% var dc = new Date(parseInt(comment.comment_publish) - 719527 * 1000 * 60 * 60 * 24) %>
+                                                         <% var dc = new Date(parseInt(comment.comment_publish) - 719528 * 1000 * 60 * 60 * 24) %>
                                                         <tr>
                                                             <td class="table-content" style="text-align: justify">
                                                                 <div style="float: right">
-                                                                    <span class="table-content-key"><%- ('0' + dc.getDate()).slice(-2) + "-" + (('0' + dc.getMonth()+1).slice(-2)) + "-" + dc.getFullYear() + " " + dc.getHours() + ":" + dc.getMinutes() %></span>
+                                                                    <span class="table-content-key"><%- ('0' + dc.getHours()).slice(-2) + ":" + ('0' + dc.getMinutes()).slice(-2) + ' ' + ('0' + dc.getDate()).slice(-2) + "-" + (('0' + dc.getMonth()+1).slice(-2)) + "-" + dc.getFullYear() %></span>
                                                                     <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>#comment-admin"><i class="fas fa-reply-all" style="color:#008083"></i></a>
                                                                 </div>
                                                                 <style>.fa-reply-all:hover{opacity: .6}</style>
                                                                 <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                                                    <span class="table-content-key"><%- comment.comment_anonymous %></span> |
-                                                                    <span class="table-content-key"><%- comment.comment_title %></span>
+                                                                    <span class="table-content-key"><%- comment.comment_anonymous %></span> <span class="table-content-key"><%- comment.comment_title %></span>
                                                                 </div>
                                                                 <span><%= (text.length >= 300
                                                                             ? text.slice(0, 300) + '...'

@@ -221,6 +221,14 @@
       "content_tags": "Коллекции,Обновления",
       "content_image": "/files/content/collection4.png",
       "content_movies": "926540,839650,843649,961715,835086,924311,489414,935940,994864,768561,916498,840829"
+    },
+    {
+      "content_url": "poslednie-obnovleniya-serialov",
+      "content_title": "Последние обновления сериалов",
+      "content_description": "Последние обновления сериалов",
+      "content_tags": "Коллекции,Обновления",
+      "content_image": "/files/content/collection5.png",
+      "content_movies": "1118138,1227803,1044004,1228254,1147693,460586,1111018,585727,1178445,464963,1197956,1167154"
     }
   ]
 }

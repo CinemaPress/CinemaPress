@@ -460,7 +460,7 @@ module.exports = {
         "order": 2
       },
       "movie": {
-        "count": 2,
+        "count": 4,
         "tags": "Обновления"
       },
       "auto": {
@@ -471,8 +471,8 @@ module.exports = {
           "translate": 0
         },
         "kodik_serials": {
-          "count": 0,
-          "url": "",
+          "count": 12,
+          "url": "poslednie-obnovleniya-serialov",
           "quality": 0,
           "translate": 0
         },
@@ -483,8 +483,8 @@ module.exports = {
           "translate": 0
         },
         "iframe_serials": {
-          "count": 0,
-          "url": "",
+          "count": 12,
+          "url": "poslednie-obnovleniya-serialov",
           "quality": 0,
           "translate": 0
         },
@@ -495,8 +495,8 @@ module.exports = {
           "translate": 0
         },
         "videocdn_serials": {
-          "count": 0,
-          "url": "",
+          "count": 12,
+          "url": "poslednie-obnovleniya-serialov",
           "quality": 0,
           "translate": 0
         },
@@ -507,8 +507,8 @@ module.exports = {
           "translate": 0
         },
         "hdvb_serials": {
-          "count": 0,
-          "url": "",
+          "count": 12,
+          "url": "poslednie-obnovleniya-serialov",
           "quality": 0,
           "translate": 0
         }

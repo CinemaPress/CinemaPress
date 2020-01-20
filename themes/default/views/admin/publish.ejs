@@ -284,7 +284,13 @@
                                                     document.addEventListener("DOMContentLoaded", function () {
                                                         var today = new Date();
                                                         today.setHours(today.getHours()+1);
-                                                        document.getElementById('time').innerHTML = today.getHours() + ':00';
+                                                        var h = today.getHours();
+                                                        for (; h <= 24; h++) {
+                                                          if (!(h % parseInt(document.getElementById('hours').value))) {
+                                                            document.getElementById('time').innerHTML = ('0' + h).slice(-2) + ':00';
+                                                            break;
+                                                          }
+                                                        }
                                                     });
                                                 </script>
                                             </header>
@@ -702,7 +708,7 @@
             </div>
 
             <script>
-                $("#movies_slider").noUiSlider({range:[0,1e3],start:[<%= config.publish.every.movies %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#movies")]}}),$("#hours_slider").noUiSlider({range:[0,24],start:[<%= config.publish.every.hours %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#hours")]}}),$("#diapason").noUiSlider({range:[298,3000000],start:[<%= config.publish.start %>,<%= config.publish.stop %>],handles:2,step:1,connect:"lower",serialization:{to:[$("#start"),$("#stop")],resolution:1}});
+                $("#movies_slider").noUiSlider({range:[0,1e3],start:[<%= config.publish.every.movies %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#movies")]}}),$("#hours_slider").noUiSlider({range:[0,12],start:[<%= config.publish.every.hours %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#hours")]}}),$("#diapason").noUiSlider({range:[298,3000000],start:[<%= config.publish.start %>,<%= config.publish.stop %>],handles:2,step:1,connect:"lower",serialization:{to:[$("#start"),$("#stop")],resolution:1}});
             </script>
 
             <%- include('./includes/footer.ejs'); -%>
