@@ -1657,6 +1657,21 @@ docker_restart() {
 docker_reload() {
     cd /home/${CP_DOMAIN} && pm2 reload process.json
 }
+docker_logs() {
+    SHOW_ERR_LOGS=$(pm2 logs --err --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
+    SHOW_OUT_LOGS=$(pm2 logs --out --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
+    _br
+    _header "OUT LOGS"
+    _content
+    _content "${SHOW_OUT_LOGS}"
+    _content
+    _s
+    _header "ERR LOGS"
+    _content
+    _content "${SHOW_ERR_LOGS}"
+    _content
+    _s
+}
 docker_zero() {
     sed -i "s/xmlpipe_command =.*/xmlpipe_command =/" "/home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf"
     indexer xmlpipe2_${CP_DOMAIN_} --rotate
@@ -2006,6 +2021,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_restart
             elif [ "${2}" = "reload" ]; then
                 docker_reload
+            elif [ "${2}" = "logs" ]; then
+                docker_logs
             elif [ "${2}" = "zero" ]; then
                 docker_zero
             elif [ "${2}" = "cron" ]; then
@@ -2198,12 +2215,43 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec -it ${CP_DOMAIN_} node optimal.js "${CP_THEME}"
             exit 0
         ;;
-        "logs" )
+        "log"|"logs" )
             _br
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
-            docker exec -it ${CP_DOMAIN_} pm2 logs
+            _s "${2}"
+            _header "DOCKER CONTAINER"
+            _content
+            if docker network ls | grep -q cinemapress
+            then
+                _content "Network: runnind"
+            else
+                _content "Network: stopped"
+            fi
+            if [ "$(docker ps -aq -f status=running -f name=^/${CP_DOMAIN_}\$ 2>/dev/null)" != "" ]; then
+                _content "Website: runnind"
+            else
+                _content "Website: stopped"
+            fi
+            if [ "$(docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null)" != "" ]; then
+                NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
+                if [ "${NGINX_STATUS}" != "" ]; then
+                    _content "Nginx: runnind"
+                else
+                    _content "Nginx: error"
+                    docker exec -t nginx nginx -t
+                fi
+            else
+                _content "Nginx: stopped"
+            fi
+            if [ "$(docker ps -aq -f status=running -f name=^/fail2ban\$ 2>/dev/null)" != "" ]; then
+                _content "Fail2ban: runnind"
+            else
+                _content "Fail2ban: stopped"
+            fi
+            _content
+            _line
+            docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
             exit 0
         ;;
         "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )
@@ -2234,6 +2282,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
+            exit 0
+        ;;
+        "bench" )
+            SPEED_LOCATION=${2:-"eu"}
+            bash <(wget "https://raw.githubusercontent.com/laset-com/speedtest/master/speedtest.sh" -qO-) "-${SPEED_LOCATION}"
             exit 0
         ;;
         "import" )
