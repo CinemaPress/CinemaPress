@@ -475,7 +475,7 @@
                                             <div class="t">
                                                 <%= __('Премьера фильма:') %>
                                             </div>
-                                            <input type="text" class="form-control" name="movie.premiere" value="<% if (parseInt(movie.premiere)) { %><%- new Date(((parseInt(movie.premiere) - 719527) * 1000 * 60 * 60 * 24)).toJSON().substr(0, 10) %><% } %>" placeholder="<%= __('Например:') %> <%= __('2020-09-25') %>" style="font-weight: normal; font-size: 14px;">
+                                            <input type="text" class="form-control" name="movie.premiere" value="<% if (parseInt(movie.premiere)) { %><%- new Date(((parseInt(movie.premiere) - 719528) * 1000 * 60 * 60 * 24)).toJSON().substr(0, 10) %><% } %>" placeholder="<%= __('Например:') %> <%= __('2020-09-25') %>" style="font-weight: normal; font-size: 14px;">
 
                                             <div class="col-sm-4 col-sm-offset-1" style="padding: 0;">
                                                 <div class="spacer-10"></div>

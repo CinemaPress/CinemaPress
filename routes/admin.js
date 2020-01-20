@@ -789,7 +789,7 @@ router.post('/change', function(req, res) {
           !isNaN(new Date(form.movie.premiere).getFullYear())
             ? Math.floor(
                 new Date(form.movie.premiere).getTime() / 1000 / 60 / 60 / 24 +
-                  719527
+                  719528
               ) + ''
             : '0';
         form.movie.country = form.movie.country
