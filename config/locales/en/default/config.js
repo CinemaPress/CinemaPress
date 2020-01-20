@@ -159,7 +159,7 @@ module.exports = {
     "link": 0
   },
   "titles": {
-    "index": "Legal catalog of movies",
+    "index": "Information catalog of movies",
     "year" : "Movies from [year] [sorting] [page]",
     "years" : "Movies by year",
     "genre": "Movies from [genre] [sorting] [page]",
