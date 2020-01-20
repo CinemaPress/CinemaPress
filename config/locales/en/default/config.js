@@ -41,8 +41,8 @@ module.exports = {
     "start": 400000,
     "stop": 3000000,
     "every" : {
-      "hours": 1,
-      "movies": 2
+      "hours": 2,
+      "movies": 4
     },
     "text": 0,
     "required": [
