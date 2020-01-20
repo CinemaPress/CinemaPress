@@ -2251,7 +2251,7 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             _content
             _line
-            docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
             exit 0
         ;;
         "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )
@@ -2284,7 +2284,7 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "bench" )
+        "bench"|"benchmark"|"speedtest" )
             SPEED_LOCATION=${2:-"eu"}
             bash <(wget "https://raw.githubusercontent.com/laset-com/speedtest/master/speedtest.sh" -qO-) "-${SPEED_LOCATION}"
             exit 0
@@ -2614,11 +2614,14 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " images    - Downloading posters to own server (only RU)"; _br;
             printf " logs      - Show all logs"; _br;
+            printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;
             printf "             of genres, list of countries, list of directors,"; _br;
             printf "             premiere date, rating and number of votes)"; _br;
-            printf " clear_vps - Complete deletion of all data on the VPS"; _br; _br;
+            printf " clear_vps - Complete deletion of all data on the VPS"; _br;
+            printf " cms       - Install other CMS (php-mysql)"; _br;
+            printf " app       - Create movie application"; _br; _br;
             printf " combine create_https_restore_mirror"; _br;
             printf " combine create_restore_mirror"; _br;
             printf " combine create_https_mirror"; _br;
