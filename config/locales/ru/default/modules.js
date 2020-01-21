@@ -465,13 +465,13 @@ module.exports = {
       },
       "auto": {
         "kodik_movies": {
-          "count": 12,
+          "count": 0,
           "url": "poslednie-obnovleniya-filmov",
           "quality": 0,
           "translate": 0
         },
         "kodik_serials": {
-          "count": 12,
+          "count": 0,
           "url": "poslednie-obnovleniya-serialov",
           "quality": 0,
           "translate": 0

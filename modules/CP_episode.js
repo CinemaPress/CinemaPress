@@ -19,6 +19,7 @@ var modules = require('../config/production/modules');
  */
 
 var fs = require('fs');
+var md5 = require('md5');
 var path = require('path');
 var request = require('request');
 var moment = require('moment');
@@ -58,7 +59,7 @@ function indexEpisode(options, callback) {
     '/api/v2/updates?limit=99&type=serial&api_token=' +
     source.token;
 
-  var hash = url;
+  var hash = md5(options.origin + url);
 
   CP_cache.get(hash, function(err, render) {
     if (err) {

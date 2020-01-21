@@ -173,6 +173,7 @@
 
 <div class="clear"></div>
 
+<% if (typeof content === 'object') { %>
 <div class="info">
     <% if (page.comments) { %>
         <%- page.comments %>
@@ -314,6 +315,7 @@
         </div>
     <% } %>
 </div>
+<% } %>
 
 <div class="clear"></div>
 
