@@ -73,6 +73,8 @@ function dataMovie(id, type, options, callback) {
 
             if (movies && movies.length) {
               related = movies[0];
+              related.type =
+                typeof related.type === 'number' ? related.type : 0;
               callback(null, movies[0]);
             } else {
               callback(config.l.notFound);

@@ -1674,15 +1674,21 @@ docker_reload() {
 docker_logs() {
     SHOW_ERR_LOGS=$(pm2 logs --err --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
     SHOW_OUT_LOGS=$(pm2 logs --out --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
+    SHOW_NGINX_LOGS=$(tail -n50 /var/log/nginx/*.log | curl -s -F 'clbin=<-' https://clbin.com)
     _br
+    _header "ERR LOGS"
+    _content
+    _content "${SHOW_ERR_LOGS}"
+    _content
+    _s
     _header "OUT LOGS"
     _content
     _content "${SHOW_OUT_LOGS}"
     _content
     _s
-    _header "ERR LOGS"
+    _header "NGINX LOGS"
     _content
-    _content "${SHOW_ERR_LOGS}"
+    _content "${SHOW_NGINX_LOGS}"
     _content
     _s
 }
