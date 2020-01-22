@@ -282,6 +282,8 @@ ip_install() {
 
     sh_progress
 
+    echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+
     DIR_SUCCESS=1
     while [ "${DIR_SUCCESS}" != "10" ]; do
         sleep 3
@@ -333,6 +335,8 @@ ip_install() {
             done
 
             sh_progress
+
+            echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
             docker run \
                 -d \
@@ -425,6 +429,8 @@ ip_install() {
 
             sh_progress
 
+            echo "${PRC_}%" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
+
             docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
@@ -491,6 +497,8 @@ ip_install() {
         fi
 
         sh_progress
+
+        echo "${PRC_}%" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
 
         CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
         sleep 3
@@ -565,6 +573,8 @@ ip_install() {
     rm -rf /var/${LOCAL_THEME:?}
 
     sh_progress
+
+    echo "${PRC_}%" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log
 
     if [ "`docker -v 2>/dev/null`" != "" ]; then
         docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
@@ -750,6 +760,8 @@ ip_install() {
 
     sh_progress
 
+    echo "${PRC_}%" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
+
     docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
         3_backup "${LOCAL_DOMAIN}" "create"
@@ -823,6 +835,8 @@ ip_install() {
     fi
 
     sh_progress
+
+    echo "${PRC_}%" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
 
     docker start ${LOCAL_MIRROR_} \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
