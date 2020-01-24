@@ -5,9 +5,9 @@
     <%- include('includes/head.ejs'); -%>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        window.onload = function() {
             TVwww(JSON.parse('<% if (typeof payload !== 'undefined') { %><%- JSON.stringify(payload).replace(/'/g, '`').replace(/<(?:.|\n)*?>/gm, '') %><% } else { %>{}<% } %>'));
-        });
+        };
     </script>
 </head>
 <body>
