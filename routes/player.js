@@ -422,16 +422,13 @@ router.get('/?', function(req, res) {
    */
 
   function getYohoho(callback) {
-    api(
-      config.protocol + config.subdomain + config.domain + '/files/yo.js',
-      function(json, body) {
-        callback({
-          src: body,
-          translate: '',
-          quality: ''
-        });
-      }
-    );
+    api('https://4h0y.gitlab.io/yo.js', function(json, body) {
+      callback({
+        src: body,
+        translate: '',
+        quality: ''
+      });
+    });
   }
 
   /**

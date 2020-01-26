@@ -74,7 +74,7 @@ router.get('/:id?/:title?', function(req, res) {
         autoplay +
         '" ' +
         '></div>' +
-        '<script data-cfasync="false" src="/files/yo.js"></script>' +
+        '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
         '</body></html>'
     );
   } else if (kinopoisk) {
@@ -168,7 +168,7 @@ router.get('/:id?/:title?', function(req, res) {
             autoplay +
             '" ' +
             '></div>' +
-            '<script data-cfasync="false" src="/files/yo.js"></script>' +
+            '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
             '</body></html>'
         );
       } else {
