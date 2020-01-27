@@ -182,6 +182,7 @@ function dataIndex(options, callback) {
         if (
           modules.comments.status &&
           modules.comments.data.fast.active &&
+          modules.comments.data.fast.recent.num_items &&
           modules.comments.data.fast.recent.display.indexOf('index') + 1
         ) {
           service.push('fast');

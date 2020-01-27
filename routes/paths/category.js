@@ -513,6 +513,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
         recent: function(callback) {
           var service = [];
           if (
+            modules.comments.status &&
             modules.comments.data.disqus.shortname &&
             modules.comments.data.disqus.recent.num_items &&
             modules.comments.data.disqus.recent.display.indexOf('category') + 1
@@ -520,6 +521,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
             service.push('disqus');
           }
           if (
+            modules.comments.status &&
             modules.comments.data.hypercomments.widget_id &&
             modules.comments.data.hypercomments.recent.num_items &&
             modules.comments.data.hypercomments.recent.display.indexOf(
@@ -531,6 +533,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
           if (
             modules.comments.status &&
             modules.comments.data.fast.active &&
+            modules.comments.data.fast.recent.num_items &&
             modules.comments.data.fast.recent.display.indexOf('category') + 1
           ) {
             service.push('fast');
