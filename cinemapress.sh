@@ -1674,8 +1674,6 @@ docker_reload() {
 docker_logs() {
     SHOW_ERR_LOGS=$(pm2 logs --err --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
     SHOW_OUT_LOGS=$(pm2 logs --out --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
-    SHOW_NGINX_LOGS=$(tail -n50 /var/log/nginx/*.log | curl -s -F 'clbin=<-' https://clbin.com)
-    _br
     _header "ERR LOGS"
     _content
     _content "${SHOW_ERR_LOGS}"
@@ -1684,11 +1682,6 @@ docker_logs() {
     _header "OUT LOGS"
     _content
     _content "${SHOW_OUT_LOGS}"
-    _content
-    _s
-    _header "NGINX LOGS"
-    _content
-    _content "${SHOW_NGINX_LOGS}"
     _content
     _s
 }
@@ -2271,7 +2264,13 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             _content
             _line
-            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
+            _br
+            _header "NGINX LOGS"
+            _content
+            _content "$(tail -n50 /var/log/nginx/*.log | curl -s -F 'clbin=<-' https://clbin.com)"
+            _content
+            _s
+            docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
             exit 0
         ;;
         "clear_vps"|"clean_vps"|"flush_vps"|"clear_all"|"clean_all"|"flush_all" )

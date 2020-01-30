@@ -75,6 +75,9 @@ function tryParseJSON(jsonString) {
   return {};
 }
 
+var indexed = 0;
+var no_description_indexed = 0;
+
 async.series(
   [
     function(callback) {
@@ -111,6 +114,17 @@ async.series(
                     delete movie.imdb_vote;
                     delete movie.all_movies;
                     movie.id = movie.kp_id;
+                    if (!movie.description) {
+                      var custom = movie.custom ? JSON.parse(movie.custom) : {};
+                      if (custom.unique) {
+                        no_description_indexed++;
+                      }
+                      //custom.unique = false;
+                      //movie.custom = JSON.stringify(custom.unique);
+                    }
+                    if (/("unique":true|"unique":"true")/i.test(movie.custom)) {
+                      indexed++;
+                    }
                     CP_save.save(movie, 'rt', function(err, result) {
                       if (old && old !== domain) {
                         console.log(
@@ -137,6 +151,8 @@ async.series(
           );
         },
         function() {
+          console.log('INDEXED: ', indexed);
+          console.log('NO DESCRIPTION INDEXED: ', no_description_indexed);
           return callback();
         }
       );
