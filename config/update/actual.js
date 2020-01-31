@@ -120,7 +120,7 @@ async.series(
                         no_description_indexed++;
                       }
                       //custom.unique = false;
-                      //movie.custom = JSON.stringify(custom.unique);
+                      //movie.custom = JSON.stringify(custom);
                     }
                     if (/("unique":true|"unique":"true")/i.test(movie.custom)) {
                       indexed++;
