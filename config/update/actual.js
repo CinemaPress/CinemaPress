@@ -76,7 +76,6 @@ function tryParseJSON(jsonString) {
 }
 
 var indexed = 0;
-var no_description_indexed = 0;
 
 async.series(
   [
@@ -101,43 +100,89 @@ async.series(
                   movies,
                   1,
                   function(movie, key, callback) {
-                    var old = movie.all_movies;
-                    delete movie.year;
-                    delete movie.actor;
-                    delete movie.genre;
-                    delete movie.country;
-                    delete movie.director;
-                    delete movie.premiere;
-                    delete movie.kp_rating;
-                    delete movie.kp_vote;
-                    delete movie.imdb_rating;
-                    delete movie.imdb_vote;
-                    delete movie.all_movies;
-                    movie.id = movie.kp_id;
-                    if (!movie.description) {
-                      var custom = movie.custom ? JSON.parse(movie.custom) : {};
-                      if (custom.unique) {
-                        no_description_indexed++;
+                    CP_get.movies(
+                      {
+                        query_id: movie.query_id,
+                        from: process.env.CP_XMLPIPE2
+                      },
+                      1,
+                      '',
+                      1,
+                      false,
+                      function(err, ms) {
+                        if (err) {
+                          console.error(err);
+                          return callback();
+                        }
+                        if (ms && ms.length) {
+                          var m = ms[0];
+                          if (m.year) {
+                            delete movie.year;
+                          }
+                          if (m.actor) {
+                            delete movie.actor;
+                          }
+                          if (m.genre) {
+                            delete movie.genre;
+                          }
+                          if (m.country) {
+                            delete movie.country;
+                          }
+                          if (m.director) {
+                            delete movie.director;
+                          }
+                          if (m.premiere) {
+                            delete movie.premiere;
+                          }
+                          if (m.kp_rating) {
+                            delete movie.kp_rating;
+                          }
+                          if (m.kp_vote) {
+                            delete movie.kp_vote;
+                          }
+                          if (m.imdb_rating) {
+                            delete movie.imdb_rating;
+                          }
+                          if (m.imdb_vote) {
+                            delete movie.imdb_vote;
+                          }
+                          if (m.all_movies) {
+                            delete movie.all_movies;
+                          }
+                          var old = movie.all_movies;
+                          movie.id = movie.kp_id;
+                          if (!movie.description) {
+                            var custom = movie.custom
+                              ? JSON.parse(movie.custom)
+                              : {};
+                            //custom.unique = false;
+                            //movie.custom = JSON.stringify(custom);
+                          }
+                          if (
+                            /("unique":true|"unique":"true")/i.test(
+                              movie.custom
+                            )
+                          ) {
+                            indexed++;
+                          }
+                          CP_save.save(movie, 'rt', function(err, result) {
+                            if (old && old !== domain) {
+                              console.log(
+                                result,
+                                old.replace(/(^_|_$)/gi, '') +
+                                  ' -> ' +
+                                  domain.replace(/(^_|_$)/gi, '')
+                              );
+                            } else {
+                              console.log(result);
+                            }
+                            return callback(err);
+                          });
+                        } else {
+                          return callback();
+                        }
                       }
-                      //custom.unique = false;
-                      //movie.custom = JSON.stringify(custom);
-                    }
-                    if (/("unique":true|"unique":"true")/i.test(movie.custom)) {
-                      indexed++;
-                    }
-                    CP_save.save(movie, 'rt', function(err, result) {
-                      if (old && old !== domain) {
-                        console.log(
-                          result,
-                          old.replace(/(^_|_$)/gi, '') +
-                            ' -> ' +
-                            domain.replace(/(^_|_$)/gi, '')
-                        );
-                      } else {
-                        console.log(result);
-                      }
-                      return callback(err);
-                    });
+                    );
                   },
                   function(err) {
                     if (err) console.error(err);
@@ -152,7 +197,6 @@ async.series(
         },
         function() {
           console.log('INDEXED: ', indexed);
-          console.log('NO DESCRIPTION INDEXED: ', no_description_indexed);
           return callback();
         }
       );
