@@ -393,6 +393,7 @@ module.exports = {
     "notTv": "TV version of the site is not activated.",
     "lucky": "I'm Feeling Lucky",
     "random": "Random movie from category",
-    "results": "All results"
+    "results": "All results",
+    "moreEpisodes": "show more episodes"
   }
 };

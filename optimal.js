@@ -60,7 +60,7 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
   config.default.count = 10;
   config.index.year.count = 10;
   modules.content.data.index.count = 10;
-  modules.episode.data.index.count = 15;
+  modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 5;
 }
 
@@ -78,7 +78,7 @@ if (['hodor'].indexOf(theme) + 1) {
   config.default.count = 10;
   config.index.year.count = 10;
   modules.content.data.index.count = 10;
-  modules.episode.data.index.count = 10;
+  modules.episode.data.index.count = 25;
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
 }
@@ -87,7 +87,7 @@ if (['daenerys'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;
-  modules.episode.data.index.count = 12;
+  modules.episode.data.index.count = 24;
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
 }
@@ -95,8 +95,8 @@ if (['daenerys'].indexOf(theme) + 1) {
 if (['tarly'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
-  modules.content.data.index.count = 24;
-  modules.episode.data.index.count = 24;
+  modules.content.data.index.count = 30;
+  modules.episode.data.index.count = 4;
   modules.related.data.types.year.count = 12;
   modules.top.data.count = 5;
   modules.comments.data.fast.recent.num_items = 5;

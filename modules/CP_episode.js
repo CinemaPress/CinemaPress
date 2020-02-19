@@ -59,8 +59,11 @@ function indexEpisode(options, callback) {
     'files',
     'episodes.json'
   ))
-    .slice(0, modules.episode.data.index.count)
-    .map(function(episode) {
+    .slice(0, 99)
+    .map(function(episode, i) {
+      if (i >= modules.episode.data.index.count) {
+        episode.hide = true;
+      }
       episode.url = options.origin + episode.pathname;
       return episode;
     });

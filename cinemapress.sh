@@ -2222,7 +2222,7 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             read_domain ${2}
             sh_not
-            _s ${3}
+            _s ${2}
             docker exec -t ${CP_DOMAIN_} node optimal.js
             exit 0
         ;;
