@@ -775,6 +775,37 @@
         <custom><![CDATA[{"imdb_id":"1950186","tmdb_id":"359724"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="839642">
+        <kp_id><![CDATA[839642]]></kp_id>
+        <query_id><![CDATA[839642]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[46]]></kp_rating>
+        <kp_vote><![CDATA[2043]]></kp_vote>
+        <imdb_rating><![CDATA[41]]></imdb_rating>
+        <imdb_vote><![CDATA[6176]]></imdb_vote>
+        <premiere><![CDATA[737789.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Проклятие]]></title_ru>
+        <title_en><![CDATA[The Grudge]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[После того как молодая женщина убила собственную семью в своем доме, мать-одиночка и детектив пытается расследовать дело. Вскоре выясняется, что дом проклят мстительным призраком, обрекающим всех входящих в него на смерть. Она спешит спасти себя и своего ребенка от демонической силы дома по соседству.]]></description>
+        <pictures><![CDATA[3443863,3443862,3443861]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Проклятие / The Grudge]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США,Канада]]></country>
+        <director><![CDATA[Николас Пеш]]></director>
+        <genre><![CDATA[ужасы]]></genre>
+        <actor><![CDATA[Андреа Райзборо,Демиан Бичир,Джон Чо,Бетти Гилпин,Лин Шэй]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="839650">
         <kp_id><![CDATA[839650]]></kp_id>
         <query_id><![CDATA[839650]]></query_id>
@@ -1210,6 +1241,67 @@
         <custom><![CDATA[{"imdb_id":"5463162","tmdb_id":"383498"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="969036">
+        <kp_id><![CDATA[969036]]></kp_id>
+        <query_id><![CDATA[969036]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[65]]></imdb_rating>
+        <imdb_vote><![CDATA[22]]></imdb_vote>
+        <premiere><![CDATA[737889.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Штамм 100]]></title_ru>
+        <title_en><![CDATA[Strain 100]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description><![CDATA[]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Штамм 100 / Strain 100]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Hassan Hussein]]></director>
+        <genre><![CDATA[ужасы,приключения]]></genre>
+        <actor><![CDATA[Джемма Даллендер,Алексис Бузер Стерлинг,Мэтт Каррикер,Сара Холден,Keyna Reynolds]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="984968">
+        <kp_id><![CDATA[984968]]></kp_id>
+        <query_id><![CDATA[984968]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[42]]></kp_rating>
+        <kp_vote><![CDATA[496]]></kp_vote>
+        <imdb_rating><![CDATA[30]]></imdb_rating>
+        <imdb_vote><![CDATA[482]]></imdb_vote>
+        <premiere><![CDATA[737790.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Последняя пуля]]></title_ru>
+        <title_en><![CDATA[Disturbing the Peace]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Тихий городок оказывается захвачен бандой дерзких и жестоких преступников. Их план — обрубить все каналы связи и держать жителей в заложниках, чтобы ограбить местное отделение банка и инкассаторскую машину которая привозит в него деньги. Им плевать сколько мирных людей погибнет ради их наживы, однако им не стоило недооценивать опытного местного шерифа, который даже в одиночку готов сражаться за свой город до последней капли крови и до последней пули.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Последняя пуля / Disturbing the Peace]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Йорк Шеклтон]]></director>
+        <genre><![CDATA[боевик]]></genre>
+        <actor><![CDATA[Гай Пирс,Девон Сава,Барби Бланк,Келли Грейсон,Брэнском Ричмонд]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1007049">
         <kp_id><![CDATA[1007049]]></kp_id>
         <query_id><![CDATA[1007049]]></query_id>
@@ -1613,6 +1705,37 @@
         <custom><![CDATA[]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1101569">
+        <kp_id><![CDATA[1101569]]></kp_id>
+        <query_id><![CDATA[1101569]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[70]]></imdb_rating>
+        <imdb_vote><![CDATA[21]]></imdb_vote>
+        <premiere><![CDATA[737895.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Квант времени]]></title_ru>
+        <title_en><![CDATA[Boss Level]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Бывший спецназовец Рой Палвер вынужден переживать свою смерть снова и снова. Чтобы вырваться из зловещей временной петли, ему нужно разгадать замысел тайной организации, которая и придумала эту программу.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Квант времени / Boss Level]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Джо Карнахан]]></director>
+        <genre><![CDATA[фантастика,боевик,триллер]]></genre>
+        <actor><![CDATA[Мэл Гибсон,Аннабелль Уоллис,Наоми Уоттс,Мишель Йео,Фрэнк Грилло]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"7638348","tmdb_id":"513310"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1111004">
         <kp_id><![CDATA[1111004]]></kp_id>
         <query_id><![CDATA[1111004]]></query_id>
@@ -1643,6 +1766,37 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"7713068","tmdb_id":"495764"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1118223">
+        <kp_id><![CDATA[1118223]]></kp_id>
+        <query_id><![CDATA[1118223]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[49]]></imdb_rating>
+        <imdb_vote><![CDATA[53]]></imdb_vote>
+        <premiere><![CDATA[737828.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Папина дочка]]></title_ru>
+        <title_en><![CDATA[Le prince oublié]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Перед сном Джиби всегда рассказывал своей маленькой дочери сказки. Вместе они придумали волшебный мир, где живут крошечные феи и величественные драконы, а папа всегда спасает принцессу-дочь от любых опасностей. Но однажды в их сказочном мире появляется новый принц — одноклассник повзрослевшей Софии, а Джиби отправляется в страшную страну Забытья. Джиби нужно выбраться из грустной сказки и найти способ остаться для своей дочери героем и в реальной жизни.]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Папина дочка / Le prince oublié]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Франция,Бельгия]]></country>
+        <director><![CDATA[Мишель Хазанавичус]]></director>
+        <genre><![CDATA[фэнтези,комедия,приключения,семейный]]></genre>
+        <actor><![CDATA[Омар Си,Кейла Фала,Сара Гэй,Беренис Бежо,Франсуа Дамиенс]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"8335482","tmdb_id":"520725"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="1129900">
@@ -1738,6 +1892,68 @@
         <custom><![CDATA[]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1162847">
+        <kp_id><![CDATA[1162847]]></kp_id>
+        <query_id><![CDATA[1162847]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[51]]></kp_rating>
+        <kp_vote><![CDATA[11331]]></kp_vote>
+        <imdb_rating><![CDATA[53]]></imdb_rating>
+        <imdb_vote><![CDATA[182]]></imdb_vote>
+        <premiere><![CDATA[737811.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[(НЕ)идеальный мужчина]]></title_ru>
+        <title_en><![CDATA[]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Свете не везет с отношениями: она вечно подстраивается под парней, унижается и терпит измены. После расставания с очередным непутевым бойфрендом девушка идет работать в компанию по продаже роботов. Те уже стали частью обычной жизни, их не отличить от людей, но не в пример своим создателям роботы чутко реагируют на характер человека, его потребности, привычки и слабости. Когда у одного из роботов обнаруживается программный сбой и его хотят вернуть производителю, Света упрашивает продать его ей, так как… влюбляется в него, приняв технический дефект за проявление личности. Более того, Света хочет связать свою жизнь с чутким, внимательным и заботливым роботом, и это приводит к самым неожиданным последствиям…]]></description>
+        <pictures><![CDATA[3393205,3393204,3393203]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[(НЕ)идеальный мужчина]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Россия]]></country>
+        <director><![CDATA[Марюс Вайсберг]]></director>
+        <genre><![CDATA[комедия,фантастика,мелодрама]]></genre>
+        <actor><![CDATA[Юлия Александрова,Егор Крид,Роман Курцын,Максим Лагашкин,Артем Сучков]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"tmdb_id":"576987"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1179073">
+        <kp_id><![CDATA[1179073]]></kp_id>
+        <query_id><![CDATA[1179073]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[55]]></imdb_rating>
+        <imdb_vote><![CDATA[255]]></imdb_vote>
+        <premiere><![CDATA[737797.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Мой шпион]]></title_ru>
+        <title_en><![CDATA[My Spy]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Самый суровый агент ЦРУ, выполняя сверхсекретное задание, случайно попадает на камеру 9-летней девчонки. Софи готова сохранить все в строжайшей тайне, если Джей-Джей научит ее быть настоящей шпионкой.]]></description>
+        <pictures><![CDATA[3436775,3436774,3436773]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Мой шпион / My Spy]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Питер Сигал]]></director>
+        <genre><![CDATA[боевик,комедия,семейный]]></genre>
+        <actor><![CDATA[Дэйв Батиста,Хлоя Коулмэн,Париса Фитц-Хенли,Кристен Шаал,Грег Брайк]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1199100">
         <kp_id><![CDATA[1199100]]></kp_id>
         <query_id><![CDATA[1199100]]></query_id>
@@ -1767,6 +1983,160 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"6264654","tmdb_id":"550988"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1199655">
+        <kp_id><![CDATA[1199655]]></kp_id>
+        <query_id><![CDATA[1199655]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737854.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Банкир]]></title_ru>
+        <title_en><![CDATA[The Banker]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[История афроамериканских бизнес-партнеров Джо Морриса и Бернарда Гарретта, которые в 1950-х годах основали успешное агентство недвижимости. Они нанимают подставного белого руководителя компании, а сами притворяются простыми дворником и водителем. На вершине успеха над ними нависает угроза разоблачения.]]></description>
+        <pictures><![CDATA[3430759,3430758,3430757]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Банкир / The Banker]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Джордж Нолфи]]></director>
+        <genre><![CDATA[драма,биография]]></genre>
+        <actor><![CDATA[Сэмюэл Л. Джексон,Николас Холт,Энтони Маки,Ниа Лонг,Колм Мини]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1208563">
+        <kp_id><![CDATA[1208563]]></kp_id>
+        <query_id><![CDATA[1208563]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737838.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Кукла 2: Брамс]]></title_ru>
+        <title_en><![CDATA[Brahms: The Boy II]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Благополучная семья переезжает в старинный особняк Хилшир. Неподалеку в лесу сын откапывает странную куклу в практически ростом с него самого. Мальчик начинает общаться с куклой как с живым ребенком, не подозревая, чем обернется эта зловещая дружба.]]></description>
+        <pictures><![CDATA[3453911,3453910]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Кукла 2: Брамс / Brahms: The Boy II]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Уильям Брент Белл]]></director>
+        <genre><![CDATA[ужасы,триллер,детектив]]></genre>
+        <actor><![CDATA[Кэти Холмс,Овайн Йомэн,Кристофер Конвери,Ралф Айнесон,Анджали Джай]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"9173418","tmdb_id":"555974"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1209712">
+        <kp_id><![CDATA[1209712]]></kp_id>
+        <query_id><![CDATA[1209712]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[58]]></kp_rating>
+        <kp_vote><![CDATA[2359]]></kp_vote>
+        <imdb_rating><![CDATA[55]]></imdb_rating>
+        <imdb_vote><![CDATA[3684]]></imdb_vote>
+        <premiere><![CDATA[737818.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Гретель и Гензель]]></title_ru>
+        <title_en><![CDATA[Gretel & Hansel]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Новая версия старинной сказки братьев Гримм о зловещих приключениях брата и сестры в Очарованном лесу. В поисках еды голодные Грета и Гензель отправляются в лес, не подозревая, что им предстоит отведать обед дьявольской кухни и пройти все круги ада…]]></description>
+        <pictures><![CDATA[3462664,3462663,3456129]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Гретель и Гензель / Gretel & Hansel]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Канада,Ирландия,США,ЮАР]]></country>
+        <director><![CDATA[Оз Перкинс]]></director>
+        <genre><![CDATA[ужасы,фэнтези,триллер]]></genre>
+        <actor><![CDATA[София Лиллис,Сэмми Лики,Чарльз Бабалола,Элис Крайдж,Джессика Де Гау]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"9086228","tmdb_id":"542224"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1226369">
+        <kp_id><![CDATA[1226369]]></kp_id>
+        <query_id><![CDATA[1226369]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[64]]></kp_rating>
+        <kp_vote><![CDATA[562]]></kp_vote>
+        <imdb_rating><![CDATA[62]]></imdb_rating>
+        <imdb_vote><![CDATA[7534]]></imdb_vote>
+        <premiere><![CDATA[737831.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Всем парням: P.S. Я люблю тебя]]></title_ru>
+        <title_en><![CDATA[To All the Boys: P.S. I Still Love You]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description><![CDATA[]]></description>
+        <pictures><![CDATA[3457309,3457308,3457307]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Всем парням: P.S. Я люблю тебя / To All the Boys: P.S. I Still Love You]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Майкл Фимоньяри]]></director>
+        <genre><![CDATA[драма,мелодрама]]></genre>
+        <actor><![CDATA[Лана Кондор,Ной Сентинео,Джордан Фишер,Анна Кэткарт,Джанел Пэрриш]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1227963">
+        <kp_id><![CDATA[1227963]]></kp_id>
+        <query_id><![CDATA[1227963]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[71]]></kp_rating>
+        <kp_vote><![CDATA[5959]]></kp_vote>
+        <imdb_rating><![CDATA[68]]></imdb_rating>
+        <imdb_vote><![CDATA[57]]></imdb_vote>
+        <premiere><![CDATA[737833.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Лед 2]]></title_ru>
+        <title_en><![CDATA[]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Что происходит в сказках после свадьбы принца и принцессы? Фигуристка Надя и хоккеист Саша поженились и теперь мечтают о ребенке. Правда, цена, которую им придется заплатить за эту мечту, будет невообразимо высока. Кажется, что после таких потрясений рассчитывать на счастливый конец уже невозможно. Но если вы так думаете, вы ничего не знаете о настоящих сказках.]]></description>
+        <pictures><![CDATA[3468044,3468043,3468042]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Лед 2]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Россия]]></country>
+        <director><![CDATA[Жора Крыжовников]]></director>
+        <genre><![CDATA[мелодрама,драма,спорт]]></genre>
+        <actor><![CDATA[Александр Петров,Аглая Тарасова,Мария Аронова,Юлия Хлынина,Надежда Михалкова]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="1236063">
@@ -1830,6 +2200,67 @@
         <custom><![CDATA[{"imdb_id":"9530198","tmdb_id":"554967"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="1244402">
+        <kp_id><![CDATA[1244402]]></kp_id>
+        <query_id><![CDATA[1244402]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[69]]></imdb_rating>
+        <imdb_vote><![CDATA[734]]></imdb_vote>
+        <premiere><![CDATA[737832.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Эмма.]]></title_ru>
+        <title_en><![CDATA[Emma.]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Красивая, молодая и богатая Эмма Вудхаус, будучи уверенной, что никогда не выйдет замуж, выступает в роли свахи для своих подруг и знакомых. Но жизнь преподносит ей сюрприз за сюрпризом. Однажды она отговаривает свою подругу Гарриет выходить замуж за фермера и сватает ее с викарием Элтоном. Но тот влюбляется в саму Эмму…]]></description>
+        <pictures><![CDATA[3468488,3468487,3467690]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Эмма. / Emma.]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Великобритания]]></country>
+        <director><![CDATA[Отем де Уайлд]]></director>
+        <genre><![CDATA[драма,комедия]]></genre>
+        <actor><![CDATA[Аня Тейлор-Джой,Джонни Флинн,Билл Найи,Миа Гот,Мира МакФадьен]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1272854">
+        <kp_id><![CDATA[1272854]]></kp_id>
+        <query_id><![CDATA[1272854]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[0]]></imdb_rating>
+        <imdb_vote><![CDATA[0]]></imdb_vote>
+        <premiere><![CDATA[737832.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Ночная жизнь]]></title_ru>
+        <title_en><![CDATA[Nightlife]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description><![CDATA[]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Ночная жизнь / Nightlife]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Германия]]></country>
+        <director><![CDATA[Симон Ферхоэвен]]></director>
+        <genre><![CDATA[мелодрама,комедия]]></genre>
+        <actor><![CDATA[Джулиан Лооман,Элиас ЭмБарек,Фредерик Лау,Николас Офчарек,Каро Культ]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="1330091">
         <kp_id><![CDATA[1330091]]></kp_id>
         <query_id><![CDATA[1330091]]></query_id>
@@ -1885,6 +2316,36 @@
         <director><![CDATA[Лана Уилсон]]></director>
         <genre><![CDATA[документальный,биография,музыка]]></genre>
         <actor><![CDATA[Тейлор Свифт,Джо Элвин,Jack Antonoff,Бобби Берк,Джедедиах Била]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1338454">
+        <kp_id><![CDATA[1338454]]></kp_id>
+        <query_id><![CDATA[1338454]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[0]]></kp_rating>
+        <kp_vote><![CDATA[0]]></kp_vote>
+        <imdb_rating><![CDATA[74]]></imdb_rating>
+        <imdb_vote><![CDATA[456]]></imdb_vote>
+        <premiere><![CDATA[737818.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Ненавижу лето]]></title_ru>
+        <title_en><![CDATA[Odio l'estate]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description><![CDATA[]]></description>
+        <pictures><![CDATA[]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Ненавижу лето / Odio l'estate]]></search>
+        <year><![CDATA[2020]]></year>
+        <country><![CDATA[Италия]]></country>
+        <director><![CDATA[Массимо Венье]]></director>
+        <genre><![CDATA[комедия]]></genre>
+        <actor><![CDATA[Альдо,Джакомо Поретти,Джованни,Лучиа Машино,Карлотта Натоли]]></actor>
         <player><![CDATA[]]></player>
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
@@ -6181,6 +6642,1091 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"0103064","tmdb_id":"280"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="263531">
+        <kp_id><![CDATA[263531]]></kp_id>
+        <query_id><![CDATA[263531]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[78]]></kp_rating>
+        <kp_vote><![CDATA[283497]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[1216840]]></imdb_vote>
+        <premiere><![CDATA[734968.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Мстители]]></title_ru>
+        <title_en><![CDATA[The Avengers]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Локи, сводный брат Тора, возвращается, и в этот раз он не один. Земля на грани порабощения, и только лучшие из лучших могут спасти человечество.Ник Фьюри, глава международной организации Щ. И. Т., собирает выдающихся поборников справедливости и добра, чтобы отразить атаку. Под предводительством Капитана Америки Железный Человек, Тор, Невероятный Халк, Соколиный глаз и Черная Вдова вступают в войну с захватчиком.]]></description>
+        <pictures><![CDATA[1957128,1941720,1941719]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Мстители / The Avengers]]></search>
+        <year><![CDATA[2012]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Джосс Уидон]]></director>
+        <genre><![CDATA[фантастика,фэнтези,боевик,приключения]]></genre>
+        <actor><![CDATA[Роберт Дауни мл.,Крис Эванс,Марк Руффало,Крис Хемсворт,Скарлетт Йоханссон]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0848228","tmdb_id":"24428"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="689">
+        <kp_id><![CDATA[689]]></kp_id>
+        <query_id><![CDATA[689]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[281057]]></kp_vote>
+        <imdb_rating><![CDATA[76]]></imdb_rating>
+        <imdb_vote><![CDATA[594048]]></imdb_vote>
+        <premiere><![CDATA[731157.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Гарри Поттер и философский камень]]></title_ru>
+        <title_en><![CDATA[Harry Potter and the Sorcerer's Stone]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатый день рождения Гарри все меняется. Странный гость, неожиданно появившийся на пороге, приносит письмо, из которого мальчик узнает, что на самом деле он — волшебник и зачислен в школу магии под названием Хогвартс. А уже через пару недель Гарри будет мчаться в поезде Хогвартс-экспресс навстречу новой жизни, где его ждут невероятные приключения, верные друзья и самое главное — ключ к разгадке тайны смерти его родителей.]]></description>
+        <pictures><![CDATA[2905546,2869303,2685706]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Гарри Поттер и философский камень / Harry Potter and the Sorcerer's Stone]]></search>
+        <year><![CDATA[2001]]></year>
+        <country><![CDATA[Великобритания,США]]></country>
+        <director><![CDATA[Крис Коламбус]]></director>
+        <genre><![CDATA[фэнтези,приключения,семейный]]></genre>
+        <actor><![CDATA[Дэниэл Рэдклифф,Руперт Гринт,Эмма Уотсон,Ричард Харрис,Алан Рикман]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0241527","tmdb_id":"671"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="462682">
+        <kp_id><![CDATA[462682]]></kp_id>
+        <query_id><![CDATA[462682]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[78]]></kp_rating>
+        <kp_vote><![CDATA[280852]]></kp_vote>
+        <imdb_rating><![CDATA[82]]></imdb_rating>
+        <imdb_vote><![CDATA[1087646]]></imdb_vote>
+        <premiere><![CDATA[735583.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Волк с Уолл-стрит]]></title_ru>
+        <title_en><![CDATA[The Wolf of Wall Street]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[1987 год. Джордан Белфорт становится брокером в успешном инвестиционном банке. Вскоре банк закрывается после внезапного обвала индекса Доу-Джонса. По совету жены Терезы Джордан устраивается в небольшое заведение, занимающееся мелкими акциями. Его настойчивый стиль общения с клиентами и врожденная харизма быстро дает свои плоды. Он знакомится с соседом по дому Донни, торговцем, который сразу находит общий язык с Джорданом и решает открыть с ним собственную фирму. В качестве сотрудников они нанимают нескольких друзей Белфорта, его отца Макса и называют компанию «Стрэттон Оукмонт». В свободное от работы время Джордан прожигает жизнь: лавирует от одной вечеринки к другой, вступает в сексуальные отношения с проститутками, употребляет множество наркотических препаратов, в том числе кокаин и кваалюд. Однажды наступает момент, когда быстрым обогащением Белфорта начинает интересоваться агент ФБР…]]></description>
+        <pictures><![CDATA[2320227,2320226,2320225]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Волк с Уолл-стрит / The Wolf of Wall Street]]></search>
+        <year><![CDATA[2013]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Мартин Скорсезе]]></director>
+        <genre><![CDATA[драма,криминал,биография]]></genre>
+        <actor><![CDATA[Леонардо ДиКаприо,Джона Хилл,Марго Робби,Кайл Чандлер,Роб Райнер]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0993846","tmdb_id":"106646"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="278522">
+        <kp_id><![CDATA[278522]]></kp_id>
+        <query_id><![CDATA[278522]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[280484]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[733893]]></imdb_vote>
+        <premiere><![CDATA[735199.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Хоббит: Нежданное путешествие]]></title_ru>
+        <title_en><![CDATA[The Hobbit: An Unexpected Journey]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Хоббит Бильбо Бэггинса пускается в грандиозный поход, целью которого является отвоевание утраченного королевства гномов Эребор у дракона Смауга. Совершенно неожиданно с хоббитом налаживает контакт волшебник Гэндальф Серый. Так Бильбо находит себя и присоединяется к компании тринадцати гномов, возглавляемых легендарным воином Торином Дубощитом. Их путешествие пройдет через Дикий Край, предательские земли, населенные гоблинами и орками, смертоносными варгами, гигантскими пауками, меняющим шкуры народом и волшебниками.И хотя их цель находится на Востоке, среди пустошей Одинокой Горы, сначала им придется выбраться из туннелей гоблинов, где Бильбо встретит существо, которое изменит его жизнь навсегда — Голлума.]]></description>
+        <pictures><![CDATA[2032859,2024085,2024084]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Хоббит: Нежданное путешествие / The Hobbit: An Unexpected Journey]]></search>
+        <year><![CDATA[2012]]></year>
+        <country><![CDATA[США,Новая Зеландия]]></country>
+        <director><![CDATA[Питер Джексон]]></director>
+        <genre><![CDATA[фэнтези,приключения,боевик]]></genre>
+        <actor><![CDATA[Мартин Фриман,Иэн Маккеллен,Ричард Армитедж,Джеймс Несбитт,Кен Стотт]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0903624","tmdb_id":"49051"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="407636">
+        <kp_id><![CDATA[407636]]></kp_id>
+        <query_id><![CDATA[407636]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[275991]]></kp_vote>
+        <imdb_rating><![CDATA[81]]></imdb_rating>
+        <imdb_vote><![CDATA[718082]]></imdb_vote>
+        <premiere><![CDATA[734689.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Гарри Поттер и Дары Смерти: Часть II]]></title_ru>
+        <title_en><![CDATA[Harry Potter and the Deathly Hallows: Part 2]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В грандиозной последней главе битва между добрыми и злыми силами мира волшебников перерастает во всеобщую войну. Ставки еще никогда не были так высоки, а поиск убежища — столь сложен. И быть может именно Гарри Поттеру придется пожертвовать всем в финальном сражении с Волан-де-Мортом. Способен ли наш герой спасти мир? И все закончится здесь.]]></description>
+        <pictures><![CDATA[1653120,1653119,1653118]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Гарри Поттер и Дары Смерти: Часть II / Harry Potter and the Deathly Hallows: Part 2]]></search>
+        <year><![CDATA[2011]]></year>
+        <country><![CDATA[США,Великобритания]]></country>
+        <director><![CDATA[Дэвид Йейтс]]></director>
+        <genre><![CDATA[фэнтези,драма,детектив,приключения]]></genre>
+        <actor><![CDATA[Дэниэл Рэдклифф,Руперт Гринт,Эмма Уотсон,Хелена Бонем Картер,Робби Колтрейн]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1201607","tmdb_id":"12445"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="345">
+        <kp_id><![CDATA[345]]></kp_id>
+        <query_id><![CDATA[345]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[83]]></kp_rating>
+        <kp_vote><![CDATA[274629]]></kp_vote>
+        <imdb_rating><![CDATA[86]]></imdb_rating>
+        <imdb_vote><![CDATA[1186912]]></imdb_vote>
+        <premiere><![CDATA[727226.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Молчание ягнят]]></title_ru>
+        <title_en><![CDATA[The Silence of the Lambs]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Психопат похищает и убивает молодых женщин по всему Среднему Западу Америки. ФБР, уверенное в том, что все преступления совершены одним и тем же человеком, поручает агенту Клариссе Старлинг встретиться с заключенным-маньяком, который мог бы объяснить следствию психологические мотивы серийного убийцы и тем самым вывести на его след. Заключенный, доктор психиатрии Ганнибал Лектер, отбывает наказание за убийства и каннибализм. Он согласен помочь Клариссе лишь в том случае, если она попотчует его больное воображение подробностями своей сложной личной жизни. Такие двусмысленные отношения не только порождают в душе Клариссы внутренний конфликт, но и сталкивают ее лицом к лицу с помешанным до гениальности убийцей. Воплощение дьявола настолько сильно, что ей может не хватить мужества и стойкости, чтобы остановить его…]]></description>
+        <pictures><![CDATA[1504031,1504030,1504029]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Молчание ягнят / The Silence of the Lambs]]></search>
+        <year><![CDATA[1990]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Джонатан Демме]]></director>
+        <genre><![CDATA[триллер,детектив,криминал,драма,ужасы]]></genre>
+        <actor><![CDATA[Джоди Фостер,Энтони Хопкинс,Брук Смит,Скотт Гленн,Тед Левайн]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0102926","tmdb_id":"274"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="5492">
+        <kp_id><![CDATA[5492]]></kp_id>
+        <query_id><![CDATA[5492]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[272001]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[855011]]></imdb_vote>
+        <premiere><![CDATA[732013.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Вечное сияние чистого разума]]></title_ru>
+        <title_en><![CDATA[Eternal Sunshine of the Spotless Mind]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Застенчивый и меланхоличный Джоэл живет ничем не примечательной серой и унылой жизнью. Но однажды вместо привычного рабочего маршрута молодой человек вдруг садится на электричку в другом направлении и устремляется к морю. На песчаном берегу Джоэл замечает девушку с ярко-синими волосами. На обратном пути они знакомятся в вагоне электрички и парень понимает, что у них с Клементиной очень много общего, как будто он уже знает эту девушку. Совсем скоро Джоэл поймет, что действительно был знаком с ней, более того — они были парой.]]></description>
+        <pictures><![CDATA[1370940,1370939,1370938]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Вечное сияние чистого разума / Eternal Sunshine of the Spotless Mind]]></search>
+        <year><![CDATA[2004]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Мишель Гондри]]></director>
+        <genre><![CDATA[мелодрама,фантастика,драма]]></genre>
+        <actor><![CDATA[Джим Керри,Кейт Уинслет,Джерри Роберт Бирн,Элайджа Вуд,Томас Джей Райан]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0338013","tmdb_id":"38"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="280172">
+        <kp_id><![CDATA[280172]]></kp_id>
+        <query_id><![CDATA[280172]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[269410]]></kp_vote>
+        <imdb_rating><![CDATA[81]]></imdb_rating>
+        <imdb_vote><![CDATA[632486]]></imdb_vote>
+        <premiere><![CDATA[734213.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Как приручить дракона]]></title_ru>
+        <title_en><![CDATA[How to Train Your Dragon]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Вы узнаете историю подростка Иккинга, которому не слишком близки традиции его героического племени, много лет ведущего войну с драконами. Мир Иккинга переворачивается с ног на голову, когда он неожиданно встречает дракона Беззубика, который поможет ему и другим викингам увидеть привычный мир с совершенно другой стороны…]]></description>
+        <pictures><![CDATA[1562184,1562183,1562182]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Как приручить дракона / How to Train Your Dragon]]></search>
+        <year><![CDATA[2010]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дин ДеБлуа,Крис Сандерс]]></director>
+        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
+        <actor><![CDATA[Джей Барушель,Джерард Батлер,Крэйг Фергюсон,Америка Феррера,Джона Хилл]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0892769","tmdb_id":"10191"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="329">
+        <kp_id><![CDATA[329]]></kp_id>
+        <query_id><![CDATA[329]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[88]]></kp_rating>
+        <kp_vote><![CDATA[269361]]></kp_vote>
+        <imdb_rating><![CDATA[89]]></imdb_rating>
+        <imdb_vote><![CDATA[1143184]]></imdb_vote>
+        <premiere><![CDATA[728261.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Список Шиндлера]]></title_ru>
+        <title_en><![CDATA[Schindler's List]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Фильм рассказывает реальную историю загадочного Оскара Шиндлера, члена нацистской партии, преуспевающего фабриканта, спасшего во время Второй мировой войны почти 1200 евреев.]]></description>
+        <pictures><![CDATA[1827076,1827075,1827074]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Список Шиндлера / Schindler's List]]></search>
+        <year><![CDATA[1993]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Стивен Спилберг]]></director>
+        <genre><![CDATA[драма,биография,история,военный]]></genre>
+        <actor><![CDATA[Лиам Нисон,Бен Кингсли,Рэйф Файнс,Кэролайн Гудолл,Эмбет Дэвидц]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0108052","tmdb_id":"424"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="527">
+        <kp_id><![CDATA[527]]></kp_id>
+        <query_id><![CDATA[527]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[267355]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[554640]]></imdb_vote>
+        <premiere><![CDATA[727962.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[День сурка]]></title_ru>
+        <title_en><![CDATA[Groundhog Day]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Телевизионный комментатор Фил Коннорс каждый год приезжает в маленький городок в штате Пенсильвания на празднование Дня сурка. Но на этот раз веселье рискует зайти слишком далеко. Время сыграло с ним злую шутку: оно взяло да и остановилось.Теперь на календаре Фила чернеет одна и та же дата — 2 февраля, из которой он никак не может выбраться. Неунывающий ведущий пытается извлечь выгоду из своего комичного положения: впереди у него уйма времени и безмятежное предсказуемое будущее.Отныне с ним не случится ничего плохого… и ничего хорошего. У Фила осталась одна заветная мечта, простая и незамысловатая — 3 февраля…]]></description>
+        <pictures><![CDATA[2327425,2327424,2327423]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[День сурка / Groundhog Day]]></search>
+        <year><![CDATA[1993]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Харольд Рэмис]]></director>
+        <genre><![CDATA[фэнтези,мелодрама,комедия]]></genre>
+        <actor><![CDATA[Билл Мюррей,Энди МакДауэлл,Крис Эллиот,Стивен Тоболовски,Брайан Дойл-Мюррей]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0107048","tmdb_id":"137"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="463724">
+        <kp_id><![CDATA[463724]]></kp_id>
+        <query_id><![CDATA[463724]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[267235]]></kp_vote>
+        <imdb_rating><![CDATA[72]]></imdb_rating>
+        <imdb_vote><![CDATA[449708]]></imdb_vote>
+        <premiere><![CDATA[735353.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Великий Гэтсби]]></title_ru>
+        <title_en><![CDATA[The Great Gatsby]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Весной 1922 года, в эпоху разлагающейся морали, блистательного джаза и «королей контрабандного алкоголя», Ник Каррауэй приезжает из Среднего Запада в Нью-Йорк. Преследуя собственную американскую мечту, он селится по соседству с таинственным, известным своими вечеринками миллионером Джеем Гэтсби, а на противоположном берегу бухты проживают его кузина Дэйзи и ее муж, повеса и аристократ, Том Бьюкенен. Так Ник оказывается вовлеченным в захватывающий мир богатых — их иллюзий, любви и обманов. Он становится свидетелем происходящего в этом мире и пишет историю невозможной любви, вечных мечтаний и человеческой трагедии, которые являются отражением современных времен и нравов.]]></description>
+        <pictures><![CDATA[2241823,2241822,2241821]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Великий Гэтсби / The Great Gatsby]]></search>
+        <year><![CDATA[2013]]></year>
+        <country><![CDATA[Австралия,США]]></country>
+        <director><![CDATA[Баз Лурман]]></director>
+        <genre><![CDATA[драма,мелодрама]]></genre>
+        <actor><![CDATA[Леонардо ДиКаприо,Тоби Магуайр,Кэри Маллиган,Джоэл Эдгертон,Айла Фишер]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1343092","tmdb_id":"64682"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="322">
+        <kp_id><![CDATA[322]]></kp_id>
+        <query_id><![CDATA[322]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[262021]]></kp_vote>
+        <imdb_rating><![CDATA[79]]></imdb_rating>
+        <imdb_vote><![CDATA[511830]]></imdb_vote>
+        <premiere><![CDATA[732088.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Гарри Поттер и узник Азкабана]]></title_ru>
+        <title_en><![CDATA[Harry Potter and the Prisoner of Azkaban]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В третьей части истории о юном волшебнике полюбившиеся всем герои — Гарри Поттер, Рон и Гермиона — возвращаются уже на третий курс школы чародейства и волшебства Хогвартс. На этот раз они должны раскрыть тайну узника, сбежавшего из зловещей тюрьмы Азкабан, чье пребывание на воле создает для Гарри смертельную опасность…]]></description>
+        <pictures><![CDATA[2117012,2117011,2117010]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Гарри Поттер и узник Азкабана / Harry Potter and the Prisoner of Azkaban]]></search>
+        <year><![CDATA[2004]]></year>
+        <country><![CDATA[Великобритания,США]]></country>
+        <director><![CDATA[Альфонсо Куарон]]></director>
+        <genre><![CDATA[фэнтези,приключения,семейный]]></genre>
+        <actor><![CDATA[Дэниэл Рэдклифф,Руперт Гринт,Эмма Уотсон,Робби Колтрейн,Том Фелтон]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0304141","tmdb_id":"673"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="775276">
+        <kp_id><![CDATA[775276]]></kp_id>
+        <query_id><![CDATA[775276]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[257740]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[403734]]></imdb_vote>
+        <premiere><![CDATA[736369.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Зверополис]]></title_ru>
+        <title_en><![CDATA[Zootopia]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Добро пожаловать в Зверополис — современный город, населенный самыми разными животными, от огромных слонов до крошечных мышек. Зверополис разделен на районы, полностью повторяющие естественную среду обитания разных жителей — здесь есть и элитный район Площадь Сахары и неприветливый Тундратаун. В этом городе появляется новый офицер полиции, жизнерадостная зайчиха Джуди Хоппс, которая с первых дней работы понимает, как сложно быть маленькой и пушистой среди больших и сильных полицейских. Джуди хватается за первую же возможность проявить себя, несмотря на то, что ее партнером будет болтливый хитрый лис Ник Уайлд. Вдвоем им предстоит раскрыть сложное дело, от которого будет зависеть судьба всех обитателей Зверополиса.]]></description>
+        <pictures><![CDATA[2749182,2733678,2733676]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Зверополис / Zootopia]]></search>
+        <year><![CDATA[2016]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Байрон Ховард,Рич Мур,Джаред Буш]]></director>
+        <genre><![CDATA[мультфильм,комедия,криминал,детектив,приключения,семейный]]></genre>
+        <actor><![CDATA[Джиннифер Гудвин,Джейсон Бейтман,Идрис Эльба,Дженни Слейт,Нейт Торренс]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"2948356","tmdb_id":"269149"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="770">
+        <kp_id><![CDATA[770]]></kp_id>
+        <query_id><![CDATA[770]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[256878]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[488611]]></imdb_vote>
+        <premiere><![CDATA[731188.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Одиннадцать друзей Оушена]]></title_ru>
+        <title_en><![CDATA[Ocean's Eleven]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[После выхода из тюрьмы вора Дэнни Оушена не проходит и 24 часов, а он уже планирует организовать самое сложное ограбление казино в истории. Он хочет украсть 160 млн американских долларов из трех самых преуспевающих казино Лас-Вегаса. Все эти казино принадлежат элегантному и в то же время жестокому дельцу Терри Бенедикту, который только и мечтает о том, как встретится с бывшей женой Дэнни Оушена — Тесс.Всего за одну ночь Дэнни подбирает команду из одиннадцати «специалистов», способных совершить эту дерзкую кражу. В команде Оушена оказываются первоклассный карточный шулер, молодой искусный вор-карманник и гениальный разрушитель. Чтобы совершить этот безумный и сложный грабеж, Оушену придется рисковать своей жизнью.]]></description>
+        <pictures><![CDATA[2682821,2682820,2682819]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Одиннадцать друзей Оушена / Ocean's Eleven]]></search>
+        <year><![CDATA[2001]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Стивен Содерберг]]></director>
+        <genre><![CDATA[триллер,криминал]]></genre>
+        <actor><![CDATA[Джордж Клуни,Брэд Питт,Мэтт Дэймон,Джулия Робертс,Энди Гарсиа]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0240772","tmdb_id":"161"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="5502">
+        <kp_id><![CDATA[5502]]></kp_id>
+        <query_id><![CDATA[5502]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[256640]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[446892]]></imdb_vote>
+        <premiere><![CDATA[726790.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Назад в будущее 2]]></title_ru>
+        <title_en><![CDATA[Back to the Future Part II]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Продолжение фантастической истории о приключениях американского подростка во времени. На этот раз с помощью модернизированной Доком машины времени Марти из 80-х попадает в будущее.Дети Марти в беде, и их надо выручать. Приходится повозиться со злодеем…]]></description>
+        <pictures><![CDATA[1911557,1911556,1911555]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Назад в будущее 2 / Back to the Future Part II]]></search>
+        <year><![CDATA[1989]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Роберт Земекис]]></director>
+        <genre><![CDATA[фантастика,приключения,боевик,комедия,семейный]]></genre>
+        <actor><![CDATA[Майкл Дж. Фокс,Кристофер Ллойд,Лиа Томпсон,Томас Ф. Уилсон,Элизабет Шу]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0096874","tmdb_id":"165"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="430">
+        <kp_id><![CDATA[430]]></kp_id>
+        <query_id><![CDATA[430]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[255776]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[583425]]></imdb_vote>
+        <premiere><![CDATA[730961.8333333334]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Шрэк]]></title_ru>
+        <title_en><![CDATA[Shrek]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Жил да был в сказочном государстве большой зеленый великан по имени Шрек. Жил он в гордом одиночестве в лесу, на болоте, которое считал своим. Но однажды злобный коротышка — лорд Фаркуад, правитель волшебного королевства, безжалостно согнал на Шреково болото всех сказочных обитателей.И беспечной жизни зеленого великана пришел конец. Но лорд Фаркуад пообещал вернуть Шреку болото, если великан добудет ему прекрасную принцессу Фиону, которая томится в неприступной башне, охраняемой огнедышащим драконом…]]></description>
+        <pictures><![CDATA[518411]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Шрэк / Shrek]]></search>
+        <year><![CDATA[2001]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Эндрю Адамсон,Вики Дженсон]]></director>
+        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
+        <actor><![CDATA[Майк Майерс,Эдди Мёрфи,Кэмерон Диаз,Джон Литгоу,Венсан Кассель]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0126029","tmdb_id":"808"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="462606">
+        <kp_id><![CDATA[462606]]></kp_id>
+        <query_id><![CDATA[462606]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[254424]]></kp_vote>
+        <imdb_rating><![CDATA[74]]></imdb_rating>
+        <imdb_vote><![CDATA[506346]]></imdb_vote>
+        <premiere><![CDATA[734568.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Области тьмы]]></title_ru>
+        <title_en><![CDATA[Limitless]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Нью-йоркский писатель Эдди, желая преодолеть черную полосу в жизни, принимает засекреченный препарат под названием NZT. Таблетка выводит мозг парня на работу в нереальной мощности. Этот творческий наркотик меняет всю жизнь Эдди, за короткий срок он зарабатывает кучу денег, но скоро начинает страдать от зловещих побочных эффектов препарата. А когда пытается найти других NZT-гениев, чтобы понять, как можно справиться с этим пристрастием, он узнает страшную правду…]]></description>
+        <pictures><![CDATA[1501106,1501105,1501104]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Области тьмы / Limitless]]></search>
+        <year><![CDATA[2011]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Нил Бёргер]]></director>
+        <genre><![CDATA[фантастика,триллер,детектив]]></genre>
+        <actor><![CDATA[Брэдли Купер,Роберт Де Ниро,Эбби Корниш,Эндрю Ховард,Анна Фрил]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1219289","tmdb_id":"51876"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="102124">
+        <kp_id><![CDATA[102124]]></kp_id>
+        <query_id><![CDATA[102124]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[253534]]></kp_vote>
+        <imdb_rating><![CDATA[71]]></imdb_rating>
+        <imdb_vote><![CDATA[571824]]></imdb_vote>
+        <premiere><![CDATA[733179.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Пираты Карибского моря: На краю Света]]></title_ru>
+        <title_en><![CDATA[Pirates of the Caribbean: At World's End]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Новые приключения Джека Воробья и его друзей Уилла Тернера и Элизабет Суонн. На этот раз Уиллу и Элизабет придется объединиться с самим Капитаном Барбоссой для того, чтобы отправиться на край света и спасти своего друга — Джека. Ситуация осложняется тем, что Элизабет попадает к сингапурским пиратам…]]></description>
+        <pictures><![CDATA[713029,713028,713027]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Пираты Карибского моря: На краю Света / Pirates of the Caribbean: At World's End]]></search>
+        <year><![CDATA[2007]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Гор Вербински]]></director>
+        <genre><![CDATA[фэнтези,боевик,приключения]]></genre>
+        <actor><![CDATA[Джонни Депп,Джеффри Раш,Орландо Блум,Кира Найтли,Том Холландер]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0449088","tmdb_id":"285"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="382">
+        <kp_id><![CDATA[382]]></kp_id>
+        <query_id><![CDATA[382]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[253245]]></kp_vote>
+        <imdb_rating><![CDATA[85]]></imdb_rating>
+        <imdb_vote><![CDATA[984848]]></imdb_vote>
+        <premiere><![CDATA[730056.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Американская история X]]></title_ru>
+        <title_en><![CDATA[American History X]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Лидер местной банды скинхедов Дерек Виньярд прочно удерживает авторитет в своем районе. Убежденный в своей правоте, он беспощадно расправляется с теми, кто имеет не белый цвет кожи. Независимость и смелость Дерека вызывают восхищение у его младшего брата Дэнни, который уже тоже сделал свой выбор.Но зверское убийство двух чернокожих парней, совершенное Дереком, разделяет дороги братьев: Дерек оказывается в тюрьме, где существует свой расклад сил, а Дэнни на свободе успешно продолжает дело брата. До тех пор, пока их пути не пересеклись вновь…]]></description>
+        <pictures><![CDATA[1844152,1844151,1844150]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Американская история X / American History X]]></search>
+        <year><![CDATA[1998]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Тони Кэй]]></director>
+        <genre><![CDATA[драма]]></genre>
+        <actor><![CDATA[Эдвард Нортон,Эдвард Ферлонг,Беверли Д'Анджело,Дженнифер Лиен,Итан Сапли]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0120586","tmdb_id":"73"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="3797">
+        <kp_id><![CDATA[3797]]></kp_id>
+        <query_id><![CDATA[3797]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[81]]></kp_rating>
+        <kp_vote><![CDATA[251470]]></kp_vote>
+        <imdb_rating><![CDATA[75]]></imdb_rating>
+        <imdb_vote><![CDATA[311714]]></imdb_vote>
+        <premiere><![CDATA[729674.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Адвокат дьявола]]></title_ru>
+        <title_en><![CDATA[The Devil's Advocate]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В Нью-Йорк по приглашению главы крупного юридического концерна прибывает Кевин Ломакс, молодой адвокат. До этого он был известен тем, что защищал исключительно негодяев и притом не проиграл ни одного процесса. На новом месте работы он вполне счастлив, он живет в роскошной квартире с любящей женой, его окружают интересные люди.]]></description>
+        <pictures><![CDATA[2628766,2628765,2628764]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Адвокат дьявола / The Devil's Advocate]]></search>
+        <year><![CDATA[1997]]></year>
+        <country><![CDATA[США,Германия]]></country>
+        <director><![CDATA[Тейлор Хэкфорд]]></director>
+        <genre><![CDATA[триллер,фэнтези,драма,детектив]]></genre>
+        <actor><![CDATA[Киану Ривз,Аль Пачино,Шарлиз Терон,Джеффри Джонс,Джудит Айви]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0118971","tmdb_id":"1813"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="522892">
+        <kp_id><![CDATA[522892]]></kp_id>
+        <query_id><![CDATA[522892]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[77]]></kp_rating>
+        <kp_vote><![CDATA[251389]]></kp_vote>
+        <imdb_rating><![CDATA[73]]></imdb_rating>
+        <imdb_vote><![CDATA[568921]]></imdb_vote>
+        <premiere><![CDATA[735373.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Иллюзия обмана]]></title_ru>
+        <title_en><![CDATA[Now You See Me]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Команда лучших иллюзионистов мира проворачивает дерзкие ограбления прямо во время своих шоу, играя в кошки-мышки с агентами ФБР.]]></description>
+        <pictures><![CDATA[2285544,2221018,2221017]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Иллюзия обмана / Now You See Me]]></search>
+        <year><![CDATA[2013]]></year>
+        <country><![CDATA[США,Франция]]></country>
+        <director><![CDATA[Луи Летерье]]></director>
+        <genre><![CDATA[триллер,криминал,детектив]]></genre>
+        <actor><![CDATA[Мелани Лоран,Морган Фриман,Майкл Кейн,Джесси Айзенберг,Марк Руффало]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1670345","tmdb_id":"75656"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="3561">
+        <kp_id><![CDATA[3561]]></kp_id>
+        <query_id><![CDATA[3561]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[251096]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[490920]]></imdb_vote>
+        <premiere><![CDATA[732085.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Дневник памяти]]></title_ru>
+        <title_en><![CDATA[The Notebook]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Это история отношений юноши и девушки из разных социальных слоев, живших в Южной Каролине. Ной и Элли провели вместе незабываемое лето, пока их не разделили вначале родители, а затем Вторая мировая война.После войны все изменилось: Элли обручилась с удачливым бизнесменом, а Ной жил наедине со своими воспоминаниями в старинном доме, который ему удалось отреставрировать. Когда Элли прочла об этом в местной газете, она поняла: ей нужно найти его и решить наконец судьбу их любви…]]></description>
+        <pictures><![CDATA[1380679,1380678,1380677]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Дневник памяти / The Notebook]]></search>
+        <year><![CDATA[2004]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Ник Кассаветис]]></director>
+        <genre><![CDATA[драма,мелодрама]]></genre>
+        <actor><![CDATA[Райан Гослинг,Рэйчел МакАдамс,Джеймс Гарнер,Джина Роулендс,Сэм Шепард]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0332280","tmdb_id":"11036"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="689066">
+        <kp_id><![CDATA[689066]]></kp_id>
+        <query_id><![CDATA[689066]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[77]]></kp_rating>
+        <kp_vote><![CDATA[245877]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[994021]]></imdb_vote>
+        <premiere><![CDATA[735799.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Стражи Галактики]]></title_ru>
+        <title_en><![CDATA[Guardians of the Galaxy]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Отважному путешественнику Питеру Квиллу попадает в руки таинственный артефакт, принадлежащий могущественному и безжалостному злодею Ронану, строящему коварные планы по захвату Вселенной. Питер оказывается в центре межгалактической охоты, где жертва — он сам.Единственный способ спасти свою жизнь — объединиться с четверкой нелюдимых изгоев: воинственным енотом по кличке Ракета, человекоподобным деревом Грутом, смертельно опасной Гаморой и одержимым жаждой мести Драксом, также известным как Разрушитель. Когда Квилл понимает, какой силой обладает украденный артефакт и какую опасность он представляет для вселенной, одиночка пойдет на все, чтобы сплотить случайных союзников для решающей битвы за судьбу галактики.]]></description>
+        <pictures><![CDATA[2802088,2802087,2802086]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Стражи Галактики / Guardians of the Galaxy]]></search>
+        <year><![CDATA[2014]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Джеймс Ганн]]></director>
+        <genre><![CDATA[фантастика,боевик,приключения,комедия]]></genre>
+        <actor><![CDATA[Крис Пратт,Зои Салдана,Дэйв Батиста,Брэдли Купер,Вин Дизель]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"2015381","tmdb_id":"118340"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="502838">
+        <kp_id><![CDATA[502838]]></kp_id>
+        <query_id><![CDATA[502838]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[88]]></kp_rating>
+        <kp_vote><![CDATA[243991]]></kp_vote>
+        <imdb_rating><![CDATA[91]]></imdb_rating>
+        <imdb_vote><![CDATA[744579]]></imdb_vote>
+        <premiere><![CDATA[734342.8333333334]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Шерлок]]></title_ru>
+        <title_en><![CDATA[Sherlock]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[События разворачиваются в наши дни. Он прошел Афганистан, остался инвалидом. По возвращении в родные края встречается с загадочным, но своеобразным гениальным человеком. Тот в поиске соседа по квартире. Лондон, 2010 год. Происходят необъяснимые убийства. Скотланд-Ярд без понятия, за что хвататься. Существует лишь один человек, который в силах разрешить проблемы и найти ответы на сложные вопросы.]]></description>
+        <pictures><![CDATA[3070281,3070280,3070279]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Шерлок / Sherlock]]></search>
+        <year><![CDATA[2010]]></year>
+        <country><![CDATA[Великобритания,США]]></country>
+        <director><![CDATA[Пол МакГиган,Ник Харран,Коки Гидройч]]></director>
+        <genre><![CDATA[триллер,драма,криминал,детектив]]></genre>
+        <actor><![CDATA[Бенедикт Камбербэтч,Мартин Фриман,Уна Стаббс,Руперт Грейвз,Луиза Брили]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1475582","tmdb_id":"19885"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="627">
+        <kp_id><![CDATA[627]]></kp_id>
+        <query_id><![CDATA[627]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[243970]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[491078]]></imdb_vote>
+        <premiere><![CDATA[730825.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Изгой]]></title_ru>
+        <title_en><![CDATA[Cast Away]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Герой этого фильма, Чак Ноланд, — сотрудник всемирно известной службы доставки «Федерал Экспресс». Чак — скрупулезный практик и неисправимый педант. Жизнь Ноланда, высокопоставленного инспектора международных отделений «ФедЕкс» расписана по минутам. И этих драгоценных минут катастрофически не хватает ни на личную жизнь, ни на любимую женщину…Однако безжалостная судьба заставила Ноланда иначе взглянуть на отпущенное ему время… Самолет, на котором путешествует Чак, падает в океан. Инженер, единственный, кому посчастливилось остаться в живых, попадает на необитаемый остров. Здесь Ноланду предстоит провести мучительно долгие годы в жестокой битве за выживание…]]></description>
+        <pictures><![CDATA[1953077,1953067,1953066]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Изгой / Cast Away]]></search>
+        <year><![CDATA[2000]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Роберт Земекис]]></director>
+        <genre><![CDATA[драма,мелодрама,приключения]]></genre>
+        <actor><![CDATA[Том Хэнкс,Хелен Хант,Крис Нот,Ник Сирси,Дженифер Льюис]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0162222","tmdb_id":"8358"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="61237">
+        <kp_id><![CDATA[61237]]></kp_id>
+        <query_id><![CDATA[61237]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[78]]></kp_rating>
+        <kp_vote><![CDATA[242810]]></kp_vote>
+        <imdb_rating><![CDATA[79]]></imdb_rating>
+        <imdb_vote><![CDATA[896824]]></imdb_vote>
+        <premiere><![CDATA[733510.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Железный человек]]></title_ru>
+        <title_en><![CDATA[Iron Man]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнает, что в совете директоров его фирмы плетется заговор, чреватый страшными последствиями. Используя свое последнее изобретение, Старк пытается решить проблемы своей компании радикально…]]></description>
+        <pictures><![CDATA[731671,731670,731669]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Железный человек / Iron Man]]></search>
+        <year><![CDATA[2008]]></year>
+        <country><![CDATA[США,Канада]]></country>
+        <director><![CDATA[Джон Фавро]]></director>
+        <genre><![CDATA[фантастика,боевик,приключения]]></genre>
+        <actor><![CDATA[Роберт Дауни мл.,Джефф Бриджес,Гвинет Пэлтроу,Терренс Ховард,Лесли Бибб]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0371746","tmdb_id":"1726"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="9691">
+        <kp_id><![CDATA[9691]]></kp_id>
+        <query_id><![CDATA[9691]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[78]]></kp_rating>
+        <kp_vote><![CDATA[242203]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[1180196]]></imdb_vote>
+        <premiere><![CDATA[733911.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Бесславные ублюдки]]></title_ru>
+        <title_en><![CDATA[Inglourious Basterds]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Вторая мировая война, в оккупированной немцами Франции группа американских солдат-евреев наводит страх на нацистов, жестоко убивая и скальпируя солдат.]]></description>
+        <pictures><![CDATA[1047032,1047031,1047030]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Бесславные ублюдки / Inglourious Basterds]]></search>
+        <year><![CDATA[2009]]></year>
+        <country><![CDATA[Германия,США]]></country>
+        <director><![CDATA[Квентин Тарантино,Элай Рот]]></director>
+        <genre><![CDATA[боевик,драма,комедия,военный]]></genre>
+        <actor><![CDATA[Брэд Питт,Кристоф Вальц,Мелани Лоран,Даниэль Брюль,Дайан Крюгер]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0361748","tmdb_id":"16869"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="367">
+        <kp_id><![CDATA[367]]></kp_id>
+        <query_id><![CDATA[367]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[79]]></kp_rating>
+        <kp_vote><![CDATA[238732]]></kp_vote>
+        <imdb_rating><![CDATA[83]]></imdb_rating>
+        <imdb_vote><![CDATA[724959]]></imdb_vote>
+        <premiere><![CDATA[730618.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Реквием по мечте]]></title_ru>
+        <title_en><![CDATA[Requiem for a Dream]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Каждый стремится к своей заветной мечте. Сара Голдфарб мечтала сняться в известном телешоу, ее сын Гарольд с другом Тайроном — сказочно разбогатеть, подруга Гарольда Мэрион грезила о собственном модном магазине, но на их пути были всевозможные препятствия. Все они выбирают неочевидные пути достижения своих целей, и мечты по-прежнему остаются недостижимыми, а жизни героев рушатся безвозвратно.]]></description>
+        <pictures><![CDATA[2486513,2486512,2486511]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Реквием по мечте / Requiem for a Dream]]></search>
+        <year><![CDATA[2000]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Даррен Аронофски]]></director>
+        <genre><![CDATA[драма]]></genre>
+        <actor><![CDATA[Джаред Лето,Марлон Уайанс,Дженнифер Коннелли,Эллен Бёрстин,Кристофер Макдональд]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0180093","tmdb_id":"641"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="195524">
+        <kp_id><![CDATA[195524]]></kp_id>
+        <query_id><![CDATA[195524]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[78]]></kp_rating>
+        <kp_vote><![CDATA[238669]]></kp_vote>
+        <imdb_rating><![CDATA[72]]></imdb_rating>
+        <imdb_vote><![CDATA[653219]]></imdb_vote>
+        <premiere><![CDATA[733379.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Я – легенда]]></title_ru>
+        <title_en><![CDATA[I Am Legend]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Адаптация одноименного романа Ричарда Мэтисона о неизвестном вирусе, унесшем жизни половины населения земного шара, а остальную половину превратившего в вампиров. Сюжет строится вокруг единственного уцелевшего человека с необъяснимым иммунитетом, ночами держащего бесконечную осаду упырей, а днем пытающегося найти противоядие и выяснить причины эпидемии.]]></description>
+        <pictures><![CDATA[676153,676152,676151]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Я – легенда / I Am Legend]]></search>
+        <year><![CDATA[2007]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Френсис Лоуренс]]></director>
+        <genre><![CDATA[ужасы,фантастика,триллер,драма]]></genre>
+        <actor><![CDATA[Уилл Смит,Алиси Брага,Чарли Тахэн,Салли Ричардсон-Уитфилд,Уиллоу Смит]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0480249","tmdb_id":"6479"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="707">
+        <kp_id><![CDATA[707]]></kp_id>
+        <query_id><![CDATA[707]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[237806]]></kp_vote>
+        <imdb_rating><![CDATA[75]]></imdb_rating>
+        <imdb_vote><![CDATA[418463]]></imdb_vote>
+        <premiere><![CDATA[731285.875]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Ледниковый период]]></title_ru>
+        <title_en><![CDATA[Ice Age]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Действие разворачивается 20 тыс. лет назад. Чтобы избежать приближающегося из-за наступления ледникового периода холода, животные мигрируют на юг. Однако некоторые из них все-таки решают остаться — одинокий, угрюмый мамонт Манфред, а также бесшабашный ленивец Сид.Случайно эта парочка наталкивается на человеческого детеныша. Они решаются вернуть его людям и отправляются в путешествие. По пути они встречают саблезубого хитрого тигра. И теперь этой веселой компании предстоят забавные приключения!]]></description>
+        <pictures><![CDATA[1225232,1225231,1225230]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Ледниковый период / Ice Age]]></search>
+        <year><![CDATA[2002]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Крис Уэдж,Карлос Салдана]]></director>
+        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
+        <actor><![CDATA[Рэй Романо,Джон Легуизамо,Дэнис Лири,Горан Вишнич,Джек Блэк]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0268380","tmdb_id":"425"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="336">
+        <kp_id><![CDATA[336]]></kp_id>
+        <query_id><![CDATA[336]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[85]]></kp_rating>
+        <kp_vote><![CDATA[236683]]></kp_vote>
+        <imdb_rating><![CDATA[87]]></imdb_rating>
+        <imdb_vote><![CDATA[862856]]></imdb_vote>
+        <premiere><![CDATA[721675.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Пролетая над гнездом кукушки]]></title_ru>
+        <title_en><![CDATA[One Flew Over the Cuckoo's Nest]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Сымитировав помешательство в надежде избежать тюремного заключения, Рэндл Патрик МакМерфи попадает в психиатрическую клинику, где почти безраздельным хозяином является жестокосердная сестра Милдред Рэтчед. МакМерфи поражается тому, что прочие пациенты смирились с существующим положением вещей, а некоторые — даже сознательно пришли в лечебницу, прячась от пугающего внешнего мира. И решается на бунт. В одиночку.]]></description>
+        <pictures><![CDATA[2680490,2680489,2680488]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Пролетая над гнездом кукушки / One Flew Over the Cuckoo's Nest]]></search>
+        <year><![CDATA[1975]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Милош Форман]]></director>
+        <genre><![CDATA[драма]]></genre>
+        <actor><![CDATA[Джек Николсон,Луиза Флетчер,Уилл Сэмпсон,Брэд Дуриф,Уильям Редфилд]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0073486","tmdb_id":"510"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="325">
+        <kp_id><![CDATA[325]]></kp_id>
+        <query_id><![CDATA[325]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[87]]></kp_rating>
+        <kp_vote><![CDATA[235581]]></kp_vote>
+        <imdb_rating><![CDATA[92]]></imdb_rating>
+        <imdb_vote><![CDATA[1509117]]></imdb_vote>
+        <premiere><![CDATA[720330.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Крестный отец]]></title_ru>
+        <title_en><![CDATA[The Godfather]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Криминальная сага, повествующая о нью-йоркской сицилийской мафиозной семье Корлеоне. Фильм охватывает период 1945-1955 годов.Глава семьи, Дон Вито Корлеоне, выдает замуж свою дочь. В это время со Второй мировой войны возвращается его любимый сын Майкл. Майкл, герой войны, гордость семьи, не выражает желания заняться жестоким семейным бизнесом. Дон Корлеоне ведет дела по старым правилам, но наступают иные времена, и появляются люди, желающие изменить сложившиеся порядки. На Дона Корлеоне совершается покушение.]]></description>
+        <pictures><![CDATA[3349582,3349581,3349580]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Крестный отец / The Godfather]]></search>
+        <year><![CDATA[1972]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Фрэнсис Форд Коппола]]></director>
+        <genre><![CDATA[драма,криминал]]></genre>
+        <actor><![CDATA[Марлон Брандо,Аль Пачино,Джеймс Каан,Роберт Дювалл,Ричард С. Кастеллано]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0068646","tmdb_id":"238"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="370">
+        <kp_id><![CDATA[370]]></kp_id>
+        <query_id><![CDATA[370]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[84]]></kp_rating>
+        <kp_vote><![CDATA[235081]]></kp_vote>
+        <imdb_rating><![CDATA[86]]></imdb_rating>
+        <imdb_vote><![CDATA[587133]]></imdb_vote>
+        <premiere><![CDATA[731050.8333333334]]></premiere>
+        <type><![CDATA[5]]></type>
+        <title_ru><![CDATA[Унесенные призраками]]></title_ru>
+        <title_en><![CDATA[Sen to Chihiro no kamikakushi]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Тихиро с мамой и папой переезжают в новый дом. Заблудившись по дороге, они оказываются в странном пустынном городе, где их ждет великолепный пир. Родители с жадностью набрасываются на еду и к ужасу девочки превращаются в свиней, став пленниками злой колдуньи Юбабы. Теперь, оказавшись одна среди волшебных существ и загадочных видений, Тихиро должна придумать, как избавить своих родителей от чар коварной старухи.]]></description>
+        <pictures><![CDATA[1021438,1021437,1021436]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Унесенные призраками / Sen to Chihiro no kamikakushi]]></search>
+        <year><![CDATA[2001]]></year>
+        <country><![CDATA[Япония]]></country>
+        <director><![CDATA[Хаяо Миядзаки]]></director>
+        <genre><![CDATA[аниме,мультфильм,фэнтези,приключения,семейный]]></genre>
+        <actor><![CDATA[Руми Хиираги,Мию Ирино,Мари Нацуки,Такаси Найто,Ясуко Савагути]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0245429","tmdb_id":"129"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="12198">
+        <kp_id><![CDATA[12198]]></kp_id>
+        <query_id><![CDATA[12198]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[82]]></kp_rating>
+        <kp_vote><![CDATA[232625]]></kp_vote>
+        <imdb_rating><![CDATA[78]]></imdb_rating>
+        <imdb_vote><![CDATA[325661]]></imdb_vote>
+        <premiere><![CDATA[729634.8333333334]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Игра]]></title_ru>
+        <title_en><![CDATA[The Game]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Николас Ван Ортон — само воплощение успеха. Он преуспевает, он невозмутим и спокоен, привык держать любую ситуацию под контролем. На день рождения Николас получает необычный подарок — билет для участия в «Игре».Ему обещают, что игра вернет яркие чувства, позволит ощутить вкус и остроту жизни. Вступив в игру, Николас начинает осознавать, что это игра всерьез, игра не на жизнь, а на смерть.]]></description>
+        <pictures><![CDATA[2304819,2304818,2304817]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Игра / The Game]]></search>
+        <year><![CDATA[1997]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дэвид Финчер]]></director>
+        <genre><![CDATA[триллер,драма,детектив,приключения]]></genre>
+        <actor><![CDATA[Майкл Дуглас,Шон Пенн,Дебора Кара Ангер,Джеймс Ребхорн,Питер Донат]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0119174","tmdb_id":"2649"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="458">
+        <kp_id><![CDATA[458]]></kp_id>
+        <query_id><![CDATA[458]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[80]]></kp_rating>
+        <kp_vote><![CDATA[232614]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[771430]]></imdb_vote>
+        <premiere><![CDATA[731150.8333333334]]></premiere>
+        <type><![CDATA[4]]></type>
+        <title_ru><![CDATA[Корпорация монстров]]></title_ru>
+        <title_en><![CDATA[Monsters, Inc.]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Склизкий гад в сливном бачке, мохнатый зверь, похожий на чудовище из «Аленького цветочка», гигантские мокрицы под кроватью — все они существуют на самом деле. Все, что им нужно — пугать детей, потому что из детских криков они получают электричество.Полнометражный мультфильм рассказывает о кризисах в мире монстров, их жизни. Но однажды вся мирная жизнь монстров оказывается под угрозой: в их мир попадает ребенок. А с детьми столько хлопот, что они могут довести даже монстров.]]></description>
+        <pictures><![CDATA[1916182,1916181,1916180]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Корпорация монстров / Monsters, Inc.]]></search>
+        <year><![CDATA[2001]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Пит Доктер,Дэвид Силверман,Ли Анкрич]]></director>
+        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
+        <actor><![CDATA[Джон Гудман,Билли Кристал,Мэри Гиббс,Стив Бушеми,Джеймс Коберн]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0198781","tmdb_id":"585"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
 </sphinx:docset>
