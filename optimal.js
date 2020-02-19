@@ -96,7 +96,7 @@ if (['tarly'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 30;
-  modules.episode.data.index.count = 4;
+  modules.episode.data.index.count = 5;
   modules.related.data.types.year.count = 12;
   modules.top.data.count = 5;
   modules.comments.data.fast.recent.num_items = 5;
@@ -110,6 +110,10 @@ if (['mormont'].indexOf(theme) + 1) {
   modules.content.data.index.count = 12;
   modules.episode.data.index.count = 16;
   modules.related.data.types.year.count = 12;
+}
+
+if (['ramsay'].indexOf(theme) + 1) {
+  modules.episode.data.index.count = 24;
 }
 
 let mem = parseInt('' + os.totalmem() / 1000000);
