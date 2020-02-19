@@ -153,7 +153,7 @@ module.exports = {
     },
     "count": {
       "type": "year",
-      "key": "2019",
+      "key": "2020",
       "sorting": "premiere-up"
     },
     "link": 0

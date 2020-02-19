@@ -2,8 +2,6 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-let theme = process && process.argv && process.argv[2] ? process.argv[2] : '';
-
 let config_file = path.join(__dirname, 'config', 'production', 'config.js');
 let modules_file = path.join(__dirname, 'config', 'production', 'modules.js');
 let process_file = path.join(__dirname, 'process.json');
@@ -15,30 +13,46 @@ let process_json = require(process_file);
 var d = new Date();
 d.setDate(d.getDate() - 31);
 
-config.index.year.keys = config.index.year.keys ? d.getFullYear() + '' : '';
+config.index.year.keys = d.getFullYear() + '';
+config.index.year.sorting = 'premiere-up';
+config.index.year.order = 9;
+
+config.index.count.type = 'year';
+config.index.count.key = d.getFullYear() + '';
+config.index.count.sorting = 'premiere-up';
+
+let theme =
+  process && process.argv && process.argv[2] ? process.argv[2] : config.theme;
 
 if (['arya'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;
+  modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 6;
   modules.content.data.news.count = 3;
 }
 
 if (['bran'].indexOf(theme) + 1) {
-  modules.comments.data.disqus.recent.display = [];
+  modules.comments.data.hypercomments.recent.display = [];
   modules.comments.data.fast.recent.display = [];
+  modules.comments.data.disqus.recent.display = [];
+  modules.comments.data.fast.recent.num_items = 0;
+  modules.comments.data.disqus.recent.num_items = 0;
+  modules.comments.data.hypercomments.recent.num_items = 0;
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;
+  modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 6;
   modules.content.data.news.count = 3;
 }
 
 if (['cersei'].indexOf(theme) + 1) {
-  config.default.count = 15;
-  config.index.year.count = 15;
-  modules.content.data.index.count = 15;
+  config.default.count = 10;
+  config.index.year.count = 10;
+  modules.content.data.index.count = 10;
+  modules.episode.data.index.count = 20;
   modules.related.data.types.year.count = 5;
 }
 
@@ -46,6 +60,7 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
   config.default.count = 10;
   config.index.year.count = 10;
   modules.content.data.index.count = 10;
+  modules.episode.data.index.count = 15;
   modules.related.data.types.year.count = 5;
 }
 
@@ -54,10 +69,16 @@ if (['joffrey'].indexOf(theme) + 1) {
 }
 
 if (['hodor'].indexOf(theme) + 1) {
+  modules.comments.data.hypercomments.recent.display = [];
+  modules.comments.data.fast.recent.display = [];
   modules.comments.data.disqus.recent.display = [];
+  modules.comments.data.fast.recent.num_items = 0;
+  modules.comments.data.disqus.recent.num_items = 0;
+  modules.comments.data.hypercomments.recent.num_items = 0;
   config.default.count = 10;
   config.index.year.count = 10;
   modules.content.data.index.count = 10;
+  modules.episode.data.index.count = 10;
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
 }
@@ -66,24 +87,29 @@ if (['daenerys'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;
+  modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
 }
 
 if (['tarly'].indexOf(theme) + 1) {
-  config.default.count = 24;
-  config.index.year.count = 24;
-  modules.content.data.index.count = 12;
+  config.default.count = 12;
+  config.index.year.count = 12;
+  modules.content.data.index.count = 24;
+  modules.episode.data.index.count = 24;
   modules.related.data.types.year.count = 12;
   modules.top.data.count = 5;
-  modules.comments.data.disqus.recent.num_items = 3;
+  modules.comments.data.fast.recent.num_items = 5;
+  modules.comments.data.disqus.recent.num_items = 0;
+  modules.comments.data.hypercomments.recent.num_items = 0;
 }
 
 if (['mormont'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
   modules.content.data.index.count = 12;
-  modules.related.data.types.year.count = 4;
+  modules.episode.data.index.count = 16;
+  modules.related.data.types.year.count = 12;
 }
 
 let mem = parseInt('' + os.totalmem() / 1000000);

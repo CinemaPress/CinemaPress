@@ -231,8 +231,8 @@ router.get(
           return res.redirect(302, no_poster);
         })
         .on('close', function() {
-          cache.set(origin, origin + '?save');
-          return res.redirect(301, origin + '?save');
+          cache.set(origin, origin);
+          return res.redirect(301, origin);
         });
     });
   }

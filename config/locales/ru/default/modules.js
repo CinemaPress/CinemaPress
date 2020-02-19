@@ -13,21 +13,17 @@ module.exports = {
         "recent": {
           "num_items": 0,
           "excerpt_length": 250,
-          "display": [
-            "index"
-          ]
+          "display": []
         }
       },
       "disqus": {
         "shortname": "",
         "api_key": "",
         "recent": {
-          "num_items": 5,
+          "num_items": 0,
           "excerpt_length": 250,
           "hide_avatars": 0,
-          "display": [
-            "index"
-          ]
+          "display": []
         }
       },
       "facebook": {

@@ -2013,7 +2013,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             fi
         ;;
-        "reload"|"actual"|"speed" )
+        "reload"|"actual"|"speed"|"cron" )
             _br
             read_domain ${2}
             sh_not
@@ -2221,10 +2221,9 @@ while [ "${WHILE}" -lt "2" ]; do
         "optimal" )
             _br
             read_domain ${2}
-            read_theme ${3}
             sh_not
             _s ${3}
-            docker exec -it ${CP_DOMAIN_} node optimal.js "${CP_THEME}"
+            docker exec -t ${CP_DOMAIN_} node optimal.js
             exit 0
         ;;
         "log"|"logs" )
