@@ -107,7 +107,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     '@type': 'ListItem',
     position: 3,
     item: {
-      '@id': movie.url,
+      '@id': movie.pathname,
       name: movie.title,
       url: movie.url
     }
@@ -118,7 +118,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
       '@type': 'ListItem',
       position: 4,
       item: {
-        '@id': page.url,
+        '@id': page.pathname || page.url,
         name: page.title,
         url: page.url
       }

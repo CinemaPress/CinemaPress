@@ -491,7 +491,7 @@ function dataMovie(id, type, options, callback) {
       comments: function(callback) {
         var q = { movie_id: related.id, comment_confirm: 1 };
         var regexpEpisode = new RegExp(
-          '^s([0-9]{1,4})e([0-9]{1,4})(_([0-9]{1,3})|)$',
+          '^s([0-9]{1,4})e([0-9]{1,4})(_(.*?)|)$',
           'ig'
         );
         var execEpisode = regexpEpisode.exec(type);
@@ -583,10 +583,7 @@ function typeMovie(type) {
   var regexpType = new RegExp('^(movie' + types + ')$', 'ig');
   var execType = regexpType.exec(type);
 
-  var regexpEpisode = new RegExp(
-    '^(s[0-9]{1,4}e[0-9]{1,4}(_[0-9]{1,3}|))$',
-    'g'
-  );
+  var regexpEpisode = new RegExp('^(s[0-9]{1,4}e[0-9]{1,4}(_(.*?)|))$', 'g');
   var execEpisode = regexpEpisode.exec(type);
 
   if (execType) {

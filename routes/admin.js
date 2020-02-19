@@ -959,7 +959,12 @@ router.post('/change', function(req, res) {
     for (var key in originals) {
       if (originals.hasOwnProperty(key) && changes.hasOwnProperty(key)) {
         if (Array.isArray(originals[key])) {
-          var arr = changes[key] ? changes[key].split(',') : [];
+          var arr =
+            typeof changes[key] === 'string'
+              ? changes[key].split(',')
+              : Array.isArray(changes[key])
+              ? changes[key]
+              : [];
           var clear_arr = [];
           arr.forEach(function(text) {
             text = text

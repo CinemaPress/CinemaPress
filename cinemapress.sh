@@ -591,8 +591,8 @@ ip_install() {
     if [ "${CHECK}" = "" ]; then
         _header "ERROR"
         _content
-        _content "The database server is temporarily unavailable,"
-        _content "please try again later."
+        _content "Import is a one-time procedure,"
+        _content "the key is no longer available."
         _content
         _s
         exit 0
@@ -1678,7 +1678,6 @@ docker_logs() {
     _content
     _content "${SHOW_ERR_LOGS}"
     _content
-    _s
     _header "OUT LOGS"
     _content
     _content "${SHOW_OUT_LOGS}"
@@ -1730,7 +1729,7 @@ docker_backup() {
     if [ "${RCS}" = "" ]; then exit 0; fi
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
-    BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 2592000))"`
+    BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 1728000))"`
     T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
     THEME_NAME=`echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
@@ -2263,13 +2262,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content "Fail2ban: stopped"
             fi
             _content
-            _line
-            _br
             _header "NGINX LOGS"
             _content
             _content "$(tail -n50 /var/log/nginx/*.log | curl -s -F 'clbin=<-' https://clbin.com)"
             _content
-            _s
             docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container logs
             exit 0
         ;;

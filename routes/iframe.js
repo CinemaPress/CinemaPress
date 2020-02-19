@@ -25,71 +25,52 @@ var router = express.Router();
  * Iframe code.
  */
 
-router.get('/:id?/:title?', function(req, res) {
-  var kinopoisk = req.params.id ? ('' + req.params.id).replace(/\D/g, '') : '';
-  var title = req.params.title ? req.params.title.replace(/"/g, "'") : '';
-  var autoplay = req.query.autoplay
-    ? ('' + req.query.autoplay).replace(/\D/g, '')
-    : '';
+router.get('/:id', function(req, res) {
+  var id = req.params.id ? ('' + req.params.id).replace(/[^0-9]/g, '') : '';
 
-  if (kinopoisk && title) {
+  var data = modules.player.data.yohoho
+    ? JSON.parse(modules.player.data.yohoho)
+    : {};
+
+  var parameters = '';
+  data['data-kinopoisk'] = id ? id : '';
+  data['data-title'] = req.query.title
+    ? req.query.title.replace(/"/g, "'")
+    : '';
+  data['data-autoplay'] = req.query.autoplay ? req.query.autoplay : '';
+
+  if (id && req.query.title) {
+    for (var dkey in data) {
+      if (data.hasOwnProperty(dkey) && data[dkey]) {
+        data[dkey] = ('' + data[dkey]).trim();
+        parameters += ' ' + dkey + '="' + encodeURIComponent(data[dkey]) + '"';
+      }
+    }
     res.send(
-      '<!DOCTYPE html><html><body>' +
+      '<!DOCTYPE html><html lang="' +
+        config.language +
+        '"><body>' +
         '<style>body,html{border:0;padding:0;margin:0;width:100%;height:100%;overflow:hidden}</style>' +
         '<div id="yohoho" ' +
-        'data-kinopoisk="' +
-        kinopoisk +
-        '" ' +
-        'data-title="' +
-        title +
-        '" ' +
-        'data-player="' +
-        (modules.player.data.yohoho.player || '') +
-        '" ' +
-        'data-bg="' +
-        (modules.player.data.yohoho.bg || '') +
-        '" ' +
-        'data-country="' +
-        (config.country || '') +
-        '" ' +
-        'data-language="' +
-        (config.language || '') +
-        '" ' +
-        'data-videocdn="' +
-        (modules.player.data.videocdn.token || '') +
-        '" ' +
-        'data-hdvb="' +
-        (modules.player.data.hdvb.token || '') +
-        '" ' +
-        'data-youtube="' +
-        (modules.player.data.youtube.token || '') +
-        '" ' +
-        'data-kodik="' +
-        (modules.player.data.kodik.token || '') +
-        '" ' +
-        'data-collaps="' +
-        (modules.player.data.collaps.token || '') +
-        '" ' +
-        'data-autoplay="' +
-        autoplay +
-        '" ' +
+        parameters +
         '></div>' +
         '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
         '</body></html>'
     );
-  } else if (kinopoisk) {
-    CP_get.movies({ query_id: req.params.id }, 1, '', 1, false, function(
-      err,
-      movies
-    ) {
+  } else if (id) {
+    CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
       if (err) return res.status(404).send(err);
-
       if (movies && movies.length) {
         if (movies[0] && movies[0].player) {
           var player = CP_player.code('movie', movies[0]);
           return res.send(
-            '<!DOCTYPE html><html>' +
+            '<!DOCTYPE html><html lang="' +
+              config.language +
+              '">' +
               '<head>' +
+              '<title>' +
+              id +
+              '</title>' +
               (player.head || '') +
               '</head>' +
               '<body>' +
@@ -99,74 +80,33 @@ router.get('/:id?/:title?', function(req, res) {
               '</body></html>'
           );
         }
-        var custom = {};
-        var imdb = '';
-        var tmdb = '';
         try {
-          custom = JSON.parse(movies[0].custom);
-          imdb = custom.imdb_id || '';
-          tmdb = custom.tmdb_id || '';
+          var custom = JSON.parse(movies[0].custom);
+          data['data-imdb'] = custom.imdb_id ? custom.imdb_id : '';
+          data['data-tmdb'] = custom.tmdb_id ? custom.tmdb_id : '';
         } catch (e) {
           console.error(e);
         }
-        title =
+        data['data-title'] = (
           (movies[0].title_ru || movies[0].title_en) +
           ' (' +
           movies[0].year +
-          ')';
-        title = title.replace(/"/g, "'");
+          ')'
+        ).replace(/"/g, "'");
+        for (var dkey in data) {
+          if (data.hasOwnProperty(dkey) && data[dkey]) {
+            data[dkey] = ('' + data[dkey]).trim();
+            parameters +=
+              ' ' + dkey + '="' + encodeURIComponent(data[dkey]) + '"';
+          }
+        }
         res.send(
-          '<!DOCTYPE html><html><body>' +
+          '<!DOCTYPE html><html lang="' +
+            config.language +
+            '"><body>' +
             '<style>body,html{border:0;padding:0;margin:0;width:100%;height:100%;overflow:hidden}</style>' +
             '<div id="yohoho" ' +
-            'data-kinopoisk="' +
-            kinopoisk +
-            '" ' +
-            'data-imdb="' +
-            imdb +
-            '" ' +
-            'data-tmdb="' +
-            tmdb +
-            '" ' +
-            'data-videospider_tv="' +
-            ('' + movies[0].type === '1' ? '1' : '0') +
-            '" ' +
-            'data-title="' +
-            title +
-            '" ' +
-            'data-trailer="' +
-            (modules.player.data.yohoho.trailer || '') +
-            '" ' +
-            'data-player="' +
-            (modules.player.data.yohoho.player || '') +
-            '" ' +
-            'data-bg="' +
-            (modules.player.data.yohoho.bg || '') +
-            '" ' +
-            'data-country="' +
-            (config.country || '') +
-            '" ' +
-            'data-language="' +
-            (config.language || '') +
-            '" ' +
-            'data-videocdn="' +
-            (modules.player.data.videocdn.token || '') +
-            '" ' +
-            'data-hdvb="' +
-            (modules.player.data.hdvb.token || '') +
-            '" ' +
-            'data-youtube="' +
-            (modules.player.data.youtube.token || '') +
-            '" ' +
-            'data-kodik="' +
-            (modules.player.data.kodik.token || '') +
-            '" ' +
-            'data-collaps="' +
-            (modules.player.data.collaps.token || '') +
-            '" ' +
-            'data-autoplay="' +
-            autoplay +
-            '" ' +
+            parameters +
             '></div>' +
             '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
             '</body></html>'

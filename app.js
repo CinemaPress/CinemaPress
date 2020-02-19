@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
  * Route dependencies.
  */
 
-var proxy = require('./routes/proxy');
+var files = require('./routes/files');
 var iframe = require('./routes/iframe');
 var player = require('./routes/player');
 var episode = require('./routes/episode');
@@ -92,12 +92,12 @@ app.use(
   express.static(path.join(path.dirname(__filename), '/'))
 );
 app.use(userinfo(lookup));
-app.use(/^(?:\/k\.1poster\.net|\/image\.tmdb\.org)?/, proxy);
-app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe\.player.*$/, player);
-app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode\.json.*$/, episode);
+app.use('/files', files);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/player.*$/, player);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode.*$/, episode);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/robots\.txt$/, robots);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/opensearch\.xml$/, opensearch);
-app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe.*$/, iframe);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe/, iframe);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/rss\.xml.*$/, rss);
 app.use('/' + config.urls.admin, admin);
 app.use(loadavg());

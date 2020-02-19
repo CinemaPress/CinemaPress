@@ -286,7 +286,10 @@ router.post('/comments', function(req, res) {
         var data = {};
         data.comment_ip = ip;
         data.comment_title = form.comment_title;
-        data.comment_url = referrer.pathname;
+        data.comment_url = referrer.pathname.replace(
+          /(\/mobile-version|\/tv-version)/gi,
+          ''
+        );
         data.comment_confirm = modules.comments.data.fast.premoderate ? 0 : 1;
         data.comment_anonymous = form.comment_anonymous;
         data.comment_avatar =
@@ -377,6 +380,24 @@ router.post('/comments', function(req, res) {
       return res.json({ status: 'success' });
     }
   );
+});
+
+router.get('/', function(req, res) {
+  var id = (req.query.id || req.query.kp_id).replace(/[^0-9]/, '');
+  if (!id) {
+    return res.status(404).json({});
+  }
+  CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
+    if (err || !movies || !movies.length || !movies[0].player) {
+      return res.status(404).json({});
+    }
+    return res.json({
+      player:
+        config.protocol + config.subdomain + config.domain + '/iframe/' + id,
+      translate: movies[0].translate,
+      quality: movies[0].quality
+    });
+  });
 });
 
 function getIp(req) {

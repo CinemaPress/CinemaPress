@@ -6,6 +6,7 @@
 
 var CP_get = require('../lib/CP_get.min');
 var CP_tv = require('../modules/CP_tv');
+var CP_translit = require('../lib/CP_translit');
 
 /**
  * Configuration dependencies.
@@ -18,6 +19,10 @@ var modules = require('../config/production/modules');
  * Node dependencies.
  */
 
+var adop = require('adop');
+var LRU = require('lru-cache');
+var cache = new LRU();
+var md5 = require('md5');
 var async = require('async');
 var request = require('request');
 var express = require('express');
@@ -38,7 +43,7 @@ var router = express.Router();
 router.get('/?', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  if (!req.query.id) return res.status(404).send('{"error": "404"}');
+  if (!req.query.id) return res.status(404).json({ error: '404' });
 
   var kp_id = parseInt(req.query.id) ? [parseInt(req.query.id)] : [];
   var tv = typeof req.query.tv !== 'undefined';
@@ -70,64 +75,119 @@ router.get('/?', function(req, res) {
   options.domain = req.userinfo.domain;
   options.port = port;
 
-  var source = {
-    url: 'iframe.video',
-    token: modules.player.data.iframe.token.trim()
-  };
+  var serials = {};
 
-  var url =
-    'https://' +
-    source.url +
-    '/api/v2/serials?&include=seasons%2Ctranslate&api_token=' +
-    source.token +
-    '&kp=' +
-    kp_id[0];
-
-  getReq(url, function(err, list) {
-    if (err) return res.status(404).send('{"error": "' + err + '"}');
-    CP_get.additional({ query_id: kp_id }, 'ids', options, function(
-      err,
-      movies
-    ) {
-      if (err) return res.status(404).send('{"error": "' + err + '"}');
-      if (movies && movies.length) {
-        getSerial(list.results, movies[0], function(err, result) {
-          if (err || isEmpty(result[movies[0].kp_id + '_'])) {
-            return res
-              .status(404)
-              .send('{"error": "' + (err || 'Empty') + '"}');
+  async.eachOfLimit(
+    modules.episode.data.custom,
+    1,
+    function(task, index, callback) {
+      CP_get.movies({ query_id: kp_id }, 1, '', 1, true, options, function(
+        err,
+        movies
+      ) {
+        if (err || !movies || !movies.length) return callback();
+        var movie = movies[0];
+        var parse = task.replace(/\s*~\s*/g, '~').split('~');
+        if (task.charAt(0) === '#' || parse.length < 4) {
+          return callback();
+        }
+        var params = {
+          url: parse[0],
+          season: parse[1],
+          episode: parse[2],
+          translate: parse[3]
+        };
+        params.url = params.url
+          .replace(/\[kp_id]/, movie.kp_id ? movie.kp_id : '')
+          .replace(/\[imdb_id]/, movie.imdb_id ? movie.imdb_id : '')
+          .replace(/\[tmdb_id]/, movie.tmdb_id ? movie.tmdb_id : '')
+          .replace(/\[douban_id]/, movie.douban_id ? movie.douban_id : '');
+        var hash = md5(JSON.stringify(params) + process.env['CP_VER']);
+        if (cache.has(hash)) {
+          serials = cache.get(hash);
+          return callback();
+        }
+        var obj = [
+          {
+            name: 'season',
+            path: parse[1],
+            type: 'number'
+          },
+          {
+            name: 'episode',
+            path: parse[2],
+            type: 'number'
+          },
+          {
+            name: 'translate',
+            path: parse[3],
+            type: 'string'
           }
-          return res.send(tv ? CP_tv.episode(result, options) : result);
-        });
+        ];
+        request(
+          {
+            url: params.url,
+            method: 'GET',
+            timeout: 15000
+          },
+          function(error, response, body) {
+            if (error || response.statusCode !== 200 || !body) {
+              console.error(task, (error && error.code) || '', body);
+              return callback();
+            }
+            serials = adop(tryParseJSON(body), obj, 'translate.season.episode');
+            Object.keys(serials).forEach(function(translate) {
+              Object.keys(serials[translate]).forEach(function(season) {
+                Object.keys(serials[translate][season]).forEach(function(
+                  episode
+                ) {
+                  serials[translate][season][episode] = {
+                    kp_id: movie.kp_id,
+                    title: movie.title,
+                    title_ru: movie.title_ru,
+                    title_en: movie.title_en,
+                    poster: movie.poster,
+                    season: season + ' ' + modules.episode.data.season,
+                    episode: episode + ' ' + modules.episode.data.episode,
+                    translate: modules.episode.data.translate + ' ' + translate,
+                    pathname:
+                      movie.pathname +
+                      '/s' +
+                      season +
+                      'e' +
+                      episode +
+                      (translate
+                        ? '_' +
+                          CP_translit.text(translate, undefined, 'translate')
+                        : ''),
+                    url:
+                      movie.url +
+                      '/s' +
+                      season +
+                      'e' +
+                      episode +
+                      (translate
+                        ? '_' +
+                          CP_translit.text(translate, undefined, 'translate')
+                        : '')
+                  };
+                });
+              });
+            });
+            cache.set(hash, serials);
+            callback();
+          }
+        );
+      });
+    },
+    function() {
+      if (serials && Object.keys(serials).length) {
+        return res.json(tv ? CP_tv.episode(serials, options) : serials);
       } else {
-        return res.status(404).send('{"error": "' + config.l.notFound + '"}');
+        return res.status(404).json({ error: 'NO EPISODES' });
       }
-    });
-  });
-
-  /**
-   * Get request on url.
-   *
-   * @param {String} url
-   * @param {Callback} callback
-   */
-
-  function getReq(url, callback) {
-    request({ timeout: 500, agent: false, url: url }, function(
-      error,
-      response,
-      body
-    ) {
-      var result = body ? tryParseJSON(body) : {};
-
-      if (error || response.statusCode !== 200 || result.error) {
-        console.log(url, error && error.code ? error.code : '');
-        return callback('Iframe request error.');
-      }
-
-      callback(null, result);
-    });
-  }
+    }
+  );
 
   /**
    * Valid JSON.
@@ -143,124 +203,6 @@ router.get('/?', function(req, res) {
       }
     } catch (e) {}
     return {};
-  }
-
-  /**
-   * Get serial data.
-   *
-   * @param {Object} list
-   * @param {Object} movie
-   * @param {Callback} callback
-   */
-
-  function getSerial(list, movie, callback) {
-    var serials = {};
-    serials[movie.kp_id + '_'] = {};
-
-    async.each(
-      list,
-      function(serial, callback) {
-        if (
-          serial.type !== 'serial' ||
-          !serial.seasons ||
-          !serial.seasons.length
-        )
-          return callback();
-
-        serial.seasons.forEach(function(season) {
-          if (!season.episodes || !season.episodes.length) return;
-          season.translate = season.translate
-            ? season.translate
-            : config.l.original;
-          season.translate_id = season.translate_id ? season.translate_id : '';
-          if (config.language === 'en') {
-            if (!/субт|subt|eng/i.test(season.translate)) {
-              return callback();
-            }
-            season.translate = 'English';
-          }
-          serials[movie.kp_id + '_'][season.translate] = serials[
-            movie.kp_id + '_'
-          ][season.translate]
-            ? serials[movie.kp_id + '_'][season.translate]
-            : {};
-          var episodes = {};
-          season.episodes.forEach(function(episode) {
-            season.season = season.season_num;
-            season.episode = episode;
-            episodes[episode] = structure(season, movie);
-          });
-          serials[movie.kp_id + '_'][season.translate][
-            season.season
-          ] = episodes;
-        });
-        return callback();
-      },
-      function(err) {
-        if (err) {
-          return callback(err);
-        }
-        callback(null, serials);
-      }
-    );
-  }
-
-  /**
-   * Structure for serial data.
-   *
-   * @param {Object} serial_video
-   * @param {Object} serial_data
-   * @return {Object}
-   */
-
-  function structure(serial_video, serial_data) {
-    var season_url = parseInt(serial_video.season);
-    var episode_url = parseInt(serial_video.episode);
-    var translate_url = parseInt(serial_video.translate_id);
-
-    season_url = season_url <= 9 ? '0' + season_url : season_url;
-    episode_url = episode_url <= 9 ? '0' + episode_url : episode_url;
-    translate_url = translate_url ? '_' + translate_url : '';
-
-    return {
-      title:
-        config.language === 'en'
-          ? serial_video.title_en || serial_video.title_ru
-          : serial_video.title_ru || serial_video.title_en,
-      title_ru: serial_video.title_ru,
-      title_en: serial_video.title_en,
-      kp_id: serial_data.kp_id,
-      poster: serial_data.poster,
-      translate: modules.episode.data.translate + ' ' + serial_video.translate,
-      translate_id: serial_video.translator_id,
-      season: serial_video.season + ' ' + modules.episode.data.season,
-      episode: serial_video.episode + ' ' + modules.episode.data.episode,
-      pathname:
-        serial_data.pathname +
-        '/s' +
-        season_url +
-        'e' +
-        episode_url +
-        translate_url,
-      url:
-        serial_data.url + '/s' + season_url + 'e' + episode_url + translate_url
-    };
-  }
-
-  /**
-   * Check empty object.
-   *
-   * @param {Object} obj
-   * @return {Boolean}
-   */
-
-  function isEmpty(obj) {
-    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop)) {
-        return false;
-      }
-    }
-    return true;
   }
 });
 

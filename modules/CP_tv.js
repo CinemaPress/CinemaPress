@@ -353,49 +353,40 @@ function tvEpisode(data, options) {
   });
 
   if (typeof data === 'object') {
-    for (var id in data) {
-      if (data.hasOwnProperty(id)) {
-        if (typeof data[id] === 'object') {
-          for (var translate in data[id]) {
-            if (data[id].hasOwnProperty(translate)) {
-              var data_translate = {
-                title: translate,
-                ok: {
-                  contents: []
-                }
-              };
+    for (var translate in data) {
+      if (data.hasOwnProperty(translate)) {
+        var data_translate = {
+          title: translate,
+          ok: {
+            contents: []
+          }
+        };
 
-              if (typeof data[id][translate] === 'object') {
-                for (var season in data[id][translate]) {
-                  if (data[id][translate].hasOwnProperty(season)) {
-                    if (typeof data[id][translate][season] === 'object') {
-                      for (var episode in data[id][translate][season]) {
-                        if (
-                          data[id][translate][season].hasOwnProperty(episode)
-                        ) {
-                          var movie = data[id][translate][season][episode];
-
-                          data_translate.ok.contents.push({
-                            ok: movie.url,
-                            image: movie.poster,
-                            title: movie.title,
-                            top: movie.season ? movie.season : '',
-                            bottom: movie.episode ? movie.episode : ''
-                          });
-                        }
-                      }
-                    }
+        if (typeof data[translate] === 'object') {
+          for (var season in data[translate]) {
+            if (data[translate].hasOwnProperty(season)) {
+              if (typeof data[translate][season] === 'object') {
+                for (var episode in data[translate][season]) {
+                  if (data[translate][season].hasOwnProperty(episode)) {
+                    var movie = data[translate][season][episode];
+                    data_translate.ok.contents.push({
+                      ok: movie.url,
+                      image: movie.poster,
+                      title: movie.title,
+                      top: movie.season ? movie.season : '',
+                      bottom: movie.episode ? movie.episode : ''
+                    });
                   }
                 }
               }
-
-              data_translate.ok.contents = data_translate.ok.contents.reverse();
-              data_translate.ok.contents[0].active = true;
-
-              payload.categories.push(data_translate);
             }
           }
         }
+
+        data_translate.ok.contents = data_translate.ok.contents.reverse();
+        data_translate.ok.contents[0].active = true;
+
+        payload.categories.push(data_translate);
       }
     }
   }

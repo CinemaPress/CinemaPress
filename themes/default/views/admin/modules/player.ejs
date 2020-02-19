@@ -65,221 +65,10 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;4h0y.github.io
+                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через скрипт') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#yohoho" class="csstip" title="<%= __('Параметры плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="yohoho" <% if (modules.player.data.display === 'yohoho') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.yohoho.player" value="<%= modules.player.data.yohoho.player %>" class="form-control" type="text" placeholder="<%= __('Видео-хостинги источники') %>">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-lg-6 col-xs-6 text-right">
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.yohoho.trailer" value="<%= modules.player.data.yohoho.trailer %>" class="form-control" type="text" placeholder="<%= __('Видео-хостинги источники трейлеров') %>">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-lg-6 col-xs-6 text-right">
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.yohoho.bg" value="<%= modules.player.data.yohoho.bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет элементов в плеере') %>">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-lg-6 col-xs-6 text-right">
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.yohoho.button" value="<%= modules.player.data.yohoho.button %>" class="form-control" type="text" placeholder="videocdn: Player, collaps: Online">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Kodik.cc
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#kodik" class="csstip" title="<%= __('Указание токен-ключа плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="kodik" <% if (modules.player.data.display === 'kodik') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.kodik.token" value="<%= modules.player.data.kodik.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Iframe.video
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#iframe" class="csstip" title="<%= __('Указание токен-ключа плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="iframe" <% if (modules.player.data.display === 'iframe') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.iframe.token" value="<%= modules.player.data.iframe.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Videocdn.tv
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#videocdn" class="csstip" title="<%= __('Указание api_token-ключа плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="videocdn" <% if (modules.player.data.display === 'videocdn') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.videocdn.token" value="<%= modules.player.data.videocdn.token %>" class="form-control" type="text" placeholder="<%= __('api_token-ключ') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Collaps.org
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#collaps" class="csstip" title="<%= __('Указание токен-ключа плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="collaps" <% if (modules.player.data.display === 'collaps') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.collaps.token" value="<%= modules.player.data.collaps.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;Hdvb.cc
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#hdvb" class="csstip" title="<%= __('Указание токен-ключа плеера') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.player.data.display" value="hdvb" <% if (modules.player.data.display === 'hdvb') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.player.data.hdvb.token" value="<%= modules.player.data.hdvb.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;YouTube.com
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#youtube" class="csstip" title="<%= __('Указание токен-ключа') %>"
-                                           target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#yohoho" class="csstip" title="<%= __('Параметры скрипта для получения видео-плееров с различных источников') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -287,7 +76,273 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.player.data.youtube.token" value="<%= modules.player.data.youtube.token %>" class="form-control" type="text" placeholder="<%= __('Токен-ключ') %>">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.player.data.display" value="yohoho" <% if (modules.player.data.display === 'yohoho') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="col-xs-4 custom-field">
+                                                <input type="text" class="form-control" placeholder="data-player" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="customKey">
+                                            </div>
+                                            <div class="col-xs-1 double-dot">:</div>
+                                            <div class="col-xs-5 custom-field">
+                                                <input type="text" class="form-control" placeholder="trailer" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="customValue">
+                                            </div>
+                                            <div class="col-xs-2" style="padding-right: 0;">
+                                                <a href="javascript:void(0)" class="btn btn-default btn-block" id="customAdd"><span class="fa fa-plus"></span></a>
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <%
+                                                var c;
+                                                if (modules.player.data.yohoho) {
+                                                    try {
+                                                        c = JSON.parse(modules.player.data.yohoho);
+                                                        c = Object.keys(c).length ? JSON.stringify(c) : '';
+                                                    } catch (e) {
+                                                        console.error(e);
+                                                    }
+                                                }
+                                            %>
+                                            <textarea class="form-control custom" name="modules.player.data.yohoho" placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
+                                            <script>
+                                              document.addEventListener('DOMContentLoaded', function () {
+                                                var json = document.querySelector('[name="modules.player.data.yohoho"]');
+                                                if (json) {
+                                                  jsonPretty();
+                                                  json.oninput = function () {
+                                                    jsonPretty();
+                                                  };
+                                                }
+
+                                                var customAdd = document.querySelector('#customAdd');
+                                                customAdd.addEventListener('click', function () {
+                                                  var customKey = document.querySelector('#customKey');
+                                                  var customValue = document.querySelector('#customValue');
+                                                  if (customKey && customKey.value && customValue && customValue.value) {
+                                                    var customString = document.querySelector('[name="modules.player.data.yohoho"]').value;
+                                                    var customJson = JSON.parse(customString);
+                                                    document.querySelector('[name="modules.player.data.yohoho"]').value =
+                                                      JSON.stringify(expand(
+                                                        customJson,
+                                                        customKey.value,
+                                                        (customValue.value === 'true')
+                                                          ? true
+                                                          : (customValue.value === 'false')
+                                                          ? false
+                                                          : (!customValue.value.replace(/[0-9]/g, ''))
+                                                            ? parseInt(customValue.value)
+                                                            : /^\[.*]$/.test(customValue.value)
+                                                              ? JSON.parse(customValue.value.replace(/'/g, '"'))
+                                                              : customValue.value
+                                                        )
+                                                      );
+                                                    jsonPretty();
+                                                    customKey.value = '';
+                                                    customValue.value = '';
+                                                  }
+                                                });
+                                              });
+
+                                              function jsonPretty() {
+                                                var ugly = document.querySelector('[name="modules.player.data.yohoho"]').value;
+                                                if (!ugly) return;
+                                                ugly = JSON.parse(ugly);
+                                                var cnt = 0;
+                                                c(ugly);
+                                                document.querySelector('[name="modules.player.data.yohoho"]').style.height = (50 + cnt*20) + 'px';
+                                                document.querySelector('[name="modules.player.data.yohoho"]').value =
+                                                  JSON.stringify(ugly, undefined, 4);
+
+                                                function c(obj) {
+                                                  Object.keys(obj).forEach(function(val) {
+                                                    if (typeof obj[val] === 'object') {
+                                                      c(obj[val]);
+                                                      cnt++;
+                                                    }
+                                                    cnt++;
+                                                  });
+                                                }
+                                              }
+
+                                              function expand(model, name, value) {
+                                                var items = name.split('.');
+                                                var output = model;
+                                                var ref = output;
+                                                for (var i = 0; i < items.length - 1; i++) {
+                                                  ref[items[i]] = (ref[items[i]])
+                                                    ? ref[items[i]]
+                                                    : {};
+                                                  ref = ref[items[i]];
+                                                }
+                                                ref[items[items.length - 1]] = value;
+                                                return output;
+                                              }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через API') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#yohoho" class="csstip" title="<%= __('Получение видео-плееров из нескольких API источников') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <div class="inline-labels">
+                                                <label>
+                                                    <input name="modules.player.data.display" value="custom" <% if (modules.player.data.display === 'custom') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-lg-12 col-xs-12">
+                                            <% if (modules.player.data.custom && modules.player.data.custom.length) { %>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                    <% modules.player.data.custom.forEach(function(data, num) { %>
+                                                        <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                        <% if (d.length < 2) return; %>
+                                                        <% if (data.charAt(0) === '#') { var custom_div = 'no-active'; } %>
+                                                        <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') { custom_i = 'text-success'; } %>
+                                                        <tr class="<%- custom_div %>">
+                                                            <td class="table-settings">
+                                                                <span><%- num+1 %>.</span>
+                                                            </td>
+                                                            <td class="table-content help-example">
+                                                                <div class="<%- custom_div %>">
+                                                                    <code>
+                                                                        <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                        ~ <span class="iframe"><%= d[1] %></span>
+                                                                        <% if (typeof d[2] !== 'undefined') { %>
+                                                                            ~ <span class="translate"><%= d[2] || '' %></span>
+                                                                        <% } %>
+                                                                        <% if (typeof d[3] !== 'undefined') { %>
+                                                                            ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                        <% } %>
+                                                                    </code>
+                                                                </div>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <span><i class="fa fa-circle <%- custom_i %> activate-api" data-parser="<%- encodeURIComponent(data) %>" data-activate-api="modules.player.data.custom"></i></span>
+                                                            </td>
+                                                            <td class="table-settings">
+                                                                <span><i class="fa fa-trash-alt text-danger delete-api" data-parser="<%- encodeURIComponent(data) %>" data-delete-api="modules.player.data.custom"></i></span>
+                                                            </td>
+                                                        </tr>
+                                                    <% }); %>
+                                                    </tbody>
+                                                </table>
+                                            <% } else { %>
+                                                <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                    <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                </div>
+                                            <% } %>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-lg-12 col-xs-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><span class="fas fa-list-ol"></span> <%= __('Редактировать список') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <textarea class="form-control custom" name="modules.player.data.custom" placeholder="url ~ iframe ~ translate ~ quality" style="height:300px;"><%- modules.player.data.custom.join('\n\n') %></textarea>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="helper-text-box text-left help-example-code">
+                                                                    <p>
+                                                                        <code>
+                                                                            <span class="url">url</span> ~
+                                                                            <span class="iframe">iframe</span> ~
+                                                                            <span class="translate">translate</span> ~
+                                                                            <span class="quality">quality</span>
+                                                                        </code>
+                                                                    </p>
+                                                                    <code class="text-muted" style="margin:1px 0 0 0">
+                                                                        &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0">
+                                                                        &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                        &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                        &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                        &nbsp;&nbsp;[title] - Title
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                        &nbsp;&nbsp;[year] - Year
+                                                                    </code><br>
+                                                                    <code class="url">
+                                                                        https://example.com/api?imdb_id=[imdb_id]
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:1px 0 0 0">
+                                                                        &nbsp;&nbsp;{ results: [ {
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0">
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe: '<span class="iframe">https://example.com/iframe</span>',
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0">
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate: '<span class="translate">Subtitle</span>',
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0">
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality: '<span class="quality">4K</span>'
+                                                                    </code><br>
+                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                        &nbsp;&nbsp;} ] }
+                                                                    </code><br>
+                                                                    <code class="iframe">
+                                                                        results.0.iframe
+                                                                    </code><br>
+                                                                    <code class="translate">
+                                                                        results.0.translate
+                                                                    </code><br>
+                                                                    <code class="quality">
+                                                                        results.0.quality
+                                                                    </code>
+                                                                    <p>
+                                                                        <code>
+                                                                            <span class="url">https://example.com/api?imdb_id=[imdb_id]</span> ~
+                                                                            <span class="iframe">results.0.iframe</span>
+                                                                        </code>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

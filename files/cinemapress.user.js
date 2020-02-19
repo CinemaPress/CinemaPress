@@ -73,10 +73,10 @@ function parseData() {
   var kp_id = document.querySelector('[name="movie.kp_id"]')
     ? document.querySelector('[name="movie.kp_id"]').value
     : document.querySelector('[data-movie_kp_id]')
-      ? document.querySelector('[data-movie_kp_id]').dataset.movie_kp_id
-      : document.querySelector('[data-id]')
-        ? document.querySelector('[data-id]').dataset.id
-        : '';
+    ? document.querySelector('[data-movie_kp_id]').dataset.movie_kp_id
+    : document.querySelector('[data-id]')
+    ? document.querySelector('[data-id]').dataset.id
+    : '';
   var tmdb_id = document.querySelector('[name="movie.tmdb_id"]')
     ? document.querySelector('[name="movie.tmdb_id"]').value
     : '';
@@ -271,11 +271,11 @@ function parseData() {
       if (movieData.poster) {
         src.src =
           movieData.poster === '1'
-            ? 'https://k.1poster.net/images/film_iphone/iphone180_' +
-              kp_id +
-              '.jpg'
-            : movieData.poster[0] === '/'
-            ? 'https://image.tmdb.org/t/p/w185' + movieData.poster
+            ? '/files/poster/medium/' + kp_id + '.jpg'
+            : /\/[0-9a-z]*\.(jpg|png)/i.test(movieData.poster)
+            ? '/files/poster/medium' + movieData.poster
+            : /\/[0-9a-z@.,_\-]\.(jpg|png)/i.test(movieData.poster)
+            ? '/files/poster/medium' + movieData.poster
             : movieData.poster;
       }
 
@@ -527,7 +527,10 @@ function parseOMDb(res) {
       .filter(Boolean)
       .join(','),
     description: res.Plot && res.Plot !== 'N/A' ? res.Plot : '',
-    poster: res.Poster && res.Poster !== 'N/A' ? res.Poster : '',
+    poster:
+      res.Poster && res.Poster !== 'N/A'
+        ? res.Poster.replace(/.*?(\/[a-z0-9]*@).*/i, '$1') + '.jpg'
+        : '',
     imdb_rating:
       res.imdbRating && res.imdbRating !== 'N/A'
         ? Math.floor(parseInt(res.imdbRating) * 10)
@@ -563,7 +566,7 @@ function parseKP(r) {
             return v.toLowerCase();
           })
           .filter(function(g) {
-            return g !== 'зарубежные';
+            return g !== 'зарубежные' && g !== 'зарубежный';
           })
       : []
     ).join(','),

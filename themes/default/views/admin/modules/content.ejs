@@ -497,170 +497,113 @@
                             </header>
                             <div class="faq-content clearfix">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-lg-12 col-xs-12">
+                                        <% if (modules.content.data.custom && modules.content.data.custom.length) { %>
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                <% modules.content.data.custom.forEach(function(data, num) { %>
+                                                    <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                    <% if (d.length < 3) return; %>
+                                                    <% if (data.charAt(0) === '#') { var custom_div = 'no-active'; } %>
+                                                    <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') { custom_i = 'text-success'; } %>
+                                                    <tr class="<%- custom_div %>">
+                                                        <td class="table-settings">
+                                                            <span><%- num+1 %>.</span>
+                                                        </td>
+                                                        <td class="table-content help-example">
+                                                            <div class="<%- custom_div %>">
+                                                                <code>
+                                                                    <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                    ~ <span class="kinopoisk_id"><%= d[1] %></span>
+                                                                    ~ <span class="collection"><%= d[2] || '' %></span>
+                                                                    <% if (typeof d[3] !== 'undefined') { %>
+                                                                        ~ <span class="translate"><%= d[3] || '' %></span>
+                                                                    <% } %>
+                                                                    <% if (typeof d[4] !== 'undefined') { %>
+                                                                        ~ <span class="quality"><%= d[4] || '' %></span>
+                                                                    <% } %>
+                                                                </code>
+                                                            </div>
+                                                        </td>
+                                                        <td class="table-settings">
+                                                            <span><i class="fa fa-circle <%- custom_i %> activate-api" data-parser="<%- encodeURIComponent(data) %>" data-activate-api="modules.content.data.custom"></i></span>
+                                                        </td>
+                                                        <td class="table-settings">
+                                                            <span><i class="fa fa-trash-alt text-danger delete-api" data-parser="<%- encodeURIComponent(data) %>" data-delete-api="modules.content.data.custom"></i></span>
+                                                        </td>
+                                                    </tr>
+                                                <% }); %>
+                                                </tbody>
+                                            </table>
+                                        <% } else { %>
+                                            <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                <code><%= __('Добавьте в список хотя бы один API-сервис данных') %></code>
+                                            </div>
+                                        <% } %>
+                                    </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="col-lg-12 col-xs-12">
                                         <div class="faq">
                                             <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Обновления с videocdn') %></h3>
+                                                <header class="text-muted text-left">
+                                                    <i class="fa fa-plus"></i>
+                                                    <h3><span class="fas fa-list-ol"></span> <%= __('Редактировать список') %></h3>
                                                 </header>
                                                 <div class="faq-content clearfix">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления фильмов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#videocdn" class="csstip" title="<%= __('Последние добавленные фильмы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.videocdn_movies.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.videocdn_movies.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.videocdn_movies.url" value="<%= modules.content.data.auto.videocdn_movies.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять фильмы') %>">
-                                                                        </div>
+                                                            <textarea class="form-control custom" name="modules.content.data.custom" placeholder="url ~ kinopoisk_id ~ collection ~ translate ~ quality" style="height:300px;"><%- modules.content.data.custom.join('\n\n') %></textarea>
+                                                        </div>
 
-                                                                        <div class="spacer-10"></div>
+                                                        <div class="spacer-10"></div>
 
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_movies.quality" value="1" <% if (modules.content.data.auto.videocdn_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_movies.quality" value="0" <% if (!modules.content.data.auto.videocdn_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_movies.translate" value="1" <% if (modules.content.data.auto.videocdn_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_movies.translate" value="0" <% if (!modules.content.data.auto.videocdn_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="spacer-10"></div>
-
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления сериалов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#videocdn" class="csstip" title="<%= __('Последние добавленные сериалы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.videocdn_serials.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.videocdn_serials.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.videocdn_serials.url" value="<%= modules.content.data.auto.videocdn_serials.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять сериалы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_serials.quality" value="1" <% if (modules.content.data.auto.videocdn_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_serials.quality" value="0" <% if (!modules.content.data.auto.videocdn_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_serials.translate" value="1" <% if (modules.content.data.auto.videocdn_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.videocdn_serials.translate" value="0" <% if (!modules.content.data.auto.videocdn_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="helper-text-box text-left help-example-code">
+                                                                <p>
+                                                                    <code>
+                                                                        <span class="url">url</span> ~
+                                                                        <span class="kinopoisk_id">kinopoisk_id</span> ~
+                                                                        <span class="collection">collection</span> ~
+                                                                        <span class="translate">translate</span> ~
+                                                                        <span class="quality">quality</span>
+                                                                    </code>
+                                                                </p>
+                                                                <code class="url">
+                                                                    https://example.com/updates
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:1px 0 0 0">
+                                                                    &nbsp;&nbsp;{ results: [ {
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kinopoisk_id: <span class="iframe">1048334</span>,
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate: ['<span class="translate">Subtitle</span>', 'English'],
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality: '<span class="quality">4K</span>'
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0 0 1px 0">
+                                                                    &nbsp;&nbsp;} ] }
+                                                                </code><br>
+                                                                <code class="iframe">
+                                                                    results.0.kinopoisk_id
+                                                                </code><br>
+                                                                <code class="translate">
+                                                                    results.0.translate.0
+                                                                </code><br>
+                                                                <code class="quality">
+                                                                    results.0.quality
+                                                                </code>
+                                                                <p>
+                                                                    <code>
+                                                                        <span class="url">https://example.com/updates</span> ~
+                                                                        <span class="kinopoisk_id">results.0.kinopoisk_id</span> ~
+                                                                        <span class="collection">latest-updates</span>
+                                                                    </code>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -668,550 +611,75 @@
                                             </article>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="spacer-10"></div>
+                                    <div class="spacer-10"></div>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-lg-12 col-xs-12">
                                         <div class="faq">
                                             <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Обновления с hdvb') %></h3>
+                                                <header class="text-muted text-left">
+                                                    <i class="fa fa-plus"></i>
+                                                    <h3><span class="fas fa-list-alt"></span> <%= __('Парсинг веб-сайтов') %></h3>
                                                 </header>
                                                 <div class="faq-content clearfix">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления фильмов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#hdvb" class="csstip" title="<%= __('Последние добавленные фильмы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.hdvb_movies.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.hdvb_movies.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.hdvb_movies.url" value="<%= modules.content.data.auto.hdvb_movies.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять фильмы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_movies.quality" value="1" <% if (modules.content.data.auto.hdvb_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_movies.quality" value="0" <% if (!modules.content.data.auto.hdvb_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_movies.translate" value="1" <% if (modules.content.data.auto.hdvb_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_movies.translate" value="0" <% if (!modules.content.data.auto.hdvb_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="spacer-10"></div>
-
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления сериалов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#hdvb" class="csstip" title="<%= __('Последние добавленные сериалы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.hdvb_serials.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.hdvb_serials.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.hdvb_serials.url" value="<%= modules.content.data.auto.hdvb_serials.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять сериалы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_serials.quality" value="1" <% if (modules.content.data.auto.hdvb_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_serials.quality" value="0" <% if (!modules.content.data.auto.hdvb_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_serials.translate" value="1" <% if (modules.content.data.auto.hdvb_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.hdvb_serials.translate" value="0" <% if (!modules.content.data.auto.hdvb_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <textarea class="form-control" name="modules.content.data.scraper" placeholder="hour ~ url ~ post ~ kinopoisk_id ~ collection" style="height:300px;"><% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %><% } %></textarea>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="spacer-10"></div>
+                                                        <div class="spacer-10"></div>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="faq">
-                                            <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Обновления с kodik') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
                                                         <div class="col-sm-12">
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления фильмов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#kodik" class="csstip" title="<%= __('Последние добавленные фильмы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.kodik_movies.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.kodik_movies.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.kodik_movies.url" value="<%= modules.content.data.auto.kodik_movies.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять фильмы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_movies.quality" value="1" <% if (modules.content.data.auto.kodik_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_movies.quality" value="0" <% if (!modules.content.data.auto.kodik_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_movies.translate" value="1" <% if (modules.content.data.auto.kodik_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_movies.translate" value="0" <% if (!modules.content.data.auto.kodik_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="helper-text-box text-left help-example-code">
+                                                                <p>
+                                                                    <code>
+                                                                        <span class="quality">3</span> ~
+                                                                        <span class="url">url</span> ~
+                                                                        <span class="translate">post</span> ~
+                                                                        <span class="kinopoisk_id">kinopoisk_id</span> ~
+                                                                        <span class="collection">collection</span>
+                                                                    </code>
+                                                                </p>
+                                                                <code class="url">
+                                                                    https://example.com
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:1px 0 0 0">
+                                                                    &nbsp;&nbsp;&lt;body&gt;
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;/post-title.html&quot; class=&quot;link&quot;&gt;Title&lt;/a&gt;
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0 0 1px 0">
+                                                                    &nbsp;&nbsp;&lt;/body&gt;
+                                                                </code><br>
+                                                                <code class="translate">
+                                                                    href=&quot;(\/.*?\.html)&quot;
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:1px 0 0 0">
+                                                                    &nbsp;&nbsp;&lt;body&gt;
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0">
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://www.kinopoisk.ru/film/1183582/&quot;&gt;KP&lt;/a&gt;
+                                                                </code><br>
+                                                                <code class="text-muted" style="margin:0 0 1px 0">
+                                                                    &nbsp;&nbsp;&lt;/body&gt;
+                                                                </code><br>
+                                                                <code class="kinopoisk_id">
+                                                                    \/film\/([0-9]{3,10})\/&quot;
+                                                                </code><br>
+                                                                <code class="collection">
+                                                                    latest-updates
+                                                                </code>
+                                                                <p>
+                                                                    <code>
+                                                                        <span class="quality">3</span> ~
+                                                                        <span class="url">https://example.com</span> ~
+                                                                        <span class="translate">href=&quot;(\/.*?\.html)&quot;</span> ~
+                                                                        <span class="kinopoisk_id">\/film\/([0-9]{3,10})\/&quot;</span> ~
+                                                                        <span class="collection">latest-updates</span>
+                                                                    </code>
+                                                                </p>
                                                             </div>
-
-                                                            <div class="spacer-10"></div>
-
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления сериалов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#kodik" class="csstip" title="<%= __('Последние добавленные сериалы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.kodik_serials.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.kodik_serials.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.kodik_serials.url" value="<%= modules.content.data.auto.kodik_serials.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять сериалы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_serials.quality" value="1" <% if (modules.content.data.auto.kodik_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_serials.quality" value="0" <% if (!modules.content.data.auto.kodik_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_serials.translate" value="1" <% if (modules.content.data.auto.kodik_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.kodik_serials.translate" value="0" <% if (!modules.content.data.auto.kodik_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="spacer-10"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="faq">
-                                            <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Обновления с iframe') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления фильмов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#iframe" class="csstip" title="<%= __('Последние добавленные фильмы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.iframe_movies.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.iframe_movies.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.iframe_movies.url" value="<%= modules.content.data.auto.iframe_movies.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять фильмы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_movies.quality" value="1" <% if (modules.content.data.auto.iframe_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_movies.quality" value="0" <% if (!modules.content.data.auto.iframe_movies.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_movies.translate" value="1" <% if (modules.content.data.auto.iframe_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_movies.translate" value="0" <% if (!modules.content.data.auto.iframe_movies.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="spacer-10"></div>
-
-                                                            <div class="cinema-box">
-                                                                <div class="cinema-box-header">
-                                                                    <div class="cinema-label">
-                                                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновления сериалов') %>
-                                                                    </div>
-                                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#iframe" class="csstip" title="<%= __('Последние добавленные сериалы на видео-хостинг') %>"
-                                                                           target="_blank">
-                                                                            <i class="fa fa-info-circle"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="inner-padding">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3">
-                                                                            <select name="modules.content.data.auto.iframe_serials.count" class="form-control without">
-                                                                                <% for (var i = 0; i <= 100; i++) { %>
-                                                                                    <% if (modules.content.data.auto.iframe_serials.count === i) { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>" selected="selected">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } else { %>
-                                                                                        <% if (i === 0) { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%= __('Не добавлять') %>
-                                                                                            </option>
-                                                                                        <% } else { %>
-                                                                                            <option value="<%= i %>">
-                                                                                                <%- i %> <%= __('сериала(ов)') %>
-                                                                                            </option>
-                                                                                        <% } %>
-                                                                                    <% } %>
-                                                                                <% } %>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" name="modules.content.data.auto.iframe_serials.url" value="<%= modules.content.data.auto.iframe_serials.url %>" class="form-control" placeholder="<%= __('URL-ключ коллекции в которую добавлять сериалы') %>">
-                                                                        </div>
-
-                                                                        <div class="spacer-10"></div>
-
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять качество:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_serials.quality" value="1" <% if (modules.content.data.auto.iframe_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_serials.quality" value="0" <% if (!modules.content.data.auto.iframe_serials.quality) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="inline-labels">
-                                                                                <label>
-                                                                                    <span style="font-weight: normal;"><%= __('Обновлять перевод:') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_serials.translate" value="1" <% if (modules.content.data.auto.iframe_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
-                                                                                </label>
-                                                                                <label>
-                                                                                    <input name="modules.content.data.auto.iframe_serials.translate" value="0" <% if (!modules.content.data.auto.iframe_serials.translate) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="spacer-10"></div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="faq">
-                                            <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Инструмент для парсинга веб-страниц') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <textarea class="form-control" name="modules.content.data.scraper" placeholder="everyHour~goToUrl~regexpUrlPost~regexpId~saveToCollection"><% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %><% } %></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

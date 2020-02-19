@@ -469,6 +469,10 @@
                     'modules.related.data.types.country.name',
                     'modules.related.data.types.actor.name',
                     'modules.related.data.types.director.name',
+                    'modules.player.data.custom',
+                    'modules.content.data.custom',
+                    'modules.episode.data.custom',
+                    'modules.episode.data.index.custom',
                     'modules.player.data.yohoho.trailer',
                     'modules.player.data.yohoho.button',
                     'modules.player.data.iframe.token',
@@ -609,6 +613,22 @@
             data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
         }
 
+        if (data.modules && data.modules.player && data.modules.player.data.custom) {
+            data.modules.player.data.custom = data.modules.player.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+        }
+
+        if (data.modules && data.modules.content && data.modules.content.data.custom) {
+            data.modules.content.data.custom = data.modules.content.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+        }
+
+        if (data.modules && data.modules.episode && data.modules.episode.data.custom) {
+            data.modules.episode.data.custom = data.modules.episode.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+        }
+
+        if (data.modules && data.modules.episode && data.modules.episode.data.index.custom) {
+            data.modules.episode.data.index.custom = data.modules.episode.data.index.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+        }
+
         if (data.comment && data.comment.comment_text) {
             data.comment.comment_text = data.comment.comment_text.replace(/\n/ig, '\[br]');
         }
@@ -632,8 +652,8 @@
 
         if (data.config && data.config.subdomain) {
           data.config.subdomain = data.config.subdomain.replace(/\./g, '') + '.';
-          if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.') {
-            alert('NOT «m.», «tv.», «www.»!');
+          if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.' || data.config.subdomain === 'app.') {
+            alert('NOT «m.», «tv.», «www.», «app.»!');
             self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
             self.addEventListener('click', saveData);
             return;
@@ -932,6 +952,65 @@
             document.querySelector('[data-renamed]').dataset.renamed = link;
         }
     }
+
+    (function() {
+      var allForms = document.querySelectorAll('input,textarea');
+      if (!allForms) return;
+      allForms.forEach(function (af) {
+        if (!af) return;
+        af.setAttribute('autocomplete', 'off');
+        af.setAttribute('autocapitalize', 'off');
+        af.setAttribute('spellcheck', 'false');
+      })
+    })();
+
+    function changeApi(custom_name) {
+      document.querySelectorAll('[data-delete-api="' + custom_name + '"]').forEach(function(dp) {
+        dp.addEventListener('click', function() {
+          var custom = document.querySelector('[name="' + custom_name + '"]');
+          custom.value = decodeURIComponent(encodeURIComponent(custom.value)
+            .replace('%23%20' + this.dataset.parser.replace(/^%23(%20)*/, ''), '')
+            .replace(this.dataset.parser.replace(/^%23(%20)*/, ''), ''))
+            .replace(/\n\n+/g, '\n\n')
+            .replace(/(^\s*)|(\s*)$/g, '');
+          this.parentElement.parentElement.parentElement.innerHTML = '';
+        });
+      });
+      document.querySelectorAll('[data-activate-api="' + custom_name + '"]').forEach(function(ap) {
+        ap.addEventListener('click', function() {
+          var active = this.dataset.parser.substring(0, 3) !== '%23';
+          var custom = document.querySelector('[name="' + custom_name + '"]');
+          custom.value = decodeURIComponent(encodeURIComponent(custom.value)
+            .replace(this.dataset.parser, active
+              ? '%23%20' + this.dataset.parser
+              : this.dataset.parser.replace(/^%23(%20)*/, '')
+            )
+          )
+            .replace(/\n\n+/g, '\n\n')
+            .replace(/(^\s*)|(\s*)$/g, '');
+          this.dataset.parser = active
+            ? '%23%20' + this.dataset.parser
+            : this.dataset.parser.replace(/^%23(%20)*/, '');
+          this.parentElement.parentElement.parentElement
+            .setAttribute('class', active ? 'no-active' : '');
+          this.setAttribute('class', this.getAttribute('class')
+            .replace(active
+              ? 'text-success'
+              : 'text-muted',
+              active
+                ? 'text-muted'
+                : 'text-success'
+            )
+          );
+        });
+      });
+    }
+
+    ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom'].forEach(function(ca) {
+      if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
+        changeApi(ca);
+      }
+    })
 </script>
 
 <script src="/themes/default/public/admin/js/particles.min.js"></script>

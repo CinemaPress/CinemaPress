@@ -627,6 +627,112 @@
                                                                     <textarea name="modules.comments.data.fast.stopworls" class="form-control"><%- modules.comments.data.fast.stopworls.join(',') %></textarea>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label">
+                                                                            <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last1" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                <select name="modules.comments.data.fast.recent.num_items" class="form-control">
+                                                                                    <% for (var i = 0; i <= 20; i++) { %>
+                                                                                        <% if (modules.comments.data.fast.recent.num_items === i) { %>
+                                                                                            <% if (i === 0) { %>
+                                                                                                <option value="<%= i %>" selected="selected">
+                                                                                                    <%= __('Не показывать') %>
+                                                                                                </option>
+                                                                                            <% } else { %>
+                                                                                                <option value="<%= i %>" selected="selected">
+                                                                                                    <%- i %> <%= __('комментария(ев)') %>
+                                                                                                </option>
+                                                                                            <% } %>
+                                                                                        <% } else { %>
+                                                                                            <% if (i === 0) { %>
+                                                                                                <option value="<%= i %>">
+                                                                                                    <%= __('Не показывать') %>
+                                                                                                </option>
+                                                                                            <% } else { %>
+                                                                                                <option value="<%= i %>">
+                                                                                                    <%- i %> <%= __('комментария(ев)') %>
+                                                                                                </option>
+                                                                                            <% } %>
+                                                                                        <% } %>
+                                                                                    <% } %>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="col-xs-4">
+                                                                                <select name="modules.comments.data.fast.recent.excerpt_length" class="form-control">
+                                                                                    <% for (var i = 50; i <= 500; i = i+50) { %>
+                                                                                        <% if (modules.comments.data.fast.recent.excerpt_length === i) { %>
+                                                                                            <option value="<%= i %>" selected="selected">
+                                                                                                <%= __('Макс. %s символов', i) %>
+                                                                                            </option>
+                                                                                        <% } else { %>
+                                                                                            <option value="<%= i %>">
+                                                                                                <%= __('Макс. %s символов', i) %>
+                                                                                            </option>
+                                                                                        <% } %>
+                                                                                    <% } %>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="col-xs-4">
+                                                                                <select name="modules.comments.data.fast.recent.hide_avatars" class="form-control">
+                                                                                    <% if (modules.comments.data.fast.recent.hide_avatars) { %>
+                                                                                        <option value="1" selected="selected">
+                                                                                            <%= __('без аватара') %>
+                                                                                        </option>
+                                                                                        <option value="0">
+                                                                                            <%= __('с аватаром') %>
+                                                                                        </option>
+                                                                                    <% } else { %>
+                                                                                        <option value="1">
+                                                                                            <%= __('без аватара') %>
+                                                                                        </option>
+                                                                                        <option value="0" selected="selected">
+                                                                                            <%= __('с аватаром') %>
+                                                                                        </option>
+                                                                                    <% } %>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <%= __('На страницах:') %>
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        <input name="modules.comments.data.fast.recent.display" value="index" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        <input name="modules.comments.data.fast.recent.display" value="category" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        <input name="modules.comments.data.fast.recent.display" value="content" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        <input name="modules.comments.data.fast.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </article>
@@ -712,21 +818,22 @@
                                                                 .replace(/\s+/g, ' ')
                                                                 .replace(/(^\s*)|(\s*)$/g, '') %>
                                                          <% var dc = new Date(parseInt(comment.comment_publish) - 719528 * 1000 * 60 * 60 * 24) %>
+                                                         <% var comment_publish = ('0' + dc.getHours()).slice(-2) + ":" + ('0' + dc.getMinutes()).slice(-2) + ' ' + ('0' + dc.getDate()).slice(-2) + "-" + (('0' + (dc.getMonth()+1)).slice(-2)) + "-" + dc.getFullYear(); %>
                                                         <tr>
                                                             <td class="table-content" style="text-align: justify">
                                                                 <div style="float: right">
-                                                                    <span class="table-content-key"><%- ('0' + dc.getHours()).slice(-2) + ":" + ('0' + dc.getMinutes()).slice(-2) + ' ' + ('0' + dc.getDate()).slice(-2) + "-" + (('0' + dc.getMonth()+1).slice(-2)) + "-" + dc.getFullYear() %></span>
+                                                                    <span class="table-content-key"><i class="far fa-clock text-muted"></i>&nbsp;<%- comment_publish %></span>
                                                                     <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>#comment-admin"><i class="fas fa-reply-all" style="color:#008083"></i></a>
                                                                 </div>
                                                                 <style>.fa-reply-all:hover{opacity: .6}</style>
                                                                 <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                                                    <span class="table-content-key"><%- comment.comment_anonymous %></span> <span class="table-content-key"><%- comment.comment_title %></span>
+                                                                    <span class="table-content-key"><i class="far fa-user text-muted"></i>&nbsp;<%- comment.comment_anonymous %></span> <span class="table-content-key"><i class="fas fa-film text-muted"></i>&nbsp;<%- comment.comment_title %></span>
                                                                 </div>
-                                                                <span><%= (text.length >= 300
+                                                                <span style="font-size:12px"><%= (text.length >= 300
                                                                             ? text.slice(0, 300) + '...'
                                                                             : text) %></span>
                                                                 <% if (admin) { %>
-                                                                <span style="display: block;padding: 5px;border-radius: 5px;border:2px #2f374b dotted;margin: 5px 0 0 0;"><%= (admin.length >= 300
+                                                                <span style="display:block;padding:5px;border-radius:5px;border:2px #2f374b dotted;margin:5px 0 0 0;font-size:12px"><%= (admin.length >= 300
                                                                             ? admin.slice(0, 300) + '...'
                                                                             : admin) %></span>
                                                                 <% } %>
@@ -754,106 +861,144 @@
                                             </div>
 
                                         <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                        <div class="spacer-10"></div>
+                        <div class="spacer-10"></div>
 
-                                        <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label">
-                                                        <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
-                                                    </div>
-                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last1" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </div>
+                        <div class="col-sm-12">
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('Disqus') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="fa fa-comment"></i>&nbsp;&nbsp;&nbsp;<%= __('Disqus') %>
                                                 </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.fast.recent.num_items" class="form-control">
-                                                                <% for (var i = 0; i <= 20; i++) { %>
-                                                                    <% if (modules.comments.data.fast.recent.num_items === i) { %>
-                                                                        <% if (i === 0) { %>
-                                                                            <option value="<%= i %>" selected="selected">
-                                                                                <%= __('Не показывать') %>
-                                                                            </option>
-                                                                        <% } else { %>
-                                                                            <option value="<%= i %>" selected="selected">
-                                                                                <%- i %> <%= __('комментария(ев)') %>
-                                                                            </option>
-                                                                        <% } %>
-                                                                    <% } else { %>
-                                                                        <% if (i === 0) { %>
-                                                                            <option value="<%= i %>">
-                                                                                <%= __('Не показывать') %>
-                                                                            </option>
-                                                                        <% } else { %>
-                                                                            <option value="<%= i %>">
-                                                                                <%- i %> <%= __('комментария(ев)') %>
-                                                                            </option>
-                                                                        <% } %>
-                                                                    <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt1" class="csstip" title="<%= __('Ваш shortname указанный при регистрации веб-сайта на Disqus.com и ключ API') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-xs-6 text-center">
+                                                        <input name="modules.comments.data.disqus.shortname" value="<%= modules.comments.data.disqus.shortname %>" class="form-control" type="text" placeholder="<%= __('Ваш shortname веб-сайта') %>">
+                                                    </div>
 
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.fast.recent.excerpt_length" class="form-control">
-                                                                <% for (var i = 50; i <= 500; i = i+50) { %>
-                                                                    <% if (modules.comments.data.fast.recent.excerpt_length === i) { %>
-                                                                        <option value="<%= i %>" selected="selected">
-                                                                            <%= __('Макс. %s символов', i) %>
-                                                                        </option>
-                                                                    <% } else { %>
-                                                                        <option value="<%= i %>">
-                                                                            <%= __('Макс. %s символов', i) %>
-                                                                        </option>
-                                                                    <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                    <div class="col-lg-6 col-xs-6 text-center">
+                                                        <input name="modules.comments.data.disqus.api_key" value="<%= modules.comments.data.disqus.api_key %>" class="form-control" type="text" placeholder="<%= __('Ваш api_key для индексации комментариев') %>">
+                                                    </div>
 
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.fast.recent.hide_avatars" class="form-control">
-                                                                <% if (modules.comments.data.fast.recent.hide_avatars) { %>
-                                                                    <option value="1" selected="selected">
-                                                                        <%= __('без аватара') %>
-                                                                    </option>
-                                                                    <option value="0">
-                                                                        <%= __('с аватаром') %>
-                                                                    </option>
-                                                                <% } else { %>
-                                                                    <option value="1">
-                                                                        <%= __('без аватара') %>
-                                                                    </option>
-                                                                    <option value="0" selected="selected">
-                                                                        <%= __('с аватаром') %>
-                                                                    </option>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                    <div class="spacer-10"></div>
 
-                                                        <div class="spacer-10"></div>
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
+                                                                </div>
+                                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last1" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-xs-4">
+                                                                        <select name="modules.comments.data.disqus.recent.num_items" class="form-control">
+                                                                            <% for (var i = 0; i <= 20; i++) { %>
+                                                                                <% if (modules.comments.data.disqus.recent.num_items === i) { %>
+                                                                                    <% if (i === 0) { %>
+                                                                                        <option value="<%= i %>" selected="selected">
+                                                                                            <%= __('Не показывать') %>
+                                                                                        </option>
+                                                                                    <% } else { %>
+                                                                                        <option value="<%= i %>" selected="selected">
+                                                                                            <%- i %> <%= __('комментария(ев)') %>
+                                                                                        </option>
+                                                                                    <% } %>
+                                                                                <% } else { %>
+                                                                                    <% if (i === 0) { %>
+                                                                                        <option value="<%= i %>">
+                                                                                            <%= __('Не показывать') %>
+                                                                                        </option>
+                                                                                    <% } else { %>
+                                                                                        <option value="<%= i %>">
+                                                                                            <%- i %> <%= __('комментария(ев)') %>
+                                                                                        </option>
+                                                                                    <% } %>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
 
-                                                        <div class="col-lg-12 col-xs-12 text-center">
-                                                            <div class="inline-labels">
-                                                                <label>
-                                                                    <%= __('На страницах:') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.fast.recent.display" value="index" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.fast.recent.display" value="category" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.fast.recent.display" value="content" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.fast.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.fast.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
-                                                                </label>
+                                                                    <div class="col-xs-4">
+                                                                        <select name="modules.comments.data.disqus.recent.excerpt_length" class="form-control">
+                                                                            <% for (var i = 50; i <= 500; i = i+50) { %>
+                                                                                <% if (modules.comments.data.disqus.recent.excerpt_length === i) { %>
+                                                                                    <option value="<%= i %>" selected="selected">
+                                                                                        <%= __('Макс. %s символов', i) %>
+                                                                                    </option>
+                                                                                <% } else { %>
+                                                                                    <option value="<%= i %>">
+                                                                                        <%= __('Макс. %s символов', i) %>
+                                                                                    </option>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="col-xs-4">
+                                                                        <select name="modules.comments.data.disqus.recent.hide_avatars" class="form-control">
+                                                                            <% if (modules.comments.data.disqus.recent.hide_avatars) { %>
+                                                                                <option value="1" selected="selected">
+                                                                                    <%= __('без аватара') %>
+                                                                                </option>
+                                                                                <option value="0">
+                                                                                    <%= __('с аватаром') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="1">
+                                                                                    <%= __('без аватара') %>
+                                                                                </option>
+                                                                                <option value="0" selected="selected">
+                                                                                    <%= __('с аватаром') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                                        <div class="inline-labels">
+                                                                            <label>
+                                                                                <%= __('На страницах:') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.disqus.recent.display" value="index" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.disqus.recent.display" value="category" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.disqus.recent.display" value="content" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.disqus.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -861,133 +1006,123 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-comment"></i>&nbsp;&nbsp;&nbsp;<%= __('Disqus') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt1" class="csstip" title="<%= __('Ваш shortname указанный при регистрации веб-сайта на Disqus.com и ключ API') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.comments.data.disqus.shortname" value="<%= modules.comments.data.disqus.shortname %>" class="form-control" type="text" placeholder="<%= __('Ваш shortname веб-сайта') %>">
-                                        </div>
-
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.comments.data.disqus.api_key" value="<%= modules.comments.data.disqus.api_key %>" class="form-control" type="text" placeholder="<%= __('Ваш api_key для индексации комментариев') %>">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label">
-                                                        <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
-                                                    </div>
-                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last1" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </div>
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('HyperComments') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="fa fa-comments"></i>&nbsp;&nbsp;&nbsp;<%= __('HyperComments') %>
                                                 </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.disqus.recent.num_items" class="form-control">
-                                                                <% for (var i = 0; i <= 20; i++) { %>
-                                                                <% if (modules.comments.data.disqus.recent.num_items === i) { %>
-                                                                    <% if (i === 0) { %>
-                                                                    <option value="<%= i %>" selected="selected">
-                                                                        <%= __('Не показывать') %>
-                                                                    </option>
-                                                                    <% } else { %>
-                                                                    <option value="<%= i %>" selected="selected">
-                                                                        <%- i %> <%= __('комментария(ев)') %>
-                                                                    </option>
-                                                                    <% } %>
-                                                                <% } else { %>
-                                                                    <% if (i === 0) { %>
-                                                                    <option value="<%= i %>">
-                                                                        <%= __('Не показывать') %>
-                                                                    </option>
-                                                                    <% } else { %>
-                                                                    <option value="<%= i %>">
-                                                                        <%- i %> <%= __('комментария(ев)') %>
-                                                                    </option>
-                                                                    <% } %>
-                                                                <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt2" class="csstip" title="<%= __('Укажите widget_id который Вы получите после создания виджета комментариев на HyperComments.com и sekretkey для индексации комментариев поисковыми системами') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-xs-6 text-center">
+                                                        <input name="modules.comments.data.hypercomments.widget_id" value="<%= modules.comments.data.hypercomments.widget_id %>" class="form-control" type="text" placeholder="<%= __('Ваш widget_id') %>">
+                                                    </div>
 
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.disqus.recent.excerpt_length" class="form-control">
-                                                                <% for (var i = 50; i <= 500; i = i+50) { %>
-                                                                <% if (modules.comments.data.disqus.recent.excerpt_length === i) { %>
-                                                                <option value="<%= i %>" selected="selected">
-                                                                    <%= __('Макс. %s символов', i) %>
-                                                                </option>
-                                                                <% } else { %>
-                                                                <option value="<%= i %>">
-                                                                    <%= __('Макс. %s символов', i) %>
-                                                                </option>
-                                                                <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                    <div class="col-lg-6 col-xs-6 text-center">
+                                                        <input name="modules.comments.data.hypercomments.sekretkey" value="<%= modules.comments.data.hypercomments.sekretkey %>" class="form-control" type="text" placeholder="<%= __('Ваш sekretkey для индексации комментариев') %>">
+                                                    </div>
 
-                                                        <div class="col-xs-4">
-                                                            <select name="modules.comments.data.disqus.recent.hide_avatars" class="form-control">
-                                                                <% if (modules.comments.data.disqus.recent.hide_avatars) { %>
-                                                                <option value="1" selected="selected">
-                                                                    <%= __('без аватара') %>
-                                                                </option>
-                                                                <option value="0">
-                                                                    <%= __('с аватаром') %>
-                                                                </option>
-                                                                <% } else { %>
-                                                                <option value="1">
-                                                                    <%= __('без аватара') %>
-                                                                </option>
-                                                                <option value="0" selected="selected">
-                                                                    <%= __('с аватаром') %>
-                                                                </option>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
+                                                    <div class="spacer-10"></div>
 
-                                                        <div class="spacer-10"></div>
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
+                                                                </div>
+                                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last2" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <select name="modules.comments.data.hypercomments.recent.num_items" class="form-control">
+                                                                            <% for (var i = 0; i <= 20; i++) { %>
+                                                                                <% if (modules.comments.data.hypercomments.recent.num_items === i) { %>
+                                                                                    <% if (i === 0) { %>
+                                                                                        <option value="<%= i %>" selected="selected">
+                                                                                            <%= __('Не показывать') %>
+                                                                                        </option>
+                                                                                    <% } else { %>
+                                                                                        <option value="<%= i %>" selected="selected">
+                                                                                            <%- i %> <%= __('комментария(ев)') %>
+                                                                                        </option>
+                                                                                    <% } %>
+                                                                                <% } else { %>
+                                                                                    <% if (i === 0) { %>
+                                                                                        <option value="<%= i %>">
+                                                                                            <%= __('Не показывать') %>
+                                                                                        </option>
+                                                                                    <% } else { %>
+                                                                                        <option value="<%= i %>">
+                                                                                            <%- i %> <%= __('комментария(ев)') %>
+                                                                                        </option>
+                                                                                    <% } %>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
 
-                                                        <div class="col-lg-12 col-xs-12 text-center">
-                                                            <div class="inline-labels">
-                                                                <label>
-                                                                    <%= __('На страницах:') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.disqus.recent.display" value="index" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.disqus.recent.display" value="category" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.disqus.recent.display" value="content" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.disqus.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.disqus.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
-                                                                </label>
+                                                                    <div class="col-xs-6">
+                                                                        <select name="modules.comments.data.hypercomments.recent.excerpt_length" class="form-control">
+                                                                            <% for (var i = 50; i <= 500; i = i+50) { %>
+                                                                                <% if (modules.comments.data.hypercomments.recent.excerpt_length === i) { %>
+                                                                                    <option value="<%= i %>" selected="selected">
+                                                                                        <%= __('Макс. %s символов', i) %>
+                                                                                    </option>
+                                                                                <% } else { %>
+                                                                                    <option value="<%= i %>">
+                                                                                        <%= __('Макс. %s символов', i) %>
+                                                                                    </option>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                                        <div class="inline-labels">
+                                                                            <label>
+                                                                                <%= __('На страницах:') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.hypercomments.recent.display" value="index" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.hypercomments.recent.display" value="category" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.hypercomments.recent.display" value="content" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="modules.comments.data.hypercomments.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -995,217 +1130,143 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-comments"></i>&nbsp;&nbsp;&nbsp;<%= __('HyperComments') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt2" class="csstip" title="<%= __('Укажите widget_id который Вы получите после создания виджета комментариев на HyperComments.com и sekretkey для индексации комментариев поисковыми системами') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.comments.data.hypercomments.widget_id" value="<%= modules.comments.data.hypercomments.widget_id %>" class="form-control" type="text" placeholder="<%= __('Ваш widget_id') %>">
-                                        </div>
-
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <input name="modules.comments.data.hypercomments.sekretkey" value="<%= modules.comments.data.hypercomments.sekretkey %>" class="form-control" type="text" placeholder="<%= __('Ваш sekretkey для индексации комментариев') %>">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label">
-                                                        <i class="fa fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок последних комментариев') %>
-                                                    </div>
-                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#last2" class="csstip" title="<%= __('Блок с последними комментариями от пользователей') %>" target="_blank">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </div>
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('VK') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="far fa-comment"></i>&nbsp;&nbsp;&nbsp;<%= __('VK') %>
                                                 </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-xs-6">
-                                                            <select name="modules.comments.data.hypercomments.recent.num_items" class="form-control">
-                                                                <% for (var i = 0; i <= 20; i++) { %>
-                                                                <% if (modules.comments.data.hypercomments.recent.num_items === i) { %>
-                                                                <% if (i === 0) { %>
-                                                                <option value="<%= i %>" selected="selected">
-                                                                    <%= __('Не показывать') %>
-                                                                </option>
-                                                                <% } else { %>
-                                                                <option value="<%= i %>" selected="selected">
-                                                                    <%- i %> <%= __('комментария(ев)') %>
-                                                                </option>
-                                                                <% } %>
-                                                                <% } else { %>
-                                                                <% if (i === 0) { %>
-                                                                <option value="<%= i %>">
-                                                                    <%= __('Не показывать') %>
-                                                                </option>
-                                                                <% } else { %>
-                                                                <option value="<%= i %>">
-                                                                    <%- i %> <%= __('комментария(ев)') %>
-                                                                </option>
-                                                                <% } %>
-                                                                <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="col-xs-6">
-                                                            <select name="modules.comments.data.hypercomments.recent.excerpt_length" class="form-control">
-                                                                <% for (var i = 50; i <= 500; i = i+50) { %>
-                                                                <% if (modules.comments.data.hypercomments.recent.excerpt_length === i) { %>
-                                                                <option value="<%= i %>" selected="selected">
-                                                                    <%= __('Макс. %s символов', i) %>
-                                                                </option>
-                                                                <% } else { %>
-                                                                <option value="<%= i %>">
-                                                                    <%= __('Макс. %s символов', i) %>
-                                                                </option>
-                                                                <% } %>
-                                                                <% } %>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="spacer-10"></div>
-
-                                                        <div class="col-lg-12 col-xs-12 text-center">
-                                                            <div class="inline-labels">
-                                                                <label>
-                                                                    <%= __('На страницах:') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.hypercomments.recent.display" value="index" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('index')+1) { %> checked="" <% } %> data-name="index"><span></span> <%= __('главная') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.hypercomments.recent.display" value="category" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('category')+1) { %> checked="" <% } %> data-name="category"><span></span> <%= __('категория') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.hypercomments.recent.display" value="content" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('content')+1) { %> checked="" <% } %> data-name="content"><span></span> <%= __('контент') %>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="modules.comments.data.hypercomments.recent.display" value="movie" type="checkbox" <% if (modules.comments.data.hypercomments.recent.display.indexOf('movie')+1) { %> checked="" <% } %> data-name="movie"><span></span> <%= __('фильм') %>
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt3" class="csstip" title="<%= __('Ваш ID приложения типа «Веб-сайт» на vk.com') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input name="modules.comments.data.vk.app_id" value="<%= modules.comments.data.vk.app_id %>" class="form-control" type="text" placeholder="<%= __('Ваш ID приложения') %>">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="far fa-comment"></i>&nbsp;&nbsp;&nbsp;<%= __('VK') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt3" class="csstip" title="<%= __('Ваш ID приложения типа «Веб-сайт» на vk.com') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.comments.data.vk.app_id" value="<%= modules.comments.data.vk.app_id %>" class="form-control" type="text" placeholder="<%= __('Ваш ID приложения') %>">
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('Facebook') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="fa fa-comment-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Facebook') %>
+                                                </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt4" class="csstip" title="<%= __('Зарегистрируйтесь на facebook.com и укажите User Id (идентификатор пользователя, который сможет модерировать комментарии)') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input name="modules.comments.data.facebook.admins" value="<%= modules.comments.data.facebook.admins %>" class="form-control" type="text" placeholder="<%= __('Ваш ID на Facebook') %>">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-comment-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Facebook') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt4" class="csstip" title="<%= __('Зарегистрируйтесь на facebook.com и укажите User Id (идентификатор пользователя, который сможет модерировать комментарии)') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.comments.data.facebook.admins" value="<%= modules.comments.data.facebook.admins %>" class="form-control" type="text" placeholder="<%= __('Ваш ID на Facebook') %>">
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('Cackle') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="far fa-comments"></i>&nbsp;&nbsp;&nbsp;<%= __('Cackle') %>
+                                                </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt5" class="csstip" title="<%= __('Укажите ID который Вы получите после создания виджета комментариев на Cackle.me (платно)') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input name="modules.comments.data.cackle.id" value="<%= modules.comments.data.cackle.id %>" class="form-control" type="text" placeholder="<%= __('Ваш ID виджета') %>">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="far fa-comments"></i>&nbsp;&nbsp;&nbsp;<%= __('Cackle') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt5" class="csstip" title="<%= __('Укажите ID который Вы получите после создания виджета комментариев на Cackle.me (платно)') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.comments.data.cackle.id" value="<%= modules.comments.data.cackle.id %>" class="form-control" type="text" placeholder="<%= __('Ваш ID виджета') %>">
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('SigComments') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label">
+                                                    <i class="far fa-comment-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('SigComments') %>
+                                                </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt7" class="csstip" title="<%= __('Параметр host_id, который получите после регистрации в сервисе') %>" target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input name="modules.comments.data.sigcomments.host_id" value="<%= modules.comments.data.sigcomments.host_id %>" class="form-control" type="text" placeholder="<%= __('Ваш host_id') %>">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="far fa-comment-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('SigComments') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/comments.html#cmnt7" class="csstip" title="<%= __('Параметр host_id, который получите после регистрации в сервисе') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.comments.data.sigcomments.host_id" value="<%= modules.comments.data.sigcomments.host_id %>" class="form-control" type="text" placeholder="<%= __('Ваш host_id') %>">
-                                        </div>
-                                    </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
                     </div>

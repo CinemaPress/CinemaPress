@@ -23,9 +23,8 @@ module.exports = {
     "ips": []
   },
   "image": {
-    "addr": "k.1poster.net",
-    "size": 180,
-    "proxy": 0
+    "addr": "st.kp.yandex.net",
+    "save": 1
   },
   "cache": {
     "time": 3600
@@ -113,7 +112,7 @@ module.exports = {
     },
     "year": {
       "name": "Фильмы [year] года",
-      "keys": "2019",
+      "keys": "2020",
       "sorting": "premiere-up",
       "count": 15,
       "order": 3

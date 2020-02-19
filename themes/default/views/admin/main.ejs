@@ -328,48 +328,37 @@
                                         <i class="fa fa-images"></i>&nbsp;&nbsp;&nbsp;<%= __('Сервер картинок') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#image" class="csstip" title="<%= __('По умолчанию все картинки грузятся со сторонних источников, однако если Вы хотите чтобы постеры были загружены с Вашего веб-сайта, Вы можете «Загрузить на сервер» статические файлы и указать в этом поле адрес %s', config.domain) %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#image" class="csstip" title="<%= __('По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-lg-4 col-xs-4 text-center">
-                                            <input name="config.image.addr" value="<%= config.image.addr %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-lg-4 col-xs-4 text-center">
-                                            <select name="config.image.proxy" class="form-control">
-                                                <% if (config.image.proxy) { %>
-                                                <option value="1" selected="selected">
-                                                    <%= __('Проксировать') %>
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <select name="config.image.addr" class="form-control">
+                                                <option value="<%- config.domain %>" <% if (config.image.addr === config.domain) { %>selected="selected"<% } %>>
+                                                    <%- (config.subdomain + config.domain).toUpperCase() %>
                                                 </option>
-                                                <option value="0">
-                                                    <%= __('Не проксировать') %>
+                                                <option value="st.kp.yandex.net" <% if (config.image.addr === 'st.kp.yandex.net') { %>selected="selected"<% } %>>
+                                                    KINOPOISK.RU
                                                 </option>
-                                                <% } else { %>
-                                                <option value="1">
-                                                    <%= __('Проксировать') %>
+                                                <option value="image.tmdb.org" <% if (config.image.addr === 'image.tmdb.org') { %>selected="selected"<% } %>>
+                                                    TMDB.ORG
                                                 </option>
-                                                <option value="0" selected="selected">
-                                                    <%= __('Не проксировать') %>
+                                                <option value="m.media-amazon.com" <% if (config.image.addr === 'm.media-amazon.com') { %>selected="selected"<% } %>>
+                                                    IMDB.COM
                                                 </option>
-                                                <% } %>
                                             </select>
                                         </div>
-                                        <div class="col-lg-4 col-xs-4 text-center">
-                                            <select name="config.image.size" class="form-control">
-                                                <% for (var i = 60; i <= 360; i = i+30) { %>
-                                                <% if (config.image.size === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Ширина постера:') %> <%- i %> px
+                                        <div class="col-lg-6 col-xs-6 text-center">
+                                            <select name="config.image.save" class="form-control">
+                                                <option value="1" <% if (config.image.save) { %>selected="selected"<% } %>>
+                                                    <%= __('Сохранять изображения') %>
                                                 </option>
-                                                <% } else { if ([150, 210, 240, 270, 300, 330].indexOf(i)+1) continue; %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Ширина постера:') %> <%- i %> px
+                                                <option value="0" <% if (!config.image.save) { %>selected="selected"<% } %>>
+                                                    <%= __('Не сохранять изображения') %>
                                                 </option>
-                                                <% } %>
-                                                <% } %>
                                             </select>
                                         </div>
                                     </div>

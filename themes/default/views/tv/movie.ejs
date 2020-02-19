@@ -6,7 +6,7 @@
 
     <script>
         window.onload = function() {
-            TVwww.load('/episode.json?tv&id=<% if (typeof movie !== 'undefined' && movie.kp_id) { %><%- movie.kp_id %><% } %>');
+            TVwww.load('/episode?tv&id=<% if (typeof movie !== 'undefined' && movie.kp_id) { %><%- movie.kp_id %><% } %>');
         };
     </script>
 
