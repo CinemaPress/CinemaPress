@@ -31,7 +31,7 @@ router.get(
     var format = req.params[3];
     var file = id + '.' + format;
     var id_number = /^[0-9]*$/.test(id);
-    var id_symbol = /^[a-z0-9@.,_\-]*$/.test(id);
+    var id_symbol = /^[a-z0-9@.,_\-]*$/i.test(id);
     var origin = '/files/' + type + '/' + size + '/' + file;
 
     if (cache.has(origin)) {
