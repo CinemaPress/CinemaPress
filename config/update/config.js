@@ -158,6 +158,9 @@ async.series(
     },
     modules: function(callback) {
       var m = objAdd(objReplace(modules_default, modules), modules);
+      m.player.data.yohoho = typeof m.player.data.yohoho !== 'string'
+        ? modules_default.player.data.yohoho
+        : m.player.data.yohoho;
       CP_save.save(
         m,
         'modules',
