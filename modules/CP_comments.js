@@ -336,7 +336,9 @@ function recentComments(service, options, callback) {
 
   var movie = require('../routes/paths/movie');
 
-  var hash = md5(config.protocol + options.domain + 'comments');
+  var hash = md5(
+    config.protocol + options.domain + 'comments' + +JSON.stringify(service)
+  );
 
   return config.cache.time
     ? CP_cache.get(hash, function(err, render) {
@@ -596,8 +598,6 @@ function recentComments(service, options, callback) {
       function(err, res) {
         var result = [];
 
-        var file = path.join(__dirname, '..', 'files', 'comments.json');
-
         if (
           service.indexOf('hypercomments') + 1 ||
           service.indexOf('disqus') + 1
@@ -607,6 +607,8 @@ function recentComments(service, options, callback) {
           result.sort(function(x, y) {
             return parseInt(y.time) - parseInt(x.time);
           });
+
+          var file = path.join(__dirname, '..', 'files', 'comments.json');
 
           if ((!result || !result.length) && fs.existsSync(file)) {
             var c = fs.readFileSync(file);
@@ -621,21 +623,23 @@ function recentComments(service, options, callback) {
           }
 
           callback(err, result);
+
+          if (result && result.length) {
+            fs.writeFile(file, JSON.stringify(result), function(err) {
+              if (err) {
+                console.log(
+                  '[modules/CP_comments.js:recentComments] Write File Error:',
+                  err
+                );
+              }
+            });
+          }
         } else if (service.indexOf('fast') + 1) {
           result = res[2];
           callback(err, result);
         }
 
         if (config.cache.time && result && result.length) {
-          fs.writeFile(file, JSON.stringify(result), function(err) {
-            if (err) {
-              console.log(
-                '[modules/CP_comments.js:recentComments] Write File Error:',
-                err
-              );
-            }
-          });
-
           CP_cache.set(hash, result, config.cache.time, function(err) {
             if (err) {
               if ((err + '').indexOf('1048576') + 1) {

@@ -90,6 +90,7 @@ if (['daenerys'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 24;
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
+  modules.comments.data.fast.recent.display = ['index'];
 }
 
 if (['tarly'].indexOf(theme) + 1) {
