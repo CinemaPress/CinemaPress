@@ -28,8 +28,8 @@ var router = express.Router();
 router.get('/:id', function(req, res) {
   var id = req.params.id ? ('' + req.params.id).replace(/[^0-9]/g, '') : '';
 
-  var data = modules.player.data.yohoho
-    ? JSON.parse(modules.player.data.yohoho)
+  var data = modules.player.data.script
+    ? JSON.parse(modules.player.data.script)
     : {};
 
   var parameters = '';

@@ -68,7 +68,7 @@
                                         <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через скрипт') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#yohoho" class="csstip" title="<%= __('Параметры скрипта для получения видео-плееров с различных источников') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#script" class="csstip" title="<%= __('Параметры скрипта для получения видео-плееров с различных источников') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -78,7 +78,7 @@
                                         <div class="col-lg-12 col-xs-12 text-center">
                                             <div class="inline-labels">
                                                 <label>
-                                                    <input name="modules.player.data.display" value="yohoho" <% if (modules.player.data.display === 'yohoho') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
+                                                    <input name="modules.player.data.display" value="script" <% if (modules.player.data.display === 'script') { %> checked="" <% } %> type="radio"><span></span> <%= __('сделать основным') %>
                                                 </label>
                                             </div>
                                         </div>
@@ -99,19 +99,19 @@
                                             <div class="spacer-10"></div>
                                             <%
                                                 var c;
-                                                if (modules.player.data.yohoho) {
+                                                if (modules.player.data.script) {
                                                     try {
-                                                        c = JSON.parse(modules.player.data.yohoho);
+                                                        c = JSON.parse(modules.player.data.script);
                                                         c = Object.keys(c).length ? JSON.stringify(c) : '';
                                                     } catch (e) {
                                                         console.error(e);
                                                     }
                                                 }
                                             %>
-                                            <textarea class="form-control custom" name="modules.player.data.yohoho" placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
+                                            <textarea class="form-control custom" name="modules.player.data.script" placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
                                             <script>
                                               document.addEventListener('DOMContentLoaded', function () {
-                                                var json = document.querySelector('[name="modules.player.data.yohoho"]');
+                                                var json = document.querySelector('[name="modules.player.data.script"]');
                                                 if (json) {
                                                   jsonPretty();
                                                   json.oninput = function () {
@@ -124,9 +124,9 @@
                                                   var customKey = document.querySelector('#customKey');
                                                   var customValue = document.querySelector('#customValue');
                                                   if (customKey && customKey.value && customValue && customValue.value) {
-                                                    var customString = document.querySelector('[name="modules.player.data.yohoho"]').value;
+                                                    var customString = document.querySelector('[name="modules.player.data.script"]').value;
                                                     var customJson = JSON.parse(customString);
-                                                    document.querySelector('[name="modules.player.data.yohoho"]').value =
+                                                    document.querySelector('[name="modules.player.data.script"]').value =
                                                       JSON.stringify(expand(
                                                         customJson,
                                                         customKey.value,
@@ -149,13 +149,13 @@
                                               });
 
                                               function jsonPretty() {
-                                                var ugly = document.querySelector('[name="modules.player.data.yohoho"]').value;
+                                                var ugly = document.querySelector('[name="modules.player.data.script"]').value;
                                                 if (!ugly) return;
                                                 ugly = JSON.parse(ugly);
                                                 var cnt = 0;
                                                 c(ugly);
-                                                document.querySelector('[name="modules.player.data.yohoho"]').style.height = (50 + cnt*20) + 'px';
-                                                document.querySelector('[name="modules.player.data.yohoho"]').value =
+                                                document.querySelector('[name="modules.player.data.script"]').style.height = (50 + cnt*20) + 'px';
+                                                document.querySelector('[name="modules.player.data.script"]').value =
                                                   JSON.stringify(ugly, undefined, 4);
 
                                                 function c(obj) {
@@ -198,7 +198,7 @@
                                         <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через API') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#yohoho" class="csstip" title="<%= __('Получение видео-плееров из нескольких API источников') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#script" class="csstip" title="<%= __('Получение видео-плееров из нескольких API источников') %>" target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>

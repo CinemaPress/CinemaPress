@@ -245,7 +245,7 @@
                             <% } else { %>
                                 <textarea class="form-control" name="movie.player" placeholder="<%= __('Embed/iframe код') %>" style="font-weight: normal; font-size: 14px; height: 71px; display: none"><% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %><% } %></textarea>
                                 <div id="movie_player" class="t input-group-addon" style="border-left: 1px solid #2f374b; border-bottom-left-radius: 4px; border-top-left-radius: 4px;">
-                                    <span style="font-weight: bold"><%= __('Плеер') %>:</span> <span><% if (modules.player.data.display === 'yohoho') { %><%= __('Получение видео-плееров через скрипт') %><% } else { %><%= __('Получение видео-плееров через API') %><% } %></span> <span style="border-bottom: 1px dotted;cursor: pointer;font-weight: bold" onclick="document.querySelector('#movie_player').style.display='none';document.querySelector('[name=\'movie.player\']').style.display='block'"><%= __('изменить') %></span>
+                                    <span style="font-weight: bold"><%= __('Плеер') %>:</span> <span><% if (modules.player.data.display === 'script') { %><%= __('Получение видео-плееров через скрипт') %><% } else { %><%= __('Получение видео-плееров через API') %><% } %></span> <span style="border-bottom: 1px dotted;cursor: pointer;font-weight: bold" onclick="document.querySelector('#movie_player').style.display='none';document.querySelector('[name=\'movie.player\']').style.display='block'"><%= __('изменить') %></span>
                                 </div>
                             <% } %>
                         </div>

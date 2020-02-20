@@ -81,7 +81,7 @@ function codePlayer(type, movie, options) {
       '<script src="/themes/default/public/desktop/js/ideal-image-slider.min.js"></script>' +
       '<script>var sldr = new IdealImageSlider.Slider("#slider");sldr.start();</script>';
   } else if (type === 'trailer') {
-    yohohoPlayer('trailer');
+    scriptPlayer('trailer');
   } else {
     var list_abuse = modules.abuse.data.movies.indexOf('' + movie.kp_id) + 1;
     var country_abuse =
@@ -114,35 +114,35 @@ function codePlayer(type, movie, options) {
     }
 
     if (type === 'download') {
-      yohohoPlayer('torrent');
+      scriptPlayer('torrent');
     } else if (serial.season && serial.episode) {
-      if (modules.player.data.display === 'yohoho') {
-        yohohoPlayer(true);
+      if (modules.player.data.display === 'script') {
+        scriptPlayer(true);
       } else {
-        yohohoPlayer();
+        scriptPlayer();
       }
     } else if (movie.player) {
       if (/\/\/[^,]*,/.test(movie.player)) {
-        yohohoPlayer(movie.player);
+        scriptPlayer(movie.player);
       } else {
-        yohohoPlayer();
+        scriptPlayer();
       }
-    } else if (modules.player.data.display === 'yohoho') {
-      yohohoPlayer(true);
+    } else if (modules.player.data.display === 'script') {
+      scriptPlayer(true);
     } else {
-      yohohoPlayer();
+      scriptPlayer();
     }
 
     code = CP_blocking.code(code, movie, options);
   }
 
   /**
-   * Yohoho player.
+   * Script player.
    */
 
-  function yohohoPlayer(player) {
-    var data = modules.player.data.yohoho
-      ? JSON.parse(modules.player.data.yohoho)
+  function scriptPlayer(player) {
+    var data = modules.player.data.script
+      ? JSON.parse(modules.player.data.script)
       : {};
 
     if (type === 'online' || serial.season) {

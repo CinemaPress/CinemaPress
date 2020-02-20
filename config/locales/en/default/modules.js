@@ -186,8 +186,8 @@ module.exports = {
   "player": {
     "status": true,
     "data": {
-      "display": "yohoho",
-      "yohoho": "{\"data-player\":\"videocdn,bazon,collaps,ustore,alloha,hdvb,iframe,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-videocdn\":\"\",\"data-bazon\":\"\",\"data-collaps\":\"\",\"data-ustore\":\"\",\"data-alloha\":\"\",\"data-hdvb\":\"\",\"data-iframe\":\"\",\"data-kodik\":\"\",\"data-youtube\":\"\",\"data-resize\":\"1\"}",
+      "display": "script",
+      "script": "{\"data-player\":\"videocdn,bazon,collaps,ustore,alloha,hdvb,iframe,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-videocdn\":\"\",\"data-bazon\":\"\",\"data-collaps\":\"\",\"data-ustore\":\"\",\"data-alloha\":\"\",\"data-hdvb\":\"\",\"data-iframe\":\"\",\"data-kodik\":\"\",\"data-youtube\":\"\",\"data-resize\":\"1\"}",
       "custom": [
         "https://iframe.video/api/v2/search?kp=[kp_id] ~ results.0.path",
         "# https://videocdn.tv/api/short?api_token=TOKEN&kinopoisk_id=[kp_id] ~ data.0.iframe_src",
