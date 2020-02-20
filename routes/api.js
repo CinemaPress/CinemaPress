@@ -389,13 +389,21 @@ router.get('/', function(req, res) {
   }
   CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
     if (err || !movies || !movies.length || !movies[0].player) {
-      return res.status(404).json({});
+      return res.status(404).json([]);
     }
     return res.json({
-      player:
-        config.protocol + config.subdomain + config.domain + '/iframe/' + id,
-      translate: movies[0].translate,
-      quality: movies[0].quality
+      results: [
+        {
+          iframe:
+            config.protocol +
+            config.subdomain +
+            config.domain +
+            '/iframe/' +
+            id,
+          translate: movies[0].translate,
+          quality: movies[0].quality
+        }
+      ]
     });
   });
 });
