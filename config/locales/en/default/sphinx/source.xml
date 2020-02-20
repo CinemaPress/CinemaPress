@@ -402,6 +402,68 @@
         <custom><![CDATA[{"imdb_id":"1745960","tmdb_id":"361743"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="575180">
+        <kp_id><![CDATA[575180]]></kp_id>
+        <query_id><![CDATA[575180]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[65]]></kp_rating>
+        <kp_vote><![CDATA[113104]]></kp_vote>
+        <imdb_rating><![CDATA[66]]></imdb_rating>
+        <imdb_vote><![CDATA[242287]]></imdb_vote>
+        <premiere><![CDATA[736824.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[]]></title_ru>
+        <title_en><![CDATA[Pirates of the Caribbean: Dead Men Tell No Tales]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Thrust into an all-new adventure, a down-on-his-luck Capt. Jack Sparrow feels the winds of ill-fortune blowing even more strongly when deadly ghost sailors led by his old nemesis, the evil Capt. Salazar, escape from the Devil's Triangle. Jack's only hope of survival lies in seeking out the legendary Trident of Poseidon, but to find it, he must forge an uneasy alliance with a brilliant and beautiful astronomer and a headstrong young man in the British navy.]]></description>
+        <pictures><![CDATA[/7C921eWK06n12c1miRXnYoEu5Yv.jpg]]></pictures>
+        <poster><![CDATA[/xbpSDU3p7YUGlu9Mr6Egg2Vweto.jpg]]></poster>
+        <search><![CDATA[Pirates of the Caribbean: Dead Men Tell No Tales]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[USA]]></country>
+        <director><![CDATA[Joaquim Ronning,Espen Sandberg]]></director>
+        <genre><![CDATA[fantasy,action,comedy,adventure]]></genre>
+        <actor><![CDATA[Johnny Depp,Javier Bardem,Jeffrey Rush,Brenton Tows,Kaya Scodelario]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1790809","tmdb_id":"166426"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="589290">
+        <kp_id><![CDATA[589290]]></kp_id>
+        <query_id><![CDATA[589290]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[76]]></kp_rating>
+        <kp_vote><![CDATA[135281]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[412073]]></imdb_vote>
+        <premiere><![CDATA[736969.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[]]></title_ru>
+        <title_en><![CDATA[Blade Runner 2049]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.]]></description>
+        <pictures><![CDATA[/sAtoMqDVhNDQBc3QJL3RF6hlhGq.jpg]]></pictures>
+        <poster><![CDATA[/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg]]></poster>
+        <search><![CDATA[Blade Runner 2049]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[USA,United Kingdom,Hungary,Canada]]></country>
+        <director><![CDATA[Denis Villeneuve]]></director>
+        <genre><![CDATA[fantastic,thriller,drama,detective]]></genre>
+        <actor><![CDATA[Ryan Gosling,Harrison Ford,Ana De Armas,Silvia Hooks,Robin Wright]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1856101","tmdb_id":"335984"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="591535">
         <kp_id><![CDATA[591535]]></kp_id>
         <query_id><![CDATA[591535]]></query_id>
@@ -495,6 +557,37 @@
         <custom><![CDATA[{"imdb_id":"7349950","tmdb_id":"474350"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="695548">
+        <kp_id><![CDATA[695548]]></kp_id>
+        <query_id><![CDATA[695548]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[59]]></kp_rating>
+        <kp_vote><![CDATA[73960]]></kp_vote>
+        <imdb_rating><![CDATA[64]]></imdb_rating>
+        <imdb_vote><![CDATA[238557]]></imdb_vote>
+        <premiere><![CDATA[736817.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[]]></title_ru>
+        <title_en><![CDATA[Alien: Covenant]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Bound for a remote planet on the far side of the galaxy, the crew of the colony ship «Covenant» discovers what is thought to be an uncharted paradise, but is actually a dark, dangerous world—which has a sole inhabitant: the «synthetic», David, survivor of the doomed Prometheus expedition.]]></description>
+        <pictures><![CDATA[/6jajFcaY2YsfGQstJ5HaqZNVseX.jpg]]></pictures>
+        <poster><![CDATA[/zecMELPbU5YMQpC81Z8ImaaXuf9.jpg]]></poster>
+        <search><![CDATA[Alien: Covenant]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[USA,United Kingdom]]></country>
+        <director><![CDATA[Ridley Scott]]></director>
+        <genre><![CDATA[horrors,fantastic,thriller]]></genre>
+        <actor><![CDATA[Michael Fassbender,Catherine Waterston,Billy Crudap,Danny McBride,Demian Bishir]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"2316204","tmdb_id":"126889"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="706019">
         <kp_id><![CDATA[706019]]></kp_id>
         <query_id><![CDATA[706019]]></query_id>
@@ -532,7 +625,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[54831]]></kp_vote>
+        <kp_vote><![CDATA[54844]]></kp_vote>
         <imdb_rating><![CDATA[75]]></imdb_rating>
         <imdb_vote><![CDATA[87161]]></imdb_vote>
         <premiere><![CDATA[737426.875]]></premiere>
@@ -771,6 +864,37 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"3606756","tmdb_id":"260513"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="840372">
+        <kp_id><![CDATA[840372]]></kp_id>
+        <query_id><![CDATA[840372]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[67]]></kp_rating>
+        <kp_vote><![CDATA[62482]]></kp_vote>
+        <imdb_rating><![CDATA[71]]></imdb_rating>
+        <imdb_vote><![CDATA[194903]]></imdb_vote>
+        <premiere><![CDATA[737507.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[]]></title_ru>
+        <title_en><![CDATA[Shazam!]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[A boy is given the ability to become an adult superhero in times of need with a single magic word.]]></description>
+        <pictures><![CDATA[/OIGX2lm5tmlCKvZUghtwHzoxxO.jpg]]></pictures>
+        <poster><![CDATA[/xnopI5Xtky18MPhK40cZAGAOVeV.jpg]]></poster>
+        <search><![CDATA[Shazam!]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[USA]]></country>
+        <director><![CDATA[David F. Sandberg]]></director>
+        <genre><![CDATA[fantastic,fantasy,action]]></genre>
+        <actor><![CDATA[Zachary Levi,Mark Strong,Dzhimon Honsu,Michel Bort,Adam Brodie]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0448115","tmdb_id":"287947"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="840829">
@@ -1306,7 +1430,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[58]]></kp_rating>
-        <kp_vote><![CDATA[1795]]></kp_vote>
+        <kp_vote><![CDATA[1923]]></kp_vote>
         <imdb_rating><![CDATA[55]]></imdb_rating>
         <imdb_vote><![CDATA[14309]]></imdb_vote>
         <premiere><![CDATA[737789.875]]></premiere>
@@ -1328,6 +1452,37 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"6673612","tmdb_id":"448119"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1044601">
+        <kp_id><![CDATA[1044601]]></kp_id>
+        <query_id><![CDATA[1044601]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[64]]></kp_rating>
+        <kp_vote><![CDATA[72147]]></kp_vote>
+        <imdb_rating><![CDATA[67]]></imdb_rating>
+        <imdb_vote><![CDATA[180859]]></imdb_vote>
+        <premiere><![CDATA[737430.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[]]></title_ru>
+        <title_en><![CDATA[Glass]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[In a series of escalating encounters, former security guard David Dunn uses his supernatural abilities to track Kevin Wendell Crumb, a disturbed man who has twenty-four personalities. Meanwhile, the shadowy presence of Elijah Price emerges as an orchestrator who holds secrets critical to both men.]]></description>
+        <pictures><![CDATA[/rL1ITQuX0lmSNPu52pRRHUyim5N.jpg]]></pictures>
+        <poster><![CDATA[/svIDTNUoajS8dLEo7EosxvyAsgJ.jpg]]></poster>
+        <search><![CDATA[Glass]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[USA]]></country>
+        <director><![CDATA[M. Night Shyamalan]]></director>
+        <genre><![CDATA[fantastic,thriller,drama,detective]]></genre>
+        <actor><![CDATA[Sarah Paulson,Anya Taylor-Joey,Bruce Willis,James McAvoy,Samuel L. Jackson]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6823368","tmdb_id":"450465"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="1045056">
@@ -1460,7 +1615,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[19689]]></kp_vote>
+        <kp_vote><![CDATA[19787]]></kp_vote>
         <imdb_rating><![CDATA[66]]></imdb_rating>
         <imdb_vote><![CDATA[43194]]></imdb_vote>
         <premiere><![CDATA[737813.875]]></premiere>
@@ -2530,37 +2685,6 @@
         <custom><![CDATA[{"imdb_id":"4154796","tmdb_id":"299534"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="840372">
-        <kp_id><![CDATA[840372]]></kp_id>
-        <query_id><![CDATA[840372]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[62482]]></kp_vote>
-        <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[194903]]></imdb_vote>
-        <premiere><![CDATA[737507.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[Shazam!]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[A boy is given the ability to become an adult superhero in times of need with a single magic word.]]></description>
-        <pictures><![CDATA[/OIGX2lm5tmlCKvZUghtwHzoxxO.jpg]]></pictures>
-        <poster><![CDATA[/xnopI5Xtky18MPhK40cZAGAOVeV.jpg]]></poster>
-        <search><![CDATA[Shazam!]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[USA]]></country>
-        <director><![CDATA[David F. Sandberg]]></director>
-        <genre><![CDATA[fantastic,fantasy,action]]></genre>
-        <actor><![CDATA[Zachary Levi,Mark Strong,Dzhimon Honsu,Michel Bort,Adam Brodie]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0448115","tmdb_id":"287947"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="994864">
         <kp_id><![CDATA[994864]]></kp_id>
         <query_id><![CDATA[994864]]></query_id>
@@ -2722,7 +2846,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[92667]]></kp_vote>
+        <kp_vote><![CDATA[92770]]></kp_vote>
         <imdb_rating><![CDATA[86]]></imdb_rating>
         <imdb_vote><![CDATA[255273]]></imdb_vote>
         <premiere><![CDATA[737564.875]]></premiere>
@@ -4986,9 +5110,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[390688]]></kp_vote>
+        <kp_vote><![CDATA[391131]]></kp_vote>
         <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[1077594]]></imdb_vote>
+        <imdb_vote><![CDATA[1078368]]></imdb_vote>
         <premiere><![CDATA[734115.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[]]></title_ru>
@@ -7613,130 +7737,6 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"0165832","tmdb_id":"20312"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="749540">
-        <kp_id><![CDATA[749540]]></kp_id>
-        <query_id><![CDATA[749540]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[76]]></kp_rating>
-        <kp_vote><![CDATA[207392]]></kp_vote>
-        <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[563379]]></imdb_vote>
-        <premiere><![CDATA[735944.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[Kingsman: The Secret Service]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[The story of a super-secret spy organization that recruits an unrefined but promising street kid into the agency's ultra-competitive training program just as a global threat emerges from a twisted tech genius.]]></description>
-        <pictures><![CDATA[/7McaexSsSTLD8V17UgaZAfI0Cu9.jpg]]></pictures>
-        <poster><![CDATA[/8x7ej0LnHdKUqilNNJXYOeyB6L9.jpg]]></poster>
-        <search><![CDATA[Kingsman: The Secret Service]]></search>
-        <year><![CDATA[2015]]></year>
-        <country><![CDATA[United Kingdom,USA]]></country>
-        <director><![CDATA[Matthew Vaughn]]></director>
-        <genre><![CDATA[action,comedy,crime,adventure]]></genre>
-        <actor><![CDATA[Teron Edgerton,Colin Firth,Samuel L. Jackson,Mark Strong,Sophie Cooks]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"2802144","tmdb_id":"207703"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="6039">
-        <kp_id><![CDATA[6039]]></kp_id>
-        <query_id><![CDATA[6039]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[204898]]></kp_vote>
-        <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[325405]]></imdb_vote>
-        <premiere><![CDATA[728501.8333333334]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[The Mask]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[When timid bank clerk Stanley Ipkiss discovers a magical mask containing the spirit of the Norse god Loki, his entire life changes. While wearing the mask, Ipkiss becomes a supernatural playboy exuding charm and confidence which allows him to catch the eye of local nightclub singer Tina Carlyle. Unfortunately, under the mask's influence, Ipkiss also robs a bank, which angers junior crime lord Dorian Tyrell, whose goons get blamed for the heist.]]></description>
-        <pictures><![CDATA[/oYVf9gqxZduttG6HW2Qo4ZUxLWW.jpg]]></pictures>
-        <poster><![CDATA[/v8x8p441l1Bep8p82pAG6rduBoK.jpg]]></poster>
-        <search><![CDATA[The Mask]]></search>
-        <year><![CDATA[1994]]></year>
-        <country><![CDATA[USA]]></country>
-        <director><![CDATA[Chuck Russell]]></director>
-        <genre><![CDATA[fantasy,comedy]]></genre>
-        <actor><![CDATA[Jim Carrey,Cameron Diaz,Peter Rigert,Peter Green,Amy Yasbek]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0110475","tmdb_id":"854"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="355">
-        <kp_id><![CDATA[355]]></kp_id>
-        <query_id><![CDATA[355]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[84]]></kp_rating>
-        <kp_vote><![CDATA[204133]]></kp_vote>
-        <imdb_rating><![CDATA[85]]></imdb_rating>
-        <imdb_vote><![CDATA[676679]]></imdb_vote>
-        <premiere><![CDATA[731358.8333333334]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[The Pianist]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[The true story of pianist Wladyslaw Szpilman's experiences in Warsaw during the Nazi occupation. When the Jews of the city find themselves forced into a ghetto, Szpilman finds work playing in a café; and when his family is deported in 1942, he stays behind, works for a while as a laborer, and eventually goes into hiding in the ruins of the war-torn city.]]></description>
-        <pictures><![CDATA[/xUR95VFV1UTyzS1C8Lj06hi2n2M.jpg]]></pictures>
-        <poster><![CDATA[/hfMeo073RxKKjZZV4gSGema1yog.jpg]]></poster>
-        <search><![CDATA[The Pianist]]></search>
-        <year><![CDATA[2002]]></year>
-        <country><![CDATA[Poland,France,United Kingdom,Germany]]></country>
-        <director><![CDATA[Roman Polanski]]></director>
-        <genre><![CDATA[drama,military,biography,music]]></genre>
-        <actor><![CDATA[Adrien Brody,Emilia Fox,Daniel Caltagirone,Ed Stoppard,Maureen Lipman]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0253474","tmdb_id":"423"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="474953">
-        <kp_id><![CDATA[474953]]></kp_id>
-        <query_id><![CDATA[474953]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[78]]></kp_rating>
-        <kp_vote><![CDATA[203358]]></kp_vote>
-        <imdb_rating><![CDATA[75]]></imdb_rating>
-        <imdb_vote><![CDATA[404132]]></imdb_vote>
-        <premiere><![CDATA[734845.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[]]></title_ru>
-        <title_en><![CDATA[Sherlock Holmes: A Game of Shadows]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[There is a new criminal mastermind at large (Professor Moriarty) and not only is he Holmes' intellectual equal, but his capacity for evil and lack of conscience may give him an advantage over the detective.]]></description>
-        <pictures><![CDATA[/lpijXnrjtUw9uzRJK9IudJnQDtl.jpg]]></pictures>
-        <poster><![CDATA[/7OFqsVuS6DlVM10GUD72vCGpQm9.jpg]]></poster>
-        <search><![CDATA[Sherlock Holmes: A Game of Shadows]]></search>
-        <year><![CDATA[2011]]></year>
-        <country><![CDATA[USA]]></country>
-        <director><![CDATA[Guy Ritchie]]></director>
-        <genre><![CDATA[action,thriller,crime,detective,adventure]]></genre>
-        <actor><![CDATA[Robert Downey Jr.,Jude Law,Numi Rapas,Jared Harris,Paul Anderson]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"1515091","tmdb_id":"58574"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
 </sphinx:docset>

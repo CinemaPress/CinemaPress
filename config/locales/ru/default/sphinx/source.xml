@@ -434,6 +434,69 @@
         <custom><![CDATA[{"imdb_id":"1745960","tmdb_id":"361743"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="575180">
+        <kp_id><![CDATA[575180]]></kp_id>
+        <query_id><![CDATA[575180]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[65]]></kp_rating>
+        <kp_vote><![CDATA[113104]]></kp_vote>
+        <imdb_rating><![CDATA[66]]></imdb_rating>
+        <imdb_vote><![CDATA[242287]]></imdb_vote>
+        <premiere><![CDATA[736824.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Пираты Карибского моря: Мертвецы не рассказывают сказки]]></title_ru>
+        <title_en><![CDATA[Pirates of the Caribbean: Dead Men Tell No Tales]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Исчерпавший свою удачу капитан Джек Воробей обнаруживает, что за ним охотится его старый неприятель, ужасный капитан Салазар и его призрачные пираты. Они только что сбежали из Дьявольского треугольника и намерены уничтожить всех пиратов, включая Джека. Поможет спастись лишь могущественный артефакт — трезубец Посейдона, который дарует своему обладателю полный контроль над морями.]]></description>
+        <pictures><![CDATA[2983130,2978449,2978448]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search>
+            <![CDATA[Пираты Карибского моря: Мертвецы не рассказывают сказки / Pirates of the Caribbean: Dead Men Tell No Tales]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Хоаким Роннинг,Эспен Сандберг]]></director>
+        <genre><![CDATA[фэнтези,боевик,комедия,приключения]]></genre>
+        <actor><![CDATA[Джонни Депп,Хавьер Бардем,Джеффри Раш,Брентон Туэйтс,Кая Скоделарио]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1790809","tmdb_id":"166426"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="589290">
+        <kp_id><![CDATA[589290]]></kp_id>
+        <query_id><![CDATA[589290]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[76]]></kp_rating>
+        <kp_vote><![CDATA[135281]]></kp_vote>
+        <imdb_rating><![CDATA[80]]></imdb_rating>
+        <imdb_vote><![CDATA[412073]]></imdb_vote>
+        <premiere><![CDATA[736969.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Бегущий по лезвию 2049]]></title_ru>
+        <title_en><![CDATA[Blade Runner 2049]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В недалеком будущем мир населен людьми и репликантами, созданными выполнять самую тяжелую работу. Работа офицера полиции Кей — держать репликантов под контролем в условиях нарастающего напряжения… Пока он случайно не становится обладателем секретной информации, которая ставит под угрозу существование всего человечества. Желая найти ключ к разгадке, Кей решает разыскать Рика Декарда, бывшего офицера специального подразделения полиции Лос-Анджелеса, который бесследно исчез много лет назад.]]></description>
+        <pictures><![CDATA[3056830,3055313,3055311]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Бегущий по лезвию 2049 / Blade Runner 2049]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[США,Великобритания,Венгрия,Канада]]></country>
+        <director><![CDATA[Дени Вильнёв]]></director>
+        <genre><![CDATA[фантастика,триллер,драма,детектив]]></genre>
+        <actor><![CDATA[Райан Гослинг,Харрисон Форд,Ана де Армас,Сильвия Хукс,Робин Райт]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"1856101","tmdb_id":"335984"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="591535">
         <kp_id><![CDATA[591535]]></kp_id>
         <query_id><![CDATA[591535]]></query_id>
@@ -527,6 +590,37 @@
         <custom><![CDATA[{"imdb_id":"7349950","tmdb_id":"474350"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="695548">
+        <kp_id><![CDATA[695548]]></kp_id>
+        <query_id><![CDATA[695548]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[59]]></kp_rating>
+        <kp_vote><![CDATA[73960]]></kp_vote>
+        <imdb_rating><![CDATA[64]]></imdb_rating>
+        <imdb_vote><![CDATA[238557]]></imdb_vote>
+        <premiere><![CDATA[736817.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Чужой: Завет]]></title_ru>
+        <title_en><![CDATA[Alien: Covenant]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[Во время обследования удаленной планеты, расположенной на другой стороне галактики, экипаж колониального корабля «Завет» обнаруживает, что то, что они изначально приняли за неизведанный рай, на самом деле — темный и опасный мир. Его единственный житель — синтетический андроид Дэвид, оставшийся в живых после обреченной экспедиционной миссии «Прометей».]]></description>
+        <pictures><![CDATA[2978486,2978485,2964593]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Чужой: Завет / Alien: Covenant]]></search>
+        <year><![CDATA[2017]]></year>
+        <country><![CDATA[США,Великобритания]]></country>
+        <director><![CDATA[Ридли Скотт]]></director>
+        <genre><![CDATA[ужасы,фантастика,триллер]]></genre>
+        <actor><![CDATA[Майкл Фассбендер,Кэтрин Уотерстон,Билли Крудап,Дэнни Макбрайд,Демиан Бишир]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"2316204","tmdb_id":"126889"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="706019">
         <kp_id><![CDATA[706019]]></kp_id>
         <query_id><![CDATA[706019]]></query_id>
@@ -564,7 +658,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[54831]]></kp_vote>
+        <kp_vote><![CDATA[54844]]></kp_vote>
         <imdb_rating><![CDATA[75]]></imdb_rating>
         <imdb_vote><![CDATA[87161]]></imdb_vote>
         <premiere><![CDATA[737426.875]]></premiere>
@@ -835,6 +929,37 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"3606756","tmdb_id":"260513"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="840372">
+        <kp_id><![CDATA[840372]]></kp_id>
+        <query_id><![CDATA[840372]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[67]]></kp_rating>
+        <kp_vote><![CDATA[62482]]></kp_vote>
+        <imdb_rating><![CDATA[71]]></imdb_rating>
+        <imdb_vote><![CDATA[194903]]></imdb_vote>
+        <premiere><![CDATA[737507.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Шазам!]]></title_ru>
+        <title_en><![CDATA[Shazam!]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В каждом из нас живет супергерой, нужна лишь толика магии, чтобы он проявил себя. Билли Бэтсон должен прокричать всего лишь одно слово — ШАЗАМ! — чтобы из сообразительного четырнадцатилетнего мальчишки превратиться во вполне себе взрослого супергероя Шазама, а все благодаря древнему волшебнику. В душе он остается ребенком, пусть и во взрослом могучем теле, поэтому поступает так, как поступил бы любой подросток, получивший сверхспособности, — оттягивается на полную катушку в этой подросшей версии себя самого! А умеет ли он летать? А есть ли у него рентгеновское зрение? Может ли он стрелять молниями из рук? А может ли пропустить контрольную по обществознанию? Шазам проверяет границы своих возможностей с бесшабашностью расшалившегося ребенка. Но ему придется быстро обрести контроль над своими способностями, чтобы сразиться со смертоносными силами зла доктора Таддеуса Сиваны.]]></description>
+        <pictures><![CDATA[3325120,3325119,3325118]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Шазам! / Shazam!]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США]]></country>
+        <director><![CDATA[Дэвид Ф. Сандберг]]></director>
+        <genre><![CDATA[фэнтези,боевик,комедия,приключения]]></genre>
+        <actor><![CDATA[Закари Ливай,Эшер Энджел,Джек Дилан Грейзер,Марк Стронг,Грэйс Фултон]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"0448115","tmdb_id":"287947"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="840829">
@@ -1494,7 +1619,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[58]]></kp_rating>
-        <kp_vote><![CDATA[1795]]></kp_vote>
+        <kp_vote><![CDATA[1923]]></kp_vote>
         <imdb_rating><![CDATA[55]]></imdb_rating>
         <imdb_vote><![CDATA[14309]]></imdb_vote>
         <premiere><![CDATA[737789.875]]></premiere>
@@ -1525,9 +1650,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[73]]></kp_rating>
-        <kp_vote><![CDATA[59425]]></kp_vote>
+        <kp_vote><![CDATA[61037]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[211513]]></imdb_vote>
+        <imdb_vote><![CDATA[218958]]></imdb_vote>
         <premiere><![CDATA[737777.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Ведьмак]]></title_ru>
@@ -1548,6 +1673,37 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"5180504","tmdb_id":"71912"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
+    <sphinx:document id="1044601">
+        <kp_id><![CDATA[1044601]]></kp_id>
+        <query_id><![CDATA[1044601]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[64]]></kp_rating>
+        <kp_vote><![CDATA[72147]]></kp_vote>
+        <imdb_rating><![CDATA[67]]></imdb_rating>
+        <imdb_vote><![CDATA[180859]]></imdb_vote>
+        <premiere><![CDATA[737430.875]]></premiere>
+        <type><![CDATA[0]]></type>
+        <title_ru><![CDATA[Стекло]]></title_ru>
+        <title_en><![CDATA[Glass]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[В поисках встречи с обладающим фантастическими способностями и снова убивающим девушек Зверем Дэвид Данн выходит на след Кевина Крамба. Но решающая схватка не успевает состояться, наших героев ловят и отправляют в психиатрическую больницу. Там уже содержится хрупкий человек Элайджа Прайс, много лет назад устроивший крушение поезда, единственным выжившим в котором оказался Дэвид. Психиатр Элли Стэйпл пытается убедить этих трех пациентов, что они не обладают сверхспособностями, и всему можно найти рациональное объяснение.]]></description>
+        <pictures><![CDATA[3312319,3312318,3312317]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Стекло / Glass]]></search>
+        <year><![CDATA[2019]]></year>
+        <country><![CDATA[США,Китай]]></country>
+        <director><![CDATA[М. Найт Шьямалан]]></director>
+        <genre><![CDATA[фантастика,триллер,драма]]></genre>
+        <actor><![CDATA[Джеймс МакЭвой,Брюс Уиллис,Сэмюэл Л. Джексон,Аня Тейлор-Джой,Сара Полсон]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"6823368","tmdb_id":"450465"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
     <sphinx:document id="1045056">
@@ -1690,7 +1846,7 @@
         <title_page><![CDATA[]]></title_page>
         <description_short><![CDATA[]]></description_short>
         <description>
-            <![CDATA[История Бэка, дружелюбного пса, чья размеренная домашняя жизнь перевернулась с ног на голову во времена золотой лихорадки в 1880-х, когда его вырвали из дома в Калифорнии и перевезли в дикую и холодную Аляску. Будучи новичком в упряжке почтовой службы, а впоследствии лидером, Бак попадает в невероятное приключение, находит свое место в мире и становится хозяином своей жизни.]]></description>
+            <![CDATA[История Бака, дружелюбного пса, чья размеренная домашняя жизнь перевернулась с ног на голову во времена золотой лихорадки в 1880-х, когда его вырвали из дома в Калифорнии и перевезли в дикую и холодную Аляску. Будучи новичком в упряжке почтовой службы, а впоследствии лидером, Бак попадает в невероятное приключение, находит свое место в мире и становится хозяином своей жизни.]]></description>
         <pictures><![CDATA[3437474,3437473,3437472]]></pictures>
         <poster><![CDATA[1]]></poster>
         <search><![CDATA[Зов предков / The Call of the Wild]]></search>
@@ -1773,7 +1929,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[19689]]></kp_vote>
+        <kp_vote><![CDATA[19787]]></kp_vote>
         <imdb_rating><![CDATA[66]]></imdb_rating>
         <imdb_vote><![CDATA[43194]]></imdb_vote>
         <premiere><![CDATA[737813.875]]></premiere>
@@ -1867,7 +2023,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[87]]></kp_rating>
-        <kp_vote><![CDATA[36342]]></kp_vote>
+        <kp_vote><![CDATA[37280]]></kp_vote>
         <imdb_rating><![CDATA[81]]></imdb_rating>
         <imdb_vote><![CDATA[34948]]></imdb_vote>
         <premiere><![CDATA[737760.875]]></premiere>
@@ -1898,7 +2054,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[61]]></kp_rating>
-        <kp_vote><![CDATA[3305]]></kp_vote>
+        <kp_vote><![CDATA[3344]]></kp_vote>
         <imdb_rating><![CDATA[68]]></imdb_rating>
         <imdb_vote><![CDATA[31251]]></imdb_vote>
         <premiere><![CDATA[737770.875]]></premiere>
@@ -2145,7 +2301,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[71]]></kp_rating>
-        <kp_vote><![CDATA[6560]]></kp_vote>
+        <kp_vote><![CDATA[6731]]></kp_vote>
         <imdb_rating><![CDATA[70]]></imdb_rating>
         <imdb_vote><![CDATA[76]]></imdb_vote>
         <premiere><![CDATA[737833.875]]></premiere>
@@ -3607,37 +3763,6 @@
         <custom><![CDATA[{"imdb_id":"4154796","tmdb_id":"299534"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
-    <sphinx:document id="840372">
-        <kp_id><![CDATA[840372]]></kp_id>
-        <query_id><![CDATA[840372]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[67]]></kp_rating>
-        <kp_vote><![CDATA[62482]]></kp_vote>
-        <imdb_rating><![CDATA[71]]></imdb_rating>
-        <imdb_vote><![CDATA[194903]]></imdb_vote>
-        <premiere><![CDATA[737507.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Шазам!]]></title_ru>
-        <title_en><![CDATA[Shazam!]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[В каждом из нас живет супергерой, нужна лишь толика магии, чтобы он проявил себя. Билли Бэтсон должен прокричать всего лишь одно слово — ШАЗАМ! — чтобы из сообразительного четырнадцатилетнего мальчишки превратиться во вполне себе взрослого супергероя Шазама, а все благодаря древнему волшебнику. В душе он остается ребенком, пусть и во взрослом могучем теле, поэтому поступает так, как поступил бы любой подросток, получивший сверхспособности, — оттягивается на полную катушку в этой подросшей версии себя самого! А умеет ли он летать? А есть ли у него рентгеновское зрение? Может ли он стрелять молниями из рук? А может ли пропустить контрольную по обществознанию? Шазам проверяет границы своих возможностей с бесшабашностью расшалившегося ребенка. Но ему придется быстро обрести контроль над своими способностями, чтобы сразиться со смертоносными силами зла доктора Таддеуса Сиваны.]]></description>
-        <pictures><![CDATA[3325120,3325119,3325118]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Шазам! / Shazam!]]></search>
-        <year><![CDATA[2019]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Дэвид Ф. Сандберг]]></director>
-        <genre><![CDATA[фэнтези,боевик,комедия,приключения]]></genre>
-        <actor><![CDATA[Закари Ливай,Эшер Энджел,Джек Дилан Грейзер,Марк Стронг,Грэйс Фултон]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0448115","tmdb_id":"287947"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
     <sphinx:document id="994864">
         <kp_id><![CDATA[994864]]></kp_id>
         <query_id><![CDATA[994864]]></query_id>
@@ -3799,7 +3924,7 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[92667]]></kp_vote>
+        <kp_vote><![CDATA[92770]]></kp_vote>
         <imdb_rating><![CDATA[86]]></imdb_rating>
         <imdb_vote><![CDATA[255273]]></imdb_vote>
         <premiere><![CDATA[737564.875]]></premiere>
@@ -5965,9 +6090,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[390688]]></kp_vote>
+        <kp_vote><![CDATA[391131]]></kp_vote>
         <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[1077594]]></imdb_vote>
+        <imdb_vote><![CDATA[1078368]]></imdb_vote>
         <premiere><![CDATA[734115.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Аватар]]></title_ru>
@@ -7603,130 +7728,6 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"0268380","tmdb_id":"425"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="336">
-        <kp_id><![CDATA[336]]></kp_id>
-        <query_id><![CDATA[336]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[85]]></kp_rating>
-        <kp_vote><![CDATA[236683]]></kp_vote>
-        <imdb_rating><![CDATA[87]]></imdb_rating>
-        <imdb_vote><![CDATA[862856]]></imdb_vote>
-        <premiere><![CDATA[721675.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Пролетая над гнездом кукушки]]></title_ru>
-        <title_en><![CDATA[One Flew Over the Cuckoo's Nest]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Сымитировав помешательство в надежде избежать тюремного заключения, Рэндл Патрик МакМерфи попадает в психиатрическую клинику, где почти безраздельным хозяином является жестокосердная сестра Милдред Рэтчед. МакМерфи поражается тому, что прочие пациенты смирились с существующим положением вещей, а некоторые — даже сознательно пришли в лечебницу, прячась от пугающего внешнего мира. И решается на бунт. В одиночку.]]></description>
-        <pictures><![CDATA[2680490,2680489,2680488]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Пролетая над гнездом кукушки / One Flew Over the Cuckoo's Nest]]></search>
-        <year><![CDATA[1975]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Милош Форман]]></director>
-        <genre><![CDATA[драма]]></genre>
-        <actor><![CDATA[Джек Николсон,Луиза Флетчер,Уилл Сэмпсон,Брэд Дуриф,Уильям Редфилд]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0073486","tmdb_id":"510"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="325">
-        <kp_id><![CDATA[325]]></kp_id>
-        <query_id><![CDATA[325]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[87]]></kp_rating>
-        <kp_vote><![CDATA[235581]]></kp_vote>
-        <imdb_rating><![CDATA[92]]></imdb_rating>
-        <imdb_vote><![CDATA[1509117]]></imdb_vote>
-        <premiere><![CDATA[720330.875]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Крестный отец]]></title_ru>
-        <title_en><![CDATA[The Godfather]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Криминальная сага, повествующая о нью-йоркской сицилийской мафиозной семье Корлеоне. Фильм охватывает период 1945-1955 годов.Глава семьи, Дон Вито Корлеоне, выдает замуж свою дочь. В это время со Второй мировой войны возвращается его любимый сын Майкл. Майкл, герой войны, гордость семьи, не выражает желания заняться жестоким семейным бизнесом. Дон Корлеоне ведет дела по старым правилам, но наступают иные времена, и появляются люди, желающие изменить сложившиеся порядки. На Дона Корлеоне совершается покушение.]]></description>
-        <pictures><![CDATA[3349582,3349581,3349580]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Крестный отец / The Godfather]]></search>
-        <year><![CDATA[1972]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Фрэнсис Форд Коппола]]></director>
-        <genre><![CDATA[драма,криминал]]></genre>
-        <actor><![CDATA[Марлон Брандо,Аль Пачино,Джеймс Каан,Роберт Дювалл,Ричард С. Кастеллано]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0068646","tmdb_id":"238"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="370">
-        <kp_id><![CDATA[370]]></kp_id>
-        <query_id><![CDATA[370]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[84]]></kp_rating>
-        <kp_vote><![CDATA[235081]]></kp_vote>
-        <imdb_rating><![CDATA[86]]></imdb_rating>
-        <imdb_vote><![CDATA[587133]]></imdb_vote>
-        <premiere><![CDATA[731050.8333333334]]></premiere>
-        <type><![CDATA[5]]></type>
-        <title_ru><![CDATA[Унесенные призраками]]></title_ru>
-        <title_en><![CDATA[Sen to Chihiro no kamikakushi]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Тихиро с мамой и папой переезжают в новый дом. Заблудившись по дороге, они оказываются в странном пустынном городе, где их ждет великолепный пир. Родители с жадностью набрасываются на еду и к ужасу девочки превращаются в свиней, став пленниками злой колдуньи Юбабы. Теперь, оказавшись одна среди волшебных существ и загадочных видений, Тихиро должна придумать, как избавить своих родителей от чар коварной старухи.]]></description>
-        <pictures><![CDATA[1021438,1021437,1021436]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Унесенные призраками / Sen to Chihiro no kamikakushi]]></search>
-        <year><![CDATA[2001]]></year>
-        <country><![CDATA[Япония]]></country>
-        <director><![CDATA[Хаяо Миядзаки]]></director>
-        <genre><![CDATA[аниме,мультфильм,фэнтези,приключения,семейный]]></genre>
-        <actor><![CDATA[Руми Хиираги,Мию Ирино,Мари Нацуки,Такаси Найто,Ясуко Савагути]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0245429","tmdb_id":"129"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="12198">
-        <kp_id><![CDATA[12198]]></kp_id>
-        <query_id><![CDATA[12198]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[82]]></kp_rating>
-        <kp_vote><![CDATA[232625]]></kp_vote>
-        <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[325661]]></imdb_vote>
-        <premiere><![CDATA[729634.8333333334]]></premiere>
-        <type><![CDATA[0]]></type>
-        <title_ru><![CDATA[Игра]]></title_ru>
-        <title_en><![CDATA[The Game]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Николас Ван Ортон — само воплощение успеха. Он преуспевает, он невозмутим и спокоен, привык держать любую ситуацию под контролем. На день рождения Николас получает необычный подарок — билет для участия в «Игре».Ему обещают, что игра вернет яркие чувства, позволит ощутить вкус и остроту жизни. Вступив в игру, Николас начинает осознавать, что это игра всерьез, игра не на жизнь, а на смерть.]]></description>
-        <pictures><![CDATA[2304819,2304818,2304817]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Игра / The Game]]></search>
-        <year><![CDATA[1997]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Дэвид Финчер]]></director>
-        <genre><![CDATA[триллер,драма,детектив,приключения]]></genre>
-        <actor><![CDATA[Майкл Дуглас,Шон Пенн,Дебора Кара Ангер,Джеймс Ребхорн,Питер Донат]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0119174","tmdb_id":"2649"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
 </sphinx:docset>
