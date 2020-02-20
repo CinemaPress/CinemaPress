@@ -51,14 +51,15 @@ function indexEpisode(options, callback) {
   if (cache.has(hash)) {
     return callback(null, [cache.get(hash)]);
   }
-  var result = {};
-  result.name = modules.episode.data.index.name;
-  result.movies = require(path.join(
+  var episodes = require(path.join(
     path.dirname(__filename),
     '..',
     'files',
     'episodes.json'
-  ))
+  ));
+  var result = {};
+  result.name = modules.episode.data.index.name;
+  result.movies = (Array.isArray(episodes) ? episodes : [])
     .slice(0, 99)
     .map(function(episode, i) {
       if (i >= modules.episode.data.index.count) {
