@@ -142,33 +142,35 @@ router.get('/?', function(req, res) {
           var iframe = p.iframe ? op.get(json, p.iframe) || '' : '';
           var translate = p.translate ? op.get(json, p.translate) || '' : '';
           var quality = p.quality ? op.get(json, p.quality) || '' : '';
-          if (p.uid) {
+          if (iframe && p.uid) {
             iframe = iframe.indexOf('?') + 1 ? '&' + p.uid : '?' + p.uid;
           }
-          if (req.query.autoplay) {
+          if (iframe && req.query.autoplay) {
             iframe +=
               iframe.indexOf('?') + 1
                 ? '&autoplay=' + req.query.autoplay
                 : '?autoplay=' + req.query.autoplay;
           }
-          if (req.query.season) {
+          if (iframe && req.query.season) {
             iframe +=
               iframe.indexOf('?') + 1
                 ? '&season=' + req.query.season
                 : '?season=' + req.query.season;
           }
-          if (req.query.episode) {
+          if (iframe && req.query.episode) {
             iframe +=
               iframe.indexOf('?') + 1
                 ? '&episode=' + req.query.episode
                 : '?episode=' + req.query.episode;
           }
-          script = script
-            .replace(/iframe-src/gi, iframe)
-            .replace(/iframe-translate/gi, translate.toUpperCase())
-            .replace(/iframe-quality/gi, quality.toUpperCase());
+          if (iframe) {
+            script = script
+              .replace(/iframe-src/gi, iframe)
+              .replace(/iframe-translate/gi, translate.toUpperCase())
+              .replace(/iframe-quality/gi, quality.toUpperCase());
+            result = true;
+          }
           cache.set(hash, script);
-          result = true;
           callback();
         }
       );
