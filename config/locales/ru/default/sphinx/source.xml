@@ -192,9 +192,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[89]]></kp_rating>
-        <kp_vote><![CDATA[288215]]></kp_vote>
+        <kp_vote><![CDATA[288290]]></kp_vote>
         <imdb_rating><![CDATA[93]]></imdb_rating>
-        <imdb_vote><![CDATA[1640478]]></imdb_vote>
+        <imdb_vote><![CDATA[1640717]]></imdb_vote>
         <premiere><![CDATA[734608.875]]></premiere>
         <type><![CDATA[1]]></type>
         <title_ru><![CDATA[Игра престолов]]></title_ru>
@@ -564,9 +564,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[77]]></kp_rating>
-        <kp_vote><![CDATA[54791]]></kp_vote>
+        <kp_vote><![CDATA[54831]]></kp_vote>
         <imdb_rating><![CDATA[75]]></imdb_rating>
-        <imdb_vote><![CDATA[87110]]></imdb_vote>
+        <imdb_vote><![CDATA[87161]]></imdb_vote>
         <premiere><![CDATA[737426.875]]></premiere>
         <type><![CDATA[4]]></type>
         <title_ru><![CDATA[Как приручить дракона 3]]></title_ru>
@@ -1117,6 +1117,37 @@
         <custom><![CDATA[{"imdb_id":"3864056","tmdb_id":"472674"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
+    <sphinx:document id="923146">
+        <kp_id><![CDATA[923146]]></kp_id>
+        <query_id><![CDATA[923146]]></query_id>
+        <rating><![CDATA[0]]></rating>
+        <vote><![CDATA[0]]></vote>
+        <kp_rating><![CDATA[69]]></kp_rating>
+        <kp_vote><![CDATA[2546]]></kp_vote>
+        <imdb_rating><![CDATA[66]]></imdb_rating>
+        <imdb_vote><![CDATA[5]]></imdb_vote>
+        <premiere><![CDATA[736415.875]]></premiere>
+        <type><![CDATA[1]]></type>
+        <title_ru><![CDATA[Крыша мира]]></title_ru>
+        <title_en><![CDATA[Krysha mira]]></title_en>
+        <title_page><![CDATA[]]></title_page>
+        <description_short><![CDATA[]]></description_short>
+        <description>
+            <![CDATA[История трех молодых людей, волей случая оказавшихся вместе. И в очень хорошем месте — огромной квартире в самом центре Москвы с выходом на крышу и головокружительным видом на город. Герои решают открыть в квартире хостел — бюджетную гостиницу. У них есть все, чтобы преуспеть — организаторские способности одного, дизайнерский талант другого и, разумеется, сама квартира. Что из этого получится? Знают только они, ну и сварливый сосед — бывший прапорщик — который изо всех сил будет мешать этой бизнес-идее состояться. Жизнь современной Москвы глазами 20-летних и с высоты птичьего полета.]]></description>
+        <pictures><![CDATA[2742492,2742493,2742494]]></pictures>
+        <poster><![CDATA[1]]></poster>
+        <search><![CDATA[Крыша мира / Krysha mira]]></search>
+        <year><![CDATA[2016]]></year>
+        <country><![CDATA[Россия]]></country>
+        <director><![CDATA[Роман Фокин,Антон Маслов]]></director>
+        <genre><![CDATA[комедия]]></genre>
+        <actor><![CDATA[Алексей Бардуков,Илья Глинников,Ирина Старшенбаум,Александр Робак,Николай Козак]]></actor>
+        <player><![CDATA[]]></player>
+        <translate><![CDATA[]]></translate>
+        <quality><![CDATA[]]></quality>
+        <custom><![CDATA[{"imdb_id":"9057188","tmdb_id":"74933"}]]></custom>
+        <all_movies><![CDATA[_example_com_]]></all_movies>
+    </sphinx:document>
     <sphinx:document id="924311">
         <kp_id><![CDATA[924311]]></kp_id>
         <query_id><![CDATA[924311]]></query_id>
@@ -1401,9 +1432,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[65]]></kp_rating>
-        <kp_vote><![CDATA[2081]]></kp_vote>
+        <kp_vote><![CDATA[2685]]></kp_vote>
         <imdb_rating><![CDATA[69]]></imdb_rating>
-        <imdb_vote><![CDATA[8562]]></imdb_vote>
+        <imdb_vote><![CDATA[11120]]></imdb_vote>
         <premiere><![CDATA[737813.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Соник в кино]]></title_ru>
@@ -1463,9 +1494,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[58]]></kp_rating>
-        <kp_vote><![CDATA[1670]]></kp_vote>
+        <kp_vote><![CDATA[1795]]></kp_vote>
         <imdb_rating><![CDATA[55]]></imdb_rating>
-        <imdb_vote><![CDATA[14034]]></imdb_vote>
+        <imdb_vote><![CDATA[14309]]></imdb_vote>
         <premiere><![CDATA[737789.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Удивительное путешествие доктора Дулиттла]]></title_ru>
@@ -1742,9 +1773,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[63]]></kp_rating>
-        <kp_vote><![CDATA[19133]]></kp_vote>
+        <kp_vote><![CDATA[19689]]></kp_vote>
         <imdb_rating><![CDATA[66]]></imdb_rating>
-        <imdb_vote><![CDATA[41928]]></imdb_vote>
+        <imdb_vote><![CDATA[43194]]></imdb_vote>
         <premiere><![CDATA[737813.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Хищные птицы: Потрясающая история Харли Квинн]]></title_ru>
@@ -1775,8 +1806,8 @@
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[0]]></kp_rating>
         <kp_vote><![CDATA[0]]></kp_vote>
-        <imdb_rating><![CDATA[49]]></imdb_rating>
-        <imdb_vote><![CDATA[53]]></imdb_vote>
+        <imdb_rating><![CDATA[50]]></imdb_rating>
+        <imdb_vote><![CDATA[60]]></imdb_vote>
         <premiere><![CDATA[737828.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Папина дочка]]></title_ru>
@@ -1836,9 +1867,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[87]]></kp_rating>
-        <kp_vote><![CDATA[32590]]></kp_vote>
+        <kp_vote><![CDATA[36342]]></kp_vote>
         <imdb_rating><![CDATA[81]]></imdb_rating>
-        <imdb_vote><![CDATA[34265]]></imdb_vote>
+        <imdb_vote><![CDATA[34948]]></imdb_vote>
         <premiere><![CDATA[737760.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Джентльмены]]></title_ru>
@@ -1867,9 +1898,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[61]]></kp_rating>
-        <kp_vote><![CDATA[3133]]></kp_vote>
+        <kp_vote><![CDATA[3305]]></kp_vote>
         <imdb_rating><![CDATA[68]]></imdb_rating>
-        <imdb_vote><![CDATA[31027]]></imdb_vote>
+        <imdb_vote><![CDATA[31251]]></imdb_vote>
         <premiere><![CDATA[737770.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Скандал]]></title_ru>
@@ -2114,9 +2145,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[71]]></kp_rating>
-        <kp_vote><![CDATA[5959]]></kp_vote>
-        <imdb_rating><![CDATA[68]]></imdb_rating>
-        <imdb_vote><![CDATA[57]]></imdb_vote>
+        <kp_vote><![CDATA[6560]]></kp_vote>
+        <imdb_rating><![CDATA[70]]></imdb_rating>
+        <imdb_vote><![CDATA[76]]></imdb_vote>
         <premiere><![CDATA[737833.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Лед 2]]></title_ru>
@@ -3768,9 +3799,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[91368]]></kp_vote>
+        <kp_vote><![CDATA[92667]]></kp_vote>
         <imdb_rating><![CDATA[86]]></imdb_rating>
-        <imdb_vote><![CDATA[248582]]></imdb_vote>
+        <imdb_vote><![CDATA[255273]]></imdb_vote>
         <premiere><![CDATA[737564.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Паразиты]]></title_ru>
@@ -4078,9 +4109,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[319115]]></kp_vote>
+        <kp_vote><![CDATA[319665]]></kp_vote>
         <imdb_rating><![CDATA[77]]></imdb_rating>
-        <imdb_vote><![CDATA[414950]]></imdb_vote>
+        <imdb_vote><![CDATA[415470]]></imdb_vote>
         <premiere><![CDATA[729515.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Пятый элемент]]></title_ru>
@@ -5810,9 +5841,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[84]]></kp_rating>
-        <kp_vote><![CDATA[423217]]></kp_vote>
+        <kp_vote><![CDATA[424355]]></kp_vote>
         <imdb_rating><![CDATA[81]]></imdb_rating>
-        <imdb_vote><![CDATA[1051127]]></imdb_vote>
+        <imdb_vote><![CDATA[1053010]]></imdb_vote>
         <premiere><![CDATA[734180.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Остров проклятых]]></title_ru>
@@ -6370,9 +6401,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[309860]]></kp_vote>
+        <kp_vote><![CDATA[310359]]></kp_vote>
         <imdb_rating><![CDATA[78]]></imdb_rating>
-        <imdb_vote><![CDATA[556802]]></imdb_vote>
+        <imdb_vote><![CDATA[557538]]></imdb_vote>
         <premiere><![CDATA[733750.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Загадочная история Бенджамина Баттона]]></title_ru>
@@ -6463,9 +6494,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[294779]]></kp_vote>
+        <kp_vote><![CDATA[294837]]></kp_vote>
         <imdb_rating><![CDATA[84]]></imdb_rating>
-        <imdb_vote><![CDATA[1439897]]></imdb_vote>
+        <imdb_vote><![CDATA[1440065]]></imdb_vote>
         <premiere><![CDATA[735064.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Темный рыцарь: Возрождение легенды]]></title_ru>
@@ -6929,9 +6960,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[81]]></kp_rating>
-        <kp_vote><![CDATA[267355]]></kp_vote>
+        <kp_vote><![CDATA[267907]]></kp_vote>
         <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[554640]]></imdb_vote>
+        <imdb_vote><![CDATA[555560]]></imdb_vote>
         <premiere><![CDATA[727962.875]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[День сурка]]></title_ru>
@@ -7487,9 +7518,9 @@
         <rating><![CDATA[0]]></rating>
         <vote><![CDATA[0]]></vote>
         <kp_rating><![CDATA[79]]></kp_rating>
-        <kp_vote><![CDATA[238732]]></kp_vote>
+        <kp_vote><![CDATA[239238]]></kp_vote>
         <imdb_rating><![CDATA[83]]></imdb_rating>
-        <imdb_vote><![CDATA[724959]]></imdb_vote>
+        <imdb_vote><![CDATA[726116]]></imdb_vote>
         <premiere><![CDATA[730618.8333333334]]></premiere>
         <type><![CDATA[0]]></type>
         <title_ru><![CDATA[Реквием по мечте]]></title_ru>
@@ -7696,37 +7727,6 @@
         <translate><![CDATA[]]></translate>
         <quality><![CDATA[]]></quality>
         <custom><![CDATA[{"imdb_id":"0119174","tmdb_id":"2649"}]]></custom>
-        <all_movies><![CDATA[_example_com_]]></all_movies>
-    </sphinx:document>
-    <sphinx:document id="458">
-        <kp_id><![CDATA[458]]></kp_id>
-        <query_id><![CDATA[458]]></query_id>
-        <rating><![CDATA[0]]></rating>
-        <vote><![CDATA[0]]></vote>
-        <kp_rating><![CDATA[80]]></kp_rating>
-        <kp_vote><![CDATA[232614]]></kp_vote>
-        <imdb_rating><![CDATA[80]]></imdb_rating>
-        <imdb_vote><![CDATA[771430]]></imdb_vote>
-        <premiere><![CDATA[731150.8333333334]]></premiere>
-        <type><![CDATA[4]]></type>
-        <title_ru><![CDATA[Корпорация монстров]]></title_ru>
-        <title_en><![CDATA[Monsters, Inc.]]></title_en>
-        <title_page><![CDATA[]]></title_page>
-        <description_short><![CDATA[]]></description_short>
-        <description>
-            <![CDATA[Склизкий гад в сливном бачке, мохнатый зверь, похожий на чудовище из «Аленького цветочка», гигантские мокрицы под кроватью — все они существуют на самом деле. Все, что им нужно — пугать детей, потому что из детских криков они получают электричество.Полнометражный мультфильм рассказывает о кризисах в мире монстров, их жизни. Но однажды вся мирная жизнь монстров оказывается под угрозой: в их мир попадает ребенок. А с детьми столько хлопот, что они могут довести даже монстров.]]></description>
-        <pictures><![CDATA[1916182,1916181,1916180]]></pictures>
-        <poster><![CDATA[1]]></poster>
-        <search><![CDATA[Корпорация монстров / Monsters, Inc.]]></search>
-        <year><![CDATA[2001]]></year>
-        <country><![CDATA[США]]></country>
-        <director><![CDATA[Пит Доктер,Дэвид Силверман,Ли Анкрич]]></director>
-        <genre><![CDATA[мультфильм,фэнтези,комедия,приключения,семейный]]></genre>
-        <actor><![CDATA[Джон Гудман,Билли Кристал,Мэри Гиббс,Стив Бушеми,Джеймс Коберн]]></actor>
-        <player><![CDATA[]]></player>
-        <translate><![CDATA[]]></translate>
-        <quality><![CDATA[]]></quality>
-        <custom><![CDATA[{"imdb_id":"0198781","tmdb_id":"585"}]]></custom>
         <all_movies><![CDATA[_example_com_]]></all_movies>
     </sphinx:document>
 </sphinx:docset>
