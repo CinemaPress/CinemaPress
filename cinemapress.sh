@@ -1633,6 +1633,7 @@ docker_run() {
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /var/${CP_THEME}
         mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
         cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
+        node /home/${CP_DOMAIN}/optimal.js
         OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
         echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
         echo "${CP_DOMAIN}:${OPENSSL}" >> /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
