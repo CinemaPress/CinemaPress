@@ -375,7 +375,7 @@ ip_install() {
     CP_SPEED=`echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
-    DISABLE_PS=$(grep "#pagespeed" /home/"${LOCAL_DOMAIN}"/config/production/nginx/nginx/conf.d/default.conf 2>/dev/null)
+    DISABLE_PS=$(grep "#pagespeed" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
     3_backup "${LOCAL_DOMAIN}" "create"
@@ -385,10 +385,10 @@ ip_install() {
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
     if [ "${DISABLE_SSL}" = "" ]; then
-      sed -Ei "s/#ssl //g" /home/"${LOCAL_DOMAIN}"/config/production/nginx/nginx/conf.d/default.conf
+      sed -Ei "s/#ssl //g" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     fi
     if [ "${DISABLE_PS}" = "" ]; then
-      sed -Ei "s/#pagespeed //g" /home/"${LOCAL_DOMAIN}"/config/production/nginx/nginx/conf.d/default.conf
+      sed -Ei "s/#pagespeed //g" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
