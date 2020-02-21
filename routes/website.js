@@ -20,7 +20,9 @@ var modules = require('../config/production/modules');
  * Node dependencies.
  */
 
+var fs = require('fs');
 var md5 = require('md5');
+var path = require('path');
 var _eval = require('eval');
 var express = require('express');
 var router = express.Router();
@@ -108,6 +110,20 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     CP_regexp.str(req.query.sorting) ||
     (level1 === modules.content.data.url ? '' : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
+  var id = level2 ? movie.id(level2) : '';
+  var custom_template = path.join(
+    __dirname,
+    '..',
+    'themes',
+    config.theme,
+    'views',
+    level1 || '',
+    level2
+      ? id
+        ? id + '.ejs'
+        : CP_translit.text(level2 || '', false, '').replace(/^-/, '') + '.ejs'
+      : 'index.ejs'
+  );
 
   ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(
     t
@@ -165,7 +181,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   function getSphinx(callback) {
     switch (template) {
       case 'movie':
-        movie.data(movie.id(level2), 'movie', options, function(err, render) {
+        movie.data(id, 'movie', options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -176,7 +192,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         });
         break;
       case 'online':
-        movie.data(movie.id(level2), 'online', options, function(err, render) {
+        movie.data(id, 'online', options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -187,10 +203,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         });
         break;
       case 'download':
-        movie.data(movie.id(level2), 'download', options, function(
-          err,
-          render
-        ) {
+        movie.data(id, 'download', options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -201,7 +214,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         });
         break;
       case 'trailer':
-        movie.data(movie.id(level2), 'trailer', options, function(err, render) {
+        movie.data(id, 'trailer', options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -212,7 +225,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         });
         break;
       case 'picture':
-        movie.data(movie.id(level2), 'picture', options, function(err, render) {
+        movie.data(id, 'picture', options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -223,7 +236,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         });
         break;
       case 'episode':
-        movie.data(movie.id(level2), level3, options, function(err, render) {
+        movie.data(id, level3, options, function(err, render) {
           if (err) {
             callback(err);
           } else if (url === render.page.url) {
@@ -407,9 +420,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     switch (level1) {
       case config.urls.noindex:
         if (!config.urls.noindex) return 'error';
-        return movie.id(level2) ? movie.type(level3) : 'error';
+        return id ? movie.type(level3) : 'error';
       case config.urls.movie:
-        return movie.id(level2) ? movie.type(level3) : 'error';
+        return id ? movie.type(level3) : 'error';
       case config.urls.year:
         return level2 ? 'category' : 'categories';
       case config.urls.genre:
@@ -494,49 +507,53 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
               : req.userinfo.device + '/' + template;
         }
 
-        res.render(template, render, function(err, html) {
-          if (options.debug) {
-            options.debug.detail.push({
-              type: 'render',
-              duration: new Date() - options.debug.duration.current + 'ms'
-            });
-            options.debug.duration.current = new Date();
-          }
+        fs.access(custom_template, function(err) {
+          if (err) custom_template = template;
 
-          if (err) console.log('[renderData] Render Error:', err);
+          res.render(custom_template, render, function(err, html) {
+            if (options.debug) {
+              options.debug.detail.push({
+                type: 'render',
+                duration: new Date() - options.debug.duration.current + 'ms'
+              });
+              options.debug.duration.current = new Date();
+            }
 
-          res
-            .status(
-              render.page && render.page.status_code
-                ? render.page.status_code
-                : 200
-            )
-            .send(html);
+            if (err) console.log('[renderData] Render Error:', err);
 
-          if (config.cache.time && render && !render.cache) {
-            render.cache = true;
-            CP_cache.set(urlHash, render, config.cache.time, function(err) {
-              if (err) {
-                if ((err + '').indexOf('1048576') + 1) {
-                  console.log(
-                    '[routes/website.js:renderData] Cache Length Error:',
-                    url
-                  );
-                } else if ((err + '').indexOf('not available') === -1) {
-                  console.log(
-                    '[routes/website.js:renderData] Cache Set Error:',
-                    err
-                  );
+            res
+              .status(
+                render.page && render.page.status_code
+                  ? render.page.status_code
+                  : 200
+              )
+              .send(html);
+
+            if (config.cache.time && render && !render.cache) {
+              render.cache = true;
+              CP_cache.set(urlHash, render, config.cache.time, function(err) {
+                if (err) {
+                  if ((err + '').indexOf('1048576') + 1) {
+                    console.log(
+                      '[routes/website.js:renderData] Cache Length Error:',
+                      url
+                    );
+                  } else if ((err + '').indexOf('not available') === -1) {
+                    console.log(
+                      '[routes/website.js:renderData] Cache Set Error:',
+                      err
+                    );
+                  }
                 }
-              }
-            });
-          }
+              });
+            }
 
-          if (options.debug) {
-            options.debug.duration =
-              new Date() - options.debug.duration.all + 'ms';
-            console.log(options.debug);
-          }
+            if (options.debug) {
+              options.debug.duration =
+                new Date() - options.debug.duration.all + 'ms';
+              console.log(options.debug);
+            }
+          });
         });
       }
     } else {

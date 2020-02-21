@@ -11,7 +11,7 @@ var config = require('../config/production/config');
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 2592000000 });
+var cache = new LRU();
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
@@ -30,8 +30,9 @@ router.get(
     var id = req.params[2];
     var format = req.params[3];
     var file = id + '.' + format;
-    var id_number = /^[0-9]*$/.test(id);
-    var id_symbol = /^[a-z0-9@.,_\-]*$/i.test(id);
+    var url_kp = /^[0-9]*$/.test(id);
+    var url_tmdb = /^[a-z0-9]*$/i.test(id);
+    var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
     var origin = '/files/' + type + '/' + size + '/' + file;
 
     if (cache.has(origin)) {
@@ -47,42 +48,28 @@ router.get(
       config.domain +
       '/files/poster/no-poster.jpg';
     var source = false;
-    var protocol = 'https://';
 
-    if (req.protocol === 'http') {
-      if (
-        req.get('x-cloudflare-proto') &&
-        req.get('x-cloudflare-proto').toLowerCase() === 'https'
-      ) {
-        protocol = 'https://';
+    if (url_kp) {
+      if (config.image.addr === config.domain) {
+        if (size === 'original') {
+          source = 'kinopoisk';
+        } else {
+          source = 'server';
+        }
       } else {
-        protocol = 'http://';
-      }
-    }
-
-    if (id_number && config.image.addr === 'st.kp.yandex.net') {
-      // if (size === 'original') save = false; // Not save original image
-      source = 'kinopoisk';
-    } else if (id_symbol && config.image.addr === 'image.tmdb.org') {
-      // if (size === 'original') save = false; // Not save original image
-      source = 'tmdb';
-    } else if (id_symbol && config.image.addr === 'm.media-amazon.com') {
-      // if (size === 'original') save = false; // Not save original image
-      source = 'imdb';
-    } else if (id_number && config.image.addr === config.domain) {
-      // save = false; // Not save original image
-      if (size === 'original') {
         source = 'kinopoisk';
-      } else {
-        source = 'server';
       }
+    } else if (url_tmdb) {
+      source = 'tmdb';
+    } else if (url_imdb) {
+      source = 'imdb';
     }
 
     if (!source) {
       return res.redirect(302, no_poster);
     }
 
-    var image = protocol;
+    var image = 'https://';
 
     switch (type) {
       case 'poster':
@@ -133,7 +120,7 @@ router.get(
             }
             break;
           case 'server':
-            image += config.subdomain + config.domain;
+            image = config.protocol + config.subdomain + config.domain;
             image += '/images/poster/' + size + '/img' + file;
             break;
         }
@@ -186,7 +173,7 @@ router.get(
             }
             break;
           case 'server':
-            image += config.subdomain + config.domain;
+            image = config.protocol + config.subdomain + config.domain;
             image += '/images/picture/' + size + '/img' + file;
             break;
         }
