@@ -224,7 +224,10 @@ router.get(
               '.100 Safari/537.36'
           }
         })
-        .pipe(fs.createWriteStream(save))
+        .on('response', function(response) {
+          response.pipe(fs.createWriteStream(save));
+          response.pipe(res);
+        })
         .on('error', function(err) {
           console.error(err && err.message, req.originalUrl);
           cache.set(origin, no_poster);
@@ -232,7 +235,6 @@ router.get(
         })
         .on('close', function() {
           cache.set(origin, origin);
-          return res.redirect(301, origin);
         });
     });
   }
