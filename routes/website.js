@@ -121,8 +121,25 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     level2
       ? id
         ? id + '.ejs'
-        : CP_translit.text(level2 || '', false, '').replace(/^-/, '') + '.ejs'
+        : decodeURIComponent(
+            CP_translit.text(level2 || '', undefined, '')
+          ).replace(/^-/, '') + '.ejs'
       : 'index.ejs'
+  );
+  var custom_data = path.join(
+    __dirname,
+    '..',
+    'themes',
+    config.theme,
+    'views',
+    level1 || '',
+    level2
+      ? id
+        ? id + '.json'
+        : decodeURIComponent(
+            CP_translit.text(level2 || '', undefined, '')
+          ).replace(/^-/, '') + '.json'
+      : 'index.json'
   );
 
   ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(
@@ -507,52 +524,64 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
               : req.userinfo.device + '/' + template;
         }
 
-        fs.access(custom_template, function(err) {
-          if (err) custom_template = template;
+        if (typeof render.page !== 'object') render.page = {};
+        if (typeof render.page.custom !== 'object') render.page.custom = {};
 
-          res.render(custom_template, render, function(err, html) {
-            if (options.debug) {
-              options.debug.detail.push({
-                type: 'render',
-                duration: new Date() - options.debug.duration.current + 'ms'
-              });
-              options.debug.duration.current = new Date();
+        fs.access(custom_data, function(err) {
+          if (!err) {
+            try {
+              render.page.custom = require(custom_data);
+            } catch (e) {
+              console.error(e);
             }
+          }
+          fs.access(custom_template, function(err) {
+            if (err) custom_template = template;
 
-            if (err) console.log('[renderData] Render Error:', err);
+            res.render(custom_template, render, function(err, html) {
+              if (options.debug) {
+                options.debug.detail.push({
+                  type: 'render',
+                  duration: new Date() - options.debug.duration.current + 'ms'
+                });
+                options.debug.duration.current = new Date();
+              }
 
-            res
-              .status(
-                render.page && render.page.status_code
-                  ? render.page.status_code
-                  : 200
-              )
-              .send(html);
+              if (err) console.log('[renderData] Render Error:', err);
 
-            if (config.cache.time && render && !render.cache) {
-              render.cache = true;
-              CP_cache.set(urlHash, render, config.cache.time, function(err) {
-                if (err) {
-                  if ((err + '').indexOf('1048576') + 1) {
-                    console.log(
-                      '[routes/website.js:renderData] Cache Length Error:',
-                      url
-                    );
-                  } else if ((err + '').indexOf('not available') === -1) {
-                    console.log(
-                      '[routes/website.js:renderData] Cache Set Error:',
-                      err
-                    );
+              res
+                .status(
+                  render.page && render.page.status_code
+                    ? render.page.status_code
+                    : 200
+                )
+                .send(html);
+
+              if (config.cache.time && render && !render.cache) {
+                render.cache = true;
+                CP_cache.set(urlHash, render, config.cache.time, function(err) {
+                  if (err) {
+                    if ((err + '').indexOf('1048576') + 1) {
+                      console.log(
+                        '[routes/website.js:renderData] Cache Length Error:',
+                        url
+                      );
+                    } else if ((err + '').indexOf('not available') === -1) {
+                      console.log(
+                        '[routes/website.js:renderData] Cache Set Error:',
+                        err
+                      );
+                    }
                   }
-                }
-              });
-            }
+                });
+              }
 
-            if (options.debug) {
-              options.debug.duration =
-                new Date() - options.debug.duration.all + 'ms';
-              console.log(options.debug);
-            }
+              if (options.debug) {
+                options.debug.duration =
+                  new Date() - options.debug.duration.all + 'ms';
+                console.log(options.debug);
+              }
+            });
           });
         });
       }
