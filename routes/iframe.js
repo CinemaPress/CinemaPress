@@ -81,7 +81,7 @@ router.get('/:id', function(req, res) {
           );
         }
         try {
-          var custom = JSON.parse(movies[0].custom);
+          var custom = movies[0].custom ? JSON.parse(movies[0].custom) : {};
           data['data-imdb'] = custom.imdb_id ? custom.imdb_id : '';
           data['data-tmdb'] = custom.tmdb_id ? custom.tmdb_id : '';
         } catch (e) {
