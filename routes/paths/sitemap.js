@@ -296,82 +296,62 @@ function oneSitemap(type, year, options, callback) {
       __dirname,
       '..',
       '..',
-      'files',
-      'sitemap-' + year + '.json'
+      'themes',
+      config.theme,
+      'views',
+      config.urls.sitemap,
+      'year-' + year + '.json'
     );
 
-    fs.stat(file, function(err, stat) {
-      var now = new Date().getTime();
-      var endTime =
-        stat && stat.ctime ? new Date(stat.ctime).getTime() + 43200000 : 0;
-      if (!err && now < endTime) {
-        var render = {};
-        render.urls = [];
-        try {
-          var c = fs.readFileSync(file);
-          render = JSON.parse(c);
-        } catch (e) {
-          console.error(e);
-        }
-        callback(null, render);
-      } else {
-        CP_get.movies(
-          { year: year },
-          -1,
-          'kinopoisk-vote-up',
-          1,
-          true,
-          options,
-          function(err, movies) {
-            if (options.debug) {
-              options.debug.detail.push({
-                type: 'sitemapMovies',
-                duration: new Date() - options.debug.duration.current + 'ms'
-              });
-              options.debug.duration.current = new Date();
-            }
-
-            if (err) return callback(err);
-
-            var render = {};
-            render.urls = [];
-
-            if (movies && movies.length) {
-              for (var i = 0; i < movies.length; i++) {
-                if (
-                  !config.urls.noindex ||
-                  !(
-                    movies[i].url.indexOf(
-                      '/' + config.urls.noindex + config.urls.slash
-                    ) + 1
-                  )
-                ) {
-                  render.urls[render.urls.length] = {
-                    loc: movies[i].url,
-                    lastmod:
-                      movies[i].custom && movies[i].custom.lastmod
-                        ? movies[i].custom.lastmod.substr(0, 10)
-                        : ''
-                  };
-                }
-              }
-
-              callback(null, render);
-            } else {
-              callback(null, render);
-            }
-
-            fs.writeFile(file, JSON.stringify(render, null, 2), function(err) {
-              if (err) {
-                console.log(
-                  '[routes/sitemap.js:getMovies] Write File Error:',
-                  err
-                );
-              }
+    fs.access(file, function(err) {
+      if (!err) return callback(null, {});
+      CP_get.movies(
+        { year: year },
+        -1,
+        'kinopoisk-vote-up',
+        1,
+        true,
+        options,
+        function(err, movies) {
+          if (options.debug) {
+            options.debug.detail.push({
+              type: 'sitemapMovies',
+              duration: new Date() - options.debug.duration.current + 'ms'
             });
+            options.debug.duration.current = new Date();
           }
-        );
-      }
+
+          if (err) return callback(err);
+
+          var render = {};
+          render.urls = [];
+
+          if (movies && movies.length) {
+            for (var i = 0; i < movies.length; i++) {
+              if (
+                !config.urls.noindex ||
+                !(
+                  movies[i].url.indexOf(
+                    '/' + config.urls.noindex + config.urls.slash
+                  ) + 1
+                )
+              ) {
+                render.urls[render.urls.length] = {
+                  loc: movies[i].url,
+                  lastmod:
+                    movies[i].custom && movies[i].custom.lastmod
+                      ? movies[i].custom.lastmod.substr(0, 10)
+                      : ''
+                };
+              }
+            }
+
+            callback(null, render);
+          } else {
+            callback(null, render);
+          }
+        }
+      );
     });
   }
 

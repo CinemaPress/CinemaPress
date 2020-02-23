@@ -365,6 +365,25 @@ ip_install() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 
+    CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
+
+    if [ "${CHECK_MEGA}" = "" ]; then
+        _header "WARNING"
+        _content
+        _content "You have no configuration to create a backup!"
+        _content
+        _content "Configure for MEGA.nz cloud storage in one line:"
+        _content
+        printf "     ~# cinemapress backup %s config \"email\" \"pass\"" "${LOCAL_DOMAIN}"
+        _br
+        _content
+        _content "email - your email on MEGA.nz"
+        _content "pass - your password on MEGA.nz"
+        _content
+        _s
+        exit 0
+    fi
+
     AA=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
     KK=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
     DD=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
@@ -1649,6 +1668,7 @@ docker_run() {
         searchd
         memcached -u root -d
         node /home/${CP_DOMAIN}/config/update/default.js
+        node /home/${CP_DOMAIN}/lib/CP_cron.js force
     else
         searchd
         memcached -u root -d
@@ -1696,7 +1716,7 @@ docker_zero() {
     (sleep 2; echo flush_all; sleep 2; echo quit;) | telnet 127.0.0.1 11211
 }
 docker_cron() {
-    node /home/${CP_DOMAIN}/lib/CP_cron.js
+    node /home/"${CP_DOMAIN}"/lib/CP_cron.js
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}

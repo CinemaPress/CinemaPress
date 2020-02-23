@@ -111,6 +111,17 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     (level1 === modules.content.data.url ? '' : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
   var id = level2 ? movie.id(level2) : '';
+  var filename = level2
+    ? id
+      ? id
+      : level1 === config.urls.sitemap && level3
+      ? decodeURIComponent(
+          CP_translit.text(level2 + '-' + level3, undefined, '')
+        ).replace(/^-/, '')
+      : decodeURIComponent(
+          CP_translit.text(level2 || '', undefined, '')
+        ).replace(/^-/, '')
+    : 'index';
   var custom_template = path.join(
     __dirname,
     '..',
@@ -119,13 +130,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'views',
     req.userinfo.device === 'desktop' ? '' : req.userinfo.device,
     level1 || 'custom',
-    level2
-      ? id
-        ? id + '.ejs'
-        : decodeURIComponent(
-            CP_translit.text(level2 || '', undefined, '')
-          ).replace(/^-/, '') + '.ejs'
-      : 'index.ejs'
+    filename + '.ejs'
   );
   var custom_data = path.join(
     __dirname,
@@ -135,13 +140,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'views',
     req.userinfo.device === 'desktop' ? '' : req.userinfo.device,
     level1 || 'custom',
-    level2
-      ? id
-        ? id + '.json'
-        : decodeURIComponent(
-            CP_translit.text(level2 || '', undefined, '')
-          ).replace(/^-/, '') + '.json'
-      : 'index.json'
+    filename + '.json'
   );
 
   ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(
