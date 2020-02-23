@@ -117,7 +117,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'themes',
     config.theme,
     'views',
-    level1 || '',
+    level1 || 'custom',
     level2
       ? id
         ? id + '.ejs'
@@ -132,7 +132,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'themes',
     config.theme,
     'views',
-    level1 || '',
+    level1 || 'custom',
     level2
       ? id
         ? id + '.json'

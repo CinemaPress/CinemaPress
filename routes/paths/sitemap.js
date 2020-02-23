@@ -89,7 +89,8 @@ function allSitemap(options, callback) {
       config.urls.actor,
       config.urls.director,
       config.urls.type,
-      modules.content.data.url
+      modules.content.data.url,
+      'comment'
     ];
 
     for (var cat in c) {
@@ -165,6 +166,11 @@ function oneSitemap(type, year, options, callback) {
       break;
     case modules.content.data.url:
       getContents(function(err, render) {
+        return err ? callback(err) : callback(null, render);
+      });
+      break;
+    case 'comment':
+      getComments(function(err, render) {
         return err ? callback(err) : callback(null, render);
       });
       break;
@@ -331,6 +337,48 @@ function oneSitemap(type, year, options, callback) {
         }
       }
     );
+  }
+
+  /**
+   * Get comments.
+   *
+   * @param {Callback} callback
+   */
+
+  function getComments(callback) {
+    var render = {};
+    render.urls = [];
+
+    CP_get.comments({ comment_confirm: 1 }, 100, '', 1, options, function(
+      err,
+      comments
+    ) {
+      if (err) console.error(err);
+
+      if (comments && comments.length) {
+        for (var i = 0, l = comments.length; i < l; i++) {
+          render.urls[render.urls.length] = {
+            loc: options.origin + comments[i].comment_url,
+            lastmod: moment(
+              new Date(
+                parseInt(comments[i].comment_publish) -
+                  719528 * 1000 * 60 * 60 * 24
+              ).toJSON()
+            ).format('YYYY-MM-DD')
+          };
+        }
+      }
+
+      if (options.debug) {
+        options.debug.detail.push({
+          type: 'sitemapComment',
+          duration: new Date() - options.debug.duration.current + 'ms'
+        });
+        options.debug.duration.current = new Date();
+      }
+
+      return callback(null, render);
+    });
   }
 }
 
