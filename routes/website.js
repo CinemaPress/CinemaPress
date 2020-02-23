@@ -117,6 +117,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'themes',
     config.theme,
     'views',
+    req.userinfo.device === 'desktop' ? '' : req.userinfo.device,
     level1 || 'custom',
     level2
       ? id
@@ -132,6 +133,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     'themes',
     config.theme,
     'views',
+    req.userinfo.device === 'desktop' ? '' : req.userinfo.device,
     level1 || 'custom',
     level2
       ? id
