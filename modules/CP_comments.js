@@ -625,7 +625,7 @@ function recentComments(service, options, callback) {
           callback(err, result);
 
           if (result && result.length) {
-            fs.writeFile(file, JSON.stringify(result), function(err) {
+            fs.writeFile(file, JSON.stringify(result, null, 2), function(err) {
               if (err) {
                 console.log(
                   '[modules/CP_comments.js:recentComments] Write File Error:',
