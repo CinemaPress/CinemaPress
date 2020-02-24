@@ -1668,7 +1668,6 @@ docker_run() {
         searchd
         memcached -u root -d
         node /home/${CP_DOMAIN}/config/update/default.js
-        node /home/${CP_DOMAIN}/lib/CP_cron.js force
     else
         searchd
         memcached -u root -d
