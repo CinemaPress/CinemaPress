@@ -2396,7 +2396,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 --height "800px" \
                 --min-width "0" \
                 --min-height "0" \
-                --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0 CinemaPress App" \
+                --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0 CinemaPress App" \
                 --ignore-certificate \
                 --insecure \
                 --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io|.*?\.netlify\.com|.*?\.appspot\.com|.*?\.surge\.sh|.*?\.updog\.co|.*?\.neocities\.org" \
@@ -2413,14 +2413,16 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /home/${CP_DOMAIN}/files/"${NAME_OS}"
             mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/"${CP_DOMAIN_}"-* \
                 /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app
-            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe \
-                /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/app.exe
+            if [ -f /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe ]; then
+                mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe \
+                    /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/app.exe
+            fi
             cd /home/${CP_DOMAIN}/config/app/"${NAME_OS}" && \
-            tar -czf /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".tar.gz app
+            zip -r /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".tar.gz app
             rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
             sh_progress 100
             _line
-            _header "${CP_DOMAIN}/files/${NAME_OS}/app.tar.gz"
+            _header "${CP_DOMAIN}/files/${NAME_OS}/app_${CP_VER}.tar.gz"
             _line
             _br
             exit 0

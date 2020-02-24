@@ -21,6 +21,8 @@ var modules = require('../../config/production/modules');
  * Node dependencies.
  */
 
+var fs = require('fs');
+var path = require('path');
 var async = require('async');
 
 /**
@@ -89,40 +91,58 @@ function allCategory(type, options, callback) {
     async.parallel(
       {
         categories: function(callback) {
-          var query = {};
-          query[category] = '!_empty';
-          return CP_get.movies(
-            query,
-            -2,
-            'kinopoisk-vote-up',
-            1,
-            false,
-            options,
-            function(err, movies) {
-              if (options.debug) {
-                options.debug.detail.push({
-                  type: 'categories',
-                  duration: new Date() - options.debug.duration.current + 'ms'
-                });
-                options.debug.duration.current = new Date();
-              }
-              if (err) return callback(err);
-
-              if (movies && movies.length && category === 'year') {
-                movies.push({
-                  year: new Date().getFullYear() + ''
-                });
-              }
-
-              var categories = CP_structure.categories(
-                category,
-                movies,
-                options
-              );
-
-              return callback(null, categories);
-            }
+          var file = path.join(
+            __dirname,
+            '..',
+            '..',
+            'files',
+            category + '.json'
           );
+          fs.access(file, function(err) {
+            if (!err) {
+              return callback(
+                null,
+                require(file).map(function(c) {
+                  c.url = c.url.replace(/https?:\/\/[^\/]+/i, options.origin);
+                  return c;
+                })
+              );
+            }
+            var query = {};
+            query[category] = '!_empty';
+            return CP_get.movies(
+              query,
+              -2,
+              'kinopoisk-vote-up',
+              1,
+              false,
+              options,
+              function(err, movies) {
+                if (options.debug) {
+                  options.debug.detail.push({
+                    type: 'categories',
+                    duration: new Date() - options.debug.duration.current + 'ms'
+                  });
+                  options.debug.duration.current = new Date();
+                }
+                if (err) return callback(err);
+
+                if (movies && movies.length && category === 'year') {
+                  movies.push({
+                    year: new Date().getFullYear() + ''
+                  });
+                }
+
+                var categories = CP_structure.categories(
+                  category,
+                  movies,
+                  options
+                );
+
+                return callback(null, categories);
+              }
+            );
+          });
         },
         slider: function(callback) {
           return modules.slider.status
