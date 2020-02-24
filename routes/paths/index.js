@@ -405,8 +405,12 @@ function dataIndex(options, callback) {
                             contents.length &&
                             contents[0].movies
                             ? CP_get.movies(
-                                { query_id: contents[0].movies.join('|') },
-                                contents[0].movies.length,
+                                {
+                                  query_id: contents[0].movies
+                                    .slice(0, modules.content.data.index.count)
+                                    .join('|')
+                                },
+                                modules.content.data.index.count,
                                 '',
                                 1,
                                 true,
