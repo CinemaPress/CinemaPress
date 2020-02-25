@@ -91,8 +91,8 @@ app.use(
   /^(?:\/mobile-version|\/tv-version|)?/,
   express.static(path.join(path.dirname(__filename), '/'))
 );
-app.use(userinfo(lookup));
 app.use('/files', files);
+app.use(userinfo(lookup));
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/player.*$/, player);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode.*$/, episode);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/robots\.txt$/, robots);
