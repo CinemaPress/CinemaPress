@@ -143,7 +143,7 @@ router.get('/?', function(req, res) {
           var translate = p.translate ? op.get(json, p.translate) || '' : '';
           var quality = p.quality ? op.get(json, p.quality) || '' : '';
           if (iframe && p.uid) {
-            iframe = iframe.indexOf('?') + 1 ? '&' + p.uid : '?' + p.uid;
+            iframe += iframe.indexOf('?') + 1 ? '&' + p.uid : '?' + p.uid;
           }
           if (iframe && req.query.autoplay) {
             iframe +=
