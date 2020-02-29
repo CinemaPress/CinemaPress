@@ -51,7 +51,7 @@ router.get(
 
     if (url_kp) {
       if (config.image.addr === config.domain) {
-        if (size === 'original') {
+        if (size === 'original' || (type === 'picture' && size === 'medium')) {
           source = 'kinopoisk';
         } else {
           source = 'server';
