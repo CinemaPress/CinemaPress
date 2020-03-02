@@ -12,11 +12,10 @@
       "node_args": "--max-old-space-size=768",
       "max_memory_restart": "768M",
       "watch": [
-        "process.json",
         "app.js",
-        "themes/*/views/*",
-        "themes/*/views/*/*",
-        "themes/*/views/*/*/*",
+        "themes/*/views/*.ejs",
+        "themes/*/views/*/*.ejs",
+        "themes/*/views/*/*/*.ejs",
         "lib",
         "modules",
         "routes"
