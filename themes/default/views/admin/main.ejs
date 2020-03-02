@@ -566,7 +566,8 @@
                   var oneDay = 86400000;
                   var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
                   var letter1 = ['a', 'e', 'i', 'o', 'u'];
-                  var letter2 = ['b', 'c', 'd', 'p', 's', 'w', 'v', 'n', 'l', 'm'];
+                  var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'z', 'k', 'l', 'm'];
+                  var letter3 = ['n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y']; // j
                   if ('<%- config.domain.split('.')[0] %>'.length % 2) {
                     letter1 = letter1.reverse();
                   }
@@ -576,12 +577,12 @@
                   var result =
                     letter2[parseInt(day[0])] +
                     letter1[parseInt(day[1]) % 5] +
-                    letter2[parseInt(day[2])] +
+                    letter3[parseInt(day[2])] +
                     (parseInt(random) === 3 ? '' : letter1[year % 5]);
                   if (parseInt(day[1]) >= 5) {
                     result =
                       letter1[parseInt(day[0]) % 5] +
-                      letter2[parseInt(day[1])] +
+                      ((parseInt(day[0]+day[2]) % 2) ? letter2 : letter3)[parseInt(day[1])] +
                       letter1[parseInt(day[2]) % 5] +
                       (parseInt(random) === 3 ? '' : letter2[year % 10]);
                   }
