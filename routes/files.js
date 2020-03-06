@@ -25,6 +25,7 @@ var router = express.Router();
 router.get(
   /\/(poster|picture)\/(small|medium|original)\/([a-z0-9@.,_\-]*)\.(jpg|png)/i,
   function(req, res) {
+    var redirect = typeof req.query.save !== 'undefined';
     var type = req.params[0];
     var size = req.params[1];
     var id = req.params[2];
@@ -211,15 +212,23 @@ router.get(
               '.100 Safari/537.36'
           }
         })
-        .pipe(fs.createWriteStream(save))
+        .on('response', function(response) {
+          response.pipe(fs.createWriteStream(save));
+          if (redirect) {
+            cache.set(origin, origin + '?save');
+            return response.pipe(res);
+          }
+        })
         .on('error', function(err) {
           console.error(err && err.message, req.originalUrl);
           cache.set(origin, no_poster);
           return res.redirect(302, no_poster);
         })
         .on('close', function() {
-          cache.set(origin, origin + '?save');
-          return res.redirect(302, origin + '?save');
+          if (!redirect) {
+            cache.set(origin, origin + '?save');
+            return res.redirect(302, origin + '?save');
+          }
         });
     });
   }
