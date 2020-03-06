@@ -25,7 +25,6 @@ var router = express.Router();
 router.get(
   /\/(poster|picture)\/(small|medium|original)\/([a-z0-9@.,_\-]*)\.(jpg|png)/i,
   function(req, res) {
-    var redirect = typeof req.query.save !== 'undefined';
     var type = req.params[0];
     var size = req.params[1];
     var id = req.params[2];
@@ -35,6 +34,13 @@ router.get(
     var url_tmdb = /^[a-z0-9]*$/i.test(id);
     var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
     var origin = '/files/' + type + '/' + size + '/' + file;
+
+    if (typeof req.query.save !== 'undefined') {
+      var r = Math.random()
+        .toString(36)
+        .substring(7);
+      return res.redirect(302, origin + '?' + r);
+    }
 
     if (cache.has(origin)) {
       return res.redirect(302, cache.get(origin));
@@ -214,10 +220,6 @@ router.get(
         })
         .on('response', function(response) {
           response.pipe(fs.createWriteStream(save));
-          if (redirect) {
-            cache.set(origin, origin + '?save');
-            return response.pipe(res);
-          }
         })
         .on('error', function(err) {
           console.error(err && err.message, req.originalUrl);
@@ -225,10 +227,8 @@ router.get(
           return res.redirect(302, no_poster);
         })
         .on('close', function() {
-          if (!redirect) {
-            cache.set(origin, origin + '?save');
-            return res.redirect(302, origin + '?save');
-          }
+          cache.set(origin, origin + '?save');
+          return res.redirect(302, origin + '?save');
         });
     });
   }
