@@ -917,5 +917,6 @@
   "Приложение для MacOS:": "MacOS app:",
   "Приложение для Linux:": "Linux app:",
   "URL-ссылка на проверку вирусов": "URL for virus scan",
-  "URL-ссылка на инструкцию": "URL link to instruction"
+  "URL-ссылка на инструкцию": "URL link to instruction",
+  "Модуль позволяет настроить собственное web-приложение.": "The module allows you to configure your own web-application."
 }
