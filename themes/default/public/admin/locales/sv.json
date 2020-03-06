@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modulen gör det möjligt att öka det unika i textbeskrivningarna för movieen.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Som standard är alla bilder som ligger på tredje part, samtidigt som aktiveringen bilden ursprungligen lastas på servern och sedan visas med din domän",
 	"Сохранять изображения": "Spara bilder",
-	"Не сохранять изображения": "Spara inte bild"
+	"Не сохранять изображения": "Spara inte bild",
+	"Приложение": "Ansökan",
+	"Web-приложение": "Webbaserat program",
+	"Модуль настройки web-приложения": "Justeringsmodul webbapplikationer",
+	"Информация о параметрах модуля web-приложения": "Information om parametrarna för modulwebbapplikationer",
+	"Создание приложения": "Skapa ett program",
+	"Видео-плеер только в приложении": "Videospelaren endast i bilagan",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Konfigurera lås videospelare, kommer bara visa att finnas tillgängliga i bilagan",
+	"Блокировать плеер в странах:": "Block spelare i länderna:",
+	"Вместо сообщения о запрете просмотра:": "I stället för att rapportera förbud perspektiv:",
+	"Файлы приложения": "Programfiler",
+	"Ссылки на файл приложения для различных операционных систем": "Hänvisningar till fil applikationer för olika operativsystem",
+	"Приложение для Windows:": "App för Windows:",
+	"Приложение для MacOS:": "Ansökan om MacOS:",
+	"Приложение для Linux:": "Ansökan i Linux:",
+	"URL-ссылка на проверку вирусов": "URL-länkar till check-virus",
+	"URL-ссылка на инструкцию": "URL-länk till instruktionerna"
 }

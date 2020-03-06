@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Moduli hukuwezesha kuongeza upekee wa maelezo ya maandishi ya filamu.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "By default, picha zote ziko kwenye huduma za watu wengine, wakati kuhifadhi uanzishaji, picha ya awali kubeba kwenye kompyuta, na kisha kuonyeshwa na uwanja wako",
 	"Сохранять изображения": "Kuokoa picha",
-	"Не сохранять изображения": "Je, si kuhifadhi picha"
+	"Не сохранять изображения": "Je, si kuhifadhi picha",
+	"Приложение": "Maombi",
+	"Web-приложение": "Mtandao msingi maombi",
+	"Модуль настройки web-приложения": "Marekebisho moduli web-maombi",
+	"Информация о параметрах модуля web-приложения": "Habari kuhusu vigezo ya moduli web-maombi",
+	"Создание приложения": "Kujenga maombi",
+	"Видео-плеер только в приложении": "Mchezaji video pekee katika nyongeza",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Configure lock video mchezaji, mtazamo mapenzi tu kupatikana katika nyongeza",
+	"Блокировать плеер в странах:": "Block mchezaji katika nchi:",
+	"Вместо сообщения о запрете просмотра:": "Badala ya kutoa taarifa marufuku ya maoni:",
+	"Файлы приложения": "Files maombi",
+	"Ссылки на файл приложения для различных операционных систем": "Marejeo ya maombi faili kwa ajili ya mifumo ya uendeshaji tofauti",
+	"Приложение для Windows:": "Programu kwa ajili ya Windows:",
+	"Приложение для MacOS:": "Maombi ya MacOS:",
+	"Приложение для Linux:": "Maombi katika Linux:",
+	"URL-ссылка на проверку вирусов": "URL kiungo kwa kuangalia virusi",
+	"URL-ссылка на инструкцию": "URL kiungo na maelekezo"
 }

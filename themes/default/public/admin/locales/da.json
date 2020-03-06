@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modulet giver mulighed for at øge det unikke i de tekstbeskrivelser til movieen.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Som standard er alle billeder placeret på tredjeparts tjenester, samtidig med at den aktivering, billedet oprindeligt indlæst på serveren, og derefter vises med dit domæne",
 	"Сохранять изображения": "Gem billeder",
-	"Не сохранять изображения": "Gem ikke billedet"
+	"Не сохранять изображения": "Gem ikke billedet",
+	"Приложение": "Ansøgning",
+	"Web-приложение": "Web-baseret program",
+	"Модуль настройки web-приложения": "Justering module web-applikationer",
+	"Информация о параметрах модуля web-приложения": "Oplysninger om parametrene for modulet web-applikationer",
+	"Создание приложения": "Oprettelse af en ansøgning",
+	"Видео-плеер только в приложении": "Video-afspiller kun i bilaget",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Indstil lås videoafspiller, vil visning kun være tilgængelige i bilaget",
+	"Блокировать плеер в странах:": "Bloker spiller i de lande:",
+	"Вместо сообщения о запрете просмотра:": "I stedet for at rapportere forbud mod visning:",
+	"Файлы приложения": "Programfiler",
+	"Ссылки на файл приложения для различных операционных систем": "Henvisninger til fil applikationer til forskellige operativsystemer",
+	"Приложение для Windows:": "App til Windows:",
+	"Приложение для MacOS:": "Ansøgning til MacOS:",
+	"Приложение для Linux:": "Anvendelse i Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link til check-virus",
+	"URL-ссылка на инструкцию": "URL-link til vejledningen"
 }

@@ -233,6 +233,12 @@
                                 <i class="fa fa-power-off pull-right <% if (modules.rewrite.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
+                        <li<% if (type === 'app') { %> class="page-arrow active-page"<% } %>>
+                            <a href="/<%- config.urls.admin %>/app">
+                                <i class="fas fa-desktop"></i> <%= __('Web-приложение') %>
+                                <i class="fa fa-power-off pull-right <% if (modules.app.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

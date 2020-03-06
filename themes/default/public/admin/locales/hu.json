@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "A modul lehetővé teszi, hogy növelje az egyediségét a szöveges leírások a movie.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Alapértelmezésben az összes kép található harmadik féltől származó szolgáltatások, megőrizve az aktiváló, a kép eredetileg betöltött a szerveren, majd megjelenik a saját domain",
 	"Сохранять изображения": "Képek mentése",
-	"Не сохранять изображения": "Ne mentse image"
+	"Не сохранять изображения": "Ne mentse image",
+	"Приложение": "Kérelem",
+	"Web-приложение": "Web-alapú alkalmazás",
+	"Модуль настройки web-приложения": "Beállító modul web-alkalmazások",
+	"Информация о параметрах модуля web-приложения": "Információ a paramétereket a modul webes alkalmazások",
+	"Создание приложения": "Létre egy alkalmazást",
+	"Видео-плеер только в приложении": "Video lejátszó csak a mellékletben",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Beállítás zár videó lejátszó, kilátás csak akkor érhető el, a mellékletben",
+	"Блокировать плеер в странах:": "Blokk játékos országokban:",
+	"Вместо сообщения о запрете просмотра:": "Ahelyett, hogy jelentési tilalmának nézet:",
+	"Файлы приложения": "Alkalmazás fájlok",
+	"Ссылки на файл приложения для различных операционных систем": "Hivatkozásokat fájl alkalmazások különböző operációs rendszerek",
+	"Приложение для Windows:": "App for Windows:",
+	"Приложение для MacOS:": "Alkalmazás MacOS:",
+	"Приложение для Linux:": "Alkalmazás Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link ellenőrzés vírus",
+	"URL-ссылка на инструкцию": "URL-link utasítások"
 }

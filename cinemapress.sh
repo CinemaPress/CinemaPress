@@ -80,23 +80,26 @@ post_commands() {
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
-        if [ "`basename "${0}"`" != "cinemapress" ]; then
-            echo ""; echo -n "Installing packages ..."
-            if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-            elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-            elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-            elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-                yum install -y epel-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-            fi
+        if [ "`basename "${0}"`" != "cinemapress" ] || [ "${1}" != "" ]; then
+            echo ""; echo -n "☐ Downloading cinemapress.sh ...";
             wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
             chmod +x /usr/bin/cinemapress
-            echo -e "\\r                       "
+            echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
+            echo -n "☐ Installing packages ..."
+            if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+            elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+            elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
+                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+            elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+                yum install -y epel-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+            fi
+            echo -e "\\r${G}✓ Installing packages ...${NC}"
+            echo ""
         fi
         if [ "`docker -v 2>/dev/null`" = "" ]; then
             clear
@@ -396,13 +399,13 @@ ip_install() {
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
-    3_backup "${LOCAL_DOMAIN}" "create"
+    3_backup "${LOCAL_DOMAIN}" "create" "not_upload"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
     1_install "${LOCAL_DOMAIN}"
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
-    3_backup "${LOCAL_DOMAIN}" "restore"
+    3_backup "${LOCAL_DOMAIN}" "restore" "not_download"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
@@ -536,10 +539,10 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create "${3}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${3}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec nginx nginx -s reload \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -1387,6 +1390,10 @@ read_os() {
                 NAME_OS='windows'
                 echo ": ${NAME_OS}"
             else
+                if [ "${NAME_OS}" = "macos" ] || [ "${NAME_OS}" = "ios" ]  || [ "${NAME_OS}" = "apple" ]
+                then
+                    NAME_OS="osx"
+                fi
                 if [ "${NAME_OS}" = "windows" ] || [ "${NAME_OS}" = "linux" ]  || [ "${NAME_OS}" = "osx" ]
                 then
                     AGAIN=10
@@ -1404,7 +1411,7 @@ read_os() {
 read_app() {
     APP_DOMAIN=${1:-${APP_DOMAIN}}
     if [ "${APP_DOMAIN}" = "" ]; then
-        _header "DOMAIN NAME FOR APP"
+        _header "DOMAIN NAME FOR SPLASH SCREEN"
         AGAIN=1
         while [ "${AGAIN}" -lt "10" ]
         do
@@ -1430,7 +1437,7 @@ read_app() {
                     AGAIN=$((${AGAIN}+1))
                 fi
             else
-                printf "${R}WARNING:${NC} Domain name for app cannot be blank. \n"
+                printf "${R}WARNING:${NC} Domain name for splash screen cannot be blank. \n"
                 AGAIN=$((${AGAIN}+1))
             fi
         done
@@ -1715,15 +1722,18 @@ docker_zero() {
     (sleep 2; echo flush_all; sleep 2; echo quit;) | telnet 127.0.0.1 11211
 }
 docker_cron() {
-    node /home/"${CP_DOMAIN}"/lib/CP_cron.js
+    node /home/"${CP_DOMAIN}"/lib/CP_cron.js >> /home/"${CP_DOMAIN}"/log/CP_cron.log
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
+    NOT_UPLOAD=${2:-}
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
-    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
+    if [ "${NOT_UPLOAD}" = "" ]; then
+        sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
+        sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
+    fi
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
@@ -1752,15 +1762,13 @@ docker_restore() {
 docker_backup() {
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
+    NOT_UPLOAD=${1:-}
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
-    BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 1728000))"`
+    BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 864000))"`
     T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
     THEME_NAME=`echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
-    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
-    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
     PORT_DOMAIN=`grep "mysql41" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/'`
     echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
@@ -1774,7 +1782,8 @@ docker_backup() {
         --exclude=config/production/fail2ban \
         --exclude=config/production/sphinx \
         --exclude=config/production/nginx \
-        -uf /var/${CP_DOMAIN}/config.tar config
+        -uf /var/${CP_DOMAIN}/config.tar \
+        config
     cd /home/${CP_DOMAIN} && \
     tar --exclude=files/GeoLite2-Country.mmdb \
         --exclude=files/bbb.mp4 \
@@ -1784,11 +1793,16 @@ docker_backup() {
         themes/default/views/mobile \
         themes/${THEME_NAME} \
         files
-    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    rm -rf /var/${CP_DOMAIN:?}
+    if [ "${NOT_UPLOAD}" = "" ]; then
+        sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
+        if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
+        sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
+        sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+        sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+        sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+        sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+        rm -rf /var/${CP_DOMAIN:?}
+    fi
 }
 docker_actual() {
     node /home/${CP_DOMAIN}/config/update/actual.js
@@ -1997,9 +2011,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "upd" )
-            _br; echo -n "Downloading new cinemapress.sh ..."; _br; _br;
-            sudo wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
-            chmod +x /usr/bin/cinemapress
+            docker_install "UPD"
             exit 0
         ;;
         "stop"|"start"|"restart" )
@@ -2072,9 +2084,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_rclone "${3}" "${4}"
             elif [ "${2}" = "backup" ]; then
                 if [ "${3}" = "create" ] || [ "${3}" = "1" ]; then
-                    docker_backup
+                    docker_backup "${4}"
                 elif [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
-                    docker_restore "${4}"
+                    docker_restore "${4}" "${5}"
                 fi
             elif [ "${2}" = "speed" ]; then
                 if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
@@ -2375,15 +2387,23 @@ while [ "${WHILE}" -lt "2" ]; do
         "app" )
             read_domain "${2}"
             sh_not
-            read_app "${3}"
-            read_os "${4}"
-            _s "${4}"
+            if [ "${3}" = "windows" ] || [ "${3}" = "linux" ]  || [ "${3}" = "osx" ]; then
+                NAME_OS="${3}"
+                APP_DOMAIN="app.${2}"
+                _br
+            else
+                read_os "${3}"
+                read_app "${4}"
+                _s "${4}"
+            fi
+            PROTOCOLS=$(grep "\"protocol\"" /home/"${CP_DOMAIN}"/config/production/config.js)
+            PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
             sh_progress
             sh_progress
             sh_progress
             docker run \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
-                -v /home/"${CP_DOMAIN}"/config/app/${NAME_OS}:/app \
+                -v /home/"${CP_DOMAIN}"/config/app/"${NAME_OS}":/app \
                 cinemapress/app:latest \
                 --name "${CP_DOMAIN_}" \
                 --platform "${NAME_OS}" \
@@ -2405,7 +2425,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 --darwin-dark-mode-support \
                 --background-color "#1a2035" \
                 --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
-                "http://${APP_DOMAIN}/" \
+                "${PROTOCOL}://${APP_DOMAIN}" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
             rm -rf /home/${CP_DOMAIN}/files/"${NAME_OS}"
@@ -2417,11 +2437,42 @@ while [ "${WHILE}" -lt "2" ]; do
                     /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/app.exe
             fi
             cd /home/${CP_DOMAIN}/config/app/"${NAME_OS}" && \
-            zip -r /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".tar.gz app
+            zip -rq /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".zip app
             rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
             sh_progress 100
             _line
-            _header "${CP_DOMAIN}/files/${NAME_OS}/app_${CP_VER}.tar.gz"
+            _header "//${CP_DOMAIN}/files/${NAME_OS}/app_${CP_VER}.zip"
+            _line
+            _br
+            exit 0
+        ;;
+        "splash" )
+            if [ "${4}" = "" ]; then exit 0; fi
+            _br
+            sh_progress
+            GIT=${5:-github}
+            PROTOCOLS=$(grep "\"protocol\"" /home/"${2}"/config/production/config.js)
+            PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
+            cd /home/"${2}"/files/splash && \
+            git init >/dev/null 2>&1; \
+            cp -rf config .git/config; \
+            cp -rf screen.html index.html; \
+            sed -Ei "s/\/\/example\.com/${PROTOCOL}:\/\/app.${2}/g" index.html; \
+            sed -Ei "s/config_name/${3}/g" .git/config; \
+            sed -Ei "s/config_password/${4}/g" .git/config; \
+            if [ "${GIT}" != "github" ]; then
+              sed -Ei "s/github/gitlab/g" .git/config;
+            fi;
+            git add . >/dev/null 2>&1; \
+            git commit -a -m "${3}" >/dev/null 2>&1; \
+            git push --force >/dev/null 2>&1
+            sh_progress
+            sleep 20
+            sh_progress 100
+            _line
+            _header "DOMAIN NAME FOR SPLASH SCREEN"
+            _line
+            _header "${4}.${GIT}.io"
             _line
             _br
             exit 0

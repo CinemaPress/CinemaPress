@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modulis leidžia jums padidinti teksto aprašymo unikalumą movieui.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Pagal nutylėjimą, visi vaizdai yra trečiųjų šalių paslaugomis, išsaugant aktyvavimo, vaizdas iš pradžių pakrautas serveryje, tada rodomas su savo domenu",
 	"Сохранять изображения": "Išsaugoti nuotraukas",
-	"Не сохранять изображения": "Negalima išsaugoti paveikslėlį"
+	"Не сохранять изображения": "Negalima išsaugoti paveikslėlį",
+	"Приложение": "Taikymas",
+	"Web-приложение": "Web-based programa",
+	"Модуль настройки web-приложения": "Reguliavimas modulis interneto-paraiškos",
+	"Информация о параметрах модуля web-приложения": "Informacija apie modulio interneto programų parametrus",
+	"Создание приложения": "Kurti paraišką",
+	"Видео-плеер только в приложении": "Vaizdo grotuvas tik priede",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Konfigūruoti užraktas vaizdo grotuvas, vaizdas bus galima įsigyti tik priede",
+	"Блокировать плеер в странах:": "Blokuoti žaidėjas šalyse:",
+	"Вместо сообщения о запрете просмотра:": "Vietoj pranešti apie nuomone draudimą:",
+	"Файлы приложения": "Taikymo failai",
+	"Ссылки на файл приложения для различных операционных систем": "Nuorodos į paraiškų skirtingų operacinių sistemų failų",
+	"Приложение для Windows:": "App Windows:",
+	"Приложение для MacOS:": "Prašymas MacOS:",
+	"Приложение для Linux:": "Prašymas Linux:",
+	"URL-ссылка на проверку вирусов": "URL nuorodą į žymės virusas",
+	"URL-ссылка на инструкцию": "URL nuoroda į instrukcijas"
 }

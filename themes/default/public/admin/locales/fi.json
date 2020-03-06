@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Moduuli voit lisätä ainutlaatuisuus tekstikuvaukset elokuvan.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Oletusarvoisesti kaikki kuvat sijaitsevat kolmannen osapuolen palveluita, säilyttäen aktivointi, kuva ladataan aluksi palvelimelle, ja sitten näytetään verkkotunnus",
 	"Сохранять изображения": "Tallenna kuvia",
-	"Не сохранять изображения": "Älä tallenna kuva"
+	"Не сохранять изображения": "Älä tallenna kuva",
+	"Приложение": "Hakemus",
+	"Web-приложение": "Web-pohjainen sovellus",
+	"Модуль настройки web-приложения": "Säätömoduuli web-sovelluksia",
+	"Информация о параметрах модуля web-приложения": "Tietoa parametrit moduulin web-sovelluksia",
+	"Создание приложения": "Luot sovelluksen",
+	"Видео-плеер только в приложении": "Videosoitin ainoastaan ​​liitteessä",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Määritä lukko videosoitin, näkymä on saatavilla vain liitteessä",
+	"Блокировать плеер в странах:": "Lohko pelaaja maissa:",
+	"Вместо сообщения о запрете просмотра:": "Sen sijaan, että raportointi kiellon katsottuna:",
+	"Файлы приложения": "Sovellustiedostot",
+	"Ссылки на файл приложения для различных операционных систем": "Viittaukset tiedosto sovelluksia eri käyttöjärjestelmissä",
+	"Приложение для Windows:": "App for Windows:",
+	"Приложение для MacOS:": "Hakemus MacOS:",
+	"Приложение для Linux:": "Sovellus Linux:",
+	"URL-ссылка на проверку вирусов": "URL-linkki tarkistaa virusten",
+	"URL-ссылка на инструкцию": "URL linkin ohjeiden"
 }

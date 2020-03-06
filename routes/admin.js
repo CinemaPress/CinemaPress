@@ -157,7 +157,8 @@ router.get('/:type?', function(req, res) {
     rss: 'fa fa-rss',
     tv: 'fa fa-tv',
     random: 'fa fa-dice',
-    rewrite: 'far fa-hand-rock'
+    rewrite: 'far fa-hand-rock',
+    app: 'fas fa-desktop'
   };
 
   render.icon = render.icons[render.type];
@@ -341,6 +342,14 @@ router.get('/:type?', function(req, res) {
     case 'rewrite':
       render.title = res.__('Рерайт');
       res.render('admin/modules/rewrite', render);
+      break;
+    case 'app':
+      render.title = res.__('Приложение');
+      getApps(function(err, apps) {
+        if (err) return res.render('error', { message: err });
+        render.apps = apps;
+        res.render('admin/modules/app', render);
+      });
       break;
 
     case 'poster':
@@ -642,6 +651,50 @@ router.get('/:type?', function(req, res) {
         }
       }
     });
+  }
+
+  /**
+   * Get list apps.
+   *
+   * @param {Callback} callback
+   */
+
+  function getApps(callback) {
+    var apps = {};
+    var dir_win = path.join(path.dirname(__filename), '..', 'files', 'windows');
+    var dir_osx = path.join(path.dirname(__filename), '..', 'files', 'osx');
+    var dir_linux = path.join(path.dirname(__filename), '..', 'files', 'linux');
+    if (fs.existsSync(dir_win)) {
+      var files_win = fs.readdirSync(dir_win);
+      files_win.sort(function(a, b) {
+        return (
+          fs.statSync(dir_win + a).mtime.getTime() -
+          fs.statSync(dir_win + b).mtime.getTime()
+        );
+      });
+      apps.windows = files_win[0];
+    }
+    if (fs.existsSync(dir_osx)) {
+      var files_osx = fs.readdirSync(dir_osx);
+      files_osx.sort(function(a, b) {
+        return (
+          fs.statSync(dir_osx + a).mtime.getTime() -
+          fs.statSync(dir_osx + b).mtime.getTime()
+        );
+      });
+      apps.osx = files_osx[0];
+    }
+    if (fs.existsSync(dir_linux)) {
+      var files_linux = fs.readdirSync(dir_linux);
+      files_linux.sort(function(a, b) {
+        return (
+          fs.statSync(dir_linux + a).mtime.getTime() -
+          fs.statSync(dir_linux + b).mtime.getTime()
+        );
+      });
+      apps.linux = files_linux[0];
+    }
+    callback(null, apps);
   }
 });
 

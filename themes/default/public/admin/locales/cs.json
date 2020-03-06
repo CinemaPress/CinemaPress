@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modul umožňuje zvýšit jedinečnost textových popisů k movieu.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Ve výchozím nastavení jsou všechny obrazy jsou umístěny na služby třetích stran, při zachování aktivace, obraz původně naloženo na serveru, a poté zobrazí ve vaší doméně",
 	"Сохранять изображения": "Ukládání snímků",
-	"Не сохранять изображения": "Neukládat obrázek"
+	"Не сохранять изображения": "Neukládat obrázek",
+	"Приложение": "Přihláška",
+	"Web-приложение": "Webová aplikace",
+	"Модуль настройки web-приложения": "Nastavovací modul webové aplikace",
+	"Информация о параметрах модуля web-приложения": "Informace o parametrech na internetových aplikací modulů",
+	"Создание приложения": "Vytvoření aplikace",
+	"Видео-плеер только в приложении": "Video přehrávač jen v příloze",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Konfigurace blokování video přehrávač, pohled bude k dispozici pouze v příloze",
+	"Блокировать плеер в странах:": "Blok hráč v zemích:",
+	"Вместо сообщения о запрете просмотра:": "Namísto hlášení zákaz pohledu:",
+	"Файлы приложения": "Aplikační soubory",
+	"Ссылки на файл приложения для различных операционных систем": "Odkazy na žádosti souborů pro různé operační systémy",
+	"Приложение для Windows:": "Aplikace pro Windows:",
+	"Приложение для MacOS:": "Aplikace pro MacOS:",
+	"Приложение для Linux:": "Použití v systému Linux:",
+	"URL-ссылка на проверку вирусов": "URL odkaz na kontrolním virem",
+	"URL-ссылка на инструкцию": "URL odkaz na pokyny"
 }

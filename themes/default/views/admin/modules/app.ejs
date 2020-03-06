@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <%- include('../includes/head.ejs'); -%>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <%- include('../includes/left.ejs'); -%>
+
+    <%- include('../includes/right.ejs'); -%>
+
+    <div id="main" class="clearfix">
+
+        <%- include('../includes/header-main.ejs'); -%>
+
+        <div id="content" class="clearfix">
+
+            <%- include('../includes/header-sec.ejs'); -%>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/app" class="btn hidden-xs">
+                            <%= __('Модуль настройки web-приложения') %>
+                        </a>
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/app.html" class="btn" title="<%= __('Информация о параметрах модуля web-приложения') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.app.status) { %>
+                        <a href="javascript:void(0)" data-module="app" data-status="false" class="btn btn-danger module-status power-off">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                        </a>
+                        <% } else { %>
+                        <a href="javascript:void(0)" data-module="app" data-status="true" class="btn btn-success module-status power-on">
+                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                        </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.app.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fas fa-folder-plus"></i>&nbsp;&nbsp;&nbsp;<%= __('Создание приложения') %>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <i class="fab fa-windows"></i>&nbsp;&nbsp;<% if (typeof apps === 'object' && apps.windows) { %><a href="/files/windows/<%- apps.windows %>"><%- apps.windows %></a><% } else { %>WINDOWS<% } %>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <code><i class="fas fa-terminal" style="color: #202940"></i> cinemapress app <%- config.domain %> windows</code>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-xs-5">
+                                            <i class="fab fa-apple"></i>&nbsp;&nbsp;<% if (typeof apps === 'object' && apps.osx) { %><a href="/files/osx/<%- apps.osx %>"><%- apps.osx %></a><% } else { %>OSX<% } %>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <code><i class="fas fa-terminal" style="color: #202940"></i> cinemapress app <%- config.domain %> osx</code>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-xs-5">
+                                            <i class="fab fa-linux"></i>&nbsp;&nbsp;<% if (typeof apps === 'object' && apps.linux) { %><a href="/files/linux/<%- apps.linux %>"><%- apps.linux %></a><% } else { %>LINUX<% } %>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <code><i class="fas fa-terminal" style="color: #202940"></i> cinemapress app <%- config.domain %> linux</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fa fa-desktop"></i>&nbsp;&nbsp;&nbsp;<%= __('Видео-плеер только в приложении') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/app.html" class="csstip" title="<%= __('Настройка блокировки видео-плеера, просмотр будет доступен только в приложении') %>" target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-xs-1 text-center">
+                                            <div class="inline-labels">
+                                                <label style="margin: 5px;">
+                                                    <input name="modules.blocking.data.display" value="app" <% if (modules.blocking.data.display === 'app') { %> checked="" <% } %> type="radio"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 col-xs-11">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header>
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Параметры') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix" style="display: block;">
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <label><%= __('Таймер блокировки:') %></label>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <select name="modules.blocking.data.app.time" class="form-control">
+                                                                    <% for (var i = 0; i <= 600; i = i+10) { %>
+                                                                        <% if (modules.blocking.data.app.time === i) { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>" selected="selected">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>" selected="selected">
+                                                                                    <%- i %> <%= __('сек') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } else { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%- i %> <%= __('сек') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="advanced-textarea">
+
+                                                                    <div class="text-muted">
+                                                                        <%= __('Сообщение для пользователя:') %>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <textarea class="form-control textarea" name="modules.blocking.data.app.message"><%- modules.blocking.data.app.message %></textarea>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label">
+                                                                            <i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;<%= __('Файлы приложения') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/app.html" class="csstip" title="<%= __('Ссылки на файл приложения для различных операционных систем') %>" target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                <label><%= __('Приложение для Windows:') %></label>
+                                                                            </div>
+                                                                            <div class="col-xs-8">
+                                                                                <input name="modules.blocking.data.app.download.windows" value="<%= modules.blocking.data.app.download.windows %>" class="form-control" type="text" placeholder="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/files/windows/app.zip">
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-shield-alt text-success"></i></span>
+                                                                                    <input name="modules.blocking.data.app.safe.windows" value="<%= modules.blocking.data.app.safe.windows %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на проверку вирусов') %>">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-info-circle text-info"></i></span>
+                                                                                    <input name="modules.blocking.data.app.instruction.windows" value="<%= modules.blocking.data.app.instruction.windows %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на инструкцию') %>">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-4">
+                                                                                <label><%= __('Приложение для MacOS:') %></label>
+                                                                            </div>
+                                                                            <div class="col-xs-8">
+                                                                                <input name="modules.blocking.data.app.download.macos" value="<%= modules.blocking.data.app.download.macos %>" class="form-control" type="text" placeholder="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/files/macos/app.zip">
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-shield-alt text-success"></i></span>
+                                                                                    <input name="modules.blocking.data.app.safe.macos" value="<%= modules.blocking.data.app.safe.macos %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на проверку вирусов') %>">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-info-circle text-info"></i></span>
+                                                                                    <input name="modules.blocking.data.app.instruction.macos" value="<%= modules.blocking.data.app.instruction.macos %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на инструкцию') %>">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-4">
+                                                                                <label><%= __('Приложение для Linux:') %></label>
+                                                                            </div>
+                                                                            <div class="col-xs-8">
+                                                                                <input name="modules.blocking.data.app.download.linux" value="<%= modules.blocking.data.app.download.linux %>" class="form-control" type="text" placeholder="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/files/linux/app.zip">
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-shield-alt text-success"></i></span>
+                                                                                    <input name="modules.blocking.data.app.safe.linux" value="<%= modules.blocking.data.app.safe.linux %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на проверку вирусов') %>">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-6">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="fas fa-info-circle text-info"></i></span>
+                                                                                    <input name="modules.blocking.data.app.instruction.linux" value="<%= modules.blocking.data.app.instruction.linux %>" class="form-control" type="text" placeholder="<%= __('URL-ссылка на инструкцию') %>">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-xs-6">
+                                                                <label><%= __('Блокировать плеер в странах:') %></label>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <input type="text" name="modules.blocking.data.app.countries" value="<%- modules.blocking.data.app.countries.join(',') %>" placeholder="Russia,Ukraine,Belarus,Kazakhstan">
+                                                            </div>
+
+                                                            <script>
+                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                var cgs = document.querySelector('[name="modules.blocking.data.app.countries"]');
+                                                                var cg = new Tagify(cgs, {whitelist : ["Andorra","United Arab Emirates","Afghanistan","Antigua and Barbuda","Albania","Armenia","Angola","Argentina","Austria","Australia","Azerbaijan","Bosnia and Herzegovina","Barbados","Bangladesh","Belgium","Burkina Faso","Bulgaria","Bahrain","Burundi","Benin","Brunei","Bolivia","Brazil","Bahamas","Bhutan","Botswana","Belarus","Belize","Canada","Democratic Republic of the Congo","Central African Republic","Republic of the Congo","Switzerland","Ivory Coast","Chile","Cameroon","China","Colombia","Costa Rica","Cuba","Cape Verde","Cyprus","Czechia","Germany","Djibouti","Denmark","Dominica","Dominican Republic","Algeria","Ecuador","Estonia","Egypt","Eritrea","Spain","Ethiopia","Finland","Fiji","France","Gabon","United Kingdom","Grenada","Georgia","Ghana","Gambia","Guinea","Equatorial Guinea","Greece","Guatemala","Guinea-Bissau","Guyana","Honduras","Croatia","Haiti","Hungary","Indonesia","Ireland","Israel","India","Iraq","Iran","Iceland","Italy","Jamaica","Jordan","Japan","Kenya","Kyrgyzstan","Cambodia","Kiribati","Comoros","Saint Kitts and Nevis","North Korea","South Korea","Kuwait","Kazakhstan","Laos","Lebanon","Saint Lucia","Liechtenstein","Sri Lanka","Liberia","Lesotho","Lithuania","Luxembourg","Latvia","Libya","Morocco","Monaco","Moldova","Montenegro","Madagascar","Macedonia","Mali","Myanmar","Mongolia","Mauritania","Malta","Mauritius","Maldives","Malawi","Mexico","Malaysia","Mozambique","Namibia","Niger","Nigeria","Nicaragua","Netherlands","Norway","Nepal","Nauru","New Zealand","Oman","Panama","Peru","Papua New Guinea","Philippines","Pakistan","Poland","Portugal","Paraguay","Qatar","Romania","Serbia","Russia","Rwanda","Saudi Arabia","Solomon Islands","Seychelles","Sudan","Sweden","Singapore","Slovenia","Slovakia","Sierra Leone","San Marino","Senegal","Somalia","Suriname","South Sudan","Sao Tome and Principe","El Salvador","Syria","Swaziland","Chad","Togo","Thailand","Tajikistan","East Timor","Turkmenistan","Tunisia","Tonga","Turkey","Trinidad and Tobago","Tuvalu","Taiwan","Tanzania","Ukraine","Uganda","United States","Uruguay","Uzbekistan","Vatican","Saint Vincent and the Grenadines","Venezuela","Vietnam","Vanuatu","Samoa","Kosovo","Yemen","South Africa","Zambia","Zimbabwe"]});
+                                                                cg.DOM.input.classList.add('form-control');
+                                                              });
+                                                            </script>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-xs-6">
+                                                                <label><%= __('Вместо сообщения о запрете просмотра:') %></label>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <div class="inline-labels">
+                                                                    <label>
+                                                                        <input name="modules.blocking.data.app.abuse" value="1" <% if (modules.blocking.data.app.abuse) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Да') %></span>
+                                                                    </label>
+                                                                    <label>
+                                                                        <input name="modules.blocking.data.app.abuse" value="0" <% if (!modules.blocking.data.app.abuse) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Нет') %></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    <%= __('Модуль позволяет настроить Ваше Web-приложение.') %>
+                                    <br>
+                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <%- include('../includes/footer.ejs'); -%>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

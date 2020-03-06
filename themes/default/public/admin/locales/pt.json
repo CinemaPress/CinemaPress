@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "O módulo permite-lhe aumentar a singularidade das descrições de texto para o moviee.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Por padrão, todas as imagens estão localizados no serviços de terceiros, preservando a ativação, a imagem inicialmente carregado no servidor, e em seguida, exibido com seu domínio",
 	"Сохранять изображения": "Imagens salvas",
-	"Не сохранять изображения": "Não salvar imagem"
+	"Не сохранять изображения": "Não salvar imagem",
+	"Приложение": "Aplicação",
+	"Web-приложение": "Aplicativo baseado na web",
+	"Модуль настройки web-приложения": "Módulo de aplicações web",
+	"Информация о параметрах модуля web-приложения": "Informações sobre os parâmetros das aplicações web módulo",
+	"Создание приложения": "Criando uma aplicação",
+	"Видео-плеер только в приложении": "Reprodutor de vídeo apenas no anexo",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Configurar o leitor de vídeo bloqueio, vista só estarão disponíveis no anexo",
+	"Блокировать плеер в странах:": "Bloco jogador nos países:",
+	"Вместо сообщения о запрете просмотра:": "Em vez de reportar a proibição de vista:",
+	"Файлы приложения": "Arquivos de aplicativos",
+	"Ссылки на файл приложения для различных операционных систем": "As referências a aplicações de arquivos para diferentes sistemas operacionais",
+	"Приложение для Windows:": "App para Windows:",
+	"Приложение для MacOS:": "Pedido de MacOS:",
+	"Приложение для Linux:": "Aplicação no Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link para o vírus verificação",
+	"URL-ссылка на инструкцию": "URL-link com as instruções"
 }

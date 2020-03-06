@@ -901,5 +901,21 @@
   "Модуль позволяет повысить уникальность текста в описаниях к фильму.": "The module allows you to increase the uniqueness of the text in the descriptions for the movie.",
   "По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "By default, all images are on third-party services, when saving is activated, the image is first uploaded to the server, and then displayed from your domain",
   "Сохранять изображения": "Save images",
-  "Не сохранять изображения": "Do not save images"
+  "Не сохранять изображения": "Do not save images",
+  "Приложение": "Application",
+  "Web-приложение": "Web-application",
+  "Модуль настройки web-приложения": "Web-application settings module",
+  "Информация о параметрах модуля web-приложения": "Information about the parameters of the web-application module",
+  "Создание приложения": "Create an application",
+  "Видео-плеер только в приложении": "Video player in app only",
+  "Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Setting the video player lock, viewing will be available only in the application",
+  "Блокировать плеер в странах:": "Block player in countries:",
+  "Вместо сообщения о запрете просмотра:": "Instead of a message about banned viewing:",
+  "Файлы приложения": "Application files",
+  "Ссылки на файл приложения для различных операционных систем": "Links to the application file for various operating systems",
+  "Приложение для Windows:": "Windows app:",
+  "Приложение для MacOS:": "MacOS app:",
+  "Приложение для Linux:": "Linux app:",
+  "URL-ссылка на проверку вирусов": "URL for virus scan",
+  "URL-ссылка на инструкцию": "URL link to instruction"
 }

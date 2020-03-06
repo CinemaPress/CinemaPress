@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Module này cho phép bạn tăng sự độc đáo của các mô tả văn bản cho bộ phim.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Theo mặc định, tất cả các hình ảnh được đặt trên các dịch vụ của bên thứ ba, trong khi vẫn giữ kích hoạt, hình ảnh ban đầu được nạp trên máy chủ, và sau đó hiển thị với tên miền của bạn",
 	"Сохранять изображения": "Hình ảnh tiết kiệm",
-	"Не сохранять изображения": "Không lưu hình ảnh"
+	"Не сохранять изображения": "Không lưu hình ảnh",
+	"Приложение": "Ứng dụng",
+	"Web-приложение": "Ứng dụng dựa trên web",
+	"Модуль настройки web-приложения": "Điều chỉnh mô-đun ứng dụng web",
+	"Информация о параметрах модуля web-приложения": "Thông tin về các thông số của các module ứng dụng web",
+	"Создание приложения": "Tạo một ứng dụng",
+	"Видео-плеер только в приложении": "Máy nghe nhạc video chỉ trong phụ lục",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Máy nghe nhạc khóa hình configure, xem sẽ chỉ sẵn có trong phụ lục",
+	"Блокировать плеер в странах:": "Khối cầu thủ trong nước:",
+	"Вместо сообщения о запрете просмотра:": "Thay vì báo cáo việc cấm xem:",
+	"Файлы приложения": "Hồ sơ",
+	"Ссылки на файл приложения для различных операционных систем": "Tài liệu tham khảo cho các ứng dụng tập tin cho các hệ điều hành khác nhau",
+	"Приложение для Windows:": "Ứng dụng cho Windows:",
+	"Приложение для MacOS:": "Ứng dụng cho hệ điều hành MacOS:",
+	"Приложение для Linux:": "Ứng dụng trong Linux:",
+	"URL-ссылка на проверку вирусов": "URL liên kết đến vi rút séc",
+	"URL-ссылка на инструкцию": "URL liên kết đến các hướng dẫn"
 }

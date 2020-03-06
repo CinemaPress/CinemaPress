@@ -92,7 +92,11 @@ function codePlayer(type, movie, options) {
         return new RegExp(options.userinfo.country, 'i').test(c);
       }).length;
 
-    if (modules.abuse.status && (list_abuse || country_abuse)) {
+    if (
+      modules.abuse.status &&
+      (list_abuse || country_abuse) &&
+      options.userinfo.device !== 'app'
+    ) {
       if (country_abuse) {
         code.status_code = modules.abuse.data.status_code_country;
       }
@@ -100,15 +104,25 @@ function codePlayer(type, movie, options) {
         code.status_code = modules.abuse.data.status_code_list;
       }
 
-      code.player =
-        '' +
-        '<div style="position:absolute;background:#000 url(' +
-        config.default.image +
-        ') 100% 100% no-repeat;    background-size:100% 100%;z-index:9999;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center">' +
-        '<div style="margin:80px auto 0;width:70%">' +
-        modules.abuse.data.message +
-        '</div>' +
-        '</div>';
+      if (
+        modules.app.status &&
+        modules.blocking.data.app.abuse &&
+        options.userinfo.device === 'desktop'
+      ) {
+        scriptPlayer('trailer');
+        var code2 = CP_blocking.code(code, movie, options, 'app');
+        code.player = code2 && code2.player ? code2.player : code.player;
+      } else {
+        code.player =
+          '' +
+          '<div style="position:absolute;background:#000 url(' +
+          config.default.image +
+          ') 100% 100% no-repeat;    background-size:100% 100%;z-index:9999;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center">' +
+          '<div style="margin:80px auto 0;width:70%">' +
+          modules.abuse.data.message +
+          '</div>' +
+          '</div>';
+      }
 
       return code;
     }
@@ -133,7 +147,10 @@ function codePlayer(type, movie, options) {
       scriptPlayer();
     }
 
-    code = CP_blocking.code(code, movie, options);
+    code =
+      options.userinfo.device !== 'app'
+        ? CP_blocking.code(code, movie, options)
+        : code;
   }
 
   /**

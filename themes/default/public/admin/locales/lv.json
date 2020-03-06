@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modulis ļauj palielināt unikalitāti teksta aprakstu par movieu.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Pēc noklusējuma visi attēli atrodas trešās puses pakalpojumus, vienlaikus saglabājot aktivizēšanu, attēls sākotnēji ielādēts uz servera, un pēc tam parādās ar savu domēnu",
 	"Сохранять изображения": "Saglabājiet attēlus",
-	"Не сохранять изображения": "Nelietojiet saglabāt attēlu"
+	"Не сохранять изображения": "Nelietojiet saglabāt attēlu",
+	"Приложение": "Iesniegums",
+	"Web-приложение": "Tīmekļa lietojumprogramma",
+	"Модуль настройки web-приложения": "Korekcija modulis web-lietojumprogrammas",
+	"Информация о параметрах модуля web-приложения": "Informācija par parametru moduļa tīmekļa lietojumprogrammas",
+	"Создание приложения": "Izveide pieteikumu",
+	"Видео-плеер только в приложении": "Video atskaņotājs tikai pielikumā",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Konfigurēt atslēga video atskaņotājs, skats būs pieejama pielikumā tikai",
+	"Блокировать плеер в странах:": "Bloķēt spēlētājs valstīs:",
+	"Вместо сообщения о запрете просмотра:": "Tā vietā, ziņojot par aizliegumu skats:",
+	"Файлы приложения": "Pieteikumu failus",
+	"Ссылки на файл приложения для различных операционных систем": "Atsauces uz failu pieteikumus dažādām operētājsistēmām",
+	"Приложение для Windows:": "App for Windows:",
+	"Приложение для MacOS:": "Pieteikums MacOS:",
+	"Приложение для Linux:": "Lietošana Linux:",
+	"URL-ссылка на проверку вирусов": "URL saite uz pārbaudes vīrusu",
+	"URL-ссылка на инструкцию": "URL saite uz instrukcijām"
 }

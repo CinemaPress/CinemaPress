@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modul vam omogoča, da povečate enkratnosti tekstovnih opisov za movie.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Privzeto je, da so vse slike, ki se nahajajo na storitev tretjih oseb, hkrati pa ohraniti aktivacije, je slika najprej naloži na strežnik, nato pa prikaže s svojo domeno",
 	"Сохранять изображения": "Shranjevanje slik",
-	"Не сохранять изображения": "Ne shrani sliko"
+	"Не сохранять изображения": "Ne shrani sliko",
+	"Приложение": "Aplikacija",
+	"Web-приложение": "Spletna aplikacija",
+	"Модуль настройки web-приложения": "Prilagoditev modul spletne aplikacije",
+	"Информация о параметрах модуля web-приложения": "Informacije o parametrih modula spletnih aplikacij",
+	"Создание приложения": "Ustvarjanje aplikacijo",
+	"Видео-плеер только в приложении": "Video predvajalnik samo v prilogi",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Nastavite zaklepanje video predvajalnik, bo pogled na voljo v prilogi samo",
+	"Блокировать плеер в странах:": "Block igralec v državah:",
+	"Вместо сообщения о запрете просмотра:": "Namesto poročanja prepovedi pogled:",
+	"Файлы приложения": "Uporaba datoteke",
+	"Ссылки на файл приложения для различных операционных систем": "Sklicevanje na aplikacijah datotek za različne operacijske sisteme",
+	"Приложение для Windows:": "Aplikacija za Windows:",
+	"Приложение для MacOS:": "Vloga za MacOS:",
+	"Приложение для Linux:": "Uporaba Linux:",
+	"URL-ссылка на проверку вирусов": "URL-povezava z virusom check",
+	"URL-ссылка на инструкцию": "URL-link z navodili"
 }

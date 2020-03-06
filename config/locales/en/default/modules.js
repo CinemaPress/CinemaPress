@@ -221,6 +221,27 @@ module.exports = {
         "time": 20,
         "countries": [],
         "message": "The function of the movie information catalog has been activated. To display the player, <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">disable the «Blocking» module in the admin panel</a>."
+      },
+      "app": {
+        "download": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "safe": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "instruction": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "time": 0,
+        "countries": [],
+        "abuse": 0,
+        "message": "The player is available only in our official app.<br><br>WITHOUT installation, only download, unzip and run."
       }
     }
   },
@@ -504,22 +525,6 @@ module.exports = {
   "app": {
     "status": false,
     "data": {
-      "theme": "custom",
-      "custom": {
-        "a": "#99AABB",
-        "hover": "#FFFFFF",
-        "body_color": "#FFFFFF",
-        "body_bg": "#14181C",
-        "title_color": "#FFFFFF",
-        "title_bg": "#445566",
-        "description_color": "#FFFFFF",
-        "description_bg": "#242D35",
-        "block": "#2C3641",
-        "form": "#2C3641",
-        "btn_color": "#FFFFFF",
-        "btn_bg": "#14181C"
-      },
-      "subdomain": 0
     }
   }
 };

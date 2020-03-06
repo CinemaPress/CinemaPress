@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "El módulo le permite aumentar la singularidad de las descripciones de texto para la película.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Por defecto, todas las imágenes se encuentran en los servicios de terceros, preservando al mismo tiempo la activación, la imagen inicialmente cargado en el servidor, y luego aparece con su dominio",
 	"Сохранять изображения": "Guardar imágenes",
-	"Не сохранять изображения": "No guardar la imagen"
+	"Не сохранять изображения": "No guardar la imagen",
+	"Приложение": "Solicitud",
+	"Web-приложение": "Aplicación basada en web",
+	"Модуль настройки web-приложения": "Aplicaciones web módulo de ajuste",
+	"Информация о параметрах модуля web-приложения": "La información sobre los parámetros de las aplicaciones web de módulo",
+	"Создание приложения": "Creación de una aplicación",
+	"Видео-плеер только в приложении": "Reproductor de vídeo sólo en el anexo",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Configurar el reproductor de vídeo de bloqueo, vista sólo estará disponible en el anexo",
+	"Блокировать плеер в странах:": "Reproductor de bloque en los países:",
+	"Вместо сообщения о запрете просмотра:": "En lugar de informar a la prohibición de vista:",
+	"Файлы приложения": "Archivos de aplicaciones",
+	"Ссылки на файл приложения для различных операционных систем": "Las referencias a las aplicaciones de archivos para diferentes sistemas operativos",
+	"Приложение для Windows:": "Aplicación para Windows:",
+	"Приложение для MacOS:": "Aplicación para MacOS:",
+	"Приложение для Linux:": "Aplicación en Linux:",
+	"URL-ссылка на проверку вирусов": "URL-enlace al virus de verificación",
+	"URL-ссылка на инструкцию": "URL-enlace a las instrucciones"
 }

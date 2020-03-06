@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Moduli ju lejon për të rritur unike e përshkrimeve tekst për moviein.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "By default, të gjitha imazhet janë të vendosura në shërbime të palëve të treta, duke ruajtur aktivizimin, imazhi fillimisht ngarkuar në server, dhe pastaj shfaqet me domenin tuaj",
 	"Сохранять изображения": "Images ruaj",
-	"Не сохранять изображения": "Mos ruani imazhin"
+	"Не сохранять изображения": "Mos ruani imazhin",
+	"Приложение": "Kërkesë",
+	"Web-приложение": "Aplikimi web-bazuar",
+	"Модуль настройки web-приложения": "Moduleve rregullim web-aplikacioneve",
+	"Информация о параметрах модуля web-приложения": "Informacion në lidhje me parametrat e modulit web-aplikacioneve",
+	"Создание приложения": "Krijimi i një kërkesë",
+	"Видео-плеер только в приложении": "Lojtar video vetëm në aneksin",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Konfiguro player lock video, pamje do të jenë në dispozicion në aneksin vetëm",
+	"Блокировать плеер в странах:": "Lojtar block në vendet:",
+	"Вместо сообщения о запрете просмотра:": "Në vend të raportimit ndalimin e parë:",
+	"Файлы приложения": "Fotografi aplikimit",
+	"Ссылки на файл приложения для различных операционных систем": "Referencat në aplikime të paraqesin për sisteme të ndryshme operative",
+	"Приложение для Windows:": "App për Windows:",
+	"Приложение для MacOS:": "Aplikimi për MacOS:",
+	"Приложение для Linux:": "Aplikimi në Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link për të virusit kontrollit",
+	"URL-ссылка на инструкцию": "URL-link udhëzimeve"
 }

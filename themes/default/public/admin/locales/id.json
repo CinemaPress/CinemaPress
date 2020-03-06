@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modul ini memungkinkan anda untuk meningkatkan keunikan deskripsi teks untuk movie.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Secara default, semua gambar yang terletak pada layanan pihak ketiga, sambil menjaga aktivasi, gambar awalnya dimuat di server, dan kemudian ditampilkan dengan domain Anda",
 	"Сохранять изображения": "Gambar save",
-	"Не сохранять изображения": "Jangan menyimpan gambar"
+	"Не сохранять изображения": "Jangan menyimpan gambar",
+	"Приложение": "Aplikasi",
+	"Web-приложение": "Aplikasi berbasis web",
+	"Модуль настройки web-приложения": "Modul penyesuaian web-aplikasi",
+	"Информация о параметрах модуля web-приложения": "Informasi tentang parameter modul web-aplikasi",
+	"Создание приложения": "Membuat sebuah aplikasi",
+	"Видео-плеер только в приложении": "Pemutar video hanya dalam lampiran",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Pemain kunci video yang configure, pandangan hanya akan tersedia dalam lampiran",
+	"Блокировать плеер в странах:": "Blok pemain di negara-negara:",
+	"Вместо сообщения о запрете просмотра:": "Alih-alih melaporkan larangan pandang:",
+	"Файлы приложения": "File aplikasi",
+	"Ссылки на файл приложения для различных операционных систем": "Referensi untuk aplikasi file untuk sistem operasi yang berbeda",
+	"Приложение для Windows:": "Aplikasi untuk Windows:",
+	"Приложение для MacOS:": "Aplikasi untuk MacOS:",
+	"Приложение для Linux:": "Aplikasi di Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link ke virus cek",
+	"URL-ссылка на инструкцию": "URL-link ke petunjuk"
 }

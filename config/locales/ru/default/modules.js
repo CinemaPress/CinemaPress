@@ -221,6 +221,27 @@ module.exports = {
         "time": 20,
         "countries": [],
         "message": "Активирована функция информационного каталога фильмов.<br><br>Для показа плеера, отключите <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">в админ-панели модуль «Блокировка»</a>."
+      },
+      "app": {
+        "download": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "safe": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "instruction": {
+          "windows": "",
+          "macos": "",
+          "linux": ""
+        },
+        "time": 0,
+        "countries": [],
+        "abuse": 0,
+        "message": "Плеер доступен только в нашем официальном приложении.<br><br>БЕЗ установки, только скачать, распаковать и запустить."
       }
     }
   },
@@ -504,22 +525,6 @@ module.exports = {
   "app": {
     "status": false,
     "data": {
-      "theme": "custom",
-      "custom": {
-        "a": "#99AABB",
-        "hover": "#FFFFFF",
-        "body_color": "#FFFFFF",
-        "body_bg": "#14181C",
-        "title_color": "#FFFFFF",
-        "title_bg": "#445566",
-        "description_color": "#FFFFFF",
-        "description_bg": "#242D35",
-        "block": "#2C3641",
-        "form": "#2C3641",
-        "btn_color": "#FFFFFF",
-        "btn_bg": "#14181C"
-      },
-      "subdomain": 0
     }
   }
 };

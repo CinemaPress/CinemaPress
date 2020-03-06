@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Moodul võimaldab teil suurendada unikaalsust teksti kirjelduse moviei.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Vaikimisi on kõik pildid asuvad kolmanda osapoole teenuseid, säilitades samas aktiveerimist pilt algselt laaditi server ja seejärel kuvatakse teie domeeni",
 	"Сохранять изображения": "Salvesta pilte",
-	"Не сохранять изображения": "Ära salvesta pilt"
+	"Не сохранять изображения": "Ära salvesta pilt",
+	"Приложение": "Taotlus",
+	"Web-приложение": "Veebipõhine rakendus",
+	"Модуль настройки web-приложения": "Reguleeritav moodul web-rakenduste",
+	"Информация о параметрах модуля web-приложения": "Teave parameetrid moodul web-rakenduste",
+	"Создание приложения": "Loomine taotluse",
+	"Видео-плеер только в приложении": "Video mängija ainult lisa",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Seadistamine lukk video mängija, arvates on saadaval ainult lisas",
+	"Блокировать плеер в странах:": "Block mängija riikides:",
+	"Вместо сообщения о запрете просмотра:": "Teatamise asemel keeld vaade:",
+	"Файлы приложения": "Programmifaile",
+	"Ссылки на файл приложения для различных операционных систем": "Viiteid esitada taotlusi erinevate operatsioonisüsteemide",
+	"Приложение для Windows:": "App for Windows:",
+	"Приложение для MacOS:": "Taotlus MacOS:",
+	"Приложение для Linux:": "Application Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link kontroll viiruse",
+	"URL-ссылка на инструкцию": "URL-link juhiseid"
 }

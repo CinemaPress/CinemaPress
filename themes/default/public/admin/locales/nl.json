@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "De module maakt het mogelijk om de uniciteit van de tekstbeschrijvingen te verhogen voor de movie.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Standaard worden alle beelden op diensten van derden, met behoud van de activering, het beeld in eerste instantie geladen op de server, en vervolgens weergegeven met uw domein",
 	"Сохранять изображения": "Save beelden",
-	"Не сохранять изображения": "Laat het niet redden"
+	"Не сохранять изображения": "Laat het niet redden",
+	"Приложение": "Toepassing",
+	"Web-приложение": "Web-based applicatie",
+	"Модуль настройки web-приложения": "Bedieningsmodule web-applicaties",
+	"Информация о параметрах модуля web-приложения": "Informatie over de parameters van de module web-applicaties",
+	"Создание приложения": "Het creëren van een applicatie",
+	"Видео-плеер только в приложении": "Video-speler alleen in de bijlage",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Configure lock videospeler, uitzicht zal alleen beschikbaar zijn in de bijlage",
+	"Блокировать плеер в странах:": "Block speler in de landen:",
+	"Вместо сообщения о запрете просмотра:": "In plaats van het melden van het verbod op het oog:",
+	"Файлы приложения": "Programmabestanden",
+	"Ссылки на файл приложения для различных операционных систем": "Verwijzingen naar file applicaties voor verschillende besturingssystemen",
+	"Приложение для Windows:": "App voor Windows:",
+	"Приложение для MacOS:": "Aanvraag voor MacOS:",
+	"Приложение для Linux:": "Toepassing in Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link om te controleren virus",
+	"URL-ссылка на инструкцию": "URL-link naar de instructies"
 }

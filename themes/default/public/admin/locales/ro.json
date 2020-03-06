@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modulul vă permite să crească unicitatea descrierilor de text pentru movie.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "În mod implicit, toate imaginile sunt situate la servicii furnizate de terțe părți, păstrând în același timp activarea, imaginea încărcată inițial pe server, și apoi afișate cu domeniul dvs",
 	"Сохранять изображения": "Salvați imagini",
-	"Не сохранять изображения": "Nu salvați imaginea"
+	"Не сохранять изображения": "Nu salvați imaginea",
+	"Приложение": "Cerere",
+	"Web-приложение": "Aplicație bazată pe web",
+	"Модуль настройки web-приложения": "Modulul de reglare a web-aplicații",
+	"Информация о параметрах модуля web-приложения": "Informații despre parametrii modulului de web-aplicații",
+	"Создание приложения": "Crearea unei aplicații",
+	"Видео-плеер только в приложении": "Video player numai în anexă",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Configurare jucător blocare video, vizualizare va fi disponibil în anexă numai",
+	"Блокировать плеер в странах:": "Bloc jucător în țările:",
+	"Вместо сообщения о запрете просмотра:": "În loc de raportare interdicția de vedere:",
+	"Файлы приложения": "Fișiere de aplicații",
+	"Ссылки на файл приложения для различных операционных систем": "Referințele la cererile de fișiere pentru diferite sisteme de operare",
+	"Приложение для Windows:": "App pentru Windows:",
+	"Приложение для MacOS:": "Aplicație pentru MacOS:",
+	"Приложение для Linux:": "Aplicarea în Linux:",
+	"URL-ссылка на проверку вирусов": "URL-link către virus de verificare",
+	"URL-ссылка на инструкцию": "URL-link către instrucțiunile"
 }

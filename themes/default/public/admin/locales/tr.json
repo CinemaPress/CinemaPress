@@ -902,5 +902,21 @@
 	"Модуль позволяет повысить уникальность текста в описаниях к фильму.": "Modül movie için metin açıklamaları benzersizliğini artmasını sağlar.",
 	"По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена": "Varsayılan olarak, tüm görüntüler aktivasyonunu koruyarak, görüntü başlangıçta sunucuda yüklenir ve ardından etki ile görüntülenen, üçüncü taraf hizmet alınabilir",
 	"Сохранять изображения": "Save görüntüleri",
-	"Не сохранять изображения": "Görüntüyü kaydetmek etmeyin"
+	"Не сохранять изображения": "Görüntüyü kaydetmek etmeyin",
+	"Приложение": "Uygulama",
+	"Web-приложение": "Web tabanlı uygulama",
+	"Модуль настройки web-приложения": "Ayarlama modülü web uygulamaları",
+	"Информация о параметрах модуля web-приложения": "Modül web uygulamaları parametreleri hakkında bilgiler",
+	"Создание приложения": "Bir uygulamayı oluşturma",
+	"Видео-плеер только в приложении": "Sadece ekinde video oynatıcı",
+	"Настройка блокировки видео-плеера, просмотр будет доступен только в приложении": "Yapılandırma kilit video oynatıcı, görünüm yalnızca ek satışa sunulacak",
+	"Блокировать плеер в странах:": "Ülkelerde engelleme oyuncu:",
+	"Вместо сообщения о запрете просмотра:": "Yerine bakış yasağı raporlama:",
+	"Файлы приложения": "Uygulama dosyaları",
+	"Ссылки на файл приложения для различных операционных систем": "Farklı işletim sistemleri için dosya uygulamalara kaynaklar",
+	"Приложение для Windows:": "Windows için Uygulama:",
+	"Приложение для MacOS:": "MacOS için Başvuru:",
+	"Приложение для Linux:": "Linux Uygulama:",
+	"URL-ссылка на проверку вирусов": "Çek virüsüne URL-link",
+	"URL-ссылка на инструкцию": "Talimatlara URL-link"
 }

@@ -90,7 +90,7 @@
                                         </span>
                                         <input type="text" class="form-control" name="comment.comment_url" value="<%- comment.comment_url %>">
                                         <span class="input-group-addon">
-                                            <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/app-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.comment_id %>" target="_blank">
+                                            <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.comment_id %>" target="_blank">
                                                 <span class="fa fa-external-link-square-alt"></span>
                                             </a>
                                         </span>
@@ -852,7 +852,7 @@
                                                                 <a href="/<%- config.urls.admin %>/comments?comment_id=<%- comment.id %>"><i class="fa fa-edit text-warning"></i></a>
                                                             </td>
                                                             <td class="table-settings">
-                                                                <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/app-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.id %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a>
+                                                                <a href="<%- comment.comment_url.replace(/(\/tv-version|\/mobile-version|\/m\.|\/tv\.|\/app\.)/i, '') %>#c<%- comment.id %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a>
                                                             </td>
                                                         </tr>
                                                     <% }); %>

@@ -151,7 +151,10 @@ async.series(
                           }
                           var old = movie.all_movies;
                           movie.id = movie.kp_id;
-                          if (!movie.description) {
+                          if (
+                            !movie.description ||
+                            movie.description === m.description
+                          ) {
                             var custom = movie.custom
                               ? JSON.parse(movie.custom)
                               : {};
