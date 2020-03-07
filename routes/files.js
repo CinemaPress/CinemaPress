@@ -49,11 +49,13 @@ router.get(
     var save = config.image.save
       ? path.join(path.dirname(__filename), '..', origin)
       : false;
-    var no_poster =
+    var no_image =
       config.protocol +
       config.subdomain +
       config.domain +
-      '/files/poster/no-poster.jpg';
+      '/files/' +
+      type +
+      '/no.jpg';
     var source = false;
 
     if (url_kp) {
@@ -73,7 +75,7 @@ router.get(
     }
 
     if (!source) {
-      return res.redirect(302, no_poster);
+      return res.redirect(302, no_image);
     }
 
     var image = 'https://';
@@ -201,8 +203,8 @@ router.get(
         !/image/i.test(info.headers['content-type']) ||
         parseInt(info.headers['content-length']) < 1375
       ) {
-        cache.set(origin, no_poster);
-        return res.redirect(302, no_poster);
+        cache.set(origin, no_image);
+        return res.redirect(302, no_image);
       }
 
       request
@@ -223,8 +225,8 @@ router.get(
         })
         .on('error', function(err) {
           console.error(err && err.message, req.originalUrl);
-          cache.set(origin, no_poster);
-          return res.redirect(302, no_poster);
+          cache.set(origin, no_image);
+          return res.redirect(302, no_image);
         })
         .on('close', function() {
           cache.set(origin, origin + '?save');

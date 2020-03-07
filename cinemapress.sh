@@ -539,10 +539,10 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create "${3}" \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${3}" \
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec nginx nginx -s reload \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -1726,14 +1726,11 @@ docker_cron() {
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
-    NOT_UPLOAD=${2:-}
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    if [ "${NOT_UPLOAD}" = "" ]; then
-        sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
-        sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
-    fi
+    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
+    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
@@ -1762,7 +1759,6 @@ docker_restore() {
 docker_backup() {
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
-    NOT_UPLOAD=${1:-}
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
     BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 864000))"`
@@ -1786,6 +1782,8 @@ docker_backup() {
         config
     cd /home/${CP_DOMAIN} && \
     tar --exclude=files/GeoLite2-Country.mmdb \
+        --exclude=files/poster \
+        --exclude=files/picture \
         --exclude=files/bbb.mp4 \
         --exclude=files/content/collage.psd \
         -uf /var/${CP_DOMAIN}/themes.tar \
@@ -1794,16 +1792,14 @@ docker_backup() {
         themes/default/views/mobile \
         themes/${THEME_NAME} \
         files
-    if [ "${NOT_UPLOAD}" = "" ]; then
-        sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
-        if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
-        sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
-        sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-        sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-        sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-        sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-        rm -rf /var/${CP_DOMAIN:?}
-    fi
+    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
+    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
+    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
+    rm -rf /var/${CP_DOMAIN:?}
 }
 docker_actual() {
     node /home/${CP_DOMAIN}/config/update/actual.js
@@ -2087,7 +2083,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${3}" = "create" ] || [ "${3}" = "1" ]; then
                     docker_backup "${4}"
                 elif [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
-                    docker_restore "${4}" "${5}"
+                    docker_restore "${4}"
                 fi
             elif [ "${2}" = "speed" ]; then
                 if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
@@ -2687,6 +2683,41 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ "${ADMIN_PASSWORD}" != "" ]; then echo "PASSWORD: ${ADMIN_PASSWORD}"; fi;
             _line
             exit 0
+        ;;
+        "static" )
+            read_domain "${2}"
+            sh_not
+            RCS=$(docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMASTATIC")
+            if [ "${RCS}" = "" ]; then echo "NOT CINEMASTATIC"; exit 0; fi
+            if [ "${4}" != "" ]; then
+                docker exec "${CP_DOMAIN_}" rclone config delete CINEMASTATIC \
+                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
+                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                sleep 3
+                CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
+                sleep 3
+                CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
+                if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+                    _header "ERROR"
+                    _content
+                    _content "Cannot connect to backup storage."
+                    _content
+                    _s
+                    exit 0
+                fi
+                cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
+            fi
+            if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
+                sleep 3; rclone copy CINEMAPRESS:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
+                rm -rf /home/${CP_DOMAIN}/static.tar
+            else
+                cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar files/poster files/picture
+                sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/static.tar &> /dev/null
+                sleep 3; rclone copy /home/${CP_DOMAIN}/static.tar CINEMAPRESS:${CP_DOMAIN}/
+                rm -rf /home/${CP_DOMAIN}/static.tar
+            fi
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
             clear
