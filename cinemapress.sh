@@ -399,13 +399,13 @@ ip_install() {
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
-    3_backup "${LOCAL_DOMAIN}" "create" "not_upload"
+    3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
     1_install "${LOCAL_DOMAIN}"
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
-    3_backup "${LOCAL_DOMAIN}" "restore" "not_download"
+    3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
@@ -1787,6 +1787,7 @@ docker_backup() {
     cd /home/${CP_DOMAIN} && \
     tar --exclude=files/GeoLite2-Country.mmdb \
         --exclude=files/bbb.mp4 \
+        --exclude=files/content/collage.psd \
         -uf /var/${CP_DOMAIN}/themes.tar \
         themes/default/public/desktop \
         themes/default/public/mobile \
