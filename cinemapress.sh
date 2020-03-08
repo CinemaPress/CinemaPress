@@ -1987,7 +1987,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             read_key ${3}
             _s ${3}
-            if [ -f "/var/local/images/poster/no-poster.jpg" ]; then
+            if [ -f "/var/local/images/poster/no.jpg" ]; then
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
                 if [ -f "/var/images.tar" ]; then
@@ -1997,8 +1997,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
                 mkdir -p /var/local/images/poster
-                cp -r /home/${CP_DOMAIN}/files/poster/no-poster.gif /var/local/images/poster/no-poster.gif
-                cp -r /home/${CP_DOMAIN}/files/poster/no-poster.jpg /var/local/images/poster/no-poster.jpg
+                cp -r /home/${CP_DOMAIN}/files/poster/no.gif /var/local/images/poster/no.gif
+                cp -r /home/${CP_DOMAIN}/files/poster/no.jpg /var/local/images/poster/no.jpg
                 if [ -f "/var/images.tar" ]; then
                     _header "UNPACKING"
                     _content

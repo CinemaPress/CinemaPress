@@ -424,7 +424,7 @@ router.get('/:type?', function(req, res) {
               : config.protocol +
                   config.subdomain +
                   config.domain +
-                  '/files/poster/no-poster.jpg'
+                  '/files/poster/no.jpg'
           );
         } else {
           callback(null, render);
