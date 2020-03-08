@@ -2472,7 +2472,7 @@ while [ "${WHILE}" -lt "2" ]; do
             _line
             _header "DOMAIN NAME FOR SPLASH SCREEN"
             _line
-            _header "${4}.${GIT}.io"
+            _header "${3}.${GIT}.io"
             _line
             _br
             exit 0
