@@ -1684,12 +1684,16 @@ docker_run() {
     cd /home/${CP_DOMAIN} && pm2-runtime start process.json
 }
 docker_stop() {
+    sed -Ei "s/\/\/app\.use\(rebooting\(\)\);/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
+    pm2 reload all
     searchd --stop
     killall memcached
     killall crond
     sleep 5
 }
 docker_start() {
+    sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
+    pm2 reload all
     searchd
     memcached -u root -d
     crond -L /var/log/cron.log

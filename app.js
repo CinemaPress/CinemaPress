@@ -55,6 +55,7 @@ var api = require('./routes/api');
  * Middleware dependencies.
  */
 
+var rebooting = require('./lib/CP_rebooting');
 var userinfo = require('./lib/CP_userinfo');
 var loadavg = require('./lib/CP_loadavg');
 var nginx = require('./lib/CP_nginx');
@@ -85,6 +86,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: '64mb' }));
 app.use(bodyParser.urlencoded({ limit: '64mb', extended: true }));
 
+//app.use(rebooting());
 app.use(nginx());
 app.use(
   /^(?:\/mobile-version|\/tv-version|)?/,
