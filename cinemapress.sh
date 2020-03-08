@@ -1693,7 +1693,6 @@ docker_stop() {
 }
 docker_start() {
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
-    pm2 reload all
     searchd
     memcached -u root -d
     crond -L /var/log/cron.log
