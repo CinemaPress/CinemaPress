@@ -2454,6 +2454,8 @@ while [ "${WHILE}" -lt "2" ]; do
             PROTOCOLS=$(grep "\"protocol\"" /home/"${2}"/config/production/config.js)
             PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
             cd /home/"${2}"/files/splash && \
+            echo "config" >> .gitignore && \
+            echo "screen.html" >> .gitignore && \
             git init >/dev/null 2>&1; \
             cp -rf config .git/config; \
             cp -rf screen.html index.html; \
