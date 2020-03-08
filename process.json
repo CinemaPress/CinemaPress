@@ -20,6 +20,7 @@
         "modules",
         "routes"
       ],
+      "watch_delay": 10000,
       "watch_options": {
         "followSymlinks": false
       },

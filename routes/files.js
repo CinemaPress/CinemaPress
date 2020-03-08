@@ -220,13 +220,15 @@ router.get(
               '.100 Safari/537.36'
           }
         })
-        .on('response', function(response) {
-          response.pipe(fs.createWriteStream(save));
-        })
         .on('error', function(err) {
           console.error(err && err.message, req.originalUrl);
           cache.set(origin, no_image);
           return res.redirect(302, no_image);
+        })
+        .on('response', function(response) {
+          if (response.statusCode === 200) {
+            response.pipe(fs.createWriteStream(save));
+          }
         })
         .on('close', function() {
           cache.set(origin, origin + '?save');

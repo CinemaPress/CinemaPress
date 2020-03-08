@@ -374,6 +374,12 @@ form {
   border: 0 !important;
   margin: 0;
 }
+.moreEpisodes {
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 0 0 0;
+  border-radius: 5px;
+}
 .cinemapress-quality,
 .cinemapress-translate {
   position: absolute;

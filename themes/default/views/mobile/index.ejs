@@ -11,7 +11,33 @@
 
 <% if (typeof index === 'object') {
         for (var type in index) {
-if (index.hasOwnProperty(type) && index[type].length) {
+if (index.hasOwnProperty(type) && index[type].length && type === 'episode') {
+index[type].forEach(function (category) { %>
+
+    <% if (category.movies.length) { %>
+        <div class="info block">
+            <% var moreEpisodes = false; %>
+            <% category.movies.forEach(function (movie) { %>
+            <div <% if (movie.hide) { moreEpisodes = true; %>style="display:none" data-more-episodes="hide"<% } %>>
+                <div class="clear"></div>
+                <a href="<%- movie.url %>"><u><%= movie.title %></u>
+                    <span><% if (movie.season) { %><%- movie.season %> <%- page.l.season %><% } %>
+                    <% if (movie.episode) { %><%- movie.episode %> <%- page.l.episode %><% } %>
+                        <% if (movie.translate) { %>(<%- movie.translate %>)<% } %></span>
+                </a>
+            </div>
+            <% }); %>
+            <% if (moreEpisodes) { %>
+                <div class="moreEpisodes" onclick="var dme = document.querySelectorAll('[data-more-episodes]'); dme && dme.forEach(function(e) {e.style.display='block'});this.style.display='none'"><%- page.l.moreEpisodes %></div>
+            <% } %>
+        </div>
+    <% } %>
+
+<% }); } } } %>
+
+<% if (typeof index === 'object') {
+        for (var type in index) {
+if (index.hasOwnProperty(type) && index[type].length && type !== 'episode') {
 index[type].forEach(function (category) { %>
 
     <h2>
@@ -35,7 +61,7 @@ index[type].forEach(function (category) { %>
                 <img src="<%- movie.poster_min %>" alt="<%= movie.title %> (<%- movie.year %>)" title="<%= movie.title %> (<%- movie.year %>)">
             </a>
         </div>
-        <h3><a href="<%- movie.url %>"><%= movie.title %> <% if (movie.season) { %> <%- movie.season %> <%- page.l.season %> <% } %> <% if (movie.episode) { %> <%- movie.episode %> <%- page.l.episode %><% } %></a></h3>
+        <h3><a href="<%- movie.url %>"><%= movie.title %></a></h3>
 
         <% if (movie.year_url) { %>
 
