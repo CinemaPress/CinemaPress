@@ -2736,7 +2736,6 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " reload    - Reload website (PM2)"; _br;
             printf " zero      - Delete all data from the automatic database"; _br;
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
-            printf " images    - Downloading posters to own server (only RU)"; _br;
             printf " logs      - Show all logs"; _br;
             printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
@@ -2745,7 +2744,9 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "             premiere date, rating and number of votes)"; _br;
             printf " clear_vps - Complete deletion of all data on the VPS"; _br;
             printf " cms       - Install other CMS (php-mysql)"; _br;
-            printf " app       - Create movie application"; _br; _br;
+            printf " app       - Create movie application"; _br;
+            printf " splash example.com github_login github_pass"; _br;
+            printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine create_https_restore_mirror"; _br;
             printf " combine create_restore_mirror"; _br;
             printf " combine create_https_mirror"; _br;
