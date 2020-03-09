@@ -147,8 +147,18 @@ function codePlayer(type, movie, options) {
       scriptPlayer();
     }
 
+    var l =
+      options.userinfo &&
+      modules.blocking.data.app.countries &&
+      modules.blocking.data.app.countries.length
+        ? modules.blocking.data.app.countries.filter(function(c) {
+            return new RegExp(options.userinfo.country_en, 'i').test(c);
+          }).length
+        : 0;
+
     code =
-      options.userinfo.device === 'app' || modules.blocking.data.app.abuse
+      (options.userinfo.device === 'app' || modules.blocking.data.app.abuse) &&
+      l <= 0
         ? code
         : CP_blocking.code(code, movie, options);
   }
