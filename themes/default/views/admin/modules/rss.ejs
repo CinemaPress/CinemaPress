@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/rss" class="btn hidden-xs">
                             <%= __('Модуль RSS') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/rss.html" class="btn" title="<%= __('Информация о параметрах модуля RSS') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/rss.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля RSS') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.rss.status) { %>
-                        <a href="javascript:void(0)" data-module="rss" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="rss" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="rss" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="rss" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,43 +67,45 @@
 
                     <% if (modules.rss.status) { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-success">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('активирован') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет показывать последние публикации фильмов в формате xml.') %>
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?ids=new
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?tag=Collections
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?collection=url-key-collection
-                                    <br>
-                                    <%= __('Чтобы деактивировать модуль, нажмите на кнопку «Отключить» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-success">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('активирован') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет показывать последние публикации фильмов в формате xml.') %>
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml?ids=new
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml?tag=Collections
+                                        <br><%- config.subdomain %><%- config.domain %>
+                                        /rss.xml?collection=url-key-collection
+                                        <br>
+                                        <%= __('Чтобы деактивировать модуль, нажмите на кнопку «Отключить» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет показывать последние публикации фильмов в формате xml.') %>
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?ids=new
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?tag=Collections
-                                    <br><%- config.subdomain %><%- config.domain %>/rss.xml?collection=url-key-collection
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет показывать последние публикации фильмов в формате xml.') %>
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml?ids=new
+                                        <br><%- config.subdomain %><%- config.domain %>/rss.xml?tag=Collections
+                                        <br><%- config.subdomain %><%- config.domain %>
+                                        /rss.xml?collection=url-key-collection
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/episode" class="btn hidden-xs">
                             <%= __('Модуль серий сериалов') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html" class="btn" title="<%= __('Информация о параметрах модуля серий сериалов') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля серий сериалов') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.episode.status) { %>
-                        <a href="javascript:void(0)" data-module="episode" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="episode" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="episode" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="episode" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,530 +67,446 @@
 
                     <% if (modules.episode.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-heading"></i>&nbsp;&nbsp;&nbsp;<%= __('Заголовок, описание и H1 веб-страницы с серией') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#titles" class="csstip" title="<%= __('Написание текста для заголовка, описания и H1 на веб-странице с серией') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12">
-                                            <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Заголовок веб-страницы') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="advanced-textarea">
-                                                                <div class="text-muted">
-                                                                    <%= __('Веб-страница серии:') %>
-                                                                </div>
-
-                                                                <div class="spacer-10"></div>
-
-                                                                <textarea class="form-control titles" name="modules.episode.data.title" placeholder="<%= __('Название страницы') %>"><%- modules.episode.data.title %></textarea>
-
-                                                                <div class="advanced-textarea-footer">
-                                                                    <div class="pull-left">
-                                                                        <div class="text text-muted" style="float: none;"><span id="modules.episode.data.title">0</span> <%= __('символа(ов)') %></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[season]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер сезона') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[episode]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер серии') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[translate]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('перевод') %>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[title]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('название') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[title_ru]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('переведенное') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[title_en]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('английское') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[year]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('год') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[premiere]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('премьера') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('синонимы') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-sm btn-default codes">
-                                                                            <i class="fa fa-images"></i>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[country]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страна') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[countries]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страны') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[genre]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанр') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[genres]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[actor]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[actors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актеры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[director]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.title" data-code="[directors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссеры') %>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <article class="faq-group">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('H1 на веб-странице') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="advanced-textarea">
-                                                                <div class="text-muted">
-                                                                    <%= __('Веб-страница серии:') %>
-                                                                </div>
-
-                                                                <div class="spacer-10"></div>
-
-                                                                <textarea class="form-control titles" name="modules.episode.data.h1" placeholder="<%= __('H1 на странице') %>"><%- modules.episode.data.h1 %></textarea>
-
-                                                                <div class="advanced-textarea-footer">
-                                                                    <div class="pull-left">
-                                                                        <div class="text text-muted" style="float: none;"><span id="modules.episode.data.h1">0</span> <%= __('символа(ов)') %></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[season]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер сезона') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[episode]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер серии') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[translate]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('перевод') %>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[title]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('название') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[title_ru]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('переведенное') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[title_en]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('английское') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[year]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('год') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[premiere]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('премьера') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('синонимы') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-sm btn-default codes">
-                                                                            <i class="fa fa-images"></i>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[country]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страна') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[countries]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страны') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[genre]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанр') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[genres]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[actor]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[actors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актеры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[director]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.h1" data-code="[directors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссеры') %>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <article class="faq-group" style="margin-bottom: 0;">
-                                                <header>
-                                                    <i class="fa fa-minus"></i>
-                                                    <h3><%= __('Описание веб-страницы') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="advanced-textarea">
-                                                                <div class="text-muted">
-                                                                    <%= __('Веб-страница серии:') %>
-                                                                </div>
-
-                                                                <div class="spacer-10"></div>
-
-                                                                <textarea class="form-control descriptions" name="modules.episode.data.description" placeholder="<%= __('Описание страницы') %>"><%- modules.episode.data.description %></textarea>
-
-                                                                <div class="advanced-textarea-footer">
-                                                                    <div class="pull-left">
-                                                                        <div class="text text-muted" style="float: none;"><span id="modules.episode.data.description">0</span> <%= __('символа(ов)') %></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[season]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер сезона') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[episode]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('номер серии') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[translate]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('перевод') %>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[title]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('название') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[title_ru]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('переведенное') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[title_en]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('английское') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[year]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('год') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[premiere]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('премьера') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('синонимы') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-sm btn-default codes">
-                                                                            <i class="fa fa-images"></i>
-                                                                        </a>
-                                                                        <div style="clear:both"></div>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[country]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страна') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[countries]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('страны') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[genre]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанр') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[genres]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('жанры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[actor]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[actors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('актеры') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[director]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссер') %>
-                                                                        </a>
-                                                                        <a href="javascript:void(0)" data-name="modules.episode.data.description" data-code="[directors]" class="btn btn-sm btn-default codes">
-                                                                            <%= __('режиссеры') %>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-heading"></i>&nbsp;&nbsp;&nbsp;<%= __('Заголовок, описание и H1 веб-страницы с серией') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#titles"
+                                               class="csstip"
+                                               title="<%= __('Написание текста для заголовка, описания и H1 на веб-странице с серией') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры по умолчанию') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#default" class="csstip" title="<%= __('Параметры по умолчанию') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label><%= __('Сезон') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted">3</span>
-                                                <input class="form-control" name="modules.episode.data.season" value="<%= modules.episode.data.season %>" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label><%= __('Серия') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted">8</span>
-                                                <input class="form-control" name="modules.episode.data.episode" value="<%= modules.episode.data.episode %>" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label><%= __('Звук') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <input class="form-control" name="modules.episode.data.translate" value="<%= modules.episode.data.translate %>" type="text">
-                                                <span class="input-group-addon text-muted"><%= __('Субтитры') %></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label><%= __('По умолчанию') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><%- modules.episode.data.translate %></span>
-                                                <input class="form-control" name="modules.episode.data.default" value="<%= modules.episode.data.default %>" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок с сериями') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#index" class="csstip" title="<%= __('Блок на главной странице веб-сайта в котором будут появляться новые серии сериалов') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <select name="modules.episode.data.index.order" class="form-control without">
-                                                <% for (var i = 1; i <= 10; i++) { %>
-                                                    <% if (modules.episode.data.index.order === i) { %>
-                                                        <option value="<%= i %>" selected="selected">
-                                                            <%= __('%s-й', i) %>
-                                                        </option>
-                                                    <% } else { %>
-                                                        <option value="<%= i %>">
-                                                            <%= __('%s-й', i) %>
-                                                        </option>
-                                                    <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <select name="modules.episode.data.index.count" class="form-control without">
-                                                <% for (var i = 0; i <= 99; i++) { %>
-                                                    <% if (modules.episode.data.index.count === i) { %>
-                                                        <% if (i === 0) { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                        <% } else { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%- i %> <%= __('серий') %>
-                                                            </option>
-                                                        <% } %>
-                                                    <% } else { %>
-                                                        <% if (i === 0) { %>
-                                                            <option value="<%= i %>">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                        <% } else { %>
-                                                            <option value="<%= i %>">
-                                                                <%- i %> <%= __('серий') %>
-                                                            </option>
-                                                        <% } %>
-                                                    <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="modules.episode.data.index.name" value="<%= modules.episode.data.index.name %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-lg-12 col-xs-12">
-                                            <% if (modules.episode.data.index.custom && modules.episode.data.index.custom.length) { %>
-                                            <table class="table table-bordered table-striped">
-                                                <tbody>
-                                                <% modules.episode.data.index.custom.forEach(function(data, num) { %>
-                                                    <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                    <% if (d.length < 3) return; %>
-                                                    <% if (data.charAt(0) === '#') { var custom_div = 'no-active'; } %>
-                                                    <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') { custom_i = 'text-success'; } %>
-                                                    <tr class="<%- custom_div %>">
-                                                        <td class="table-settings">
-                                                            <span><%- num+1 %>.</span>
-                                                        </td>
-                                                        <td class="table-content help-example">
-                                                            <div class="<%- custom_div %>">
-                                                                <code>
-                                                                    <span class="url"><%= d[0].split('/')[2] %></span>
-                                                                    ~ <span class="kinopoisk_id"><%= d[1] %></span>
-                                                                    ~ <span class="season"><%= d[2] %></span>
-                                                                    ~ <span class="episode"><%= d[3] || '' %></span>
-                                                                    <% if (typeof d[3] !== 'undefined') { %>
-                                                                        ~ <span class="translate"><%= d[4] || '' %></span>
-                                                                    <% } %>
-                                                                </code>
-                                                            </div>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-circle <%- custom_i %> activate-api" data-parser="<%- encodeURIComponent(data) %>" data-activate-api="modules.episode.data.index.custom"></i></span>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-trash-alt text-danger delete-api" data-parser="<%- encodeURIComponent(data) %>" data-delete-api="modules.episode.data.index.custom"></i></span>
-                                                        </td>
-                                                    </tr>
-                                                <% }); %>
-                                                </tbody>
-                                            </table>
-                                            <% } else { %>
-                                                <div class="help-example" style="padding-top: 10px !important; text-align: center">
-                                                    <code><%= __('Добавьте в список хотя бы один API-сервис сериалов') %></code>
-                                                </div>
-                                            <% } %>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-lg-12 col-xs-12">
-                                            <div class="faq">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
                                                 <article class="faq-group">
-                                                    <header class="text-muted text-left">
-                                                        <i class="fa fa-plus"></i>
-                                                        <h3><span class="fas fa-list-ol"></span> <%= __('Редактировать список') %></h3>
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Заголовок веб-страницы') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
                                                             <div class="col-sm-12">
-                                                                <textarea class="form-control custom" name="modules.episode.data.index.custom" placeholder="url ~ kinopoisk_id ~ season ~ episode ~ translate" style="height:300px;"><%- modules.episode.data.index.custom.join('\n\n') %></textarea>
+                                                                <div class="advanced-textarea">
+                                                                    <div class="text-muted">
+                                                                        <%= __('Веб-страница серии:') %>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <textarea class="form-control titles"
+                                                                              name="modules.episode.data.title"
+                                                                              placeholder="<%= __('Название страницы') %>"><%- modules.episode.data.title %></textarea>
+
+                                                                    <div class="advanced-textarea-footer">
+                                                                        <div class="pull-left">
+                                                                            <div class="text text-muted"
+                                                                                 style="float: none;"><span
+                                                                                        id="modules.episode.data.title">0</span> <%= __('символа(ов)') %>
+                                                                            </div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[season]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер сезона') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[episode]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер серии') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[translate]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('перевод') %>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[title]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('название') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[title_ru]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('переведенное') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[title_en]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('английское') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[year]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('год') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[premiere]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('премьера') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('синонимы') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <i class="fa fa-images"></i>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[country]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страна') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[countries]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страны') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[genre]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанр') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[genres]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[actor]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[actors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актеры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[director]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.title"
+                                                                               data-code="[directors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссеры') %>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-
-                                                            <div class="spacer-10"></div>
-
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                                <article class="faq-group">
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('H1 на веб-странице') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
                                                             <div class="col-sm-12">
-                                                                <div class="helper-text-box text-left help-example-code">
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="url">url</span> ~
-                                                                            <span class="kinopoisk_id">kinopoisk_id</span> ~
-                                                                            <span class="season">season</span> ~
-                                                                            <span class="episode">episode</span> ~
-                                                                            <span class="translate">translate</span>
-                                                                        </code>
-                                                                    </p>
-                                                                    <code class="url">
-                                                                        https://example.com/tv
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:1px 0 0 0">
-                                                                        &nbsp;&nbsp;{ "results": [ {
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id": <span class="kinopoisk_id">1048334</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"season": <span class="season">3</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"episode": <span class="episode">8</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate": "<span class="translate">Subtitle</span>",
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;} ] }
-                                                                    </code><br>
-                                                                    <code class="kinopoisk_id">
-                                                                        results.0.kinopoisk_id
-                                                                    </code><br>
-                                                                    <code class="season">
-                                                                        results.0.season
-                                                                    </code><br>
-                                                                    <code class="episode">
-                                                                        results.0.episode
-                                                                    </code><br>
-                                                                    <code class="translate">
-                                                                        results.0.translate
-                                                                    </code>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="url">https://example.com/tv</span> ~
-                                                                            <span class="kinopoisk_id">results.0.kinopoisk_id</span> ~
-                                                                            <span class="season">results.0.season</span> ~
-                                                                            <span class="episode">results.0.episode</span> ~
-                                                                            <span class="translate">results.0.translate</span>
-                                                                        </code>
-                                                                    </p>
+                                                                <div class="advanced-textarea">
+                                                                    <div class="text-muted">
+                                                                        <%= __('Веб-страница серии:') %>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <textarea class="form-control titles"
+                                                                              name="modules.episode.data.h1"
+                                                                              placeholder="<%= __('H1 на странице') %>"><%- modules.episode.data.h1 %></textarea>
+
+                                                                    <div class="advanced-textarea-footer">
+                                                                        <div class="pull-left">
+                                                                            <div class="text text-muted"
+                                                                                 style="float: none;"><span
+                                                                                        id="modules.episode.data.h1">0</span> <%= __('символа(ов)') %>
+                                                                            </div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[season]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер сезона') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[episode]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер серии') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[translate]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('перевод') %>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[title]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('название') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[title_ru]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('переведенное') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[title_en]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('английское') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[year]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('год') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[premiere]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('премьера') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('синонимы') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <i class="fa fa-images"></i>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[country]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страна') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[countries]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страны') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[genre]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанр') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[genres]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[actor]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[actors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актеры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[director]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.h1"
+                                                                               data-code="[directors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссеры') %>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                                <article class="faq-group" style="margin-bottom: 0;">
+                                                    <header>
+                                                        <i class="fa fa-minus"></i>
+                                                        <h3><%= __('Описание веб-страницы') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="advanced-textarea">
+                                                                    <div class="text-muted">
+                                                                        <%= __('Веб-страница серии:') %>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <textarea class="form-control descriptions"
+                                                                              name="modules.episode.data.description"
+                                                                              placeholder="<%= __('Описание страницы') %>"><%- modules.episode.data.description %></textarea>
+
+                                                                    <div class="advanced-textarea-footer">
+                                                                        <div class="pull-left">
+                                                                            <div class="text text-muted"
+                                                                                 style="float: none;"><span
+                                                                                        id="modules.episode.data.description">0</span> <%= __('символа(ов)') %>
+                                                                            </div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[season]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер сезона') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[episode]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('номер серии') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[translate]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('перевод') %>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[title]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('название') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[title_ru]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('переведенное') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[title_en]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('английское') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[year]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('год') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[premiere]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('премьера') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[<%= __('слово') %> | <%= __('слово') %>2 | <%= __('слово') %>3]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('синонимы') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; alt=&quot;Image&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <i class="fa fa-images"></i>
+                                                                            </a>
+                                                                            <div style="clear:both"></div>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[country]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страна') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[countries]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('страны') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[genre]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанр') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[genres]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('жанры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[actor]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[actors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('актеры') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[director]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссер') %>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                               data-name="modules.episode.data.description"
+                                                                               data-code="[directors]"
+                                                                               class="btn btn-sm btn-default codes">
+                                                                                <%= __('режиссеры') %>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -596,161 +521,495 @@
 
                         <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fas fa-stream"></i>&nbsp;&nbsp;&nbsp;<%= __('Серии на веб-странице сериала') %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры по умолчанию') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#default"
+                                               class="csstip" title="<%= __('Параметры по умолчанию') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#iframe" class="csstip" title="<%= __('Формируете список запросов к API-сервисам, с которых брать список серий сериала') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12">
-                                            <% if (modules.episode.data.custom && modules.episode.data.custom.length) { %>
-                                            <table class="table table-bordered table-striped">
-                                                <tbody>
-                                                <% modules.episode.data.custom.forEach(function(data, num) { %>
-                                                    <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                    <% if (d.length < 3) return; %>
-                                                    <% if (data.charAt(0) === '#') { var custom_div = 'no-active'; } %>
-                                                    <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') { custom_i = 'text-success'; } %>
-                                                    <tr class="<%- custom_div %>">
-                                                        <td class="table-settings">
-                                                            <span><%- num+1 %>.</span>
-                                                        </td>
-                                                        <td class="table-content help-example">
-                                                            <div>
-                                                                <code>
-                                                                    <span class="url"><%= d[0].split('/')[2] %></span>
-                                                                    ~ <span class="season"><%= d[1] %></span>
-                                                                    ~ <span class="episode"><%= d[2] || '' %></span>
-                                                                    <% if (typeof d[3] !== 'undefined') { %>
-                                                                        ~ <span class="translate"><%= d[3] || '' %></span>
-                                                                    <% } %>
-                                                                </code>
-                                                            </div>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-circle <%- custom_i %> activate-api" data-parser="<%- encodeURIComponent(data) %>" data-activate-api="modules.episode.data.custom"></i></span>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-trash-alt text-danger delete-api" data-parser="<%- encodeURIComponent(data) %>" data-delete-api="modules.episode.data.custom"></i></span>
-                                                        </td>
-                                                    </tr>
-                                                <% }); %>
-                                                </tbody>
-                                            </table>
-                                            <% } else { %>
-                                                <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                    <code><%= __('Добавьте в список хотя бы один API-сервис сериалов') %></code>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label><%= __('Сезон') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted">3</span>
+                                                    <input class="form-control" name="modules.episode.data.season"
+                                                           value="<%= modules.episode.data.season %>" type="text">
                                                 </div>
-                                            <% } %>
+                                            </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
 
-                                        <div class="col-lg-12 col-xs-12">
-                                            <div class="faq">
-                                                <article class="faq-group">
-                                                    <header class="text-muted text-left">
-                                                        <i class="fa fa-plus"></i>
-                                                        <h3><span class="fas fa-list-ol"></span> <%= __('Редактировать список') %></h3>
-                                                    </header>
-                                                    <div class="faq-content clearfix">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control custom" name="modules.episode.data.custom" placeholder="url ~ season ~ episode ~ translate" style="height:300px;"><%- modules.episode.data.custom.join('\n\n') %></textarea>
-                                                            </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label><%= __('Серия') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted">8</span>
+                                                    <input class="form-control" name="modules.episode.data.episode"
+                                                           value="<%= modules.episode.data.episode %>" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                            <div class="spacer-10"></div>
+                                        <div class="spacer-10"></div>
 
-                                                            <div class="col-sm-12">
-                                                                <div class="helper-text-box text-left help-example-code">
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="url">url</span> ~
-                                                                            <span class="season">season</span> ~
-                                                                            <span class="episode">episode</span> ~
-                                                                            <span class="translate">translate</span>
-                                                                        </code>
-                                                                    </p>
-                                                                    <code class="text-muted" style="margin:1px 0 0 0">
-                                                                        &nbsp;&nbsp;[imdb_id] - ID imdb.com
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
-                                                                    </code><br>
-                                                                    <code class="url">
-                                                                        https://example.com/tv?imdb_id=[imdb_id]
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:1px 0 0 0">
-                                                                        &nbsp;&nbsp;{ "results": [ {
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"season": <span class="season">3</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"episode": <span class="episode">8</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate": "<span class="translate">Subtitle</span>",
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;} ] }
-                                                                    </code><br>
-                                                                    <code class="season">
-                                                                        results.0.season
-                                                                    </code><br>
-                                                                    <code class="episode">
-                                                                        results.0.episode
-                                                                    </code><br>
-                                                                    <code class="translate">
-                                                                        results.0.translate
-                                                                    </code>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="url">https://example.com/tv?imdb_id=[imdb_id]</span> ~
-                                                                            <span class="season">results.0.season</span> ~
-                                                                            <span class="episode">results.0.episode</span> ~
-                                                                            <span class="translate">results.0.translate</span>
-                                                                        </code>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label><%= __('Звук') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input class="form-control" name="modules.episode.data.translate"
+                                                           value="<%= modules.episode.data.translate %>" type="text">
+                                                    <span class="input-group-addon text-muted"><%= __('Субтитры') %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label><%= __('По умолчанию') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><%- modules.episode.data.translate %></span>
+                                                    <input class="form-control" name="modules.episode.data.default"
+                                                           value="<%= modules.episode.data.default %>" type="text">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок с сериями') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/episode.html#index"
+                                               class="csstip"
+                                               title="<%= __('Блок на главной странице веб-сайта в котором будут появляться новые серии сериалов') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <select name="modules.episode.data.index.order"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 10; i++) { %>
+                                                        <% if (modules.episode.data.index.order === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%= __('%s-й', i) %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%= __('%s-й', i) %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <select name="modules.episode.data.index.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 0; i <= 99; i++) { %>
+                                                        <% if (modules.episode.data.index.count === i) { %>
+                                                            <% if (i === 0) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Не показывать') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%- i %> <%= __('серий') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else { %>
+                                                            <% if (i === 0) { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Не показывать') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%- i %> <%= __('серий') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="modules.episode.data.index.name"
+                                                       value="<%= modules.episode.data.index.name %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.episode.data.index.custom && modules.episode.data.index.custom.length) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.episode.data.index.custom.forEach(function(data, num) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d.length < 3) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- num + 1 %>.</span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div class="<%- custom_div %>">
+                                                                        <code>
+                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            ~
+                                                                            <span class="kinopoisk_id"><%= d[1] %></span>
+                                                                            ~ <span class="season"><%= d[2] %></span>
+                                                                            ~
+                                                                            <span class="episode"><%= d[3] || '' %></span>
+                                                                            <% if (typeof d[3] !== 'undefined') { %>
+                                                                                ~
+                                                                                <span class="translate"><%= d[4] || '' %></span>
+                                                                            <% } %>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.episode.data.index.custom"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.episode.data.index.custom"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example"
+                                                         style="padding-top: 10px !important; text-align: center">
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис сериалов') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.episode.data.index.custom"
+                                                                              placeholder="url ~ kinopoisk_id ~ season ~ episode ~ translate"
+                                                                              style="height:300px;"><%- modules.episode.data.index.custom.join('\n\n') %></textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">url</span> ~
+                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                ~
+                                                                                <span class="season">season</span> ~
+                                                                                <span class="episode">episode</span> ~
+                                                                                <span class="translate">translate</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="url">
+                                                                            https://example.com/tv
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;{ "results": [ {
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id":
+                                                                            <span class="kinopoisk_id">1048334</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"season":
+                                                                            <span class="season">3</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"episode":
+                                                                            <span class="episode">8</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate":
+                                                                            "<span class="translate">Subtitle</span>",
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;} ] }
+                                                                        </code><br>
+                                                                        <code class="kinopoisk_id">
+                                                                            results.0.kinopoisk_id
+                                                                        </code><br>
+                                                                        <code class="season">
+                                                                            results.0.season
+                                                                        </code><br>
+                                                                        <code class="episode">
+                                                                            results.0.episode
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            results.0.translate
+                                                                        </code>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">https://example.com/tv</span>
+                                                                                ~
+                                                                                <span class="kinopoisk_id">results.0.kinopoisk_id</span>
+                                                                                ~
+                                                                                <span class="season">results.0.season</span>
+                                                                                ~
+                                                                                <span class="episode">results.0.episode</span>
+                                                                                ~
+                                                                                <span class="translate">results.0.translate</span>
+                                                                            </code>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fas fa-stream"></i>&nbsp;&nbsp;&nbsp;<%= __('Серии на веб-странице сериала') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html#iframe"
+                                               class="csstip"
+                                               title="<%= __('Формируете список запросов к API-сервисам, с которых брать список серий сериала') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.episode.data.custom && modules.episode.data.custom.length) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.episode.data.custom.forEach(function(data, num) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d.length < 3) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- num + 1 %>.</span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div>
+                                                                        <code>
+                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            ~ <span class="season"><%= d[1] %></span>
+                                                                            ~
+                                                                            <span class="episode"><%= d[2] || '' %></span>
+                                                                            <% if (typeof d[3] !== 'undefined') { %>
+                                                                                ~
+                                                                                <span class="translate"><%= d[3] || '' %></span>
+                                                                            <% } %>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.episode.data.custom"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.episode.data.custom"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example"
+                                                         style="padding-top: 0 !important; text-align: center">
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис сериалов') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.episode.data.custom"
+                                                                              placeholder="url ~ season ~ episode ~ translate"
+                                                                              style="height:300px;"><%- modules.episode.data.custom.join('\n\n') %></textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">url</span> ~
+                                                                                <span class="season">season</span> ~
+                                                                                <span class="episode">episode</span> ~
+                                                                                <span class="translate">translate</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
+                                                                        </code><br>
+                                                                        <code class="url">
+                                                                            https://example.com/tv?imdb_id=[imdb_id]
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;{ "results": [ {
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"season":
+                                                                            <span class="season">3</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"episode":
+                                                                            <span class="episode">8</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate":
+                                                                            "<span class="translate">Subtitle</span>",
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;} ] }
+                                                                        </code><br>
+                                                                        <code class="season">
+                                                                            results.0.season
+                                                                        </code><br>
+                                                                        <code class="episode">
+                                                                            results.0.episode
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            results.0.translate
+                                                                        </code>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">https://example.com/tv?imdb_id=[imdb_id]</span>
+                                                                                ~
+                                                                                <span class="season">results.0.season</span>
+                                                                                ~
+                                                                                <span class="episode">results.0.episode</span>
+                                                                                ~
+                                                                                <span class="translate">results.0.translate</span>
+                                                                            </code>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет создать для каждой серии сериала отдельную страницу.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет создать для каждой серии сериала отдельную страницу.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

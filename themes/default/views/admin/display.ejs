@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('includes/head.ejs'); -%>
@@ -34,7 +40,8 @@
                         <a href="/<%- config.urls.admin %>/display" class="btn">
                             <%= __('Параметры вывода фильмов в категориях') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html" class="btn" title="<%= __('Информация о параметрах вывода фильмов в категориях') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html" class="btn"
+                           title="<%= __('Информация о параметрах вывода фильмов в категориях') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -49,431 +56,522 @@
 
                     <% if (config.sorting) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-newspaper"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры отображения в категориях') %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-newspaper"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры отображения в категориях') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#default"
+                                               class="csstip"
+                                               title="<%= __('Параметры отображения списка фильмов в категориях (жанры, страны, и т.д.)') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#default" class="csstip" title="<%= __('Параметры отображения списка фильмов в категориях (жанры, страны, и т.д.)') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите изображение, которое будет отображаться, когда люди будут делиться веб-сайтом в социальных сетях') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Изображение по умолчанию:') %>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-10 text-center">
-                                                    <input type="text" class="form-control" name="config.default.image" data-content="input" value="<% if (config.default.image) { %><%= config.default.image %><% } %>" placeholder="<%= __('URL изображения') %>" style="font-weight: normal; font-size: 14px;">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите изображение, которое будет отображаться, когда люди будут делиться веб-сайтом в социальных сетях') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Изображение по умолчанию:') %>
+                                                    </a>
                                                 </div>
-                                                <div class="col-sm-2 text-center">
-                                                    <label class="btn btn-default btn-block" for="contentFile">
-                                                        <span class="fa fa-plus"></span>
+                                                <div class="row">
+                                                    <div class="col-sm-10 text-center">
+                                                        <input type="text" class="form-control"
+                                                               name="config.default.image" data-content="input"
+                                                               value="<% if (config.default.image) { %><%= config.default.image %><% } %>"
+                                                               placeholder="<%= __('URL изображения') %>"
+                                                               style="font-weight: normal; font-size: 14px;">
+                                                    </div>
+                                                    <div class="col-sm-2 text-center">
+                                                        <label class="btn btn-default btn-block" for="contentFile">
+                                                            <span class="fa fa-plus"></span>
+                                                        </label>
+                                                    </div>
+                                                    <form id="contentForm" enctype="multipart/form-data"
+                                                          data-form="content">
+                                                        <input type="file" name="content" id="contentFile">
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории и результатах поиска') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Фильмов на странице:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.count" class="form-control">
+                                                    <% for (var i = 1; i <= 50; i++) { %>
+                                                        <% if (config.default.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите сортировку по которой будут сортироваться фильмы в категориях') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Сортировка фильмов:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.sorting" class="form-control">
+                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                    <% if (config.default.sorting === name) { %>
+                                                        <option value="<%= name %>" selected="selected">
+                                                            <%- config.sorting[name] %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= name %>">
+                                                            <%- config.sorting[name] %>
+                                                        </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите какое число страниц отображать внизу каждой категории и главной веб-сайта') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Количество чисел в пагинации:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.pages" class="form-control">
+                                                    <% for (var i = 1; i <= 10; i++) { if (i % 2) continue; %>
+                                                    <% if (config.default.pages === i) { %>
+                                                        <option value="<%= i %>" selected="selected">
+                                                            <%- i %> <%= __('номер(ов)') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= i %>">
+                                                            <%- i %> <%= __('номер(ов)') %>
+                                                        </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Показывать кнопку последней страницы на главной и в категориях (может создавать нагрузку на сервер)') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Последняя страница:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.lastpage" class="form-control">
+                                                    <% if (config.default.lastpage) { %>
+                                                        <option value="1" selected="selected">
+                                                            <%= __('Показывать') %>
+                                                        </option>
+                                                        <option value="0">
+                                                            <%= __('Не показывать') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="1">
+                                                            <%= __('Показывать') %>
+                                                        </option>
+                                                        <option value="0" selected="selected">
+                                                            <%= __('Не показывать') %>
+                                                        </option>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите конечную дату премьеры у фильмов, которые будут показаны при сортировке по дате премьеры или году') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Конечная дата:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.days" class="form-control">
+                                                    <% for (var i = -35; i <= 728; i = i + 7) { %>
+                                                        <% if (i === -35) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Месяц назад') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Месяц назад') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === -7) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Неделю назад') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Неделю назад') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 0) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Сегодня') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Сегодня') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 7) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через неделю') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через неделю') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 35) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через месяц') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через месяц') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 91) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через 3 месяца') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через 3 месяца') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 182) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через пол года') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через пол года') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 364) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через год') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через год') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else if (i === 364 * 2) { %>
+                                                            <% if (config.default.days === i) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Через 2 года') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Через 2 года') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="https://momentjs.com/docs/#/displaying/format/"
+                                                       class="csstip text-muted"
+                                                       title="<%= __('В таком формате будет показана дата на веб-сайте') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Формат даты:') %>
+                                                    </a>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input type="text" class="form-control"
+                                                               name="config.default.moment"
+                                                               value="<% if (config.default.moment) { %><%= config.default.moment %><% } %>"
+                                                               placeholder="<%= __('Например:') %> <%= __('YYYY-MM-DD') %>">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории карты сайта') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Фильмов в карте сайта:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.loc" class="form-control">
+                                                    <% for (var i = 0; i <= 3000; i = i + 100) { if (!i) continue; %>
+                                                    <% if (config.default.loc === i) { %>
+                                                        <option value="<%= i %>" selected="selected">
+                                                            <%- i %> <%= __('фильма(ов)') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= i %>">
+                                                            <%- i %> <%= __('фильма(ов)') %>
+                                                        </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Фильмов в общих страницах:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.tag" class="form-control">
+                                                    <% for (var i = 0; i <= 3000; i = i + 100) { if (!i) continue; %>
+                                                    <% if (config.default.tag === i) { %>
+                                                        <option value="<%= i %>" selected="selected">
+                                                            <%- i %> <%= __('фильма(ов)') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= i %>">
+                                                            <%- i %> <%= __('фильма(ов)') %>
+                                                        </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('В таком формате будут показаны теги на странице фильма') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Формат тегов:') %>
+                                                    </a>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-xs-12 text-center">
+                                                        <input type="text" class="form-control"
+                                                               name="config.default.tags.format"
+                                                               value="<% if (config.default.tags.format) { %><%= config.default.tags.format %><% } %>"
+                                                               placeholder="[Type] [year] [genre] [country]">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       title="<%= __('Укажите какие категории будут использоваться для составления тегов') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Категории тегов:') %>
+                                                    </a>
+                                                </div>
+                                                <div class="inline-labels text-center">
+                                                    <label>
+                                                        <input name="config.default.tags.list" value="year"
+                                                               type="checkbox"
+                                                        <% if (config.default.tags.list.indexOf('year') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                        ><span></span> <%= __('год') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="config.default.tags.list" value="genre"
+                                                               type="checkbox"
+                                                        <% if (config.default.tags.list.indexOf('genre') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                        ><span></span> <%= __('жанр') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="config.default.tags.list" value="country"
+                                                               type="checkbox"
+                                                        <% if (config.default.tags.list.indexOf('country') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                        ><span></span> <%= __('страна') %>
                                                     </label>
                                                 </div>
-                                                <form id="contentForm" enctype="multipart/form-data" data-form="content">
-                                                    <input type="file" name="content" id="contentFile">
-                                                </form>
                                             </div>
-                                        </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории и результатах поиска') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Фильмов на странице:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.count" class="form-control">
-                                                <% for (var i = 1; i <= 50; i++) { %>
-                                                <% if (config.default.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите сортировку по которой будут сортироваться фильмы в категориях') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Сортировка фильмов:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.sorting" class="form-control">
-                                                <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
-                                                <% if (config.default.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число страниц отображать внизу каждой категории и главной веб-сайта') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Количество чисел в пагинации:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.pages" class="form-control">
-                                                <% for (var i = 1; i <= 10; i++) { if (i%2) continue; %>
-                                                <% if (config.default.pages === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('номер(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('номер(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Показывать кнопку последней страницы на главной и в категориях (может создавать нагрузку на сервер)') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Последняя страница:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.lastpage" class="form-control">
-                                                <% if (config.default.lastpage) { %>
-                                                <option value="1" selected="selected">
-                                                    <%= __('Показывать') %>
-                                                </option>
-                                                <option value="0">
-                                                    <%= __('Не показывать') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="1">
-                                                    <%= __('Показывать') %>
-                                                </option>
-                                                <option value="0" selected="selected">
-                                                    <%= __('Не показывать') %>
-                                                </option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите конечную дату премьеры у фильмов, которые будут показаны при сортировке по дате премьеры или году') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Конечная дата:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.days" class="form-control">
-                                                <% for (var i = -35; i <= 728; i = i+7) { %>
-                                                <% if (i === -35) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Месяц назад') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Месяц назад') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === -7) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Неделю назад') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Неделю назад') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 0) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Сегодня') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Сегодня') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 7) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через неделю') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через неделю') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 35) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через месяц') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через месяц') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 91) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через 3 месяца') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через 3 месяца') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 182) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через пол года') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через пол года') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 364) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через год') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через год') %>
-                                                </option>
-                                                <% } %>
-                                                <% } else if (i === 364*2) { %>
-                                                <% if (config.default.days === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%= __('Через 2 года') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%= __('Через 2 года') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="https://momentjs.com/docs/#/displaying/format/" class="csstip text-muted" title="<%= __('В таком формате будет показана дата на веб-сайте') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Формат даты:') %>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-xs-12 text-center">
-                                                    <input type="text" class="form-control" name="config.default.moment" value="<% if (config.default.moment) { %><%= config.default.moment %><% } %>" placeholder="<%= __('Например:') %> <%= __('YYYY-MM-DD') %>">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории карты сайта') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Фильмов в карте сайта:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.loc" class="form-control">
-                                                <% for (var i = 0; i <= 3000; i = i+100) { if (!i) continue; %>
-                                                <% if (config.default.loc === i) { %>
-                                                    <option value="<%= i %>" selected="selected">
-                                                        <%- i %> <%= __('фильма(ов)') %>
-                                                    </option>
-                                                <% } else { %>
-                                                    <option value="<%= i %>">
-                                                        <%- i %> <%= __('фильма(ов)') %>
-                                                    </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какое число фильмов будет использоваться для формирования страницы всех актеров, режиссеров, жанров, годов и стран') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Фильмов в общих страницах:') %>
-                                                </a>
-                                            </div>
-                                            <select name="config.default.tag" class="form-control">
-                                                <% for (var i = 0; i <= 3000; i = i+100) { if (!i) continue; %>
-                                                <% if (config.default.tag === i) { %>
-                                                    <option value="<%= i %>" selected="selected">
-                                                        <%- i %> <%= __('фильма(ов)') %>
-                                                    </option>
-                                                <% } else { %>
-                                                    <option value="<%= i %>">
-                                                        <%- i %> <%= __('фильма(ов)') %>
-                                                    </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('В таком формате будут показаны теги на странице фильма') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Формат тегов:') %>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-xs-12 text-center">
-                                                    <input type="text" class="form-control" name="config.default.tags.format" value="<% if (config.default.tags.format) { %><%= config.default.tags.format %><% } %>" placeholder="[Type] [year] [genre] [country]">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div>
-                                                <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите какие категории будут использоваться для составления тегов') %>">
-                                                    <i class="fa fa-info-circle text-muted"></i>
-                                                    <%= __('Категории тегов:') %>
-                                                </a>
-                                            </div>
-                                            <div class="inline-labels text-center">
-                                                <label>
-                                                    <input name="config.default.tags.list" value="year" type="checkbox" <% if (config.default.tags.list.indexOf('year')+1) { %> checked="" <% } %>><span></span> <%= __('год') %>
-                                                </label>
-                                                <label>
-                                                    <input name="config.default.tags.list" value="genre" type="checkbox" <% if (config.default.tags.list.indexOf('genre')+1) { %> checked="" <% } %>><span></span> <%= __('жанр') %>
-                                                </label>
-                                                <label>
-                                                    <input name="config.default.tags.list" value="country" type="checkbox" <% if (config.default.tags.list.indexOf('country')+1) { %> checked="" <% } %>><span></span> <%= __('страна') %>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-12">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="cinema-box">
-                                                        <div class="cinema-box-header">
-                                                            <div class="cinema-label">
-                                                                <i class="fa fa-newspaper"></i>&nbsp;&nbsp;&nbsp;<%= __('Сортировка по рейтингу KinoPoisk / IMDb') %>
-                                                            </div>
-                                                            <div class="cinema-label hidden-xs" style="float: right">
-                                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#vote" class="csstip" title="<%= __('Параметры отображения списка фильмов при сортировке по рейтингу KinoPoisk / IMDb') %>" target="_blank">
-                                                                    <i class="fa fa-info-circle"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="inner-padding">
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div>
-                                                                        <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите минимальное число голосов KinoPoisk у фильмов, которые будут показаны при сортировке по рейтингу KinoPoisk') %>">
-                                                                            <i class="fa fa-info-circle text-muted"></i>
-                                                                            <%= __('Число голосов KinoPoisk:') %>
-                                                                        </a>
-                                                                    </div>
-                                                                    <select name="config.default.votes.imdb" class="form-control">
-                                                                        <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                                        <% if (config.default.votes.imdb === i) { %>
-                                                                        <option value="<%= i %>" selected="selected">
-                                                                            <%- i %> <%= __('голос(ов)') %>
-                                                                        </option>
-                                                                        <% } else { %>
-                                                                        <option value="<%= i %>">
-                                                                            <%- i %> <%= __('голос(ов)') %>
-                                                                        </option>
-                                                                        <% } %>
-                                                                        <% } %>
-                                                                    </select>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="cinema-box">
+                                                            <div class="cinema-box-header">
+                                                                <div class="cinema-label">
+                                                                    <i class="fa fa-newspaper"></i>&nbsp;&nbsp;&nbsp;<%= __('Сортировка по рейтингу KinoPoisk / IMDb') %>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <div>
-                                                                        <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите минимальное число голосов IMDb у фильмов, которые будут показаны при сортировке по рейтингу IMDb') %>">
-                                                                            <i class="fa fa-info-circle text-muted"></i>
-                                                                            <%= __('Число голосов IMDb:') %>
-                                                                        </a>
-                                                                    </div>
-                                                                    <select name="config.default.votes.kp" class="form-control">
-                                                                        <% for (var i = 0; i <= 10000; i = i+100) { %>
-                                                                        <% if (config.default.votes.kp === i) { %>
-                                                                        <option value="<%= i %>" selected="selected">
-                                                                            <%- i %> <%= __('голос(ов)') %>
-                                                                        </option>
-                                                                        <% } else { %>
-                                                                        <option value="<%= i %>">
-                                                                            <%- i %> <%= __('голос(ов)') %>
-                                                                        </option>
-                                                                        <% } %>
-                                                                        <% } %>
-                                                                    </select>
+                                                                <div class="cinema-label hidden-xs"
+                                                                     style="float: right">
+                                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#vote"
+                                                                       class="csstip"
+                                                                       title="<%= __('Параметры отображения списка фильмов при сортировке по рейтингу KinoPoisk / IMDb') %>"
+                                                                       target="_blank">
+                                                                        <i class="fa fa-info-circle"></i>
+                                                                    </a>
                                                                 </div>
-
-                                                                <div class="spacer-10"></div>
-
-                                                                <div class="col-xs-12">
-                                                                    <div>
-                                                                        <a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Укажите в каких категориях не применять правило минимального числа голосов при сортировке по рейтингу') %>">
-                                                                            <i class="fa fa-info-circle text-muted"></i>
-                                                                            <%= __('Не применять условие в категориях:') %>
-                                                                        </a>
+                                                            </div>
+                                                            <div class="inner-padding">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="csstip text-muted"
+                                                                               title="<%= __('Укажите минимальное число голосов KinoPoisk у фильмов, которые будут показаны при сортировке по рейтингу KinoPoisk') %>">
+                                                                                <i class="fa fa-info-circle text-muted"></i>
+                                                                                <%= __('Число голосов KinoPoisk:') %>
+                                                                            </a>
+                                                                        </div>
+                                                                        <select name="config.default.votes.imdb"
+                                                                                class="form-control">
+                                                                            <% for (var i = 0; i <= 10000; i = i + 100) { %>
+                                                                                <% if (config.default.votes.imdb === i) { %>
+                                                                                    <option value="<%= i %>"
+                                                                                            selected="selected">
+                                                                                        <%- i %> <%= __('голос(ов)') %>
+                                                                                    </option>
+                                                                                <% } else { %>
+                                                                                    <option value="<%= i %>">
+                                                                                        <%- i %> <%= __('голос(ов)') %>
+                                                                                    </option>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
                                                                     </div>
-                                                                    <div class="inline-labels text-center">
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="year" type="checkbox" <% if (config.default.donotuse.indexOf('year')+1) { %> checked="" <% } %>><span></span> <%= __('год') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="genre" type="checkbox" <% if (config.default.donotuse.indexOf('genre')+1) { %> checked="" <% } %>><span></span> <%= __('жанр') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="country" type="checkbox" <% if (config.default.donotuse.indexOf('country')+1) { %> checked="" <% } %>><span></span> <%= __('страна') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="actor" type="checkbox" <% if (config.default.donotuse.indexOf('actor')+1) { %> checked="" <% } %>><span></span> <%= __('актер') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="director" type="checkbox" <% if (config.default.donotuse.indexOf('director')+1) { %> checked="" <% } %>><span></span> <%= __('режиссер') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="type" type="checkbox" <% if (config.default.donotuse.indexOf('type')+1) { %> checked="" <% } %>><span></span> <%= __('тип') %>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input name="config.default.donotuse" value="search" type="checkbox" <% if (config.default.donotuse.indexOf('search')+1) { %> checked="" <% } %>><span></span> <%= __('поиск') %>
-                                                                        </label>
+                                                                    <div class="col-sm-6">
+                                                                        <div>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="csstip text-muted"
+                                                                               title="<%= __('Укажите минимальное число голосов IMDb у фильмов, которые будут показаны при сортировке по рейтингу IMDb') %>">
+                                                                                <i class="fa fa-info-circle text-muted"></i>
+                                                                                <%= __('Число голосов IMDb:') %>
+                                                                            </a>
+                                                                        </div>
+                                                                        <select name="config.default.votes.kp"
+                                                                                class="form-control">
+                                                                            <% for (var i = 0; i <= 10000; i = i + 100) { %>
+                                                                                <% if (config.default.votes.kp === i) { %>
+                                                                                    <option value="<%= i %>"
+                                                                                            selected="selected">
+                                                                                        <%- i %> <%= __('голос(ов)') %>
+                                                                                    </option>
+                                                                                <% } else { %>
+                                                                                    <option value="<%= i %>">
+                                                                                        <%- i %> <%= __('голос(ов)') %>
+                                                                                    </option>
+                                                                                <% } %>
+                                                                            <% } %>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-xs-12">
+                                                                        <div>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="csstip text-muted"
+                                                                               title="<%= __('Укажите в каких категориях не применять правило минимального числа голосов при сортировке по рейтингу') %>">
+                                                                                <i class="fa fa-info-circle text-muted"></i>
+                                                                                <%= __('Не применять условие в категориях:') %>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="inline-labels text-center">
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="year" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('year') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('год') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="genre" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('genre') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('жанр') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="country" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('country') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('страна') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="actor" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('actor') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('актер') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="director" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('director') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('режиссер') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="type" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('type') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('тип') %>
+                                                                            </label>
+                                                                            <label>
+                                                                                <input name="config.default.donotuse"
+                                                                                       value="search" type="checkbox"
+                                                                                <% if (config.default.donotuse.indexOf('search') + 1) { %>
+                                                                                       checked=""
+                                                                                        <% } %>
+                                                                                ><span></span> <%= __('поиск') %>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -485,343 +583,400 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Меню на веб-сайте') %>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Меню на веб-сайте') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#menu"
+                                               class="csstip" title="<%= __('Категории из меню на веб-сайте') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#menu" class="csstip" title="<%= __('Категории из меню на веб-сайте') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
+                                    <div class="inner-padding">
+                                        <div class="row">
 
-                                        <div class="col-sm-2">
-                                            <label>
-                                                <span class="fa fa fa-pen-nib edit" style="color: #4b5b6c;cursor: pointer;"></span>
-                                                <%= __('Жанры:') %>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="config.default.categories.genres" value="<%- config.default.categories.genres.join(',') %>" placeholder="...">
-                                        </div>
+                                            <div class="col-sm-2">
+                                                <label>
+                                                    <span class="fa fa fa-pen-nib edit"
+                                                          style="color: #4b5b6c;cursor: pointer;"></span>
+                                                    <%= __('Жанры:') %>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="config.default.categories.genres"
+                                                       value="<%- config.default.categories.genres.join(',') %>"
+                                                       placeholder="...">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-2">
-                                            <label>
-                                                <span class="fa fa fa-pen-nib edit" style="color: #4b5b6c;cursor: pointer;"></span>
-                                                <%= __('Годы:') %>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="config.default.categories.years" value="<%- config.default.categories.years.join(',') %>" placeholder="...">
-                                        </div>
+                                            <div class="col-sm-2">
+                                                <label>
+                                                    <span class="fa fa fa-pen-nib edit"
+                                                          style="color: #4b5b6c;cursor: pointer;"></span>
+                                                    <%= __('Годы:') %>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="config.default.categories.years"
+                                                       value="<%- config.default.categories.years.join(',') %>"
+                                                       placeholder="...">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-2">
-                                            <label>
-                                                <span class="fa fa fa-pen-nib edit" style="color: #4b5b6c;cursor: pointer;"></span>
-                                                <%= __('Страны:') %>
-                                            </label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="config.default.categories.countries" value="<%- config.default.categories.countries.join(',') %>" placeholder="...">
-                                        </div>
+                                            <div class="col-sm-2">
+                                                <label>
+                                                    <span class="fa fa fa-pen-nib edit"
+                                                          style="color: #4b5b6c;cursor: pointer;"></span>
+                                                    <%= __('Страны:') %>
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="config.default.categories.countries"
+                                                       value="<%- config.default.categories.countries.join(',') %>"
+                                                       placeholder="...">
+                                            </div>
 
-                                        <script>
-                                            document.addEventListener('DOMContentLoaded', function() {
+                                            <script>
+                                              document.addEventListener('DOMContentLoaded', function() {
                                                 var cgs = document.querySelector('[name="config.default.categories.genres"]');
-                                                var cg = new Tagify(cgs, {whitelist : []});
+                                                var cg = new Tagify(cgs, { whitelist: [] });
                                                 cg.DOM.input.classList.add('form-control');
 
                                                 var cys = document.querySelector('[name="config.default.categories.years"]');
-                                                var cy = new Tagify(cys, {whitelist : []});
+                                                var cy = new Tagify(cys, { whitelist: [] });
                                                 cy.DOM.input.classList.add('form-control');
 
                                                 var ccs = document.querySelector('[name="config.default.categories.countries"]');
-                                                var cc = new Tagify(ccs, {whitelist : []});
+                                                var cc = new Tagify(ccs, { whitelist: [] });
                                                 cc.DOM.input.classList.add('form-control');
 
                                                 var editInput = document.querySelectorAll('.edit');
                                                 editInput.forEach(function(ei) {
-                                                    ei.addEventListener('click', function() {
-                                                        var inp = document.querySelectorAll('input');
-                                                        var tag = document.querySelectorAll('.tagify__input');
-                                                        var tags = document.querySelectorAll('.tagify--noAnim');
-                                                        inp.forEach(function(i) {
-                                                            if (i.placeholder === '...') {
-                                                                if (i.style.display === 'block') {
-                                                                    i.style.display = 'none';
-                                                                    i.setAttribute('class', '');
-                                                                    tag.forEach(function(t) {t.style.display = 'block';});
-                                                                    tags.forEach(function(t) {t.style.display = 'block';});
-                                                                }
-                                                                else {
-                                                                    i.style.display = 'block';
-                                                                    i.setAttribute('class', 'form-control');
-                                                                    tag.forEach(function(t) {t.style.display = 'none';});
-                                                                    tags.forEach(function(t) {t.style.display = 'none';});
-                                                                }
-                                                            }
-                                                        });
+                                                  ei.addEventListener('click', function() {
+                                                    var inp = document.querySelectorAll('input');
+                                                    var tag = document.querySelectorAll('.tagify__input');
+                                                    var tags = document.querySelectorAll('.tagify--noAnim');
+                                                    inp.forEach(function(i) {
+                                                      if (i.placeholder === '...') {
+                                                        if (i.style.display === 'block') {
+                                                          i.style.display = 'none';
+                                                          i.setAttribute('class', '');
+                                                          tag.forEach(function(t) {
+                                                            t.style.display = 'block';
+                                                          });
+                                                          tags.forEach(function(t) {
+                                                            t.style.display = 'block';
+                                                          });
+                                                        } else {
+                                                          i.style.display = 'block';
+                                                          i.setAttribute('class', 'form-control');
+                                                          tag.forEach(function(t) {
+                                                            t.style.display = 'none';
+                                                          });
+                                                          tags.forEach(function(t) {
+                                                            t.style.display = 'none';
+                                                          });
+                                                        }
+                                                      }
                                                     });
+                                                  });
                                                 });
-                                            });
-                                        </script>
+                                              });
+                                            </script>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Текст на веб-сайте') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#l" class="csstip" title="<%= __('Текст который Вы можете видеть на страницах веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-
-                                        <div class="col-sm-3 text-center">
-                                            <label><%= __('В ШАБЛОНЕ') %></label>
-                                        </div>
-                                        <div class="col-sm-9 text-center">
-                                            <label><%= __('НА ВЕБ-САЙТЕ') %></label>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <% for (var prop in config.l) { if (config.l.hasOwnProperty(prop)) { %>
-
-                                        <div class="col-sm-3" style="padding:5px 20px;"><code><span style="color:#ccc">&lt;%-</span> <%- 'page.l.' + prop %> <span style="color:#ccc">%&gt;</span></code></div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="<%- 'config.l.' + prop %>" value="<%= config.l[prop] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <% } } %>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-sort"></i>&nbsp;&nbsp;&nbsp;<%= __('Названия сортировок') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#sorting" class="csstip" title="<%= __('Названия сортировок на странице категорий') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <label><%= __('Рейтинг КП (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.kinopoisk-rating-up" value="<%= config.sorting['kinopoisk-rating-up'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Рейтинг КП (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.kinopoisk-rating-down" value="<%= config.sorting['kinopoisk-rating-down'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Голоса КП (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.kinopoisk-vote-up" value="<%= config.sorting['kinopoisk-vote-up'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Голоса КП (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.kinopoisk-vote-down" value="<%= config.sorting['kinopoisk-vote-down'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Рейтинг IMDb (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.imdb-rating-up" value="<%= config.sorting['imdb-rating-up'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Рейтинг IMDb (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.imdb-rating-down" value="<%= config.sorting['imdb-rating-down'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Голоса IMDb (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.imdb-vote-up" value="<%= config.sorting['imdb-vote-up'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Голоса IMDb (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.imdb-vote-down" value="<%= config.sorting['imdb-vote-down'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Год (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.year-up" value="<%= config.sorting['year-up'] %>" class="form-control">
-                                        </div>
-                                        <div class="spacer-10"></div>
-                                        <div class="col-sm-5">
-                                            <label><%= __('Год (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.year-down" value="<%= config.sorting['year-down'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Премьера (по убыванию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.premiere-up" value="<%= config.sorting['premiere-up'] %>" class="form-control">
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-5">
-                                            <label><%= __('Премьера (по возрастанию):') %></label>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="config.sorting.premiere-down" value="<%= config.sorting['premiere-down'] %>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-bullseye"></i>&nbsp;&nbsp;&nbsp;<%= __('Список жанров в каждом типе') %>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-pen-nib"></i>&nbsp;&nbsp;&nbsp;<%= __('Текст на веб-сайте') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#l"
+                                               class="csstip"
+                                               title="<%= __('Текст который Вы можете видеть на страницах веб-сайта') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#types" class="csstip" title="<%= __('Укажите список жанров, которые будут включены или исключены из определенного типа') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
+                                    <div class="inner-padding">
+                                        <div class="row">
+
+                                            <div class="col-sm-3 text-center">
+                                                <label><%= __('В ШАБЛОНЕ') %></label>
+                                            </div>
+                                            <div class="col-sm-9 text-center">
+                                                <label><%= __('НА ВЕБ-САЙТЕ') %></label>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <% for (var prop in config.l) { if (config.l.hasOwnProperty(prop)) { %>
+
+                                                <div class="col-sm-3" style="padding:5px 20px;"><code><span
+                                                                style="color:#ccc">&lt;%-</span> <%- 'page.l.' + prop %>
+                                                        <span style="color:#ccc">%&gt;</span></code></div>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="<%- 'config.l.' + prop %>"
+                                                           value="<%= config.l[prop] %>" class="form-control">
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                            <% } } %>
+
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Фильмы:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.movie" value="<%= config.default.types.movie %>" type="text">
-                                        </div>
+                            </div>
 
-                                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Сериалы:') %></label>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-sort"></i>&nbsp;&nbsp;&nbsp;<%= __('Названия сортировок') %>
                                         </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.serial" value="<%= config.default.types.serial %>" type="text">
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#sorting"
+                                               class="csstip"
+                                               title="<%= __('Названия сортировок на странице категорий') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
                                         </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <label><%= __('Рейтинг КП (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.kinopoisk-rating-up"
+                                                       value="<%= config.sorting['kinopoisk-rating-up'] %>"
+                                                       class="form-control">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Мультфильмы:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.mult" value="<%= config.default.types.mult %>" type="text">
-                                        </div>
+                                            <div class="col-sm-5">
+                                                <label><%= __('Рейтинг КП (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.kinopoisk-rating-down"
+                                                       value="<%= config.sorting['kinopoisk-rating-down'] %>"
+                                                       class="form-control">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Мультсериалы:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.multserial" value="<%= config.default.types.multserial %>" type="text">
-                                        </div>
+                                            <div class="col-sm-5">
+                                                <label><%= __('Голоса КП (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.kinopoisk-vote-up"
+                                                       value="<%= config.sorting['kinopoisk-vote-up'] %>"
+                                                       class="form-control">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Аниме:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.anime" value="<%= config.default.types.anime %>" type="text">
-                                        </div>
+                                            <div class="col-sm-5">
+                                                <label><%= __('Голоса КП (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.kinopoisk-vote-down"
+                                                       value="<%= config.sorting['kinopoisk-vote-down'] %>"
+                                                       class="form-control">
+                                            </div>
 
-                                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                                        <div class="col-sm-3 text-left">
-                                            <label><%= __('Телепередачи:') %></label>
+                                            <div class="col-sm-5">
+                                                <label><%= __('Рейтинг IMDb (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.imdb-rating-up"
+                                                       value="<%= config.sorting['imdb-rating-up'] %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Рейтинг IMDb (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.imdb-rating-down"
+                                                       value="<%= config.sorting['imdb-rating-down'] %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Голоса IMDb (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.imdb-vote-up"
+                                                       value="<%= config.sorting['imdb-vote-up'] %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Голоса IMDb (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.imdb-vote-down"
+                                                       value="<%= config.sorting['imdb-vote-down'] %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Год (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.year-up"
+                                                       value="<%= config.sorting['year-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-5">
+                                                <label><%= __('Год (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.year-down"
+                                                       value="<%= config.sorting['year-down'] %>" class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Премьера (по убыванию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.premiere-up"
+                                                       value="<%= config.sorting['premiere-up'] %>"
+                                                       class="form-control">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-5">
+                                                <label><%= __('Премьера (по возрастанию):') %></label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" name="config.sorting.premiere-down"
+                                                       value="<%= config.sorting['premiere-down'] %>"
+                                                       class="form-control">
+                                            </div>
                                         </div>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="config.default.types.tv" value="<%= config.default.types.tv %>" type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-bullseye"></i>&nbsp;&nbsp;&nbsp;<%= __('Список жанров в каждом типе') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/display.html#types"
+                                               class="csstip"
+                                               title="<%= __('Укажите список жанров, которые будут включены или исключены из определенного типа') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Фильмы:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.movie"
+                                                       value="<%= config.default.types.movie %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Сериалы:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.serial"
+                                                       value="<%= config.default.types.serial %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Мультфильмы:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.mult"
+                                                       value="<%= config.default.types.mult %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Мультсериалы:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.multserial"
+                                                       value="<%= config.default.types.multserial %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Аниме:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.anime"
+                                                       value="<%= config.default.types.anime %>" type="text">
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-3 text-left">
+                                                <label><%= __('Телепередачи:') %></label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="config.default.types.tv"
+                                                       value="<%= config.default.types.tv %>" type="text">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

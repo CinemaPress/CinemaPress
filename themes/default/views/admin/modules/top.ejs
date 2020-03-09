@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/top" class="btn hidden-xs">
                             <%= __('Модуль топ-фильмов') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/top.html" class="btn" title="<%= __('Информация о параметрах модуля топ-фильмов в категориях') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/top.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля топ-фильмов в категориях') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.top.status) { %>
-                        <a href="javascript:void(0)" data-module="top" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="top" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="top" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="top" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,72 +67,75 @@
 
                     <% if (modules.top.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-signal"></i>&nbsp;&nbsp;&nbsp;<%= __('Топ-фильмы в категориях') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/top.html#settings" class="csstip" title="<%= __('Топ-фильмы отображаются обычно либо вместо стандартного слайдера, либо отдельным блоком в категориях') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <select name="modules.top.data.count" class="form-control">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.top.data.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-signal"></i>&nbsp;&nbsp;&nbsp;<%= __('Топ-фильмы в категориях') %>
                                         </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <select name="modules.top.data.sorting" class="form-control">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.top.data.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/top.html#settings"
+                                               class="csstip"
+                                               title="<%= __('Топ-фильмы отображаются обычно либо вместо стандартного слайдера, либо отдельным блоком в категориях') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                <select name="modules.top.data.count" class="form-control">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.top.data.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                <select name="modules.top.data.sorting" class="form-control">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.top.data.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет в каждой категории отображать лучшие фильмы по определенной сортировке.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет в каждой категории отображать лучшие фильмы по определенной сортировке.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

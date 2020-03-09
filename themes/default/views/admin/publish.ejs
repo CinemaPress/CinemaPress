@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('./includes/head.ejs'); -%>
@@ -34,7 +40,8 @@
                         <a href="/<%- config.urls.admin %>/publish" class="btn">
                             <%= __('Фукнция публикации') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html" class="btn" title="<%= __('Информация о параметрах публикации фильмов') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html" class="btn"
+                           title="<%= __('Информация о параметрах публикации фильмов') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -49,129 +56,166 @@
 
                     <% if (typeof line === 'object') { %>
 
-                    <div class="progress-project-header">
-                        <h5><%= __('Опубликовано фильмов') %></h5><span><%- line.percent.top %>%</span>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="<%- line.percent.pub %>" aria-valuemin="0" aria-valuemax="100" style="width: <%- line.percent.pub %>%; background: linear-gradient(-45deg,#ffa534,#35cd3a);" title="<%= __('Опубликовано:') %> <%- line.counts.pub %>">
-                            <span class="sr-only"><%- line.percent.pub %>%</span>
+                        <div class="progress-project-header">
+                            <h5><%= __('Опубликовано фильмов') %></h5><span><%- line.percent.top %>%</span>
                         </div>
-                        <div class="progress-bar progress-bar-warning" style="width: <%- (line.percent.fil - line.percent.pub) %>%; background: linear-gradient(-45deg,#f3545d,#ffa534);opacity: .4;" title="<%= __('Осталось:') %> <%- (line.counts.fil - line.counts.pub) %>">
-                            <span class="sr-only"><%- line.percent.fil %>%</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<%- line.percent.pub %>"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 style="width: <%- line.percent.pub %>%; background: linear-gradient(-45deg,#ffa534,#35cd3a);"
+                                 title="<%= __('Опубликовано:') %> <%- line.counts.pub %>">
+                                <span class="sr-only"><%- line.percent.pub %>%</span>
+                            </div>
+                            <div class="progress-bar progress-bar-warning"
+                                 style="width: <%- (line.percent.fil - line.percent.pub) %>%; background: linear-gradient(-45deg,#f3545d,#ffa534);opacity: .4;"
+                                 title="<%= __('Осталось:') %> <%- (line.counts.fil - line.counts.pub) %>">
+                                <span class="sr-only"><%- line.percent.fil %>%</span>
+                            </div>
+                            <div class="progress-bar progress-bar-warning"
+                                 style="width: <%- (line.percent.all - line.percent.fil) %>%; background-color: #1a2035"
+                                 title="<%= __('Отфильтрованы:') %> <%- (line.counts.all - line.counts.fil) %>">
+                                <span class="sr-only"><%- line.percent.all %>%</span>
+                            </div>
                         </div>
-                        <div class="progress-bar progress-bar-warning" style="width: <%- (line.percent.all - line.percent.fil) %>%; background-color: #1a2035" title="<%= __('Отфильтрованы:') %> <%- (line.counts.all - line.counts.fil) %>">
-                            <span class="sr-only"><%- line.percent.all %>%</span>
+                        <div class="progress-project-footer">
+                            <% if (line.days) { %>
+                                <p><%= __('Автопубликация на %s дней', line.days) %></p>
+                            <% } %>
+                            <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
                         </div>
-                    </div>
-                    <div class="progress-project-footer">
-                        <% if (line.days) { %>
-                        <p><%= __('Автопубликация на %s дней', line.days) %></p>
-                        <% } %>
-                        <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
-                    </div>
 
                     <% } %>
 
                     <% if (config.database.key === 'FREE' && (config.language === 'ru' || config.language === 'en')) { %>
 
-                    <div class="spacer-10"></div>
+                        <div class="spacer-10"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;<%= __('Импорт всех фильмов в мире') %></div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/article/kak-dobavit-vse-filmy-v-mire.html#import" class="csstip" title="<%= __('Добавление всех фильмов в мире на веб-сайт') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label"><i
+                                                    class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;<%= __('Импорт всех фильмов в мире') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/article/kak-dobavit-vse-filmy-v-mire.html#import"
+                                               class="csstip"
+                                               title="<%= __('Добавление всех фильмов в мире на веб-сайт') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" placeholder="<%= __('Введите ключ базы фильмов') %>" id="key">
-                                                <span class="input-group-btn">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text"
+                                                           placeholder="<%= __('Введите ключ базы фильмов') %>"
+                                                           id="key">
+                                                    <span class="input-group-btn">
                                                     <a href="javascript:void(0)" class="btn btn-default" id="database">
                                                         <span class="fa fa-plus"></span> <%= __('Добавить фильмы') %>
                                                     </a>
                                                 </span>
-                                            </div>
-                                        </div>
-                                        <div class="spacer-10"></div>
-                                        <div class="col-sm-6">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label"><i class="fa fa-film"></i>&nbsp;&nbsp;&nbsp;<%= __('Start') %></div>
-                                                    <div class="cinema-label" style="float: right; background:#459E45; color: #fff; margin: 5px 5px -10px 0; border-radius: 3px; padding-top: 2px; font-size: 18px;">
-                                                        <strong><%= __('StartPrice') %></strong>
-                                                    </div>
-                                                </div>
-                                                <div class="inner-padding" style="font-size: 12px;">
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Фильмов:') %>
-                                                        </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('StartMovies') %>
-                                                        </div>
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Тема:') %>
-                                                        </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('бесплатная') %> <a href="https://CinemaPress.io/article/chto-takoe-individualnaya-tema.html" target="_blank" title="<%= __('Что такое общая и индивидуальная тема оформления CinemaPress?') %>"><span class="fa fa-question-circle text-muted"></span></a>
-                                                        </div>
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Обновление:') %>
-                                                        </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('каждое') %> <%= __('UpdatePrice') %> <a href="https://CinemaPress.io/article/chto-takoe-obnovlenie-bd.html" target="_blank" title="<%= __('Зачем нужно обновлять БД?') %>"><span class="fa fa-question-circle text-muted"></span></a>
-                                                        </div>
-                                                        <div class="spacer-10"></div>
-                                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                                            <a href="https://cinemapress.org/buy/start.html" target="_blank" class="btn btn-block btn-default">
-                                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('StartPrice') %> <%= __('Оплатить ключ') %>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label"><i class="fa fa-film"></i>&nbsp;&nbsp;&nbsp;<%= __('Expanded') %></div>
-                                                    <div class="cinema-label" style="float: right; background:#459E45; color: #fff; margin: 5px 5px -10px 0; border-radius: 3px; padding-top: 2px; font-size: 18px;">
-                                                        <s style="color: #ccc; font-size: 14px; font-weight:bold;"><%= __('ExpandedSalePrice') %></s>
-                                                        <strong><%= __('ExpandedPrice') %></strong>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-6">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label"><i class="fa fa-film"></i>&nbsp;&nbsp;&nbsp;<%= __('Start') %>
+                                                        </div>
+                                                        <div class="cinema-label"
+                                                             style="float: right; background:#459E45; color: #fff; margin: 5px 5px -10px 0; border-radius: 3px; padding-top: 2px; font-size: 18px;">
+                                                            <strong><%= __('StartPrice') %></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inner-padding" style="font-size: 12px;">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Фильмов:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('StartMovies') %>
+                                                            </div>
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Тема:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('бесплатная') %> <a
+                                                                        href="https://CinemaPress.io/article/chto-takoe-individualnaya-tema.html"
+                                                                        target="_blank"
+                                                                        title="<%= __('Что такое общая и индивидуальная тема оформления CinemaPress?') %>"><span
+                                                                            class="fa fa-question-circle text-muted"></span></a>
+                                                            </div>
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Обновление:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('каждое') %> <%= __('UpdatePrice') %> <a
+                                                                        href="https://CinemaPress.io/article/chto-takoe-obnovlenie-bd.html"
+                                                                        target="_blank"
+                                                                        title="<%= __('Зачем нужно обновлять БД?') %>"><span
+                                                                            class="fa fa-question-circle text-muted"></span></a>
+                                                            </div>
+                                                            <div class="spacer-10"></div>
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <a href="https://cinemapress.org/buy/start.html"
+                                                                   target="_blank" class="btn btn-block btn-default">
+                                                                    <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('StartPrice') %> <%= __('Оплатить ключ') %>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="inner-padding" style="font-size: 12px;">
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Фильмов:') %>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label"><i class="fa fa-film"></i>&nbsp;&nbsp;&nbsp;<%= __('Expanded') %>
                                                         </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('ExpandedMovies') %>
+                                                        <div class="cinema-label"
+                                                             style="float: right; background:#459E45; color: #fff; margin: 5px 5px -10px 0; border-radius: 3px; padding-top: 2px; font-size: 18px;">
+                                                            <s style="color: #ccc; font-size: 14px; font-weight:bold;"><%= __('ExpandedSalePrice') %></s>
+                                                            <strong><%= __('ExpandedPrice') %></strong>
                                                         </div>
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Тема:') %>
-                                                        </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('премиум') %> <a href="https://CinemaPress.io/article/chto-takoe-individualnaya-tema.html" target="_blank" title="<%= __('Что такое общая и индивидуальная тема оформления CinemaPress?') %>"><span class="fa fa-question-circle text-muted"></span></a>
-                                                        </div>
-                                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                                            <%= __('Обновление:') %>
-                                                        </div>
-                                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                                            <%= __('бесплатно до 3-х раз') %> <a href="https://CinemaPress.io/article/chto-takoe-obnovlenie-bd.html" target="_blank" title="<%= __('Зачем нужно обновлять БД?') %>"><span class="fa fa-question-circle text-muted"></span></a>
-                                                        </div>
-                                                        <div class="spacer-10"></div>
-                                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                                            <a href="https://cinemapress.org/buy/expanded.html" target="_blank" class="btn btn-block btn-default">
-                                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('ExpandedPrice') %> <%= __('Оплатить ключ') %>
-                                                            </a>
+                                                    </div>
+                                                    <div class="inner-padding" style="font-size: 12px;">
+                                                        <div class="row">
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Фильмов:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('ExpandedMovies') %>
+                                                            </div>
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Тема:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('премиум') %> <a
+                                                                        href="https://CinemaPress.io/article/chto-takoe-individualnaya-tema.html"
+                                                                        target="_blank"
+                                                                        title="<%= __('Что такое общая и индивидуальная тема оформления CinemaPress?') %>"><span
+                                                                            class="fa fa-question-circle text-muted"></span></a>
+                                                            </div>
+                                                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                                                <%= __('Обновление:') %>
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-12 col-xs-12">
+                                                                <%= __('бесплатно до 3-х раз') %> <a
+                                                                        href="https://CinemaPress.io/article/chto-takoe-obnovlenie-bd.html"
+                                                                        target="_blank"
+                                                                        title="<%= __('Зачем нужно обновлять БД?') %>"><span
+                                                                            class="fa fa-question-circle text-muted"></span></a>
+                                                            </div>
+                                                            <div class="spacer-10"></div>
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <a href="https://cinemapress.org/buy/expanded.html"
+                                                                   target="_blank" class="btn btn-block btn-default">
+                                                                    <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('ExpandedPrice') %> <%= __('Оплатить ключ') %>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -181,43 +225,47 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else if (config.language === 'ru' || config.language === 'en') { %>
 
-                    <div class="spacer-10"></div>
+                        <div class="spacer-10"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновление базы фильмов') %></div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <%- config.database.date %>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/buy/update.html" target="_blank" class="btn btn-block btn-default">
-                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('UpdatePrice') %>
-                                            </a>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label"><i
+                                                    class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;<%= __('Обновление базы фильмов') %>
                                         </div>
-                                        <div class="col-xs-9">
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" placeholder="<%= __('Ключ обновления базы данных') %>" id="key">
-                                                <span class="input-group-btn">
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <%- config.database.date %>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <a href="https://CinemaPress.io/<%- config.language %>/buy/update.html"
+                                                   target="_blank" class="btn btn-block btn-default">
+                                                    <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('UpdatePrice') %>
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text"
+                                                           placeholder="<%= __('Ключ обновления базы данных') %>"
+                                                           id="key">
+                                                    <span class="input-group-btn">
                                                     <a href="javascript:void(0)" class="btn btn-default" id="database">
                                                         <span class="fa fa-redo-alt"></span> <%= __('Обновить') %>
                                                     </a>
                                                 </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 
@@ -227,9 +275,13 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;<%= __('Настройка автопубликации') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;<%= __('Настройка автопубликации') %>
+                                    </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#autopublish" class="csstip" title="<%= __('Нстройка публикации фильмов каждый час') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#autopublish"
+                                           class="csstip" title="<%= __('Нстройка публикации фильмов каждый час') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -240,7 +292,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="spacer-10"></div>
-                                                    <div id="movies_slider" class="noUiSlider" style="width: 100%;"></div>
+                                                    <div id="movies_slider" class="noUiSlider"
+                                                         style="width: 100%;"></div>
                                                     <div class="spacer-20"></div>
                                                 </div>
                                             </div>
@@ -249,7 +302,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="spacer-10"></div>
-                                                    <div id="hours_slider" class="noUiSlider" style="width: 100%;"></div>
+                                                    <div id="hours_slider" class="noUiSlider"
+                                                         style="width: 100%;"></div>
                                                     <div class="spacer-20"></div>
                                                 </div>
                                             </div>
@@ -258,13 +312,15 @@
                                             <%= __('Публиковать по') %>
                                         </div>
                                         <div class="col-xs-2">
-                                            <input type="text" id="movies" name="config.publish.every.movies" class="to form-control input_number" style="width: 100%;">
+                                            <input type="text" id="movies" name="config.publish.every.movies"
+                                                   class="to form-control input_number" style="width: 100%;">
                                         </div>
                                         <div class="col-xs-3 text-center" style="padding: 5px 0;  font-size: 11px;">
                                             <%= __('фильма(ов) каждые') %>
                                         </div>
                                         <div class="col-xs-2">
-                                            <input type="text" id="hours" name="config.publish.every.hours" class="to form-control input_number" style="width: 100%;">
+                                            <input type="text" id="hours" name="config.publish.every.hours"
+                                                   class="to form-control input_number" style="width: 100%;">
                                         </div>
                                         <div class="col-xs-2 text-center" style="padding: 5px 0;  font-size: 11px;">
                                             <%= __('часа(ов)') %>
@@ -273,17 +329,18 @@
 
                                     <% if (typeof soon_id === 'object' && soon_id.length) { %>
 
-                                    <div class="spacer-10"></div>
+                                        <div class="spacer-10"></div>
 
-                                    <div class="faq">
-                                        <article class="faq-group">
-                                            <header class="text-muted">
-                                                <i class="fa fa-minus"></i>
-                                                <h3><%= __('Будут опубликованы в') %> <span id="time">00:00</span></h3>
-                                                <script>
-                                                    document.addEventListener("DOMContentLoaded", function () {
+                                        <div class="faq">
+                                            <article class="faq-group">
+                                                <header class="text-muted">
+                                                    <i class="fa fa-minus"></i>
+                                                    <h3><%= __('Будут опубликованы в') %> <span id="time">00:00</span>
+                                                    </h3>
+                                                    <script>
+                                                      document.addEventListener('DOMContentLoaded', function() {
                                                         var today = new Date();
-                                                        today.setHours(today.getHours()+1);
+                                                        today.setHours(today.getHours() + 1);
                                                         var h = today.getHours();
                                                         for (; h <= 24; h++) {
                                                           if (!(h % parseInt(document.getElementById('hours').value))) {
@@ -291,28 +348,32 @@
                                                             break;
                                                           }
                                                         }
-                                                    });
-                                                </script>
-                                            </header>
-                                            <div class="faq-content clearfix">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="thumbs-list thumbs-small">
-                                                            <ul>
-                                                                <% soon_id.forEach(function (id) { %>
-                                                                <a href="/<%- config.urls.admin %>/movies?id=<%- id %>" target="_blank">
-                                                                    <li style="background: none !important;">
-                                                                        <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
-                                                                    </li>
-                                                                </a>
-                                                                <% }); %>
-                                                            </ul>
+                                                      });
+                                                    </script>
+                                                </header>
+                                                <div class="faq-content clearfix">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="thumbs-list thumbs-small">
+                                                                <ul>
+                                                                    <% soon_id.forEach(function (id) { %>
+                                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- id %>"
+                                                                           target="_blank">
+                                                                            <li style="background: none !important;">
+                                                                                <img class="media-object"
+                                                                                     src="/<%- config.urls.admin %>/poster?id=<%- id %>"
+                                                                                     alt="ID: <%- id %>"
+                                                                                     title="ID: <%- id %>">
+                                                                            </li>
+                                                                        </a>
+                                                                    <% }); %>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </article>
-                                    </div>
+                                            </article>
+                                        </div>
 
                                     <% } %>
                                 </div>
@@ -324,9 +385,14 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-sliders-h"></i>&nbsp;&nbsp;&nbsp;<%= __('Диапазон идентификаторов фильмов') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fa fa-sliders-h"></i>&nbsp;&nbsp;&nbsp;<%= __('Диапазон идентификаторов фильмов') %>
+                                    </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#range" class="csstip" title="<%= __('Диапазон идентификаторов фильмов, которые уже опубликованы на веб-сайте') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#range"
+                                           class="csstip"
+                                           title="<%= __('Диапазон идентификаторов фильмов, которые уже опубликованы на веб-сайте') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -339,13 +405,15 @@
                                             <div class="spacer-20"></div>
                                         </div>
                                         <div class="col-xs-3 col-xs-offset-1">
-                                            <input type="text" id="start" name="config.publish.start" class="to form-control input_number" style="width: 100%;">
+                                            <input type="text" id="start" name="config.publish.start"
+                                                   class="to form-control input_number" style="width: 100%;">
                                         </div>
                                         <div class="col-xs-4 text-center" style="padding: 5px 0;">
                                             - <%= __('до') %> -
                                         </div>
                                         <div class="col-xs-3">
-                                            <input type="text" id="stop" name="config.publish.stop" class="to form-control input_number" style="width: 100%;">
+                                            <input type="text" id="stop" name="config.publish.stop"
+                                                   class="to form-control input_number" style="width: 100%;">
                                         </div>
                                     </div>
                                 </div>
@@ -357,9 +425,14 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-id-card"></i>&nbsp;&nbsp;&nbsp;<%= __('Обязательная информация у фильмов') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fa fa-id-card"></i>&nbsp;&nbsp;&nbsp;<%= __('Обязательная информация у фильмов') %>
+                                    </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#required" class="csstip" title="<%= __('На веб-сайте будут публиковаться только фильмы, у которых имеется отмеченная информация (постер, название, стандартное описание)') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#required"
+                                           class="csstip"
+                                           title="<%= __('На веб-сайте будут публиковаться только фильмы, у которых имеется отмеченная информация (постер, название, стандартное описание)') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -369,29 +442,48 @@
                                         <div class="col-lg-12 col-xs-12">
                                             <div class="stacked-labels">
                                                 <label>
-                                                    <input name="config.publish.required" value="" type="checkbox" <% if (!config.publish.required.length) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[value=poster]').checked = false;document.querySelector('input[value=description]').checked = false; if (document.querySelector('input[value=title_ru]')) {document.querySelector('input[value=title_ru]').checked = false;}}">
+                                                    <input name="config.publish.required" value="" type="checkbox"
+                                                    <% if (!config.publish.required.length) { %> checked=""
+                                                            <% } %>
+                                                           onclick="if (this.checked === true) {document.querySelector('input[value=poster]').checked = false;document.querySelector('input[value=description]').checked = false; if (document.querySelector('input[value=title_ru]')) {document.querySelector('input[value=title_ru]').checked = false;}}">
                                                     <span></span>
                                                     <%= __('Не важно (публикация любых фильмов)') %>
                                                 </label>
                                                 <label>
-                                                    <input name="config.publish.required" value="poster" type="checkbox" <% if (config.publish.required.indexOf('poster')+1) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
+                                                    <input name="config.publish.required" value="poster" type="checkbox"
+                                                    <% if (config.publish.required.indexOf('poster') + 1) { %>checked=""
+                                                            <% } %>
+                                                           onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
                                                     <span></span>
                                                     <%= __('Только имеющие постер') %>
                                                 </label>
                                                 <% if (config.language === 'ru') { %>
-                                                <label>
-                                                    <input name="config.publish.required" value="title_ru" type="checkbox" <% if (config.publish.required.indexOf('title_ru')+1) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
-                                                    <span></span>
-                                                    <%= __('Только имеющие переведенное название') %>
-                                                </label>
+                                                    <label>
+                                                        <input name="config.publish.required" value="title_ru"
+                                                               type="checkbox"
+                                                        <% if (config.publish.required.indexOf('title_ru') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
+                                                        <span></span>
+                                                        <%= __('Только имеющие переведенное название') %>
+                                                    </label>
                                                 <% } %>
                                                 <label>
-                                                    <input name="config.publish.required" value="description" type="checkbox" <% if (config.publish.required.indexOf('description')+1) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
+                                                    <input name="config.publish.required" value="description"
+                                                           type="checkbox"
+                                                    <% if (config.publish.required.indexOf('description') + 1) { %>
+                                                           checked=""
+                                                            <% } %>
+                                                           onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
                                                     <span></span>
                                                     <%= __('Только имеющие стандартное описание') %>
                                                 </label>
                                                 <label>
-                                                    <input name="config.publish.required" value="player" type="checkbox" <% if (config.publish.required.indexOf('player')+1) { %> checked="" <% } %> onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
+                                                    <input name="config.publish.required" value="player" type="checkbox"
+                                                    <% if (config.publish.required.indexOf('player') + 1) { %>checked=""
+                                                            <% } %>
+                                                           onclick="if (this.checked === true) {document.querySelector('input[name=\'config.publish.required\']').checked = false}">
                                                     <span></span>
                                                     <%= __('Только имеющие embed/iframe') %>
                                                 </label>
@@ -407,9 +499,14 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-eye-slash"></i>&nbsp;&nbsp;&nbsp;<%= __('Тематический веб-сайт') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fa fa-eye-slash"></i>&nbsp;&nbsp;&nbsp;<%= __('Тематический веб-сайт') %>
+                                    </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#thematic" class="csstip" title="<%= __('Вы можете создать тематический веб-сайт, на котором будут опубликованы только «Аниме», «Российские фильмы», и т.п.') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#thematic"
+                                           class="csstip"
+                                           title="<%= __('Вы можете создать тематический веб-сайт, на котором будут опубликованы только «Аниме», «Российские фильмы», и т.п.') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -422,13 +519,22 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <select name="config.publish.thematic.type" class="form-control">
-                                                <option value="0" <% if (config.publish.thematic.type === '0') { %>selected="selected"<% } %>>
+                                                <option value="0"
+                                                        <% if (config.publish.thematic.type === '0') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%= __('Фильмы') %>
                                                 </option>
-                                                <option value="1" <% if (config.publish.thematic.type === '1') { %>selected="selected"<% } %>>
+                                                <option value="1"
+                                                        <% if (config.publish.thematic.type === '1') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%= __('Сериалы') %>
                                                 </option>
-                                                <option value="" <% if (config.publish.thematic.type === '') { %>selected="selected"<% } %>>
+                                                <option value=""
+                                                        <% if (config.publish.thematic.type === '') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%= __('Все') %>
                                                 </option>
                                             </select>
@@ -445,8 +551,10 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.kp_vote" class="form-control">
-                                                <% var plusKp = 10; var k; for (k = 0; k <= 10000; k = k+plusKp) { %>
-                                                    <% if (k === 100) {plusKp = 100;} %>
+                                                <% var plusKp = 10; var k; for (k = 0; k <= 10000; k = k + plusKp) { %>
+                                                    <% if (k === 100) {
+                                                        plusKp = 100;
+                                                    } %>
                                                     <% if (config.publish.thematic.kp_vote === k) { %>
                                                         <option value="<%= k %>" selected="selected">
                                                             > <%- k %> <%= __('голос(ов)') %>
@@ -471,8 +579,10 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <select name="config.publish.thematic.imdb_vote" class="form-control">
-                                                <% var plusImdb = 10; var i; for (i = 0; i <= 10000; i = i+plusImdb) { %>
-                                                    <% if (i === 100) {plusImdb = 100;} %>
+                                                <% var plusImdb = 10; var i; for (i = 0; i <= 10000; i = i + plusImdb) { %>
+                                                    <% if (i === 100) {
+                                                        plusImdb = 100;
+                                                    } %>
                                                     <% if (config.publish.thematic.imdb_vote === i) { %>
                                                         <option value="<%= i %>" selected="selected">
                                                             > <%- i %> <%= __('голос(ов)') %>
@@ -496,7 +606,9 @@
                                             <label><%= __('Годы:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.year" value="<%= config.publish.thematic.year %>" class="form-control" placeholder="&#34;2018&#34; | &#34;2019&#34; | &#34;2020&#34;">
+                                            <input type="text" name="config.publish.thematic.year"
+                                                   value="<%= config.publish.thematic.year %>" class="form-control"
+                                                   placeholder="&#34;2018&#34; | &#34;2019&#34; | &#34;2020&#34;">
                                         </div>
 
                                     </div>
@@ -509,7 +621,9 @@
                                             <label><%= __('Жанры:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.genre" value="<%= config.publish.thematic.genre %>" class="form-control" placeholder="!&#34;<%= __('для взрослых') %>&#34;">
+                                            <input type="text" name="config.publish.thematic.genre"
+                                                   value="<%= config.publish.thematic.genre %>" class="form-control"
+                                                   placeholder="!&#34;<%= __('для взрослых') %>&#34;">
                                         </div>
 
                                     </div>
@@ -522,7 +636,9 @@
                                             <label><%= __('Страны:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.country" value="<%= config.publish.thematic.country %>" class="form-control" placeholder="&#34;<%= __('США') %>&#34; !&#34;<%= __('Китай') %>&#34;">
+                                            <input type="text" name="config.publish.thematic.country"
+                                                   value="<%= config.publish.thematic.country %>" class="form-control"
+                                                   placeholder="&#34;<%= __('США') %>&#34; !&#34;<%= __('Китай') %>&#34;">
                                         </div>
 
                                     </div>
@@ -535,7 +651,9 @@
                                             <label><%= __('Актеры:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.actor" value="<%= config.publish.thematic.actor %>" class="form-control" placeholder="!&#34;<%= __('Александр Невский') %>&#34;">
+                                            <input type="text" name="config.publish.thematic.actor"
+                                                   value="<%= config.publish.thematic.actor %>" class="form-control"
+                                                   placeholder="!&#34;<%= __('Александр Невский') %>&#34;">
                                         </div>
 
                                     </div>
@@ -548,7 +666,9 @@
                                             <label><%= __('Режиссеры:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.director" value="<%= config.publish.thematic.director %>" class="form-control" placeholder="!&#34;<%= __('Сарик Андреасян') %>&#34;">
+                                            <input type="text" name="config.publish.thematic.director"
+                                                   value="<%= config.publish.thematic.director %>" class="form-control"
+                                                   placeholder="!&#34;<%= __('Сарик Андреасян') %>&#34;">
                                         </div>
 
                                     </div>
@@ -561,7 +681,9 @@
                                             <label><%= __('Фильмы:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.query_id" value="<%= config.publish.thematic.query_id %>" class="form-control" placeholder="!&#34;298&#34; !&#34;299&#34; !&#34;300&#34;">
+                                            <input type="text" name="config.publish.thematic.query_id"
+                                                   value="<%= config.publish.thematic.query_id %>" class="form-control"
+                                                   placeholder="!&#34;298&#34; !&#34;299&#34; !&#34;300&#34;">
                                         </div>
 
                                     </div>
@@ -574,7 +696,9 @@
                                             <label><%= __('Стоп-слова:') %></label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.search" value="<%= config.publish.thematic.search %>" class="form-control" placeholder="!&#34;erotic&#34; !&#34;porn&#34;">
+                                            <input type="text" name="config.publish.thematic.search"
+                                                   value="<%= config.publish.thematic.search %>" class="form-control"
+                                                   placeholder="!&#34;erotic&#34; !&#34;porn&#34;">
                                         </div>
 
                                     </div>
@@ -587,9 +711,14 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить индексацию') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить индексацию') %>
+                                    </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#indexing" class="csstip" title="<%= __('Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html#indexing"
+                                           class="csstip"
+                                           title="<%= __('Условие для запрета индексации поисковыми системами определенных фильмов (если условие true - индексация будет запрещена)') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -598,7 +727,8 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="advanced-textarea">
-                                                <textarea class="form-control" name="config.publish.indexing.condition" placeholder="((movie.year < 2017 && movie.imdb_vote < 10) || (movie.year < 2019 && movie.vote < 10))"><%= config.publish.indexing.condition %></textarea>
+                                                <textarea class="form-control" name="config.publish.indexing.condition"
+                                                          placeholder="((movie.year < 2017 && movie.imdb_vote < 10) || (movie.year < 2019 && movie.vote < 10))"><%= config.publish.indexing.condition %></textarea>
                                             </div>
                                             <div class="faq">
                                                 <article class="faq-group">
@@ -617,10 +747,12 @@
                                                                         <code>movie.kp_id</code> <span>464963</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.title</code> <span><%= __('Игра престолов') %></span>
+                                                                        <code>movie.title</code>
+                                                                        <span><%= __('Игра престолов') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.title_ru</code> <span><%= __('Игра престолов') %></span>
+                                                                        <code>movie.title_ru</code>
+                                                                        <span><%= __('Игра престолов') %></span>
                                                                     </div>
                                                                     <div>
                                                                         <code>movie.title_en</code> <span>Game of Thrones</span>
@@ -629,34 +761,44 @@
                                                                         <code>movie.quality</code> <span>4K</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.translate</code> <span>English</span>
+                                                                        <code>movie.translate</code>
+                                                                        <span>English</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.year</code> <span><%= __('2020') %></span>
+                                                                        <code>movie.year</code>
+                                                                        <span><%= __('2020') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.country</code> <span><%= __('США') %></span>
+                                                                        <code>movie.country</code>
+                                                                        <span><%= __('США') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.director</code> <span><%= __('Тим Бертон') %></span>
+                                                                        <code>movie.director</code>
+                                                                        <span><%= __('Тим Бертон') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.genre</code> <span><%= __('комедия') %></span>
+                                                                        <code>movie.genre</code>
+                                                                        <span><%= __('комедия') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.actor</code> <span><%= __('Том Круз') %></span>
+                                                                        <code>movie.actor</code>
+                                                                        <span><%= __('Том Круз') %></span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.countries_arr</code> <span>["<%= __('США') %>", ...]</span>
+                                                                        <code>movie.countries_arr</code>
+                                                                        <span>["<%= __('США') %>", ...]</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.directors_arr</code> <span>["<%= __('Тим Бертон') %>", ...]</span>
+                                                                        <code>movie.directors_arr</code>
+                                                                        <span>["<%= __('Тим Бертон') %>", ...]</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.genres_arr</code> <span>["<%= __('комедия') %>", ...]</span>
+                                                                        <code>movie.genres_arr</code>
+                                                                        <span>["<%= __('комедия') %>", ...]</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.actors_arr</code> <span>["<%= __('Том Круз') %>", ...]</span>
+                                                                        <code>movie.actors_arr</code>
+                                                                        <span>["<%= __('Том Круз') %>", ...]</span>
                                                                     </div>
                                                                     <div>
                                                                         <code>movie.rating</code> <span>92</span>
@@ -674,22 +816,26 @@
                                                                         <code>movie.imdb_rating</code> <span>94</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.imdb_vote</code> <span>1592853</span>
+                                                                        <code>movie.imdb_vote</code>
+                                                                        <span>1592853</span>
                                                                     </div>
                                                                     <div>
                                                                         <code>movie.type</code> <span>0</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.premiere</code> <span>17 Apr 2011</span>
+                                                                        <code>movie.premiere</code>
+                                                                        <span>17 Apr 2011</span>
                                                                     </div>
                                                                     <div>
                                                                         <code>movie.passed</code> <span>true</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.custom</code> <span>{"unique": true}</span>
+                                                                        <code>movie.custom</code>
+                                                                        <span>{"unique": true}</span>
                                                                     </div>
                                                                     <div>
-                                                                        <code>movie.custom.unique</code> <span>true</span>
+                                                                        <code>movie.custom.unique</code>
+                                                                        <span>true</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -708,7 +854,28 @@
             </div>
 
             <script>
-                $("#movies_slider").noUiSlider({range:[0,1e3],start:[<%= config.publish.every.movies %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#movies")]}}),$("#hours_slider").noUiSlider({range:[0,12],start:[<%= config.publish.every.hours %>],handles:1,step:1,connect:"lower",serialization:{resolution:1,to:[$("#hours")]}}),$("#diapason").noUiSlider({range:[298,3000000],start:[<%= config.publish.start %>,<%= config.publish.stop %>],handles:2,step:1,connect:"lower",serialization:{to:[$("#start"),$("#stop")],resolution:1}});
+              $('#movies_slider').noUiSlider({
+                range: [0, 1e3],
+                start: [<%= config.publish.every.movies %>],
+                handles: 1,
+                step: 1,
+                connect: 'lower',
+                serialization: { resolution: 1, to: [$('#movies')] }
+              }), $('#hours_slider').noUiSlider({
+                range: [0, 12],
+                start: [<%= config.publish.every.hours %>],
+                handles: 1,
+                step: 1,
+                connect: 'lower',
+                serialization: { resolution: 1, to: [$('#hours')] }
+              }), $('#diapason').noUiSlider({
+                range: [298, 3000000],
+                start: [<%= config.publish.start %>,<%= config.publish.stop %>],
+                handles: 2,
+                step: 1,
+                connect: 'lower',
+                serialization: { to: [$('#start'), $('#stop')], resolution: 1 }
+              });
             </script>
 
             <%- include('./includes/footer.ejs'); -%>

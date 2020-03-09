@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -36,19 +42,22 @@
                         <a href="/<%- config.urls.admin %>/tv" class="btn hidden-xs">
                             <%= __('Модуль ТВ версии') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html" class="btn" title="<%= __('Информация о параметрах модуля ТВ версии веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля ТВ версии веб-сайта') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.tv.status) { %>
-                        <a href="javascript:void(0)" data-module="tv" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="tv" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="tv" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="tv" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -60,192 +69,242 @@
 
                     <% if (modules.tv.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL ТВ версии') %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL ТВ версии') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#url"
+                                               class="csstip" title="<%= __('Настройка URL для ТВ версии веб-сайта') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#url" class="csstip" title="<%= __('Настройка URL для ТВ версии веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.tv.data.subdomain" value="1" <% if (modules.tv.data.subdomain) { %> checked="" <% } %> type="radio"><span></span>&nbsp;<code>tv.<%- config.domain %> <a href="//tv.<%- config.domain %>" target="_blank"><span class="fa fa-external-link-square-alt"></span></a></code>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.tv.data.subdomain" value="0" <% if (!modules.tv.data.subdomain) { %> checked="" <% } %> type="radio"><span></span>&nbsp;<code><%- config.subdomain %><%- config.domain %>/tv-version <a href="//<%- config.subdomain %><%- config.domain %>/tv-version" target="_blank"><span class="fa fa-external-link-square-alt"></span></a></code>
-                                                </label>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.tv.data.subdomain" value="1"
+                                                        <% if (modules.tv.data.subdomain) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>&nbsp;<code>tv.<%- config.domain %>
+                                                            <a href="//tv.<%- config.domain %>" target="_blank"><span
+                                                                        class="fa fa-external-link-square-alt"></span></a></code>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.tv.data.subdomain" value="0"
+                                                        <% if (!modules.tv.data.subdomain) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>&nbsp;<code><%- config.subdomain %><%- config.domain %>
+                                                            /tv-version <a
+                                                                    href="//<%- config.subdomain %><%- config.domain %>/tv-version"
+                                                                    target="_blank"><span
+                                                                        class="fa fa-external-link-square-alt"></span></a></code>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="far fa-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('По умолчанию') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#default" class="csstip" title="<%= __('Тема оформления ТВ версии веб-сайта по умолчанию') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-1 col-xs-1 text-center">
-                                            <div class="inline-labels">
-                                                <label style="margin: 5px;">
-                                                    <input name="modules.tv.data.theme" value="default" <% if (modules.tv.data.theme === 'default') { %> checked="" <% } %> type="radio"><span></span>
-                                                </label>
-                                            </div>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="far fa-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('По умолчанию') %>
                                         </div>
-                                        <div class="col-xs-11 col-lg-11">
-                                            <div class="faq">
-                                                <article class="faq-group">
-                                                    <header>
-                                                        <i class="fa fa-minus"></i>
-                                                        <h3><%= __('Скриншоты') %></h3>
-                                                    </header>
-                                                    <div class="faq-content clearfix">
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="thumbnail">
-                                                                    <img src="/themes/default/public/tv/default/default.png">
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#default"
+                                               class="csstip"
+                                               title="<%= __('Тема оформления ТВ версии веб-сайта по умолчанию') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-xs-1 text-center">
+                                                <div class="inline-labels">
+                                                    <label style="margin: 5px;">
+                                                        <input name="modules.tv.data.theme" value="default"
+                                                        <% if (modules.tv.data.theme === 'default') { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-lg-11">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header>
+                                                            <i class="fa fa-minus"></i>
+                                                            <h3><%= __('Скриншоты') %></h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="thumbnail">
+                                                                        <img src="/themes/default/public/tv/default/default.png">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </article>
+                                                    </article>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-circle-notch"></i>&nbsp;&nbsp;&nbsp;<%= __('Своя тема') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#custom" class="csstip" title="<%= __('Своя тема оформления ТВ версии веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-1 col-xs-1 text-center">
-                                            <div class="inline-labels">
-                                                <label style="margin: 5px;">
-                                                    <input name="modules.tv.data.theme" value="custom" <% if (modules.tv.data.theme === 'custom') { %> checked="" <% } %> type="radio"><span></span>
-                                                </label>
-                                            </div>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-circle-notch"></i>&nbsp;&nbsp;&nbsp;<%= __('Своя тема') %>
                                         </div>
-                                        <div class="col-xs-11 col-lg-11">
-                                            <div class="faq">
-                                                <article class="faq-group">
-                                                    <header>
-                                                        <i class="fa fa-minus"></i>
-                                                        <h3><%= __('Настроить') %></h3>
-                                                    </header>
-                                                    <div class="faq-content clearfix">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Цвет фона') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.body_bg" value="<%= modules.tv.data.custom.body_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет фона') %>">
-                                                            </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/tv.html#custom"
+                                               class="csstip"
+                                               title="<%= __('Своя тема оформления ТВ версии веб-сайта') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-xs-1 text-center">
+                                                <div class="inline-labels">
+                                                    <label style="margin: 5px;">
+                                                        <input name="modules.tv.data.theme" value="custom"
+                                                        <% if (modules.tv.data.theme === 'custom') { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-lg-11">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header>
+                                                            <i class="fa fa-minus"></i>
+                                                            <h3><%= __('Настроить') %></h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Цвет фона') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.body_bg"
+                                                                           value="<%= modules.tv.data.custom.body_bg %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Цвет фона') %>">
+                                                                </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Цвет текста контента') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.contents_color" value="<%= modules.tv.data.custom.contents_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет текста контента') %>">
-                                                            </div>
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Цвет текста контента') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.contents_color"
+                                                                           value="<%= modules.tv.data.custom.contents_color %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Цвет текста контента') %>">
+                                                                </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Фон контента') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.contents_active_bg" value="<%= modules.tv.data.custom.contents_active_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон контента') %>">
-                                                            </div>
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Фон контента') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.contents_active_bg"
+                                                                           value="<%= modules.tv.data.custom.contents_active_bg %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Фон контента') %>">
+                                                                </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Цвет текста категории') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.categories_color" value="<%= modules.tv.data.custom.categories_color %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Цвет текста категории') %>">
-                                                            </div>
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Цвет текста категории') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.categories_color"
+                                                                           value="<%= modules.tv.data.custom.categories_color %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Цвет текста категории') %>">
+                                                                </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Фон текущей категории') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.categories_current_bg" value="<%= modules.tv.data.custom.categories_current_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон текущей категории') %>">
-                                                            </div>
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Фон текущей категории') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.categories_current_bg"
+                                                                           value="<%= modules.tv.data.custom.categories_current_bg %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Фон текущей категории') %>">
+                                                                </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-6 col-xs-6">
-                                                                <label><%= __('Фон активной категории') %></label>
-                                                            </div>
-                                                            <div class="col-lg-6 col-xs-6 text-center">
-                                                                <input name="modules.tv.data.custom.categories_active_bg" value="<%= modules.tv.data.custom.categories_active_bg %>" class="form-control jscolor {hash:true}" type="text" placeholder="<%= __('Фон активной категории') %>">
+                                                                <div class="col-lg-6 col-xs-6">
+                                                                    <label><%= __('Фон активной категории') %></label>
+                                                                </div>
+                                                                <div class="col-lg-6 col-xs-6 text-center">
+                                                                    <input name="modules.tv.data.custom.categories_active_bg"
+                                                                           value="<%= modules.tv.data.custom.categories_active_bg %>"
+                                                                           class="form-control jscolor {hash:true}"
+                                                                           type="text"
+                                                                           placeholder="<%= __('Фон активной категории') %>">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </article>
+                                                    </article>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль активирует ТВ версию веб-сайта для навигации с помощью пульта управления телевизором.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль активирует ТВ версию веб-сайта для навигации с помощью пульта управления телевизором.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

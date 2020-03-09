@@ -18,1078 +18,1111 @@
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
 
-        var i = 0;
+    var i = 0;
 
-        var status = document.querySelectorAll('.module-status');
-        if (status)
-            for (i = 0; i < status.length; i++)
-                status[i].addEventListener('click', statusData);
+    var status = document.querySelectorAll('.module-status');
+    if (status)
+      for (i = 0; i < status.length; i++)
+        status[i].addEventListener('click', statusData);
 
-        var save = document.querySelector('#save');
-        if (save)
-            save.addEventListener('click', saveData);
+    var save = document.querySelector('#save');
+    if (save)
+      save.addEventListener('click', saveData);
 
-        var restart = document.querySelector('#restart');
-        if (restart)
-            restart.addEventListener('click', restartData);
+    var restart = document.querySelector('#restart');
+    if (restart)
+      restart.addEventListener('click', restartData);
 
-        var flush = document.querySelector('#flush');
-        if (flush)
-            flush.addEventListener('click', flushData);
+    var flush = document.querySelector('#flush');
+    if (flush)
+      flush.addEventListener('click', flushData);
 
-        var flush_static = document.querySelector('#flush_static');
-        if (flush_static)
-            flush_static.addEventListener('click', flushStaticData);
+    var flush_static = document.querySelector('#flush_static');
+    if (flush_static)
+      flush_static.addEventListener('click', flushStaticData);
 
-        var flush_memcached = document.querySelector('#flush_memcached');
-        if (flush_memcached)
-            flush_memcached.addEventListener('click', flushMemcachedData);
+    var flush_memcached = document.querySelector('#flush_memcached');
+    if (flush_memcached)
+      flush_memcached.addEventListener('click', flushMemcachedData);
 
-        var database = document.querySelector('#database');
-        if (database)
-            database.addEventListener('click', databaseData);
+    var database = document.querySelector('#database');
+    if (database)
+      database.addEventListener('click', databaseData);
 
-        var del = document.querySelectorAll('.del');
-        if (del)
-            for (i = 0; i < del.length; i++)
-                del[i].addEventListener('click', delData);
+    var del = document.querySelectorAll('.del');
+    if (del)
+      for (i = 0; i < del.length; i++)
+        del[i].addEventListener('click', delData);
 
-        var suc = document.querySelectorAll('.suc');
-        if (suc)
-            for (i = 0; i < suc.length; i++)
-                suc[i].addEventListener('click', sucData);
+    var suc = document.querySelectorAll('.suc');
+    if (suc)
+      for (i = 0; i < suc.length; i++)
+        suc[i].addEventListener('click', sucData);
 
-        var addId = document.querySelectorAll('a[data-add-name]');
-        if (addId)
-            for (i = 0; i < addId.length; i++)
-                addId[i].addEventListener('click', addIdList);
+    var addId = document.querySelectorAll('a[data-add-name]');
+    if (addId)
+      for (i = 0; i < addId.length; i++)
+        addId[i].addEventListener('click', addIdList);
 
-        var delId = document.querySelectorAll('li[data-delete-name]');
-        if (delId)
-            for (i = 0; i < delId.length; i++)
-                delId[i].addEventListener('click', delIdList);
+    var delId = document.querySelectorAll('li[data-delete-name]');
+    if (delId)
+      for (i = 0; i < delId.length; i++)
+        delId[i].addEventListener('click', delIdList);
 
-        alertCP();
+    alertCP();
 
-        inputData();
+    inputData();
 
-        uploadFile();
+    uploadFile();
 
-        translit();
+    translit();
 
+  });
+
+  function statusData() {
+
+    var self = this;
+    self.removeEventListener('click', statusData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Изменяется статус') %>';
+
+    var data = {
+      'switch': {
+        'module': self.dataset.module,
+        'status': self.dataset.status
+      }
+    };
+
+    sendServer(data, function(err, result) {
+      if (err) {
+        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+      } else {
+        location.reload();
+      }
     });
 
-    function statusData() {
+  }
 
-        var self = this;
-        self.removeEventListener('click', statusData);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Изменяется статус') %>';
+  function restartData() {
 
-        var data = {
-            "switch": {
-                "module": self.dataset.module,
-                "status": self.dataset.status
-            }
-        };
+    var self = this;
+    self.removeEventListener('click', restartData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагружается') %>';
 
-        sendServer(data, function (err, result) {
-            if (err) {
-                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-            }
-            else {
-                location.reload();
-            }
-        });
+    var data = {
+      'restart': true
+    };
 
+    sendServer(data, function() {
+      setTimeout(function() {
+        self.innerHTML = '<span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>';
+        self.addEventListener('click', restartData);
+      }, 25000);
+    });
+
+  }
+
+  function flushData() {
+
+    var self = this;
+    self.removeEventListener('click', flushData);
+    self.innerHTML = '<span class="fa fa-sync-alt fa-spin"></span>&nbsp;&nbsp;<%= __('Очищается кэш') %>';
+
+    var data = {
+      'flush': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+      } else {
+        self.innerHTML = '<span class="fa fa-trash"></span>&nbsp;&nbsp;<%= __('Очистить кэш') %>';
+        self.addEventListener('click', flushData);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      location.reload();
+    }, 25000);
+  }
+
+  function flushStaticData() {
+
+    var self = this;
+    self.removeEventListener('click', flushStaticData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'flush_static': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<i class="fa fa-bug"></i>';
+      } else {
+        self.innerHTML = '<i class="fa fa-images"></i>';
+        self.addEventListener('click', flushStaticData);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      location.reload();
+    }, 25000);
+
+  }
+
+  function flushMemcachedData() {
+
+    var self = this;
+    self.removeEventListener('click', flushMemcachedData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'flush_memcached': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<i class="fa fa-bug"></i>';
+      } else {
+        self.innerHTML = '<i class="fa fa-tachometer-alt"></i>';
+        self.addEventListener('click', flushMemcachedData);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      location.reload();
+    }, 25000);
+
+  }
+
+  function databaseData() {
+
+      <% if (config.database.key === 'FREE') { %>
+    if (!confirm('<%= __('База закрепится на сервере за доменом %s Импорт делается только один раз, дальнейшие импорты - это обновления.', config.domain.toUpperCase() + '\\n') %>')) {
+      return;
     }
+      <% } %>
 
-    function restartData() {
+    var key = document.querySelector('#key');
 
-        var self = this;
-        self.removeEventListener('click', restartData);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагружается') %>';
+    if (!key || !key.value) return;
 
-        var data = {
-            "restart": true
-        };
+    var self = this;
+    self.removeEventListener('click', databaseData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Загружаются (около 10 минут)') %>';
 
-        sendServer(data, function () {
-            setTimeout(function() {
-                self.innerHTML ='<span class="fa fa-redo-alt"></span>&nbsp;&nbsp;<%= __('Перезагрузить') %>';
-                self.addEventListener('click', restartData);
-            }, 25000);
-        });
+    var data = {
+      'database': key.value
+    };
 
-    }
-
-    function flushData() {
-
-        var self = this;
-        self.removeEventListener('click', flushData);
-        self.innerHTML = '<span class="fa fa-sync-alt fa-spin"></span>&nbsp;&nbsp;<%= __('Очищается кэш') %>';
-
-        var data = {
-            "flush": true
-        };
-
-        var stop = false;
-
-        sendServer(data, function (err, result) {
-            stop = true;
-            if (err) {
-                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-            }
-            else {
-                self.innerHTML ='<span class="fa fa-trash"></span>&nbsp;&nbsp;<%= __('Очистить кэш') %>';
-                self.addEventListener('click', flushData);
-            }
-        });
-
+    sendServer(data, true, function(err, result) {
+      if (err) {
+        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+      } else {
         setTimeout(function() {
-            if (stop) return;
-            location.reload();
-        }, 25000);
-    }
-
-    function flushStaticData() {
-
-        var self = this;
-        self.removeEventListener('click', flushStaticData);
-        self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
-
-        var data = {
-            "flush_static": true
-        };
-
-        var stop = false;
-
-        sendServer(data, function (err, result) {
-            stop = true;
-            if (err) {
-                self.innerHTML = '<i class="fa fa-bug"></i>';
-            }
-            else {
-                self.innerHTML ='<i class="fa fa-images"></i>';
-                self.addEventListener('click', flushStaticData);
-            }
-        });
-
-        setTimeout(function() {
-            if (stop) return;
-            location.reload();
-        }, 25000);
-
-    }
-
-    function flushMemcachedData() {
-
-        var self = this;
-        self.removeEventListener('click', flushMemcachedData);
-        self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
-
-        var data = {
-            "flush_memcached": true
-        };
-
-        var stop = false;
-
-        sendServer(data, function (err, result) {
-            stop = true;
-            if (err) {
-                self.innerHTML = '<i class="fa fa-bug"></i>';
-            }
-            else {
-                self.innerHTML ='<i class="fa fa-tachometer-alt"></i>';
-                self.addEventListener('click', flushMemcachedData);
-            }
-        });
-
-        setTimeout(function() {
-            if (stop) return;
-            location.reload();
-        }, 25000);
-
-    }
-
-    function databaseData() {
-
-        <% if (config.database.key === 'FREE') { %>
-            if (!confirm('<%= __('База закрепится на сервере за доменом %s Импорт делается только один раз, дальнейшие импорты - это обновления.', config.domain.toUpperCase() + '\\n') %>')) {
-                return;
-            }
-        <% } %>
-
-        var key = document.querySelector('#key');
-
-        if (!key || !key.value) return;
-
-        var self = this;
-        self.removeEventListener('click', databaseData);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Загружаются (около 10 минут)') %>';
-
-        var data = {
-            "database": key.value
-        };
-
-        sendServer(data, true, function (err, result) {
-            if (err) {
-                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-            }
-            else {
-                setTimeout(function() {
-                    self.innerHTML ='<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагрузка') %>';
-                    var data = {
-                        "restart": true
-                    };
-                    sendServer(data, function () {
-                        window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-                    });
-                }, 25000);
-                setTimeout(function() {
-                    window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-                }, 35000);
-            }
-        });
-
-        setTimeout(function() {
+          self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагрузка') %>';
+          var data = {
+            'restart': true
+          };
+          sendServer(data, function() {
             window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-        }, 600000);
+          });
+        }, 25000);
+        setTimeout(function() {
+          window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
+        }, 35000);
+      }
+    });
 
-    }
+    setTimeout(function() {
+      window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
+    }, 600000);
 
-    function delData() {
+  }
 
-        var self = this;
-        self.removeEventListener('click', delData);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+  function delData() {
 
-        var data = {};
-        data.delete = true;
-        data[self.dataset.type] = {};
-        if (self.dataset.type === 'collection') {
-            data[self.dataset.type].url = self.dataset.id;
-        }
-        else {
-            data[self.dataset.type].id = self.dataset.id;
-        }
+    var self = this;
+    self.removeEventListener('click', delData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
 
-        sendServer(data, function (err, result) {
-            if (err) {
-                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-            }
-            else {
-                self.innerHTML ='<span class="fa fa-check text-success"></span>';
-            }
-        });
-
-    }
-
-    function sucData() {
-
-      var self = this;
-      self.removeEventListener('click', sucData);
-      self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
-
-      var comment_confirm = self.className.indexOf('suc-one') + 1 ? 0 : 1;
-      self.className = self.className.replace(comment_confirm ? 'suc-zero' : 'suc-one', comment_confirm ? 'suc-one' : 'suc-zero');
-
-      var data = {};
-      data[self.dataset.type] = {};
+    var data = {};
+    data.delete = true;
+    data[self.dataset.type] = {};
+    if (self.dataset.type === 'collection') {
+      data[self.dataset.type].url = self.dataset.id;
+    } else {
       data[self.dataset.type].id = self.dataset.id;
-      data[self.dataset.type].comment_confirm = '' + comment_confirm;
+    }
 
-      sendServer(data, function (err, result) {
-        if (err) {
+    sendServer(data, function(err, result) {
+      if (err) {
+        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+      } else {
+        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+      }
+    });
+
+  }
+
+  function sucData() {
+
+    var self = this;
+    self.removeEventListener('click', sucData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+
+    var comment_confirm = self.className.indexOf('suc-one') + 1 ? 0 : 1;
+    self.className = self.className.replace(comment_confirm ? 'suc-zero' : 'suc-one', comment_confirm ? 'suc-one' : 'suc-zero');
+
+    var data = {};
+    data[self.dataset.type] = {};
+    data[self.dataset.type].id = self.dataset.id;
+    data[self.dataset.type].comment_confirm = '' + comment_confirm;
+
+    sendServer(data, function(err, result) {
+      if (err) {
+        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+      } else {
+        self.innerHTML = '<span class="fa fa-circle ' + (comment_confirm ? 'text-success' : 'text-muted') + '"></span>';
+      }
+      self.addEventListener('click', sucData);
+    });
+
+  }
+
+  function delIdList() {
+    var self = this;
+    self.parentNode.removeChild(self);
+    var list = document.querySelector('textarea[name="' + self.dataset.deleteName + '"]');
+    var first = new RegExp('^' + self.dataset.deleteId + ',');
+    var middle = new RegExp(',' + self.dataset.deleteId + ',|^' + self.dataset.deleteId + '$');
+    var last = new RegExp(',' + self.dataset.deleteId + '$');
+    list.value = list.value
+      .replace(middle, ',')
+      .replace(first, '')
+      .replace(last, '')
+      .replace(/\s/g, '')
+      .replace(/,+/g, ',')
+      .replace(/(^,*)|(,*)$/g, '');
+  }
+
+  function addIdList() {
+    var self = this;
+    var id = document.querySelector('input[data-add-id="' + self.dataset.addName + '"]');
+    var kp_id = parseInt(id.value);
+    var id_kp = 0;
+
+    if (id.value.indexOf('<%- config.domain %>') + 1) {
+
+      var prefix_id = '<%- config.urls.prefix_id %>' || '/';
+      var regexpId = new RegExp(prefix_id + '([0-9]{1,8})', 'ig');
+      var execId = regexpId.exec(id.value);
+      id_kp = (execId) ? parseInt(execId[1]) : 0;
+
+      kp_id = parseInt(id_kp) - parseInt(<%- config.urls.unique_id %>);
+    } else if (id.value.indexOf('kinopoisk.ru') + 1) {
+      id_kp = /(film\/|movie\/).*?([0-9]{3,8})\//gi.exec(id.value);
+      kp_id = (id_kp) ? parseInt(id_kp[2]) : 0;
+    }
+
+    if (kp_id) {
+      var addPoster = document.querySelector('ul[data-add-name="' + self.dataset.addName + '"]');
+      var addList = document.querySelector('textarea[name="' + self.dataset.addName + '"]');
+      var ids = addList.value.split(',');
+      ids = (ids.length && ids[0]) ? ids.map(function(id) {
+        return parseInt(id);
+      }) : [];
+      if (!(ids.indexOf(kp_id) + 1)) {
+        if (id.dataset.last) {
+          ids.push(kp_id);
+        } else {
+          ids.unshift(kp_id);
+        }
+        addList.value = ids.join(',');
+        addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/<%- config.urls.admin %>/poster?id=' + kp_id + '" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
+        var delId = document.querySelectorAll('li[data-delete-name]');
+        if (delId)
+          for (var i = 0; i < delId.length; i++)
+            delId[i].addEventListener('click', delIdList);
+      }
+    }
+
+    id.value = '';
+  }
+
+  function saveData() {
+
+    var configs = document.querySelectorAll('input[name],select[name],textarea[name]');
+
+    if (!configs || !configs.length) return false;
+
+    var self = this;
+    self.removeEventListener('click', saveData);
+    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Сохраняются изменения') %>';
+
+    var data = {};
+
+    for (var i = 0; i < configs.length; i++) {
+
+      if (configs[i].getAttribute('type')) {
+        if (configs[i].getAttribute('type') === 'checkbox' && !configs[i].checked) {
+          continue;
+        } else if (configs[i].getAttribute('type') === 'radio' && !configs[i].checked) {
+          continue;
+        }
+      }
+
+      if (!configs[i].value) {
+        var empty_config = [
+          'config.subdomain',
+          'config.botdomain',
+          'config.homepage',
+          'config.codes.head',
+          'config.codes.footer',
+          'config.default.donotuse',
+          'config.default.tags.list',
+          'config.publish.required',
+          'config.publish.thematic.country',
+          'config.publish.thematic.genre',
+          'config.publish.thematic.year',
+          'config.publish.thematic.type',
+          'config.publish.thematic.actor',
+          'config.publish.thematic.director',
+          'config.publish.thematic.query_id',
+          'config.publish.thematic.search',
+          'config.publish.indexing.condition',
+          'config.index.country.keys',
+          'config.index.genre.keys',
+          'config.index.year.keys',
+          'config.index.type.keys',
+          'config.index.actor.keys',
+          'config.index.director.keys',
+          'config.index.ids.keys',
+          'config.index.count.key',
+          'config.urls.prefix_id',
+          'config.urls.noindex',
+          'config.urls.movies.online',
+          'config.urls.movies.download',
+          'config.urls.movies.trailer',
+          'config.urls.movies.picture',
+          'config.geolite2.countries',
+          'config.geolite2.ips'
+        ];
+        var empty_module = [
+          'modules.comments.data.cackle.id',
+          'modules.comments.data.cackle.siteApiKey',
+          'modules.comments.data.cackle.accountApiKey',
+          'modules.comments.data.hypercomments.widget_id',
+          'modules.comments.data.hypercomments.sekretkey',
+          'modules.comments.data.disqus.shortname',
+          'modules.comments.data.disqus.api_key',
+          'modules.comments.data.facebook.admins',
+          'modules.comments.data.vk.app_id',
+          'modules.comments.data.sigcomments.host_id',
+          'modules.comments.data.fast.message',
+          'modules.comments.data.fast.question',
+          'modules.comments.data.fast.question_yes',
+          'modules.comments.data.fast.question_not',
+          'modules.comments.data.fast.recaptcha_secret',
+          'modules.comments.data.fast.recaptcha_sitekey',
+          'modules.comments.data.fast.stopworls',
+          'modules.slider.data.url',
+          'modules.abuse.data.imap.user',
+          'modules.abuse.data.imap.password',
+          'modules.abuse.data.imap.host',
+          'modules.abuse.data.imap.from',
+          'modules.abuse.data.imap.subdomain',
+          'modules.abuse.data.smtp.auth.user',
+          'modules.abuse.data.smtp.auth.pass',
+          'modules.abuse.data.smtp.host',
+          'modules.abuse.data.smtp.dkim',
+          'modules.abuse.data.smtp.message',
+          'modules.abuse.data.movies',
+          'modules.soon.data.movies',
+          'modules.social.data.vk',
+          'modules.social.data.facebook',
+          'modules.social.data.twitter',
+          'modules.social.data.telegram',
+          'modules.social.data.instagram',
+          'modules.social.data.youtube',
+          'modules.related.data.display',
+          'modules.related.data.types.year.name',
+          'modules.related.data.types.genre.name',
+          'modules.related.data.types.country.name',
+          'modules.related.data.types.actor.name',
+          'modules.related.data.types.director.name',
+          'modules.player.data.custom',
+          'modules.content.data.custom',
+          'modules.episode.data.custom',
+          'modules.episode.data.index.custom',
+          'modules.player.data.yohoho.trailer',
+          'modules.player.data.yohoho.button',
+          'modules.player.data.iframe.token',
+          'modules.player.data.kodik.token',
+          'modules.player.data.youtube.token',
+          'modules.player.data.videocdn.token',
+          'modules.player.data.hdvb.token',
+          'modules.player.data.collaps.token',
+          'modules.blocking.data.share.message',
+          'modules.blocking.data.sub.keys',
+          'modules.blocking.data.sub.message',
+          'modules.blocking.data.adv.code',
+          'modules.blocking.data.adv.message',
+          'modules.blocking.data.adv.skip',
+          'modules.blocking.data.adblock.message',
+          'modules.blocking.data.legal.countries',
+          'modules.blocking.data.legal.message',
+          'modules.blocking.data.app.message',
+          'modules.blocking.data.app.download.windows',
+          'modules.blocking.data.app.download.macos',
+          'modules.blocking.data.app.download.linux',
+          'modules.blocking.data.app.safe.windows',
+          'modules.blocking.data.app.safe.macos',
+          'modules.blocking.data.app.safe.linux',
+          'modules.blocking.data.app.information.windows',
+          'modules.blocking.data.app.information.macos',
+          'modules.blocking.data.app.information.linux',
+          'modules.blocking.data.app.countries',
+          'modules.episode.data.default',
+          'modules.episode.data.translate',
+          'modules.episode.data.index.name',
+          'modules.content.data.news.tags',
+          'modules.content.data.index.url',
+          'modules.content.data.movie.tags',
+          'modules.content.data.scraper',
+          'modules.rewrite.data.token',
+          'modules.bots.data.token',
+          'modules.random.data.category',
+          'modules.random.data.menu'
+        ];
+        if (
+          configs[i].name === 'collection.image'
+        ) {
+          console.log(configs[i].name, 'empty collection.');
+        } else if (
+          configs[i].name.indexOf('movie.') + 1
+        ) {
+          console.log(configs[i].name, 'empty movie.');
+        } else if (
+          empty_config.indexOf(configs[i].name) + 1
+        ) {
+          console.log(configs[i].name, 'empty config.');
+        } else if (
+          empty_module.indexOf(configs[i].name) + 1 ||
+          configs[i].name.indexOf('modules.adv.data.desktop') + 1 ||
+          configs[i].name.indexOf('modules.adv.data.mobile') + 1 ||
+          configs[i].name.indexOf('modules.content.data.auto') + 1
+        ) {
+          console.log(configs[i].name, 'empty modules.');
+        } else {
+          continue;
+        }
+      }
+
+      var objects = configs[i].name.split('.');
+
+      for (var j = 1; j <= objects.length; j++) {
+
+        if (j === 1) {
+          data[objects[0]] = (j === objects.length)
+            ? (data[objects[0]])
+              ? data[objects[0]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]] || {};
+        } else if (j === 2) {
+          data[objects[0]][objects[1]] = (j === objects.length)
+            ? (data[objects[0]][objects[1]])
+              ? data[objects[0]][objects[1]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]][objects[1]] || {};
+        } else if (j === 3) {
+          data[objects[0]][objects[1]][objects[2]] = (j === objects.length)
+            ? (data[objects[0]][objects[1]][objects[2]])
+              ? data[objects[0]][objects[1]][objects[2]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]][objects[1]][objects[2]] || {};
+        } else if (j === 4) {
+          data[objects[0]][objects[1]][objects[2]][objects[3]] = (j === objects.length)
+            ? (data[objects[0]][objects[1]][objects[2]][objects[3]])
+              ? data[objects[0]][objects[1]][objects[2]][objects[3]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]][objects[1]][objects[2]][objects[3]] || {};
+        } else if (j === 5) {
+          data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] = (j === objects.length)
+            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]])
+              ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] || {};
+        } else if (j === 6) {
+          data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] = (j === objects.length)
+            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]])
+              ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] + ',' + configs[i].value
+              : configs[i].value
+            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] || {};
+        }
+
+      }
+
+    }
+
+    if (data.content && data.content.content_movies && data.content.content_movies.split(',').length > 100) {
+      self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
+    }
+
+    if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {
+      data.movie.id = data.movie.kp_id;
+    }
+
+    if (data.movie && data.movie.player) {
+      data.movie.player = data.movie.player.replace(/.*src="(.*?)".*/i, '$1');
+      data.movie.player = data.movie.player.replace(/.*youtube.com\/watch\?v=(.*?).*?/i, 'https://www.youtube.com/embed/$1');
+      data.movie.player = data.movie.player.replace(/\s?\n\s?/ig, ',').replace(/,,/ig, ',');
+    }
+
+    if (data.content && data.content.content_description) {
+      data.content.content_description = data.content.content_description.replace(/\n/ig, '<br>');
+    }
+
+    if (data.movie && data.movie.actor) {
+      data.movie.actor = data.movie.actor.replace(/\n/ig, ',').replace(/\s?,\s?/ig, ',').replace(/,,/ig, ',');
+    }
+
+    if (data.movie && data.movie.description) {
+      data.movie.description = data.movie.description.replace(/\n/ig, '<br>');
+    }
+
+    if (data.modules && data.modules.abuse && data.modules.abuse.data.smtp.message) {
+      data.modules.abuse.data.smtp.message = data.modules.abuse.data.smtp.message.replace(/\n/ig, '<br>');
+    }
+
+    if (data.modules && data.modules.blocking && data.modules.blocking.data.sub && data.modules.blocking.data.sub.keys) {
+      data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.custom) {
+      data.modules.player.data.custom = data.modules.player.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.content && data.modules.content.data.custom) {
+      data.modules.content.data.custom = data.modules.content.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.episode && data.modules.episode.data.custom) {
+      data.modules.episode.data.custom = data.modules.episode.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.episode && data.modules.episode.data.index.custom) {
+      data.modules.episode.data.index.custom = data.modules.episode.data.index.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.comment && data.comment.comment_text) {
+      data.comment.comment_text = data.comment.comment_text.replace(/\n/ig, '\[br]');
+    }
+
+    if (data.comment && data.comment.comment_admin) {
+      data.comment.comment_admin = data.comment.comment_admin.replace(/\n/ig, '\[br]').replace(/(https?:\/\/|\/\/).*?\//ig, '/');
+    }
+
+    if (data.config && data.config.redirect && data.config.redirect.from && data.config.redirect.to) {
+      data.config.redirect.from = data.config.redirect.from.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');
+      data.config.redirect.to = data.config.redirect.to.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');
+      if (data.config.redirect.from.split(',').length !== data.config.redirect.to.split(',').length) {
+        delete data.config.redirect.from;
+        delete data.config.redirect.to;
+      }
+    }
+
+    if (data.config && data.config.urls && data.config.urls.admin) {
+      data.config.urls.admin = 'admin-' + data.config.urls.admin;
+    }
+
+    if (data.config && data.config.subdomain) {
+      data.config.subdomain = data.config.subdomain.replace(/\./g, '') + '.';
+      if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.' || data.config.subdomain === 'app.') {
+        alert('NOT «m.», «tv.», «www.», «app.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
+    if (data.config && data.config.botdomain) {
+      data.config.botdomain = data.config.botdomain.replace(/\./g, '') + '.';
+      if (data.config.botdomain === 'www.' || data.config.botdomain === 'tv.' || data.config.botdomain === 'm.') {
+        alert('NOT «m.», «tv.», «www.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
+    if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
+      if (typeof data.config.geolite2.ips === 'object') {
+        data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {
+          return ip.replace(/"/ig, '').replace(/'/ig, '');
+        });
+      } else {
+        data.config.geolite2.ips = data.config.geolite2.ips.replace(/"/ig, '').replace(/'/ig, '');
+      }
+    }
+
+    if (data.config && data.config.default && data.config.default.tags && !data.config.default.tags.list) {
+      data.config.default.tags.list = '';
+    }
+
+    if (data.config && data.config.domain) {
+      delete data.config.domain;
+    }
+
+    sendServer(data, function(err, result) {
+      setTimeout(function() {
+        if (data.config &&
+          data.config.urls &&
+          data.config.urls.admin &&
+          data.config.urls.admin !== '<%- config.urls.admin %>') {
+          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
+        } else if (data.config &&
+          data.config.subdomain &&
+          data.config.subdomain !== '<%- config.subdomain %>') {
+          location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
+        } else if (data.content && !data.content.id) {
+          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';
+        } else if (data.movie && !data.movie.id) {
+          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
+        } else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
+          self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+          self.addEventListener('click', saveData);
+        } else if (
+          (
+            data.modules &&
+            data.modules.mobile &&
+            data.modules.mobile.data &&
+            data.modules.mobile.data.subdomain &&
+            parseInt(data.modules.mobile.data.subdomain) !== parseInt('<%- modules.mobile.data.subdomain %>')
+          ) || (
+            data.modules &&
+            data.modules.tv &&
+            data.modules.tv.data &&
+            data.modules.tv.data.subdomain &&
+            parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
+          )
+        ) {
+          self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+          self.addEventListener('click', saveData);
+        } else if (err) {
           self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
+        } else {
+          self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+          self.addEventListener('click', saveData);
         }
-        else {
-          self.innerHTML ='<span class="fa fa-circle ' + (comment_confirm ? 'text-success' : 'text-muted') + '"></span>';
+      }, 3000);
+    });
+
+  }
+
+  function sendServer(data, long, callback) {
+
+    if (arguments.length === 2) {
+      callback = long;
+      long = false;
+    }
+
+    setTimeout(minTimeout, 1000);
+
+    function minTimeout() {
+
+      var status = '';
+      var result = '';
+      var state = '';
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/<%- config.urls.admin %>/change', true);
+      xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+      xhr.onreadystatechange = function() {
+        status = xhr.status;
+        result = xhr.responseText;
+        state = xhr.readyState;
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          return callback(null, xhr.responseText);
         }
-        self.addEventListener('click', sucData);
-      });
+      };
+      xhr.send(JSON.stringify(data));
+
+      if (!long) {
+        setTimeout(function() {
+          if (state === 4 && status !== 200) {
+            console.log('Site error:', status, result);
+            return callback('<%= __('Ошибка веб-сайта') %>');
+          } else if (state !== 4) {
+            console.log('Server error:', status, result);
+            return callback('<%= __('Ошибка сервера') %>');
+          }
+        }, 25000);
+      }
 
     }
 
-    function delIdList() {
-        var self = this;
-        self.parentNode.removeChild(self);
-        var list = document.querySelector('textarea[name="' + self.dataset.deleteName + '"]');
-        var first = new RegExp('^' + self.dataset.deleteId + ',');
-        var middle = new RegExp(',' + self.dataset.deleteId + ',|^' + self.dataset.deleteId + '$');
-        var last = new RegExp(',' + self.dataset.deleteId + '$');
-        list.value = list.value
-                .replace(middle, ',')
-                .replace(first, '')
-                .replace(last, '')
-                .replace(/\s/g, '')
-                .replace(/,+/g, ',')
-                .replace(/(^,*)|(,*)$/g, '');
+  }
+
+  function alertCP() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://a.cinemapress.io', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var alerts = JSON.parse(xhr.responseText);
+        if (alerts && alerts.length) {
+          alerts.forEach(function(alert) {
+            if (typeof alert.domains === 'undefined' || alert.domains.indexOf('<%- config.domain %>') + 1) {
+              var selector = document.querySelector(alert.selector);
+              if (!selector) return;
+              selector.innerHTML = alert.html;
+            }
+          });
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  function inputData() {
+
+    var i = 0;
+
+    var counts = document.querySelectorAll('.keywords,.titles,.descriptions');
+    if (counts && counts.length) {
+      for (i = 0; i < counts.length; i++) {
+        var n = document.getElementById(counts[i].name);
+        if (n)
+          n.textContent = ((counts[i].value.replace(/(\s+|<.*?>)/g, '')).length).toString();
+        counts[i].oninput = function() {
+          document.getElementById(this.name).textContent = ((this.value.replace(/(\s+|<.*?>)/g, '')).length).toString();
+        };
+      }
     }
 
-    function addIdList() {
-        var self = this;
-        var id = document.querySelector('input[data-add-id="' + self.dataset.addName + '"]');
-        var kp_id = parseInt(id.value);
-        var id_kp = 0;
-
-        if (id.value.indexOf('<%- config.domain %>')+1) {
-
-            var prefix_id = '<%- config.urls.prefix_id %>' || '/';
-            var regexpId  = new RegExp(prefix_id + '([0-9]{1,8})', 'ig');
-            var execId    = regexpId.exec(id.value);
-            id_kp     = (execId) ? parseInt(execId[1]) : 0;
-
-            kp_id = parseInt(id_kp) - parseInt(<%- config.urls.unique_id %>);
-        }
-        else if (id.value.indexOf('kinopoisk.ru')+1) {
-            id_kp = /(film\/|movie\/).*?([0-9]{3,8})\//gi.exec(id.value);
-            kp_id = (id_kp) ? parseInt(id_kp[2]) : 0;
-        }
-
-        if (kp_id) {
-            var addPoster = document.querySelector('ul[data-add-name="' + self.dataset.addName + '"]');
-            var addList = document.querySelector('textarea[name="' + self.dataset.addName + '"]');
-            var ids = addList.value.split(',');
-            ids = (ids.length && ids[0]) ? ids.map(function (id) {return parseInt(id)}) : [];
-            if (!(ids.indexOf(kp_id)+1)) {
-                if (id.dataset.last) {ids.push(kp_id);} else {ids.unshift(kp_id);}
-                addList.value = ids.join(',');
-                addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/<%- config.urls.admin %>/poster?id=' + kp_id + '" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
-                var delId = document.querySelectorAll('li[data-delete-name]');
-                if (delId)
-                    for (var i = 0; i < delId.length; i++)
-                        delId[i].addEventListener('click', delIdList);
-            }
-        }
-
-        id.value = '';
+    var codes = document.querySelectorAll('.codes');
+    if (codes && codes.length) {
+      for (i = 0; i < codes.length; i++) {
+        codes[i].addEventListener('click', function() {
+          var data_name = this.getAttribute('data-name');
+          var data_code = this.getAttribute('data-code');
+          var caret_pos = 0;
+          var textarea = document.getElementsByName(data_name)[0];
+          if (document.selection) {
+            textarea.focus();
+            var sel = document.selection.createRange();
+            sel.moveStart('character', -textarea.value.length);
+            caret_pos = sel.text.length;
+          } else if (textarea.selectionStart || parseInt(textarea.selectionStart) === 0) {
+            caret_pos = textarea.selectionStart;
+          }
+          textarea.value = textarea.value.slice(0, caret_pos) + data_code + textarea.value.slice(caret_pos);
+          textarea.focus();
+        });
+      }
     }
 
-    function saveData() {
+    var input_number = document.querySelectorAll('.input_number');
+    if (input_number && input_number.length) {
+      for (i = 0; i < input_number.length; i++) {
+        input_number[i].oninput = function() {
+          var value = this.value;
+          var rep = /[^0-9\-]/g;
+          if (rep.test(value)) {
+            value = value.replace(rep, '');
+            this.value = value;
+          }
+        };
+      }
+    }
 
-        var configs = document.querySelectorAll('input[name],select[name],textarea[name]');
+    var input_url = document.querySelectorAll('.input_url');
+    if (input_url && input_url.length) {
+      for (i = 0; i < input_url.length; i++) {
+        input_url[i].oninput = function() {
+          var value = this.value;
+          var rep = /[^0-9A-Za-z_.\-]/g;
+          if (rep.test(value)) {
+            value = value.replace(rep, '');
+            this.value = value;
+          }
+        };
+      }
+    }
 
-        if (!configs || !configs.length) return false;
+    var input_ids = document.querySelectorAll('.input_ids');
+    if (input_ids && input_ids.length) {
+      for (i = 0; i < input_ids.length; i++) {
+        input_ids[i].oninput = function() {
+          var value = this.value;
+          var rep = /[^0-9,]/g;
+          if (rep.test(value)) {
+            value = value.replace(rep, '');
+            this.value = value;
+          }
+        };
+      }
+    }
 
-        var self = this;
-        self.removeEventListener('click', saveData);
-        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Сохраняются изменения') %>';
+  }
 
-        var data = {};
+  function uploadFile() {
+    var forms = document.querySelectorAll('[data-form]');
+    if (!forms) return;
+    forms.forEach(function(form) {
+      if (!form) return;
+      var sel_file = '#' + form.dataset.form + 'File';
+      var file = document.querySelector(sel_file);
+      if (form && file) {
+        checkChange(form, file);
+      }
+    });
+  }
 
-        for (var i = 0; i < configs.length; i++) {
-
-            if (configs[i].getAttribute('type')) {
-                if (configs[i].getAttribute('type') === 'checkbox' && !configs[i].checked) {
-                    continue;
-                }
-                else if (configs[i].getAttribute('type') === 'radio' && !configs[i].checked) {
-                    continue;
-                }
-            }
-
-            if (!configs[i].value) {
-                var empty_config = [
-                    'config.subdomain',
-                    'config.botdomain',
-                    'config.homepage',
-                    'config.codes.head',
-                    'config.codes.footer',
-                    'config.default.donotuse',
-                    'config.default.tags.list',
-                    'config.publish.required',
-                    'config.publish.thematic.country',
-                    'config.publish.thematic.genre',
-                    'config.publish.thematic.year',
-                    'config.publish.thematic.type',
-                    'config.publish.thematic.actor',
-                    'config.publish.thematic.director',
-                    'config.publish.thematic.query_id',
-                    'config.publish.thematic.search',
-                    'config.publish.indexing.condition',
-                    'config.index.country.keys',
-                    'config.index.genre.keys',
-                    'config.index.year.keys',
-                    'config.index.type.keys',
-                    'config.index.actor.keys',
-                    'config.index.director.keys',
-                    'config.index.ids.keys',
-                    'config.index.count.key',
-                    'config.urls.prefix_id',
-                    'config.urls.noindex',
-                    'config.urls.movies.online',
-                    'config.urls.movies.download',
-                    'config.urls.movies.trailer',
-                    'config.urls.movies.picture',
-                    'config.geolite2.countries',
-                    'config.geolite2.ips'
-                ];
-                var empty_module = [
-                    'modules.comments.data.cackle.id',
-                    'modules.comments.data.cackle.siteApiKey',
-                    'modules.comments.data.cackle.accountApiKey',
-                    'modules.comments.data.hypercomments.widget_id',
-                    'modules.comments.data.hypercomments.sekretkey',
-                    'modules.comments.data.disqus.shortname',
-                    'modules.comments.data.disqus.api_key',
-                    'modules.comments.data.facebook.admins',
-                    'modules.comments.data.vk.app_id',
-                    'modules.comments.data.sigcomments.host_id',
-                    'modules.comments.data.fast.message',
-                    'modules.comments.data.fast.question',
-                    'modules.comments.data.fast.question_yes',
-                    'modules.comments.data.fast.question_not',
-                    'modules.comments.data.fast.recaptcha_secret',
-                    'modules.comments.data.fast.recaptcha_sitekey',
-                    'modules.comments.data.fast.stopworls',
-                    'modules.slider.data.url',
-                    'modules.abuse.data.imap.user',
-                    'modules.abuse.data.imap.password',
-                    'modules.abuse.data.imap.host',
-                    'modules.abuse.data.imap.from',
-                    'modules.abuse.data.imap.subdomain',
-                    'modules.abuse.data.smtp.auth.user',
-                    'modules.abuse.data.smtp.auth.pass',
-                    'modules.abuse.data.smtp.host',
-                    'modules.abuse.data.smtp.dkim',
-                    'modules.abuse.data.smtp.message',
-                    'modules.abuse.data.movies',
-                    'modules.soon.data.movies',
-                    'modules.social.data.vk',
-                    'modules.social.data.facebook',
-                    'modules.social.data.twitter',
-                    'modules.social.data.telegram',
-                    'modules.social.data.instagram',
-                    'modules.social.data.youtube',
-                    'modules.related.data.display',
-                    'modules.related.data.types.year.name',
-                    'modules.related.data.types.genre.name',
-                    'modules.related.data.types.country.name',
-                    'modules.related.data.types.actor.name',
-                    'modules.related.data.types.director.name',
-                    'modules.player.data.custom',
-                    'modules.content.data.custom',
-                    'modules.episode.data.custom',
-                    'modules.episode.data.index.custom',
-                    'modules.player.data.yohoho.trailer',
-                    'modules.player.data.yohoho.button',
-                    'modules.player.data.iframe.token',
-                    'modules.player.data.kodik.token',
-                    'modules.player.data.youtube.token',
-                    'modules.player.data.videocdn.token',
-                    'modules.player.data.hdvb.token',
-                    'modules.player.data.collaps.token',
-                    'modules.blocking.data.share.message',
-                    'modules.blocking.data.sub.keys',
-                    'modules.blocking.data.sub.message',
-                    'modules.blocking.data.adv.code',
-                    'modules.blocking.data.adv.message',
-                    'modules.blocking.data.adv.skip',
-                    'modules.blocking.data.adblock.message',
-                    'modules.blocking.data.legal.countries',
-                    'modules.blocking.data.legal.message',
-                    'modules.blocking.data.app.message',
-                    'modules.blocking.data.app.download.windows',
-                    'modules.blocking.data.app.download.macos',
-                    'modules.blocking.data.app.download.linux',
-                    'modules.blocking.data.app.safe.windows',
-                    'modules.blocking.data.app.safe.macos',
-                    'modules.blocking.data.app.safe.linux',
-                    'modules.blocking.data.app.information.windows',
-                    'modules.blocking.data.app.information.macos',
-                    'modules.blocking.data.app.information.linux',
-                    'modules.blocking.data.app.countries',
-                    'modules.episode.data.default',
-                    'modules.episode.data.translate',
-                    'modules.episode.data.index.name',
-                    'modules.content.data.news.tags',
-                    'modules.content.data.index.url',
-                    'modules.content.data.movie.tags',
-                    'modules.content.data.scraper',
-                    'modules.rewrite.data.token',
-                    'modules.bots.data.token',
-                    'modules.random.data.category',
-                    'modules.random.data.menu'
-                ];
-                if (
-                    configs[i].name === 'collection.image'
-                ) {
-                    console.log(configs[i].name, 'empty collection.');
-                } else if (
-                    configs[i].name.indexOf('movie.') + 1
-                ) {
-                    console.log(configs[i].name, 'empty movie.');
-                }
-                else if (
-                    empty_config.indexOf(configs[i].name) + 1
-                ) {
-                    console.log(configs[i].name, 'empty config.');
-                }
-                else if (
-                    empty_module.indexOf(configs[i].name) + 1 ||
-                    configs[i].name.indexOf('modules.adv.data.desktop') + 1 ||
-                    configs[i].name.indexOf('modules.adv.data.mobile') + 1 ||
-                    configs[i].name.indexOf('modules.content.data.auto') + 1
-                ) {
-                    console.log(configs[i].name, 'empty modules.');
-                } else {
-                    continue;
-                }
-            }
-
-            var objects = configs[i].name.split('.');
-
-            for (var j = 1; j <= objects.length; j++) {
-
-                if (j === 1) {
-                    data[objects[0]] = (j === objects.length)
-                            ? (data[objects[0]])
-                            ? data[objects[0]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]] || {};
-                }
-                else if (j === 2) {
-                    data[objects[0]][objects[1]] = (j === objects.length)
-                            ? (data[objects[0]][objects[1]])
-                            ? data[objects[0]][objects[1]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]][objects[1]] || {};
-                }
-                else if (j === 3) {
-                    data[objects[0]][objects[1]][objects[2]] = (j === objects.length)
-                            ? (data[objects[0]][objects[1]][objects[2]])
-                            ? data[objects[0]][objects[1]][objects[2]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]][objects[1]][objects[2]] || {};
-                }
-                else if (j === 4) {
-                    data[objects[0]][objects[1]][objects[2]][objects[3]] = (j === objects.length)
-                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]])
-                            ? data[objects[0]][objects[1]][objects[2]][objects[3]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]][objects[1]][objects[2]][objects[3]] || {};
-                }
-                else if (j === 5) {
-                    data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] = (j === objects.length)
-                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]])
-                            ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] || {};
-                }
-                else if (j === 6) {
-                    data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] = (j === objects.length)
-                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]])
-                            ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] + ',' + configs[i].value
-                            : configs[i].value
-                            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] || {};
-                }
-
-            }
-
+  function checkChange(form, file) {
+    file.addEventListener('change', function() {
+      var is = '[data-' + form.dataset.form + '="input"]';
+      var input = document.querySelector(is);
+      var value = (input) ? input.value : '';
+      var ss = '[data-' + form.dataset.form + '="src"]';
+      var src = document.querySelector(ss);
+      var ls = 'label[for="' + file.id + '"]';
+      var label = document.querySelector(ls);
+      if (label) label.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+      var formData = new FormData(form);
+      var req = new XMLHttpRequest();
+      req.open('POST', '/<%- config.urls.admin %>/upload/' + (file.dataset.renamed || ''), true);
+      req.onload = function() {
+        if (req.readyState === 4 && req.status === 200) {
+          var uploadMessage = JSON.parse(req.responseText);
+          if (uploadMessage.error) return console.log(uploadMessage.error);
+          input.value = (value.indexOf('/') + 1 && file.dataset.multi)
+            ? [uploadMessage.file, value].join(',')
+            : uploadMessage.file;
+          if (src) src.setAttribute('src', uploadMessage.file + '?' + (new Date()).getTime());
+          if (label) label.innerHTML = '<span class="fa fa-plus"></span>';
         }
-
-        if (data.content && data.content.content_movies && data.content.content_movies.split(',').length > 100) {
-            self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
-        }
-
-        if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {
-            data.movie.id = data.movie.kp_id;
-        }
-
-        if (data.movie && data.movie.player) {
-            data.movie.player = data.movie.player.replace(/.*src="(.*?)".*/i, '$1');
-            data.movie.player = data.movie.player.replace(/.*youtube.com\/watch\?v=(.*?).*?/i, 'https://www.youtube.com/embed/$1');
-            data.movie.player = data.movie.player.replace(/\s?\n\s?/ig, ',').replace(/,,/ig, ',');
-        }
-
-        if (data.content && data.content.content_description) {
-            data.content.content_description = data.content.content_description.replace(/\n/ig, '<br>');
-        }
-
-        if (data.movie && data.movie.actor) {
-            data.movie.actor = data.movie.actor.replace(/\n/ig, ',').replace(/\s?,\s?/ig, ',').replace(/,,/ig, ',');
-        }
-
-        if (data.movie && data.movie.description) {
-            data.movie.description = data.movie.description.replace(/\n/ig, '<br>');
-        }
-
-        if (data.modules && data.modules.abuse && data.modules.abuse.data.smtp.message) {
-          data.modules.abuse.data.smtp.message = data.modules.abuse.data.smtp.message.replace(/\n/ig, '<br>');
-        }
-
-        if (data.modules && data.modules.blocking && data.modules.blocking.data.sub && data.modules.blocking.data.sub.keys) {
-            data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
-        }
-
-        if (data.modules && data.modules.player && data.modules.player.data.custom) {
-            data.modules.player.data.custom = data.modules.player.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
-        }
-
-        if (data.modules && data.modules.content && data.modules.content.data.custom) {
-            data.modules.content.data.custom = data.modules.content.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
-        }
-
-        if (data.modules && data.modules.episode && data.modules.episode.data.custom) {
-            data.modules.episode.data.custom = data.modules.episode.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
-        }
-
-        if (data.modules && data.modules.episode && data.modules.episode.data.index.custom) {
-            data.modules.episode.data.index.custom = data.modules.episode.data.index.custom.split(/(\n\n|\n)/ig).filter(Boolean);
-        }
-
-        if (data.comment && data.comment.comment_text) {
-            data.comment.comment_text = data.comment.comment_text.replace(/\n/ig, '\[br]');
-        }
-
-        if (data.comment && data.comment.comment_admin) {
-            data.comment.comment_admin = data.comment.comment_admin.replace(/\n/ig, '\[br]').replace(/(https?:\/\/|\/\/).*?\//ig, '/');
-        }
-
-        if (data.config && data.config.redirect && data.config.redirect.from && data.config.redirect.to) {
-            data.config.redirect.from = data.config.redirect.from.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');
-            data.config.redirect.to = data.config.redirect.to.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');
-            if (data.config.redirect.from.split(',').length !== data.config.redirect.to.split(',').length) {
-                delete data.config.redirect.from;
-                delete data.config.redirect.to;
-            }
-        }
-
-        if (data.config && data.config.urls && data.config.urls.admin) {
-            data.config.urls.admin = 'admin-' + data.config.urls.admin;
-        }
-
-        if (data.config && data.config.subdomain) {
-          data.config.subdomain = data.config.subdomain.replace(/\./g, '') + '.';
-          if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.' || data.config.subdomain === 'app.') {
-            alert('NOT «m.», «tv.», «www.», «app.»!');
-            self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-            self.addEventListener('click', saveData);
-            return;
+      };
+      req.upload.onprogress = function(evt) {
+        if (evt.lengthComputable) {
+          var percentComplete = parseInt((evt.loaded / evt.total) * 100);
+          if (input) {
+            input.style.width = percentComplete + '%';
+            input.value = percentComplete + '%';
           }
         }
+      };
+      req.send(formData);
+    });
+  }
 
-        if (data.config && data.config.botdomain) {
-            data.config.botdomain = data.config.botdomain.replace(/\./g, '') + '.';
-            if (data.config.botdomain === 'www.' || data.config.botdomain === 'tv.' || data.config.botdomain === 'm.') {
-              alert('NOT «m.», «tv.», «www.»!');
-              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-              self.addEventListener('click', saveData);
-              return;
-            }
-        }
+  function translit() {
+    var content_title = document.querySelector('input[name="content.content_title"]');
+    if (!content_title) return;
+    content_title.addEventListener('input', t);
 
-        if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
-            if (typeof data.config.geolite2.ips === 'object') {
-                data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {
-                    return ip.replace(/"/ig, '').replace(/'/ig, '');
-                });
-            } else {
-                data.config.geolite2.ips = data.config.geolite2.ips.replace(/"/ig, '').replace(/'/ig, '');
-            }
-        }
-
-        if (data.config && data.config.default && data.config.default.tags && !data.config.default.tags.list) {
-            data.config.default.tags.list = '';
-        }
-
-        if (data.config && data.config.domain) {
-            delete data.config.domain;
-        }
-
-        sendServer(data, function (err, result) {
-          setTimeout(function() {
-            if (data.config &&
-              data.config.urls &&
-              data.config.urls.admin &&
-              data.config.urls.admin !== '<%- config.urls.admin %>') {
-              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
-            }
-            else if (data.config &&
-              data.config.subdomain &&
-              data.config.subdomain !== '<%- config.subdomain %>') {
-              location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
-            }
-            else if (data.content && !data.content.id) {
-              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';
-            }
-            else if (data.movie && !data.movie.id) {
-              location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
-            }
-            else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
-              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-              self.addEventListener('click', saveData);
-            }
-            else if (
-              (
-                data.modules &&
-                data.modules.mobile &&
-                data.modules.mobile.data &&
-                data.modules.mobile.data.subdomain &&
-                parseInt(data.modules.mobile.data.subdomain) !== parseInt('<%- modules.mobile.data.subdomain %>')
-              ) || (
-                data.modules &&
-                data.modules.tv &&
-                data.modules.tv.data &&
-                data.modules.tv.data.subdomain &&
-                parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
-              )
-            ) {
-              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-              self.addEventListener('click', saveData);
-            }
-            else if (err) {
-              self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-            }
-            else {
-              self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-              self.addEventListener('click', saveData);
-            }
-          }, 3000);
-        });
-
+    function t() {
+      var str = content_title.value;
+      var link = slugify(str);
+      link = link
+        .replace(/-+/g, '-')
+        .replace(/(^-*)|(-*)$/g, '');
+      document.querySelector('input[name="content.content_url"]').value = link;
+      document.querySelector('[data-renamed]').dataset.renamed = link;
     }
+  }
 
-    function sendServer(data, long, callback) {
+  (function() {
+    var allForms = document.querySelectorAll('input,textarea');
+    if (!allForms) return;
+    allForms.forEach(function(af) {
+      if (!af) return;
+      af.setAttribute('autocomplete', 'off');
+      af.setAttribute('autocapitalize', 'off');
+      af.setAttribute('spellcheck', 'false');
+    });
+  })();
 
-        if (arguments.length === 2) {
-            callback = long;
-            long = false;
-        }
-
-        setTimeout(minTimeout, 1000);
-
-        function minTimeout() {
-
-            var status = '';
-            var result = '';
-            var state = '';
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/<%- config.urls.admin %>/change', true);
-            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-            xhr.onreadystatechange = function () {
-                status = xhr.status;
-                result = xhr.responseText;
-                state = xhr.readyState;
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    return callback(null, xhr.responseText);
-                }
-            };
-            xhr.send(JSON.stringify(data));
-
-            if (!long) {
-                setTimeout(function () {
-                    if (state === 4 && status !== 200) {
-                        console.log('Site error:', status, result);
-                        return callback('<%= __('Ошибка веб-сайта') %>');
-                    }
-                    else if (state !== 4) {
-                        console.log('Server error:', status, result);
-                        return callback('<%= __('Ошибка сервера') %>');
-                    }
-                }, 25000);
-            }
-
-        }
-
-    }
-
-    function alertCP() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://a.cinemapress.io', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var alerts = JSON.parse(xhr.responseText);
-                if (alerts && alerts.length) {
-                    alerts.forEach(function (alert) {
-                        if (typeof alert.domains === 'undefined' || alert.domains.indexOf('<%- config.domain %>')+1) {
-                            var selector = document.querySelector(alert.selector);
-                            if (!selector) return;
-                            selector.innerHTML = alert.html;
-                        }
-                    });
-                }
-            }
-        };
-        xhr.send();
-    }
-
-    function inputData() {
-
-        var i = 0;
-
-        var counts = document.querySelectorAll('.keywords,.titles,.descriptions');
-        if (counts && counts.length) {
-            for (i = 0; i < counts.length; i++) {
-                var n = document.getElementById(counts[i].name);
-                if (n)
-                    n.textContent = ((counts[i].value.replace(/(\s+|<.*?>)/g, '')).length).toString();
-                counts[i].oninput = function () {
-                    document.getElementById(this.name).textContent = ((this.value.replace(/(\s+|<.*?>)/g, '')).length).toString();
-                };
-            }
-        }
-
-        var codes = document.querySelectorAll('.codes');
-        if (codes && codes.length) {
-            for (i = 0; i < codes.length; i++) {
-                codes[i].addEventListener('click', function () {
-                    var data_name = this.getAttribute('data-name');
-                    var data_code = this.getAttribute('data-code');
-                    var caret_pos = 0;
-                    var textarea = document.getElementsByName(data_name)[0];
-                    if (document.selection) {
-                        textarea.focus();
-                        var sel = document.selection.createRange();
-                        sel.moveStart ('character', -textarea.value.length);
-                        caret_pos = sel.text.length;
-                    } else if (textarea.selectionStart || parseInt(textarea.selectionStart) === 0) {
-                        caret_pos = textarea.selectionStart;
-                    }
-                    textarea.value = textarea.value.slice(0,caret_pos) + data_code + textarea.value.slice(caret_pos);
-                    textarea.focus();
-                });
-            }
-        }
-
-        var input_number = document.querySelectorAll('.input_number');
-        if (input_number && input_number.length) {
-            for (i = 0; i < input_number.length; i++) {
-                input_number[i].oninput = function () {
-                    var value = this.value;
-                    var rep = /[^0-9\-]/g;
-                    if (rep.test(value)) {
-                        value = value.replace(rep, '');
-                        this.value = value;
-                    }
-                };
-            }
-        }
-
-        var input_url = document.querySelectorAll('.input_url');
-        if (input_url && input_url.length) {
-            for (i = 0; i < input_url.length; i++) {
-                input_url[i].oninput = function () {
-                    var value = this.value;
-                    var rep = /[^0-9A-Za-z_.\-]/g;
-                    if (rep.test(value)) {
-                        value = value.replace(rep, '');
-                        this.value = value;
-                    }
-                };
-            }
-        }
-
-        var input_ids = document.querySelectorAll('.input_ids');
-        if (input_ids && input_ids.length) {
-            for (i = 0; i < input_ids.length; i++) {
-                input_ids[i].oninput = function () {
-                    var value = this.value;
-                    var rep = /[^0-9,]/g;
-                    if (rep.test(value)) {
-                        value = value.replace(rep, '');
-                        this.value = value;
-                    }
-                };
-            }
-        }
-
-    }
-
-    function uploadFile() {
-        var forms = document.querySelectorAll('[data-form]');
-        if (!forms) return;
-        forms.forEach(function (form) {
-            if (!form) return;
-            var sel_file = '#' + form.dataset.form + 'File';
-            var file = document.querySelector(sel_file);
-            if (form && file) {
-                checkChange(form, file);
-            }
-        })
-    }
-
-    function checkChange(form, file) {
-        file.addEventListener('change', function () {
-            var is = '[data-' + form.dataset.form + '="input"]';
-            var input = document.querySelector(is);
-            var value = (input) ? input.value : '';
-            var ss = '[data-' + form.dataset.form + '="src"]';
-            var src = document.querySelector(ss);
-            var ls = 'label[for="' + file.id + '"]';
-            var label = document.querySelector(ls);
-            if (label) label.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
-            var formData = new FormData(form);
-            var req = new XMLHttpRequest();
-            req.open('POST', '/<%- config.urls.admin %>/upload/' + (file.dataset.renamed || ''), true);
-            req.onload = function () {
-                if (req.readyState === 4 && req.status === 200) {
-                    var uploadMessage = JSON.parse(req.responseText);
-                    if (uploadMessage.error) return console.log(uploadMessage.error);
-                    input.value = (value.indexOf('/')+1 && file.dataset.multi)
-                        ? [uploadMessage.file, value].join(',')
-                        : uploadMessage.file;
-                    if (src) src.setAttribute('src', uploadMessage.file + '?' + (new Date()).getTime());
-                    if (label) label.innerHTML = '<span class="fa fa-plus"></span>';
-                }
-            }
-            req.upload.onprogress = function(evt) {
-                if (evt.lengthComputable) {
-                    var percentComplete = parseInt((evt.loaded / evt.total) * 100);
-                    if (input) {
-                        input.style.width = percentComplete + '%';
-                        input.value = percentComplete + '%';
-                    }
-                }
-            }
-            req.send(formData);
-        });
-    }
-
-    function translit() {
-        var content_title = document.querySelector('input[name="content.content_title"]');
-        if (!content_title) return;
-        content_title.addEventListener('input', t);
-        function t() {
-            var str = content_title.value;
-            var link = slugify(str);
-            link = link
-                .replace(/-+/g, '-')
-                .replace(/(^-*)|(-*)$/g, '');
-            document.querySelector('input[name="content.content_url"]').value = link;
-            document.querySelector('[data-renamed]').dataset.renamed = link;
-        }
-    }
-
-    (function() {
-      var allForms = document.querySelectorAll('input,textarea');
-      if (!allForms) return;
-      allForms.forEach(function (af) {
-        if (!af) return;
-        af.setAttribute('autocomplete', 'off');
-        af.setAttribute('autocapitalize', 'off');
-        af.setAttribute('spellcheck', 'false');
-      })
-    })();
-
-    function changeApi(custom_name) {
-      document.querySelectorAll('[data-delete-api="' + custom_name + '"]').forEach(function(dp) {
-        dp.addEventListener('click', function() {
-          var custom = document.querySelector('[name="' + custom_name + '"]');
-          custom.value = decodeURIComponent(encodeURIComponent(custom.value)
-            .replace('%23%20' + this.dataset.parser.replace(/^%23(%20)*/, ''), '')
-            .replace(this.dataset.parser.replace(/^%23(%20)*/, ''), ''))
-            .replace(/\n\n+/g, '\n\n')
-            .replace(/(^\s*)|(\s*)$/g, '');
-          this.parentElement.parentElement.parentElement.innerHTML = '';
-        });
+  function changeApi(custom_name) {
+    document.querySelectorAll('[data-delete-api="' + custom_name + '"]').forEach(function(dp) {
+      dp.addEventListener('click', function() {
+        var custom = document.querySelector('[name="' + custom_name + '"]');
+        custom.value = decodeURIComponent(encodeURIComponent(custom.value)
+          .replace('%23%20' + this.dataset.parser.replace(/^%23(%20)*/, ''), '')
+          .replace(this.dataset.parser.replace(/^%23(%20)*/, ''), ''))
+          .replace(/\n\n+/g, '\n\n')
+          .replace(/(^\s*)|(\s*)$/g, '');
+        this.parentElement.parentElement.parentElement.innerHTML = '';
       });
-      document.querySelectorAll('[data-activate-api="' + custom_name + '"]').forEach(function(ap) {
-        ap.addEventListener('click', function() {
-          var active = this.dataset.parser.substring(0, 3) !== '%23';
-          var custom = document.querySelector('[name="' + custom_name + '"]');
-          custom.value = decodeURIComponent(encodeURIComponent(custom.value)
-            .replace(this.dataset.parser, active
-              ? '%23%20' + this.dataset.parser
-              : this.dataset.parser.replace(/^%23(%20)*/, '')
-            )
-          )
-            .replace(/\n\n+/g, '\n\n')
-            .replace(/(^\s*)|(\s*)$/g, '');
-          this.dataset.parser = active
+    });
+    document.querySelectorAll('[data-activate-api="' + custom_name + '"]').forEach(function(ap) {
+      ap.addEventListener('click', function() {
+        var active = this.dataset.parser.substring(0, 3) !== '%23';
+        var custom = document.querySelector('[name="' + custom_name + '"]');
+        custom.value = decodeURIComponent(encodeURIComponent(custom.value)
+          .replace(this.dataset.parser, active
             ? '%23%20' + this.dataset.parser
-            : this.dataset.parser.replace(/^%23(%20)*/, '');
-          this.parentElement.parentElement.parentElement
-            .setAttribute('class', active ? 'no-active' : '');
-          this.setAttribute('class', this.getAttribute('class')
-            .replace(active
-              ? 'text-success'
-              : 'text-muted',
-              active
-                ? 'text-muted'
-                : 'text-success'
-            )
-          );
-        });
+            : this.dataset.parser.replace(/^%23(%20)*/, '')
+          )
+        )
+          .replace(/\n\n+/g, '\n\n')
+          .replace(/(^\s*)|(\s*)$/g, '');
+        this.dataset.parser = active
+          ? '%23%20' + this.dataset.parser
+          : this.dataset.parser.replace(/^%23(%20)*/, '');
+        this.parentElement.parentElement.parentElement
+          .setAttribute('class', active ? 'no-active' : '');
+        this.setAttribute('class', this.getAttribute('class')
+          .replace(active
+            ? 'text-success'
+            : 'text-muted',
+            active
+              ? 'text-muted'
+              : 'text-success'
+          )
+        );
       });
-    }
+    });
+  }
 
-    ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom'].forEach(function(ca) {
-      if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
-        changeApi(ca);
-      }
-    })
+  ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom'].forEach(function(ca) {
+    if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
+      changeApi(ca);
+    }
+  });
 </script>
 
 <script src="/themes/default/public/admin/js/particles.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function getCookie(name) {
-            var matches = document.cookie.match(new RegExp(
-                '(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + '=([^;]*)'
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
+  document.addEventListener('DOMContentLoaded', function() {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        '(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + '=([^;]*)'
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    function setCookie(name, value, options) {
+      options = options || {};
+      var expires = options.expires;
+      if (typeof expires === 'number' && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires * 1000);
+        expires = options.expires = d;
+      }
+      if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+      }
+      value = encodeURIComponent(value);
+      var updatedCookie = name + '=' + value;
+      for (var propName in options) {
+        updatedCookie += '; ' + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+          updatedCookie += '=' + propValue;
         }
-        function setCookie(name, value, options) {
-            options = options || {};
-            var expires = options.expires;
-            if (typeof expires === 'number' && expires) {
-                var d = new Date();
-                d.setTime(d.getTime() + expires * 1000);
-                expires = options.expires = d;
-            }
-            if (expires && expires.toUTCString) {
-                options.expires = expires.toUTCString();
-            }
-            value = encodeURIComponent(value);
-            var updatedCookie = name + "=" + value;
-            for (var propName in options) {
-                updatedCookie += "; " + propName;
-                var propValue = options[propName];
-                if (propValue !== true) {
-                    updatedCookie += "=" + propValue;
-                }
-            }
-            document.cookie = updatedCookie;
+      }
+      document.cookie = updatedCookie;
+    }
+
+    function deleteCookie(name) {
+      setCookie(name, '', { expires: -1 });
+    }
+
+    (function strangerThings() {
+      var st = document.querySelector('#stranger-things');
+      if (!st) return;
+      if (!getCookie('stranger')) {
+        strangerThingsOn();
+        st.style.display = 'inline-block';
+        st.innerHTML = '<i class="fas fa-circle"></i>';
+      } else {
+        st.style.display = 'inline-block';
+        st.innerHTML = '<i class="far fa-circle"></i>';
+      }
+      st.addEventListener('click', function() {
+        if (st.innerHTML === '<i class="fas fa-circle"></i>') {
+          strangerThingsOff();
+          st.innerHTML = '<i class="far fa-circle"></i>';
+          setCookie('stranger', 'off', { expires: 3600 * 24 * 265 });
+        } else {
+          strangerThingsOn();
+          st.innerHTML = '<i class="fas fa-circle"></i>';
+          deleteCookie('stranger');
         }
-        function deleteCookie(name) {
-            setCookie(name, '', {expires: -1})
-        }
-        (function strangerThings() {
-            var st = document.querySelector('#stranger-things');
-            if (!st) return;
-            if (!getCookie('stranger')) {
-                strangerThingsOn();
-                st.style.display = 'inline-block';
-                st.innerHTML = '<i class="fas fa-circle"></i>';
-            }
-            else {
-                st.style.display = 'inline-block';
-                st.innerHTML = '<i class="far fa-circle"></i>';
-            }
-            st.addEventListener('click', function () {
-                if (st.innerHTML === '<i class="fas fa-circle"></i>') {
-                    strangerThingsOff();
-                    st.innerHTML = '<i class="far fa-circle"></i>';
-                    setCookie('stranger', 'off', {expires: 3600*24*265});
-                }
-                else {
-                    strangerThingsOn();
-                    st.innerHTML = '<i class="fas fa-circle"></i>';
-                    deleteCookie('stranger');
-                }
-            });
-        })();
-        function strangerThingsOn() {
-            var particles = document.querySelector('#particles-top');
-            if (particles) particlesJS("particles-top", {"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"bubble"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"enable":false,"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
-        }
-        function strangerThingsOff() {
-            var particles = document.querySelector('#particles-top');
-            if (particles) particles.innerHTML = '';
-        }
-    });
+      });
+    })();
+
+    function strangerThingsOn() {
+      var particles = document.querySelector('#particles-top');
+      if (particles) particlesJS('particles-top', {
+        'particles': {
+          'number': { 'value': 60, 'density': { 'enable': true, 'value_area': 800 } },
+          'color': { 'value': '#ffffff' },
+          'shape': {
+            'type': 'circle',
+            'stroke': { 'width': 0, 'color': '#000000' },
+            'polygon': { 'nb_sides': 5 },
+            'image': { 'src': 'img/github.svg', 'width': 100, 'height': 100 }
+          },
+          'opacity': {
+            'value': 1,
+            'random': true,
+            'anim': { 'enable': true, 'speed': 1, 'opacity_min': 0, 'sync': false }
+          },
+          'size': {
+            'value': 3,
+            'random': true,
+            'anim': { 'enable': false, 'speed': 4, 'size_min': 0.3, 'sync': false }
+          },
+          'line_linked': { 'enable': false, 'distance': 150, 'color': '#ffffff', 'opacity': 0.4, 'width': 1 },
+          'move': {
+            'enable': true,
+            'speed': 1,
+            'direction': 'none',
+            'random': true,
+            'straight': false,
+            'out_mode': 'out',
+            'bounce': false,
+            'attract': { 'enable': false, 'rotateX': 600, 'rotateY': 600 }
+          }
+        },
+        'interactivity': {
+          'detect_on': 'canvas',
+          'events': {
+            'onhover': { 'enable': false, 'mode': 'bubble' },
+            'onclick': { 'enable': false, 'mode': 'repulse' },
+            'resize': true
+          },
+          'modes': {
+            'grab': { 'distance': 400, 'line_linked': { 'enable': false, 'opacity': 1 } },
+            'bubble': { 'distance': 250, 'size': 0, 'duration': 2, 'opacity': 0, 'speed': 3 },
+            'repulse': { 'distance': 400, 'duration': 0.4 },
+            'push': { 'particles_nb': 4 },
+            'remove': { 'particles_nb': 2 }
+          }
+        },
+        'retina_detect': true
+      });
+    }
+
+    function strangerThingsOff() {
+      var particles = document.querySelector('#particles-top');
+      if (particles) particles.innerHTML = '';
+    }
+  });
 </script>

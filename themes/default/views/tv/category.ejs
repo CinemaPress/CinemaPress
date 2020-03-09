@@ -5,9 +5,9 @@
     <%- include('includes/head.ejs'); -%>
 
     <script>
-        window.onload = function() {
-            TVwww(JSON.parse('<% if (typeof payload !== 'undefined') { %><%- JSON.stringify(payload).replace(/'/g, '`').replace(/<(?:.|\n)*?>/gm, '') %><% } else { %>{}<% } %>'));
-        };
+      window.onload = function() {
+        TVwww(JSON.parse('<% if (typeof payload !== 'undefined') { %><%- JSON.stringify(payload).replace(/'/g, '`').replace(/<(?:.|\n)*?>/gm, '') %><% } else { %>{}<% } %>'));
+      };
     </script>
 </head>
 <body>

@@ -16,13 +16,18 @@
     <div class="sidebar-module">
         <div class="btn-group-justified">
             <div class="dropdown dropdown-lang change-lang">
-                <a class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown" href="javascript:void(0)">
+                <a class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown"
+                   href="javascript:void(0)">
                     <img src="/themes/default/public/admin/images/locales/<%- language %>.svg" alt="<%= language %>">
                     <i class="fa fa-caret-down caret-lang"></i>
                 </a>
                 <ul role="menu" class="dropdown-menu ext-flags ul-lang">
                     <% for (var i = 0; i < languages.length; i++) { if (languages[i] === language) continue; %>
-                    <li onclick="window.location.href='<%- url + '?language=' + languages[i] %>'"><a href="<%- url + '?language=' + languages[i] %>" style="font-size:12px;border-radius: 3px;"><span><%- languages[i].toUpperCase() %></span> <img src="/themes/default/public/admin/images/locales/<%- languages[i] %>.svg" alt="<%= languages[i] %>"></a></li>
+                    <li onclick="window.location.href='<%- url + '?language=' + languages[i] %>'"><a
+                                href="<%- url + '?language=' + languages[i] %>"
+                                style="font-size:12px;border-radius: 3px;"><span><%- languages[i].toUpperCase() %></span>
+                            <img src="/themes/default/public/admin/images/locales/<%- languages[i] %>.svg"
+                                 alt="<%= languages[i] %>"></a></li>
                     <% } %>
                 </ul>
             </div>
@@ -31,7 +36,7 @@
 
     <div class="sidebar-line"></div>
 
-    <% var navigation = ['index','main','publish','homepage','urls','display','movies','titles','h1','descriptions','codes'].indexOf(type)+1; %>
+    <% var navigation = ['index', 'main', 'publish', 'homepage', 'urls', 'display', 'movies', 'titles', 'h1', 'descriptions', 'codes'].indexOf(type) + 1; %>
 
     <ul class="ext-tabs-sidebar">
         <li class="<% if (navigation) { %>active<% } %>">
@@ -46,37 +51,58 @@
             <div class="sidebar-module">
                 <nav class="sidebar-nav-v2">
                     <ul>
-                        <li<% if (type === 'index') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'index') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/index">
                                 <i class="<%- icons['index'] %> pull-right"></i> <%= __('Панель администратора') %>
                             </a>
                         </li>
-                        <li<% if (type === 'main') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'main') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/main">
                                 <i class="<%- icons['main'] %> pull-right"></i> <%= __('Настройки веб-сайта') %>
                             </a>
                         </li>
-                        <li<% if (type === 'publish') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'publish') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/publish">
                                 <i class="<%- icons['publish'] %> pull-right"></i> <%= __('Настройки публикации') %>
                             </a>
                         </li>
-                        <li<% if (type === 'homepage') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'homepage') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/homepage">
                                 <i class="<%- icons['homepage'] %> pull-right"></i> <%= __('Настройки главной страницы') %>
                             </a>
                         </li>
-                        <li<% if (type === 'display') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'display') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/display">
                                 <i class="<%- icons['display'] %> pull-right"></i> <%= __('Настройки отображения') %>
                             </a>
                         </li>
-                        <li<% if (type === 'urls') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'urls') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/urls">
                                 <i class="<%- icons['urls'] %> pull-right"></i> <%= __('Настройки URL') %>
                             </a>
                         </li>
-                        <li<% if (type === 'codes') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'codes') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/codes">
                                 <i class="<%- icons['codes'] %> pull-right"></i> <%= __('Вставить свой код') %>
                             </a>
@@ -84,22 +110,34 @@
                         <li class="seperator">
                             <span><%= __('SEO тексты') %></span>
                         </li>
-                        <li<% if (type === 'movies') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'movies') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/movies">
                                 <i class="<%- icons['movies'] %> pull-right"></i> <%= __('Добавить фильм') %>
                             </a>
                         </li>
-                        <li<% if (type === 'titles') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'titles') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/titles">
                                 <i class="<%- icons['titles'] %> pull-right"></i> <%= __('Названия веб-страниц') %>
                             </a>
                         </li>
-                        <li<% if (type === 'h1') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'h1') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/h1">
                                 <i class="<%- icons['h1'] %> pull-right"></i> <%= __('H1 на веб-страницах') %>
                             </a>
                         </li>
-                        <li<% if (type === 'descriptions') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'descriptions') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/descriptions">
                                 <i class="<%- icons['descriptions'] %> pull-right"></i> <%= __('Описания веб-страниц') %>
                             </a>
@@ -113,130 +151,193 @@
             <div class="sidebar-module">
                 <nav class="sidebar-nav-v2">
                     <ul>
-                        <li<% if (type === 'soon') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'soon') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/soon">
                                 <i class="<%- icons['soon'] %>"></i> <%= __('Скоро выйдет') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.soon.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.soon.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'comments') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'comments') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/comments">
                                 <i class="<%- icons['comments'] %>"></i> <%= __('Виджет комментариев') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.comments.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.comments.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'related') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'related') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/related">
                                 <i class="<%- icons['related'] %>"></i> <%= __('Связанные фильмы') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.related.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.related.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'content') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'content') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/content">
                                 <i class="<%- icons['content'] %>"></i> <%= __('Контент веб-сайта') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.content.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.content.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'slider') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'slider') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/slider">
                                 <i class="<%- icons['slider'] %>"></i> <%= __('Фильмы в слайдере') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.slider.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.slider.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'abuse') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'abuse') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/abuse">
                                 <i class="<%- icons['abuse'] %>"></i> <%= __('Запрещенные фильмы') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.abuse.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.abuse.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'top') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'top') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/top">
                                 <i class="<%- icons['top'] %>"></i> <%= __('Топ в категории') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.top.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.top.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'social') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'social') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/social">
                                 <i class="<%- icons['social'] %>"></i> <%= __('Социальные сети') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.social.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.social.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'schema') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'schema') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/schema">
                                 <i class="<%- icons['schema'] %>"></i> <%= __('Семантическая разметка') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.schema.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.schema.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'continue') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'continue') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/continue">
                                 <i class="<%- icons['continue'] %>"></i> <%= __('Продолжить просмотр') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.continue.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.continue.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'viewed') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'viewed') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/viewed">
                                 <i class="<%- icons['viewed'] %>"></i> <%= __('Просмотренные фильмы') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.viewed.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.viewed.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'player') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'player') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/player">
                                 <i class="<%- icons['player'] %>"></i> <%= __('Плеер фильмов') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.player.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.player.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'blocking') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'blocking') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/blocking">
                                 <i class="<%- icons['blocking'] %>"></i> <%= __('Блокировка просмотра') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.blocking.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.blocking.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'mobile') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'mobile') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/mobile">
                                 <i class="<%- icons['mobile'] %>"></i> <%= __('Мобильная версия') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.mobile.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.mobile.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'episode') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'episode') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/episode">
                                 <i class="<%- icons['episode'] %>"></i> <%= __('Серии сериалов') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.episode.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.episode.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'adv') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'adv') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/adv">
                                 <i class="<%- icons['adv'] %>"></i> <%= __('Ваша реклама') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.adv.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.adv.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'rss') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'rss') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/rss">
                                 <i class="<%- icons['rss'] %>"></i> <%= __('RSS канал') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.rss.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.rss.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'tv') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'tv') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/tv">
                                 <i class="<%- icons['tv'] %>"></i> <%= __('ТВ версия') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.tv.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.tv.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'random') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'random') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/random">
                                 <i class="<%- icons['random'] %>"></i> <%= __('Случайный фильм') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.random.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.random.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'rewrite') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'rewrite') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/rewrite">
                                 <i class="far fa-hand-rock"></i> <%= __('Рерайт описаний') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.rewrite.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.rewrite.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
-                        <li<% if (type === 'app') { %> class="page-arrow active-page"<% } %>>
+                        <li
+                        <% if (type === 'app') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
                             <a href="/<%- config.urls.admin %>/app">
                                 <i class="fas fa-desktop"></i> <%= __('Web-приложение') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.app.status) { %>text-success<%  } else { %>text-danger<% } %>"></i>
+                                <i class="fa fa-power-off pull-right <% if (modules.app.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
                     </ul>

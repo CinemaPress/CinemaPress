@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -36,19 +42,23 @@
                         <a href="/<%- config.urls.admin %>/content" class="btn hidden-xs">
                             <%= __('Модуль создания страниц для веб-сайта') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html" class="btn" title="<%= __('Информация о параметрах модуля создания страниц для веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля создания страниц для веб-сайта') %>"
+                           target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.content.status) { %>
-                        <a href="javascript:void(0)" data-module="content" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="content" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="content" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="content" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -60,218 +70,83 @@
 
                     <% if (modules.content.status) { %>
 
-                    <% if (content) { %>
+                        <% if (content) { %>
 
-                    <input name="content.id" value="<% if (content.id) { %><%- content.id %><% } %>" type="hidden">
+                            <input name="content.id" value="<% if (content.id) { %><%- content.id %><% } %>"
+                                   type="hidden">
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="advanced-textarea">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="advanced-textarea">
 
-                                <div class="text-muted">
-                                    <%= __('Название страницы:') %>
-                                </div>
-
-                                <div class="spacer-10"></div>
-
-                                <input type="text" class="form-control" name="content.content_title" value="<% if (content.content_title) { %><%= content.content_title %><% } %>" placeholder="<%= __('Например:') %> <%= __('Комедийные сериалы') %>">
-
-                                <div class="text-muted">
-                                    <%= __('Описание страницы:') %>
-                                </div>
-
-                                <div class="spacer-10"></div>
-
-                                <textarea class="form-control descriptions" name="content.content_description" placeholder="<%= __('Например:') %> <%= __('Подборка комедийных сериалов') %>"><% if (content.content_description) { %><%- content.content_description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
-
-                                <div class="advanced-textarea-footer">
-                                    <div class="pull-left">
-                                        <div class="text text-muted"><span id="content.content_description">0</span> <%= __('символа(ов)') %>
+                                        <div class="text-muted">
+                                            <%= __('Название страницы:') %>
                                         </div>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="javascript:void(0)" data-name="content.content_description" data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-default codes">
-                                            <i class="fa fa-images"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="spacer-10"></div>
+                                        <div class="spacer-10"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Уникальный ключ для URL') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#add" class="csstip" title="<%= __('Уникальный ключ для URl страницы') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %>/</span><span class="visible-xs">/<%- modules.content.data.url %>/</span></span>
-                                                <input class="form-control input_url" name="content.content_url" value="<% if (content.content_url) { %><%- content.content_url %><% } %>" placeholder="<%= __('Уникальный ключ для URL') %>" type="text">
+                                        <input type="text" class="form-control" name="content.content_title"
+                                               value="<% if (content.content_title) { %><%= content.content_title %><% } %>"
+                                               placeholder="<%= __('Например:') %> <%= __('Комедийные сериалы') %>">
+
+                                        <div class="text-muted">
+                                            <%= __('Описание страницы:') %>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <textarea class="form-control descriptions" name="content.content_description"
+                                                  placeholder="<%= __('Например:') %> <%= __('Подборка комедийных сериалов') %>">
+                                            <% if (content.content_description) { %><%- content.content_description.trim().replace(/<br>/ig, '\n') %>
+                                            <% } %>
+                                        </textarea>
+
+                                        <div class="advanced-textarea-footer">
+                                            <div class="pull-left">
+                                                <div class="text text-muted"><span
+                                                            id="content.content_description">0</span> <%= __('символа(ов)') %>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="javascript:void(0)" data-name="content.content_description"
+                                                   data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;"
+                                                   class="btn btn-default codes">
+                                                    <i class="fa fa-images"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-image"></i>&nbsp;&nbsp;&nbsp;<%= __('Ссылка на изображение страницы') %>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-10 text-center">
-                                            <input type="text" class="form-control" name="content.content_image" data-content="input" value="<%= content.content_image %>" placeholder="<%= __('URL изображения') %>" style="font-weight: normal; font-size: 14px;">
-                                        </div>
-                                        <div class="col-sm-2 text-center">
-                                            <label class="btn btn-default btn-block" for="contentFile">
-                                                <span class="fa fa-plus"></span>
-                                            </label>
-                                        </div>
-                                        <form id="contentForm" enctype="multipart/form-data" data-form="content">
-                                            <input type="file" name="content_image" id="contentFile" data-renamed="">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fas fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Теги через запятую') %>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input type="text" name="content.content_tags" <% if (content.content_tags) { %>value="<%= content.content_tags %>"<% } %> placeholder="<%= __('Например:') %> <%= __('Коллекции, Новости') %>" pattern="^[A-Za-zА-Яа-яЁё0-9_ -]{1,30}$">
-                                            <script>
-                                                document.addEventListener('DOMContentLoaded', function() {
-                                                    var content_tags = document
-                                                            .querySelector('input[name="content.content_tags"]'),
-                                                        tagify = new Tagify(content_tags, {
-                                                            whitelist : ["<%- __('Коллекции') %>","<%- __('Новости') %>","<%- __('Страницы') %>","<%-__('Обновления') %>","<%- __('Фильмы') %>","<%- __('Сериалы') %>","<%- __('Мультфильмы') %>","<%- __('ТВ') %>","<%- __('Аниме') %>", "NoComment", "NoRandom"],
-                                                        });
-                                                    tagify.DOM.input.classList.add('form-control');
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="<%= __('ID или ссылка на фильм') %>" data-add-id="content.content_movies">
-                                <span class="input-group-btn">
-                                    <a href="javascript:void(0)" class="btn btn-default" data-add-name="content.content_movies">
-                                        <span class="fa fa-plus"></span> <%= __('Добавить фильм') %>
-                                    </a>
-                                </span>
                             </div>
 
                             <div class="spacer-10"></div>
 
-                            <div class="advanced-textarea">
-
-                                <div class="thumbs-list thumbs-small">
-                                    <ul data-add-name="content.content_movies">
-                                        <% if (content.content_movies) { %>
-                                        <% content.content_movies.split(',').forEach(function (id) { %>
-                                        <li data-delete-id="<%- id %>" data-delete-name="content.content_movies">
-                                            <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
-                                        </li>
-                                        <% }); %>
-                                        <% } %>
-                                    </ul>
-                                </div>
-
-                                <div style="display: none" id="content_ids">
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="text-muted">
-                                        <%= __('Фильмы:') %>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <textarea class="form-control input_ids" name="content.content_movies" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (content.content_movies) { %><%- content.content_movies %><% } %></textarea>
-
-                                    <div class="spacer-10"></div>
-
-                                </div>
-
-                                <div class="advanced-textarea-footer">
-                                    <div class="pull-right">
-                                        <a href="javascript:void(0)" onclick="document.querySelector('#content_ids').style.display = 'block'" class="btn btn-default">
-                                            <%= __('Редактировать список ID') %>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <% } else { %>
-
-                    <div class="faq">
-                        <article class="faq-group">
-                            <header>
-                                <i class="fa fa-minus"></i>
-                                <h3><%= __('Настройка страницы со списком новостей') %></h3>
-                            </header>
-                            <div class="faq-content clearfix">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL путь') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#settings" class="csstip" title="<%= __('Параметр пути в URL') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="cinema-box">
+                                        <div class="cinema-box-header">
+                                            <div class="cinema-label">
+                                                <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Уникальный ключ для URL') %>
                                             </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-xs-12 text-center">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span class="visible-xs">/</span></span>
-                                                            <input class="form-control input_url" name="modules.content.data.url" value="<%= modules.content.data.url %>" type="text">
-                                                            <span class="input-group-addon text-muted"><span class="hidden-xs">/avatar-5-will-be-released-in-2027</span><span class="visible-xs">/avatar-5</span></span>
-                                                        </div>
+                                            <div class="cinema-label hidden-xs" style="float: right">
+                                                <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#add"
+                                                   class="csstip" title="<%= __('Уникальный ключ для URl страницы') %>"
+                                                   target="_blank">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="inner-padding">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-xs-12 text-center">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon text-muted"><span
+                                                                    class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %>/</span><span
+                                                                    class="visible-xs">/<%- modules.content.data.url %>/</span></span>
+                                                        <input class="form-control input_url" name="content.content_url"
+                                                               value="<% if (content.content_url) { %><%- content.content_url %><% } %>"
+                                                               placeholder="<%= __('Уникальный ключ для URL') %>"
+                                                               type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -281,513 +156,803 @@
 
                                 <div class="spacer-10"></div>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="advanced-textarea">
+                                <div class="col-sm-12">
+                                    <div class="cinema-box">
+                                        <div class="cinema-box-header">
+                                            <div class="cinema-label">
+                                                <i class="fa fa-image"></i>&nbsp;&nbsp;&nbsp;<%= __('Ссылка на изображение страницы') %>
+                                            </div>
+                                        </div>
+                                        <div class="inner-padding">
+                                            <div class="row">
+                                                <div class="col-sm-10 text-center">
+                                                    <input type="text" class="form-control" name="content.content_image"
+                                                           data-content="input" value="<%= content.content_image %>"
+                                                           placeholder="<%= __('URL изображения') %>"
+                                                           style="font-weight: normal; font-size: 14px;">
+                                                </div>
+                                                <div class="col-sm-2 text-center">
+                                                    <label class="btn btn-default btn-block" for="contentFile">
+                                                        <span class="fa fa-plus"></span>
+                                                    </label>
+                                                </div>
+                                                <form id="contentForm" enctype="multipart/form-data"
+                                                      data-form="content">
+                                                    <input type="file" name="content_image" id="contentFile"
+                                                           data-renamed="">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="col-sm-12">
+                                    <div class="cinema-box">
+                                        <div class="cinema-box-header">
+                                            <div class="cinema-label">
+                                                <i class="fas fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Теги через запятую') %>
+                                            </div>
+                                        </div>
+                                        <div class="inner-padding">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-xs-12 text-center">
+                                                    <input type="text" name="content.content_tags"
+                                                           <% if (content.content_tags) { %>value="<%= content.content_tags %>"
+                                                            <% } %>
+                                                           placeholder="<%= __('Например:') %> <%= __('Коллекции, Новости') %>"
+                                                           pattern="^[A-Za-zА-Яа-яЁё0-9_ -]{1,30}$">
+                                                    <script>
+                                                      document.addEventListener('DOMContentLoaded', function() {
+                                                        var content_tags = document
+                                                            .querySelector('input[name="content.content_tags"]'),
+                                                          tagify = new Tagify(content_tags, {
+                                                            whitelist: ["<%- __('Коллекции') %>", "<%- __('Новости') %>", "<%- __('Страницы') %>", "<%- __('Обновления') %>", "<%- __('Фильмы') %>", "<%- __('Сериалы') %>", "<%- __('Мультфильмы') %>", "<%- __('ТВ') %>", "<%- __('Аниме') %>", 'NoComment', 'NoRandom']
+                                                          });
+                                                        tagify.DOM.input.classList.add('form-control');
+                                                      });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                               placeholder="<%= __('ID или ссылка на фильм') %>"
+                                               data-add-id="content.content_movies">
+                                        <span class="input-group-btn">
+                                    <a href="javascript:void(0)" class="btn btn-default"
+                                       data-add-name="content.content_movies">
+                                        <span class="fa fa-plus"></span> <%= __('Добавить фильм') %>
+                                    </a>
+                                </span>
+                                    </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="advanced-textarea">
+
+                                        <div class="thumbs-list thumbs-small">
+                                            <ul data-add-name="content.content_movies">
+                                                <% if (content.content_movies) { %>
+                                                    <% content.content_movies.split(',').forEach(function (id) { %>
+                                                        <li data-delete-id="<%- id %>"
+                                                            data-delete-name="content.content_movies">
+                                                            <img class="media-object"
+                                                                 src="/<%- config.urls.admin %>/poster?id=<%- id %>"
+                                                                 alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                        </li>
+                                                    <% }); %>
+                                                <% } %>
+                                            </ul>
+                                        </div>
+
+                                        <div style="display: none" id="content_ids">
+
+                                            <div class="spacer-10"></div>
+
                                             <div class="text-muted">
-                                                <%= __('Веб-страница со списком контента') %> <a href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url %>" style="text-decoration:none;"><span class="fa fa-external-link-square-alt"></span></a> :
+                                                <%= __('Фильмы:') %>
                                             </div>
 
                                             <div class="spacer-10"></div>
 
-                                            <input type="text" class="form-control" name="modules.content.data.title" value="<%= modules.content.data.title %>" placeholder="<%= __('Например:') %> <%= __('Страницы веб-сайта') %>">
+                                            <textarea class="form-control input_ids" name="content.content_movies"
+                                                      placeholder="<%= __('Список идентификаторов фильмов') %>">
+                                                <% if (content.content_movies) { %><%- content.content_movies %>
+                                                <% } %>
+                                            </textarea>
 
-                                            <textarea class="form-control descriptions" name="modules.content.data.description" placeholder="<%= __('Например:') %> <%= __('Новости и коллекции веб-сайта') %>"><%- modules.content.data.description %></textarea>
+                                            <div class="spacer-10"></div>
 
-                                            <div class="advanced-textarea-footer">
-                                                <div class="pull-left">
-                                                    <div class="text text-muted"><span id="modules.content.data.description">0</span> <%= __('символа(ов)') %></div>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <a href="javascript:void(0)" data-name="modules.content.data.description" data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-default codes">
-                                                        <i class="fa fa-images"></i>
-                                                    </a>
-                                                </div>
+                                        </div>
+
+                                        <div class="advanced-textarea-footer">
+                                            <div class="pull-right">
+                                                <a href="javascript:void(0)"
+                                                   onclick="document.querySelector('#content_ids').style.display = 'block'"
+                                                   class="btn btn-default">
+                                                    <%= __('Редактировать список ID') %>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    </div>
 
-                    <div class="spacer-10"></div>
+                        <% } else { %>
 
-                    <div class="faq">
-                        <article class="faq-group">
-                            <header>
-                                <i class="fa fa-minus"></i>
-                                <h3><%= __('Блоки новостей на веб-сайте') %></h3>
-                            </header>
-                            <div class="faq-content clearfix">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок новостей в боковой панели') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#news" class="csstip" title="<%= __('Блок постов в боковой панели на страницах веб-сайта') %>"
-                                                       target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3><%= __('Настройка страницы со списком новостей') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label">
+                                                            <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('URL путь') %>
+                                                        </div>
+                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#settings"
+                                                               class="csstip" title="<%= __('Параметр пути в URL') %>"
+                                                               target="_blank">
+                                                                <i class="fa fa-info-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inner-padding">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon text-muted"><span
+                                                                                class="hidden-xs"><%- config.subdomain %><%- config.domain %>/</span><span
+                                                                                class="visible-xs">/</span></span>
+                                                                    <input class="form-control input_url"
+                                                                           name="modules.content.data.url"
+                                                                           value="<%= modules.content.data.url %>"
+                                                                           type="text">
+                                                                    <span class="input-group-addon text-muted"><span
+                                                                                class="hidden-xs">/avatar-5-will-be-released-in-2027</span><span
+                                                                                class="visible-xs">/avatar-5</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <select name="modules.content.data.news.count" class="form-control without">
-                                                            <% for (var i = 0; i <= 20; i++) { %>
-                                                            <% if (modules.content.data.news.count === i) { %>
-                                                            <% if (i === 0) { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%- i %> <%= __('пост(ов)') %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } else { %>
-                                                            <% if (i === 0) { %>
-                                                            <option value="<%= i %>">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>">
-                                                                <%- i %> <%= __('пост(ов)') %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } %>
-                                                            <% } %>
-                                                        </select>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="advanced-textarea">
+                                                    <div class="text-muted">
+                                                        <%= __('Веб-страница со списком контента') %> <a
+                                                                href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url %>"
+                                                                style="text-decoration:none;"><span
+                                                                    class="fa fa-external-link-square-alt"></span></a> :
                                                     </div>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="modules.content.data.news.tags" value="<%= modules.content.data.news.tags %>" class="form-control" placeholder="<%= __('Теги через запятую') %>">
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <input type="text" class="form-control"
+                                                           name="modules.content.data.title"
+                                                           value="<%= modules.content.data.title %>"
+                                                           placeholder="<%= __('Например:') %> <%= __('Страницы веб-сайта') %>">
+
+                                                    <textarea class="form-control descriptions"
+                                                              name="modules.content.data.description"
+                                                              placeholder="<%= __('Например:') %> <%= __('Новости и коллекции веб-сайта') %>"><%- modules.content.data.description %></textarea>
+
+                                                    <div class="advanced-textarea-footer">
+                                                        <div class="pull-left">
+                                                            <div class="text text-muted"><span
+                                                                        id="modules.content.data.description">0</span> <%= __('символа(ов)') %>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <a href="javascript:void(0)"
+                                                               data-name="modules.content.data.description"
+                                                               data-code="&#13;&#10;<img src=&quot;URL.jpg&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;"
+                                                               class="btn btn-default codes">
+                                                                <i class="fa fa-images"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </article>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3><%= __('Блоки новостей на веб-сайте') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label">
+                                                            <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок новостей в боковой панели') %>
+                                                        </div>
+                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#news"
+                                                               class="csstip"
+                                                               title="<%= __('Блок постов в боковой панели на страницах веб-сайта') %>"
+                                                               target="_blank">
+                                                                <i class="fa fa-info-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inner-padding">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <select name="modules.content.data.news.count"
+                                                                        class="form-control without">
+                                                                    <% for (var i = 0; i <= 20; i++) { %>
+                                                                        <% if (modules.content.data.news.count === i) { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>"
+                                                                                        selected="selected">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>"
+                                                                                        selected="selected">
+                                                                                    <%- i %> <%= __('пост(ов)') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } else { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%- i %> <%= __('пост(ов)') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" name="modules.content.data.news.tags"
+                                                                       value="<%= modules.content.data.news.tags %>"
+                                                                       class="form-control"
+                                                                       placeholder="<%= __('Теги через запятую') %>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label">
+                                                            <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок новостей на странице фильма') %>
+                                                        </div>
+                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#movie"
+                                                               class="csstip"
+                                                               title="<%= __('Блок постов в которых указан фильм или последние новости с тегом на всех фильмах') %>"
+                                                               target="_blank">
+                                                                <i class="fa fa-info-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inner-padding">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <select name="modules.content.data.movie.count"
+                                                                        class="form-control without">
+                                                                    <% for (var i = 0; i <= 20; i++) { %>
+                                                                        <% if (modules.content.data.movie.count === i) { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>"
+                                                                                        selected="selected">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>"
+                                                                                        selected="selected">
+                                                                                    <%- i %> <%= __('пост(ов)') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } else { %>
+                                                                            <% if (i === 0) { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%= __('Не показывать') %>
+                                                                                </option>
+                                                                            <% } else { %>
+                                                                                <option value="<%= i %>">
+                                                                                    <%- i %> <%= __('пост(ов)') %>
+                                                                                </option>
+                                                                            <% } %>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <label><%= __('упоминания или с тегом') %></label>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <input type="text"
+                                                                       name="modules.content.data.movie.tags"
+                                                                       value="<%= modules.content.data.movie.tags %>"
+                                                                       class="form-control"
+                                                                       placeholder="<%= __('Например:') %> <%= __('Оповещения, Новости') %>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="cinema-box">
+                                                    <div class="cinema-box-header">
+                                                        <div class="cinema-label">
+                                                            <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Фильмы из новостей на главной') %>
+                                                        </div>
+                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#index"
+                                                               class="csstip"
+                                                               title="<%= __('Блок с фильмами из новостей на главной странице (перечислять URL-ключи через запятую)') %>"
+                                                               target="_blank">
+                                                                <i class="fa fa-info-circle"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inner-padding">
+                                                        <div class="row">
+                                                            <div class="col-sm-2">
+                                                                <select name="modules.content.data.index.order"
+                                                                        class="form-control without">
+                                                                    <% for (var i = 1; i <= 10; i++) { %>
+                                                                        <% if (modules.content.data.index.order === i) { %>
+                                                                            <option value="<%= i %>"
+                                                                                    selected="selected">
+                                                                                <%= __('%s-й', i) %>
+                                                                            </option>
+                                                                        <% } else { %>
+                                                                            <option value="<%= i %>">
+                                                                                <%= __('%s-й', i) %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-7">
+                                                                <input type="text" name="modules.content.data.index.url"
+                                                                       value="<%= modules.content.data.index.url %>"
+                                                                       class="form-control"
+                                                                       placeholder="<%= __('Например:') %> <%= __('vampire-movies') %>">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <select name="modules.content.data.index.count"
+                                                                        class="form-control without">
+                                                                    <% for (var i = 1; i <= 30; i++) { %>
+                                                                        <% if (modules.content.data.index.count === i) { %>
+                                                                            <option value="<%= i %>"
+                                                                                    selected="selected">
+                                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                                            </option>
+                                                                        <% } else { %>
+                                                                            <option value="<%= i %>">
+                                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                                            </option>
+                                                                        <% } %>
+                                                                    <% } %>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3><%= __('Автоматические коллекции') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.content.data.custom && modules.content.data.custom.length) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.content.data.custom.forEach(function(data, num) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d.length < 3) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- num + 1 %>.</span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div class="<%- custom_div %>">
+                                                                        <code>
+                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            ~
+                                                                            <span class="kinopoisk_id"><%= d[1] %></span>
+                                                                            ~
+                                                                            <span class="collection"><%= d[2] || '' %></span>
+                                                                            <% if (typeof d[3] !== 'undefined') { %>
+                                                                                ~
+                                                                                <span class="translate"><%= d[3] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[4] !== 'undefined') { %>
+                                                                                ~
+                                                                                <span class="quality"><%= d[4] || '' %></span>
+                                                                            <% } %>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.content.data.custom"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.content.data.custom"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example"
+                                                         style="padding-top: 0 !important; text-align: center">
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис данных') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.content.data.custom"
+                                                                              placeholder="url ~ kinopoisk_id ~ collection ~ translate ~ quality"
+                                                                              style="height:300px;"><%- modules.content.data.custom.join('\n\n') %></textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">url</span> ~
+                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                ~
+                                                                                <span class="collection">collection</span>
+                                                                                ~
+                                                                                <span class="translate">translate</span>
+                                                                                ~
+                                                                                <span class="quality">quality</span> ~
+                                                                                <span class="date">date</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="url">
+                                                                            https://example.com/updates
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;{ "results": [ {
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id":
+                                                                            <span class="iframe">1048334</span>,
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate":
+                                                                            ["<span class="translate">Subtitle</span>",
+                                                                            "English"],
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quality":
+                                                                            "<span class="quality">4K</span>"
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date":
+                                                                            "<span class="date">2023-20-23 20:23:20</span>"
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;} ] }
+                                                                        </code><br>
+                                                                        <code class="iframe">
+                                                                            results.0.kinopoisk_id
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            results.0.translate.0
+                                                                        </code><br>
+                                                                        <code class="quality">
+                                                                            results.0.quality
+                                                                        </code>
+                                                                        <code class="date">
+                                                                            results.0.date
+                                                                        </code>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">https://example.com/updates</span>
+                                                                                ~
+                                                                                <span class="kinopoisk_id">results.0.kinopoisk_id</span>
+                                                                                ~
+                                                                                <span class="collection">latest-updates</span>
+                                                                            </code>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-alt"></span> <%= __('Парсинг веб-сайтов') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control"
+                                                                              name="modules.content.data.scraper"
+                                                                              placeholder="hour ~ url ~ post ~ kinopoisk_id ~ collection"
+                                                                              style="height:300px;">
+                                                                        <% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %>
+                                                                        <% } %>
+                                                                    </textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="quality">3</span> ~
+                                                                                <span class="url">url</span> ~
+                                                                                <span class="translate">post</span> ~
+                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                ~
+                                                                                <span class="collection">collection</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="url">
+                                                                            https://example.com
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;&lt;body&gt;
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a
+                                                                            href=&quot;/post-title.html&quot; class=&quot;link&quot;&gt;Title&lt;/a&gt;
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;&lt;/body&gt;
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            href=&quot;(\/.*?\.html)&quot;
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;&lt;body&gt;
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a
+                                                                            href=&quot;https://www.kinopoisk.ru/film/1183582/&quot;&gt;KP&lt;/a&gt;
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;&lt;/body&gt;
+                                                                        </code><br>
+                                                                        <code class="kinopoisk_id">
+                                                                            \/film\/([0-9]{3,10})\/&quot;
+                                                                        </code><br>
+                                                                        <code class="collection">
+                                                                            latest-updates
+                                                                        </code>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="quality">3</span> ~
+                                                                                <span class="url">https://example.com</span>
+                                                                                ~
+                                                                                <span class="translate">href=&quot;(\/.*?\.html)&quot;</span>
+                                                                                ~
+                                                                                <span class="kinopoisk_id">\/film\/([0-9]{3,10})\/&quot;</span>
+                                                                                ~
+                                                                                <span class="collection">latest-updates</span>
+                                                                            </code>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#add"
+                                       target="_blank" class="btn btn-default btn-block"><span
+                                                class="fa fa-info-circle"></span></a>
                                 </div>
+                                <div class="col-xs-6 col-xs-offset-4">
+                                    <a href="/<%- config.urls.admin %>/content?url=_add_"
+                                       class="btn btn-default btn-block"><span
+                                                class="fa fa-plus"></span> <%= __('Добавить страницу') %></a>
+                                </div>
+                            </div>
+
+                            <% if (contents.length) { %>
 
                                 <div class="spacer-10"></div>
 
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Блок новостей на странице фильма') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#movie" class="csstip" title="<%= __('Блок постов в которых указан фильм или последние новости с тегом на всех фильмах') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <select name="modules.content.data.movie.count" class="form-control without">
-                                                            <% for (var i = 0; i <= 20; i++) { %>
-                                                            <% if (modules.content.data.movie.count === i) { %>
-                                                            <% if (i === 0) { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%- i %> <%= __('пост(ов)') %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } else { %>
-                                                            <% if (i === 0) { %>
-                                                            <option value="<%= i %>">
-                                                                <%= __('Не показывать') %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>">
-                                                                <%- i %> <%= __('пост(ов)') %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } %>
-                                                            <% } %>
-                                                        </select>
+                                    <div class="col-xs-12">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th class="table-content table-content-head">
+                                                    <%= __('Страницы веб-сайта') %>
+                                                </th>
+                                                <th class="table-settings"></th>
+                                                <th class="table-settings"></th>
+                                                <th class="table-settings"></th>
+                                            </tr>
+                                            </thead>
+                                            <tfoot>
+                                            <tr>
+                                                <th>
+                                                    <div style="margin: 0">
+                                                        <% if (num - 1) { %>
+                                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num - 1 %>"
+                                                               class="table-arrow"><i
+                                                                        class="fa fa-chevron-left"></i></a>
+                                                        <% } else { %>
+                                                            <span class="table-arrow-h"><i
+                                                                        class="fa fa-chevron-left"></i></span>
+                                                        <% } %>
+                                                        <% if (next) { %>
+                                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num + 1 %>"
+                                                               class="table-arrow"><i
+                                                                        class="fa fa-chevron-right"></i></a>
+                                                        <% } else { %>
+                                                            <span class="table-arrow-h"><i
+                                                                        class="fa fa-chevron-right"></i></span>
+                                                        <% } %>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <label><%= __('упоминания или с тегом') %></label>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <input type="text" name="modules.content.data.movie.tags" value="<%= modules.content.data.movie.tags %>" class="form-control" placeholder="<%= __('Например:') %> <%= __('Оповещения, Новости') %>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                </th>
+                                                <th class="table-settings"></th>
+                                                <th class="table-settings"></th>
+                                                <th class="table-settings"></th>
+                                            </tr>
+                                            </tfoot>
+                                            <tbody>
+                                            <% contents.forEach(function(content) { %>
+                                                <tr>
+                                                    <td class="table-content">
+                                                        <span class="table-content-id"><%- content.content_tags %></span>
+                                                        <span class="table-content-t"><a
+                                                                    href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><%- content.content_title %></a></span><br><span
+                                                                class="table-content-url-key"><%= __('URL-ключ:') %></span>
+                                                        <span class="table-content-key"><%- content.content_url %></span>
+                                                    </td>
+                                                    <td class="table-settings">
+                                                        <a href="javascript:void(0)" data-type="content"
+                                                           data-id="<%- content.id %>" class="del"><i
+                                                                    class="fa fa-trash-alt text-danger"></i></a>
+                                                    </td>
+                                                    <td class="table-settings">
+                                                        <a href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><i
+                                                                    class="fa fa-edit text-warning"></i></a>
+                                                    </td>
+                                                    <td class="table-settings">
+                                                        <a href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url + '/' + decodeURIComponent(content.content_url) %>"
+                                                           target="_blank"><span
+                                                                    class="fa fa-external-link-square-alt text-info"></span></a>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
 
-                                <div class="spacer-10"></div>
+                            <% } %>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;<%= __('Фильмы из новостей на главной') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#index" class="csstip" title="<%= __('Блок с фильмами из новостей на главной странице (перечислять URL-ключи через запятую)') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-2">
-                                                        <select name="modules.content.data.index.order" class="form-control without">
-                                                            <% for (var i = 1; i <= 10; i++) { %>
-                                                            <% if (modules.content.data.index.order === i) { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%= __('%s-й', i) %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>">
-                                                                <%= __('%s-й', i) %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } %>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" name="modules.content.data.index.url" value="<%= modules.content.data.index.url %>" class="form-control" placeholder="<%= __('Например:') %> <%= __('vampire-movies') %>">
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <select name="modules.content.data.index.count" class="form-control without">
-                                                            <% for (var i = 1; i <= 30; i++) { %>
-                                                            <% if (modules.content.data.index.count === i) { %>
-                                                            <option value="<%= i %>" selected="selected">
-                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                            </option>
-                                                            <% } else { %>
-                                                            <option value="<%= i %>">
-                                                                <%- i %> <%= __('фильма(ов)') %>
-                                                            </option>
-                                                            <% } %>
-                                                            <% } %>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="faq">
-                        <article class="faq-group">
-                            <header>
-                                <i class="fa fa-minus"></i>
-                                <h3><%= __('Автоматические коллекции') %></h3>
-                            </header>
-                            <div class="faq-content clearfix">
-                                <div class="row">
-                                    <div class="col-lg-12 col-xs-12">
-                                        <% if (modules.content.data.custom && modules.content.data.custom.length) { %>
-                                            <table class="table table-bordered table-striped">
-                                                <tbody>
-                                                <% modules.content.data.custom.forEach(function(data, num) { %>
-                                                    <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                    <% if (d.length < 3) return; %>
-                                                    <% if (data.charAt(0) === '#') { var custom_div = 'no-active'; } %>
-                                                    <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') { custom_i = 'text-success'; } %>
-                                                    <tr class="<%- custom_div %>">
-                                                        <td class="table-settings">
-                                                            <span><%- num+1 %>.</span>
-                                                        </td>
-                                                        <td class="table-content help-example">
-                                                            <div class="<%- custom_div %>">
-                                                                <code>
-                                                                    <span class="url"><%= d[0].split('/')[2] %></span>
-                                                                    ~ <span class="kinopoisk_id"><%= d[1] %></span>
-                                                                    ~ <span class="collection"><%= d[2] || '' %></span>
-                                                                    <% if (typeof d[3] !== 'undefined') { %>
-                                                                        ~ <span class="translate"><%= d[3] || '' %></span>
-                                                                    <% } %>
-                                                                    <% if (typeof d[4] !== 'undefined') { %>
-                                                                        ~ <span class="quality"><%= d[4] || '' %></span>
-                                                                    <% } %>
-                                                                </code>
-                                                            </div>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-circle <%- custom_i %> activate-api" data-parser="<%- encodeURIComponent(data) %>" data-activate-api="modules.content.data.custom"></i></span>
-                                                        </td>
-                                                        <td class="table-settings">
-                                                            <span><i class="fa fa-trash-alt text-danger delete-api" data-parser="<%- encodeURIComponent(data) %>" data-delete-api="modules.content.data.custom"></i></span>
-                                                        </td>
-                                                    </tr>
-                                                <% }); %>
-                                                </tbody>
-                                            </table>
-                                        <% } else { %>
-                                            <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                <code><%= __('Добавьте в список хотя бы один API-сервис данных') %></code>
-                                            </div>
-                                        <% } %>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-lg-12 col-xs-12">
-                                        <div class="faq">
-                                            <article class="faq-group">
-                                                <header class="text-muted text-left">
-                                                    <i class="fa fa-plus"></i>
-                                                    <h3><span class="fas fa-list-ol"></span> <%= __('Редактировать список') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <textarea class="form-control custom" name="modules.content.data.custom" placeholder="url ~ kinopoisk_id ~ collection ~ translate ~ quality" style="height:300px;"><%- modules.content.data.custom.join('\n\n') %></textarea>
-                                                        </div>
-
-                                                        <div class="spacer-10"></div>
-
-                                                        <div class="col-sm-12">
-                                                            <div class="helper-text-box text-left help-example-code">
-                                                                <p>
-                                                                    <code>
-                                                                        <span class="url">url</span> ~
-                                                                        <span class="kinopoisk_id">kinopoisk_id</span> ~
-                                                                        <span class="collection">collection</span> ~
-                                                                        <span class="translate">translate</span> ~
-                                                                        <span class="quality">quality</span> ~
-                                                                        <span class="date">date</span>
-                                                                    </code>
-                                                                </p>
-                                                                <code class="url">
-                                                                    https://example.com/updates
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:1px 0 0 0">
-                                                                    &nbsp;&nbsp;{ "results": [ {
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id": <span class="iframe">1048334</span>,
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate": ["<span class="translate">Subtitle</span>", "English"],
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quality": "<span class="quality">4K</span>"
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date": "<span class="date">2023-20-23 20:23:20</span>"
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0 0 1px 0">
-                                                                    &nbsp;&nbsp;} ] }
-                                                                </code><br>
-                                                                <code class="iframe">
-                                                                    results.0.kinopoisk_id
-                                                                </code><br>
-                                                                <code class="translate">
-                                                                    results.0.translate.0
-                                                                </code><br>
-                                                                <code class="quality">
-                                                                    results.0.quality
-                                                                </code>
-                                                                <code class="date">
-                                                                    results.0.date
-                                                                </code>
-                                                                <p>
-                                                                    <code>
-                                                                        <span class="url">https://example.com/updates</span> ~
-                                                                        <span class="kinopoisk_id">results.0.kinopoisk_id</span> ~
-                                                                        <span class="collection">latest-updates</span>
-                                                                    </code>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-lg-12 col-xs-12">
-                                        <div class="faq">
-                                            <article class="faq-group">
-                                                <header class="text-muted text-left">
-                                                    <i class="fa fa-plus"></i>
-                                                    <h3><span class="fas fa-list-alt"></span> <%= __('Парсинг веб-сайтов') %></h3>
-                                                </header>
-                                                <div class="faq-content clearfix">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <textarea class="form-control" name="modules.content.data.scraper" placeholder="hour ~ url ~ post ~ kinopoisk_id ~ collection" style="height:300px;"><% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %><% } %></textarea>
-                                                        </div>
-
-                                                        <div class="spacer-10"></div>
-
-                                                        <div class="col-sm-12">
-                                                            <div class="helper-text-box text-left help-example-code">
-                                                                <p>
-                                                                    <code>
-                                                                        <span class="quality">3</span> ~
-                                                                        <span class="url">url</span> ~
-                                                                        <span class="translate">post</span> ~
-                                                                        <span class="kinopoisk_id">kinopoisk_id</span> ~
-                                                                        <span class="collection">collection</span>
-                                                                    </code>
-                                                                </p>
-                                                                <code class="url">
-                                                                    https://example.com
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:1px 0 0 0">
-                                                                    &nbsp;&nbsp;&lt;body&gt;
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;/post-title.html&quot; class=&quot;link&quot;&gt;Title&lt;/a&gt;
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0 0 1px 0">
-                                                                    &nbsp;&nbsp;&lt;/body&gt;
-                                                                </code><br>
-                                                                <code class="translate">
-                                                                    href=&quot;(\/.*?\.html)&quot;
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:1px 0 0 0">
-                                                                    &nbsp;&nbsp;&lt;body&gt;
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0">
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://www.kinopoisk.ru/film/1183582/&quot;&gt;KP&lt;/a&gt;
-                                                                </code><br>
-                                                                <code class="text-muted" style="margin:0 0 1px 0">
-                                                                    &nbsp;&nbsp;&lt;/body&gt;
-                                                                </code><br>
-                                                                <code class="kinopoisk_id">
-                                                                    \/film\/([0-9]{3,10})\/&quot;
-                                                                </code><br>
-                                                                <code class="collection">
-                                                                    latest-updates
-                                                                </code>
-                                                                <p>
-                                                                    <code>
-                                                                        <span class="quality">3</span> ~
-                                                                        <span class="url">https://example.com</span> ~
-                                                                        <span class="translate">href=&quot;(\/.*?\.html)&quot;</span> ~
-                                                                        <span class="kinopoisk_id">\/film\/([0-9]{3,10})\/&quot;</span> ~
-                                                                        <span class="collection">latest-updates</span>
-                                                                    </code>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <a href="https://CinemaPress.io/<%- config.language %>/admin/content.html#add" target="_blank" class="btn btn-default btn-block"><span class="fa fa-info-circle"></span></a>
-                        </div>
-                        <div class="col-xs-6 col-xs-offset-4">
-                            <a href="/<%- config.urls.admin %>/content?url=_add_" class="btn btn-default btn-block"><span class="fa fa-plus"></span> <%= __('Добавить страницу') %></a>
-                        </div>
-                    </div>
-
-                    <% if (contents.length) { %>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th class="table-content table-content-head">
-                                        <%= __('Страницы веб-сайта') %>
-                                    </th>
-                                    <th class="table-settings"></th>
-                                    <th class="table-settings"></th>
-                                    <th class="table-settings"></th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>
-                                        <div style="margin: 0">
-                                            <% if (num-1) { %>
-                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num-1 %>" class="table-arrow"><i class="fa fa-chevron-left"></i></a>
-                                            <% } else { %>
-                                            <span class="table-arrow-h"><i class="fa fa-chevron-left"></i></span>
-                                            <% } %>
-                                            <% if (next) { %>
-                                            <a href="/<%- config.urls.admin %>/movies?num=<%- num+1 %>" class="table-arrow"><i class="fa fa-chevron-right"></i></a>
-                                            <% } else { %>
-                                            <span class="table-arrow-h"><i class="fa fa-chevron-right"></i></span>
-                                            <% } %>
-                                        </div>
-                                    </th>
-                                    <th class="table-settings"></th>
-                                    <th class="table-settings"></th>
-                                    <th class="table-settings"></th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <% contents.forEach(function(content) { %>
-                                <tr>
-                                    <td class="table-content">
-                                        <span class="table-content-id"><%- content.content_tags %></span> <span class="table-content-t"><a href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><%- content.content_title %></a></span><br><span class="table-content-url-key"><%= __('URL-ключ:') %></span> <span class="table-content-key"><%- content.content_url %></span>
-                                    </td>
-                                    <td class="table-settings">
-                                        <a href="javascript:void(0)" data-type="content" data-id="<%- content.id %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
-                                    </td>
-                                    <td class="table-settings">
-                                        <a href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><i class="fa fa-edit text-warning"></i></a>
-                                    </td>
-                                    <td class="table-settings">
-                                        <a href="<%- config.protocol + config.subdomain + config.domain + '/' + modules.content.data.url + '/' + decodeURIComponent(content.content_url) %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <% } %>
-
-                    <% } %>
+                        <% } %>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет создавать страницы на веб-сайте.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет создавать страницы на веб-сайте.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

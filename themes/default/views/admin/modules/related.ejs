@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/related" class="btn hidden-xs">
                             <%= __('Модуль связанных фильмов') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html" class="btn" title="<%= __('Информация о параметрах модуля связанных фильмов') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля связанных фильмов') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.related.status) { %>
-                        <a href="javascript:void(0)" data-module="related" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="related" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="related" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="related" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,415 +67,517 @@
 
                     <% if (modules.related.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по году') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#year" class="csstip" title="<%= __('Блок с фильмами под основной информацией фильма из такого же года, что и текущий фильм') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <input name="modules.related.data.types.year.name" value="<%= modules.related.data.types.year.name %>" class="form-control" type="text">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по году') %>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.year.count" class="form-control without">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.year.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#year"
+                                               class="csstip"
+                                               title="<%= __('Блок с фильмами под основной информацией фильма из такого же года, что и текущий фильм') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
                                         </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-6">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.display" value="year" type="checkbox" <% if (modules.related.data.display.indexOf('year')+1) { %> checked="" <% } %> data-name="year"><span></span> <%= __('из одного года') %>
-                                                </label>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input name="modules.related.data.types.year.name"
+                                                       value="<%= modules.related.data.types.year.name %>"
+                                                       class="form-control" type="text">
                                             </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.year.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.year.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по жанрам') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#genre" class="csstip" title="<%= __('Блок с фильмами под основной информацией фильма из такого же жанра или всех жанров, что и текущий фильм') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <input name="modules.related.data.types.genre.name" value="<%= modules.related.data.types.genre.name %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.genre.count" class="form-control without">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.genre.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-6">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.display" value="genres" type="checkbox" <% if (modules.related.data.display.indexOf('genres')+1) { %> checked="" <% } %> data-name="genre"><span></span> <%= __('всех') %>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.display" value="genre" type="checkbox" <% if (modules.related.data.display.indexOf('genre')+1) { %> checked="" <% } %> data-name="genre"><span></span> <%= __('одного жанра') %>
-                                                </label>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.year.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.related.data.types.year.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.genre.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.genre.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по странам') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#country" class="csstip" title="<%= __('Блок с фильмами под основной информацией фильма из такой же страны или всех стран, что и текущий фильм') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <input name="modules.related.data.types.country.name" value="<%= modules.related.data.types.country.name %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.country.count" class="form-control without">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.country.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-6">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.display" value="countries" type="checkbox" <% if (modules.related.data.display.indexOf('countries')+1) { %> checked="" <% } %> data-name="country"><span></span> <%= __('всех') %>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.display" value="country" type="checkbox" <% if (modules.related.data.display.indexOf('country')+1) { %> checked="" <% } %> data-name="country"><span></span> <%= __('одной страны') %>
-                                                </label>
+                                            <div class="col-xs-6">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="year"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('year') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="year"><span></span> <%= __('из одного года') %>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.country.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.country.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по актерам') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#actor" class="csstip" title="<%= __('Блок с фильмами под основной информацией фильма из фильмографии актера или актеров снявшихся в текущем фильме') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <input name="modules.related.data.types.actor.name" value="<%= modules.related.data.types.actor.name %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.actor.count" class="form-control without">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.actor.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-6">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.display" value="actors" type="checkbox" <% if (modules.related.data.display.indexOf('actors')+1) { %> checked="" <% } %> data-name="actor"><span></span> <%= __('всех') %>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.display" value="actor" type="checkbox" <% if (modules.related.data.display.indexOf('actor')+1) { %> checked="" <% } %> data-name="actor"><span></span> <%= __('одного актера') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.actor.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.actor.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по режиссерам') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#director" class="csstip" title="<%= __('Блок с фильмами под основной информацией фильма из фильмографии режиссера или режиссеров срежессировавшие текущий фильм') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <input name="modules.related.data.types.director.name" value="<%= modules.related.data.types.director.name %>" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.director.count" class="form-control without">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.related.data.types.director.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-xs-6">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.display" value="directors" type="checkbox" <% if (modules.related.data.display.indexOf('directors')+1) { %> checked="" <% } %> data-name="director"><span></span> <%= __('всех') %>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.display" value="director" type="checkbox" <% if (modules.related.data.display.indexOf('director')+1) { %> checked="" <% } %> data-name="director"><span></span> <%= __('одного режиссера') %>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <select name="modules.related.data.types.director.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
-                                                <% if (modules.related.data.types.director.sorting === name) { %>
-                                                <option value="<%= name %>" selected="selected">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= name %>">
-                                                    <%- config.sorting[name] %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-crosshairs"></i>&nbsp;&nbsp;&nbsp;<%= __('Показывать по типу') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#sameType" class="csstip" title="<%= __('На странице сериала, будут показаны сериалы, на странице фильма - фильмы') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.same" value="1" <% if (modules.related.data.same) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Тип к типу') %></span>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.same" value="0" <% if (!modules.related.data.same) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('Не важно') %></span>
-                                                </label>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.year.sorting"
+                                                        class="form-control without">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.related.data.types.year.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="spacer-10"></div>
+                            <div class="spacer-10"></div>
 
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Название в виде ссылки') %>
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по жанрам') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#genre"
+                                               class="csstip"
+                                               title="<%= __('Блок с фильмами под основной информацией фильма из такого же жанра или всех жанров, что и текущий фильм') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#link" class="csstip" title="<%= __('При нажатии на название категории, будет переход на страницу категории') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input name="modules.related.data.types.genre.name"
+                                                       value="<%= modules.related.data.types.genre.name %>"
+                                                       class="form-control" type="text">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.genre.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.related.data.types.genre.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-xs-6">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="genres"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('genres') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="genre"><span></span> <%= __('всех') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="genre"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('genre') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="genre"><span></span> <%= __('одного жанра') %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.genre.sorting"
+                                                        class="form-control without">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.related.data.types.genre.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="modules.related.data.link" value="1" <% if (modules.related.data.link) { %> checked="" <% } %> type="radio"><span></span> <span><i class="fa fa-link"></i>&nbsp;<%= __('Ссылка на категорию') %></span>
-                                                </label>
-                                                <label>
-                                                    <input name="modules.related.data.link" value="0" <% if (!modules.related.data.link) { %> checked="" <% } %> type="radio"><span></span> <span><i class="fa fa-unlink"></i>&nbsp;<%= __('Обычный текст') %></span>
-                                                </label>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по странам') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#country"
+                                               class="csstip"
+                                               title="<%= __('Блок с фильмами под основной информацией фильма из такой же страны или всех стран, что и текущий фильм') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input name="modules.related.data.types.country.name"
+                                                       value="<%= modules.related.data.types.country.name %>"
+                                                       class="form-control" type="text">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.country.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.related.data.types.country.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-xs-6">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="countries"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('countries') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="country"><span></span> <%= __('всех') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="country"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('country') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="country"><span></span> <%= __('одной страны') %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.country.sorting"
+                                                        class="form-control without">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.related.data.types.country.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по актерам') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#actor"
+                                               class="csstip"
+                                               title="<%= __('Блок с фильмами под основной информацией фильма из фильмографии актера или актеров снявшихся в текущем фильме') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input name="modules.related.data.types.actor.name"
+                                                       value="<%= modules.related.data.types.actor.name %>"
+                                                       class="form-control" type="text">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.actor.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.related.data.types.actor.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-xs-6">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="actors"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('actors') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="actor"><span></span> <%= __('всех') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="actor"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('actor') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="actor"><span></span> <%= __('одного актера') %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.actor.sorting"
+                                                        class="form-control without">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.related.data.types.actor.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;<%= __('Связанные фильмы по режиссерам') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#director"
+                                               class="csstip"
+                                               title="<%= __('Блок с фильмами под основной информацией фильма из фильмографии режиссера или режиссеров срежессировавшие текущий фильм') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input name="modules.related.data.types.director.name"
+                                                       value="<%= modules.related.data.types.director.name %>"
+                                                       class="form-control" type="text">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.director.count"
+                                                        class="form-control without">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.related.data.types.director.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-xs-6">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="directors"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('directors') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="director"><span></span> <%= __('всех') %>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.display" value="director"
+                                                               type="checkbox"
+                                                        <% if (modules.related.data.display.indexOf('director') + 1) { %>
+                                                               checked=""
+                                                                <% } %>
+                                                               data-name="director"><span></span> <%= __('одного режиссера') %>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.related.data.types.director.sorting"
+                                                        class="form-control without">
+                                                    <% for (name in config.sorting) { %>
+                                                        <% if (modules.related.data.types.director.sorting === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-crosshairs"></i>&nbsp;&nbsp;&nbsp;<%= __('Показывать по типу') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#sameType"
+                                               class="csstip"
+                                               title="<%= __('На странице сериала, будут показаны сериалы, на странице фильма - фильмы') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.same" value="1"
+                                                        <% if (modules.related.data.same) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>
+                                                        <span><%= __('Тип к типу') %></span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.same" value="0"
+                                                        <% if (!modules.related.data.same) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span>
+                                                        <span><%= __('Не важно') %></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Название в виде ссылки') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/related.html#link"
+                                               class="csstip"
+                                               title="<%= __('При нажатии на название категории, будет переход на страницу категории') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <div class="inline-labels">
+                                                    <label>
+                                                        <input name="modules.related.data.link" value="1"
+                                                        <% if (modules.related.data.link) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span> <span><i
+                                                                    class="fa fa-link"></i>&nbsp;<%= __('Ссылка на категорию') %></span>
+                                                    </label>
+                                                    <label>
+                                                        <input name="modules.related.data.link" value="0"
+                                                        <% if (!modules.related.data.link) { %> checked=""
+                                                                <% } %>
+                                                               type="radio"><span></span> <span><i
+                                                                    class="fa fa-unlink"></i>&nbsp;<%= __('Обычный текст') %></span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет добавить на странице фильма дополнительные списки фильмов из того же года, жанра, страны, года, актера или режиссера.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет добавить на странице фильма дополнительные списки фильмов из того же года, жанра, страны, года, актера или режиссера.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 
@@ -474,9 +585,9 @@
             </div>
 
             <script>
-                $('input[type="checkbox"]').on('change', function() {
-                    $('input[data-name="' + this.dataset.name + '"]').not(this).prop('checked', false);
-                });
+              $('input[type="checkbox"]').on('change', function() {
+                $('input[data-name="' + this.dataset.name + '"]').not(this).prop('checked', false);
+              });
             </script>
 
             <%- include('../includes/footer.ejs'); -%>

@@ -18,17 +18,25 @@ index[type].forEach(function (category) { %>
         <div class="info block">
             <% var moreEpisodes = false; %>
             <% category.movies.forEach(function (movie) { %>
-            <div <% if (movie.hide) { moreEpisodes = true; %>style="display:none" data-more-episodes="hide"<% } %>>
-                <div class="clear"></div>
-                <a href="<%- movie.url %>"><u><%= movie.title %></u>
-                    <span><% if (movie.season) { %><%- movie.season %> <%- page.l.season %><% } %>
-                    <% if (movie.episode) { %><%- movie.episode %> <%- page.l.episode %><% } %>
-                        <% if (movie.translate) { %>(<%- movie.translate %>)<% } %></span>
-                </a>
-            </div>
+                <div <% if (movie.hide) { moreEpisodes = true; %>style="display:none" data-more-episodes="hide"
+                        <% } %>
+                >
+                    <div class="clear"></div>
+                    <a href="<%- movie.url %>"><u><%= movie.title %></u>
+                        <span>
+                            <% if (movie.season) { %><%- movie.season %> <%- page.l.season %>
+                            <% } %>
+                            <% if (movie.episode) { %><%- movie.episode %> <%- page.l.episode %>
+                            <% } %>
+                            <% if (movie.translate) { %>(<%- movie.translate %>)
+                            <% } %>
+                        </span>
+                    </a>
+                </div>
             <% }); %>
             <% if (moreEpisodes) { %>
-                <div class="moreEpisodes" onclick="var dme = document.querySelectorAll('[data-more-episodes]'); dme && dme.forEach(function(e) {e.style.display='block'});this.style.display='none'"><%- page.l.moreEpisodes %></div>
+                <div class="moreEpisodes"
+                     onclick="var dme = document.querySelectorAll('[data-more-episodes]'); dme && dme.forEach(function(e) {e.style.display='block'});this.style.display='none'"><%- page.l.moreEpisodes %></div>
             <% } %>
         </div>
     <% } %>
@@ -43,8 +51,10 @@ index[type].forEach(function (category) { %>
     <h2>
         <%- category.name %>
         <div class="randomMovieIndex">
-            <div <% if (!category.url) { %>style="display:none"<% } %> class="cinemapress-random-index"
-                 onclick="window.location.href='<%- (category.url && category.url.indexOf('?')+1 ? category.url + '&random=' : category.url + '?random=') %><%- Math.random() %>'"
+            <div <% if (!category.url) { %>style="display:none"
+                    <% } %>
+                 class="cinemapress-random-index"
+                 onclick="window.location.href='<%- (category.url && category.url.indexOf('?') + 1 ? category.url + '&random=' : category.url + '?random=') %><%- Math.random() %>'"
                  title="<%= page.l.random %>">
                 <img src="/themes/default/public/mobile/dice.svg" alt="<%= page.l.random %>">
             </div>
@@ -58,7 +68,8 @@ index[type].forEach(function (category) { %>
 
         <div class="poster">
             <a href="<%- movie.url %>">
-                <img src="<%- movie.poster_min %>" alt="<%= movie.title %> (<%- movie.year %>)" title="<%= movie.title %> (<%- movie.year %>)">
+                <img src="<%- movie.poster_min %>" alt="<%= movie.title %> (<%- movie.year %>)"
+                     title="<%= movie.title %> (<%- movie.year %>)">
             </a>
         </div>
         <h3><a href="<%- movie.url %>"><%= movie.title %></a></h3>
@@ -90,22 +101,24 @@ index[type].forEach(function (category) { %>
         <div class="info">
             <%
             for (var kp = 1; kp <= 10; kp++) {
-                var star_kp = (Math.round(movie.kp_rating/10) >= kp)
+                var star_kp = (Math.round(movie.kp_rating / 10) >= kp)
                         ? '<div class="star-true"></div>'
                         : '<div class="star-false"></div>';
             %>
             <%- star_kp %>
-            <% } %><span style="color:#F56504; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.kp %></span>
+            <% } %>
+            <span style="color:#F56504; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.kp %></span>
         </div>
         <div class="info">
             <%
             for (var imdb = 1; imdb <= 10; imdb++) {
-                var star_imdb = (Math.round(movie.imdb_rating/10) >= imdb)
+                var star_imdb = (Math.round(movie.imdb_rating / 10) >= imdb)
                         ? '<div class="star-true"></div>'
                         : '<div class="star-false"></div>';
             %>
             <%- star_imdb %>
-            <% } %><span style="color:#E3B71E; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.imdb %></span>
+            <% } %>
+            <span style="color:#E3B71E; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.imdb %></span>
         </div>
 
         <% if (movie.quality) { %>
@@ -133,7 +146,20 @@ index[type].forEach(function (category) { %>
 
 <% if (typeof page.pagination === 'object') { %>
     <div class="info block pagination">
-        <% if (page.pagination.first) { %><a href="<%- page.pagination.first.link %>" rel="nofollow"><%- page.pagination.first.number %></a><span class="dots">...</span><% } %><% if (page.pagination.prev.length) { %><% page.pagination.prev.forEach(function (prev) { %><a href="<%- prev.link %>" rel="nofollow"><%- prev.number %></a><% }); %><span class="dots">...</span><% } %><strong><span><%- page.pagination.current %></span></strong><% if (page.pagination.next.length) { %><span class="dots">...</span><% page.pagination.next.forEach(function (next) { %><a href="<%- next.link %>" rel="nofollow"><%- next.number %></a><% }); %><% } %><% if (page.pagination.last) { %><span class="dots">...</span><a href="<%- page.pagination.last.link %>" rel="nofollow"><%- page.pagination.last.number %></a><% } %>
+        <% if (page.pagination.first) { %><a href="<%- page.pagination.first.link %>"
+                                             rel="nofollow"><%- page.pagination.first.number %></a><span class="dots">...</span>
+        <% } %>
+        <% if (page.pagination.prev.length) { %><% page.pagination.prev.forEach(function (prev) { %><a
+                href="<%- prev.link %>" rel="nofollow"><%- prev.number %></a><% }); %><span class="dots">...</span>
+        <% } %>
+        <strong><span><%- page.pagination.current %></span></strong>
+        <% if (page.pagination.next.length) { %><span
+                class="dots">...</span><% page.pagination.next.forEach(function (next) { %><a href="<%- next.link %>"
+                                                                                              rel="nofollow"><%- next.number %></a><% }); %>
+        <% } %>
+        <% if (page.pagination.last) { %><span class="dots">...</span><a href="<%- page.pagination.last.link %>"
+                                                                         rel="nofollow"><%- page.pagination.last.number %></a>
+        <% } %>
     </div>
 <% } %>
 

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/viewed" class="btn hidden-xs">
                             <%= __('Модуль просмотренных фильмов') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/viewed.html" class="btn" title="<%= __('Информация о параметрах модуля просмотренных фильмов') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/viewed.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля просмотренных фильмов') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.viewed.status) { %>
-                        <a href="javascript:void(0)" data-module="viewed" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="viewed" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="viewed" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="viewed" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,66 +67,73 @@
 
                     <% if (modules.viewed.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="far fa-eye"></i>&nbsp;&nbsp;&nbsp;<%= __('Количество просмотренных фильмов') %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="far fa-eye"></i>&nbsp;&nbsp;&nbsp;<%= __('Количество просмотренных фильмов') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/viewed.html"
+                                               class="csstip"
+                                               title="<%= __('Просмотренные пользователем фильмы отображаются внизу каждой страницы веб-сайта') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/viewed.html" class="csstip" title="<%= __('Просмотренные пользователем фильмы отображаются внизу каждой страницы веб-сайта') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-xs-5 text-center">
-                                            <select name="modules.viewed.data.count" class="form-control">
-                                                <% for (var i = 1; i <= 20; i++) { %>
-                                                <% if (modules.viewed.data.count === i) { %>
-                                                <option value="<%= i %>" selected="selected">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= i %>">
-                                                    <%- i %> <%= __('фильма(ов)') %>
-                                                </option>
-                                                <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3 col-xs-3">
-                                            <input name="modules.viewed.data.width" value="<%= modules.viewed.data.width %>" class="form-control text-right" type="text" placeholder="width">
-                                        </div>
-                                        <div class="col-lg-1 col-xs-1 text-center" style="padding: 5px;">
-                                            ×
-                                        </div>
-                                        <div class="col-lg-3 col-xs-3">
-                                            <input name="modules.viewed.data.height" value="<%= modules.viewed.data.height %>" class="form-control" type="text" placeholder="height">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-xs-5 text-center">
+                                                <select name="modules.viewed.data.count" class="form-control">
+                                                    <% for (var i = 1; i <= 20; i++) { %>
+                                                        <% if (modules.viewed.data.count === i) { %>
+                                                            <option value="<%= i %>" selected="selected">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= i %>">
+                                                                <%- i %> <%= __('фильма(ов)') %>
+                                                            </option>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3 col-xs-3">
+                                                <input name="modules.viewed.data.width"
+                                                       value="<%= modules.viewed.data.width %>"
+                                                       class="form-control text-right" type="text" placeholder="width">
+                                            </div>
+                                            <div class="col-lg-1 col-xs-1 text-center" style="padding: 5px;">
+                                                ×
+                                            </div>
+                                            <div class="col-lg-3 col-xs-3">
+                                                <input name="modules.viewed.data.height"
+                                                       value="<%= modules.viewed.data.height %>" class="form-control"
+                                                       type="text" placeholder="height">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль добавляет внизу страницы список фильмов, которые были недавно просмотрены пользователем.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль добавляет внизу страницы список фильмов, которые были недавно просмотрены пользователем.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<rss xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/" xmlns:turbo="http://turbo.yandex.ru" version="2.0">
+<rss xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru" version="2.0">
     <% if (typeof movies === 'object') { %>
-    <channel>
-        <title><%= config.titles.index %></title>
-        <link><%- config.protocol %><%- config.domain %></link>
-        <description><![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>]]>...</description>
+        <channel>
+            <title><%= config.titles.index %></title>
+            <link><%- config.protocol %><%- config.domain %></link>
+            <description>
+                <![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>
+                ]]>...
+            </description>
             <% movies.forEach(function (movie) { var image = (movie.image) ? config.protocol + config.subdomain + config.domain + movie.image : ''; %>
             <item turbo="true">
                 <title><%= movie.title %></title>
                 <link><%- movie.url %></link>
-                <description><![CDATA[<img align="left" hspace="5" width="150" src="<%- movie.poster || image %>"/><%- movie.description_short %>...<br />]]></description>
-                <enclosure url="<%- movie.poster_big || image %>" type="image/jpeg" />
-                <pubDate><%- (new Date( (new Date())*1 - 1000*Math.round(1 - 0.5 + Math.random() * 3600) )).toUTCString() %></pubDate>
+                <description><![CDATA[<img align="left" hspace="5" width="150"
+                                           src="<%- movie.poster || image %>"/><%- movie.description_short %>...<br/>]]>
+                </description>
+                <enclosure url="<%- movie.poster_big || image %>" type="image/jpeg"/>
+                <pubDate><%- (new Date((new Date()) * 1 - 1000 * Math.round(1 - 0.5 + Math.random() * 3600))).toUTCString() %></pubDate>
                 <turbo:content>
                     <![CDATA[
                     <header>
                         <figure>
-                            <img src="<%- movie.picture || image %>" />
+                            <img src="<%- movie.picture || image %>"/>
                         </figure>
                         <h1><%- movie.title %></h1>
                     </header>
                     <% if (movie.description.length >= 400) { %>
-                    <% var d = movie.description.split('. '); %>
-                    <% d.splice(Math.round(d.length/2), 0, '</p><p>'); %>
-                    <p><%- (d.join('. ')).replace(' </p><p>. ', '</p> <p>') %>...</p>
+                        <% var d = movie.description.split('. '); %>
+                        <% d.splice(Math.round(d.length / 2), 0, '</p><p>'); %>
+                        <p><%- (d.join('. ')).replace(' </p><p>. ', '</p> <p>') %>...</p>
                     <% } else { %>
-                    <% if (movie.description) { %><p><%- movie.description %></p><% } else { %><p><%- movie.title %></p><% } %>
+                        <% if (movie.description) { %><p><%- movie.description %></p><% } else { %>
+                            <p><%- movie.title %></p><% } %>
                     <% } %>
                     ]]>
                 </turbo:content>
             </item>
             <% }); %>
-    </channel>
+        </channel>
     <% } %>
 </rss>

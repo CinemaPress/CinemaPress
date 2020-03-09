@@ -5,16 +5,16 @@
     <%- include('includes/head.ejs'); -%>
 
     <script>
-        window.onload = function() {
-            TVwww.load('/episode?tv&id=<% if (typeof movie !== 'undefined' && movie.kp_id) { %><%- movie.kp_id %><% } %>');
-        };
+      window.onload = function() {
+        TVwww.load('/episode?tv&id=<% if (typeof movie !== 'undefined' && movie.kp_id) { %><%- movie.kp_id %><% } %>');
+      };
     </script>
 
 </head>
 <body>
 
 <% if (page.player) { %>
-<%- page.player %>
+    <%- page.player %>
 <% } %>
 
 <%- page.codes.footer %>

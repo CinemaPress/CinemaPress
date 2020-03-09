@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('includes/head.ejs'); -%>
@@ -33,7 +39,8 @@
                         <a href="/<%- config.urls.admin %>/main" class="btn">
                             <%= __('Основные настройки веб-сайта') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="btn" title="<%= __('Информация о параметрах настройки веб-сайта') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="btn"
+                           title="<%= __('Информация о параметрах настройки веб-сайта') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -54,7 +61,9 @@
                                         <i class="fab fa-expeditedssl"></i>&nbsp;&nbsp;&nbsp;<%= __('Протокол') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#protocol" class="csstip" title="<%= __('Основной протокол веб-сайта') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#protocol"
+                                           class="csstip" title="<%= __('Основной протокол веб-сайта') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -64,10 +73,16 @@
                                         <div class="col-lg-12 col-xs-12 text-center">
                                             <div class="inline-labels">
                                                 <label>
-                                                    <input name="config.protocol" value="http://" <% if (config.protocol === 'http://') { %> checked="" <% } %> type="radio"><span></span> HTTP
+                                                    <input name="config.protocol" value="http://"
+                                                    <% if (config.protocol === 'http://') { %> checked=""
+                                                            <% } %>
+                                                           type="radio"><span></span> HTTP
                                                 </label>
                                                 <label>
-                                                    <input name="config.protocol" value="https://" <% if (config.protocol === 'https://') { %> checked="" <% } %> type="radio"><span></span> HTTPS
+                                                    <input name="config.protocol" value="https://"
+                                                    <% if (config.protocol === 'https://') { %> checked=""
+                                                            <% } %>
+                                                           type="radio"><span></span> HTTPS
                                                 </label>
                                             </div>
                                         </div>
@@ -85,7 +100,10 @@
                                         <i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp;<%= __('Домен') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#domain" class="csstip" title="<%= __('Информационный параметр домена, за которым закрепляется ключ БД') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#domain"
+                                           class="csstip"
+                                           title="<%= __('Информационный параметр домена, за которым закрепляется ключ БД') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -93,13 +111,19 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <input name="config.subdomain" value="<%= config.subdomain.replace(/\./g,'') %>" class="form-control input_url text-right" type="text" placeholder="blog">
+                                            <input name="config.subdomain"
+                                                   value="<%= config.subdomain.replace(/\./g, '') %>"
+                                                   class="form-control input_url text-right" type="text"
+                                                   placeholder="blog">
                                         </div>
                                         <div class="col-xs-5">
-                                            <input name="config.domain" value="<%= config.domain %>" class="form-control input_url" type="text" disabled="disabled">
+                                            <input name="config.domain" value="<%= config.domain %>"
+                                                   class="form-control input_url" type="text" disabled="disabled">
                                         </div>
                                         <div class="col-xs-4">
-                                            <input name="config.domain" value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3).toUpperCase() + '...' + config.database.key.slice(-3).toUpperCase() %><% } else { %><%- config.database.key.toUpperCase() %><% } %>" class="form-control text-center" type="text" disabled="disabled">
+                                            <input name="config.domain"
+                                                   value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3).toUpperCase() + '...' + config.database.key.slice(-3).toUpperCase() %><% } else { %><%- config.database.key.toUpperCase() %><% } %>"
+                                                   class="form-control text-center" type="text" disabled="disabled">
                                         </div>
 
                                         <div class="spacer-10"></div>
@@ -107,7 +131,10 @@
                                         <div class="col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
-                                                <input name="config.botdomain" value="<%= config.botdomain.replace(/\./g,'') %>" class="form-control input_url text-right" type="text" placeholder="<%= config.language %>">
+                                                <input name="config.botdomain"
+                                                       value="<%= config.botdomain.replace(/\./g, '') %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="<%= config.language %>">
                                                 <span class="input-group-addon text-muted">.<%= config.domain %></span>
                                             </div>
                                         </div>
@@ -117,9 +144,13 @@
                                         <div class="col-sm-12">
                                             <div class="cinema-box">
                                                 <div class="cinema-box-header">
-                                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %></div>
+                                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %>
+                                                    </div>
                                                     <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="csstip" title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>" target="_blank">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                           class="csstip"
+                                                           title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>"
+                                                           target="_blank">
                                                             <i class="fa fa-info-circle"></i>
                                                         </a>
                                                     </div>
@@ -128,7 +159,8 @@
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <div class="advanced-textarea">
-                                                                <textarea class="form-control" name="config.botdomains" placeholder="if (id === 301) { 'matrix' } else if (id > 500 && id < 1000) { 'cinema' } else { url }"><%= config.botdomains %></textarea>
+                                                                <textarea class="form-control" name="config.botdomains"
+                                                                          placeholder="if (id === 301) { 'matrix' } else if (id > 500 && id < 1000) { 'cinema' } else { url }"><%= config.botdomains %></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -150,20 +182,33 @@
                                                         <div class="col-sm-5 text-center" id="r">
                                                             <div class="inline-labels">
                                                                 <label>
-                                                                    <input name="config.random" value="3" <% if (config.random === 3) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 3
+                                                                    <input name="config.random" value="3"
+                                                                    <% if (config.random === 3) { %> checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span> <%= __('Да') %> 3
                                                                 </label>
                                                                 <label>
-                                                                    <input name="config.random" value="4" <% if (config.random === 4 || config.random === 1) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 4
+                                                                    <input name="config.random" value="4"
+                                                                    <% if (config.random === 4 || config.random === 1) { %>
+                                                                           checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span> <%= __('Да') %> 4
                                                                 </label>
                                                                 <label>
-                                                                    <input name="config.random" value="0" <% if (!config.random) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
+                                                                    <input name="config.random" value="0"
+                                                                    <% if (!config.random) { %> checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span> <%= __('Нет') %>
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-7" id="h">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon text-muted"><%= __('Главная') %>:</span>
-                                                                <input name="config.homepage" value="<%= config.homepage %>" class="form-control input_url" type="text" placeholder="<%= __('Главная страница веб-сайта') %>">
+                                                                <input name="config.homepage"
+                                                                       value="<%= config.homepage %>"
+                                                                       class="form-control input_url" type="text"
+                                                                       placeholder="<%= __('Главная страница веб-сайта') %>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,7 +253,10 @@
                                         <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Email') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#email" class="csstip" title="<%= __('Ваш email для связи с администратором веб-сайта') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#email"
+                                           class="csstip"
+                                           title="<%= __('Ваш email для связи с администратором веб-сайта') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -216,7 +264,8 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="config.email" value="<%= config.email %>" class="form-control" type="text">
+                                            <input name="config.email" value="<%= config.email %>" class="form-control"
+                                                   type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +281,10 @@
                                         <i class="fa fa-globe"></i>&nbsp;&nbsp;&nbsp;<%= __('Язык и страна веб-сайта') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#language" class="csstip" title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#language"
+                                           class="csstip"
+                                           title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -241,33 +293,813 @@
                                     <div class="row">
                                         <div class="col-xs-6 text-center">
                                             <select name="config.language" class="form-control">
-                                                <% var languages = [{"iso":"","name":"None"},{"name": "Afar", "iso": "aa"},{"name": "Abkhazian", "iso": "ab"},{"name": "Avestan", "iso": "ae"},{"name": "Afrikaans", "iso": "af"},{"name": "Akan", "iso": "ak"},{"name": "Amharic", "iso": "am"},{"name": "Aragonese", "iso": "an"},{"name": "Arabic", "iso": "ar"},{"name": "Assamese", "iso": "as"},{"name": "Avaric", "iso": "av"},{"name": "Aymara", "iso": "ay"},{"name": "Azerbaijani", "iso": "az"},{"name": "Bashkir", "iso": "ba"},{"name": "Belarusian", "iso": "be"},{"name": "Bulgarian", "iso": "bg"},{"name": "Bihari languages", "iso": "bh"},{"name": "Bislama", "iso": "bi"},{"name": "Bambara", "iso": "bm"},{"name": "Bengali", "iso": "bn"},{"name": "Tibetan", "iso": "bo"},{"name": "Breton", "iso": "br"},{"name": "Bosnian", "iso": "bs"},{"name": "Catalan; Valencian", "iso": "ca"},{"name": "Chechen", "iso": "ce"},{"name": "Chamorro", "iso": "ch"},{"name": "Corsican", "iso": "co"},{"name": "Cree", "iso": "cr"},{"name": "Czech", "iso": "cs"},{"name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic", "iso": "cu"},{"name": "Chuvash", "iso": "cv"},{"name": "Welsh", "iso": "cy"},{"name": "Danish", "iso": "da"},{"name": "German", "iso": "de"},{"name": "Divehi; Dhivehi; Maldivian", "iso": "dv"},{"name": "Dzongkha", "iso": "dz"},{"name": "Ewe", "iso": "ee"},{"name": "Greek, Modern (1453-)", "iso": "el"},{"name": "English", "iso": "en"},{"name": "Esperanto", "iso": "eo"},{"name": "Spanish; Castilian", "iso": "es"},{"name": "Estonian", "iso": "et"},{"name": "Basque", "iso": "eu"},{"name": "Persian", "iso": "fa"},{"name": "Fulah", "iso": "ff"},{"name": "Finnish", "iso": "fi"},{"name": "Fijian", "iso": "fj"},{"name": "Faroese", "iso": "fo"},{"name": "French", "iso": "fr"},{"name": "Western Frisian", "iso": "fy"},{"name": "Irish", "iso": "ga"},{"name": "Gaelic; Scottish Gaelic", "iso": "gd"},{"name": "Galician", "iso": "gl"},{"name": "Guarani", "iso": "gn"},{"name": "Gujarati", "iso": "gu"},{"name": "Manx", "iso": "gv"},{"name": "Hausa", "iso": "ha"},{"name": "Hebrew", "iso": "he"},{"name": "Hindi", "iso": "hi"},{"name": "Hiri Motu", "iso": "ho"},{"name": "Croatian", "iso": "hr"},{"name": "Haitian; Haitian Creole", "iso": "ht"},{"name": "Hungarian", "iso": "hu"},{"name": "Armenian", "iso": "hy"},{"name": "Herero", "iso": "hz"},{"name": "Interlingua (International Auxiliary Language Association)", "iso": "ia"},{"name": "Indonesian", "iso": "id"},{"name": "Interlingue; Occidental", "iso": "ie"},{"name": "Igbo", "iso": "ig"},{"name": "Sichuan Yi; Nuosu", "iso": "ii"},{"name": "Inupiaq", "iso": "ik"},{"name": "Ido", "iso": "io"},{"name": "Icelandic", "iso": "is"},{"name": "Italian", "iso": "it"},{"name": "Inuktitut", "iso": "iu"},{"name": "Japanese", "iso": "ja"},{"name": "Javanese", "iso": "jv"},{"name": "Georgian", "iso": "ka"},{"name": "Kongo", "iso": "kg"},{"name": "Kikuyu; Gikuyu", "iso": "ki"},{"name": "Kuanyama; Kwanyama", "iso": "kj"},{"name": "Kazakh", "iso": "kk"},{"name": "Kalaallisut; Greenlandic", "iso": "kl"},{"name": "Central Khmer", "iso": "km"},{"name": "Kannada", "iso": "kn"},{"name": "Korean", "iso": "ko"},{"name": "Kanuri", "iso": "kr"},{"name": "Kashmiri", "iso": "ks"},{"name": "Kurdish", "iso": "ku"},{"name": "Komi", "iso": "kv"},{"name": "Cornish", "iso": "kw"},{"name": "Kirghiz; Kyrgyz", "iso": "ky"},{"name": "Latin", "iso": "la"},{"name": "Luxembourgish; Letzeburgesch", "iso": "lb"},{"name": "Ganda", "iso": "lg"},{"name": "Limburgan; Limburger; Limburgish", "iso": "li"},{"name": "Lingala", "iso": "ln"},{"name": "Lao", "iso": "lo"},{"name": "Lithuanian", "iso": "lt"},{"name": "Luba-Katanga", "iso": "lu"},{"name": "Latvian", "iso": "lv"},{"name": "Malagasy", "iso": "mg"},{"name": "Marshallese", "iso": "mh"},{"name": "Maori", "iso": "mi"},{"name": "Macedonian", "iso": "mk"},{"name": "Malayalam", "iso": "ml"},{"name": "Mongolian", "iso": "mn"},{"name": "Marathi", "iso": "mr"},{"name": "Malay", "iso": "ms"},{"name": "Maltese", "iso": "mt"},{"name": "Burmese", "iso": "my"},{"name": "Nauru", "iso": "na"},{"name": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l", "iso": "nb"},{"name": "Ndebele, North; North Ndebele", "iso": "nd"},{"name": "Nepali", "iso": "ne"},{"name": "Ndonga", "iso": "ng"},{"name": "Dutch; Flemish", "iso": "nl"},{"name": "Norwegian Nynorsk; Nynorsk, Norwegian", "iso": "nn"},{"name": "Norwegian", "iso": "no"},{"name": "Ndebele, South; South Ndebele", "iso": "nr"},{"name": "Navajo; Navaho", "iso": "nv"},{"name": "Chichewa; Chewa; Nyanja", "iso": "ny"},{"name": "Occitan (post 1500); Proven\u00e7al", "iso": "oc"},{"name": "Ojibwa", "iso": "oj"},{"name": "Oromo", "iso": "om"},{"name": "Oriya", "iso": "or"},{"name": "Ossetian; Ossetic", "iso": "os"},{"name": "Panjabi; Punjabi", "iso": "pa"},{"name": "Pali", "iso": "pi"},{"name": "Polish", "iso": "pl"},{"name": "Pushto; Pashto", "iso": "ps"},{"name": "Portuguese", "iso": "pt"},{"name": "Quechua", "iso": "qu"},{"name": "Romansh", "iso": "rm"},{"name": "Rundi", "iso": "rn"},{"name": "Romanian; Moldavian; Moldovan", "iso": "ro"},{"name": "Russian", "iso": "ru"},{"name": "Kinyarwanda", "iso": "rw"},{"name": "Sanskrit", "iso": "sa"},{"name": "Sardinian", "iso": "sc"},{"name": "Sindhi", "iso": "sd"},{"name": "Northern Sami", "iso": "se"},{"name": "Sango", "iso": "sg"},{"name": "Sinhala; Sinhalese", "iso": "si"},{"name": "Slovak", "iso": "sk"},{"name": "Slovenian", "iso": "sl"},{"name": "Samoan", "iso": "sm"},{"name": "Shona", "iso": "sn"},{"name": "Somali", "iso": "so"},{"name": "Albanian", "iso": "sq"},{"name": "Serbian", "iso": "sr"},{"name": "Swati", "iso": "ss"},{"name": "Sotho, Southern", "iso": "st"},{"name": "Sundanese", "iso": "su"},{"name": "Swedish", "iso": "sv"},{"name": "Swahili", "iso": "sw"},{"name": "Tamil", "iso": "ta"},{"name": "Telugu", "iso": "te"},{"name": "Tajik", "iso": "tg"},{"name": "Thai", "iso": "th"},{"name": "Tigrinya", "iso": "ti"},{"name": "Turkmen", "iso": "tk"},{"name": "Tagalog", "iso": "tl"},{"name": "Tswana", "iso": "tn"},{"name": "Tonga (Tonga Islands)", "iso": "to"},{"name": "Turkish", "iso": "tr"},{"name": "Tsonga", "iso": "ts"},{"name": "Tatar", "iso": "tt"},{"name": "Twi", "iso": "tw"},{"name": "Tahitian", "iso": "ty"},{"name": "Uighur; Uyghur", "iso": "ug"},{"name": "Ukrainian", "iso": "uk"},{"name": "Urdu", "iso": "ur"},{"name": "Uzbek", "iso": "uz"},{"name": "Venda", "iso": "ve"},{"name": "Vietnamese", "iso": "vi"},{"name": "Volap\u00fck", "iso": "vo"},{"name": "Walloon", "iso": "wa"},{"name": "Wolof", "iso": "wo"},{"name": "Xhosa", "iso": "xh"},{"name": "Yiddish", "iso": "yi"},{"name": "Yoruba", "iso": "yo"},{"name": "Zhuang; Chuang", "iso": "za"},{"name": "Chinese", "iso": "zh"},{"name": "Zulu", "iso": "zu"}]; %>
+                                                <% var languages = [{ "iso": "", "name": "None" }, {
+                                                    "name": "Afar",
+                                                    "iso": "aa"
+                                                }, { "name": "Abkhazian", "iso": "ab" }, {
+                                                    "name": "Avestan",
+                                                    "iso": "ae"
+                                                }, { "name": "Afrikaans", "iso": "af" }, {
+                                                    "name": "Akan",
+                                                    "iso": "ak"
+                                                }, { "name": "Amharic", "iso": "am" }, {
+                                                    "name": "Aragonese",
+                                                    "iso": "an"
+                                                }, { "name": "Arabic", "iso": "ar" }, {
+                                                    "name": "Assamese",
+                                                    "iso": "as"
+                                                }, { "name": "Avaric", "iso": "av" }, {
+                                                    "name": "Aymara",
+                                                    "iso": "ay"
+                                                }, { "name": "Azerbaijani", "iso": "az" }, {
+                                                    "name": "Bashkir",
+                                                    "iso": "ba"
+                                                }, { "name": "Belarusian", "iso": "be" }, {
+                                                    "name": "Bulgarian",
+                                                    "iso": "bg"
+                                                }, { "name": "Bihari languages", "iso": "bh" }, {
+                                                    "name": "Bislama",
+                                                    "iso": "bi"
+                                                }, { "name": "Bambara", "iso": "bm" }, {
+                                                    "name": "Bengali",
+                                                    "iso": "bn"
+                                                }, { "name": "Tibetan", "iso": "bo" }, {
+                                                    "name": "Breton",
+                                                    "iso": "br"
+                                                }, { "name": "Bosnian", "iso": "bs" }, {
+                                                    "name": "Catalan; Valencian",
+                                                    "iso": "ca"
+                                                }, { "name": "Chechen", "iso": "ce" }, {
+                                                    "name": "Chamorro",
+                                                    "iso": "ch"
+                                                }, { "name": "Corsican", "iso": "co" }, {
+                                                    "name": "Cree",
+                                                    "iso": "cr"
+                                                }, {
+                                                    "name": "Czech",
+                                                    "iso": "cs"
+                                                }, {
+                                                    "name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
+                                                    "iso": "cu"
+                                                }, { "name": "Chuvash", "iso": "cv" }, {
+                                                    "name": "Welsh",
+                                                    "iso": "cy"
+                                                }, { "name": "Danish", "iso": "da" }, {
+                                                    "name": "German",
+                                                    "iso": "de"
+                                                }, {
+                                                    "name": "Divehi; Dhivehi; Maldivian",
+                                                    "iso": "dv"
+                                                }, { "name": "Dzongkha", "iso": "dz" }, {
+                                                    "name": "Ewe",
+                                                    "iso": "ee"
+                                                }, {
+                                                    "name": "Greek, Modern (1453-)",
+                                                    "iso": "el"
+                                                }, { "name": "English", "iso": "en" }, {
+                                                    "name": "Esperanto",
+                                                    "iso": "eo"
+                                                }, { "name": "Spanish; Castilian", "iso": "es" }, {
+                                                    "name": "Estonian",
+                                                    "iso": "et"
+                                                }, { "name": "Basque", "iso": "eu" }, {
+                                                    "name": "Persian",
+                                                    "iso": "fa"
+                                                }, { "name": "Fulah", "iso": "ff" }, {
+                                                    "name": "Finnish",
+                                                    "iso": "fi"
+                                                }, { "name": "Fijian", "iso": "fj" }, {
+                                                    "name": "Faroese",
+                                                    "iso": "fo"
+                                                }, { "name": "French", "iso": "fr" }, {
+                                                    "name": "Western Frisian",
+                                                    "iso": "fy"
+                                                }, {
+                                                    "name": "Irish",
+                                                    "iso": "ga"
+                                                }, {
+                                                    "name": "Gaelic; Scottish Gaelic",
+                                                    "iso": "gd"
+                                                }, { "name": "Galician", "iso": "gl" }, {
+                                                    "name": "Guarani",
+                                                    "iso": "gn"
+                                                }, { "name": "Gujarati", "iso": "gu" }, {
+                                                    "name": "Manx",
+                                                    "iso": "gv"
+                                                }, { "name": "Hausa", "iso": "ha" }, {
+                                                    "name": "Hebrew",
+                                                    "iso": "he"
+                                                }, { "name": "Hindi", "iso": "hi" }, {
+                                                    "name": "Hiri Motu",
+                                                    "iso": "ho"
+                                                }, {
+                                                    "name": "Croatian",
+                                                    "iso": "hr"
+                                                }, {
+                                                    "name": "Haitian; Haitian Creole",
+                                                    "iso": "ht"
+                                                }, { "name": "Hungarian", "iso": "hu" }, {
+                                                    "name": "Armenian",
+                                                    "iso": "hy"
+                                                }, {
+                                                    "name": "Herero",
+                                                    "iso": "hz"
+                                                }, {
+                                                    "name": "Interlingua (International Auxiliary Language Association)",
+                                                    "iso": "ia"
+                                                }, {
+                                                    "name": "Indonesian",
+                                                    "iso": "id"
+                                                }, { "name": "Interlingue; Occidental", "iso": "ie" }, {
+                                                    "name": "Igbo",
+                                                    "iso": "ig"
+                                                }, { "name": "Sichuan Yi; Nuosu", "iso": "ii" }, {
+                                                    "name": "Inupiaq",
+                                                    "iso": "ik"
+                                                }, { "name": "Ido", "iso": "io" }, {
+                                                    "name": "Icelandic",
+                                                    "iso": "is"
+                                                }, { "name": "Italian", "iso": "it" }, {
+                                                    "name": "Inuktitut",
+                                                    "iso": "iu"
+                                                }, { "name": "Japanese", "iso": "ja" }, {
+                                                    "name": "Javanese",
+                                                    "iso": "jv"
+                                                }, { "name": "Georgian", "iso": "ka" }, {
+                                                    "name": "Kongo",
+                                                    "iso": "kg"
+                                                }, {
+                                                    "name": "Kikuyu; Gikuyu",
+                                                    "iso": "ki"
+                                                }, { "name": "Kuanyama; Kwanyama", "iso": "kj" }, {
+                                                    "name": "Kazakh",
+                                                    "iso": "kk"
+                                                }, {
+                                                    "name": "Kalaallisut; Greenlandic",
+                                                    "iso": "kl"
+                                                }, { "name": "Central Khmer", "iso": "km" }, {
+                                                    "name": "Kannada",
+                                                    "iso": "kn"
+                                                }, { "name": "Korean", "iso": "ko" }, {
+                                                    "name": "Kanuri",
+                                                    "iso": "kr"
+                                                }, { "name": "Kashmiri", "iso": "ks" }, {
+                                                    "name": "Kurdish",
+                                                    "iso": "ku"
+                                                }, { "name": "Komi", "iso": "kv" }, {
+                                                    "name": "Cornish",
+                                                    "iso": "kw"
+                                                }, { "name": "Kirghiz; Kyrgyz", "iso": "ky" }, {
+                                                    "name": "Latin",
+                                                    "iso": "la"
+                                                }, {
+                                                    "name": "Luxembourgish; Letzeburgesch",
+                                                    "iso": "lb"
+                                                }, {
+                                                    "name": "Ganda",
+                                                    "iso": "lg"
+                                                }, {
+                                                    "name": "Limburgan; Limburger; Limburgish",
+                                                    "iso": "li"
+                                                }, { "name": "Lingala", "iso": "ln" }, {
+                                                    "name": "Lao",
+                                                    "iso": "lo"
+                                                }, { "name": "Lithuanian", "iso": "lt" }, {
+                                                    "name": "Luba-Katanga",
+                                                    "iso": "lu"
+                                                }, { "name": "Latvian", "iso": "lv" }, {
+                                                    "name": "Malagasy",
+                                                    "iso": "mg"
+                                                }, { "name": "Marshallese", "iso": "mh" }, {
+                                                    "name": "Maori",
+                                                    "iso": "mi"
+                                                }, { "name": "Macedonian", "iso": "mk" }, {
+                                                    "name": "Malayalam",
+                                                    "iso": "ml"
+                                                }, { "name": "Mongolian", "iso": "mn" }, {
+                                                    "name": "Marathi",
+                                                    "iso": "mr"
+                                                }, { "name": "Malay", "iso": "ms" }, {
+                                                    "name": "Maltese",
+                                                    "iso": "mt"
+                                                }, { "name": "Burmese", "iso": "my" }, {
+                                                    "name": "Nauru",
+                                                    "iso": "na"
+                                                }, {
+                                                    "name": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l",
+                                                    "iso": "nb"
+                                                }, {
+                                                    "name": "Ndebele, North; North Ndebele",
+                                                    "iso": "nd"
+                                                }, { "name": "Nepali", "iso": "ne" }, {
+                                                    "name": "Ndonga",
+                                                    "iso": "ng"
+                                                }, {
+                                                    "name": "Dutch; Flemish",
+                                                    "iso": "nl"
+                                                }, {
+                                                    "name": "Norwegian Nynorsk; Nynorsk, Norwegian",
+                                                    "iso": "nn"
+                                                }, {
+                                                    "name": "Norwegian",
+                                                    "iso": "no"
+                                                }, {
+                                                    "name": "Ndebele, South; South Ndebele",
+                                                    "iso": "nr"
+                                                }, {
+                                                    "name": "Navajo; Navaho",
+                                                    "iso": "nv"
+                                                }, {
+                                                    "name": "Chichewa; Chewa; Nyanja",
+                                                    "iso": "ny"
+                                                }, {
+                                                    "name": "Occitan (post 1500); Proven\u00e7al",
+                                                    "iso": "oc"
+                                                }, { "name": "Ojibwa", "iso": "oj" }, {
+                                                    "name": "Oromo",
+                                                    "iso": "om"
+                                                }, { "name": "Oriya", "iso": "or" }, {
+                                                    "name": "Ossetian; Ossetic",
+                                                    "iso": "os"
+                                                }, { "name": "Panjabi; Punjabi", "iso": "pa" }, {
+                                                    "name": "Pali",
+                                                    "iso": "pi"
+                                                }, { "name": "Polish", "iso": "pl" }, {
+                                                    "name": "Pushto; Pashto",
+                                                    "iso": "ps"
+                                                }, { "name": "Portuguese", "iso": "pt" }, {
+                                                    "name": "Quechua",
+                                                    "iso": "qu"
+                                                }, { "name": "Romansh", "iso": "rm" }, {
+                                                    "name": "Rundi",
+                                                    "iso": "rn"
+                                                }, {
+                                                    "name": "Romanian; Moldavian; Moldovan",
+                                                    "iso": "ro"
+                                                }, { "name": "Russian", "iso": "ru" }, {
+                                                    "name": "Kinyarwanda",
+                                                    "iso": "rw"
+                                                }, { "name": "Sanskrit", "iso": "sa" }, {
+                                                    "name": "Sardinian",
+                                                    "iso": "sc"
+                                                }, { "name": "Sindhi", "iso": "sd" }, {
+                                                    "name": "Northern Sami",
+                                                    "iso": "se"
+                                                }, { "name": "Sango", "iso": "sg" }, {
+                                                    "name": "Sinhala; Sinhalese",
+                                                    "iso": "si"
+                                                }, { "name": "Slovak", "iso": "sk" }, {
+                                                    "name": "Slovenian",
+                                                    "iso": "sl"
+                                                }, { "name": "Samoan", "iso": "sm" }, {
+                                                    "name": "Shona",
+                                                    "iso": "sn"
+                                                }, { "name": "Somali", "iso": "so" }, {
+                                                    "name": "Albanian",
+                                                    "iso": "sq"
+                                                }, { "name": "Serbian", "iso": "sr" }, {
+                                                    "name": "Swati",
+                                                    "iso": "ss"
+                                                }, { "name": "Sotho, Southern", "iso": "st" }, {
+                                                    "name": "Sundanese",
+                                                    "iso": "su"
+                                                }, { "name": "Swedish", "iso": "sv" }, {
+                                                    "name": "Swahili",
+                                                    "iso": "sw"
+                                                }, { "name": "Tamil", "iso": "ta" }, {
+                                                    "name": "Telugu",
+                                                    "iso": "te"
+                                                }, { "name": "Tajik", "iso": "tg" }, {
+                                                    "name": "Thai",
+                                                    "iso": "th"
+                                                }, { "name": "Tigrinya", "iso": "ti" }, {
+                                                    "name": "Turkmen",
+                                                    "iso": "tk"
+                                                }, { "name": "Tagalog", "iso": "tl" }, {
+                                                    "name": "Tswana",
+                                                    "iso": "tn"
+                                                }, {
+                                                    "name": "Tonga (Tonga Islands)",
+                                                    "iso": "to"
+                                                }, { "name": "Turkish", "iso": "tr" }, {
+                                                    "name": "Tsonga",
+                                                    "iso": "ts"
+                                                }, { "name": "Tatar", "iso": "tt" }, {
+                                                    "name": "Twi",
+                                                    "iso": "tw"
+                                                }, { "name": "Tahitian", "iso": "ty" }, {
+                                                    "name": "Uighur; Uyghur",
+                                                    "iso": "ug"
+                                                }, { "name": "Ukrainian", "iso": "uk" }, {
+                                                    "name": "Urdu",
+                                                    "iso": "ur"
+                                                }, { "name": "Uzbek", "iso": "uz" }, {
+                                                    "name": "Venda",
+                                                    "iso": "ve"
+                                                }, { "name": "Vietnamese", "iso": "vi" }, {
+                                                    "name": "Volap\u00fck",
+                                                    "iso": "vo"
+                                                }, { "name": "Walloon", "iso": "wa" }, {
+                                                    "name": "Wolof",
+                                                    "iso": "wo"
+                                                }, { "name": "Xhosa", "iso": "xh" }, {
+                                                    "name": "Yiddish",
+                                                    "iso": "yi"
+                                                }, { "name": "Yoruba", "iso": "yo" }, {
+                                                    "name": "Zhuang; Chuang",
+                                                    "iso": "za"
+                                                }, { "name": "Chinese", "iso": "zh" }, {
+                                                    "name": "Zulu",
+                                                    "iso": "zu"
+                                                }]; %>
                                                 <% languages.forEach(function(language) { %>
-                                                <% if (config.language.toLowerCase() === language.iso.toLowerCase()) { %>
-                                                <option value="<%= language.iso %>" selected="selected">
-                                                    <%- language.name %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= language.iso %>">
-                                                    <%- language.name %>
-                                                </option>
-                                                <% } %>
+                                                    <% if (config.language.toLowerCase() === language.iso.toLowerCase()) { %>
+                                                        <option value="<%= language.iso %>" selected="selected">
+                                                            <%- language.name %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= language.iso %>">
+                                                            <%- language.name %>
+                                                        </option>
+                                                    <% } %>
                                                 <% }); %>
                                             </select>
                                         </div>
                                         <div class="col-xs-6 text-center">
                                             <select name="config.country" class="form-control">
-                                                <% var countries = [{"name":"None","iso":""},{"name":"Afghanistan","iso":"AF"},{"name":"Åland Islands","iso":"AX"},{"name":"Albania","iso":"AL"},{"name":"Algeria","iso":"DZ"},{"name":"American Samoa","iso":"AS"},{"name":"Andorra","iso":"AD"},{"name":"Angola","iso":"AO"},{"name":"Anguilla","iso":"AI"},{"name":"Antarctica","iso":"AQ"},{"name":"Antigua and Barbuda","iso":"AG"},{"name":"Argentina","iso":"AR"},{"name":"Armenia","iso":"AM"},{"name":"Aruba","iso":"AW"},{"name":"Australia","iso":"AU"},{"name":"Austria","iso":"AT"},{"name":"Azerbaijan","iso":"AZ"},{"name":"Bahamas","iso":"BS"},{"name":"Bahrain","iso":"BH"},{"name":"Bangladesh","iso":"BD"},{"name":"Barbados","iso":"BB"},{"name":"Belarus","iso":"BY"},{"name":"Belgium","iso":"BE"},{"name":"Belize","iso":"BZ"},{"name":"Benin","iso":"BJ"},{"name":"Bermuda","iso":"BM"},{"name":"Bhutan","iso":"BT"},{"name":"Bolivia (Plurinational State of)","iso":"BO"},{"name":"Bonaire, Sint Eustatius and Saba","iso":"BQ"},{"name":"Bosnia and Herzegovina","iso":"BA"},{"name":"Botswana","iso":"BW"},{"name":"Bouvet Island","iso":"BV"},{"name":"Brazil","iso":"BR"},{"name":"British Indian Ocean Territory","iso":"IO"},{"name":"Brunei Darussalam","iso":"BN"},{"name":"Bulgaria","iso":"BG"},{"name":"Burkina Faso","iso":"BF"},{"name":"Burundi","iso":"BI"},{"name":"Cabo Verde","iso":"CV"},{"name":"Cambodia","iso":"KH"},{"name":"Cameroon","iso":"CM"},{"name":"Canada","iso":"CA"},{"name":"Cayman Islands","iso":"KY"},{"name":"Central African Republic","iso":"CF"},{"name":"Chad","iso":"TD"},{"name":"Chile","iso":"CL"},{"name":"China","iso":"CN"},{"name":"Christmas Island","iso":"CX"},{"name":"Cocos (Keeling) Islands","iso":"CC"},{"name":"Colombia","iso":"CO"},{"name":"Comoros","iso":"KM"},{"name":"Congo","iso":"CG"},{"name":"Congo (Democratic Republic of the)","iso":"CD"},{"name":"Cook Islands","iso":"CK"},{"name":"Costa Rica","iso":"CR"},{"name":"Côte d'Ivoire","iso":"CI"},{"name":"Croatia","iso":"HR"},{"name":"Cuba","iso":"CU"},{"name":"Curaçao","iso":"CW"},{"name":"Cyprus","iso":"CY"},{"name":"Czechia","iso":"CZ"},{"name":"Denmark","iso":"DK"},{"name":"Djibouti","iso":"DJ"},{"name":"Dominica","iso":"DM"},{"name":"Dominican Republic","iso":"DO"},{"name":"Ecuador","iso":"EC"},{"name":"Egypt","iso":"EG"},{"name":"El Salvador","iso":"SV"},{"name":"Equatorial Guinea","iso":"GQ"},{"name":"Eritrea","iso":"ER"},{"name":"Estonia","iso":"EE"},{"name":"Eswatini","iso":"SZ"},{"name":"Ethiopia","iso":"ET"},{"name":"Falkland Islands (Malvinas)","iso":"FK"},{"name":"Faroe Islands","iso":"FO"},{"name":"Fiji","iso":"FJ"},{"name":"Finland","iso":"FI"},{"name":"France","iso":"FR"},{"name":"French Guiana","iso":"GF"},{"name":"French Polynesia","iso":"PF"},{"name":"French Southern Territories","iso":"TF"},{"name":"Gabon","iso":"GA"},{"name":"Gambia","iso":"GM"},{"name":"Georgia","iso":"GE"},{"name":"Germany","iso":"DE"},{"name":"Ghana","iso":"GH"},{"name":"Gibraltar","iso":"GI"},{"name":"Greece","iso":"GR"},{"name":"Greenland","iso":"GL"},{"name":"Grenada","iso":"GD"},{"name":"Guadeloupe","iso":"GP"},{"name":"Guam","iso":"GU"},{"name":"Guatemala","iso":"GT"},{"name":"Guernsey","iso":"GG"},{"name":"Guinea","iso":"GN"},{"name":"Guinea-Bissau","iso":"GW"},{"name":"Guyana","iso":"GY"},{"name":"Haiti","iso":"HT"},{"name":"Heard Island and McDonald Islands","iso":"HM"},{"name":"Holy See","iso":"VA"},{"name":"Honduras","iso":"HN"},{"name":"Hong Kong","iso":"HK"},{"name":"Hungary","iso":"HU"},{"name":"Iceland","iso":"IS"},{"name":"India","iso":"IN"},{"name":"Indonesia","iso":"ID"},{"name":"Iran (Islamic Republic of)","iso":"IR"},{"name":"Iraq","iso":"IQ"},{"name":"Ireland","iso":"IE"},{"name":"Isle of Man","iso":"IM"},{"name":"Israel","iso":"IL"},{"name":"Italy","iso":"IT"},{"name":"Jamaica","iso":"JM"},{"name":"Japan","iso":"JP"},{"name":"Jersey","iso":"JE"},{"name":"Jordan","iso":"JO"},{"name":"Kazakhstan","iso":"KZ"},{"name":"Kenya","iso":"KE"},{"name":"Kiribati","iso":"KI"},{"name":"Korea (Democratic People's Republic of)","iso":"KP"},{"name":"Korea (Republic of)","iso":"KR"},{"name":"Kuwait","iso":"KW"},{"name":"Kyrgyzstan","iso":"KG"},{"name":"Lao People's Democratic Republic","iso":"LA"},{"name":"Latvia","iso":"LV"},{"name":"Lebanon","iso":"LB"},{"name":"Lesotho","iso":"LS"},{"name":"Liberia","iso":"LR"},{"name":"Libya","iso":"LY"},{"name":"Liechtenstein","iso":"LI"},{"name":"Lithuania","iso":"LT"},{"name":"Luxembourg","iso":"LU"},{"name":"Macao","iso":"MO"},{"name":"Macedonia (the former Yugoslav Republic of)","iso":"MK"},{"name":"Madagascar","iso":"MG"},{"name":"Malawi","iso":"MW"},{"name":"Malaysia","iso":"MY"},{"name":"Maldives","iso":"MV"},{"name":"Mali","iso":"ML"},{"name":"Malta","iso":"MT"},{"name":"Marshall Islands","iso":"MH"},{"name":"Martinique","iso":"MQ"},{"name":"Mauritania","iso":"MR"},{"name":"Mauritius","iso":"MU"},{"name":"Mayotte","iso":"YT"},{"name":"Mexico","iso":"MX"},{"name":"Micronesia (Federated States of)","iso":"FM"},{"name":"Moldova (Republic of)","iso":"MD"},{"name":"Monaco","iso":"MC"},{"name":"Mongolia","iso":"MN"},{"name":"Montenegro","iso":"ME"},{"name":"Montserrat","iso":"MS"},{"name":"Morocco","iso":"MA"},{"name":"Mozambique","iso":"MZ"},{"name":"Myanmar","iso":"MM"},{"name":"Namibia","iso":"NA"},{"name":"Nauru","iso":"NR"},{"name":"Nepal","iso":"NP"},{"name":"Netherlands","iso":"NL"},{"name":"New Caledonia","iso":"NC"},{"name":"New Zealand","iso":"NZ"},{"name":"Nicaragua","iso":"NI"},{"name":"Niger","iso":"NE"},{"name":"Nigeria","iso":"NG"},{"name":"Niue","iso":"NU"},{"name":"Norfolk Island","iso":"NF"},{"name":"Northern Mariana Islands","iso":"MP"},{"name":"Norway","iso":"NO"},{"name":"Oman","iso":"OM"},{"name":"Pakistan","iso":"PK"},{"name":"Palau","iso":"PW"},{"name":"Palestine, State of","iso":"PS"},{"name":"Panama","iso":"PA"},{"name":"Papua New Guinea","iso":"PG"},{"name":"Paraguay","iso":"PY"},{"name":"Peru","iso":"PE"},{"name":"Philippines","iso":"PH"},{"name":"Pitcairn","iso":"PN"},{"name":"Poland","iso":"PL"},{"name":"Portugal","iso":"PT"},{"name":"Puerto Rico","iso":"PR"},{"name":"Qatar","iso":"QA"},{"name":"Réunion","iso":"RE"},{"name":"Romania","iso":"RO"},{"name":"Russian Federation","iso":"RU"},{"name":"Rwanda","iso":"RW"},{"name":"Saint Barthélemy","iso":"BL"},{"name":"Saint Helena, Ascension and Tristan da Cunha","iso":"SH"},{"name":"Saint Kitts and Nevis","iso":"KN"},{"name":"Saint Lucia","iso":"LC"},{"name":"Saint Martin (French part)","iso":"MF"},{"name":"Saint Pierre and Miquelon","iso":"PM"},{"name":"Saint Vincent and the Grenadines","iso":"VC"},{"name":"Samoa","iso":"WS"},{"name":"San Marino","iso":"SM"},{"name":"Sao Tome and Principe","iso":"ST"},{"name":"Saudi Arabia","iso":"SA"},{"name":"Senegal","iso":"SN"},{"name":"Serbia","iso":"RS"},{"name":"Seychelles","iso":"SC"},{"name":"Sierra Leone","iso":"SL"},{"name":"Singapore","iso":"SG"},{"name":"Sint Maarten (Dutch part)","iso":"SX"},{"name":"Slovakia","iso":"SK"},{"name":"Slovenia","iso":"SI"},{"name":"Solomon Islands","iso":"SB"},{"name":"Somalia","iso":"SO"},{"name":"South Africa","iso":"ZA"},{"name":"South Georgia and the South Sandwich Islands","iso":"GS"},{"name":"South Sudan","iso":"SS"},{"name":"Spain","iso":"ES"},{"name":"Sri Lanka","iso":"LK"},{"name":"Sudan","iso":"SD"},{"name":"Suriname","iso":"SR"},{"name":"Svalbard and Jan Mayen","iso":"SJ"},{"name":"Sweden","iso":"SE"},{"name":"Switzerland","iso":"CH"},{"name":"Syrian Arab Republic","iso":"SY"},{"name":"Taiwan, Province of China","iso":"TW"},{"name":"Tajikistan","iso":"TJ"},{"name":"Tanzania, United Republic of","iso":"TZ"},{"name":"Thailand","iso":"TH"},{"name":"Timor-Leste","iso":"TL"},{"name":"Togo","iso":"TG"},{"name":"Tokelau","iso":"TK"},{"name":"Tonga","iso":"TO"},{"name":"Trinidad and Tobago","iso":"TT"},{"name":"Tunisia","iso":"TN"},{"name":"Turkey","iso":"TR"},{"name":"Turkmenistan","iso":"TM"},{"name":"Turks and Caicos Islands","iso":"TC"},{"name":"Tuvalu","iso":"TV"},{"name":"Uganda","iso":"UG"},{"name":"Ukraine","iso":"UA"},{"name":"United Arab Emirates","iso":"AE"},{"name":"United Kingdom of Great Britain and Northern Ireland","iso":"GB"},{"name":"United States of America","iso":"US"},{"name":"United States Minor Outlying Islands","iso":"UM"},{"name":"Uruguay","iso":"UY"},{"name":"Uzbekistan","iso":"UZ"},{"name":"Vanuatu","iso":"VU"},{"name":"Venezuela (Bolivarian Republic of)","iso":"VE"},{"name":"Viet Nam","iso":"VN"},{"name":"Virgin Islands (British)","iso":"VG"},{"name":"Virgin Islands (U.S.)","iso":"VI"},{"name":"Wallis and Futuna","iso":"WF"},{"name":"Western Sahara","iso":"EH"},{"name":"Yemen","iso":"YE"},{"name":"Zambia","iso":"ZM"},{"name":"Zimbabwe","iso":"ZW"}]; %>
+                                                <% var countries = [{
+                                                    "name": "None",
+                                                    "iso": ""
+                                                }, { "name": "Afghanistan", "iso": "AF" }, {
+                                                    "name": "Åland Islands",
+                                                    "iso": "AX"
+                                                }, { "name": "Albania", "iso": "AL" }, {
+                                                    "name": "Algeria",
+                                                    "iso": "DZ"
+                                                }, { "name": "American Samoa", "iso": "AS" }, {
+                                                    "name": "Andorra",
+                                                    "iso": "AD"
+                                                }, { "name": "Angola", "iso": "AO" }, {
+                                                    "name": "Anguilla",
+                                                    "iso": "AI"
+                                                }, {
+                                                    "name": "Antarctica",
+                                                    "iso": "AQ"
+                                                }, {
+                                                    "name": "Antigua and Barbuda",
+                                                    "iso": "AG"
+                                                }, { "name": "Argentina", "iso": "AR" }, {
+                                                    "name": "Armenia",
+                                                    "iso": "AM"
+                                                }, { "name": "Aruba", "iso": "AW" }, {
+                                                    "name": "Australia",
+                                                    "iso": "AU"
+                                                }, { "name": "Austria", "iso": "AT" }, {
+                                                    "name": "Azerbaijan",
+                                                    "iso": "AZ"
+                                                }, { "name": "Bahamas", "iso": "BS" }, {
+                                                    "name": "Bahrain",
+                                                    "iso": "BH"
+                                                }, { "name": "Bangladesh", "iso": "BD" }, {
+                                                    "name": "Barbados",
+                                                    "iso": "BB"
+                                                }, { "name": "Belarus", "iso": "BY" }, {
+                                                    "name": "Belgium",
+                                                    "iso": "BE"
+                                                }, { "name": "Belize", "iso": "BZ" }, {
+                                                    "name": "Benin",
+                                                    "iso": "BJ"
+                                                }, { "name": "Bermuda", "iso": "BM" }, {
+                                                    "name": "Bhutan",
+                                                    "iso": "BT"
+                                                }, {
+                                                    "name": "Bolivia (Plurinational State of)",
+                                                    "iso": "BO"
+                                                }, {
+                                                    "name": "Bonaire, Sint Eustatius and Saba",
+                                                    "iso": "BQ"
+                                                }, {
+                                                    "name": "Bosnia and Herzegovina",
+                                                    "iso": "BA"
+                                                }, { "name": "Botswana", "iso": "BW" }, {
+                                                    "name": "Bouvet Island",
+                                                    "iso": "BV"
+                                                }, {
+                                                    "name": "Brazil",
+                                                    "iso": "BR"
+                                                }, {
+                                                    "name": "British Indian Ocean Territory",
+                                                    "iso": "IO"
+                                                }, { "name": "Brunei Darussalam", "iso": "BN" }, {
+                                                    "name": "Bulgaria",
+                                                    "iso": "BG"
+                                                }, { "name": "Burkina Faso", "iso": "BF" }, {
+                                                    "name": "Burundi",
+                                                    "iso": "BI"
+                                                }, { "name": "Cabo Verde", "iso": "CV" }, {
+                                                    "name": "Cambodia",
+                                                    "iso": "KH"
+                                                }, { "name": "Cameroon", "iso": "CM" }, {
+                                                    "name": "Canada",
+                                                    "iso": "CA"
+                                                }, {
+                                                    "name": "Cayman Islands",
+                                                    "iso": "KY"
+                                                }, {
+                                                    "name": "Central African Republic",
+                                                    "iso": "CF"
+                                                }, { "name": "Chad", "iso": "TD" }, {
+                                                    "name": "Chile",
+                                                    "iso": "CL"
+                                                }, { "name": "China", "iso": "CN" }, {
+                                                    "name": "Christmas Island",
+                                                    "iso": "CX"
+                                                }, {
+                                                    "name": "Cocos (Keeling) Islands",
+                                                    "iso": "CC"
+                                                }, { "name": "Colombia", "iso": "CO" }, {
+                                                    "name": "Comoros",
+                                                    "iso": "KM"
+                                                }, {
+                                                    "name": "Congo",
+                                                    "iso": "CG"
+                                                }, {
+                                                    "name": "Congo (Democratic Republic of the)",
+                                                    "iso": "CD"
+                                                }, { "name": "Cook Islands", "iso": "CK" }, {
+                                                    "name": "Costa Rica",
+                                                    "iso": "CR"
+                                                }, { "name": "Côte d'Ivoire", "iso": "CI" }, {
+                                                    "name": "Croatia",
+                                                    "iso": "HR"
+                                                }, { "name": "Cuba", "iso": "CU" }, {
+                                                    "name": "Curaçao",
+                                                    "iso": "CW"
+                                                }, { "name": "Cyprus", "iso": "CY" }, {
+                                                    "name": "Czechia",
+                                                    "iso": "CZ"
+                                                }, { "name": "Denmark", "iso": "DK" }, {
+                                                    "name": "Djibouti",
+                                                    "iso": "DJ"
+                                                }, { "name": "Dominica", "iso": "DM" }, {
+                                                    "name": "Dominican Republic",
+                                                    "iso": "DO"
+                                                }, { "name": "Ecuador", "iso": "EC" }, {
+                                                    "name": "Egypt",
+                                                    "iso": "EG"
+                                                }, {
+                                                    "name": "El Salvador",
+                                                    "iso": "SV"
+                                                }, { "name": "Equatorial Guinea", "iso": "GQ" }, {
+                                                    "name": "Eritrea",
+                                                    "iso": "ER"
+                                                }, { "name": "Estonia", "iso": "EE" }, {
+                                                    "name": "Eswatini",
+                                                    "iso": "SZ"
+                                                }, {
+                                                    "name": "Ethiopia",
+                                                    "iso": "ET"
+                                                }, {
+                                                    "name": "Falkland Islands (Malvinas)",
+                                                    "iso": "FK"
+                                                }, { "name": "Faroe Islands", "iso": "FO" }, {
+                                                    "name": "Fiji",
+                                                    "iso": "FJ"
+                                                }, { "name": "Finland", "iso": "FI" }, {
+                                                    "name": "France",
+                                                    "iso": "FR"
+                                                }, {
+                                                    "name": "French Guiana",
+                                                    "iso": "GF"
+                                                }, {
+                                                    "name": "French Polynesia",
+                                                    "iso": "PF"
+                                                }, {
+                                                    "name": "French Southern Territories",
+                                                    "iso": "TF"
+                                                }, { "name": "Gabon", "iso": "GA" }, {
+                                                    "name": "Gambia",
+                                                    "iso": "GM"
+                                                }, { "name": "Georgia", "iso": "GE" }, {
+                                                    "name": "Germany",
+                                                    "iso": "DE"
+                                                }, { "name": "Ghana", "iso": "GH" }, {
+                                                    "name": "Gibraltar",
+                                                    "iso": "GI"
+                                                }, { "name": "Greece", "iso": "GR" }, {
+                                                    "name": "Greenland",
+                                                    "iso": "GL"
+                                                }, { "name": "Grenada", "iso": "GD" }, {
+                                                    "name": "Guadeloupe",
+                                                    "iso": "GP"
+                                                }, { "name": "Guam", "iso": "GU" }, {
+                                                    "name": "Guatemala",
+                                                    "iso": "GT"
+                                                }, { "name": "Guernsey", "iso": "GG" }, {
+                                                    "name": "Guinea",
+                                                    "iso": "GN"
+                                                }, { "name": "Guinea-Bissau", "iso": "GW" }, {
+                                                    "name": "Guyana",
+                                                    "iso": "GY"
+                                                }, {
+                                                    "name": "Haiti",
+                                                    "iso": "HT"
+                                                }, {
+                                                    "name": "Heard Island and McDonald Islands",
+                                                    "iso": "HM"
+                                                }, { "name": "Holy See", "iso": "VA" }, {
+                                                    "name": "Honduras",
+                                                    "iso": "HN"
+                                                }, { "name": "Hong Kong", "iso": "HK" }, {
+                                                    "name": "Hungary",
+                                                    "iso": "HU"
+                                                }, { "name": "Iceland", "iso": "IS" }, {
+                                                    "name": "India",
+                                                    "iso": "IN"
+                                                }, {
+                                                    "name": "Indonesia",
+                                                    "iso": "ID"
+                                                }, {
+                                                    "name": "Iran (Islamic Republic of)",
+                                                    "iso": "IR"
+                                                }, { "name": "Iraq", "iso": "IQ" }, {
+                                                    "name": "Ireland",
+                                                    "iso": "IE"
+                                                }, { "name": "Isle of Man", "iso": "IM" }, {
+                                                    "name": "Israel",
+                                                    "iso": "IL"
+                                                }, { "name": "Italy", "iso": "IT" }, {
+                                                    "name": "Jamaica",
+                                                    "iso": "JM"
+                                                }, { "name": "Japan", "iso": "JP" }, {
+                                                    "name": "Jersey",
+                                                    "iso": "JE"
+                                                }, { "name": "Jordan", "iso": "JO" }, {
+                                                    "name": "Kazakhstan",
+                                                    "iso": "KZ"
+                                                }, { "name": "Kenya", "iso": "KE" }, {
+                                                    "name": "Kiribati",
+                                                    "iso": "KI"
+                                                }, {
+                                                    "name": "Korea (Democratic People's Republic of)",
+                                                    "iso": "KP"
+                                                }, { "name": "Korea (Republic of)", "iso": "KR" }, {
+                                                    "name": "Kuwait",
+                                                    "iso": "KW"
+                                                }, {
+                                                    "name": "Kyrgyzstan",
+                                                    "iso": "KG"
+                                                }, {
+                                                    "name": "Lao People's Democratic Republic",
+                                                    "iso": "LA"
+                                                }, { "name": "Latvia", "iso": "LV" }, {
+                                                    "name": "Lebanon",
+                                                    "iso": "LB"
+                                                }, { "name": "Lesotho", "iso": "LS" }, {
+                                                    "name": "Liberia",
+                                                    "iso": "LR"
+                                                }, { "name": "Libya", "iso": "LY" }, {
+                                                    "name": "Liechtenstein",
+                                                    "iso": "LI"
+                                                }, { "name": "Lithuania", "iso": "LT" }, {
+                                                    "name": "Luxembourg",
+                                                    "iso": "LU"
+                                                }, {
+                                                    "name": "Macao",
+                                                    "iso": "MO"
+                                                }, {
+                                                    "name": "Macedonia (the former Yugoslav Republic of)",
+                                                    "iso": "MK"
+                                                }, { "name": "Madagascar", "iso": "MG" }, {
+                                                    "name": "Malawi",
+                                                    "iso": "MW"
+                                                }, { "name": "Malaysia", "iso": "MY" }, {
+                                                    "name": "Maldives",
+                                                    "iso": "MV"
+                                                }, { "name": "Mali", "iso": "ML" }, {
+                                                    "name": "Malta",
+                                                    "iso": "MT"
+                                                }, { "name": "Marshall Islands", "iso": "MH" }, {
+                                                    "name": "Martinique",
+                                                    "iso": "MQ"
+                                                }, { "name": "Mauritania", "iso": "MR" }, {
+                                                    "name": "Mauritius",
+                                                    "iso": "MU"
+                                                }, { "name": "Mayotte", "iso": "YT" }, {
+                                                    "name": "Mexico",
+                                                    "iso": "MX"
+                                                }, {
+                                                    "name": "Micronesia (Federated States of)",
+                                                    "iso": "FM"
+                                                }, { "name": "Moldova (Republic of)", "iso": "MD" }, {
+                                                    "name": "Monaco",
+                                                    "iso": "MC"
+                                                }, { "name": "Mongolia", "iso": "MN" }, {
+                                                    "name": "Montenegro",
+                                                    "iso": "ME"
+                                                }, { "name": "Montserrat", "iso": "MS" }, {
+                                                    "name": "Morocco",
+                                                    "iso": "MA"
+                                                }, { "name": "Mozambique", "iso": "MZ" }, {
+                                                    "name": "Myanmar",
+                                                    "iso": "MM"
+                                                }, { "name": "Namibia", "iso": "NA" }, {
+                                                    "name": "Nauru",
+                                                    "iso": "NR"
+                                                }, { "name": "Nepal", "iso": "NP" }, {
+                                                    "name": "Netherlands",
+                                                    "iso": "NL"
+                                                }, { "name": "New Caledonia", "iso": "NC" }, {
+                                                    "name": "New Zealand",
+                                                    "iso": "NZ"
+                                                }, { "name": "Nicaragua", "iso": "NI" }, {
+                                                    "name": "Niger",
+                                                    "iso": "NE"
+                                                }, { "name": "Nigeria", "iso": "NG" }, {
+                                                    "name": "Niue",
+                                                    "iso": "NU"
+                                                }, {
+                                                    "name": "Norfolk Island",
+                                                    "iso": "NF"
+                                                }, {
+                                                    "name": "Northern Mariana Islands",
+                                                    "iso": "MP"
+                                                }, { "name": "Norway", "iso": "NO" }, {
+                                                    "name": "Oman",
+                                                    "iso": "OM"
+                                                }, { "name": "Pakistan", "iso": "PK" }, {
+                                                    "name": "Palau",
+                                                    "iso": "PW"
+                                                }, { "name": "Palestine, State of", "iso": "PS" }, {
+                                                    "name": "Panama",
+                                                    "iso": "PA"
+                                                }, { "name": "Papua New Guinea", "iso": "PG" }, {
+                                                    "name": "Paraguay",
+                                                    "iso": "PY"
+                                                }, { "name": "Peru", "iso": "PE" }, {
+                                                    "name": "Philippines",
+                                                    "iso": "PH"
+                                                }, { "name": "Pitcairn", "iso": "PN" }, {
+                                                    "name": "Poland",
+                                                    "iso": "PL"
+                                                }, { "name": "Portugal", "iso": "PT" }, {
+                                                    "name": "Puerto Rico",
+                                                    "iso": "PR"
+                                                }, { "name": "Qatar", "iso": "QA" }, {
+                                                    "name": "Réunion",
+                                                    "iso": "RE"
+                                                }, { "name": "Romania", "iso": "RO" }, {
+                                                    "name": "Russian Federation",
+                                                    "iso": "RU"
+                                                }, { "name": "Rwanda", "iso": "RW" }, {
+                                                    "name": "Saint Barthélemy",
+                                                    "iso": "BL"
+                                                }, {
+                                                    "name": "Saint Helena, Ascension and Tristan da Cunha",
+                                                    "iso": "SH"
+                                                }, {
+                                                    "name": "Saint Kitts and Nevis",
+                                                    "iso": "KN"
+                                                }, {
+                                                    "name": "Saint Lucia",
+                                                    "iso": "LC"
+                                                }, {
+                                                    "name": "Saint Martin (French part)",
+                                                    "iso": "MF"
+                                                }, {
+                                                    "name": "Saint Pierre and Miquelon",
+                                                    "iso": "PM"
+                                                }, {
+                                                    "name": "Saint Vincent and the Grenadines",
+                                                    "iso": "VC"
+                                                }, { "name": "Samoa", "iso": "WS" }, {
+                                                    "name": "San Marino",
+                                                    "iso": "SM"
+                                                }, {
+                                                    "name": "Sao Tome and Principe",
+                                                    "iso": "ST"
+                                                }, { "name": "Saudi Arabia", "iso": "SA" }, {
+                                                    "name": "Senegal",
+                                                    "iso": "SN"
+                                                }, { "name": "Serbia", "iso": "RS" }, {
+                                                    "name": "Seychelles",
+                                                    "iso": "SC"
+                                                }, { "name": "Sierra Leone", "iso": "SL" }, {
+                                                    "name": "Singapore",
+                                                    "iso": "SG"
+                                                }, {
+                                                    "name": "Sint Maarten (Dutch part)",
+                                                    "iso": "SX"
+                                                }, { "name": "Slovakia", "iso": "SK" }, {
+                                                    "name": "Slovenia",
+                                                    "iso": "SI"
+                                                }, { "name": "Solomon Islands", "iso": "SB" }, {
+                                                    "name": "Somalia",
+                                                    "iso": "SO"
+                                                }, {
+                                                    "name": "South Africa",
+                                                    "iso": "ZA"
+                                                }, {
+                                                    "name": "South Georgia and the South Sandwich Islands",
+                                                    "iso": "GS"
+                                                }, { "name": "South Sudan", "iso": "SS" }, {
+                                                    "name": "Spain",
+                                                    "iso": "ES"
+                                                }, { "name": "Sri Lanka", "iso": "LK" }, {
+                                                    "name": "Sudan",
+                                                    "iso": "SD"
+                                                }, {
+                                                    "name": "Suriname",
+                                                    "iso": "SR"
+                                                }, {
+                                                    "name": "Svalbard and Jan Mayen",
+                                                    "iso": "SJ"
+                                                }, { "name": "Sweden", "iso": "SE" }, {
+                                                    "name": "Switzerland",
+                                                    "iso": "CH"
+                                                }, {
+                                                    "name": "Syrian Arab Republic",
+                                                    "iso": "SY"
+                                                }, {
+                                                    "name": "Taiwan, Province of China",
+                                                    "iso": "TW"
+                                                }, {
+                                                    "name": "Tajikistan",
+                                                    "iso": "TJ"
+                                                }, {
+                                                    "name": "Tanzania, United Republic of",
+                                                    "iso": "TZ"
+                                                }, { "name": "Thailand", "iso": "TH" }, {
+                                                    "name": "Timor-Leste",
+                                                    "iso": "TL"
+                                                }, { "name": "Togo", "iso": "TG" }, {
+                                                    "name": "Tokelau",
+                                                    "iso": "TK"
+                                                }, { "name": "Tonga", "iso": "TO" }, {
+                                                    "name": "Trinidad and Tobago",
+                                                    "iso": "TT"
+                                                }, { "name": "Tunisia", "iso": "TN" }, {
+                                                    "name": "Turkey",
+                                                    "iso": "TR"
+                                                }, {
+                                                    "name": "Turkmenistan",
+                                                    "iso": "TM"
+                                                }, {
+                                                    "name": "Turks and Caicos Islands",
+                                                    "iso": "TC"
+                                                }, { "name": "Tuvalu", "iso": "TV" }, {
+                                                    "name": "Uganda",
+                                                    "iso": "UG"
+                                                }, { "name": "Ukraine", "iso": "UA" }, {
+                                                    "name": "United Arab Emirates",
+                                                    "iso": "AE"
+                                                }, {
+                                                    "name": "United Kingdom of Great Britain and Northern Ireland",
+                                                    "iso": "GB"
+                                                }, {
+                                                    "name": "United States of America",
+                                                    "iso": "US"
+                                                }, {
+                                                    "name": "United States Minor Outlying Islands",
+                                                    "iso": "UM"
+                                                }, { "name": "Uruguay", "iso": "UY" }, {
+                                                    "name": "Uzbekistan",
+                                                    "iso": "UZ"
+                                                }, {
+                                                    "name": "Vanuatu",
+                                                    "iso": "VU"
+                                                }, {
+                                                    "name": "Venezuela (Bolivarian Republic of)",
+                                                    "iso": "VE"
+                                                }, {
+                                                    "name": "Viet Nam",
+                                                    "iso": "VN"
+                                                }, {
+                                                    "name": "Virgin Islands (British)",
+                                                    "iso": "VG"
+                                                }, {
+                                                    "name": "Virgin Islands (U.S.)",
+                                                    "iso": "VI"
+                                                }, {
+                                                    "name": "Wallis and Futuna",
+                                                    "iso": "WF"
+                                                }, { "name": "Western Sahara", "iso": "EH" }, {
+                                                    "name": "Yemen",
+                                                    "iso": "YE"
+                                                }, { "name": "Zambia", "iso": "ZM" }, {
+                                                    "name": "Zimbabwe",
+                                                    "iso": "ZW"
+                                                }]; %>
                                                 <% countries.forEach(function(country) { %>
-                                                <% if (config.country.toLowerCase() === country.iso.toLowerCase()) { %>
-                                                <option value="<%= country.iso %>" selected="selected">
-                                                    <%- country.name %>
-                                                </option>
-                                                <% } else { %>
-                                                <option value="<%= country.iso %>">
-                                                    <%- country.name %>
-                                                </option>
-                                                <% } %>
+                                                    <% if (config.country.toLowerCase() === country.iso.toLowerCase()) { %>
+                                                        <option value="<%= country.iso %>" selected="selected">
+                                                            <%- country.name %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="<%= country.iso %>">
+                                                            <%- country.name %>
+                                                        </option>
+                                                    <% } %>
                                                 <% }); %>
                                             </select>
                                         </div>
@@ -285,7 +1117,10 @@
                                         <i class="fa fa-image"></i>&nbsp;&nbsp;&nbsp;<%= __('Шаблон веб-сайта') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#theme" class="csstip" title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#theme"
+                                           class="csstip"
+                                           title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -296,19 +1131,20 @@
                                             <select name="config.theme" class="form-control">
                                                 <% themes.forEach(function(theme) { %>
                                                     <% if (config.theme === theme) { %>
-                                                    <option value="<%= theme %>" selected="selected">
-                                                        <%- theme %>
-                                                    </option>
+                                                        <option value="<%= theme %>" selected="selected">
+                                                            <%- theme %>
+                                                        </option>
                                                     <% } else { %>
-                                                    <option value="<%= theme %>">
-                                                        <%- theme %>
-                                                    </option>
+                                                        <option value="<%= theme %>">
+                                                            <%- theme %>
+                                                        </option>
                                                     <% } %>
                                                 <% }); %>
                                             </select>
                                         </div>
                                         <div class="col-xs-6 text-center">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/themes/index.html" target="_blank" class="btn btn-block btn-default">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/themes/index.html"
+                                               target="_blank" class="btn btn-block btn-default">
                                                 <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('Премиум тема') %>
                                             </a>
                                         </div>
@@ -326,7 +1162,10 @@
                                         <i class="fa fa-images"></i>&nbsp;&nbsp;&nbsp;<%= __('Сервер картинок') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#image" class="csstip" title="<%= __('По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#image"
+                                           class="csstip"
+                                           title="<%= __('По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -335,26 +1174,42 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-xs-6 text-center">
                                             <select name="config.image.addr" class="form-control">
-                                                <option value="<%- config.domain %>" <% if (config.image.addr === config.domain) { %>selected="selected"<% } %>>
+                                                <option value="<%- config.domain %>"
+                                                        <% if (config.image.addr === config.domain) { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%- (config.subdomain + config.domain).toUpperCase() %>
                                                 </option>
-                                                <option value="st.kp.yandex.net" <% if (config.image.addr === 'st.kp.yandex.net') { %>selected="selected"<% } %>>
+                                                <option value="st.kp.yandex.net"
+                                                        <% if (config.image.addr === 'st.kp.yandex.net') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     KINOPOISK.RU
                                                 </option>
-                                                <option value="image.tmdb.org" <% if (config.image.addr === 'image.tmdb.org') { %>selected="selected"<% } %>>
+                                                <option value="image.tmdb.org"
+                                                        <% if (config.image.addr === 'image.tmdb.org') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     TMDB.ORG
                                                 </option>
-                                                <option value="m.media-amazon.com" <% if (config.image.addr === 'm.media-amazon.com') { %>selected="selected"<% } %>>
+                                                <option value="m.media-amazon.com"
+                                                        <% if (config.image.addr === 'm.media-amazon.com') { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     IMDB.COM
                                                 </option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6 col-xs-6 text-center">
                                             <select name="config.image.save" class="form-control">
-                                                <option value="1" <% if (config.image.save) { %>selected="selected"<% } %>>
+                                                <option value="1" <% if (config.image.save) { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%= __('Сохранять изображения') %>
                                                 </option>
-                                                <option value="0" <% if (!config.image.save) { %>selected="selected"<% } %>>
+                                                <option value="0" <% if (!config.image.save) { %>selected="selected"
+                                                        <% } %>
+                                                >
                                                     <%= __('Не сохранять изображения') %>
                                                 </option>
                                             </select>
@@ -373,7 +1228,10 @@
                                         <i class="fa fa-space-shuttle"></i>&nbsp;&nbsp;&nbsp;<%= __('Google PageSpeed оптимизация') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#pagespeed" class="csstip" title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#pagespeed"
+                                           class="csstip"
+                                           title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -383,10 +1241,18 @@
                                         <div class="col-lg-12 col-xs-12 text-center">
                                             <div class="inline-labels">
                                                 <label>
-                                                    <input name="config.pagespeed" value="1" <% if (config.pagespeed) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('PageSpeed включен') %></span>
+                                                    <input name="config.pagespeed" value="1"
+                                                    <% if (config.pagespeed) { %> checked=""
+                                                            <% } %>
+                                                           type="radio"><span></span>
+                                                    <span><%= __('PageSpeed включен') %></span>
                                                 </label>
                                                 <label>
-                                                    <input name="config.pagespeed" value="0" <% if (!config.pagespeed) { %> checked="" <% } %> type="radio"><span></span> <span><%= __('PageSpeed отключен') %></span>
+                                                    <input name="config.pagespeed" value="0"
+                                                    <% if (!config.pagespeed) { %> checked=""
+                                                            <% } %>
+                                                           type="radio"><span></span>
+                                                    <span><%= __('PageSpeed отключен') %></span>
                                                 </label>
                                             </div>
                                         </div>
@@ -404,7 +1270,10 @@
                                         <i class="fa fa-fire"></i>&nbsp;&nbsp;&nbsp;<%= __('Перегрузка сервера') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#loadavg" class="csstip" title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#loadavg"
+                                           class="csstip"
+                                           title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -433,28 +1302,46 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="spacer-10"></div>
-                                                    <div id="fifteen_slider" class="noUiSlider" style="width: 100%;"></div>
+                                                    <div id="fifteen_slider" class="noUiSlider"
+                                                         style="width: 100%;"></div>
                                                     <div class="spacer-20"></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-xs-4 text-center">
-                                            <div id="one_loadavg" class="t input-group-addon" style="border: 1px solid #2f374b; border-radius: 4px;">1 min: <%= config.loadavg.one %>%</div>
-                                            <input name="config.loadavg.one" value="<%= config.loadavg.one %>" class="form-control input_number" type="text" placeholder="1" id="one" style="display: none">
+                                            <div id="one_loadavg" class="t input-group-addon"
+                                                 style="border: 1px solid #2f374b; border-radius: 4px;">1
+                                                min: <%= config.loadavg.one %>%
+                                            </div>
+                                            <input name="config.loadavg.one" value="<%= config.loadavg.one %>"
+                                                   class="form-control input_number" type="text" placeholder="1"
+                                                   id="one" style="display: none">
                                         </div>
                                         <div class="col-lg-4 col-xs-4 text-center">
-                                            <div id="five_loadavg" class="t input-group-addon" style="border: 1px solid #2f374b; border-radius: 4px;">5 min: <%= config.loadavg.five %>%</div>
-                                            <input name="config.loadavg.five" value="<%= config.loadavg.five %>" class="form-control input_number" type="text" placeholder="5" id="five" style="display: none">
+                                            <div id="five_loadavg" class="t input-group-addon"
+                                                 style="border: 1px solid #2f374b; border-radius: 4px;">5
+                                                min: <%= config.loadavg.five %>%
+                                            </div>
+                                            <input name="config.loadavg.five" value="<%= config.loadavg.five %>"
+                                                   class="form-control input_number" type="text" placeholder="5"
+                                                   id="five" style="display: none">
                                         </div>
                                         <div class="col-lg-4 col-xs-4 text-center">
-                                            <div id="fifteen_loadavg" class="t input-group-addon" style="border: 1px solid #2f374b; border-radius: 4px;">15 min: <%= config.loadavg.fifteen %>%</div>
-                                            <input name="config.loadavg.fifteen" value="<%= config.loadavg.fifteen %>" class="form-control input_number" type="text" placeholder="15" id="fifteen" style="display: none">
+                                            <div id="fifteen_loadavg" class="t input-group-addon"
+                                                 style="border: 1px solid #2f374b; border-radius: 4px;">15
+                                                min: <%= config.loadavg.fifteen %>%
+                                            </div>
+                                            <input name="config.loadavg.fifteen" value="<%= config.loadavg.fifteen %>"
+                                                   class="form-control input_number" type="text" placeholder="15"
+                                                   id="fifteen" style="display: none">
                                         </div>
 
                                         <div class="spacer-10"></div>
 
                                         <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="config.loadavg.message" value="<%= config.loadavg.message %>" class="form-control" type="text" placeholder="<%= __('Показать сообщение или перенаправить на URL') %>">
+                                            <input name="config.loadavg.message" value="<%= config.loadavg.message %>"
+                                                   class="form-control" type="text"
+                                                   placeholder="<%= __('Показать сообщение или перенаправить на URL') %>">
                                         </div>
                                     </div>
                                 </div>
@@ -470,7 +1357,10 @@
                                         <i class="fa fa-gavel"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить доступ в странах') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#countries" class="csstip" title="<%= __('Список стран, которым запрещено посещать сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#countries"
+                                           class="csstip"
+                                           title="<%= __('Список стран, которым запрещено посещать сайт') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -478,15 +1368,19 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <input type="text" name="config.geolite2.countries" value="<%- config.geolite2.countries.join(',') %>" placeholder="Russia,Ukraine,Belarus,Kazakhstan">
+                                            <input type="text" name="config.geolite2.countries"
+                                                   value="<%- config.geolite2.countries.join(',') %>"
+                                                   placeholder="Russia,Ukraine,Belarus,Kazakhstan">
                                         </div>
 
                                         <script>
-                                            document.addEventListener('DOMContentLoaded', function() {
-                                                var cgs = document.querySelector('[name="config.geolite2.countries"]');
-                                                var cg = new Tagify(cgs, {whitelist : ["Andorra","United Arab Emirates","Afghanistan","Antigua and Barbuda","Albania","Armenia","Angola","Argentina","Austria","Australia","Azerbaijan","Bosnia and Herzegovina","Barbados","Bangladesh","Belgium","Burkina Faso","Bulgaria","Bahrain","Burundi","Benin","Brunei","Bolivia","Brazil","Bahamas","Bhutan","Botswana","Belarus","Belize","Canada","Democratic Republic of the Congo","Central African Republic","Republic of the Congo","Switzerland","Ivory Coast","Chile","Cameroon","China","Colombia","Costa Rica","Cuba","Cape Verde","Cyprus","Czechia","Germany","Djibouti","Denmark","Dominica","Dominican Republic","Algeria","Ecuador","Estonia","Egypt","Eritrea","Spain","Ethiopia","Finland","Fiji","France","Gabon","United Kingdom","Grenada","Georgia","Ghana","Gambia","Guinea","Equatorial Guinea","Greece","Guatemala","Guinea-Bissau","Guyana","Honduras","Croatia","Haiti","Hungary","Indonesia","Ireland","Israel","India","Iraq","Iran","Iceland","Italy","Jamaica","Jordan","Japan","Kenya","Kyrgyzstan","Cambodia","Kiribati","Comoros","Saint Kitts and Nevis","North Korea","South Korea","Kuwait","Kazakhstan","Laos","Lebanon","Saint Lucia","Liechtenstein","Sri Lanka","Liberia","Lesotho","Lithuania","Luxembourg","Latvia","Libya","Morocco","Monaco","Moldova","Montenegro","Madagascar","Macedonia","Mali","Myanmar","Mongolia","Mauritania","Malta","Mauritius","Maldives","Malawi","Mexico","Malaysia","Mozambique","Namibia","Niger","Nigeria","Nicaragua","Netherlands","Norway","Nepal","Nauru","New Zealand","Oman","Panama","Peru","Papua New Guinea","Philippines","Pakistan","Poland","Portugal","Paraguay","Qatar","Romania","Serbia","Russia","Rwanda","Saudi Arabia","Solomon Islands","Seychelles","Sudan","Sweden","Singapore","Slovenia","Slovakia","Sierra Leone","San Marino","Senegal","Somalia","Suriname","South Sudan","Sao Tome and Principe","El Salvador","Syria","Swaziland","Chad","Togo","Thailand","Tajikistan","East Timor","Turkmenistan","Tunisia","Tonga","Turkey","Trinidad and Tobago","Tuvalu","Taiwan","Tanzania","Ukraine","Uganda","United States","Uruguay","Uzbekistan","Vatican","Saint Vincent and the Grenadines","Venezuela","Vietnam","Vanuatu","Samoa","Kosovo","Yemen","South Africa","Zambia","Zimbabwe"]});
-                                                cg.DOM.input.classList.add('form-control');
+                                          document.addEventListener('DOMContentLoaded', function() {
+                                            var cgs = document.querySelector('[name="config.geolite2.countries"]');
+                                            var cg = new Tagify(cgs, {
+                                              whitelist: ['Andorra', 'United Arab Emirates', 'Afghanistan', 'Antigua and Barbuda', 'Albania', 'Armenia', 'Angola', 'Argentina', 'Austria', 'Australia', 'Azerbaijan', 'Bosnia and Herzegovina', 'Barbados', 'Bangladesh', 'Belgium', 'Burkina Faso', 'Bulgaria', 'Bahrain', 'Burundi', 'Benin', 'Brunei', 'Bolivia', 'Brazil', 'Bahamas', 'Bhutan', 'Botswana', 'Belarus', 'Belize', 'Canada', 'Democratic Republic of the Congo', 'Central African Republic', 'Republic of the Congo', 'Switzerland', 'Ivory Coast', 'Chile', 'Cameroon', 'China', 'Colombia', 'Costa Rica', 'Cuba', 'Cape Verde', 'Cyprus', 'Czechia', 'Germany', 'Djibouti', 'Denmark', 'Dominica', 'Dominican Republic', 'Algeria', 'Ecuador', 'Estonia', 'Egypt', 'Eritrea', 'Spain', 'Ethiopia', 'Finland', 'Fiji', 'France', 'Gabon', 'United Kingdom', 'Grenada', 'Georgia', 'Ghana', 'Gambia', 'Guinea', 'Equatorial Guinea', 'Greece', 'Guatemala', 'Guinea-Bissau', 'Guyana', 'Honduras', 'Croatia', 'Haiti', 'Hungary', 'Indonesia', 'Ireland', 'Israel', 'India', 'Iraq', 'Iran', 'Iceland', 'Italy', 'Jamaica', 'Jordan', 'Japan', 'Kenya', 'Kyrgyzstan', 'Cambodia', 'Kiribati', 'Comoros', 'Saint Kitts and Nevis', 'North Korea', 'South Korea', 'Kuwait', 'Kazakhstan', 'Laos', 'Lebanon', 'Saint Lucia', 'Liechtenstein', 'Sri Lanka', 'Liberia', 'Lesotho', 'Lithuania', 'Luxembourg', 'Latvia', 'Libya', 'Morocco', 'Monaco', 'Moldova', 'Montenegro', 'Madagascar', 'Macedonia', 'Mali', 'Myanmar', 'Mongolia', 'Mauritania', 'Malta', 'Mauritius', 'Maldives', 'Malawi', 'Mexico', 'Malaysia', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Nicaragua', 'Netherlands', 'Norway', 'Nepal', 'Nauru', 'New Zealand', 'Oman', 'Panama', 'Peru', 'Papua New Guinea', 'Philippines', 'Pakistan', 'Poland', 'Portugal', 'Paraguay', 'Qatar', 'Romania', 'Serbia', 'Russia', 'Rwanda', 'Saudi Arabia', 'Solomon Islands', 'Seychelles', 'Sudan', 'Sweden', 'Singapore', 'Slovenia', 'Slovakia', 'Sierra Leone', 'San Marino', 'Senegal', 'Somalia', 'Suriname', 'South Sudan', 'Sao Tome and Principe', 'El Salvador', 'Syria', 'Swaziland', 'Chad', 'Togo', 'Thailand', 'Tajikistan', 'East Timor', 'Turkmenistan', 'Tunisia', 'Tonga', 'Turkey', 'Trinidad and Tobago', 'Tuvalu', 'Taiwan', 'Tanzania', 'Ukraine', 'Uganda', 'United States', 'Uruguay', 'Uzbekistan', 'Vatican', 'Saint Vincent and the Grenadines', 'Venezuela', 'Vietnam', 'Vanuatu', 'Samoa', 'Kosovo', 'Yemen', 'South Africa', 'Zambia', 'Zimbabwe']
                                             });
+                                            cg.DOM.input.classList.add('form-control');
+                                          });
                                         </script>
                                     </div>
                                 </div>
@@ -502,7 +1396,10 @@
                                         <i class="fas fa-shield-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Запретить доступ для IP') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#ips" class="csstip" title="<%= __('Список IP, которым запрещено посещать сайт') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#ips"
+                                           class="csstip"
+                                           title="<%= __('Список IP, которым запрещено посещать сайт') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -510,7 +1407,9 @@
                                 <div class="inner-padding">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <textarea class="form-control" name="config.geolite2.ips" placeholder="192.168.0.1,192.168.1.0/24,2001:cdba::3257:9652/128" style="font-weight: normal; font-size: 14px; min-height: 50px"><%- config.geolite2.ips.join(',') %></textarea>
+                                            <textarea class="form-control" name="config.geolite2.ips"
+                                                      placeholder="192.168.0.1,192.168.1.0/24,2001:cdba::3257:9652/128"
+                                                      style="font-weight: normal; font-size: 14px; min-height: 50px"><%- config.geolite2.ips.join(',') %></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -526,7 +1425,10 @@
                                         <i class="fa fa-retweet"></i>&nbsp;&nbsp;&nbsp;<%= __('Жесткая перезагрузка сервера') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#restart" class="csstip" title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>" target="_blank">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html#restart"
+                                           class="csstip"
+                                           title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>"
+                                           target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -548,128 +1450,153 @@
             </div>
 
             <script>
-                $("#one_slider").noUiSlider({range:[120,1200],start:[<%= config.loadavg.one %>],handles:1,step:120,connect:"lower",serialization:{resolution:1,to:[$("#one")]}}),$("#five_slider").noUiSlider({range:[120,1200],start:[<%= config.loadavg.five %>],handles:1,step:120,connect:"lower",serialization:{resolution:1,to:[$("#five")]}}),$("#fifteen_slider").noUiSlider({range:[120,1200],start:[<%= config.loadavg.fifteen %>],handles:1,step:120,connect:"lower",serialization:{resolution:1,to:[$("#fifteen")]}});
-                setInterval(function(){
-                    document.querySelector('#one_loadavg').innerHTML = '1 min: ' + document.querySelector('#one').value + '%';
-                }, 100);
-                setInterval(function(){
-                    document.querySelector('#five_loadavg').innerHTML = '5 min: ' + document.querySelector('#five').value + '%';
-                }, 100);
-                setInterval(function(){
-                    document.querySelector('#fifteen_loadavg').innerHTML = '15 min: ' + document.querySelector('#fifteen').value + '%';
-                }, 100);
-                function dayToLetter(random, now) {
-                  now = now || new Date();
-                  var year = now.getFullYear();
-                  var start = new Date(year, 0, 0);
-                  var diff = now - start;
-                  var oneDay = 86400000;
-                  var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
-                  var letter1 = ['a', 'e', 'i', 'o', 'u'];
-                  var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'z', 'k', 'l', 'm'];
-                  var letter3 = ['n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y']; // j
-                  if ('<%- config.domain.split('.')[0] %>'.length % 2) {
-                    letter1 = letter1.reverse();
-                  }
-                  if ('<%- config.domain.split('.')[1] %>'.length % 2) {
-                    letter2 = letter2.reverse();
-                  }
-                  var result =
-                    letter2[parseInt(day[0])] +
-                    letter1[parseInt(day[1]) % 5] +
-                    letter3[parseInt(day[2])] +
-                    (parseInt(random) === 3 ? '' : letter1[year % 5]);
-                  if (parseInt(day[1]) >= 5) {
-                    result =
-                      letter1[parseInt(day[0]) % 5] +
-                      ((parseInt(day[0]+day[2]) % 2) ? letter2 : letter3)[parseInt(day[1])] +
-                      letter1[parseInt(day[2]) % 5] +
-                      (parseInt(random) === 3 ? '' : letter2[year % 10]);
-                  }
-                  if (now.getDate() % 2) {
-                    result = result.split('').reverse().join('');
-                  }
-                  return result;
+              $('#one_slider').noUiSlider({
+                range: [120, 1200],
+                start: [<%= config.loadavg.one %>],
+                handles: 1,
+                step: 120,
+                connect: 'lower',
+                serialization: { resolution: 1, to: [$('#one')] }
+              }), $('#five_slider').noUiSlider({
+                range: [120, 1200],
+                start: [<%= config.loadavg.five %>],
+                handles: 1,
+                step: 120,
+                connect: 'lower',
+                serialization: { resolution: 1, to: [$('#five')] }
+              }), $('#fifteen_slider').noUiSlider({
+                range: [120, 1200],
+                start: [<%= config.loadavg.fifteen %>],
+                handles: 1,
+                step: 120,
+                connect: 'lower',
+                serialization: { resolution: 1, to: [$('#fifteen')] }
+              });
+              setInterval(function() {
+                document.querySelector('#one_loadavg').innerHTML = '1 min: ' + document.querySelector('#one').value + '%';
+              }, 100);
+              setInterval(function() {
+                document.querySelector('#five_loadavg').innerHTML = '5 min: ' + document.querySelector('#five').value + '%';
+              }, 100);
+              setInterval(function() {
+                document.querySelector('#fifteen_loadavg').innerHTML = '15 min: ' + document.querySelector('#fifteen').value + '%';
+              }, 100);
+
+              function dayToLetter(random, now) {
+                now = now || new Date();
+                var year = now.getFullYear();
+                var start = new Date(year, 0, 0);
+                var diff = now - start;
+                var oneDay = 86400000;
+                var day = ('00' + Math.floor(diff / oneDay)).slice(-3);
+                var letter1 = ['a', 'e', 'i', 'o', 'u'];
+                var letter2 = ['b', 'c', 'd', 'f', 'g', 'h', 'z', 'k', 'l', 'm'];
+                var letter3 = ['n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y']; // j
+                if ('<%- config.domain.split('.')[0] %>'.length % 2) {
+                  letter1 = letter1.reverse();
                 }
-                var radios = document.querySelectorAll('[name=\'config.random\']');
-                if (radios) {
-                  radios.forEach(function(radio) {
-                    radio.addEventListener('change', function() {
-                      if (this.value !== '0') {
-                        if (this.checked) {
-                          document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
-                          document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
-                          document.querySelector('#subdomains').style.display = 'block';
-                          document.querySelector('#h').style.display = 'block';
-                          document.querySelector('#h').setAttribute('class', 'col-sm-7');
-                          document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
-                          generate_domains(this.value);
-                        }
-                      } else {
-                        if (this.checked) {
-                          document.querySelector('#subdomains').style.display = 'none';
-                          document.querySelector('#h').style.display='none';
-                          document.querySelector('#h').setAttribute('class', '');
-                          document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
-                        }
-                      }
-                    });
-                    if (radio.value !== '0') {
-                      if (radio.checked) {
+                if ('<%- config.domain.split('.')[1] %>'.length % 2) {
+                  letter2 = letter2.reverse();
+                }
+                var result =
+                  letter2[parseInt(day[0])] +
+                  letter1[parseInt(day[1]) % 5] +
+                  letter3[parseInt(day[2])] +
+                  (parseInt(random) === 3 ? '' : letter1[year % 5]);
+                if (parseInt(day[1]) >= 5) {
+                  result =
+                    letter1[parseInt(day[0]) % 5] +
+                    ((parseInt(day[0] + day[2]) % 2) ? letter2 : letter3)[parseInt(day[1])] +
+                    letter1[parseInt(day[2]) % 5] +
+                    (parseInt(random) === 3 ? '' : letter2[year % 10]);
+                }
+                if (now.getDate() % 2) {
+                  result = result.split('').reverse().join('');
+                }
+                return result;
+              }
+
+              var radios = document.querySelectorAll('[name=\'config.random\']');
+              if (radios) {
+                radios.forEach(function(radio) {
+                  radio.addEventListener('change', function() {
+                    if (this.value !== '0') {
+                      if (this.checked) {
+                        document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
+                        document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
                         document.querySelector('#subdomains').style.display = 'block';
                         document.querySelector('#h').style.display = 'block';
                         document.querySelector('#h').setAttribute('class', 'col-sm-7');
                         document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
-                        generate_domains(radio.value);
+                        generate_domains(this.value);
                       }
                     } else {
-                      if (radio.checked) {
+                      if (this.checked) {
                         document.querySelector('#subdomains').style.display = 'none';
-                        document.querySelector('#h').style.display='none';
+                        document.querySelector('#h').style.display = 'none';
                         document.querySelector('#h').setAttribute('class', '');
                         document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
                       }
                     }
-                  })
-                }
-                function generate_domains(random) {
-                  var list_subdomains1 = document.querySelector('.list_subdomains1');
-                  var list_subdomains2 = document.querySelector('.list_subdomains2');
-                  var list_subdomains3 = document.querySelector('.list_subdomains3');
-                  list_subdomains1.innerHTML = '';
-                  list_subdomains2.innerHTML = '';
-                  list_subdomains3.innerHTML = '';
-                  for (var i = 1; i <= 183; i++) {
-                    var tomorrow = new Date();
-                    tomorrow.setDate(tomorrow.getDate() + i);
-                    var div = document.createElement('div');
-                    var day = document.createElement('span');
-                    var sub = document.createElement('code');
-                    day.innerHTML = formatDate(tomorrow);
-                    sub.innerHTML = dayToLetter(random, tomorrow);
-                    div.appendChild(day);
-                    div.appendChild(sub);
-                    if (i <= 61) {
-                      list_subdomains1.appendChild(div);
-                    } else if (i <= 122) {
-                      list_subdomains2.appendChild(div);
-                    } else if (i <= 183) {
-                      list_subdomains3.appendChild(div);
+                  });
+                  if (radio.value !== '0') {
+                    if (radio.checked) {
+                      document.querySelector('#subdomains').style.display = 'block';
+                      document.querySelector('#h').style.display = 'block';
+                      document.querySelector('#h').setAttribute('class', 'col-sm-7');
+                      document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
+                      generate_domains(radio.value);
+                    }
+                  } else {
+                    if (radio.checked) {
+                      document.querySelector('#subdomains').style.display = 'none';
+                      document.querySelector('#h').style.display = 'none';
+                      document.querySelector('#h').setAttribute('class', '');
+                      document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
                     }
                   }
+                });
+              }
+
+              function generate_domains(random) {
+                var list_subdomains1 = document.querySelector('.list_subdomains1');
+                var list_subdomains2 = document.querySelector('.list_subdomains2');
+                var list_subdomains3 = document.querySelector('.list_subdomains3');
+                list_subdomains1.innerHTML = '';
+                list_subdomains2.innerHTML = '';
+                list_subdomains3.innerHTML = '';
+                for (var i = 1; i <= 183; i++) {
+                  var tomorrow = new Date();
+                  tomorrow.setDate(tomorrow.getDate() + i);
+                  var div = document.createElement('div');
+                  var day = document.createElement('span');
+                  var sub = document.createElement('code');
+                  day.innerHTML = formatDate(tomorrow);
+                  sub.innerHTML = dayToLetter(random, tomorrow);
+                  div.appendChild(day);
+                  div.appendChild(sub);
+                  if (i <= 61) {
+                    list_subdomains1.appendChild(div);
+                  } else if (i <= 122) {
+                    list_subdomains2.appendChild(div);
+                  } else if (i <= 183) {
+                    list_subdomains3.appendChild(div);
+                  }
                 }
-                function formatDate(date) {
-                  var monthNames = [
-                    "January", "February", "March",
-                    "April", "May", "June", "July",
-                    "August", "September", "October",
-                    "November", "December"
-                  ];
-                  var day = date.getDate();
-                  var monthIndex = date.getMonth();
-                  var year = date.getFullYear();
-                  return day + ' ' + monthNames[monthIndex] + ' ' + year;
-                }
+              }
+
+              function formatDate(date) {
+                var monthNames = [
+                  'January', 'February', 'March',
+                  'April', 'May', 'June', 'July',
+                  'August', 'September', 'October',
+                  'November', 'December'
+                ];
+                var day = date.getDate();
+                var monthIndex = date.getMonth();
+                var year = date.getFullYear();
+                return day + ' ' + monthNames[monthIndex] + ' ' + year;
+              }
             </script>
 
             <%- include('includes/footer.ejs'); -%>

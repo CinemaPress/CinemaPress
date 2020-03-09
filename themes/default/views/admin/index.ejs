@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('includes/head.ejs'); -%>
@@ -35,7 +41,8 @@
                         <a href="/<%- config.urls.admin %>/index" class="btn">
                             <%= __('Панель администратора CinemaPress') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/admin.html" class="btn" title="<%= __('Информация о параметрах админ-панели') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/admin.html" class="btn"
+                           title="<%= __('Информация о параметрах админ-панели') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
@@ -50,26 +57,33 @@
 
                     <% if (typeof line === 'object') { %>
 
-                    <div class="progress-project-header">
-                        <h5><%= __('Опубликовано фильмов') %></h5><span><%- line.percent.top %>%</span>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="<%- line.percent.pub %>" aria-valuemin="0" aria-valuemax="100" style="width: <%- line.percent.pub %>%; background: linear-gradient(-45deg,#ffa534,#35cd3a);" title="<%= __('Опубликовано:') %> <%- line.counts.pub %>">
-                            <span class="sr-only"><%- line.percent.pub %>%</span>
+                        <div class="progress-project-header">
+                            <h5><%= __('Опубликовано фильмов') %></h5><span><%- line.percent.top %>%</span>
                         </div>
-                        <div class="progress-bar progress-bar-warning" style="width: <%- (line.percent.fil - line.percent.pub) %>%; background: linear-gradient(-45deg,#f3545d,#ffa534);opacity: .4;" title="<%= __('Осталось:') %> <%- (line.counts.fil - line.counts.pub) %>">
-                            <span class="sr-only"><%- line.percent.fil %>%</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<%- line.percent.pub %>"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 style="width: <%- line.percent.pub %>%; background: linear-gradient(-45deg,#ffa534,#35cd3a);"
+                                 title="<%= __('Опубликовано:') %> <%- line.counts.pub %>">
+                                <span class="sr-only"><%- line.percent.pub %>%</span>
+                            </div>
+                            <div class="progress-bar progress-bar-warning"
+                                 style="width: <%- (line.percent.fil - line.percent.pub) %>%; background: linear-gradient(-45deg,#f3545d,#ffa534);opacity: .4;"
+                                 title="<%= __('Осталось:') %> <%- (line.counts.fil - line.counts.pub) %>">
+                                <span class="sr-only"><%- line.percent.fil %>%</span>
+                            </div>
+                            <div class="progress-bar progress-bar-warning"
+                                 style="width: <%- (line.percent.all - line.percent.fil) %>%; background-color: #1a2035"
+                                 title="<%= __('Отфильтрованы:') %> <%- (line.counts.all - line.counts.fil) %>">
+                                <span class="sr-only"><%- line.percent.all %>%</span>
+                            </div>
                         </div>
-                        <div class="progress-bar progress-bar-warning" style="width: <%- (line.percent.all - line.percent.fil) %>%; background-color: #1a2035" title="<%= __('Отфильтрованы:') %> <%- (line.counts.all - line.counts.fil) %>">
-                            <span class="sr-only"><%- line.percent.all %>%</span>
+                        <div class="progress-project-footer">
+                            <% if (line.days) { %>
+                                <p><%= __('Автопубликация на %s дней', line.days) %></p>
+                            <% } %>
+                            <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
                         </div>
-                    </div>
-                    <div class="progress-project-footer">
-                        <% if (line.days) { %>
-                        <p><%= __('Автопубликация на %s дней', line.days) %></p>
-                        <% } %>
-                        <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
-                    </div>
 
                     <% } %>
 
@@ -77,292 +91,293 @@
 
                     <% if (modules) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-wrench"></i>&nbsp;&nbsp;&nbsp;<%= __('Модули') %></div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/soon">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['soon'] %>"></i>
-                                                    <span class="corner-label <% if (modules.soon.status) { %> green <%  } else { %> red <% } %>">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label"><i
+                                                    class="fa fa-wrench"></i>&nbsp;&nbsp;&nbsp;<%= __('Модули') %></div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/soon">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['soon'] %>"></i>
+                                                        <span class="corner-label <% if (modules.soon.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Скоро') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/comments">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['comments'] %>"></i>
-                                                    <span class="corner-label <% if (modules.comments.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Скоро') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/comments">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['comments'] %>"></i>
+                                                        <span class="corner-label <% if (modules.comments.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Комментарии') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/related">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['related'] %>"></i>
-                                                    <span class="corner-label <% if (modules.related.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Комментарии') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/related">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['related'] %>"></i>
+                                                        <span class="corner-label <% if (modules.related.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Связанные') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/content">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['content'] %>"></i>
-                                                    <span class="corner-label <% if (modules.content.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Связанные') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/content">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['content'] %>"></i>
+                                                        <span class="corner-label <% if (modules.content.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Контент') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/slider">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['slider'] %>"></i>
-                                                    <span class="corner-label <% if (modules.slider.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Контент') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/slider">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['slider'] %>"></i>
+                                                        <span class="corner-label <% if (modules.slider.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Слайдер') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/abuse">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['abuse'] %>"></i>
-                                                    <span class="corner-label <% if (modules.abuse.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Слайдер') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/abuse">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['abuse'] %>"></i>
+                                                        <span class="corner-label <% if (modules.abuse.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Скрыть') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/top">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['top'] %>"></i>
-                                                    <span class="corner-label <% if (modules.top.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Скрыть') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/top">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['top'] %>"></i>
+                                                        <span class="corner-label <% if (modules.top.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Топ') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/social">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['social'] %>"></i>
-                                                    <span class="corner-label <% if (modules.social.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Топ') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/social">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['social'] %>"></i>
+                                                        <span class="corner-label <% if (modules.social.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Социальные сети') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/schema">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['schema'] %>"></i>
-                                                    <span class="corner-label <% if (modules.schema.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Социальные сети') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/schema">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['schema'] %>"></i>
+                                                        <span class="corner-label <% if (modules.schema.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Разметка') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/continue">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['continue'] %>"></i>
-                                                    <span class="corner-label <% if (modules.continue.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Разметка') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/continue">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['continue'] %>"></i>
+                                                        <span class="corner-label <% if (modules.continue.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Продолжить') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/viewed">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['viewed'] %>"></i>
-                                                    <span class="corner-label <% if (modules.viewed.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Продолжить') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/viewed">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['viewed'] %>"></i>
+                                                        <span class="corner-label <% if (modules.viewed.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Просмотренные') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/player">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['player'] %>"></i>
-                                                    <span class="corner-label <% if (modules.player.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Просмотренные') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/player">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['player'] %>"></i>
+                                                        <span class="corner-label <% if (modules.player.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Плеер') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/blocking">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['blocking'] %>"></i>
-                                                    <span class="corner-label <% if (modules.blocking.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Плеер') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/blocking">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['blocking'] %>"></i>
+                                                        <span class="corner-label <% if (modules.blocking.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Блокировка') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/mobile">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['mobile'] %>"></i>
-                                                    <span class="corner-label <% if (modules.mobile.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Блокировка') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/mobile">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['mobile'] %>"></i>
+                                                        <span class="corner-label <% if (modules.mobile.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Мобильная версия') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/episode">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['episode'] %>"></i>
-                                                    <span class="corner-label <% if (modules.episode.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Мобильная версия') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/episode">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['episode'] %>"></i>
+                                                        <span class="corner-label <% if (modules.episode.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Серии') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/adv">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['adv'] %>"></i>
-                                                    <span class="corner-label <% if (modules.adv.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Серии') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/adv">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['adv'] %>"></i>
+                                                        <span class="corner-label <% if (modules.adv.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Реклама') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/rss">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['rss'] %>"></i>
-                                                    <span class="corner-label <% if (modules.rss.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Реклама') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/rss">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['rss'] %>"></i>
+                                                        <span class="corner-label <% if (modules.rss.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('RSS') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/tv">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['tv'] %>"></i>
-                                                    <span class="corner-label <% if (modules.tv.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('RSS') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/tv">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['tv'] %>"></i>
+                                                        <span class="corner-label <% if (modules.tv.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('ТВ версия') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/random">
-                                                <div class="button-settings">
-                                                    <i class="<%- icons['random'] %>"></i>
-                                                    <span class="corner-label <% if (modules.random.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('ТВ версия') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/random">
+                                                    <div class="button-settings">
+                                                        <i class="<%- icons['random'] %>"></i>
+                                                        <span class="corner-label <% if (modules.random.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Случайный') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/rewrite">
-                                                <div class="button-settings">
-                                                    <i class="far fa-hand-rock"></i>
-                                                    <span class="corner-label <% if (modules.rewrite.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Случайный') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/rewrite">
+                                                    <div class="button-settings">
+                                                        <i class="far fa-hand-rock"></i>
+                                                        <span class="corner-label <% if (modules.rewrite.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Рерайт') %>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                                            <a href="/<%- config.urls.admin %>/app">
-                                                <div class="button-settings">
-                                                    <i class="fas fa-desktop"></i>
-                                                    <span class="corner-label <% if (modules.app.status) { %> green <%  } else { %> red <% } %>">
+                                                        <p class="hidden-xs">
+                                                            <%= __('Рерайт') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/app">
+                                                    <div class="button-settings">
+                                                        <i class="fas fa-desktop"></i>
+                                                        <span class="corner-label <% if (modules.app.status) { %> green <% } else { %> red <% } %>">
                                                         <i class="fa fa-power-off"></i>
                                                     </span>
-                                                    <p class="hidden-xs">
-                                                        <%= __('Приложение') %>
-                                                    </p>
-                                                </div>
-                                            </a>
+                                                        <p class="hidden-xs">
+                                                            <%= __('Приложение') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 
@@ -372,7 +387,8 @@
                         <div class="col-sm-12">
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
-                                    <div class="cinema-label"><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры') %></div>
+                                    <div class="cinema-label"><i
+                                                class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры') %></div>
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">

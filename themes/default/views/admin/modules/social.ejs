@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/social" class="btn hidden-xs">
                             <%= __('Модуль социальных сетях') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html" class="btn" title="<%= __('Информация о параметрах модуля групп в социальных сетях') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля групп в социальных сетях') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.social.status) { %>
-                        <a href="javascript:void(0)" data-module="social" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="social" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="social" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="social" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,165 +67,183 @@
 
                     <% if (modules.social.status) { %>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-vk"></i>&nbsp;&nbsp;&nbsp;VK
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-vk"></i>&nbsp;&nbsp;&nbsp;VK
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal1"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal1" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.vk"
+                                                       value="<%= modules.social.data.vk %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.vk" value="<%= modules.social.data.vk %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-facebook-f"></i>&nbsp;&nbsp;&nbsp;Facebook
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal2"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.facebook"
+                                                       value="<%= modules.social.data.facebook %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-twitter"></i>&nbsp;&nbsp;&nbsp;Twitter
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal3"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.twitter"
+                                                       value="<%= modules.social.data.twitter %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Telegram
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal4"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.telegram"
+                                                       value="<%= modules.social.data.telegram %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;Instagram
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal5"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.instagram"
+                                                       value="<%= modules.social.data.instagram %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;YouTube
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal6"
+                                               class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <input name="modules.social.data.youtube"
+                                                       value="<%= modules.social.data.youtube %>" class="form-control"
+                                                       type="text" placeholder="<%= __('Ссылка на страницу') %>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-facebook-f"></i>&nbsp;&nbsp;&nbsp;Facebook
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal2" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.facebook" value="<%= modules.social.data.facebook %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-twitter"></i>&nbsp;&nbsp;&nbsp;Twitter
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal3" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.twitter" value="<%= modules.social.data.twitter %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Telegram
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal4" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.telegram" value="<%= modules.social.data.telegram %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;Instagram
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal5" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.instagram" value="<%= modules.social.data.instagram %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;YouTube
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/social.html#scal6" class="csstip" title="<%= __('Ссылка на страницу') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <input name="modules.social.data.youtube" value="<%= modules.social.data.youtube %>" class="form-control" type="text" placeholder="<%= __('Ссылка на страницу') %>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет добавить на веб-сайт ссылки страниц в социальных сетях, которые были созданы для веб-сайта.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет добавить на веб-сайт ссылки страниц в социальных сетях, которые были созданы для веб-сайта.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 

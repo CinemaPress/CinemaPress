@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
-<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
-<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
-<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
-<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
 <head>
 
     <%- include('../includes/head.ejs'); -%>
@@ -34,19 +40,22 @@
                         <a href="/<%- config.urls.admin %>/abuse" class="btn hidden-xs">
                             <%= __('Модуль скрытия фильмов') %>
                         </a>
-                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html" class="btn" title="<%= __('Информация о параметрах модуля скрытия фильмов') %>" target="_blank">
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля скрытия фильмов') %>" target="_blank">
                             <i class="fa fa-info-circle text-muted"></i>
                         </a>
                     </div>
                     <div class="pull-right">
                         <% if (modules.abuse.status) { %>
-                        <a href="javascript:void(0)" data-module="abuse" data-status="false" class="btn btn-danger module-status power-off">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="abuse" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
                         <% } else { %>
-                        <a href="javascript:void(0)" data-module="abuse" data-status="true" class="btn btn-success module-status power-on">
-                            <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
-                        </a>
+                            <a href="javascript:void(0)" data-module="abuse" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
                         <% } %>
                         <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
@@ -58,472 +67,601 @@
 
                     <% if (modules.abuse.status) { %>
 
-                    <div class="faq">
+                        <div class="faq">
 
-                        <article class="faq-group">
-                            <header>
-                                <i class="fa fa-minus"></i>
-                                <h3>
-                                    <%= __('Автоматическое скрытие фильмов') %>
-                                </h3>
-                            </header>
-                            <div class="faq-content clearfix">
+                            <article class="faq-group">
+                                <header>
+                                    <i class="fa fa-minus"></i>
+                                    <h3>
+                                        <%= __('Автоматическое скрытие фильмов') %>
+                                    </h3>
+                                </header>
+                                <div class="faq-content clearfix">
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры авторизации IMAP') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth" class="csstip" title="<%= __('Параметры авторизации на почтовом IMAP сервере') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-xs-3">
-                                                        <label><%= __('Email') %></label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                        <input type="text" name="modules.abuse.data.imap.user" value="<%= modules.abuse.data.imap.user %>" class="form-control" placeholder="support@<%- config.domain %>">
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-lg-3 col-xs-3">
-                                                        <label><%= __('Пароль') %></label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                        <input type="text" name="modules.abuse.data.imap.password" value="<%= modules.abuse.data.imap.password %>" class="form-control" placeholder="<%= __('Ваш пароль от почтового ящика') %>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры почтового сервера') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#server" class="csstip" title="<%= __('Параметры почтового сервера') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-xs-3">
-                                                        <label><%= __('Сервер') %></label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                        <input type="text" name="modules.abuse.data.imap.host" value="<%= modules.abuse.data.imap.host %>" class="form-control" placeholder="imap.zoho.com">
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-lg-3 col-xs-3">
-                                                        <label><%= __('Порт') %></label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                        <input type="text" name="modules.abuse.data.imap.port" value="<%= modules.abuse.data.imap.port %>" class="form-control">
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-lg-3 col-xs-3">
-                                                        <label><%= __('TLS') %></label>
-                                                    </div>
-                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                        <select name="modules.abuse.data.imap.tls" class="form-control">
-                                                            <option value="1" <% if (modules.abuse.data.imap.tls) { %>selected="selected"<% } %>>
-                                                                <%= __('Да') %>
-                                                            </option>
-                                                            <option value="0" <% if (!modules.abuse.data.imap.tls) { %>selected="selected"<% } %>>
-                                                                <%= __('Нет') %>
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-envelope-open"></i>&nbsp;&nbsp;&nbsp;<%= __('Белый список адресов электронной почты') %>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-12 text-center">
-                                                        <textarea class="form-control" name="modules.abuse.data.imap.from" placeholder="nap@rkn.gov.ru,abuse@netflix.com" style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.imap.from) { %><%- modules.abuse.data.imap.from.join(',') %><% } %></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный поддомен после скрытия') %>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-12 text-center">
-                                                        <div class="inline-labels">
-                                                            <label>
-                                                                <input name="modules.abuse.data.imap.subdomain" value="1" <% if (modules.abuse.data.imap.subdomain) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %>
-                                                            </label>
-                                                            <label>
-                                                                <input name="modules.abuse.data.imap.subdomain" value="0" <% if (!modules.abuse.data.imap.subdomain) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="col-sm-12">
-                                        <div class="cinema-box">
-                                            <div class="cinema-box-header">
-                                                <div class="cinema-label">
-                                                    <i class="fas fa-reply"></i>&nbsp;&nbsp;&nbsp;<%= __('Автоматический ответ после скрытия') %>
-                                                </div>
-                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth" class="csstip" title="<%= __('Укажите данные почтового сервиса с которого будет отправляться ответ на письмо') %>" target="_blank">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="inner-padding">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="cinema-box">
-                                                            <div class="cinema-box-header">
-                                                                <div class="cinema-label">
-                                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры авторизации SMTP') %>
-                                                                </div>
-                                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth" class="csstip" title="<%= __('Параметры авторизации на почтовом SMTP сервере') %>" target="_blank">
-                                                                        <i class="fa fa-info-circle"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="inner-padding">
-                                                                <div class="row">
-                                                                    <div class="col-lg-3 col-xs-3">
-                                                                        <label><%= __('Email') %></label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                                        <input type="text" name="modules.abuse.data.smtp.auth.user" value="<%= modules.abuse.data.smtp.auth.user %>" class="form-control" placeholder="support@<%- config.domain %>">
-                                                                    </div>
-
-                                                                    <div class="spacer-10"></div>
-
-                                                                    <div class="col-lg-3 col-xs-3">
-                                                                        <label><%= __('Пароль') %></label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                                        <input type="text" name="modules.abuse.data.smtp.auth.pass" value="<%= modules.abuse.data.smtp.auth.pass %>" class="form-control" placeholder="<%= __('Ваш пароль от почтового ящика') %>">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-sm-12">
-                                                        <div class="cinema-box">
-                                                            <div class="cinema-box-header">
-                                                                <div class="cinema-label">
-                                                                    <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры почтового сервера') %>
-                                                                </div>
-                                                                <div class="cinema-label hidden-xs" style="float: right">
-                                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#server" class="csstip" title="<%= __('Параметры почтового сервера') %>" target="_blank">
-                                                                        <i class="fa fa-info-circle"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="inner-padding">
-                                                                <div class="row">
-                                                                    <div class="col-lg-3 col-xs-3">
-                                                                        <label><%= __('Сервер') %></label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                                        <input type="text" name="modules.abuse.data.smtp.host" value="<%= modules.abuse.data.smtp.host %>" class="form-control" placeholder="smtp.zoho.com">
-                                                                    </div>
-
-                                                                    <div class="spacer-10"></div>
-
-                                                                    <div class="col-lg-3 col-xs-3">
-                                                                        <label><%= __('Порт') %></label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                                        <input type="text" name="modules.abuse.data.smtp.port" value="<%= modules.abuse.data.smtp.port %>" class="form-control">
-                                                                    </div>
-
-                                                                    <div class="spacer-10"></div>
-
-                                                                    <div class="col-lg-3 col-xs-3">
-                                                                        <label><%= __('TLS') %></label>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-xs-9 text-center">
-                                                                        <select name="modules.abuse.data.smtp.secure" class="form-control">
-                                                                            <option value="1" <% if (modules.abuse.data.smtp.secure) { %>selected="selected"<% } %>>
-                                                                                <%= __('Да') %>
-                                                                            </option>
-                                                                            <option value="0" <% if (!modules.abuse.data.smtp.secure) { %>selected="selected"<% } %>>
-                                                                                <%= __('Нет') %>
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-sm-12">
-                                                        <div class="cinema-box">
-                                                            <div class="cinema-box-header">
-                                                                <div class="cinema-label">
-                                                                    <i class="fas fa-key"></i>&nbsp;&nbsp;&nbsp;<%= __('DKIM-подпись') %>
-                                                                </div>
-                                                            </div>
-                                                            <div class="inner-padding">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12 text-center">
-                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.dkim" placeholder='{"domainName": "", "keySelector": "", "privateKey": ""}' style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.dkim) { %><%- modules.abuse.data.smtp.dkim %><% } %></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="spacer-10"></div>
-
-                                                    <div class="col-sm-12">
-                                                        <div class="cinema-box">
-                                                            <div class="cinema-box-header">
-                                                                <div class="cinema-label">
-                                                                    <i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;&nbsp;<%= __('Сообщение') %>
-                                                                </div>
-                                                            </div>
-                                                            <div class="inner-padding">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12 text-center">
-                                                                        <textarea class="form-control" name="modules.abuse.data.smtp.message" style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message.replace(/<br>/ig, '\n') %><% } %></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-copyright"></i>&nbsp;&nbsp;&nbsp;<%= __('Блокировать фильмы в стране') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#country" class="csstip" title="<%= __('Блокировать фильмы в стране, в которой они были выпущены в текущем году') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-lg-8 col-xs-8">
-                                            <label><%= __('В стране фильма') %></label>
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры авторизации IMAP') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth"
+                                                           class="csstip"
+                                                           title="<%= __('Параметры авторизации на почтовом IMAP сервере') %>"
+                                                           target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-xs-3">
+                                                            <label><%= __('Email') %></label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                            <input type="text" name="modules.abuse.data.imap.user"
+                                                                   value="<%= modules.abuse.data.imap.user %>"
+                                                                   class="form-control"
+                                                                   placeholder="support@<%- config.domain %>">
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-lg-3 col-xs-3">
+                                                            <label><%= __('Пароль') %></label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                            <input type="text" name="modules.abuse.data.imap.password"
+                                                                   value="<%= modules.abuse.data.imap.password %>"
+                                                                   class="form-control"
+                                                                   placeholder="<%= __('Ваш пароль от почтового ящика') %>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4 col-xs-4 text-center">
-                                            <select name="modules.abuse.data.country" class="form-control">
-                                                <option value="1" <% if (modules.abuse.data.country) { %>selected="selected"<% } %>>
-                                                    <%= __('Не показывать') %>
-                                                </option>
-                                                <option value="0" <% if (!modules.abuse.data.country) { %>selected="selected"<% } %>>
-                                                    <%= __('Показывать') %>
-                                                </option>
-                                            </select>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры почтового сервера') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#server"
+                                                           class="csstip"
+                                                           title="<%= __('Параметры почтового сервера') %>"
+                                                           target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-xs-3">
+                                                            <label><%= __('Сервер') %></label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                            <input type="text" name="modules.abuse.data.imap.host"
+                                                                   value="<%= modules.abuse.data.imap.host %>"
+                                                                   class="form-control" placeholder="imap.zoho.com">
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-lg-3 col-xs-3">
+                                                            <label><%= __('Порт') %></label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                            <input type="text" name="modules.abuse.data.imap.port"
+                                                                   value="<%= modules.abuse.data.imap.port %>"
+                                                                   class="form-control">
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-lg-3 col-xs-3">
+                                                            <label><%= __('TLS') %></label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                            <select name="modules.abuse.data.imap.tls"
+                                                                    class="form-control">
+                                                                <option value="1"
+                                                                        <% if (modules.abuse.data.imap.tls) { %>selected="selected"
+                                                                        <% } %>
+                                                                >
+                                                                    <%= __('Да') %>
+                                                                </option>
+                                                                <option value="0"
+                                                                        <% if (!modules.abuse.data.imap.tls) { %>selected="selected"
+                                                                        <% } %>
+                                                                >
+                                                                    <%= __('Нет') %>
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-envelope-open"></i>&nbsp;&nbsp;&nbsp;<%= __('Белый список адресов электронной почты') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 text-center">
+                                                            <textarea class="form-control"
+                                                                      name="modules.abuse.data.imap.from"
+                                                                      placeholder="nap@rkn.gov.ru,abuse@netflix.com"
+                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
+                                                                <% if (modules.abuse.data.imap.from) { %><%- modules.abuse.data.imap.from.join(',') %>
+                                                                <% } %>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный поддомен после скрытия') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 text-center">
+                                                            <div class="inline-labels">
+                                                                <label>
+                                                                    <input name="modules.abuse.data.imap.subdomain"
+                                                                           value="1"
+                                                                    <% if (modules.abuse.data.imap.subdomain) { %>
+                                                                           checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span> <%= __('Да') %>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="modules.abuse.data.imap.subdomain"
+                                                                           value="0"
+                                                                    <% if (!modules.abuse.data.imap.subdomain) { %>
+                                                                           checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span> <%= __('Нет') %>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="fas fa-reply"></i>&nbsp;&nbsp;&nbsp;<%= __('Автоматический ответ после скрытия') %>
+                                                    </div>
+                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth"
+                                                           class="csstip"
+                                                           title="<%= __('Укажите данные почтового сервиса с которого будет отправляться ответ на письмо') %>"
+                                                           target="_blank">
+                                                            <i class="fa fa-info-circle"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры авторизации SMTP') %>
+                                                                    </div>
+                                                                    <div class="cinema-label hidden-xs"
+                                                                         style="float: right">
+                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#auth"
+                                                                           class="csstip"
+                                                                           title="<%= __('Параметры авторизации на почтовом SMTP сервере') %>"
+                                                                           target="_blank">
+                                                                            <i class="fa fa-info-circle"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-xs-3">
+                                                                            <label><%= __('Email') %></label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                                            <input type="text"
+                                                                                   name="modules.abuse.data.smtp.auth.user"
+                                                                                   value="<%= modules.abuse.data.smtp.auth.user %>"
+                                                                                   class="form-control"
+                                                                                   placeholder="support@<%- config.domain %>">
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-3 col-xs-3">
+                                                                            <label><%= __('Пароль') %></label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                                            <input type="text"
+                                                                                   name="modules.abuse.data.smtp.auth.pass"
+                                                                                   value="<%= modules.abuse.data.smtp.auth.pass %>"
+                                                                                   class="form-control"
+                                                                                   placeholder="<%= __('Ваш пароль от почтового ящика') %>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<%= __('Параметры почтового сервера') %>
+                                                                    </div>
+                                                                    <div class="cinema-label hidden-xs"
+                                                                         style="float: right">
+                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#server"
+                                                                           class="csstip"
+                                                                           title="<%= __('Параметры почтового сервера') %>"
+                                                                           target="_blank">
+                                                                            <i class="fa fa-info-circle"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-xs-3">
+                                                                            <label><%= __('Сервер') %></label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                                            <input type="text"
+                                                                                   name="modules.abuse.data.smtp.host"
+                                                                                   value="<%= modules.abuse.data.smtp.host %>"
+                                                                                   class="form-control"
+                                                                                   placeholder="smtp.zoho.com">
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-3 col-xs-3">
+                                                                            <label><%= __('Порт') %></label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                                            <input type="text"
+                                                                                   name="modules.abuse.data.smtp.port"
+                                                                                   value="<%= modules.abuse.data.smtp.port %>"
+                                                                                   class="form-control">
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-3 col-xs-3">
+                                                                            <label><%= __('TLS') %></label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-xs-9 text-center">
+                                                                            <select name="modules.abuse.data.smtp.secure"
+                                                                                    class="form-control">
+                                                                                <option value="1"
+                                                                                        <% if (modules.abuse.data.smtp.secure) { %>selected="selected"
+                                                                                        <% } %>
+                                                                                >
+                                                                                    <%= __('Да') %>
+                                                                                </option>
+                                                                                <option value="0"
+                                                                                        <% if (!modules.abuse.data.smtp.secure) { %>selected="selected"
+                                                                                        <% } %>
+                                                                                >
+                                                                                    <%= __('Нет') %>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fas fa-key"></i>&nbsp;&nbsp;&nbsp;<%= __('DKIM-подпись') %>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 text-center">
+                                                                            <textarea class="form-control"
+                                                                                      name="modules.abuse.data.smtp.dkim"
+                                                                                      placeholder='{"domainName": "", "keySelector": "", "privateKey": ""}'
+                                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
+                                                                                <% if (modules.abuse.data.smtp.dkim) { %><%- modules.abuse.data.smtp.dkim %>
+                                                                                <% } %>
+                                                                            </textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;&nbsp;<%= __('Сообщение') %>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 text-center">
+                                                                            <textarea class="form-control"
+                                                                                      name="modules.abuse.data.smtp.message"
+                                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
+                                                                                <% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message.replace(/<br>/ig, '\n') %>
+                                                                                <% } %>
+                                                                            </textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-copyright"></i>&nbsp;&nbsp;&nbsp;<%= __('Блокировать фильмы в стране') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#country"
+                                               class="csstip"
+                                               title="<%= __('Блокировать фильмы в стране, в которой они были выпущены в текущем году') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-xs-8">
+                                                <label><%= __('В стране фильма') %></label>
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4 text-center">
+                                                <select name="modules.abuse.data.country" class="form-control">
+                                                    <option value="1"
+                                                            <% if (modules.abuse.data.country) { %>selected="selected"
+                                                            <% } %>
+                                                    >
+                                                        <%= __('Не показывать') %>
+                                                    </option>
+                                                    <option value="0"
+                                                            <% if (!modules.abuse.data.country) { %>selected="selected"
+                                                            <% } %>
+                                                    >
+                                                        <%= __('Показывать') %>
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="spacer-10"></div>
+                        <div class="spacer-10"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<%= __('Код состояния HTTP') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#status_code" class="csstip" title="<%= __('Код состояния HTTP на веб-странице заблокированного фильма') %>" target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label><%= __('Фильмы из страны') %></label>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<%= __('Код состояния HTTP') %>
                                         </div>
-                                        <div class="col-sm-3 text-center">
-                                            <select name="modules.abuse.data.status_code_country" class="form-control">
-                                                <option value="200" <% if (modules.abuse.data.status_code_country === '200') { %>selected="selected"<% } %>>200 OK</option>
-                                                <option value="404" <% if (modules.abuse.data.status_code_country === '404') { %>selected="selected"<% } %>>404 Not Found</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label><%= __('Фильмы из списка') %></label>
-                                        </div>
-                                        <div class="col-sm-3 text-center">
-                                            <select name="modules.abuse.data.status_code_list" class="form-control">
-                                                <option value="200" <% if (modules.abuse.data.status_code_list === '200') { %>selected="selected"<% } %>>200 OK</option>
-                                                <option value="404" <% if (modules.abuse.data.status_code_list === '404') { %>selected="selected"<% } %>>404 Not Found</option>
-                                            </select>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/abuse.html#status_code"
+                                               class="csstip"
+                                               title="<%= __('Код состояния HTTP на веб-странице заблокированного фильма') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="spacer-10"></div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
-                                        <i class="fa fa-quote-right"></i>&nbsp;&nbsp;&nbsp;<%= __('Сообщение для пользователей') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="javascript:void(0)" class="csstip" title="<%= __('Сообщение для пользователей на месте, где располагается плеер') %>">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <textarea class="form-control" name="modules.abuse.data.message" placeholder="<%= __('Сообщение для пользователя') %>"><% if (modules.abuse.data.message) { %><%- modules.abuse.data.message %><% } %></textarea>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label><%= __('Фильмы из страны') %></label>
+                                            </div>
+                                            <div class="col-sm-3 text-center">
+                                                <select name="modules.abuse.data.status_code_country"
+                                                        class="form-control">
+                                                    <option value="200"
+                                                            <% if (modules.abuse.data.status_code_country === '200') { %>selected="selected"
+                                                            <% } %>
+                                                    >200 OK
+                                                    </option>
+                                                    <option value="404"
+                                                            <% if (modules.abuse.data.status_code_country === '404') { %>selected="selected"
+                                                            <% } %>
+                                                    >404 Not Found
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label><%= __('Фильмы из списка') %></label>
+                                            </div>
+                                            <div class="col-sm-3 text-center">
+                                                <select name="modules.abuse.data.status_code_list" class="form-control">
+                                                    <option value="200"
+                                                            <% if (modules.abuse.data.status_code_list === '200') { %>selected="selected"
+                                                            <% } %>
+                                                    >200 OK
+                                                    </option>
+                                                    <option value="404"
+                                                            <% if (modules.abuse.data.status_code_list === '404') { %>selected="selected"
+                                                            <% } %>
+                                                    >404 Not Found
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="spacer-10"></div>
+                        <div class="spacer-10"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fa fa-quote-right"></i>&nbsp;&nbsp;&nbsp;<%= __('Сообщение для пользователей') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="javascript:void(0)" class="csstip"
+                                               title="<%= __('Сообщение для пользователей на месте, где располагается плеер') %>">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <textarea class="form-control" name="modules.abuse.data.message"
+                                                          placeholder="<%= __('Сообщение для пользователя') %>">
+                                                    <% if (modules.abuse.data.message) { %><%- modules.abuse.data.message %>
+                                                    <% } %>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="<%= __('Идентификатор или ссылка на фильм') %>" data-add-id="modules.abuse.data.movies">
-                                <span class="input-group-btn">
-                                    <a href="javascript:void(0)" class="btn btn-default" data-add-name="modules.abuse.data.movies">
+                        <div class="spacer-10"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="input-group">
+                                    <input class="form-control" type="text"
+                                           placeholder="<%= __('Идентификатор или ссылка на фильм') %>"
+                                           data-add-id="modules.abuse.data.movies">
+                                    <span class="input-group-btn">
+                                    <a href="javascript:void(0)" class="btn btn-default"
+                                       data-add-name="modules.abuse.data.movies">
                                         <span class="fa fa-plus"></span> <%= __('Добавить фильм') %>
                                     </a>
                                 </span>
-                            </div>
-
-                            <div class="spacer-10"></div>
-
-                            <div class="advanced-textarea">
-
-                                <div class="thumbs-list thumbs-small">
-                                    <ul data-add-name="modules.abuse.data.movies">
-                                        <% if (modules.abuse.data.movies) { %>
-                                        <% modules.abuse.data.movies.forEach(function (id) { %>
-                                        <li data-delete-id="<%- id %>" data-delete-name="modules.abuse.data.movies">
-                                            <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
-                                        </li>
-                                        <% }); %>
-                                        <% } %>
-                                    </ul>
                                 </div>
 
-                                <div style="display: none" id="abuse_ids">
+                                <div class="spacer-10"></div>
 
-                                    <div class="spacer-10"></div>
+                                <div class="advanced-textarea">
 
-                                    <div class="text-muted">
-                                        <%= __('Фильмы:') %>
+                                    <div class="thumbs-list thumbs-small">
+                                        <ul data-add-name="modules.abuse.data.movies">
+                                            <% if (modules.abuse.data.movies) { %>
+                                                <% modules.abuse.data.movies.forEach(function (id) { %>
+                                                    <li data-delete-id="<%- id %>"
+                                                        data-delete-name="modules.abuse.data.movies">
+                                                        <img class="media-object"
+                                                             src="/<%- config.urls.admin %>/poster?id=<%- id %>"
+                                                             alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                    </li>
+                                                <% }); %>
+                                            <% } %>
+                                        </ul>
                                     </div>
 
-                                    <div class="spacer-10"></div>
+                                    <div style="display: none" id="abuse_ids">
 
-                                    <textarea class="form-control input_ids" name="modules.abuse.data.movies" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %><% } %></textarea>
+                                        <div class="spacer-10"></div>
 
-                                    <div class="spacer-10"></div>
+                                        <div class="text-muted">
+                                            <%= __('Фильмы:') %>
+                                        </div>
 
-                                </div>
+                                        <div class="spacer-10"></div>
 
-                                <div class="advanced-textarea-footer">
-                                    <div class="pull-right">
-                                        <a href="javascript:void(0)" onclick="document.querySelector('#abuse_ids').style.display = 'block'" class="btn btn-default">
-                                            <%= __('Редактировать список ID') %>
-                                        </a>
+                                        <textarea class="form-control input_ids" name="modules.abuse.data.movies"
+                                                  placeholder="<%= __('Список идентификаторов фильмов') %>">
+                                            <% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %>
+                                            <% } %>
+                                        </textarea>
+
+                                        <div class="spacer-10"></div>
+
+                                    </div>
+
+                                    <div class="advanced-textarea-footer">
+                                        <div class="pull-right">
+                                            <a href="javascript:void(0)"
+                                               onclick="document.querySelector('#abuse_ids').style.display = 'block'"
+                                               class="btn btn-default">
+                                                <%= __('Редактировать список ID') %>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } else { %>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="attention-box attention-danger">
-                                <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
-                                <div class="spacer-20"></div>
-                                <p class="text-muted">
-                                    <%= __('Модуль позволяет скрыть с веб-сайта фильмы, на которые наложены ограничения от правообладателей.') %>
-                                    <br>
-                                    <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
-                                </p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет скрыть с веб-сайта фильмы, на которые наложены ограничения от правообладателей.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <% } %>
 
