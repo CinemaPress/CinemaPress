@@ -2389,7 +2389,11 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             if [ "${3}" = "windows" ] || [ "${3}" = "linux" ]  || [ "${3}" = "osx" ]; then
                 NAME_OS="${3}"
-                APP_DOMAIN="app.${2}"
+                if [ "${4}" = "" ]; then
+                    APP_DOMAIN="app.${2}"
+                else
+                    APP_DOMAIN="${4}"
+                fi
                 _br
             else
                 read_os "${3}"
