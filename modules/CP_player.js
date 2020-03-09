@@ -148,9 +148,9 @@ function codePlayer(type, movie, options) {
     }
 
     code =
-      options.userinfo.device !== 'app'
-        ? CP_blocking.code(code, movie, options)
-        : code;
+      options.userinfo.device === 'app' || modules.blocking.data.app.abuse
+        ? code
+        : CP_blocking.code(code, movie, options);
   }
 
   /**
