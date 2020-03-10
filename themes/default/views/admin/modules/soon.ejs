@@ -170,10 +170,7 @@
 
                                                         <textarea class="form-control input_ids"
                                                                   name="modules.soon.data.movies"
-                                                                  placeholder="<%= __('Список идентификаторов фильмов') %>">
-                                                            <% if (modules.soon.data.movies) { %><%- modules.soon.data.movies.join(',') %>
-                                                            <% } %>
-                                                        </textarea>
+                                                                  placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.soon.data.movies) { %><%- modules.soon.data.movies.join(',') %><% } %></textarea>
 
                                                         <div class="spacer-10"></div>
 

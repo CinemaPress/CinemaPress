@@ -613,10 +613,7 @@
                                         <div class="spacer-10"></div>
 
                                         <textarea class="form-control input_ids" name="modules.abuse.data.movies"
-                                                  placeholder="<%= __('Список идентификаторов фильмов') %>">
-                                            <% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %>
-                                            <% } %>
-                                        </textarea>
+                                                  placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %><% } %></textarea>
 
                                         <div class="spacer-10"></div>
 

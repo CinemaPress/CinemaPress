@@ -287,17 +287,11 @@
                             <% if (movie.player) { %>
                                 <textarea class="form-control" name="movie.player"
                                           placeholder="<%= __('Embed/iframe код') %>"
-                                          style="font-weight: normal; font-size: 14px; height: 71px">
-                                    <% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %>
-                                    <% } %>
-                                </textarea>
+                                          style="font-weight: normal; font-size: 14px; height: 71px"><% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %><% } %></textarea>
                             <% } else { %>
                                 <textarea class="form-control" name="movie.player"
                                           placeholder="<%= __('Embed/iframe код') %>"
-                                          style="font-weight: normal; font-size: 14px; height: 71px; display: none">
-                                    <% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %>
-                                    <% } %>
-                                </textarea>
+                                          style="font-weight: normal; font-size: 14px; height: 71px; display: none"><% if (movie.player) { %><%- movie.player.replace(/\s?,\s?/g, '\n') %><% } %></textarea>
                                 <div id="movie_player" class="t input-group-addon"
                                      style="border-left: 1px solid #2f374b; border-bottom-left-radius: 4px; border-top-left-radius: 4px;">
                                     <span style="font-weight: bold"><%= __('Плеер') %>:</span> <span>
@@ -466,10 +460,7 @@
                                 </div>
                                 <div class="spacer-10"></div>
                                 <textarea class="form-control descriptions" name="movie.description"
-                                          placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni">
-                                    <% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %>
-                                    <% } %>
-                                </textarea>
+                                          placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni"><% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
                                 <div class="advanced-textarea-footer">
                                     <div class="pull-left">
                                         <div class="text text-muted" style="float: none;"><span
@@ -693,11 +684,7 @@
                                             </div>
                                             <div class="spacer-10"></div>
                                             <textarea class="form-control custom" name="movie.custom"
-                                                      placeholder='{"name": "<%= __('Текст к этому полю') %>", "name2": "<%= __('Текст к этому полю') %>"}'>
-                                                <% if (c) { %><%- c %>
-                                                <% } else { %>{"unique": true}
-                                                <% } %>
-                                            </textarea>
+                                                      placeholder='{"name": "<%= __('Текст к этому полю') %>", "name2": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } else { %>{"unique": true}<% } %></textarea>
                                             <script>
                                               document.addEventListener('DOMContentLoaded', function() {
                                                 var json = document.querySelector('[name="movie.custom"]');

@@ -129,10 +129,7 @@
                                                     }
                                                 %>
                                                 <textarea class="form-control custom" name="modules.player.data.script"
-                                                          placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'>
-                                                    <% if (c) { %><%- c %>
-                                                    <% } %>
-                                                </textarea>
+                                                          placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
                                                 <script>
                                                   document.addEventListener('DOMContentLoaded', function() {
                                                     var json = document.querySelector('[name="modules.player.data.script"]');
