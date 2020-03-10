@@ -96,10 +96,7 @@
                                         <div class="spacer-10"></div>
 
                                         <textarea class="form-control descriptions" name="content.content_description"
-                                                  placeholder="<%= __('Например:') %> <%= __('Подборка комедийных сериалов') %>">
-                                            <% if (content.content_description) { %><%- content.content_description.trim().replace(/<br>/ig, '\n') %>
-                                            <% } %>
-                                        </textarea>
+                                                  placeholder="<%= __('Например:') %> <%= __('Подборка комедийных сериалов') %>"><% if (content.content_description) { %><%- content.content_description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
 
                                         <div class="advanced-textarea-footer">
                                             <div class="pull-left">
@@ -764,10 +761,7 @@
                                                                     <textarea class="form-control"
                                                                               name="modules.content.data.scraper"
                                                                               placeholder="hour ~ url ~ post ~ kinopoisk_id ~ collection"
-                                                                              style="height:300px;">
-                                                                        <% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %>
-                                                                        <% } %>
-                                                                    </textarea>
+                                                                              style="height:300px;"><% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %><% } %></textarea>
                                                                 </div>
 
                                                                 <div class="spacer-10"></div>

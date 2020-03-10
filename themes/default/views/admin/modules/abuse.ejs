@@ -203,10 +203,7 @@
                                                             <textarea class="form-control"
                                                                       name="modules.abuse.data.imap.from"
                                                                       placeholder="nap@rkn.gov.ru,abuse@netflix.com"
-                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
-                                                                <% if (modules.abuse.data.imap.from) { %><%- modules.abuse.data.imap.from.join(',') %>
-                                                                <% } %>
-                                                            </textarea>
+                                                                      style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.imap.from) { %><%- modules.abuse.data.imap.from.join(',') %><% } %></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -399,10 +396,7 @@
                                                                             <textarea class="form-control"
                                                                                       name="modules.abuse.data.smtp.dkim"
                                                                                       placeholder='{"domainName": "", "keySelector": "", "privateKey": ""}'
-                                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
-                                                                                <% if (modules.abuse.data.smtp.dkim) { %><%- modules.abuse.data.smtp.dkim %>
-                                                                                <% } %>
-                                                                            </textarea>
+                                                                                      style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.dkim) { %><%- modules.abuse.data.smtp.dkim %><% } %></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -423,10 +417,7 @@
                                                                         <div class="col-sm-12 text-center">
                                                                             <textarea class="form-control"
                                                                                       name="modules.abuse.data.smtp.message"
-                                                                                      style="font-weight: normal; font-size: 14px; height: 71px">
-                                                                                <% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message.replace(/<br>/ig, '\n') %>
-                                                                                <% } %>
-                                                                            </textarea>
+                                                                                      style="font-weight: normal; font-size: 14px; height: 71px"><% if (modules.abuse.data.smtp.message) { %><%- modules.abuse.data.smtp.message.replace(/<br>/ig, '\n') %><% } %></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -567,10 +558,7 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-xs-12 text-center">
                                                 <textarea class="form-control" name="modules.abuse.data.message"
-                                                          placeholder="<%= __('Сообщение для пользователя') %>">
-                                                    <% if (modules.abuse.data.message) { %><%- modules.abuse.data.message %>
-                                                    <% } %>
-                                                </textarea>
+                                                          placeholder="<%= __('Сообщение для пользователя') %>"><% if (modules.abuse.data.message) { %><%- modules.abuse.data.message %><% } %></textarea>
                                             </div>
                                         </div>
                                     </div>

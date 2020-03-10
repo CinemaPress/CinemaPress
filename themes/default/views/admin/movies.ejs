@@ -576,10 +576,7 @@
                                             </div>
                                             <textarea class="form-control" name="movie.actor"
                                                       placeholder="<%= __('Например:') %> <%= __('Том Круз,Саймон Пегг') %>"
-                                                      style="font-weight: normal; font-size: 14px; height: 50px; overflow: hidden">
-                                                <% if (movie.actor && movie.actor !== '_empty') { %><%- movie.actor %>
-                                                <% } %>
-                                            </textarea>
+                                                      style="font-weight: normal; font-size: 14px; height: 50px; overflow: hidden"><% if (movie.actor && movie.actor !== '_empty') { %><%- movie.actor %><% } %></textarea>
 
                                             <div class="spacer-10"></div>
 
