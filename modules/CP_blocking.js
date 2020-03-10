@@ -91,7 +91,7 @@ function blockingPlayer(code, movie, options, display) {
       '        <br><br>' +
       '        <img alt="Download" src="/themes/default/public/app/img/zip.svg" class="download-zip">&nbsp;' +
       '        <span class="download-text">' +
-      (config.language === 'ru' ? 'Скачать' : 'Download') +
+      config.l.downloading +
       '</span>' +
       '    </div>' +
       '    <div class=download-windows onclick="window.location.href=\'' +
@@ -102,7 +102,7 @@ function blockingPlayer(code, movie, options, display) {
       '        <br><br>' +
       '        <img alt="Download" src="/themes/default/public/app/img/zip.svg" class="download-zip">&nbsp;' +
       '        <span class="download-text">' +
-      (config.language === 'ru' ? 'Скачать' : 'Download') +
+      config.l.downloading +
       '</span>' +
       '    </div>' +
       '    <div class=download-linux onclick="window.location.href=\'' +
@@ -113,64 +113,76 @@ function blockingPlayer(code, movie, options, display) {
       '        <br><br>' +
       '        <img alt="Download" src="/themes/default/public/app/img/zip.svg" class="download-zip">&nbsp;' +
       '        <span class="download-text">' +
-      (config.language === 'ru' ? 'Скачать' : 'Download') +
+      config.l.downloading +
       '</span>' +
       '    </div>' +
-      (modules.blocking.data.app.safe.macos &&
-      modules.blocking.data.app.safe.windows &&
+      (modules.blocking.data.app.safe.macos ||
+      modules.blocking.data.app.safe.windows ||
       modules.blocking.data.app.safe.linux
-        ? '    <div class=total-macos onclick="window.open(\'' +
-          modules.blocking.data.app.safe.macos +
-          "','_blank')\">" +
-          '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
-          '      <span class="total-text">' +
-          (config.language === 'ru' ? 'Безопасно' : 'Safe') +
-          '</span>' +
-          '    </div>' +
-          '    <div class=total-windows onclick="window.open(\'' +
-          modules.blocking.data.app.safe.windows +
-          "','_blank')\">" +
-          '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
-          '      <span class="total-text">' +
-          (config.language === 'ru' ? 'Безопасно' : 'Safe') +
-          '</span>' +
-          '    </div>' +
-          '    <div class=total-linux onclick="window.open(\'' +
-          modules.blocking.data.app.safe.linux +
-          "','_blank')\">" +
-          '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
-          '      <span class="total-text">' +
-          (config.language === 'ru' ? 'Безопасно' : 'Safe') +
-          '</span>' +
-          '    </div>'
+        ? (modules.blocking.data.app.safe.macos
+            ? '    <div class=total-macos onclick="window.open(\'' +
+              modules.blocking.data.app.safe.macos +
+              "','_blank')\">" +
+              '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
+              '      <span class="total-text">' +
+              config.l.safety +
+              '</span>' +
+              '    </div>'
+            : '<div class="total-macos no-hover"><span style="display: none">.</span></div>') +
+          (modules.blocking.data.app.safe.windows
+            ? '    <div class=total-windows onclick="window.open(\'' +
+              modules.blocking.data.app.safe.windows +
+              "','_blank')\">" +
+              '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
+              '      <span class="total-text">' +
+              config.l.safety +
+              '</span>' +
+              '    </div>'
+            : '<div class="total-windows no-hover"><span style="display: none">.</span></div>') +
+          (modules.blocking.data.app.safe.linux
+            ? '    <div class=total-linux onclick="window.open(\'' +
+              modules.blocking.data.app.safe.linux +
+              "','_blank')\">" +
+              '      <img alt="Safe" src="/themes/default/public/app/img/shield.svg" class="total-safe">&nbsp;' +
+              '      <span class="total-text">' +
+              config.l.safety +
+              '</span>' +
+              '    </div>'
+            : '<div class="total-linux no-hover"><span style="display: none">.</span></div>')
         : '') +
-      (modules.blocking.data.app.instruction.macos &&
-      modules.blocking.data.app.instruction.windows &&
+      (modules.blocking.data.app.instruction.macos ||
+      modules.blocking.data.app.instruction.windows ||
       modules.blocking.data.app.instruction.linux
-        ? '    <div class=instruction-macos onclick="window.open(\'' +
-          modules.blocking.data.app.instruction.macos +
-          "','_blank')\">" +
-          '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
-          '      <span class="instruction-text">' +
-          (config.language === 'ru' ? 'Инструкция' : 'Instruction') +
-          '</span>' +
-          '    </div>' +
-          '    <div class=instruction-windows onclick="window.open(\'' +
-          modules.blocking.data.app.instruction.windows +
-          "','_blank')\">" +
-          '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
-          '      <span class="instruction-text">' +
-          (config.language === 'ru' ? 'Инструкция' : 'Instruction') +
-          '</span>' +
-          '    </div>' +
-          '    <div class=instruction-linux onclick="window.open(\'' +
-          modules.blocking.data.app.instruction.linux +
-          "','_blank')\">" +
-          '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
-          '      <span class="instruction-text">' +
-          (config.language === 'ru' ? 'Инструкция' : 'Instruction') +
-          '</span>' +
-          '    </div>'
+        ? (modules.blocking.data.app.instruction.macos
+            ? '    <div class=instruction-macos onclick="window.open(\'' +
+              modules.blocking.data.app.instruction.macos +
+              "','_blank')\">" +
+              '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
+              '      <span class="instruction-text">' +
+              config.l.instruction +
+              '</span>' +
+              '    </div>'
+            : '<div class="instruction-macos no-hover"><span style="display: none">.</span></div>') +
+          (modules.blocking.data.app.instruction.windows
+            ? '    <div class=instruction-windows onclick="window.open(\'' +
+              modules.blocking.data.app.instruction.windows +
+              "','_blank')\">" +
+              '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
+              '      <span class="instruction-text">' +
+              config.l.instruction +
+              '</span>' +
+              '    </div>'
+            : '<div class="instruction-windows no-hover"><span style="display: none">.</span></div>') +
+          (modules.blocking.data.app.instruction.linux
+            ? '    <div class=instruction-linux onclick="window.open(\'' +
+              modules.blocking.data.app.instruction.linux +
+              "','_blank')\">" +
+              '      <img alt="Instruction" src="/themes/default/public/app/img/instruction.svg" class="total-instruction">&nbsp;' +
+              '      <span class="instruction-text">' +
+              config.l.instruction +
+              '</span>' +
+              '    </div>'
+            : '<div class="instruction-linux no-hover"><span style="display: none">.</span></div>')
         : '') +
       '</div>' +
       '<style>' +
@@ -193,6 +205,9 @@ function blockingPlayer(code, movie, options, display) {
       '    margin:0;' +
       '    font-size:11px;' +
       '    line-height: 1;' +
+      '}' +
+      '.no-hover{' +
+      '    min-height: 25px' +
       '}' +
       '.download-macos img,' +
       '.download-windows img,' +
@@ -236,6 +251,18 @@ function blockingPlayer(code, movie, options, display) {
       '.total-windows:hover,' +
       '.total-linux:hover{' +
       '    background:#222;' +
+      '}' +
+      '.download-macos:hover.no-hover,' +
+      '.download-windows:hover.no-hover,' +
+      '.download-linux:hover.no-hover,' +
+      '.instruction-macos:hover.no-hover,' +
+      '.instruction-windows:hover.no-hover,' +
+      '.instruction-linux:hover.no-hover,' +
+      '.total-macos:hover.no-hover,' +
+      '.total-windows:hover.no-hover,' +
+      '.total-linux:hover.no-hover{' +
+      '    background:#111;' +
+      '    cursor: auto' +
       '}' +
       'div.download-macos,' +
       'div.instruction-macos,' +

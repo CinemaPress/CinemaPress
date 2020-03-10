@@ -395,6 +395,9 @@ module.exports = {
     "lucky": "Мне повезет!",
     "random": "Случайный фильм из категории",
     "results": "Все результаты",
-    "moreEpisodes": "показать еще серии"
+    "moreEpisodes": "показать еще серии",
+    "downloading": "Скачать",
+    "safety": "Безопасно",
+    "instruction": "Инструкция"
   }
 };

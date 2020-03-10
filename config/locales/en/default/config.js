@@ -394,6 +394,9 @@ module.exports = {
     "lucky": "I'm Feeling Lucky",
     "random": "Random movie from category",
     "results": "All results",
-    "moreEpisodes": "show more episodes"
+    "moreEpisodes": "show more episodes",
+    "downloading": "Download",
+    "safety": "Safety",
+    "instruction": "Instruction"
   }
 };
