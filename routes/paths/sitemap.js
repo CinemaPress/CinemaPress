@@ -300,7 +300,7 @@ function oneSitemap(type, year, options, callback) {
       config.theme,
       'views',
       config.urls.sitemap,
-      'year-' + year + '.json'
+      config.urls.year + '-' + year + '.json'
     );
 
     fs.access(file, function(err) {

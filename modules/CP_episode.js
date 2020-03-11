@@ -18,7 +18,7 @@ var modules = require('../config/production/modules');
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU();
+var cache = new LRU({ maxAge: 3600000 });
 var md5 = require('md5');
 var path = require('path');
 var moment = require('moment');
@@ -47,16 +47,25 @@ function indexEpisode(options, callback) {
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
-  var hash = md5(options.origin + 'episodes' + process.env['CP_VER']);
-  if (cache.has(hash)) {
-    return callback(null, [cache.get(hash)]);
+  if (!cache.has('CP_VER') || cache.get('CP_VER') !== process.env['CP_VER']) {
+    cache.reset();
+    cache.set('CP_VER', process.env['CP_VER']);
   }
-  var episodes = require(path.join(
-    path.dirname(__filename),
-    '..',
-    'files',
-    'episodes.json'
-  ));
+
+  var hash = md5('episodes' + process.env['CP_VER']);
+
+  var episodes;
+  if (cache.has(hash)) {
+    episodes = cache.get(hash);
+  } else {
+    episodes = require(path.join(
+      path.dirname(__filename),
+      '..',
+      'files',
+      'episodes.json'
+    ));
+    cache.set(hash, episodes);
+  }
   var result = {};
   result.name = modules.episode.data.index.name;
   result.movies = (Array.isArray(episodes) ? episodes : [])
@@ -68,7 +77,6 @@ function indexEpisode(options, callback) {
       episode.url = options.origin + episode.pathname;
       return episode;
     });
-  cache.set(hash, result);
   callback(null, [result]);
 }
 

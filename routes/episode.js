@@ -21,7 +21,7 @@ var modules = require('../config/production/modules');
 
 var adop = require('adop');
 var LRU = require('lru-cache');
-var cache = new LRU();
+var cache = new LRU({ maxAge: 3600000 });
 var md5 = require('md5');
 var async = require('async');
 var request = require('request');
@@ -44,6 +44,11 @@ router.get('/?', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   if (!req.query.id) return res.status(404).json({ error: '404' });
+
+  if (!cache.has('CP_VER') || cache.get('CP_VER') !== process.env['CP_VER']) {
+    cache.reset();
+    cache.set('CP_VER', process.env['CP_VER']);
+  }
 
   var kp_id = parseInt(req.query.id) ? [parseInt(req.query.id)] : [];
   var tv = typeof req.query.tv !== 'undefined';

@@ -31,9 +31,9 @@ module.exports = {
   },
   "pagespeed": 0,
   "loadavg": {
-    "one": 600,
-    "five": 480,
-    "fifteen": 360,
+    "one": 720,
+    "five": 600,
+    "fifteen": 480,
     "message": "Сервер перегружен на [percent] пожалуйста зайдите позже."
   },
   "publish": {

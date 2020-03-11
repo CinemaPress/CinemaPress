@@ -11,7 +11,7 @@ var config = require('../config/production/config');
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU();
+var cache = new LRU({ maxAge: 2.592e9 });
 var fs = require('fs');
 var path = require('path');
 var request = require('request');

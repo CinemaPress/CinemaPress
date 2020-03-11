@@ -11,7 +11,7 @@ var modules = require('../config/production/modules');
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU();
+var cache = new LRU({ maxAge: 3600000 });
 var md5 = require('md5');
 var op = require('object-path');
 var async = require('async');
@@ -24,6 +24,11 @@ var router = express.Router();
  */
 
 router.get('/?', function(req, res) {
+  if (!cache.has('CP_VER') || cache.get('CP_VER') !== process.env['CP_VER']) {
+    cache.reset();
+    cache.set('CP_VER', process.env['CP_VER']);
+  }
+
   var script =
     '(function() {' +
     "    var y = document.querySelector('#yohoho');" +
@@ -135,7 +140,11 @@ router.get('/?', function(req, res) {
         },
         function(error, response, body) {
           if (error || response.statusCode !== 200 || !body) {
-            console.error(task, error.code, body);
+            console.error(
+              task,
+              error && error.code,
+              response && response.statusCode
+            );
             return callback();
           }
           var json = tryParseJSON(body);
