@@ -101,7 +101,7 @@ docker_install() {
             echo -e "\\r${G}✓ Installing packages ...${NC}"
             echo ""
         fi
-        if [ "`docker -v 2>/dev/null`" = "" ]; then
+        if [ "$(docker -v 2>/dev/null)" = "" ]; then
             clear
             _line
             _logo
@@ -205,7 +205,7 @@ docker_install() {
                 systemctl start docker
                 systemctl enable docker
             fi
-            if [ "`docker -v 2>/dev/null`" = "" ]; then
+            if [ "$(docker -v 2>/dev/null)" = "" ]; then
                 clear
                 _header "ERROR"
                 _content
@@ -377,7 +377,7 @@ ip_install() {
         _content
         _content "Configure for MEGA.nz cloud storage in one line:"
         _content
-        printf "     ~# cinemapress backup %s config \"email\" \"pass\"" "${LOCAL_DOMAIN}"
+        printf "     ~# cinemapress b %s config \"email\" \"pass\"" "${LOCAL_DOMAIN}"
         _br
         _content
         _content "email - your email on MEGA.nz"
@@ -484,19 +484,11 @@ ip_install() {
                     >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             fi
         else
-            _header "RCLONE CONFIG"
+            _header "ERROR RCLONE CONFIG"
             _content
-            _content "Configure RCLONE for one of the cloud storage,"
-            _content "in the «name» section write uppercase CINEMAPRESS"
+            _content "Configure for MEGA.nz cloud storage in one line:"
             _content
-            printf "     ~# docker exec -it ${LOCAL_DOMAIN_} /bin/sh"
-            _br
-            printf "     ~# rclone config"
-            _br
-            _content
-            _content "or configure for MEGA.nz cloud storage in one line:"
-            _content
-            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} config \"email\" \"pass\""
+            printf "     ~# cinemapress b %s config \"email\" \"pass\"" "${LOCAL_DOMAIN}"
             _br
             _content
             _content "email - your email on MEGA.nz"
@@ -504,9 +496,9 @@ ip_install() {
             _content
             _content "after creating config, you can create/restore backup:"
             _content
-            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} create"
+            printf "     ~# cinemapress b %s create" "${LOCAL_DOMAIN}"
             _br
-            printf "     ~# cinemapress backup ${LOCAL_DOMAIN} restore"
+            printf "     ~# cinemapress b %s restore" "${LOCAL_DOMAIN}"
             _br
             _content
             _s
@@ -527,9 +519,9 @@ ip_install() {
 
         echo "${PRC_}%" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
 
-        CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
         sleep 3
-        CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+        CHECK_PURGE=$(docker exec "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
         if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
             _header "ERROR"
             _content
@@ -539,10 +531,10 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
+            docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup create \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore \
+            docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup restore \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec nginx nginx -s reload \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -577,44 +569,44 @@ ip_install() {
         then
             exit 0
         else
-            git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
-                /var/${LOCAL_THEME} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
-            mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
-            cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+            git clone https://${GIT_SERVER}/CinemaPress/Theme-"${LOCAL_THEME}".git \
+                /var/"${LOCAL_THEME}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
+            mkdir -p /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
+            cp -rf /var/"${LOCAL_THEME}"/* /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
             sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
-                /home/${LOCAL_DOMAIN}/config/production/config.js
-            docker exec ${LOCAL_DOMAIN_} node optimal.js "${LOCAL_THEME}" \
+                /home/"${LOCAL_DOMAIN}"/config/production/config.js
+            docker exec "${LOCAL_DOMAIN_}" node optimal.js "${LOCAL_THEME}" \
                 >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
         fi
     else
-        git clone https://${GIT_SERVER}/CinemaPress/Theme-${LOCAL_THEME}.git \
-            /var/${LOCAL_THEME} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
-        mkdir -p /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
-        cp -rf /var/${LOCAL_THEME}/* /home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}/
+        git clone https://${GIT_SERVER}/CinemaPress/Theme-"${LOCAL_THEME}".git \
+            /var/"${LOCAL_THEME}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
+        mkdir -p /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
+        cp -rf /var/"${LOCAL_THEME}"/* /home/"${LOCAL_DOMAIN}"/themes/"${LOCAL_THEME}"/
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
-            /home/${LOCAL_DOMAIN}/config/production/config.js
-        docker exec ${LOCAL_DOMAIN_} node optimal.js "${LOCAL_THEME}" \
+            /home/"${LOCAL_DOMAIN}"/config/production/config.js
+        docker exec "${LOCAL_DOMAIN_}" node optimal.js "${LOCAL_THEME}" \
             >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
     fi
 
-    rm -rf /var/${LOCAL_THEME:?}
+    rm -rf /var/"${LOCAL_THEME:?}"
 
     sh_progress
 
     echo "${PRC_}%" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log
 
-    if [ "`docker -v 2>/dev/null`" != "" ]; then
-        docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
+    if [ "$(docker -v 2>/dev/null)" != "" ]; then
+        docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     sleep 10
 }
 5_database() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_KEY=${2:-${CP_KEY}}
 
     STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
-    CHECK=`wget -qO- "${STS}&status=CHECK"`
+    CHECK=$(wget -qO- "${STS}&status=CHECK")
     if [ "${CHECK}" = "" ]; then
         _header "ERROR"
         _content
@@ -626,7 +618,7 @@ ip_install() {
     else
         for ((io=0;io<=10;io++));
         do
-            sh_progress "$((${io} * 10))"
+            sh_progress "$(("${io}" * 10))"
             sleep 30
         done
         _br
@@ -640,44 +632,45 @@ ip_install() {
         _content "Unpacking ..."
         NOW=$(date +%Y-%m-%d)
         tar -xf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" -C "/var/lib/sphinx/tmp" &> \
-            /var/lib/sphinx/data/${NOW}.log
+            /var/lib/sphinx/data/"${NOW}".log
         rm -rf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar"
-        FILE_SPA=`find /var/lib/sphinx/tmp/*.* -type f | grep spa`
-        FILE_SPD=`find /var/lib/sphinx/tmp/*.* -type f | grep spd`
-        FILE_SPI=`find /var/lib/sphinx/tmp/*.* -type f | grep spi`
-        FILE_SPS=`find /var/lib/sphinx/tmp/*.* -type f | grep sps`
+        FILE_SPA=$(find /var/lib/sphinx/tmp/*.* -type f | grep spa)
+        FILE_SPD=$(find /var/lib/sphinx/tmp/*.* -type f | grep spd)
+        FILE_SPI=$(find /var/lib/sphinx/tmp/*.* -type f | grep spi)
+        FILE_SPS=$(find /var/lib/sphinx/tmp/*.* -type f | grep sps)
         if [ -f "${FILE_SPA}" ] && [ -f "${FILE_SPD}" ] && [ -f "${FILE_SPI}" ] && [ -f "${FILE_SPS}" ]; then
             _content "Installing ..."
-            if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
+            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
+                docker_stop >>/var/lib/sphinx/data/"${NOW}".log 2>&1
             else
-                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container stop >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container stop >>/var/lib/sphinx/data/"${NOW}".log 2>&1
             fi
-            rm -rf /var/lib/sphinx/old/movies_${LOCAL_DOMAIN_}.*
-            cp -R /var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.* /var/lib/sphinx/old/
-            rm -rf /var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.*
-            for file in `find /var/lib/sphinx/tmp/*.* -type f`
+            rm -rf /var/lib/sphinx/old/movies_"${LOCAL_DOMAIN_}".*
+            cp -R /var/lib/sphinx/data/movies_"${LOCAL_DOMAIN_}".* /var/lib/sphinx/old/
+            rm -rf /var/lib/sphinx/data/movies_"${LOCAL_DOMAIN_}".*
+            # shellcheck disable=SC2044
+            for file in $(find /var/lib/sphinx/tmp/*.* -type f)
             do
-                mv ${file} "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.${file##*.}"
+                mv "${file}" "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.${file##*.}"
             done
             sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
-                /home/${LOCAL_DOMAIN}/config/production/config.js
+                /home/"${LOCAL_DOMAIN}"/config/production/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/${LOCAL_DOMAIN}/config/production/config.js
+                /home/"${LOCAL_DOMAIN}"/config/production/config.js
             sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
-                /home/${LOCAL_DOMAIN}/config/default/config.js
+                /home/"${LOCAL_DOMAIN}"/config/default/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/${LOCAL_DOMAIN}/config/default/config.js
-            if [ "`grep \"_${CHECK}_\" /home/${LOCAL_DOMAIN}/process.json`" = "" ]; then
-                CURRENT=`grep "CP_ALL" /home/${LOCAL_DOMAIN}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
+                /home/"${LOCAL_DOMAIN}"/config/default/config.js
+            if [ "$(grep \"_"${CHECK}"_\" /home/"${LOCAL_DOMAIN}"/process.json)" = "" ]; then
+                CURRENT=$(grep "CP_ALL" /home/"${LOCAL_DOMAIN}"/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
                 sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CURRENT} | _${CHECK}_\"/" \
-                    /home/${LOCAL_DOMAIN}/process.json
+                    /home/"${LOCAL_DOMAIN}"/process.json
             fi
             _content "Starting ..."
-            if [ "`docker -v 2>/dev/null | grep "version"`" = "" ]; then
-                docker_start >>/var/lib/sphinx/data/${NOW}.log 2>&1
+            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
+                docker_start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
             else
-                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container start >>/var/lib/sphinx/data/${NOW}.log 2>&1
+                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
             fi
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
@@ -1068,11 +1061,11 @@ read_theme() {
             if [ ${1} ]
             then
                 CP_THEME=${1}
-                CP_THEME=`echo ${CP_THEME} | iconv -c -t UTF-8`
+                CP_THEME=$(echo ${CP_THEME} | iconv -c -t UTF-8)
                 echo ": ${CP_THEME}"
             else
                 read -e -p ': ' -i "mormont" CP_THEME
-                CP_THEME=`echo ${CP_THEME} | iconv -c -t UTF-8`
+                CP_THEME=$(echo ${CP_THEME} | iconv -c -t UTF-8)
             fi
             if [ "${CP_THEME}" = "" ]
             then
@@ -1084,10 +1077,10 @@ read_theme() {
                 then
                     AGAIN=10
                 else
-                    printf "${NC}         There is no such theme! \n"
-                    printf "${R}WARNING:${NC} Currently there are theme: hodor, sansa, robb, ramsay, tyrion, \n"
-                    printf "${NC}         cersei, joffrey, drogo, bran, arya, mormont, tarly и daenerys \n"
-                    AGAIN=$((${AGAIN}+1))
+                    printf "%s         There is no such theme! \n" "${NC}"
+                    printf "%sWARNING:%s Currently there are theme: hodor, sansa, robb, ramsay, tyrion, \n" "${R}" "${NC}"
+                    printf "%s         cersei, joffrey, drogo, bran, arya, mormont, tarly и daenerys \n" "${NC}"
+                    AGAIN=$(("${AGAIN}"+1))
                 fi
             fi
         done
@@ -2007,6 +2000,24 @@ while [ "${WHILE}" -lt "2" ]; do
                     _s
                     nohup tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
                 fi
+            fi
+            exit 0
+        ;;
+        "premium" )
+            _br
+            read_domain "${2}"
+            sh_not
+            if [ "${4}" = "" ]; then exit 0; fi
+            CP_THEME="${3}"
+            CP_KEY="${4}"
+            _br
+            wget --progress=bar:force -O /var/"${CP_THEME}".tar \
+                "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?theme=${CP_THEME}" 2>&1 | sh_wget
+            if [ -f "/var/${CP_THEME}.tar" ]; then
+                tar -xf /var/"${CP_THEME}".tar -C /home/"${CP_DOMAIN}"/themes 2>/dev/null
+                sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
+                    /home/"${CP_DOMAIN}"/config/production/config.js
+                docker restart "${CP_DOMAIN_}"
             fi
             exit 0
         ;;
