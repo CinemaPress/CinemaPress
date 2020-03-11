@@ -62,12 +62,6 @@ router.get('/?', function(req, res, next) {
 
   function getCache(callback) {
     CP_cache.get(urlHash, function(err, render) {
-      if (err) {
-        if ((err + '').indexOf('not available') === -1) {
-          console.error(err);
-        }
-      }
-
       return render
         ? callback(null, render)
         : getSphinx(function(err, render) {
@@ -223,18 +217,7 @@ router.get('/?', function(req, res, next) {
           res.send(html);
 
           if (config.cache.time && html) {
-            CP_cache.set(urlHash, html, config.cache.time, function(err) {
-              if (err) {
-                if ((err + '').indexOf('1048576') + 1) {
-                  console.log('[routes/rss.js:renderData] Cache Length Error');
-                } else if ((err + '').indexOf('not available') === -1) {
-                  console.log(
-                    '[routes/rss.js:renderData] Cache Set Error:',
-                    err
-                  );
-                }
-              }
-            });
+            CP_cache.set(urlHash, html, config.cache.time);
           }
         });
       }

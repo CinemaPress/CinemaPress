@@ -952,12 +952,7 @@ router.post('/change', function(req, res) {
       },
       flush_memcached: function(callback) {
         if (!form.flush_memcached) return callback(null, 'Null');
-        CP_cache.flush(function(err) {
-          if (err) {
-            if ((err + '').indexOf('not available') === -1) {
-              console.error(err);
-            }
-          }
+        CP_cache.flush(function() {
           process.env.CP_VER = process.env.CP_VER
             ? parseInt(process.env.CP_VER) + 1
             : new Date().getTime().toString();

@@ -640,20 +640,7 @@ function recentComments(service, options, callback) {
         }
 
         if (config.cache.time && result && result.length) {
-          CP_cache.set(hash, result, config.cache.time, function(err) {
-            if (err) {
-              if ((err + '').indexOf('1048576') + 1) {
-                console.log(
-                  '[modules/CP_comments.js:recentComments] Cache Length Error'
-                );
-              } else if ((err + '').indexOf('not available') === -1) {
-                console.log(
-                  '[modules/CP_comments.js:recentComments] Cache Set Error:',
-                  err
-                );
-              }
-            }
-          });
+          CP_cache.set(hash, result, config.cache.time);
         }
       }
     );
