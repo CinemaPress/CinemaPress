@@ -187,13 +187,8 @@ module.exports = {
     "status": true,
     "data": {
       "display": "script",
-      "script": "{\"data-player\":\"videocdn,bazon,collaps,ustore,alloha,hdvb,iframe,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-videocdn\":\"\",\"data-bazon\":\"\",\"data-collaps\":\"\",\"data-ustore\":\"\",\"data-alloha\":\"\",\"data-hdvb\":\"\",\"data-iframe\":\"\",\"data-kodik\":\"\",\"data-youtube\":\"\",\"data-resize\":\"1\"}",
-      "custom": [
-        "https://iframe.video/api/v2/search?kp=[kp_id] ~ results.0.path",
-        "# https://videocdn.tv/api/short?api_token=TOKEN&kinopoisk_id=[kp_id] ~ data.0.iframe_src",
-        "# https://apicollaps.cc/list?token=TOKEN&kinopoisk_id=[kp_id] ~ results.0.iframe_url",
-        "# https://kodikapi.com/search?token=TOKEN&kinopoisk_id=[kp_id] ~ results.0.link"
-      ]
+      "script": "{\"data-player\":\"videocdn,bazon,collaps,ustore,alloha,hdvb,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
+      "custom": []
     }
   },
   "blocking": {
@@ -276,19 +271,14 @@ module.exports = {
       "episode": "episode",
       "translate": "Voice:",
       "default": "Original",
-      "source": "iframe",
       "index": {
         "name": "New series of serials",
         "count": 12,
         "order": 2,
         "latest": 0,
-        "custom": [
-          "# https://iframe.video/api/v2/updates?limit=99&type=serial&api_token=TOKEN ~ results.0.kinopoisk_id ~ results.0.added.0.SxEx <> <> <> S([0-9]{1,3})E[0-9]{1,3} ~ results.0.added.0.SxEx <> <> <> S[0-9]{1,3}E([0-9]{1,3}) ~ results.0.added.0.translator"
-        ]
+        "custom": []
       },
-      "custom": [
-        "# https://iframe.video/api/v2/serials?&include=seasons%2Ctranslate&api_token=TOKEN&kp=[kp_id] ~ results.0.seasons.0.season_num ~ results.0.seasons.0.episodes.0 ~ results.0.seasons.0.translate"
-      ]
+      "custom": []
     }
   },
   "adv": {
@@ -469,9 +459,7 @@ module.exports = {
         "count": 4,
         "tags": "Updates"
       },
-      "custom": [
-        "# https://iframe.video/api/v2/movies?limit=99&api_token=TOKEN ~ results.0.kinopoisk_id ~ poslednie-obnovleniya-filmov"
-      ],
+      "custom": [],
       "scraper": ""
     }
   },
