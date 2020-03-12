@@ -452,7 +452,7 @@ module.exports = {
       },
       "index": {
         "count": 12,
-        "url": "poslednie-obnovleniya-filmov",
+        "url": "poslednie-obnovleniya-filmov,poslednie-obnovleniya-serialov",
         "order": 2
       },
       "movie": {

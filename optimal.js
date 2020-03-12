@@ -96,7 +96,7 @@ if (['daenerys'].indexOf(theme) + 1) {
 if (['tarly'].indexOf(theme) + 1) {
   config.default.count = 12;
   config.index.year.count = 12;
-  modules.content.data.index.count = 30;
+  modules.content.data.index.count = 15;
   modules.episode.data.index.count = 5;
   modules.related.data.types.year.count = 12;
   modules.top.data.count = 5;

@@ -452,7 +452,7 @@ module.exports = {
       },
       "index": {
         "count": 12,
-        "url": "latest-movie-updates",
+        "url": "latest-movie-updates,latest-tv-updates",
         "order": 2
       },
       "movie": {
