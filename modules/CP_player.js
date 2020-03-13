@@ -157,7 +157,8 @@ function codePlayer(type, movie, options) {
         : 0;
 
     code =
-      (options.userinfo.device === 'app' || modules.blocking.data.app.abuse) &&
+      ((options.userinfo && options.userinfo.device === 'app') ||
+        modules.blocking.data.app.abuse) &&
       l <= 0
         ? code
         : CP_blocking.code(code, movie, options);
