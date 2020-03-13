@@ -4,7 +4,7 @@
     <% if (typeof movies === 'object') { %>
         <channel>
             <title><%= config.titles.index %></title>
-            <link><%- config.protocol %><%- config.domain %></link>
+            <link><%- config.protocol %><%- config.subdomain %><%- config.domain %></link>
             <description>
                 <![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>
                 ]]>...
