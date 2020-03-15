@@ -59,8 +59,13 @@ function allSitemap(options, callback) {
       if (categories.hasOwnProperty(year)) {
         if (categories[year].title === y) y = 0;
         render.sitemaps[render.sitemaps.length] = categories[year].url.replace(
-          config.domain + '/' + config.urls.year + config.urls.slash,
-          config.domain +
+          config.subdomain +
+            config.domain +
+            '/' +
+            config.urls.year +
+            config.urls.slash,
+          config.botdomain +
+            config.domain +
             '/' +
             config.urls.sitemap +
             '/' +

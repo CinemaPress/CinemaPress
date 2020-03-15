@@ -205,7 +205,7 @@
                                                         var content_tags = document
                                                             .querySelector('input[name="content.content_tags"]'),
                                                           tagify = new Tagify(content_tags, {
-                                                            whitelist: ["<%- __('Коллекции') %>", "<%- __('Новости') %>", "<%- __('Страницы') %>", "<%- __('Обновления') %>", "<%- __('Фильмы') %>", "<%- __('Сериалы') %>", "<%- __('Мультфильмы') %>", "<%- __('ТВ') %>", "<%- __('Аниме') %>", 'NoComment', 'NoRandom']
+                                                            whitelist: ["<%- __('Коллекции') %>", "<%- __('Новости') %>", "<%- __('Страницы') %>", "<%- __('Обновления') %>", "<%- __('Фильмы') %>", "<%- __('Сериалы') %>", "<%- __('Мультфильмы') %>", "<%- __('ТВ') %>", "<%- __('Аниме') %>", 'NoComment', 'NoRandom', 'NoSorting', 'NoPagination']
                                                           });
                                                         tagify.DOM.input.classList.add('form-control');
                                                       });
