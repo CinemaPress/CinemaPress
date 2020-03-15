@@ -232,7 +232,10 @@ function oneSitemap(type, year, options, callback) {
       for (var year in categories) {
         if (categories.hasOwnProperty(year)) {
           render.urls[render.urls.length] = {
-            loc: categories[year].url
+            loc: categories[year].url.replace(
+              config.subdomain + config.domain,
+              (config.botdomain || config.subdomain) + config.domain
+            )
           };
         }
       }
@@ -268,7 +271,10 @@ function oneSitemap(type, year, options, callback) {
       for (var content in contents) {
         if (contents.hasOwnProperty(content)) {
           render.urls[render.urls.length] = {
-            loc: contents[content].url,
+            loc: contents[content].url.replace(
+              config.subdomain + config.domain,
+              (config.botdomain || config.subdomain) + config.domain
+            ),
             lastmod: moment(
               contents[content].publish,
               config.default.moment
