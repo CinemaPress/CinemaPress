@@ -16,7 +16,7 @@ var modules = require('../config/production/modules');
  * @return {String}
  */
 
-function codeRandom(page) {
+function codeRandom(page, movies) {
   if (!page.type) return '';
 
   var code = '';
@@ -40,7 +40,11 @@ function codeRandom(page) {
         'if(f)for(e=0;e<f.length;++e)f[e].outerHTML=f[e].innerHTML;';
     }
 
-    if (modules.random.data.category.indexOf(page.type) + 1 && page.sorting) {
+    if (
+      modules.random.data.category.indexOf(page.type) + 1 &&
+      page.sorting &&
+      movies
+    ) {
       code +=
         'var g,h=document.querySelectorAll(".randomMovieCategory");' +
         'if(h)for(g=0;g<h.length;++g)h[g].outerHTML=h[g].innerHTML;';
