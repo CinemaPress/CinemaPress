@@ -16,6 +16,7 @@
   },
   "homepage": "https://CinemaPress.io/",
   "dependencies": {
+    "pm2": "4.2.3",
     "async": "3.1.0",
     "base64-stream": "1.0.0",
     "body-parser": "1.19.0",

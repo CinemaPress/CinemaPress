@@ -35,7 +35,7 @@ RUN set -o pipefail \
     && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \
     && npm i node-gyp -g \
-    && npm i pm2 -g \
+    && npm i pm2@latest -g \
     && npm i \
     && mkdir -p \
         /var/ngx_pagespeed_cache \

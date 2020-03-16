@@ -9,34 +9,37 @@
                 <![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>
                 ]]>...
             </description>
-            <% movies.forEach(function (movie) { var image = (movie.image) ? config.protocol + config.subdomain + config.domain + movie.image : ''; %>
-            <item turbo="true">
-                <title><%= movie.title %></title>
-                <link><%- movie.url %></link>
-                <description><![CDATA[<img align="left" hspace="5" width="150"
-                                           src="<%- movie.poster || image %>"/><%- movie.description_short %>...<br/>]]>
-                </description>
-                <enclosure url="<%- movie.poster_big || image %>" type="image/jpeg"/>
-                <pubDate><%- (new Date((new Date()) * 1 - 1000 * Math.round(1 - 0.5 + Math.random() * 3600))).toUTCString() %></pubDate>
-                <turbo:content>
-                    <![CDATA[
-                    <header>
-                        <figure>
-                            <img src="<%- movie.picture || image %>"/>
-                        </figure>
-                        <h1><%- movie.title %></h1>
-                    </header>
-                    <% if (movie.description.length >= 400) { %>
-                        <% var d = movie.description.split('. '); %>
-                        <% d.splice(Math.round(d.length / 2), 0, '</p><p>'); %>
-                        <p><%- (d.join('. ')).replace(' </p><p>. ', '</p> <p>') %>...</p>
-                    <% } else { %>
-                        <% if (movie.description) { %><p><%- movie.description %></p><% } else { %>
-                            <p><%- movie.title %></p><% } %>
-                    <% } %>
-                    ]]>
-                </turbo:content>
-            </item>
+            <% movies.forEach(function (movie) { %>
+                <% var poster = (movie.poster) ? config.protocol + config.subdomain + config.domain + movie.poster : ''; %>
+                <% var poster_big = (movie.poster_big) ? config.protocol + config.subdomain + config.domain + movie.poster_big : ''; %>
+                <% var picture = (movie.picture) ? config.protocol + config.subdomain + config.domain + movie.picture : ''; %>
+                <item turbo="true">
+                    <title><%= movie.title %></title>
+                    <link><%- movie.url %></link>
+                    <description><![CDATA[<img align="left" hspace="5" width="150"
+                                               src="<%- poster %>"/><%- movie.description_short %>...<br/>]]>
+                    </description>
+                    <enclosure url="<%- poster_big %>" type="image/jpeg"/>
+                    <pubDate><%- (new Date((new Date()) * 1 - 1000 * Math.round(1 - 0.5 + Math.random() * 3600))).toUTCString() %></pubDate>
+                    <turbo:content>
+                        <![CDATA[
+                        <header>
+                            <figure>
+                                <img src="<%- picture %>" alt="Picture"/>
+                            </figure>
+                            <h1><%- movie.title %></h1>
+                        </header>
+                        <% if (movie.description.length >= 400) { %>
+                            <% var d = movie.description.split('. '); %>
+                            <% d.splice(Math.round(d.length / 2), 0, '</p><p>'); %>
+                            <p><%- (d.join('. ')).replace(' </p><p>. ', '</p> <p>') %>...</p>
+                        <% } else { %>
+                            <% if (movie.description) { %><p><%- movie.description %></p><% } else { %>
+                                <p><%- movie.title %></p><% } %>
+                        <% } %>
+                        ]]>
+                    </turbo:content>
+                </item>
             <% }); %>
         </channel>
     <% } %>

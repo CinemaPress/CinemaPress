@@ -28,9 +28,14 @@ moment.locale(config.language);
 function fullMovieSchema(page, movie, movies, comments, options) {
   if (arguments.length === 4) {
     options = {};
-    options.domain = config.subdomain + '' + config.domain;
+    options.domain =
+      (config.botdomain || config.subdomain) + '' + config.domain;
     options.origin =
-      config.protocol + '' + config.subdomain + '' + config.domain;
+      config.protocol +
+      '' +
+      (config.botdomain || config.subdomain) +
+      '' +
+      config.domain;
   }
 
   if (!movie) return '';
@@ -226,9 +231,14 @@ function fullMovieSchema(page, movie, movies, comments, options) {
 function onlyMovieSchema(movie, comments, options) {
   if (arguments.length === 2) {
     options = {};
-    options.domain = config.subdomain + '' + config.domain;
+    options.domain =
+      (config.botdomain || config.subdomain) + '' + config.domain;
     options.origin =
-      config.protocol + '' + config.subdomain + '' + config.domain;
+      config.protocol +
+      '' +
+      (config.botdomain || config.subdomain) +
+      '' +
+      config.domain;
   }
 
   var result = {};
@@ -244,7 +254,10 @@ function onlyMovieSchema(movie, comments, options) {
   result['image'] =
     movie.poster.indexOf('http') + 1
       ? movie.poster
-      : config.protocol + config.subdomain + config.domain + movie.poster;
+      : config.protocol +
+        (config.botdomain || config.subdomain) +
+        config.domain +
+        movie.poster;
   result['sameAs'] = movie.url;
   result['url'] = options.url || movie.url;
   result['actor'] = [];
@@ -335,9 +348,14 @@ function onlyMovieSchema(movie, comments, options) {
 function categorySchema(page, movies, options) {
   if (arguments.length === 2) {
     options = {};
-    options.domain = config.subdomain + '' + config.domain;
+    options.domain =
+      (config.botdomain || config.subdomain) + '' + config.domain;
     options.origin =
-      config.protocol + '' + config.subdomain + '' + config.domain;
+      config.protocol +
+      '' +
+      (config.botdomain || config.subdomain) +
+      '' +
+      config.domain;
   }
 
   var result = [];
@@ -437,9 +455,14 @@ function categorySchema(page, movies, options) {
 function generalSchema(page, options) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = config.subdomain + '' + config.domain;
+    options.domain =
+      (config.botdomain || config.subdomain) + '' + config.domain;
     options.origin =
-      config.protocol + '' + config.subdomain + '' + config.domain;
+      config.protocol +
+      '' +
+      (config.botdomain || config.subdomain) +
+      '' +
+      config.domain;
   }
 
   var result = {};
@@ -530,9 +553,14 @@ function generalSchema(page, options) {
 function contentSchema(content, options) {
   if (arguments.length === 1) {
     options = {};
-    options.domain = config.subdomain + '' + config.domain;
+    options.domain =
+      (config.botdomain || config.subdomain) + '' + config.domain;
     options.origin =
-      config.protocol + '' + config.subdomain + '' + config.domain;
+      config.protocol +
+      '' +
+      (config.botdomain || config.subdomain) +
+      '' +
+      config.domain;
   }
 
   var result = {};
@@ -541,15 +569,16 @@ function contentSchema(content, options) {
   result['@type'] = 'NewsArticle';
   result['headline'] = content.title;
   result['name'] = content.title;
-  result['author'] = config.protocol + config.subdomain + config.domain;
+  result['author'] =
+    config.protocol + (config.botdomain || config.subdomain) + config.domain;
   result['publisher'] = {
     '@type': 'Organization',
-    name: config.subdomain + config.domain,
+    name: (config.botdomain || config.subdomain) + config.domain,
     logo: {
       '@type': 'ImageObject',
       url:
         config.protocol +
-        config.subdomain +
+        (config.botdomain || config.subdomain) +
         config.domain +
         config.default.image
     }
@@ -566,7 +595,10 @@ function contentSchema(content, options) {
   result['image'] =
     content.image.indexOf('http') + 1
       ? content.image
-      : config.protocol + config.subdomain + config.domain + content.image;
+      : config.protocol +
+        (config.botdomain || config.subdomain) +
+        config.domain +
+        content.image;
   result['sameAs'] = content.url;
   result['url'] = options.url || content.url;
   result['mainEntityOfPage'] = {

@@ -28,7 +28,7 @@ function mobileVersion(url) {
     data +=
       '<link rel="canonical" href="' +
       url
-        .replace('://m.', '://' + config.subdomain)
+        .replace('://m.', '://' + (config.botdomain || config.subdomain))
         .replace('/mobile-version', '') +
       '">';
     var css = fs.readFileSync(
