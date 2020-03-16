@@ -2015,7 +2015,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?theme=${CP_THEME}" 2>&1 | sh_wget
             if [ -f "/var/${CP_THEME}.tar" ]; then
                 tar -xf /var/"${CP_THEME}".tar -C /home/"${CP_DOMAIN}"/themes 2>/dev/null
-                sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${LOCAL_THEME}\"/" \
+                sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
                     /home/"${CP_DOMAIN}"/config/production/config.js
                 docker restart "${CP_DOMAIN_}"
             fi

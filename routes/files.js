@@ -35,15 +35,11 @@ router.get(
     var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
     var origin = '/files/' + type + '/' + size + '/' + file;
 
-    if (typeof req.query.save !== 'undefined') {
+    if (cache.has(origin)) {
       var r = Math.random()
         .toString(36)
         .substring(7);
-      return res.redirect(302, origin + '?' + r);
-    }
-
-    if (cache.has(origin)) {
-      return res.redirect(302, cache.get(origin));
+      return res.redirect(302, cache.get(origin) + '?' + r);
     }
 
     var save = config.image.save
@@ -228,11 +224,11 @@ router.get(
         .on('response', function(response) {
           if (response.statusCode === 200) {
             response.pipe(fs.createWriteStream(save));
+            response.pipe(res);
           }
         })
         .on('close', function() {
-          cache.set(origin, origin + '?save');
-          return res.redirect(302, origin + '?save');
+          cache.set(origin, origin);
         });
     });
   }
