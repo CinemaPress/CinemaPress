@@ -189,7 +189,7 @@ router.get('/?', function(req, res) {
         res.setHeader('Content-Type', 'application/javascript');
         res.send(script);
       } else {
-        res.redirect(302, 'https://4h0y.gitlab.io/yo.js');
+        res.redirect(302, modules.player.data.js);
       }
     }
   );

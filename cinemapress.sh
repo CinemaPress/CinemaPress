@@ -2023,7 +2023,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
                     /home/"${CP_DOMAIN}"/config/production/config.js
                 docker exec -t "${CP_DOMAIN_}" node optimal.js
-                docker restart "${CP_DOMAIN_}" 2>/dev/null
+                docker restart "${CP_DOMAIN_}" >/dev/null
             fi
             exit 0
         ;;

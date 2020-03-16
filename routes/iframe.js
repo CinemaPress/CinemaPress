@@ -54,7 +54,9 @@ router.get('/:id', function(req, res) {
         '<div id="yohoho" ' +
         parameters +
         '></div>' +
-        '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
+        '<script data-cfasync="false" src="' +
+        modules.player.data.js +
+        '"></script>' +
         '</body></html>'
     );
   } else if (id) {
@@ -108,7 +110,9 @@ router.get('/:id', function(req, res) {
             '<div id="yohoho" ' +
             parameters +
             '></div>' +
-            '<script data-cfasync="false" src="https://4h0y.gitlab.io/yo.js"></script>' +
+            '<script data-cfasync="false" src="' +
+            modules.player.data.js +
+            '"></script>' +
             '</body></html>'
         );
       } else {

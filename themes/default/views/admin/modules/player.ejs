@@ -130,6 +130,13 @@
                                                 %>
                                                 <textarea class="form-control custom" name="modules.player.data.script"
                                                           placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
+                                                <div class="spacer-10"></div>
+                                                <div class="col-xs-6">
+                                                    <label><%= __('JavaScript:') %></label>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <input type="text" class="form-control" name="modules.player.data.js" placeholder="https://example.com/script.js" value="<%- modules.player.data.js %>">
+                                                </div>
                                                 <script>
                                                   document.addEventListener('DOMContentLoaded', function() {
                                                     var json = document.querySelector('[name="modules.player.data.script"]');
