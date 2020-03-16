@@ -181,7 +181,7 @@ router.post('/comments', function(req, res) {
           modules.comments.data.fast.stopworls &&
           modules.comments.data.fast.stopworls.length
             ? modules.comments.data.fast.stopworls.filter(function(world) {
-                var w = new RegExp(world, 'i');
+                var w = new RegExp('[\\s,.!?]' + world + '[\\s,.!?]', 'i');
                 return w.test(form.comment_text);
               })
             : [];

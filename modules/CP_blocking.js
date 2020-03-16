@@ -35,6 +35,12 @@ function blockingPlayer(code, movie, options, display) {
     modules.blocking.status &&
     modules.blocking.data[display || modules.blocking.data.display]
   ) {
+    if (
+      (display === 'app' || modules.blocking.data.display === 'app') &&
+      !modules.app.status
+    ) {
+      return code;
+    }
     var tv_version =
       options.domain.indexOf('tv.') !== -1 ||
       options.domain.indexOf('/tv-version') !== -1;

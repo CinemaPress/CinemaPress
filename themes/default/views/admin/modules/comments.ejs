@@ -703,7 +703,7 @@
                                                                             <select name="modules.comments.data.fast.min_symbols"
                                                                                     class="form-control">
                                                                                 <% for (var i = 0; i <= 500; i++) { %>
-                                                                                    <% if (i % 20) continue; %>
+                                                                                    <% if ([5,10,25,50,100,200,300,400,500].indexOf(i)===-1) continue; %>
                                                                                     <% if (i === 0) { %>
                                                                                         <option value="<%= i %>"
                                                                                                 <% if (modules.comments.data.fast.min_symbols === i) { %>selected="selected"
