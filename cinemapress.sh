@@ -2014,10 +2014,15 @@ while [ "${WHILE}" -lt "2" ]; do
             wget --progress=bar:force -O /var/"${CP_THEME}".tar \
                 "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?theme=${CP_THEME}" 2>&1 | sh_wget
             if [ -f "/var/${CP_THEME}.tar" ]; then
+                _header "UNPACKING"
+                _content
+                _content "Unpacking may take several seconds ..."
+                _content
+                _s
                 tar -xf /var/"${CP_THEME}".tar -C /home/"${CP_DOMAIN}"/themes 2>/dev/null
                 sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
                     /home/"${CP_DOMAIN}"/config/production/config.js
-                docker restart "${CP_DOMAIN_}"
+                docker restart "${CP_DOMAIN_}" 2>/dev/null
             fi
             exit 0
         ;;
