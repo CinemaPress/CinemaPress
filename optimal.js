@@ -62,6 +62,7 @@ if (['cersei'].indexOf(theme) + 1) {
   modules.content.data.index.count = 10;
   modules.episode.data.index.count = 20;
   modules.related.data.types.year.count = 5;
+  modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
     '2b2b2b',
     '393939'
