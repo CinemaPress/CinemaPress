@@ -123,8 +123,7 @@ function codePlayer(type, movie, options) {
       ) {
         scriptPlayer('trailer');
         var code2 = CP_blocking.code(code, movie, options, 'app');
-        code.player =
-          code2 && code2.player ? code2.player + legal : code.player + legal;
+        code.player = code2 && code2.player ? code2.player : code.player;
       } else {
         code.player =
           '' +
@@ -134,8 +133,7 @@ function codePlayer(type, movie, options) {
           '<div style="margin:80px auto 0;width:70%">' +
           modules.abuse.data.message +
           '</div>' +
-          '</div>' +
-          legal;
+          '</div>';
       }
 
       return code;
