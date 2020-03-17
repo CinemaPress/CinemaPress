@@ -348,7 +348,7 @@ router.post('/comments', function(req, res) {
           });
         }
 
-        CP_save.save(data, 'comment', function(err, result) {
+        CP_save.save(data, 'comment', function(err) {
           if (err) {
             console.error(err);
             return callback({
@@ -358,6 +358,7 @@ router.post('/comments', function(req, res) {
                 'Not save «' + (data['movie_id'] || data['content_id']) + '»'
             });
           }
+          callback();
           var avatar = path.join(
             path.dirname(__filename),
             '..',
@@ -369,7 +370,6 @@ router.post('/comments', function(req, res) {
               avatars.create(md5(data.comment_anonymous))
             );
           }
-          return callback();
         });
       }
     },
