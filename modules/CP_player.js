@@ -30,6 +30,14 @@ function codePlayer(type, movie, options) {
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
+  var legal = config.l.legal
+    ? '<div style="font-size:8px;text-align:right;padding:5px 2px 5px 0"><a href="/' +
+      modules.content.data.url +
+      '/legal" target="_blank" style="opacity:.2">' +
+      config.l.legal +
+      '</a></div>'
+    : '';
+
   var code = {};
   code.head = '';
   code.player = '';
@@ -74,7 +82,11 @@ function codePlayer(type, movie, options) {
       '<link rel="stylesheet" href="/themes/default/public/desktop/css/ideal-image-slider.css">';
 
     code.player =
-      '' + '<div id="slider" class="img_tmhover">' + pictures + '</div>';
+      '' +
+      '<div id="slider" class="img_tmhover">' +
+      pictures +
+      '</div>' +
+      legal;
 
     code.footer =
       '' +
@@ -111,17 +123,19 @@ function codePlayer(type, movie, options) {
       ) {
         scriptPlayer('trailer');
         var code2 = CP_blocking.code(code, movie, options, 'app');
-        code.player = code2 && code2.player ? code2.player : code.player;
+        code.player =
+          code2 && code2.player ? code2.player + legal : code.player + legal;
       } else {
         code.player =
           '' +
           '<div style="position:absolute;background:#000 url(' +
           config.default.image +
-          ') 100% 100% no-repeat;    background-size:100% 100%;z-index:9999;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center">' +
+          ') 100% 100% no-repeat;background-size:100% 100%;z-index:9999;top:0;left:0;width:100%;height:100%;color:#fff;text-align:center">' +
           '<div style="margin:80px auto 0;width:70%">' +
           modules.abuse.data.message +
           '</div>' +
-          '</div>';
+          '</div>' +
+          legal;
       }
 
       return code;
@@ -217,7 +231,8 @@ function codePlayer(type, movie, options) {
       '  <source src="/balancer/' +
       movie.kp_id +
       '.mp4" type="video/mp4">' +
-      '</video>';
+      '</video>' +
+      legal;
 
     if (player) {
       code.footer =

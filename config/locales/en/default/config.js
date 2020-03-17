@@ -397,6 +397,7 @@ module.exports = {
     "moreEpisodes": "show more episodes",
     "downloading": "Download",
     "safety": "Safety",
-    "instruction": "Instruction"
+    "instruction": "Instruction",
+    "legal": "Images/videos may be subject to copyright. Learn More"
   }
 };
