@@ -30,14 +30,6 @@ function codePlayer(type, movie, options) {
       config.protocol + '' + config.subdomain + '' + config.domain;
   }
 
-  var legal = config.l.legal
-    ? '<div style="font-size:8px;text-align:right;padding:5px 2px 5px 0"><a href="/' +
-      modules.content.data.url +
-      '/legal" target="_blank" style="opacity:.2">' +
-      config.l.legal +
-      '</a></div>'
-    : '';
-
   var code = {};
   code.head = '';
   code.player = '';
@@ -82,11 +74,7 @@ function codePlayer(type, movie, options) {
       '<link rel="stylesheet" href="/themes/default/public/desktop/css/ideal-image-slider.css">';
 
     code.player =
-      '' +
-      '<div id="slider" class="img_tmhover">' +
-      pictures +
-      '</div>' +
-      legal;
+      '' + '<div id="slider" class="img_tmhover">' + pictures + '</div>';
 
     code.footer =
       '' +
@@ -229,8 +217,7 @@ function codePlayer(type, movie, options) {
       '  <source src="/balancer/' +
       movie.kp_id +
       '.mp4" type="video/mp4">' +
-      '</video>' +
-      legal;
+      '</video>';
 
     if (player) {
       code.footer =
