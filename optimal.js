@@ -168,7 +168,7 @@ if (['dustin'].indexOf(theme) + 1) {
   modules.viewed.data.height = '120px';
   modules.player.data.script = modules.player.data.script.replace(
     '2b2b2b',
-    '282a36'
+    '44475a'
   );
 }
 
