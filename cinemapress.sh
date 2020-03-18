@@ -2717,25 +2717,29 @@ while [ "${WHILE}" -lt "2" ]; do
             read_domain "${2}"
             sh_not
             RCS=$(docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMASTATIC")
-            if [ "${RCS}" = "" ]; then echo "NOT CINEMASTATIC"; exit 0; fi
-            if [ "${4}" != "" ]; then
-                docker exec "${CP_DOMAIN_}" rclone config delete CINEMASTATIC \
-                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
-                docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
-                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
-                sleep 3
-                CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
-                sleep 3
-                CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
-                if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
-                    _header "ERROR"
-                    _content
-                    _content "Cannot connect to backup storage."
-                    _content
-                    _s
+            if [ "${RCS}" = "" ]; then
+                if [ "${4}" != "" ]; then
+                    docker exec "${CP_DOMAIN_}" rclone config delete CINEMASTATIC \
+                        >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                    docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
+                        >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                    sleep 3
+                    CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
+                    sleep 3
+                    CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
+                    if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+                        _header "ERROR"
+                        _content
+                        _content "Cannot connect to backup storage."
+                        _content
+                        _s
+                        exit 0
+                    fi
+                    cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
+                else
+                    echo "NOT CINEMASTATIC"
                     exit 0
                 fi
-                cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
                 sleep 3; rclone copy CINEMAPRESS:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
