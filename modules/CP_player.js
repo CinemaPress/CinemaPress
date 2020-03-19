@@ -111,7 +111,8 @@ function codePlayer(type, movie, options) {
       if (
         modules.app.status &&
         modules.blocking.data.app.abuse &&
-        options.userinfo.device === 'desktop'
+        options.userinfo.device === 'desktop' &&
+        !whois_abuse
       ) {
         scriptPlayer('trailer');
         var code2 = CP_blocking.code(code, movie, options, 'app');
