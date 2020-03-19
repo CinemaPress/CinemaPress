@@ -83,6 +83,7 @@ function codePlayer(type, movie, options) {
   } else if (type === 'trailer') {
     scriptPlayer('trailer');
   } else {
+    var whois_abuse = options.userinfo.whois;
     var list_abuse = modules.abuse.data.movies.indexOf('' + movie.kp_id) + 1;
     var country_abuse =
       modules.abuse.data.country &&
@@ -94,7 +95,7 @@ function codePlayer(type, movie, options) {
 
     if (
       modules.abuse.status &&
-      (list_abuse || country_abuse) &&
+      (list_abuse || country_abuse || whois_abuse) &&
       options.userinfo.device !== 'app'
     ) {
       if (country_abuse) {
@@ -102,6 +103,9 @@ function codePlayer(type, movie, options) {
       }
       if (list_abuse) {
         code.status_code = modules.abuse.data.status_code_list;
+      }
+      if (whois_abuse) {
+        code.status_code = modules.abuse.data.status_code_whois;
       }
 
       if (

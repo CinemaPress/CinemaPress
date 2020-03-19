@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Sovellus Linux:",
 	"URL-ссылка на проверку вирусов": "URL-linkki tarkistaa virusten",
 	"URL-ссылка на инструкцию": "URL linkin ohjeiden",
-	"Модуль позволяет настроить собственное web-приложение.": "Moduuli voit perustaa oman web-sovellus."
+	"Модуль позволяет настроить собственное web-приложение.": "Moduuli voit perustaa oman web-sovellus.",
+	"Блокировать фильмы по WHOIS информации": "Lohko elokuvia WHOIS tiedot",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Kalvot on estetty tiettyjen IP, WHOIS tietokantaan, joka on havaittu tämän tiedon",
+	"Ключевые слова для поиска данных в WHOIS": "Avainsanoja etsiä tietoja WHOIS"
 }

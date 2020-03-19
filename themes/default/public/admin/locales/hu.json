@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Alkalmazás Linux:",
 	"URL-ссылка на проверку вирусов": "URL-link ellenőrzés vírus",
 	"URL-ссылка на инструкцию": "URL-link utasítások",
-	"Модуль позволяет настроить собственное web-приложение.": "A modul lehetővé teszi, hogy hozzanak létre saját web-alkalmazás."
+	"Модуль позволяет настроить собственное web-приложение.": "A modul lehetővé teszi, hogy hozzanak létre saját web-alkalmazás.",
+	"Блокировать фильмы по WHOIS информации": "Blokk movieek WHOIS adatok",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "A movieek után blokkolva lesznek benne, hogy a VI alatt a WHOIS adatbázisban, amely megtalálható az információkat",
+	"Ключевые слова для поиска данных в WHOIS": "Kulcsszavak kíván adatokat a WHOIS"
 }

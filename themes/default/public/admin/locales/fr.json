@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Application dans Linux:",
 	"URL-ссылка на проверку вирусов": "URL-lien au virus de la vérification",
 	"URL-ссылка на инструкцию": "URL lien vers les instructions",
-	"Модуль позволяет настроить собственное web-приложение.": "Le module vous permet de configurer votre propre application web."
+	"Модуль позволяет настроить собственное web-приложение.": "Le module vous permet de configurer votre propre application web.",
+	"Блокировать фильмы по WHOIS информации": "Movies de bloc sur les données WHOIS",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Les movies seront bloqués pour certains IP, dans la base de données WHOIS qui se trouve ces informations",
+	"Ключевые слова для поиска данных в WHOIS": "Mots-clés pour rechercher des données dans le WHOIS"
 }

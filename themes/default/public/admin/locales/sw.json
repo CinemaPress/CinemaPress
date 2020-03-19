@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Maombi katika Linux:",
 	"URL-ссылка на проверку вирусов": "URL kiungo kwa kuangalia virusi",
 	"URL-ссылка на инструкцию": "URL kiungo na maelekezo",
-	"Модуль позволяет настроить собственное web-приложение.": "Moduli utapata kuanzisha yako mwenyewe mtandao maombi."
+	"Модуль позволяет настроить собственное web-приложение.": "Moduli utapata kuanzisha yako mwenyewe mtandao maombi.",
+	"Блокировать фильмы по WHOIS информации": "Block filamu na data WHOIS",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Filamu utazuiwa fulani IP, katika WHOIS database ambayo hupatikana taarifa hii",
+	"Ключевые слова для поиска данных в WHOIS": "Maneno ya kutafuta data katika WHOIS"
 }

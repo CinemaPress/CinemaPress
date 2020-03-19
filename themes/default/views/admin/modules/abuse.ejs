@@ -439,6 +439,55 @@
                                 <div class="cinema-box">
                                     <div class="cinema-box-header">
                                         <div class="cinema-label">
+                                            <i class="fas fa-id-card-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Блокировать фильмы по WHOIS данным') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="javascript:void(0)" class="csstip"
+                                               title="<%= __('Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация') %>">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12 text-center">
+                                                <textarea class="form-control" name="modules.abuse.data.whois"
+                                                          placeholder="<%= __('Ключевые слова для поиска данных в WHOIS') %>"><% if (modules.abuse.data.whois) { %><%- modules.abuse.data.whois.join(',') %><% } %></textarea>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-6">
+                                                <label><%= __('Код состояния HTTP') %></label>
+                                            </div>
+                                            <div class="col-sm-6 text-center">
+                                                <select name="modules.abuse.data.status_code_whois"
+                                                        class="form-control">
+                                                    <option value="200"
+                                                            <% if (modules.abuse.data.status_code_whois === '200') { %>selected="selected"
+                                                            <% } %>
+                                                    >200 OK
+                                                    </option>
+                                                    <option value="404"
+                                                            <% if (modules.abuse.data.status_code_whois === '404') { %>selected="selected"
+                                                            <% } %>
+                                                    >404 Not Found
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
                                             <i class="fa fa-copyright"></i>&nbsp;&nbsp;&nbsp;<%= __('Блокировать фильмы в стране') %>
                                         </div>
                                         <div class="cinema-label hidden-xs" style="float: right">

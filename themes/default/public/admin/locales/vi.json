@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Ứng dụng trong Linux:",
 	"URL-ссылка на проверку вирусов": "URL liên kết đến vi rút séc",
 	"URL-ссылка на инструкцию": "URL liên kết đến các hướng dẫn",
-	"Модуль позволяет настроить собственное web-приложение.": "Module này cho phép bạn thiết lập ứng dụng web của riêng bạn."
+	"Модуль позволяет настроить собственное web-приложение.": "Module này cho phép bạn thiết lập ứng dụng web của riêng bạn.",
+	"Блокировать фильмы по WHOIS информации": "Phim block trên dữ liệu WHOIS",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Các bộ phim sẽ bị chặn đối với một số IP, trong cơ sở dữ liệu WHOIS được tìm thấy thông tin này",
+	"Ключевые слова для поиска данных в WHOIS": "Từ khóa để tìm kiếm dữ liệu trong WHOIS"
 }

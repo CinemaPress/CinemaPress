@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Prašymas Linux:",
 	"URL-ссылка на проверку вирусов": "URL nuorodą į žymės virusas",
 	"URL-ссылка на инструкцию": "URL nuoroda į instrukcijas",
-	"Модуль позволяет настроить собственное web-приложение.": "Modulis leidžia jums sukurti savo internetinę paraišką."
+	"Модуль позволяет настроить собственное web-приложение.": "Modulis leidžia jums sukurti savo internetinę paraišką.",
+	"Блокировать фильмы по WHOIS информации": "Block movieai apie WHOIS duomenų",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Movieai bus blokuojamas tam tikrą TL WHOIS duomenų bazėje, kuri randama šią informaciją",
+	"Ключевые слова для поиска данных в WHOIS": "Raktažodžiai ieškoti duomenų Whois"
 }

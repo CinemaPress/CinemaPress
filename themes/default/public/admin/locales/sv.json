@@ -919,5 +919,8 @@
 	"Приложение для Linux:": "Ansökan i Linux:",
 	"URL-ссылка на проверку вирусов": "URL-länkar till check-virus",
 	"URL-ссылка на инструкцию": "URL-länk till instruktionerna",
-	"Модуль позволяет настроить собственное web-приложение.": "Modulen låter dig ställa in din egen web-applikation."
+	"Модуль позволяет настроить собственное web-приложение.": "Modulen låter dig ställa in din egen web-applikation.",
+	"Блокировать фильмы по WHOIS информации": "Blockera movieer på WHOIS data",
+	"Фильмы будут заблокированы для определенных IP, в WHOIS данных которых, будет найдена указанная информация": "Movieerna kommer att blockeras för vissa IP i WHOIS databas som tyckte att det här informationen",
+	"Ключевые слова для поиска данных в WHOIS": "Sökord för att söka efter data i WHOIS"
 }

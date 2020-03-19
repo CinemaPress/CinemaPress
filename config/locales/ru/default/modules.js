@@ -104,7 +104,9 @@ module.exports = {
       "status_code_country": "200",
       "status_code_list": "404",
       "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
-      "movies": ["840372"]
+      "movies": ["840372"],
+      "status_code_whois": "404",
+      "whois": []
     }
   },
   "top": {
