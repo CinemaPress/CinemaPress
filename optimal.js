@@ -32,8 +32,8 @@ if (['arya'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 6;
   modules.content.data.news.count = 3;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '14181c'
+    /#[a-z0-9]{6}/i,
+    '#14181c'
   );
 }
 
@@ -51,8 +51,8 @@ if (['bran'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 6;
   modules.content.data.news.count = 3;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '101010'
+    /#[a-z0-9]{6}/i,
+    '#101010'
   );
 }
 
@@ -64,8 +64,8 @@ if (['cersei'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 5;
   modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '393939'
+    /#[a-z0-9]{6}/i,
+    '#393939'
   );
 }
 
@@ -76,16 +76,16 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 5;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    'e5e6e8'
+    /#[a-z0-9]{6}/i,
+    '#e5e6e8'
   );
 }
 
 if (['joffrey'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 7;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    'edeef0'
+    /#[a-z0-9]{6}/i,
+    '#edeef0'
   );
 }
 
@@ -103,8 +103,8 @@ if (['hodor'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 5;
   modules.content.data.news.count = 3;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '1f2123'
+    /#[a-z0-9]{6}/i,
+    '#1f2123'
   );
 }
 
@@ -117,8 +117,8 @@ if (['daenerys'].indexOf(theme) + 1) {
   modules.content.data.news.count = 3;
   modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '282350'
+    /#[a-z0-9]{6}/i,
+    '#282350'
   );
 }
 
@@ -133,8 +133,8 @@ if (['tarly'].indexOf(theme) + 1) {
   modules.comments.data.disqus.recent.num_items = 0;
   modules.comments.data.hypercomments.recent.num_items = 0;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '333333'
+    /#[a-z0-9]{6}/i,
+    '#333333'
   );
 }
 
@@ -145,16 +145,16 @@ if (['mormont'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 16;
   modules.related.data.types.year.count = 12;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '262626'
+    /#[a-z0-9]{6}/i,
+    '#262626'
   );
 }
 
 if (['ramsay'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 24;
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '333333'
+    /#[a-z0-9]{6}/i,
+    '#333333'
   );
 }
 
@@ -167,8 +167,8 @@ if (['dustin'].indexOf(theme) + 1) {
   modules.viewed.data.width = '90px';
   modules.viewed.data.height = '120px';
   modules.player.data.script = modules.player.data.script.replace(
-    '2b2b2b',
-    '44475a'
+    /#[a-z0-9]{6}/i,
+    '#44475a'
   );
 }
 
