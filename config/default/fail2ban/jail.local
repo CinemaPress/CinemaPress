@@ -1,3 +1,8 @@
+[DEFAULT]
+ignoreip = 127.0.0.1/8
+bantime  = 7200
+findtime = 7200
+maxretry = 5
 [blacklist]
 enabled = true
 logpath  = /var/log/fail2ban.*
@@ -8,12 +13,14 @@ findtime = 31536000   ; 1 year
 maxretry = 10
 [ssh]
 enabled = true
-[ssh-ddos]
-enabled = true
+port    = ssh
+filter  = sshd
+logpath = /var/log/auth.log
 [nginx-http-auth]
 enabled = true
-[proftpd]
-enabled = true
+filter  = nginx-http-auth
+port    = http,https
+logpath = /var/log/nginx/error.log
 [nginxrepeatoffender]
 enabled   = true
 port      = http,https

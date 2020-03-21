@@ -83,7 +83,12 @@
                                                     </a>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-sm-10 text-center">
+                                                    <div class="col-sm-1 text-center">
+                                                        <a href="<% if (config.default.image) { %><%= config.default.image %><% } %>" target="_blank">
+                                                            <img src="<% if (config.default.image) { %><%= config.default.image %><% } %>" class="img-responsive img-rounded" alt="Image" style="height: 30px; border: 1px solid #2f374b">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-9 text-center">
                                                         <input type="text" class="form-control"
                                                                name="config.default.image" data-content="input"
                                                                value="<% if (config.default.image) { %><%= config.default.image %><% } %>"

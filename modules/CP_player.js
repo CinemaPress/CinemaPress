@@ -83,7 +83,7 @@ function codePlayer(type, movie, options) {
   } else if (type === 'trailer') {
     scriptPlayer('trailer');
   } else {
-    var whois_abuse = options.userinfo.whois;
+    var whois_abuse = options && options.userinfo && options.userinfo.whois;
     var list_abuse = modules.abuse.data.movies.indexOf('' + movie.kp_id) + 1;
     var country_abuse =
       modules.abuse.data.country &&

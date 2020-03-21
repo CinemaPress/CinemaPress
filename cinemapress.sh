@@ -77,6 +77,7 @@ post_commands() {
         docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
         docker exec nginx nginx -s reload >/dev/null
     fi
+    ls -s /home/"${LOCAL_DOMAIN}" /root/"${LOCAL_DOMAIN}" >/dev/null
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
@@ -110,6 +111,8 @@ docker_install() {
             _content "Installing Docker ..."
             _content
             _s
+            sed -Ei "s/#SyslogFacility AUTH/SyslogFacility AUTH/g" /etc/ssh/sshd_config >/dev/null
+            sed -Ei "s/#LogLevel INFO/LogLevel ERROR/g" /etc/ssh/sshd_config >/dev/null
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
@@ -136,6 +139,7 @@ docker_install() {
                     "deb [arch=${CP_ARCH}] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                systemctl restart ssh
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
@@ -168,6 +172,7 @@ docker_install() {
                     "deb [arch=${CP_ARCH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                systemctl restart ssh
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
                 dnf -y remove docker \
                     docker-client \
@@ -186,6 +191,7 @@ docker_install() {
                 dnf -y install docker-ce docker-ce-cli containerd.io
                 systemctl start docker
                 systemctl enable docker
+                systemctl restart sshd
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
                 yum remove -y docker \
                     docker-client \
@@ -204,6 +210,7 @@ docker_install() {
                 yum install -y docker-ce docker-ce-cli containerd.io
                 systemctl start docker
                 systemctl enable docker
+                systemctl restart sshd
             fi
             if [ "$(docker -v 2>/dev/null)" = "" ]; then
                 clear
@@ -304,6 +311,7 @@ ip_install() {
         && [ "`netstat -tunlp | grep :::80`" = "" ]; then
             # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
             # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
+            # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
 
             BOTS=""
             if [ ! -f "/etc/nginx/bots.d/blacklist-user-agents.conf" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
@@ -358,6 +366,26 @@ ip_install() {
                 FAIL2BAN_RUN=$((1+${FAIL2BAN_RUN}))
                 if [ "`docker ps -aq -f status=running -f name=^/fail2ban\$ 2>/dev/null`" != "" ]; then
                     FAIL2BAN_RUN=50
+                fi
+            done
+
+            sh_progress
+
+            echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+
+            docker run \
+                -d \
+                --name filestash \
+                --restart always \
+                --network cinemapress \
+                cinemapress/filestash
+
+            FILESTASH_RUN=1
+            while [ "${FILESTASH_RUN}" != "50" ]; do
+                sleep 3
+                FILESTASH_RUN=$((1+${FILESTASH_RUN}))
+                if [ "`docker ps -aq -f status=running -f name=^/filestash\$ 2>/dev/null`" != "" ]; then
+                    FILESTASH_RUN=50
                 fi
             done
 
@@ -907,6 +935,12 @@ ip_install() {
         docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "STOP FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker stop filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "RM FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker rm -f filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        echo "PULL FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        docker pull cinemapress/filestash:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     echo "RMI OLD" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
@@ -1772,6 +1806,7 @@ docker_backup() {
         --exclude=config/default \
         --exclude=config/locales \
         --exclude=config/production/fail2ban \
+        --exclude=config/production/filestash \
         --exclude=config/production/sphinx \
         --exclude=config/production/nginx \
         -uf /var/${CP_DOMAIN}/config.tar \
@@ -2270,6 +2305,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start ${CP_DOMAIN_}
             docker start nginx
             docker start fail2ban
+            docker start filestash
             exit 0
         ;;
         "optimal" )
@@ -2314,6 +2350,11 @@ while [ "${WHILE}" -lt "2" ]; do
             else
                 _content "Fail2ban: stopped"
             fi
+            if [ "$(docker ps -aq -f status=running -f name=^/filestash\$ 2>/dev/null)" != "" ]; then
+                _content "FTP: runnind"
+            else
+                _content "FTP: stopped"
+            fi
             _content
             _header "NGINX LOGS"
             _content
@@ -2349,6 +2390,7 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+                docker restart filestash >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             exit 0
         ;;
