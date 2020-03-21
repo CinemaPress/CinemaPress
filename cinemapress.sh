@@ -77,7 +77,7 @@ post_commands() {
         docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
         docker exec nginx nginx -s reload >/dev/null
     fi
-    ls -s /home/"${LOCAL_DOMAIN}" /root/"${LOCAL_DOMAIN}" >/dev/null
+    ln -s /home/"${LOCAL_DOMAIN}" /root/"${LOCAL_DOMAIN}" >/dev/null
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
@@ -292,7 +292,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% nginx" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
     DIR_SUCCESS=1
     while [ "${DIR_SUCCESS}" != "10" ]; do
@@ -347,7 +347,7 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% fail2ban" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
             docker run \
                 -d \
@@ -371,14 +371,14 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}%" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% filestash" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
             docker run \
                 -d \
                 --name filestash \
                 --restart always \
                 --network cinemapress \
-                cinemapress/filestash
+                cinemapress/filestash >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
             FILESTASH_RUN=1
             while [ "${FILESTASH_RUN}" != "50" ]; do
@@ -484,7 +484,7 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}%" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% config check-connection" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
 
             docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -545,7 +545,7 @@ ip_install() {
 
         sh_progress
 
-        echo "${PRC_}%" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
+        echo "${PRC_}% backup check-connection" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
 
         CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
         sleep 3
@@ -621,7 +621,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}%" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% theme" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log
 
     if [ "$(docker -v 2>/dev/null)" != "" ]; then
         docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
@@ -808,7 +808,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}%" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% mirror" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
 
     docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
@@ -884,7 +884,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}%" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% mirror2" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
 
     docker start ${LOCAL_MIRROR_} \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
