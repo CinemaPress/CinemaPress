@@ -427,12 +427,17 @@ ip_install() {
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
+    rm -rf /var/app && mkdir -p /var/app && \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/windows /var/app/ &>/dev/null; \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/linux /var/app/ &>/dev/null; \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/osx /var/app/ &>/dev/null
     3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
     1_install "${LOCAL_DOMAIN}"
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
-    cp -rf /var/nginx/* /home/${LOCAL_DOMAIN}/config/production/nginx/ && rm -rf /var/nginx
+    cp -rf /var/nginx/* /home/"${LOCAL_DOMAIN}"/config/production/nginx/ && rm -rf /var/nginx
+    cp -rf /var/app/* /home/"${LOCAL_DOMAIN}"/files/ && rm -rf /var/app
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
@@ -1804,7 +1809,8 @@ docker_backup() {
     echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
     rm -rf /var/${CP_DOMAIN:?} && mkdir -p /var/${CP_DOMAIN}
     cd /home/${CP_DOMAIN} && \
-    tar --exclude=config/update \
+    tar --ignore-failed-read \
+        --exclude=config/update \
         --exclude=config/default \
         --exclude=config/locales \
         --exclude=config/production/fail2ban \
@@ -1814,9 +1820,13 @@ docker_backup() {
         -uf /var/${CP_DOMAIN}/config.tar \
         config
     cd /home/${CP_DOMAIN} && \
-    tar --exclude=files/GeoLite2-Country.mmdb \
+    tar --ignore-failed-read \
+        --exclude=files/GeoLite2-Country.mmdb \
         --exclude=files/poster \
         --exclude=files/picture \
+        --exclude=files/windows \
+        --exclude=files/linux \
+        --exclude=files/osx \
         --exclude=files/bbb.mp4 \
         --exclude=files/content/collage.psd \
         -uf /var/${CP_DOMAIN}/themes.tar \
@@ -2786,14 +2796,24 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
-                sleep 3; rclone copy CINEMAPRESS:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                sleep 3; rclone copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
             else
-                cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar files/poster files/picture
-                sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/static.tar &> /dev/null
-                sleep 3; rclone copy /home/${CP_DOMAIN}/static.tar CINEMAPRESS:${CP_DOMAIN}/
-                rm -rf /home/${CP_DOMAIN}/static.tar
+                cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar \
+                    files/poster \
+                    files/picture
+                if [ -d "/home/${CP_DOMAIN}/files/windows" ]; then
+                    cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/app.tar \
+                        files/windows \
+                        files/linux \
+                        files/osx &>/dev/null
+                    sleep 3; rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
+                    sleep 3; rclone copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
+                fi
+                sleep 3; rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
+                sleep 3; rclone copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
+                rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
