@@ -517,5 +517,10 @@ module.exports = {
     "status": false,
     "data": {
     }
+  },
+  "ftp": {
+    "status": false,
+    "data": {
+    }
   }
 };

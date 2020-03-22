@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <%- include('../includes/head.ejs'); -%>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <%- include('../includes/left.ejs'); -%>
+
+    <%- include('../includes/right.ejs'); -%>
+
+    <div id="main" class="clearfix">
+
+        <%- include('../includes/header-main.ejs'); -%>
+
+        <div id="content" class="clearfix">
+
+            <%- include('../includes/header-sec.ejs'); -%>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/ftp" class="btn hidden-xs">
+                            <%= __('Модуль файлового менеджера') %>
+                        </a>
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/ftp.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля файлового менеджера') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.ftp.status) { %>
+                            <a href="javascript:void(0)" data-module="ftp" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
+                        <% } else { %>
+                            <a href="javascript:void(0)" data-module="ftp" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.ftp.status) { %>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fas fa-folder"></i>&nbsp;&nbsp;&nbsp;<%= __('Основные папки веб-сайта') %>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding" style="padding-bottom: 0;">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-folder"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Папка веб-сайта') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>home/<%- config.domain %></small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/files/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-photo-video"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Файлы веб-сайта') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>files</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-boxes"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Шаблоны веб-сайта') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/log/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-clipboard-list"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Логи веб-сайта') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>log</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/<%- config.theme %>/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-desktop"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Папка шаблона') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/<%- config.theme %></small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/<%- config.theme %>/public/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-images"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Картинки, стили, скрипты') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/<%- config.theme %>/public</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/<%- config.theme %>/views/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Файлы шаблона') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/<%- config.theme %>/views</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/<%- config.theme %>/views/includes/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="far fa-file-code"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Подключаемые файлы') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/<%- config.theme %>/views/includes</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/default/views/mobile/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fa fa-mobile-alt"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Файлы шаблона') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/default/views/mobile</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/default/public/mobile/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fa fa-mobile-alt"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Картинки, стили, скрипты') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/default/public/mobile</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/default/views/tv/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fa fa-tv"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Файлы шаблона') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/default/views/tv</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/files/home/<%- config.domain %>/themes/default/public/tv/" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fa fa-tv"></i>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Картинки, стили, скрипты') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>themes/default/public/tv</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fas fa-code"></i>&nbsp;&nbsp;&nbsp;<%= __('Основные файлы шаблона') %>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding" style="padding-bottom: 0;">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/index.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Главная веб-страница') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>index.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/movie.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница фильма') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>movie.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/episode.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница эпизода') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>episode.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/trailer.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница трейлера') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>trailer.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/picture.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница кадров') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>picture.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/online.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница онлайн') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>online.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/download.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница скачать') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>download.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/category.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница категории') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>category.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/<%- config.theme %>/views/categories.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница категорий') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>categories.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="file-block">
+                                                    <a href="<%- config.protocol %>ftp.<%- config.domain %>/view/home/<%- config.domain %>/themes/default/views/error.ejs" target="_blank">
+                                                        <div class="file-block-icon">
+                                                            <i class="fas fa-code"></i>
+                                                            <span class="label label-default">.ejs</span>
+                                                        </div>
+                                                        <div class="file-block-info">
+                                                            <h5><%= __('Веб-страница ошибки') %></h5>
+                                                            <small class="text-muted"><i class="far fa-folder text-muted"></i>error.ejs</small>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% } else { %>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <%- include('../includes/footer.ejs'); -%>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

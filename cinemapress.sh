@@ -1673,6 +1673,7 @@ docker_run() {
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
@@ -1681,6 +1682,7 @@ docker_run() {
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/process.json
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml

@@ -340,6 +340,15 @@
                                 <i class="fa fa-power-off pull-right <% if (modules.app.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
+                        <li
+                        <% if (type === 'ftp') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
+                            <a href="/<%- config.urls.admin %>/ftp">
+                                <i class="fas fa-cloud-upload-alt"></i> <%= __('Файловый менеджер') %>
+                                <i class="fa fa-power-off pull-right <% if (modules.ftp.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

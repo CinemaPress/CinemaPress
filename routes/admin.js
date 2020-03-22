@@ -158,7 +158,8 @@ router.get('/:type?', function(req, res) {
     tv: 'fa fa-tv',
     random: 'fa fa-dice',
     rewrite: 'far fa-hand-rock',
-    app: 'fas fa-desktop'
+    app: 'fas fa-desktop',
+    ftp: 'fas fa-cloud-upload-alt'
   };
 
   render.icon = render.icons[render.type];
@@ -350,6 +351,10 @@ router.get('/:type?', function(req, res) {
         render.apps = apps;
         res.render('admin/modules/app', render);
       });
+      break;
+    case 'ftp':
+      render.title = res.__('Файловый менеджер');
+      res.render('admin/modules/ftp', render);
       break;
 
     case 'poster':
