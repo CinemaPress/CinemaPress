@@ -2796,7 +2796,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
-                sleep 3; rclone copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
             else
@@ -2808,11 +2808,11 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/windows \
                         files/linux \
                         files/osx &>/dev/null
-                    sleep 3; rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
-                    sleep 3; rclone copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
-                sleep 3; rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
-                sleep 3; rclone copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
         ;;
