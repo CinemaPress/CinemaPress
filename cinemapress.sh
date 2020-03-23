@@ -77,7 +77,6 @@ post_commands() {
         docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
         docker exec nginx nginx -s reload >/dev/null
     fi
-    ln -s /home/"${LOCAL_DOMAIN}" /root/"${LOCAL_DOMAIN}" >/dev/null
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
@@ -299,6 +298,7 @@ ip_install() {
         sleep 3
         DIR_SUCCESS=$((1+${DIR_SUCCESS}))
         if [ -d "/home/${LOCAL_DOMAIN}/" ]; then
+            ln -s /home/"${LOCAL_DOMAIN}" /root/"${LOCAL_DOMAIN}" >/dev/null
             DIR_SUCCESS=10
         fi
     done
