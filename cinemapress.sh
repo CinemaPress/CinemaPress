@@ -437,7 +437,7 @@ ip_install() {
     1_install "${LOCAL_DOMAIN}"
     cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
     cp -rf /var/nginx/* /home/"${LOCAL_DOMAIN}"/config/production/nginx/ && rm -rf /var/nginx
-    cp -rf /var/app/* /home/"${LOCAL_DOMAIN}"/files/ && rm -rf /var/app &>/dev/null
+    cp -rf /var/app/* /home/"${LOCAL_DOMAIN}"/files/ &>/dev/null && rm -rf /var/app
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
