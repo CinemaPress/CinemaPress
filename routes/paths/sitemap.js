@@ -340,21 +340,22 @@ function oneSitemap(type, year, options, callback) {
           if (movies && movies.length) {
             for (var i = 0; i < movies.length; i++) {
               if (
-                !config.urls.noindex ||
-                !(
+                (config.urls.noindex &&
                   movies[i].url.indexOf(
                     '/' + config.urls.noindex + config.urls.slash
-                  ) + 1
-                )
+                  ) + 1) ||
+                (modules.abuse.data.status_code_list === '404' &&
+                  modules.abuse.data.movies.indexOf(movies[i].kp_id + '') + 1)
               ) {
-                render.urls[render.urls.length] = {
-                  loc: movies[i].url,
-                  lastmod:
-                    movies[i].custom && movies[i].custom.lastmod
-                      ? movies[i].custom.lastmod.substr(0, 10)
-                      : ''
-                };
+                continue;
               }
+              render.urls[render.urls.length] = {
+                loc: movies[i].url,
+                lastmod:
+                  movies[i].custom && movies[i].custom.lastmod
+                    ? movies[i].custom.lastmod.substr(0, 10)
+                    : ''
+              };
             }
 
             callback(null, render);
