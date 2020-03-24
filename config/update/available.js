@@ -11,6 +11,7 @@ var fs = require('fs');
  * Global env.
  */
 
+var save = process.argv && typeof process.argv[2] !== 'undefined';
 var domain = '';
 
 try {
@@ -112,10 +113,19 @@ async.series(
                           return callback();
                         }
                         if (!ms || !ms.length) {
-                          console.log('NOT AVAILABLE:', movie.query_id);
-                          not_available++;
+                          if (save) {
+                            CP_save.save(movie, 'rt', function(err) {
+                              console.log('SAVED:', movie.query_id);
+                              return callback(err);
+                            });
+                          } else {
+                            console.log('NOT AVAILABLE:', movie.query_id);
+                            not_available++;
+                            return callback();
+                          }
+                        } else {
+                          return callback();
                         }
-                        return callback();
                       }
                     );
                   },

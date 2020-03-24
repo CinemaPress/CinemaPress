@@ -1845,10 +1845,10 @@ docker_backup() {
     rm -rf /var/${CP_DOMAIN:?}
 }
 docker_actual() {
-    node /home/${CP_DOMAIN}/config/update/actual.js
+    node /home/"${CP_DOMAIN}"/config/update/actual.js
 }
 docker_available() {
-    node /home/${CP_DOMAIN}/config/update/available.js
+    node /home/"${CP_DOMAIN}"/config/update/available.js "${1}"
 }
 docker_rclone() {
     sleep 3; rclone "${1}" "${2}"
@@ -2122,7 +2122,7 @@ while [ "${WHILE}" -lt "2" ]; do
             read_domain ${2}
             sh_not
             _s ${2}
-            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" \
+            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${3}" \
                 >>/var/log/docker_${1}_"$(date '+%d_%m_%Y')".log 2>&1
             exit 0
         ;;
@@ -2146,7 +2146,7 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${2}" = "actual" ]; then
                 docker_actual
             elif [ "${2}" = "available" ]; then
-                docker_available
+                docker_available "${3}"
             elif [ "${2}" = "passwd" ]; then
                 docker_passwd "${3}"
             elif [ "${2}" = "rclone" ]; then
