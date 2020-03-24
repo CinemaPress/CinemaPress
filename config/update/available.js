@@ -101,9 +101,7 @@ async.series(
                   1,
                   function(movie, key, callback) {
                     CP_get.movies(
-                      {
-                        query_id: movie.query_id
-                      },
+                      { query_id: movie.query_id },
                       1,
                       '',
                       1,
