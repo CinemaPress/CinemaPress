@@ -1847,6 +1847,9 @@ docker_backup() {
 docker_actual() {
     node /home/${CP_DOMAIN}/config/update/actual.js
 }
+docker_available() {
+    node /home/${CP_DOMAIN}/config/update/available.js
+}
 docker_rclone() {
     sleep 3; rclone "${1}" "${2}"
 }
@@ -2114,7 +2117,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             fi
         ;;
-        "reload"|"actual"|"speed"|"cron" )
+        "reload"|"actual"|"available"|"speed"|"cron" )
             _br
             read_domain ${2}
             sh_not
@@ -2142,6 +2145,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_cron
             elif [ "${2}" = "actual" ]; then
                 docker_actual
+            elif [ "${2}" = "available" ]; then
+                docker_available
             elif [ "${2}" = "passwd" ]; then
                 docker_passwd "${3}"
             elif [ "${2}" = "rclone" ]; then
