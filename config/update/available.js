@@ -11,7 +11,7 @@ var fs = require('fs');
  * Global env.
  */
 
-var save = process.argv && typeof process.argv[2] !== 'undefined';
+var save = process.argv && typeof process.argv[2] !== 'undefined' && process.argv[2];
 var domain = '';
 
 try {
