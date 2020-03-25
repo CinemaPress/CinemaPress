@@ -23,7 +23,7 @@ module.exports = {
     "ips": []
   },
   "image": {
-    "addr": "st.kp.yandex.net",
+    "addr": "third-party",
     "save": 1
   },
   "cache": {

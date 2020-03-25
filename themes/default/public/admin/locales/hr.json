@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Kategorija web stranica",
 	"Веб-страница категорий": "Kategorije web stranica",
 	"Веб-страница ошибки": "Pogreška web stranica",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivira upravitelj datoteka urediti i dodati na web stranice datoteka (u DNS mora biti poddomena „ftp”)."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivira upravitelj datoteka urediti i dodati na web stranice datoteka (u DNS mora biti poddomena „ftp”).",
+	"Сторонний источник": "Izvor treće strane"
 }

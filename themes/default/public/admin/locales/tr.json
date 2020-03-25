@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Web sayfası kategorisi",
 	"Веб-страница категорий": "Web sayfası kategoriler",
 	"Веб-страница ошибки": "Web sayfası hatası",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modül websitesi dosyaları düzenlemek ve eklenti için dosya yöneticisini (DNS «ftp» bir alt alan olmalıdır) harekete geçirir."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modül websitesi dosyaları düzenlemek ve eklenti için dosya yöneticisini (DNS «ftp» bir alt alan olmalıdır) harekete geçirir.",
+	"Сторонний источник": "Bir üçüncü taraf kaynağı"
 }

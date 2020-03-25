@@ -23,7 +23,7 @@ module.exports = {
     "ips": []
   },
   "image": {
-    "addr": "image.tmdb.org",
+    "addr": "third-party",
     "save": 1
   },
   "cache": {

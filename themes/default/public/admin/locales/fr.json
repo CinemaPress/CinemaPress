@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Catégorie de page web",
 	"Веб-страница категорий": "Catégories de pages web",
 	"Веб-страница ошибки": "Erreur de page web",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Le module active le gestionnaire de fichiers pour modifier et ajouter aux fichiers du site Web (dans le DNS doit être un sous-domaine de « ftp »)."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Le module active le gestionnaire de fichiers pour modifier et ajouter aux fichiers du site Web (dans le DNS doit être un sous-domaine de « ftp »).",
+	"Сторонний источник": "Une source tiers"
 }

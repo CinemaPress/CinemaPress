@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Interneto puslapis kategoriją",
 	"Веб-страница категорий": "Web puslapiu kategorijos",
 	"Веб-страница ошибки": "Interneto puslapio klaida",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulis aktyvuoja failų tvarkytuve redaguoti ir pridėti į svetainę failai (DNS turi būti «ftp» subdomenas)."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulis aktyvuoja failų tvarkytuve redaguoti ir pridėti į svetainę failai (DNS turi būti «ftp» subdomenas).",
+	"Сторонний источник": "Trečiosios šalies šaltinis"
 }

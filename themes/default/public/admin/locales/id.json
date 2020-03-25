@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Kategori halaman web",
 	"Веб-страница категорий": "Kategori halaman web",
 	"Веб-страница ошибки": "Kesalahan halaman web",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul mengaktifkan file manager untuk mengedit dan add ke file situs web (di DNS harus menjadi subdomain dari «ftp»)."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul mengaktifkan file manager untuk mengedit dan add ke file situs web (di DNS harus menjadi subdomain dari «ftp»).",
+	"Сторонний источник": "Sumber pihak ketiga"
 }

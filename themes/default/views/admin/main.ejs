@@ -1174,30 +1174,8 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-xs-6 text-center">
                                             <select name="config.image.addr" class="form-control">
-                                                <option value="<%- config.domain %>"
-                                                        <% if (config.image.addr === config.domain) { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    <%- (config.subdomain + config.domain).toUpperCase() %>
-                                                </option>
-                                                <option value="st.kp.yandex.net"
-                                                        <% if (config.image.addr === 'st.kp.yandex.net') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    KINOPOISK.RU
-                                                </option>
-                                                <option value="image.tmdb.org"
-                                                        <% if (config.image.addr === 'image.tmdb.org') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    TMDB.ORG
-                                                </option>
-                                                <option value="m.media-amazon.com"
-                                                        <% if (config.image.addr === 'm.media-amazon.com') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    IMDB.COM
-                                                </option>
+                                                <option value="<%- config.domain %>" <% if (config.image.addr === config.domain) { %>selected="selected"<% } %>><%- (config.subdomain + config.domain).toUpperCase() %></option>
+                                                <option value="third-party" <% if (config.image.addr === 'st.kp.yandex.net' || config.image.addr === 'image.tmdb.org' || config.image.addr === 'm.media-amazon.com' || config.image.addr === 'third-party') { %>selected="selected"<% } %>><%= __('Сторонний источник') %></option>
                                             </select>
                                         </div>
                                         <div class="col-lg-6 col-xs-6 text-center">

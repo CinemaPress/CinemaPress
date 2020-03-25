@@ -946,5 +946,6 @@
 	"Веб-страница категории": "Danh mục trang web",
 	"Веб-страница категорий": "Danh mục trang web",
 	"Веб-страница ошибки": "Lỗi trang web",
-	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Các mô-đun kích hoạt trình quản lý file để chỉnh sửa và thêm các tập tin trang web (trong DNS phải là một tên miền phụ của «ftp»)."
+	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Các mô-đun kích hoạt trình quản lý file để chỉnh sửa và thêm các tập tin trang web (trong DNS phải là một tên miền phụ của «ftp»).",
+	"Сторонний источник": "Một nguồn bên thứ ba"
 }
