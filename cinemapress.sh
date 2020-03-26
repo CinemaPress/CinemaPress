@@ -1007,7 +1007,17 @@ read_domain() {
                 CP_DOMAIN=`echo ${CP_DOMAIN} | iconv -c -t UTF-8`
                 echo ": ${CP_DOMAIN}"
             else
-                read -e -p ': ' CP_DOMAIN
+                AUTO_DOMAIN=""
+                cd /home && for D in *; do
+                    if [ -d "$D" ] && [ "${AUTO_DOMAIN}" = "" ]; then
+                        AUTO_DOMAIN="$D"
+                    fi
+                done
+                if [ "${AUTO_DOMAIN}" = "" ]; then
+                    read -e -p ': ' CP_DOMAIN
+                else
+                    read -e -p ': ' -i "${AUTO_DOMAIN}" CP_DOMAIN
+                fi
                 CP_DOMAIN=`echo ${CP_DOMAIN} | iconv -c -t UTF-8`
             fi
             if [ "${CP_DOMAIN}" != "" ]
@@ -1908,7 +1918,6 @@ success_install(){
     _content "root@vps:~# cinemapress backup"
     _content
     _content "You have questions?"
-    _content "support@cinemapress.io"
     _content "Forum: enota.club"
     _content
     _s
