@@ -654,7 +654,6 @@ ip_install() {
             sh_progress "$(("${io}" * 10))"
             sleep 30
         done
-        _br
     fi
     mkdir -p /var/lib/sphinx/tmp /var/lib/sphinx/data /var/lib/sphinx/old
     _line
