@@ -1429,21 +1429,21 @@
 
             <script>
               $('#one_slider').noUiSlider({
-                range: [120, 1200],
+                range: [120, 2400],
                 start: [<%= config.loadavg.one %>],
                 handles: 1,
                 step: 120,
                 connect: 'lower',
                 serialization: { resolution: 1, to: [$('#one')] }
               }), $('#five_slider').noUiSlider({
-                range: [120, 1200],
+                range: [120, 2400],
                 start: [<%= config.loadavg.five %>],
                 handles: 1,
                 step: 120,
                 connect: 'lower',
                 serialization: { resolution: 1, to: [$('#five')] }
               }), $('#fifteen_slider').noUiSlider({
-                range: [120, 1200],
+                range: [120, 2400],
                 start: [<%= config.loadavg.fifteen %>],
                 handles: 1,
                 step: 120,
