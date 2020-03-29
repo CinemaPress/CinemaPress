@@ -2848,7 +2848,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
-            else
+            elif [ "${3}" = "create" ] || [ "${5}" = "create" ]; then
                 cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar \
                     files/poster \
                     files/picture
