@@ -415,6 +415,18 @@ ip_install() {
         exit 0
     fi
 
+    KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
+    KILOBYTE_DIR=614400
+    if [ "${KILOBYTE_ALL}" -lt "${KILOBYTE_DIR}" ]; then
+        _header "WARNING"
+        _content
+        _content "Less than 600 MB of free space left on the server!"
+        _content "You need to increase disk space."
+        _content
+        _s
+        exit 0
+    fi
+
     AA=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
     KK=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
     DD=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
@@ -1714,7 +1726,7 @@ docker_run() {
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
         ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
-        indexer --all
+        if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
         searchd
         memcached -u root -d
         node /home/${CP_DOMAIN}/config/update/default.js
@@ -1803,21 +1815,21 @@ docker_restore() {
     docker_start
 }
 docker_backup() {
-    RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
+    RCS=$(rclone config show 2>/dev/null | grep "CINEMAPRESS")
     if [ "${RCS}" = "" ]; then exit 0; fi
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
-    BACKUP_DELETE=`date +%Y-%m-%d -d "@$(($(date +%s) - 864000))"`
-    T=`grep "\"theme\"" /home/${CP_DOMAIN}/config/production/config.js`
-    THEME_NAME=`echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
+    BACKUP_DELETE=$(date +%Y-%m-%d -d "@$(($(date +%s) - 864000))")
+    T=$(grep "\"theme\"" /home/"${CP_DOMAIN}"/config/production/config.js)
+    THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
-    PORT_DOMAIN=`grep "mysql41" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/'`
-    echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
-    echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
-    echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
-    echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P${PORT_DOMAIN}
-    rm -rf /var/${CP_DOMAIN:?} && mkdir -p /var/${CP_DOMAIN}
-    cd /home/${CP_DOMAIN} && \
+    PORT_DOMAIN=$(grep "mysql41" /home/"${CP_DOMAIN}"/config/production/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
+    echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    rm -rf /var/"${CP_DOMAIN:?}" && mkdir -p /var/"${CP_DOMAIN}"
+    cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
         --exclude=config/update \
         --exclude=config/default \
@@ -1826,9 +1838,9 @@ docker_backup() {
         --exclude=config/production/filestash \
         --exclude=config/production/sphinx \
         --exclude=config/production/nginx \
-        -uf /var/${CP_DOMAIN}/config.tar \
+        -uf /var/"${CP_DOMAIN}"/config.tar \
         config
-    cd /home/${CP_DOMAIN} && \
+    cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
         --exclude=files/GeoLite2-Country.mmdb \
         --exclude=files/poster \
@@ -1838,20 +1850,44 @@ docker_backup() {
         --exclude=files/osx \
         --exclude=files/bbb.mp4 \
         --exclude=files/content/collage.psd \
-        -uf /var/${CP_DOMAIN}/themes.tar \
+        -uf /var/"${CP_DOMAIN}"/themes.tar \
         themes/default/public/desktop \
         themes/default/public/mobile \
         themes/default/views/mobile \
-        themes/${THEME_NAME} \
+        themes/"${THEME_NAME}" \
         files
-    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW} &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:${CP_DOMAIN}/${BACKUP_DELETE} &> /dev/null; fi
-    sleep 3; rclone purge CINEMAPRESS:${CP_DOMAIN}/latest &> /dev/null
-    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/${BACKUP_NOW}/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/config.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    sleep 3; rclone copy /var/${CP_DOMAIN}/themes.tar CINEMAPRESS:${CP_DOMAIN}/latest/
-    rm -rf /var/${CP_DOMAIN:?}
+    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
+    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
+    sleep 3; rclone copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    rm -rf /var/"${CP_DOMAIN:?}"
+    KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
+    KILOBYTE_DIR=$(du -d 0 /home/"${CP_DOMAIN}"/files | cut -f1)
+    RCST=$(rclone config show 2>/dev/null | grep "CINEMASTATIC")
+    if [ "${RCST}" != "" ] && [ "${BACKUP_DAY}" = "10" ] && [ "${KILOBYTE_ALL}" -gt "${KILOBYTE_DIR}" ]; then
+        CHECK_MKDIR=$(rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
+        sleep 3
+        CHECK_PURGE=$(rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
+        if [ "${CHECK_MKDIR}" = "" ] && [ "${CHECK_PURGE}" = "" ]; then
+            cd /home/"${CP_DOMAIN}" && tar -uf /home/"${CP_DOMAIN}"/static.tar \
+                files/poster \
+                files/picture
+            if [ -d "/home/${CP_DOMAIN}/files/windows" ]; then
+                cd /home/"${CP_DOMAIN}" && tar -uf /home/"${CP_DOMAIN}"/app.tar \
+                    files/windows \
+                    files/linux \
+                    files/osx &>/dev/null
+                sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
+                sleep 3; rclone copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
+            fi
+            sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
+            sleep 3; rclone copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
+            rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
+        fi
+    fi
 }
 docker_actual() {
     node /home/"${CP_DOMAIN}"/config/update/actual.js
