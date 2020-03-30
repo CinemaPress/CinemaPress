@@ -252,6 +252,17 @@ ip_install() {
     LOCAL_THEME=${3:-${CP_THEME}}
     LOCAL_PASSWD=${4:-${CP_PASSWD}}
 
+    # MEMTOTATAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    # SWAPTOTAL=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
+    # MEMORY_DOCKER=""
+    # if [ "${MEMTOTATAL}" -gt 0 ]; then
+    #     MEMDOCKER=$(("${MEMTOTATAL}"-"${MEMTOTATAL}"*10/100))
+    #     if [ "${MEMDOCKER}" -gt 0 ]; then
+    #        SWAPDOCKER=$(("${MEMDOCKER}"+"${SWAPTOTAL}"-"${SWAPTOTAL}"*10/100))
+    #        MEMORY_DOCKER="--memory ${MEMDOCKER}k --memory-swap ${SWAPDOCKER}k --oom-kill-disable"
+    #    fi
+    # fi
+
     if [ ! "$(docker network ls | grep cinemapress)" ]; then
         docker network create \
             --driver bridge \

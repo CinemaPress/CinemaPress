@@ -264,14 +264,15 @@ function onlyMovieSchema(movie, comments, options) {
   result['director'] = [];
   result['genre'] = [];
   result['review'] = [];
-  result['aggregateRating'] = movie.rating
-    ? {
-        '@type': 'AggregateRating',
-        bestRating: 10,
-        ratingCount: movie.vote,
-        ratingValue: movie.rating / 10
-      }
-    : null;
+  if (movie.rating) {
+    result['aggregateRating'] = {
+      '@type': 'AggregateRating',
+      bestRating: 10,
+      ratingCount: movie.vote,
+      ratingValue: movie.rating / 10,
+      worstRating: 0
+    };
+  }
 
   if (movie.actors_arr) {
     movie.actors_arr.forEach(function(actor) {
