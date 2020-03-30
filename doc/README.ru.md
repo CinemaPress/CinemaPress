@@ -42,7 +42,7 @@
 :earth_americas: | `Netherlands` | `Netherlands` | `France` | `Netherlands`
 :computer: | `2x2700MHz` | `2x2600MHz` | `2x2600MHz` | `1x3300MHz`
 :rocket: | `4GB` | `2GB` | `2GB` | `2GB`
-:floppy_disk: | `60GB` |  `20GB` | `50GB` | `12GB`
+:floppy_disk: | `60GB` |  `30GB` | `50GB` | `12GB`
 :dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
 ···· | **[ВЫБРАТЬ](https://cinemapress.io/ref/ua-hosting.html)** | **[ВЫБРАТЬ](https://cinemapress.io/ref/inferno.html)** | **[ВЫБРАТЬ](https://cinemapress.io/ref/myvps.html)** | **[ВЫБРАТЬ](https://cinemapress.io/ref/zomro.html)**
 
