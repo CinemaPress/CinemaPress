@@ -21,7 +21,7 @@ var modules = require('../config/production/modules');
 
 var adop = require('adop');
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000 });
+var cache = new LRU({ maxAge: 3600000, max: 1000 });
 var md5 = require('md5');
 var async = require('async');
 var request = require('request');
