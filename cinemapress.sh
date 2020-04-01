@@ -360,6 +360,8 @@ ip_install() {
 
             echo "${PRC_}% fail2ban" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
+            if [ ! -f "/var/log/nginx/access.log" ]; then touch "/var/log/nginx/access.log"; fi
+
             docker run \
                 -d \
                 --name fail2ban \
@@ -396,6 +398,7 @@ ip_install() {
                 sleep 3
                 FILESTASH_RUN=$((1+${FILESTASH_RUN}))
                 if [ "`docker ps -aq -f status=running -f name=^/filestash\$ 2>/dev/null`" != "" ]; then
+                    docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container ftp
                     FILESTASH_RUN=50
                 fi
             done
@@ -1932,6 +1935,9 @@ docker_ssl_off() {
     sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
+docker_ftp_on() {
+    sed -Ei "s/#ftp //g" "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+}
 
 success_install(){
     CP_URL="${CP_DOMAIN}"
@@ -2224,6 +2230,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 else
                     docker_ssl_on
                 fi
+            elif [ "${2}" = "ftp" ]; then
+                docker_ftp_on
             fi
             exit 0
         ;;
