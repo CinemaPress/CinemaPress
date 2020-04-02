@@ -123,9 +123,9 @@ if (data.contents && data.contents.length) {
   );
 }
 
-var ii = 0;
+var ii = 1;
 setInterval(function() {
-  if (run === 2 || ii > 10) {
+  if (run === 2 || ii >= 10) {
     process.exit();
   }
   ii++;
