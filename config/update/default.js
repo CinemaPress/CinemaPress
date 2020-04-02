@@ -123,6 +123,10 @@ if (data.contents && data.contents.length) {
   );
 }
 
-if (run === 2) {
-  process.exit();
-}
+var ii = 0;
+setInterval(function() {
+  if (run === 2 || ii > 10) {
+    process.exit();
+  }
+  ii++;
+}, 1000);
