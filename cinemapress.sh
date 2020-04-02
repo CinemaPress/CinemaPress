@@ -91,7 +91,7 @@ docker_install() {
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools syslog-ng >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
                 dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
@@ -361,6 +361,7 @@ ip_install() {
             echo "${PRC_}% fail2ban" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
 
             if [ ! -f "/var/log/nginx/access.log" ]; then touch "/var/log/nginx/access.log"; fi
+            if [ ! -f "/var/log/auth.log" ]; then touch "/var/log/auth.log"; fi
 
             docker run \
                 -d \
