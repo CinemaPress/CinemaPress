@@ -803,6 +803,7 @@ ip_install() {
             docker restart ${LOCAL_DOMAIN_} \
                 >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
             _header "Generating, completed successfully!"
+            _br
         else
             _header "ERROR"
             _content
