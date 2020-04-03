@@ -770,7 +770,7 @@ ip_install() {
         echo -e "dns_cloudflare_email = \"${LOCAL_CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${LOCAL_CLOUDFLARE_API_KEY}\"" \
             > ${NGX}/cloudflare.ini
 
-        _header "Generating ..."
+        _header "Generating, please wait ..."
         _br
 
         docker run \
@@ -790,6 +790,8 @@ ip_install() {
             -d "*.${LOCAL_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
                 >>/home/${LOCAL_DOMAIN}/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+
+        sleep 15
 
         if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
             openssl dhparam -out ${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem 2048 \
