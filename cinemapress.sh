@@ -112,6 +112,7 @@ docker_install() {
             _s
             sed -Ei "s/#SyslogFacility AUTH/SyslogFacility AUTH/g" /etc/ssh/sshd_config >/dev/null
             sed -Ei "s/#LogLevel INFO/LogLevel ERROR/g" /etc/ssh/sshd_config >/dev/null
+            sed -Ei "s/#MaxAuthTries 6/MaxAuthTries 3/g" /etc/ssh/sshd_config >/dev/null
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
