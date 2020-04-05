@@ -1428,7 +1428,7 @@ read_cms() {
                 NAME_CMS='php-mysql'
                 echo ": ${NAME_CMS}"
             else
-                if [ "${NAME_CMS}" = "php-mysql" ] || [ "${NAME_CMS}" = "wordpress" ] || [ "${NAME_CMS}" = "drupal" ] || [ "${NAME_CMS}" = "joomla" ] || [ "${NAME_CMS}" = "dle" ]
+                if [ "${NAME_CMS}" = "php-mysql" ] || [ "${NAME_CMS}" = "wordpress" ] || [ "${NAME_CMS}" = "drupal" ] || [ "${NAME_CMS}" = "joomla" ] || [ "${NAME_CMS}" = "dle" ] || [ "${NAME_CMS}" = "backup" ]
                 then
                     AGAIN=10
                 else
@@ -2643,7 +2643,7 @@ while [ "${WHILE}" -lt "2" ]; do
             MYSQL_USER="${CP_DOMAIN_}"
             ADMIN_USER="cinemaadmin"
             ADMIN_PASSWORD="$(date +%s%N | sha256sum | base64 | head -c 12)"
-            if [ "${4}" = "backup" ]; then
+            if [ "${NAME_CMS}" = "backup" ] && [ "${4}" = "create" ]; then
                 if [ -f "/var/lib/cinemapress/dump/backup.sql" ]; then
                     echo "ERROR: Backup file found /var/lib/cinemapress/dump/backup.sql"
                     exit 0
@@ -2653,7 +2653,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "SUCCESS: Backup file /var/lib/cinemapress/dump/backup.sql"
                 exit 0
             fi
-            if [ "${4}" = "restore" ]; then
+            if [ "${NAME_CMS}" = "backup" ] && [ "${4}" = "restore" ]; then
                 if [ ! -f "/var/lib/cinemapress/dump/restore.sql" ]; then
                     echo "ERROR: Restore file not found /var/lib/cinemapress/dump/restore.sql"
                     exit 0
@@ -2915,8 +2915,9 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "             of genres, list of countries, list of directors,"; _br;
             printf "             premiere date, rating and number of votes)"; _br;
             printf " clear_vps - Complete deletion of all data on the VPS"; _br;
-            printf " cms       - Install other CMS (php-mysql)"; _br;
             printf " app       - Create movie application"; _br;
+            printf " cms       - Install other CMS (php-mysql,wordpress,drupal,joomla,dle)"; _br;
+            printf " cms example.com backup [create,restore]"; _br;
             printf " splash example.com github_login github_pass"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine create_https_restore_mirror"; _br;
