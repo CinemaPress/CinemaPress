@@ -103,7 +103,9 @@ function allCategory(type, options, callback) {
               return callback(
                 null,
                 require(file).map(function(c) {
-                  c.url = c.url.replace(/https?:\/\/[^\/]+/i, options.origin);
+                  c.url = c.url
+                    .replace(/\/(mobile|tv)-version/, '')
+                    .replace(/https?:\/\/[^\/]+/i, options.origin);
                   return c;
                 })
               );
