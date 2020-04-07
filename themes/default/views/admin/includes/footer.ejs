@@ -405,6 +405,9 @@
             self.innerHTML = '<span class="fa fa-plus"></span>&nbsp;&nbsp;<%= __('Добавить все IP') %>';
             self.addEventListener('click', addIpList);
           }, 10000);
+        } else {
+          self.innerHTML = '<span class="fa fa-plus"></span>&nbsp;&nbsp;<%= __('Добавить все IP') %>';
+          self.addEventListener('click', addIpList);
         }
       }
       xhr.open('GET', 'https://company.cinemapress.io/<%- config.domain %>?' + name.join('&'), true);
