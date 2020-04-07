@@ -464,18 +464,9 @@
                                                 <label><%= __('Код состояния HTTP') %></label>
                                             </div>
                                             <div class="col-sm-6 text-center">
-                                                <select name="modules.abuse.data.status_code_whois"
-                                                        class="form-control">
-                                                    <option value="200"
-                                                            <% if (modules.abuse.data.status_code_whois === '200') { %>selected="selected"
-                                                            <% } %>
-                                                    >200 OK
-                                                    </option>
-                                                    <option value="404"
-                                                            <% if (modules.abuse.data.status_code_whois === '404') { %>selected="selected"
-                                                            <% } %>
-                                                    >404 Not Found
-                                                    </option>
+                                                <select name="modules.abuse.data.status_code_whois" class="form-control">
+                                                    <option value="200" <% if (modules.abuse.data.status_code_whois === '200') { %>selected="selected"<% } %>>200 OK</option>
+                                                    <option value="404" <% if (modules.abuse.data.status_code_whois === '404') { %>selected="selected"<% } %>>404 Not Found</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -504,23 +495,13 @@
                                     </div>
                                     <div class="inner-padding">
                                         <div class="row">
-                                            <div class="col-lg-8 col-xs-8">
+                                            <div class="col-lg-6 col-xs-6">
                                                 <label><%= __('В стране фильма') %></label>
                                             </div>
-                                            <div class="col-lg-4 col-xs-4 text-center">
+                                            <div class="col-lg-6 col-xs-6 text-center">
                                                 <select name="modules.abuse.data.country" class="form-control">
-                                                    <option value="1"
-                                                            <% if (modules.abuse.data.country) { %>selected="selected"
-                                                            <% } %>
-                                                    >
-                                                        <%= __('Не показывать') %>
-                                                    </option>
-                                                    <option value="0"
-                                                            <% if (!modules.abuse.data.country) { %>selected="selected"
-                                                            <% } %>
-                                                    >
-                                                        <%= __('Показывать') %>
-                                                    </option>
+                                                    <option value="1" <% if (modules.abuse.data.country) { %>selected="selected"<% } %>><%= __('Не показывать') %></option>
+                                                    <option value="0" <% if (!modules.abuse.data.country) { %>selected="selected"<% } %>><%= __('Показывать') %></option>
                                                 </select>
                                             </div>
                                         </div>
