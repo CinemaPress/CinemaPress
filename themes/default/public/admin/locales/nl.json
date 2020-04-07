@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Webpagina categorieën",
 	"Веб-страница ошибки": "Webpagina error",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "De module activeert de file manager te bewerken en toe te voegen aan de website bestanden (in de DNS moet een subdomein van «ftp» zijn).",
-	"Сторонний источник": "Een derde partij source"
+	"Сторонний источник": "Een derde partij source",
+	"IP адреса для блокировки": "IP-adressen te blokkeren"
 }

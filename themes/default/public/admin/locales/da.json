@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Web- kategorier",
 	"Веб-страница ошибки": "Webside fejl",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulet aktiverer filhåndteringen at redigere og tilføje til webstedet filer (i DNS skal være et underdomæne af «ftp»).",
-	"Сторонний источник": "En tredjepart kilde"
+	"Сторонний источник": "En tredjepart kilde",
+	"IP адреса для блокировки": "IP-adresser for blokering"
 }

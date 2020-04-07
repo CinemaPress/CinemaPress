@@ -18,13 +18,18 @@ var path = require('path');
 var lookup = {};
 try {
   var MaxMindReader = require('maxmind').Reader;
-  lookup = new MaxMindReader(
+  lookup.country = new MaxMindReader(
     require('fs').readFileSync(
       path.join(path.dirname(__filename), 'files', 'GeoLite2-Country.mmdb')
     )
   );
+  lookup.asn = new MaxMindReader(
+    require('fs').readFileSync(
+      path.join(path.dirname(__filename), 'files', 'GeoLite2-ASN.mmdb')
+    )
+  );
 } catch (err) {
-  console.log('NOT FILE GeoLite2-Country.mmdb');
+  console.log('NOT FILE GeoLite2-Country.mmdb OR GeoLite2-ASN.mmdb');
 }
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');

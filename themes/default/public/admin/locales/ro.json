@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Categorii de pagini web",
 	"Веб-страница ошибки": "Eroare pagină web",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulul activează managerul de fișiere pentru a edita și adăuga la fișierele site-ul web (în DNS trebuie să fie un subdomeniu al „ftp“).",
-	"Сторонний источник": "O sursă terță parte"
+	"Сторонний источник": "O sursă terță parte",
+	"IP адреса для блокировки": "Adrese iP pentru blocarea"
 }

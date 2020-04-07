@@ -106,7 +106,8 @@ module.exports = {
       "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
       "movies": ["840372"],
       "status_code_whois": "404",
-      "whois": []
+      "whois": [],
+      "ips": []
     }
   },
   "top": {

@@ -1864,6 +1864,7 @@ docker_backup() {
     cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
         --exclude=files/GeoLite2-Country.mmdb \
+        --exclude=files/GeoLite2-ASN.mmdb \
         --exclude=files/poster \
         --exclude=files/picture \
         --exclude=files/windows \

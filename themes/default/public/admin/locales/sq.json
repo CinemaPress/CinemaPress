@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Kategori faqe web",
 	"Веб-страница ошибки": "Faqe web gabim",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moduli aktivizon file manager për të redaktuar dhe të shtoni në fotografi faqen e internetit (në DNS duhet të jetë një subdomain e «FTP»).",
-	"Сторонний источник": "Një burim i palës së tretë"
+	"Сторонний источник": "Një burim i palës së tretë",
+	"IP адреса для блокировки": "Adresat iP për bllokimin"
 }

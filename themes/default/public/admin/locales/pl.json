@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Kategorie stron wWW",
 	"Веб-страница ошибки": "Błąd strona internetowa",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moduł uruchamia menedżera plików do edycji i dodać do plików stronie (w systemie DNS musi być poddomeną „ftp”).",
-	"Сторонний источник": "Źródło innej firmy"
+	"Сторонний источник": "Źródło innej firmy",
+	"IP адреса для блокировки": "Adresy iP do blokowania"
 }

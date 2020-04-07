@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Web lapu kategorijas",
 	"Веб-страница ошибки": "Web lapas kļūda",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulis aktivizē failu pārvaldnieku, lai rediģētu un pievienot mājas lapas failus (ar DNS jābūt apakšdomēns «ftp»).",
-	"Сторонний источник": "Trešās puses avots"
+	"Сторонний источник": "Trešās puses avots",
+	"IP адреса для блокировки": "IP adreses bloķēšana"
 }

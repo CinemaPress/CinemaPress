@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Webbsida kategorier",
 	"Веб-страница ошибки": "Webbsida fel",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulen aktiverar filhanteraren redigera och lägga till webbplatsen filer (i DNS måste vara en underdomän «ftp»).",
-	"Сторонний источник": "En tredje part källa"
+	"Сторонний источник": "En tredje part källa",
+	"IP адреса для блокировки": "IP-adresser för blockering"
 }

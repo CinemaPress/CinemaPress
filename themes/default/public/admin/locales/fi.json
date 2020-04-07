@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Verkkosivu luokat",
 	"Веб-страница ошибки": "Verkkosivu virhe",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moduuli aktivoi tiedostonhallinnan muokata ja lisätä verkkosivuilla tiedostot (DNS oltava aliverkkotunnus «ftp»).",
-	"Сторонний источник": "Kolmannen osapuolen lähde"
+	"Сторонний источник": "Kolmannen osapuolen lähde",
+	"IP адреса для блокировки": "IP-osoitteet esto"
 }

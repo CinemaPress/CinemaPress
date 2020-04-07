@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Makundi katika tovuti yetu",
 	"Веб-страница ошибки": "Makosa katika tovuti yetu",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moduli huwezesha faili meneja kubadilisha na kuongeza kwa files tovuti (katika DNS lazima subdomain ya «ftp»).",
-	"Сторонний источник": "Chanzo tatu"
+	"Сторонний источник": "Chanzo tatu",
+	"IP адреса для блокировки": "Anwani ya iP kwa kuzuia"
 }

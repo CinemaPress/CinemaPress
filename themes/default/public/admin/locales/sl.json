@@ -947,5 +947,6 @@
 	"Веб-страница категорий": "Kategorije spletna stran",
 	"Веб-страница ошибки": "Napaka spletna stran",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivira upravitelja datotek urediti in dodati do datotek na spletni strani (v DNS mora biti poddomena «ftp»).",
-	"Сторонний источник": "Vir tretje osebe"
+	"Сторонний источник": "Vir tretje osebe",
+	"IP адреса для блокировки": "IP naslovi za blokiranje"
 }

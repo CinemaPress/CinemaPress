@@ -450,9 +450,12 @@
                                     </div>
                                     <div class="inner-padding">
                                         <div class="row">
-                                            <div class="col-lg-12 col-xs-12 text-center">
-                                                <textarea class="form-control" name="modules.abuse.data.whois"
-                                                          placeholder="<%= __('Ключевые слова для поиска данных в WHOIS') %>"><% if (modules.abuse.data.whois) { %><%- modules.abuse.data.whois.join(',') %><% } %></textarea>
+                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                <textarea class="form-control" name="modules.abuse.data.whois" placeholder="<%= __('Ключевые слова для поиска данных в WHOIS') %>"><% if (modules.abuse.data.whois) { %><%- modules.abuse.data.whois.join(',') %><% } %></textarea>
+                                            </div>
+
+                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                <textarea class="form-control" name="modules.abuse.data.ips" placeholder="<%= __('IP адреса для блокировки') %>"><% if (modules.abuse.data.ips) { %><%- modules.abuse.data.ips.join(',') %><% } %></textarea>
                                             </div>
 
                                             <div class="spacer-10"></div>
