@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Web sayfası hatası",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modül websitesi dosyaları düzenlemek ve eklenti için dosya yöneticisini (DNS «ftp» bir alt alan olmalıdır) harekete geçirir.",
 	"Сторонний источник": "Bir üçüncü taraf kaynağı",
-	"IP адреса для блокировки": "Engelleme için iP adresleri"
+	"IP адреса для блокировки": "Engelleme için iP adresleri",
+	"Название организации для поиска всех её IP": "Kuruluşun adı onun tüm IP aramak için",
+	"Добавить все IP": "Tüm IP Ekle",
+	"Поиск по WHOIS в реальном времени": "Gerçek zamanlı olarak WHOIS ara"
 }

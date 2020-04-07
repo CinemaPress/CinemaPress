@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Kesalahan halaman web",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul mengaktifkan file manager untuk mengedit dan add ke file situs web (di DNS harus menjadi subdomain dari «ftp»).",
 	"Сторонний источник": "Sumber pihak ketiga",
-	"IP адреса для блокировки": "Alamat iP untuk memblokir"
+	"IP адреса для блокировки": "Alamat iP untuk memblokir",
+	"Название организации для поиска всех её IP": "Nama organisasi untuk mencari semua IP-nya",
+	"Добавить все IP": "Tambahkan semua IP",
+	"Поиск по WHOIS в реальном времени": "Mencari WHOIS secara real time"
 }

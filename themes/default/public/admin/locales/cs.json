@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Chyba webové stránky",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivuje správce souborů, který chcete upravit a přidat k souborům webu (v DNS musí být subdoménou „ftp“).",
 	"Сторонний источник": "Zdroj třetí strany",
-	"IP адреса для блокировки": "IP adresy pro blokování"
+	"IP адреса для блокировки": "IP adresy pro blokování",
+	"Название организации для поиска всех её IP": "Název organizace hledat všechny jeho IP",
+	"Добавить все IP": "Přidejte všechny IP",
+	"Поиск по WHOIS в реальном времени": "Vyhledávat WHOIS v reálném čase"
 }

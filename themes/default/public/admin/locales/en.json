@@ -947,5 +947,8 @@
   "Веб-страница ошибки": "Error web page",
   "Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "The module activates the file manager for editing and adding files to the website (in the DNS there must be a sub-domain «ftp»).",
   "Сторонний источник": "Third-party source",
-  "IP адреса для блокировки": "IP addresses to block"
+  "IP адреса для блокировки": "IP addresses to block",
+  "Название организации для поиска всех её IP": "The name of the organization to search for all its IPs",
+  "Добавить все IP": "Add all IPs",
+  "Поиск по WHOIS в реальном времени": "Real-time WHOIS search"
 }

@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Pogreška web stranica",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivira upravitelj datoteka urediti i dodati na web stranice datoteka (u DNS mora biti poddomena „ftp”).",
 	"Сторонний источник": "Izvor treće strane",
-	"IP адреса для блокировки": "IP adrese za blokiranje"
+	"IP адреса для блокировки": "IP adrese za blokiranje",
+	"Название организации для поиска всех её IP": "Ime organizacije u potrazi za sve svoje IP",
+	"Добавить все IP": "Dodaj sve IP",
+	"Поиск по WHOIS в реальном времени": "Potražite WHOIS u realnom vremenu"
 }

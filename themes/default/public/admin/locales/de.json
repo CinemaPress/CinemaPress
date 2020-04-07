@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Webseite fehler",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Das Modul aktiviert den Dateimanager zu bearbeiten und auf die Web-Site-Dateien (in der DNS muss eine Subdomain von „ftp“ sein).",
 	"Сторонний источник": "Eine drittanbieter-Quelle",
-	"IP адреса для блокировки": "IP-Adressen für sperrung"
+	"IP адреса для блокировки": "IP-Adressen für sperrung",
+	"Название организации для поиска всех её IP": "Der Name der Organisation, für alle seine IP zu suchen",
+	"Добавить все IP": "In alle IP",
+	"Поиск по WHOIS в реальном времени": "Suchen Sie nach WHOIS in Echtzeit"
 }

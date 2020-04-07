@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Veebilehe vea",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moodul aktiveerib failihalduri muuta ja lisada veebilehel failid (DNS peab olema alamdomeen «ftp»).",
 	"Сторонний источник": "Kolmanda osapoole allikas",
-	"IP адреса для блокировки": "IP aadresse blokeerimine"
+	"IP адреса для блокировки": "IP aadresse blokeerimine",
+	"Название организации для поиска всех её IP": "Nimi korralduse otsida kõiki oma IP",
+	"Добавить все IP": "Lisa kõik IP",
+	"Поиск по WHOIS в реальном времени": "Otsi WHOIS reaalajas"
 }

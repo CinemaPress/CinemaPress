@@ -2929,6 +2929,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " combine create_https"; _br;
             printf " combine create_backup"; _br;
             printf " combine create_restore"; _br; _br;
+            printf " nohup cinemapress [FULL COMMAND] > log 2>&1; tail -f log"; _br; _br;
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )

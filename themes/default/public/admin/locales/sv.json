@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Webbsida fel",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modulen aktiverar filhanteraren redigera och lägga till webbplatsen filer (i DNS måste vara en underdomän «ftp»).",
 	"Сторонний источник": "En tredje part källa",
-	"IP адреса для блокировки": "IP-adresser för blockering"
+	"IP адреса для блокировки": "IP-adresser för blockering",
+	"Название организации для поиска всех её IP": "Namnet på organisationen för att söka efter alla sina IP",
+	"Добавить все IP": "Lägg till alla IP",
+	"Поиск по WHOIS в реальном времени": "Sök efter WHOIS i realtid"
 }

@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Napaka spletna stran",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Modul aktivira upravitelja datotek urediti in dodati do datotek na spletni strani (v DNS mora biti poddomena «ftp»).",
 	"Сторонний источник": "Vir tretje osebe",
-	"IP адреса для блокировки": "IP naslovi za blokiranje"
+	"IP адреса для блокировки": "IP naslovi za blokiranje",
+	"Название организации для поиска всех её IP": "Ime organizacije za iskanje vse svoje IP",
+	"Добавить все IP": "Dodaj vse IP",
+	"Поиск по WHOIS в реальном времени": "Iskanje WHOIS v realnem času"
 }

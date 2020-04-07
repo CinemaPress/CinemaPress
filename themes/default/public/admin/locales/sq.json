@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Faqe web gabim",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Moduli aktivizon file manager për të redaktuar dhe të shtoni në fotografi faqen e internetit (në DNS duhet të jetë një subdomain e «FTP»).",
 	"Сторонний источник": "Një burim i palës së tretë",
-	"IP адреса для блокировки": "Adresat iP për bllokimin"
+	"IP адреса для блокировки": "Adresat iP për bllokimin",
+	"Название организации для поиска всех её IP": "Emri i organizatës për të kërkuar për të gjithë IP saj",
+	"Добавить все IP": "Shto të gjithë IP",
+	"Поиск по WHOIS в реальном времени": "Kërko për WHOIS në kohë reale"
 }

@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Errore di pagina web",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "Il modulo attiva la gestione file per modificare e aggiungere ai file del sito web (nel DNS deve essere un sottodominio di «ftp»).",
 	"Сторонний источник": "Una fonte di terze parti",
-	"IP адреса для блокировки": "Indirizzi iP per il blocco"
+	"IP адреса для блокировки": "Indirizzi iP per il blocco",
+	"Название организации для поиска всех её IP": "Il nome dell'organizzazione per la ricerca di tutti i suoi IP",
+	"Добавить все IP": "Aggiungere tutti gli IP",
+	"Поиск по WHOIS в реальном времени": "Cerca WHOIS in tempo reale"
 }

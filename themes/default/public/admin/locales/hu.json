@@ -948,5 +948,8 @@
 	"Веб-страница ошибки": "Weblap hiba",
 	"Модуль активирует файловый менеджер для редактирования и добавления файлов на веб-сайт (в DNS должен быть поддомен «ftp»).": "A modul aktiválja a fájlkezelő szerkesztés, és adjunk a weboldal fájlokat (a DNS-t be lehet aldomain a „ftp”).",
 	"Сторонний источник": "Egy harmadik fél forrás",
-	"IP адреса для блокировки": "IP-címek blokkolása"
+	"IP адреса для блокировки": "IP-címek blokkolása",
+	"Название организации для поиска всех её IP": "A szervezet neve keresni az összes IP-",
+	"Добавить все IP": "Add az összes IP-",
+	"Поиск по WHOIS в реальном времени": "Keresése WHOIS valós időben"
 }
