@@ -253,6 +253,8 @@ ip_install() {
     LOCAL_THEME=${3:-${CP_THEME}}
     LOCAL_PASSWD=${4:-${CP_PASSWD}}
 
+    echo "${PRC_}% install" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
     # MEMTOTATAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     # SWAPTOTAL=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
     # MEMORY_DOCKER=""
@@ -303,7 +305,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}% nginx" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% nginx" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     DIR_SUCCESS=1
     while [ "${DIR_SUCCESS}" != "10" ]; do
@@ -359,7 +361,7 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}% fail2ban" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% fail2ban" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
             if [ ! -f "/var/log/nginx/access.log" ]; then touch "/var/log/nginx/access.log"; fi
             if [ ! -f "/var/log/auth.log" ]; then touch "/var/log/auth.log"; fi
@@ -386,7 +388,7 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}% filestash" >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% filestash" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
             docker run \
                 -d \
@@ -411,6 +413,8 @@ ip_install() {
 2_update() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+
+    echo "${PRC_}% update" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
@@ -504,6 +508,8 @@ ip_install() {
     LOCAL_ACTION2=${5} # 1 | 2 | create | restore
     LOCAL_DOMAIN2=${6:-${LOCAL_DOMAIN}}
 
+    echo "${PRC_}% backup" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
         cp -r /var/rclone.conf /home/${LOCAL_DOMAIN}/config/production/rclone.conf
     elif [ -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
@@ -517,7 +523,7 @@ ip_install() {
 
             sh_progress
 
-            echo "${PRC_}% config check-connection" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
+            echo "${PRC_}% config check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
             docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -578,7 +584,7 @@ ip_install() {
 
         sh_progress
 
-        echo "${PRC_}% backup check-connection" >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log
+        echo "${PRC_}% backup check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
         CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
         sleep 3
@@ -607,6 +613,8 @@ ip_install() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
     LOCAL_THEME=${2:-${CP_THEME}}
+
+    echo "${PRC_}% theme" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     YES="NOT"
     if [ -d "/home/${LOCAL_DOMAIN}/themes/${LOCAL_THEME}" ]; then
@@ -654,7 +662,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}% theme" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% theme" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     if [ "$(docker -v 2>/dev/null)" != "" ]; then
         docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_theme_"$(date '+%d_%m_%Y')".log 2>&1
@@ -665,6 +673,8 @@ ip_install() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_KEY=${2:-${CP_KEY}}
+
+    echo "${PRC_}% database" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
     CHECK=$(wget -qO- "${STS}&status=CHECK")
@@ -764,6 +774,8 @@ ip_install() {
     LOCAL_CLOUDFLARE_EMAIL=${2:-${CLOUDFLARE_EMAIL}}
     LOCAL_CLOUDFLARE_API_KEY=${3:-${CLOUDFLARE_API_KEY}}
 
+    echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
     if [ "${LOCAL_CLOUDFLARE_EMAIL}" != "" ] \
     && [ "${LOCAL_CLOUDFLARE_API_KEY}" != "" ]; then
 
@@ -845,7 +857,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}% mirror" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% mirror" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
@@ -921,7 +933,7 @@ ip_install() {
 
     sh_progress
 
-    echo "${PRC_}% mirror2" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log
+    echo "${PRC_}% mirror2" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     docker start ${LOCAL_MIRROR_} \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
@@ -934,6 +946,8 @@ ip_install() {
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
     LOCAL_FULL=${2}
     LOCAL_SAFE=${3}
+
+    echo "${PRC_}% remove" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     if [ "${LOCAL_SAFE}" = "safe" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
         T=`grep "\"theme\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
@@ -1808,14 +1822,16 @@ docker_restore() {
     RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
-    sleep 3; rclone copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
+    sleep 3; rclone -vv copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
+    sleep 3; rclone -vv copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
     cd /home/${CP_DOMAIN} && \
     tar -xf /var/${CP_DOMAIN}/config.tar && \
     tar --exclude=themes/default/views/desktop \
         -xf /var/${CP_DOMAIN}/themes.tar
     mkdir -p /home/${CP_DOMAIN}/config/custom
-    cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
+    if [ -d "/home/${CP_DOMAIN}/config/custom" ]; then
+        cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
+    fi
     sleep 5
     if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
       COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
@@ -1878,13 +1894,13 @@ docker_backup() {
         themes/default/views/mobile \
         themes/"${THEME_NAME}" \
         files
-    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
-    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
-    sleep 3; rclone copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
-    sleep 3; rclone copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
+    sleep 3; rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
+    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
     rm -rf /var/"${CP_DOMAIN:?}"
     KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
     KILOBYTE_DIR=$(du -d 0 /home/"${CP_DOMAIN}"/files | cut -f1)
@@ -1902,11 +1918,11 @@ docker_backup() {
                     files/windows \
                     files/linux \
                     files/osx &>/dev/null
-                sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
-                sleep 3; rclone copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
+                sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
+                sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
             fi
-            sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
-            sleep 3; rclone copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
+            sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
+            sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
     fi
@@ -2872,7 +2888,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
             elif [ "${3}" = "create" ] || [ "${5}" = "create" ]; then
@@ -2884,11 +2900,11 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/windows \
                         files/linux \
                         files/osx &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
         ;;
