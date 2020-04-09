@@ -754,14 +754,7 @@
                                                                         <select name="modules.comments.data.fast.sorting_page"
                                                                                 class="form-control">
                                                                             <% var sort = ['comment-like-up', 'comment-like-down', 'comment-dislike-up', 'comment-dislike-down', 'comment-publish-up', 'comment-publish-down']; %>
-                                                                            <% for (var i = 0; i <= 5; i++) { %>
-                                                                                <option value="<%= sort[i] %>"
-                                                                                        <% if (modules.comments.data.fast.sorting_page === sort[i]) { %>selected="selected"
-                                                                                        <% } %>
-                                                                                >
-                                                                                    <%= sort[i] %>
-                                                                                </option>
-                                                                            <% } %>
+                                                                            <% for (var i = 0; i <= 5; i++) { %><option value="<%= sort[i] %>" <% if (modules.comments.data.fast.sorting_page === sort[i]) { %>selected="selected"<% } %>><%= sort[i].replace('comment-','').toUpperCase() %></option><% } %>
                                                                         </select>
                                                                     </div>
 
