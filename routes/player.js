@@ -11,7 +11,7 @@ var modules = require('../config/production/modules');
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000, max: 100 });
+var cache = new LRU({ maxAge: 3600000, max: 1000 });
 var md5 = require('md5');
 var op = require('object-path');
 var async = require('async');
@@ -126,10 +126,16 @@ router.get('/?', function(req, res) {
           /\[title]/,
           req.query.title ? encodeURIComponent(req.query.title) : ''
         );
-      var hash = md5(JSON.stringify(req.query) + process.env['CP_VER']);
+      var hash = md5(JSON.stringify(p) + process.env['CP_VER']);
       if (cache.has(hash)) {
-        script = cache.get(hash);
-        result = true;
+        var c = cache.get(hash);
+        if (c.iframe) {
+          script = script
+            .replace(/iframe-src/gi, c.iframe)
+            .replace(/iframe-translate/gi, c.translate.toUpperCase())
+            .replace(/iframe-quality/gi, c.quality.toUpperCase());
+          result = true;
+        }
         return callback();
       }
       request(
@@ -179,7 +185,11 @@ router.get('/?', function(req, res) {
               .replace(/iframe-quality/gi, quality.toUpperCase());
             result = true;
           }
-          cache.set(hash, script);
+          cache.set(hash, {
+            iframe: iframe,
+            translate: translate,
+            quality: quality
+          });
           callback();
         }
       );

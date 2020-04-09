@@ -13,7 +13,7 @@ module.exports = {
   "country": "RU",
   "language": "ru",
   "random": 0,
-  "homepage": "127.0.0.1",
+  "homepage": "example.com",
   "redirect": {
     "from": [],
     "to": []

@@ -358,7 +358,7 @@
           ids.unshift(kp_id);
         }
         addList.value = ids.join(',');
-        addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/<%- config.urls.admin %>/poster?id=' + kp_id + '" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
+        addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/files/poster/medium/' + kp_id + '.jpg" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
         var delId = document.querySelectorAll('li[data-delete-name]');
         if (delId)
           for (var i = 0; i < delId.length; i++)

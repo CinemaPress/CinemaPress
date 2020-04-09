@@ -2907,6 +2907,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
+            exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
             clear
