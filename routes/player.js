@@ -111,10 +111,14 @@ router.get('/?', function(req, res) {
       }
       var p = {
         url: parse[0],
-        iframe: parse[1],
+        iframe: parse[1] && parse[1].split('<>')[0].trim(),
         translate: parse[2] || '',
         quality: parse[3] || '',
-        uid: parse[4] || ''
+        uid: parse[4] || '',
+        format:
+          parse[1] && parse[1].split('<>')[1]
+            ? parse[1].split('<>')[1].trim()
+            : ''
       };
       p.url = p.url
         .replace(/\[kp_id]/, req.query.kp_id ? req.query.kp_id : '')
@@ -157,6 +161,9 @@ router.get('/?', function(req, res) {
           var iframe = p.iframe ? op.get(json, p.iframe) || '' : '';
           var translate = p.translate ? op.get(json, p.translate) || '' : '';
           var quality = p.quality ? op.get(json, p.quality) || '' : '';
+          if (iframe && p.format) {
+            iframe = p.format.replace(/_VALUE_/gi, iframe);
+          }
           if (iframe && p.uid) {
             iframe += iframe.indexOf('?') + 1 ? '&' + p.uid : '?' + p.uid;
           }
