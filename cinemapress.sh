@@ -542,7 +542,7 @@ ip_install() {
             fi
             cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
-                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create \
+                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create hand \
                     >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
                 docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
@@ -598,7 +598,7 @@ ip_install() {
             exit 0
         fi
         if [ "${LOCAL_ACTION}" = "create" ] || [ "${LOCAL_ACTION}" = "1" ]; then
-            docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup create \
+            docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup create hand \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         elif [ "${LOCAL_ACTION}" = "restore" ] || [ "${LOCAL_ACTION}" = "2" ]; then
             docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup restore \
@@ -1894,9 +1894,9 @@ docker_backup() {
         themes/default/views/mobile \
         themes/"${THEME_NAME}" \
         files
-    sleep 3; rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
-    sleep 3; rclone -vv purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
+    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
+    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
     sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
@@ -1905,7 +1905,7 @@ docker_backup() {
     KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
     KILOBYTE_DIR=$(du -d 0 /home/"${CP_DOMAIN}"/files | cut -f1)
     RCST=$(rclone config show 2>/dev/null | grep "CINEMASTATIC")
-    if [ "${RCST}" != "" ] && [ "${BACKUP_DAY}" = "10" ] && [ "${KILOBYTE_ALL}" -gt "${KILOBYTE_DIR}" ]; then
+    if [ "${1}" = "" ] && [ "${RCST}" != "" ] && [ "${BACKUP_DAY}" = "10" ] && [ "${KILOBYTE_ALL}" -gt "${KILOBYTE_DIR}" ]; then
         CHECK_MKDIR=$(rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
         sleep 3
         CHECK_PURGE=$(rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
@@ -1918,10 +1918,10 @@ docker_backup() {
                     files/windows \
                     files/linux \
                     files/osx &>/dev/null
-                sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
+                sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
                 sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
             fi
-            sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
+            sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
             sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
@@ -2900,10 +2900,10 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/windows \
                         files/linux \
                         files/osx &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
                     sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
