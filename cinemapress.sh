@@ -503,9 +503,11 @@ ip_install() {
         mv -f /var/temp/osx /home/"${LOCAL_DOMAIN}"/files/osx 2>/dev/null
     fi
     if [ -d /var/temp/poster ]; then
+        rm -rf /home/"${LOCAL_DOMAIN}"/files/poster
         mv -f /var/temp/poster /home/"${LOCAL_DOMAIN}"/files/poster 2>/dev/null
     fi
     if [ -d /var/temp/picture ]; then
+        rm -rf /home/"${LOCAL_DOMAIN}"/files/picture
         mv -f /var/temp/picture /home/"${LOCAL_DOMAIN}"/files/picture 2>/dev/null
     fi
     3_backup "${LOCAL_DOMAIN}" "restore"
