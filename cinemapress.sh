@@ -1644,6 +1644,15 @@ sh_yes() {
         _content "Website on this domain is installed!"
         _content
         _s
+        if [ "${1}" = "reboot" ]; then
+            _content
+            _content "Reboot after 10 seconds ..."
+            _content "To cancel, press Ctrl + C"
+            _content
+            _s
+            sleep 10
+            reboot
+        fi
         exit 0
     fi
 }
@@ -2076,7 +2085,7 @@ while [ "${WHILE}" -lt "2" ]; do
     case ${OPTION} in
         "i"|"install"|1 )
             read_domain ${2}
-            sh_yes
+            sh_yes "reboot"
             read_lang ${3}
             read_theme ${4}
             read_password ${5}
