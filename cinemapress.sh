@@ -2241,6 +2241,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s "${2}"
             6_https "${2}" "ss"
+            exit 0
         ;;
         "stop"|"start"|"restart" )
             _br
