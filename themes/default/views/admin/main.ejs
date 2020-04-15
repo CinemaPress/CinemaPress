@@ -1172,22 +1172,12 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-lg-6 col-xs-6 text-center">
-                                            <select name="config.image.addr" class="form-control">
-                                                <option value="<%- config.domain %>" <% if (config.image.addr === config.domain) { %>selected="selected"<% } %>><%- (config.subdomain + config.domain).toUpperCase() %></option>
-                                                <option value="third-party" <% if (config.image.addr === 'st.kp.yandex.net' || config.image.addr === 'image.tmdb.org' || config.image.addr === 'm.media-amazon.com' || config.image.addr === 'third-party') { %>selected="selected"<% } %>><%= __('Сторонний источник') %></option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6 text-center">
+                                        <div class="col-lg-12 col-xs-12 text-center">
                                             <select name="config.image.save" class="form-control">
-                                                <option value="1" <% if (config.image.save) { %>selected="selected"
-                                                        <% } %>
-                                                >
+                                                <option value="1" <% if (config.image.save) { %>selected="selected"<% } %>>
                                                     <%= __('Сохранять изображения') %>
                                                 </option>
-                                                <option value="0" <% if (!config.image.save) { %>selected="selected"
-                                                        <% } %>
-                                                >
+                                                <option value="0" <% if (!config.image.save) { %>selected="selected"<% } %>>
                                                     <%= __('Не сохранять изображения') %>
                                                 </option>
                                             </select>

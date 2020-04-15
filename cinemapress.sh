@@ -458,18 +458,56 @@ ip_install() {
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
-    rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
-    rm -rf /var/app && mkdir -p /var/app/windows && mkdir -p /var/app/linux && mkdir -p /var/app/osx && \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/windows/* /var/app/windows/ &>/dev/null; \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/linux/* /var/app/linux/ &>/dev/null; \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/osx/* /var/app/osx/ &>/dev/null
+    mkdir -p /var/temp
+    if [ ! -d /var/temp/nginx ]; then
+        mkdir -p /var/temp/nginx
+        cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/temp/nginx/ 2>/dev/null
+    fi
+    if [ ! -d /var/temp/windows ] && [ -d /home/"${LOCAL_DOMAIN}"/files/windows ]; then
+        mv -f /home/"${LOCAL_DOMAIN}"/files/windows /var/temp/windows 2>/dev/null
+    fi
+    if [ ! -d /var/temp/linux ] && [ -d /home/"${LOCAL_DOMAIN}"/files/linux ]; then
+        mv -f /home/"${LOCAL_DOMAIN}"/files/linux /var/temp/linux 2>/dev/null
+    fi
+    if [ ! -d /var/temp/osx ] && [ -d /home/"${LOCAL_DOMAIN}"/files/osx ]; then
+        mv -f /home/"${LOCAL_DOMAIN}"/files/osx /var/temp/osx 2>/dev/null
+    fi
+    if [ ! -d /var/temp/poster ]; then
+        mv -f /home/"${LOCAL_DOMAIN}"/files/poster /var/temp/poster 2>/dev/null
+    fi
+    if [ ! -d /var/temp/picture ]; then
+        mv -f /home/"${LOCAL_DOMAIN}"/files/picture /var/temp/picture 2>/dev/null
+    fi
     3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
-    rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
+    if [ ! -d /var/temp/sphinx ]; then
+        mkdir -p /var/temp/sphinx
+        cp -rf /var/lib/sphinx/data/* /var/temp/sphinx/ 2>/dev/null
+    fi
     1_install "${LOCAL_DOMAIN}"
-    cp -rf /var/sphinx/* /var/lib/sphinx/data/ && rm -rf /var/sphinx
-    cp -rf /var/nginx/* /home/"${LOCAL_DOMAIN}"/config/production/nginx/ && rm -rf /var/nginx
-    cp -rf /var/app/* /home/"${LOCAL_DOMAIN}"/files/ &>/dev/null && rm -rf /var/app
+    if [ -d /var/temp/sphinx ] && [ -d /var/lib/sphinx/data ]; then
+        cp -rf /var/temp/sphinx/* /var/lib/sphinx/data/ 2>/dev/null
+        rm -rf /var/temp/sphinx
+    fi
+    if [ -d /var/temp/nginx ] && [ -d /home/"${LOCAL_DOMAIN}"/config/production/nginx ]; then
+        cp -rf /var/temp/nginx/* /home/"${LOCAL_DOMAIN}"/config/production/nginx/ 2>/dev/null
+        rm -rf /var/temp/nginx
+    fi
+    if [ -d /var/temp/windows ] && [ ! -d /home/"${LOCAL_DOMAIN}"/files/windows ]; then
+        mv -f /var/temp/windows /home/"${LOCAL_DOMAIN}"/files/windows 2>/dev/null
+    fi
+    if [ -d /var/temp/linux ] && [ ! -d /home/"${LOCAL_DOMAIN}"/files/linux ]; then
+        mv -f /var/temp/linux /home/"${LOCAL_DOMAIN}"/files/linux 2>/dev/null
+    fi
+    if [ -d /var/temp/osx ] && [ ! -d /home/"${LOCAL_DOMAIN}"/files/osx ]; then
+        mv -f /var/temp/osx /home/"${LOCAL_DOMAIN}"/files/osx 2>/dev/null
+    fi
+    if [ -d /var/temp/poster ]; then
+        mv -f /var/temp/poster /home/"${LOCAL_DOMAIN}"/files/poster 2>/dev/null
+    fi
+    if [ -d /var/temp/picture ]; then
+        mv -f /var/temp/picture /home/"${LOCAL_DOMAIN}"/files/picture 2>/dev/null
+    fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ]; then
@@ -776,12 +814,13 @@ ip_install() {
 
     echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
+    NGX="/home/${LOCAL_DOMAIN}/config/production/nginx"
+
     if [ "${LOCAL_CLOUDFLARE_EMAIL}" != "" ] \
     && [ "${LOCAL_CLOUDFLARE_API_KEY}" != "" ]; then
 
-        NGX="/home/${LOCAL_DOMAIN}/config/production/nginx"
         echo -e "dns_cloudflare_email = \"${LOCAL_CLOUDFLARE_EMAIL}\"\ndns_cloudflare_api_key = \"${LOCAL_CLOUDFLARE_API_KEY}\"" \
-            > ${NGX}/cloudflare.ini
+            > "${NGX}/cloudflare.ini"
 
         _header "Generating, please wait ..."
         _br
@@ -790,42 +829,64 @@ ip_install() {
 
         docker run \
             --rm \
-            -v ${NGX}/ssl.d:/etc/letsencrypt \
-            -v ${NGX}/letsencrypt:/var/lib/letsencrypt \
-            -v ${NGX}/cloudflare.ini:/cloudflare.ini \
+            -v "${NGX}/ssl.d:/etc/letsencrypt" \
+            -v "${NGX}/letsencrypt:/var/lib/letsencrypt" \
+            -v "${NGX}/cloudflare.ini:/cloudflare.ini" \
             certbot/dns-cloudflare \
             certonly \
             --dns-cloudflare \
             --dns-cloudflare-credentials /cloudflare.ini \
-            --email support@${LOCAL_DOMAIN} \
+            --email "support@${LOCAL_DOMAIN}" \
             --non-interactive \
             --agree-tos \
             -d "${LOCAL_DOMAIN}" \
             -d "*.${LOCAL_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/home/${LOCAL_DOMAIN}/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
 
         sleep 15
 
         if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
-            openssl dhparam -out ${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem 2048 \
+            openssl dhparam -out "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem" 2048 \
                 >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
-            sed -Ei "s/#ssl //g" ${NGX}/conf.d/default.conf
+            sed -Ei "s/self-signed/live/g" "${NGX}/ssl.d/default.conf"
+            sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
-                /home/${LOCAL_DOMAIN}/config/production/config.js
-            docker restart ${LOCAL_DOMAIN_} \
+                "/home/${LOCAL_DOMAIN}/config/production/config.js"
+            docker restart "${LOCAL_DOMAIN_}" \
                 >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
-            _header "Generating, completed successfully!"
+            _header "Generating wildcard certificate, completed successfully!"
             _br
         else
             _header "ERROR"
             _content
-            _content "SSL certificate is not generated,"
+            _content "Wildcard SSL certificate is not generated,"
             _content "check the correct Email and Global API Key."
             _content
             _s
         fi
-
+    elif [ "${LOCAL_CLOUDFLARE_EMAIL}" = "ss" ]; then
+        rm -rf "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"
+        mkdir -p "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"
+        openssl req \
+            -x509 \
+            -nodes \
+            -days 3650 \
+            -subj "/C=CA/ST=QC/O=${LOCAL_DOMAIN}/CN=${LOCAL_DOMAIN}" \
+            -addext "subjectAltName=DNS:${LOCAL_DOMAIN}" \
+            -newkey rsa:2048 \
+            -keyout "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"/privkey.pem \
+            -out "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"/fullchain.pem
+        openssl dhparam \
+            -out "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"/dhparam.pem 2048
+        sed -Ei "s/live/self-signed/g" "${NGX}/ssl.d/default.conf"
+        sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
+        sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
+            /home/"${LOCAL_DOMAIN}"/config/production/config.js
+        docker restart "${LOCAL_DOMAIN_}" \
+            >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+        _header "Generating self-signed certificate, completed successfully!"
+        _br
     fi
     sleep 10
 }
@@ -2115,25 +2176,23 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             read_key ${3}
             _s ${3}
-            if [ -f "/var/local/images/poster/no.jpg" ]; then
+            if [ -f "/home/${CP_DOMAIN}/files/poster/.latest" ]; then
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
                 if [ -f "/var/images.tar" ]; then
-                    tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1
+                    tar -xf /var/images.tar -C /home/"${CP_DOMAIN}"/files >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1
                 fi
             else
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
-                mkdir -p /var/local/images/poster
-                cp -r /home/${CP_DOMAIN}/files/poster/no.gif /var/local/images/poster/no.gif
-                cp -r /home/${CP_DOMAIN}/files/poster/no.jpg /var/local/images/poster/no.jpg
                 if [ -f "/var/images.tar" ]; then
                     _header "UNPACKING"
                     _content
                     _content "Unpacking may take several hours ..."
                     _content
                     _s
-                    nohup tar -xf /var/images.tar -C /var/local/images >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
+                    touch /home/"${CP_DOMAIN}"/files/poster/.latest
+                    nohup tar -xf /var/images.tar -C /home/"${CP_DOMAIN}"/files >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
                 fi
             fi
             exit 0
@@ -2165,6 +2224,12 @@ while [ "${WHILE}" -lt "2" ]; do
         "upd" )
             docker_install "UPD"
             exit 0
+        ;;
+        "ss"|"self-signed" )
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            6_https "${2}" "ss"
         ;;
         "stop"|"start"|"restart" )
             _br

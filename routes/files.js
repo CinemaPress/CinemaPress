@@ -55,15 +55,7 @@ router.get(
     var source = false;
 
     if (url_kp) {
-      if (config.image.addr === config.domain) {
-        if (size === 'original' || (type === 'picture' && size === 'medium')) {
-          source = 'kinopoisk';
-        } else {
-          source = 'server';
-        }
-      } else {
-        source = 'kinopoisk';
-      }
+      source = 'kinopoisk';
     } else if (url_tmdb) {
       source = 'tmdb';
     } else if (url_imdb) {
@@ -124,10 +116,6 @@ router.get(
                 break;
             }
             break;
-          case 'server':
-            image = config.protocol + config.subdomain + config.domain;
-            image += '/images/poster/' + size + '/img' + file;
-            break;
         }
         break;
       case 'picture':
@@ -176,10 +164,6 @@ router.get(
                   '/images/M/' + id + '._V1_SX2400_CR0,0,0,0_AL_.' + format;
                 break;
             }
-            break;
-          case 'server':
-            image = config.protocol + config.subdomain + config.domain;
-            image += '/images/picture/' + size + '/img' + file;
             break;
         }
         break;

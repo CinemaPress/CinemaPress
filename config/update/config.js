@@ -143,9 +143,6 @@ async.series(
       c.urls.admin = config_default.urls.admin && !(/^admin-/i.test(c.urls.admin))
         ? config_default.urls.admin
         : c.urls.admin;
-      c.image.addr = config_default.image.addr && c.image.addr !== c.domain
-        ? config_default.image.addr
-        : c.image.addr;
       CP_save.save(
         c,
         'config',
