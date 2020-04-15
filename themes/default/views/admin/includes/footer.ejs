@@ -340,7 +340,7 @@
 
       kp_id = parseInt(id_kp) - parseInt(<%- config.urls.unique_id %>);
     } else if (id.value.indexOf('kinopoisk.ru') + 1) {
-      id_kp = /(film\/|movie\/).*?([0-9]{3,8})\//gi.exec(id.value);
+      id_kp = /(film\/|movie\/|series\/).*?([0-9]{3,8})\//gi.exec(id.value);
       kp_id = (id_kp) ? parseInt(id_kp[2]) : 0;
     }
 

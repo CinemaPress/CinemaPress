@@ -191,7 +191,6 @@
 	"Фильмов:": "filmy:",
 	"StartMovies": "---",
 	"Тема:": "Předmět:",
-	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Jaké je společné a individuální téma CinemaPress?",
 	"Обновление:": "Aktualizace:",
 	"каждое": "každý",
 	"UpdatePrice": "--$",
@@ -951,5 +950,6 @@
 	"IP адреса для блокировки": "IP adresy pro blokování",
 	"Название организации для поиска всех её IP": "Název organizace hledat všechny jeho IP",
 	"Добавить все IP": "Přidejte všechny IP",
-	"Поиск по WHOIS в реальном времени": "Vyhledávat WHOIS v reálném čase"
+	"Поиск по WHOIS в реальном времени": "Vyhledávat WHOIS v reálném čase",
+	"Что такое бесплатная и премиум тема оформления CinemaPress?": "To, co je zdarma a prémie téma designu CinemaPress?"
 }

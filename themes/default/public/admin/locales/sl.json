@@ -191,7 +191,6 @@
 	"Фильмов:": "filmi:",
 	"StartMovies": "---",
 	"Тема:": "Zadeva:",
-	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Kakšna je skupna in individualna tema CinemaPress?",
 	"Обновление:": "Posodobi:",
 	"каждое": "vsak",
 	"UpdatePrice": "--$",
@@ -951,5 +950,6 @@
 	"IP адреса для блокировки": "IP naslovi za blokiranje",
 	"Название организации для поиска всех её IP": "Ime organizacije za iskanje vse svoje IP",
 	"Добавить все IP": "Dodaj vse IP",
-	"Поиск по WHOIS в реальном времени": "Iskanje WHOIS v realnem času"
+	"Поиск по WHOIS в реальном времени": "Iskanje WHOIS v realnem času",
+	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Kaj je brezplačna in premium dizajn tema CinemaPress?"
 }

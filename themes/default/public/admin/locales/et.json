@@ -191,7 +191,6 @@
 	"Фильмов:": "filmid:",
 	"StartMovies": "---",
 	"Тема:": "Teema:",
-	"Что такое общая и индивидуальная тема оформления CinemaPress?": "Mis on CinemaPressi ACMSi ühine ja individuaalne teema?",
 	"Обновление:": "Värskendamine:",
 	"каждое": "igaüks",
 	"UpdatePrice": "--$",
@@ -951,5 +950,6 @@
 	"IP адреса для блокировки": "IP aadresse blokeerimine",
 	"Название организации для поиска всех её IP": "Nimi korralduse otsida kõiki oma IP",
 	"Добавить все IP": "Lisa kõik IP",
-	"Поиск по WHOIS в реальном времени": "Otsi WHOIS reaalajas"
+	"Поиск по WHOIS в реальном времени": "Otsi WHOIS reaalajas",
+	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Mis on tasuta ja premium kujundus CinemaPress?"
 }

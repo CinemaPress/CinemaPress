@@ -459,10 +459,10 @@ ip_install() {
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     rm -rf /var/nginx && mkdir -p /var/nginx && cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/* /var/nginx/
-    rm -rf /var/app && mkdir -p /var/app && \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/windows /var/app/ &>/dev/null; \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/linux /var/app/ &>/dev/null; \
-        cp -rf /home/"${LOCAL_DOMAIN}"/files/osx /var/app/ &>/dev/null
+    rm -rf /var/app && mkdir -p /var/app/windows && mkdir -p /var/app/linux && mkdir -p /var/app/osx && \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/windows/* /var/app/windows/ &>/dev/null; \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/linux/* /var/app/linux/ &>/dev/null; \
+        cp -rf /home/"${LOCAL_DOMAIN}"/files/osx/* /var/app/osx/ &>/dev/null
     3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
     rm -rf /var/sphinx && mkdir -p /var/sphinx && cp -rf /var/lib/sphinx/data/* /var/sphinx/
@@ -2891,6 +2891,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/app.tar /home/${CP_DOMAIN}/
+                if [ -f "/home/${CP_DOMAIN}/app.tar" ]; then
+                    cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/app.tar
+                    rm -rf /home/${CP_DOMAIN}/app.tar
+                fi
             elif [ "${3}" = "create" ] || [ "${5}" = "create" ]; then
                 cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar \
                     files/poster \

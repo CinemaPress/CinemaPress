@@ -811,7 +811,7 @@
                                       var intId = (execId) ? parseInt(execId[1]) : 0;
                                       kp_id = intId - uniqueId;
                                     } else if (idElem.value.indexOf('kinopoisk.ru') + 1) {
-                                      match = /(film\/|movie\/).*?([0-9]{3,8})\//gi.exec(id.value);
+                                      match = /(film\/|movie\/|series\/).*?([0-9]{3,8})\//gi.exec(id.value);
                                       kp_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
                                     } else if (idElem.value.indexOf('themoviedb.org') + 1) {
                                       match = /(tv\/|movie\/)([0-9]{1,8})/gi.exec(id.value);
