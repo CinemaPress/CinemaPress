@@ -2022,7 +2022,8 @@ docker_speed_off() {
         "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 docker_ssl_on() {
-    if [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ]; then
+    if [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ] || \
+    [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/self-signed/${CP_DOMAIN}/" ]; then
         sed -Ei "s/    #ssl include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
             "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
     fi

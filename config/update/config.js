@@ -80,6 +80,7 @@ var config_default = require(path.join(__dirname, '..', 'default', 'config.js'))
 var modules_default = require(path.join(__dirname, '..', 'default', 'modules.js'));
 
 var prt = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d', 'live', config.domain));
+var prt2 = fs.existsSync(path.join(__dirname, '..', 'production', 'nginx', 'ssl.d', 'self-signed', config.domain));
 
 var thm = config.theme !== 'default' && fs.existsSync(path.join(__dirname, '..', '..', 'themes', config.theme))
   ? config.theme
@@ -133,7 +134,7 @@ async.series(
     config: function(callback) {
       var c = objAdd(objReplace(config_default, config), config);
       c.theme = thm;
-      c.protocol = prt ? 'https://' : config.protocol;
+      c.protocol = prt || prt2 ? 'https://' : config.protocol;
       c.database = config_default.database
         ? config_default.database
         : c.database;
