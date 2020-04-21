@@ -288,7 +288,6 @@ ip_install() {
         --network cinemapress \
         -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
-        -v /var/local/images:/var/local/images \
         -v /var/local/balancer:/var/local/balancer \
         -v /home/${LOCAL_DOMAIN}:/home/${LOCAL_DOMAIN} \
         ${EXTERNAL_DOCKER} \
@@ -341,7 +340,6 @@ ip_install() {
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
                 -v /etc/nginx/bots.d:/etc/nginx/bots.d \
-                -v /var/local/images:/var/local/images \
                 -v /var/local/balancer:/var/local/balancer \
                 -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
@@ -2203,6 +2201,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     _content "Unpacking may take several hours ..."
                     _content
                     _s
+                    mkdir -p /home/"${CP_DOMAIN}"/files/poster/
                     touch /home/"${CP_DOMAIN}"/files/poster/.latest
                     nohup tar -xf /var/images.tar -C /home/"${CP_DOMAIN}"/files >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
                 fi
