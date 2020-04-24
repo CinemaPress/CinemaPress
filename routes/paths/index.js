@@ -388,8 +388,12 @@ function dataIndex(options, callback) {
             },
             content: function(callback) {
               if (modules.content.status && modules.content.data.index.url) {
-                var r = [];
-                var content_urls = modules.content.data.index.url.split(',');
+                var content_urls = modules.content.data.index.url
+                  .split(',')
+                  .map(function(u) {
+                    return u.trim();
+                  })
+                  .filter(Boolean);
                 async.eachOf(
                   content_urls,
                   function(content_url, key, callback) {
@@ -454,7 +458,18 @@ function dataIndex(options, callback) {
                                     block.movies.length &&
                                     block.name
                                   ) {
-                                    r.push(block);
+                                    content_urls = content_urls.map(function(
+                                      u
+                                    ) {
+                                      if (
+                                        typeof u === 'string' &&
+                                        u === content_url
+                                      ) {
+                                        return block;
+                                      } else {
+                                        return u;
+                                      }
+                                    });
                                   }
 
                                   callback();
@@ -474,7 +489,7 @@ function dataIndex(options, callback) {
                       options.debug.duration.current = new Date();
                     }
                     if (err) console.error(err);
-                    callback(null, r);
+                    callback(null, content_urls);
                   }
                 );
               } else {

@@ -47,7 +47,15 @@ var last = require(path.join(
 router.post('/comments', function(req, res) {
   var form = req.body;
   var ip = getIp(req);
-  var referrer = new URL(req.get('Referrer'));
+  var referrer = {};
+
+  if (req.get('Referrer') || form.comment_url) {
+    referrer = new URL(req.get('Referrer') || form.comment_url);
+  }
+
+  if (!referrer.pathname) {
+    return res.json({ status: 'error', code: 16, message: 'URL undefined' });
+  }
 
   if (!modules.comments.status) {
     return res.json({ status: 'error', code: 1, message: 'Comments disabled' });
