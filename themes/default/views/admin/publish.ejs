@@ -359,7 +359,7 @@
                                                                     <% soon_id.forEach(function (id) { %>
                                                                         <a href="/<%- config.urls.admin %>/movies?id=<%- id %>"
                                                                            target="_blank">
-                                                                            <li style="background: none !important;">
+                                                                            <li style="background: none !important; display: none">
                                                                                 <img class="media-object"
                                                                                      src="/files/poster/medium/<%- id %>.jpg"
                                                                                      alt="ID: <%- id %>"
@@ -368,6 +368,14 @@
                                                                         </a>
                                                                     <% }); %>
                                                                 </ul>
+                                                                <script>
+                                                                  var movies = document.querySelectorAll('.thumbs-list li');
+                                                                  movies.forEach(function(m, i) {
+                                                                    setTimeout(function() {
+                                                                      m.style.display = 'inline-block';
+                                                                    }, i * 300);
+                                                                  });
+                                                                </script>
                                                             </div>
                                                         </div>
                                                     </div>

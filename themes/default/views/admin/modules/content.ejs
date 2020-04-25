@@ -242,15 +242,20 @@
                                             <ul data-add-name="content.content_movies">
                                                 <% if (content.content_movies) { %>
                                                     <% content.content_movies.split(',').forEach(function (id) { %>
-                                                        <li data-delete-id="<%- id %>"
-                                                            data-delete-name="content.content_movies">
-                                                            <img class="media-object"
-                                                                 src="/files/poster/medium/<%- id %>.jpg"
-                                                                 alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                        <li data-delete-id="<%- id %>" data-delete-name="content.content_movies" style="display:none">
+                                                            <img class="media-object" src="/files/poster/medium/<%- id %>.jpg" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                         </li>
                                                     <% }); %>
                                                 <% } %>
                                             </ul>
+                                            <script>
+                                              var movies = document.querySelectorAll('.thumbs-list li');
+                                              movies.forEach(function(m, i) {
+                                                setTimeout(function() {
+                                                  m.style.display = 'inline-block';
+                                                }, i * 300);
+                                              });
+                                            </script>
                                         </div>
 
                                         <div style="display: none" id="content_ids">

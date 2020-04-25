@@ -283,7 +283,7 @@
                                                         <% if (config.index.ids.keys) { %>
                                                             <% config.index.ids.keys.split(',').forEach(function (id) { %>
                                                                 <li data-delete-id="<%- id %>"
-                                                                    data-delete-name="config.index.ids.keys">
+                                                                    data-delete-name="config.index.ids.keys" style="display: none">
                                                                     <img class="media-object"
                                                                          src="/files/poster/medium/<%- id %>.jpg"
                                                                          alt="ID: <%- id %>" title="ID: <%- id %>">
@@ -291,6 +291,14 @@
                                                             <% }); %>
                                                         <% } %>
                                                     </ul>
+                                                    <script>
+                                                      var movies = document.querySelectorAll('.thumbs-list li');
+                                                      movies.forEach(function(m, i) {
+                                                        setTimeout(function() {
+                                                          m.style.display = 'inline-block';
+                                                        }, i * 300);
+                                                      });
+                                                    </script>
                                                 </div>
                                                 <div style="display: none" id="index_ids">
 

@@ -146,7 +146,7 @@
                                                             <% if (modules.soon.data.movies) { %>
                                                                 <% modules.soon.data.movies.forEach(function (id) { %>
                                                                     <li data-delete-id="<%- id %>"
-                                                                        data-delete-name="modules.soon.data.movies">
+                                                                        data-delete-name="modules.soon.data.movies" style="display: none">
                                                                         <img class="media-object"
                                                                              src="/files/poster/medium/<%- id %>.jpg"
                                                                              alt="ID: <%- id %>" title="ID: <%- id %>">
@@ -154,6 +154,14 @@
                                                                 <% }); %>
                                                             <% } %>
                                                         </ul>
+                                                        <script>
+                                                          var movies = document.querySelectorAll('.thumbs-list li');
+                                                          movies.forEach(function(m, i) {
+                                                            setTimeout(function() {
+                                                              m.style.display = 'inline-block';
+                                                            }, i * 300);
+                                                          });
+                                                        </script>
                                                     </div>
 
                                                     <div style="display: none" id="soon_ids">

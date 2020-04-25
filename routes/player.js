@@ -32,43 +32,43 @@ router.get('/?', function(req, res) {
   var script =
     '(function() {' +
     "    var y = document.querySelector('#yohoho');" +
-    "    var yohoho = document.createElement('div');" +
+    "    var player = document.createElement('div');" +
     '    var attr = Array.prototype.slice.call(y.attributes);' +
-    '    while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, a.nodeValue);}' +
-    '    yohoho.innerHTML = y.innerHTML;' +
-    '    y.parentNode.replaceChild(yohoho, y);' +
+    '    while(a = attr.pop()) {player.setAttribute(a.nodeName, a.nodeValue);}' +
+    '    player.innerHTML = y.innerHTML;' +
+    '    y.parentNode.replaceChild(player, y);' +
     "    i = document.createElement('iframe');" +
     "    i.setAttribute('id', 'yohoho-iframe');" +
     "    i.setAttribute('frameborder', '0');" +
     "    i.setAttribute('allowfullscreen', 'allowfullscreen');" +
     '    i.setAttribute("src", decodeURIComponent("iframe-src"));' +
-    '    yohoho.appendChild(i);' +
-    '    if (parseInt(yohoho.offsetWidth)) {' +
-    '        w = parseInt(yohoho.offsetWidth);' +
+    '    player.appendChild(i);' +
+    '    if (parseInt(player.offsetWidth)) {' +
+    '        w = parseInt(player.offsetWidth);' +
     '    }' +
-    '    else if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetWidth)) {' +
-    '        w = parseInt(yohoho.parentNode.offsetWidth);' +
+    '    else if (player.parentNode && parseInt(player.parentNode.offsetWidth)) {' +
+    '        w = parseInt(player.parentNode.offsetWidth);' +
     '    }' +
     '    else {' +
     '        w = 610;' +
     '    }' +
-    "    if (yohoho.parentNode && yohoho.parentNode.tagName && yohoho.parentNode.tagName.toLowerCase() === 'body') {" +
+    "    if (player.parentNode && player.parentNode.tagName && player.parentNode.tagName.toLowerCase() === 'body') {" +
     '        h = Math.max(document.body.scrollHeight, document.body.offsetHeight,' +
     '            document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);' +
     '    }' +
-    '    else if (parseInt(yohoho.offsetHeight) && parseInt(yohoho.offsetHeight) < 370) {' +
-    '        if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetHeight) && parseInt(yohoho.parentNode.offsetHeight) >= 370) {' +
-    '            h = parseInt(yohoho.parentNode.offsetHeight);' +
+    '    else if (parseInt(player.offsetHeight) && parseInt(player.offsetHeight) < 370) {' +
+    '        if (player.parentNode && parseInt(player.parentNode.offsetHeight) && parseInt(player.parentNode.offsetHeight) >= 370) {' +
+    '            h = parseInt(player.parentNode.offsetHeight);' +
     '        }' +
     '        else {' +
     '            h = 370;' +
     '        }' +
     '    }' +
-    '    else if (parseInt(yohoho.offsetHeight) && w/3 < parseInt(yohoho.offsetHeight)) {' +
-    '        h = parseInt(yohoho.offsetHeight);' +
+    '    else if (parseInt(player.offsetHeight) && w/3 < parseInt(player.offsetHeight)) {' +
+    '        h = parseInt(player.offsetHeight);' +
     '    }' +
-    '    else if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetHeight) && w/3 < parseInt(yohoho.parentNode.offsetHeight)) {' +
-    '        h = parseInt(yohoho.parentNode.offsetHeight);' +
+    '    else if (player.parentNode && parseInt(player.parentNode.offsetHeight) && w/3 < parseInt(player.parentNode.offsetHeight)) {' +
+    '        h = parseInt(player.parentNode.offsetHeight);' +
     '    }' +
     '    else {' +
     '        h = w/2;' +
@@ -77,7 +77,7 @@ router.get('/?', function(req, res) {
     "    i.setAttribute('style', style);" +
     "    i.setAttribute('width', w);" +
     "    i.setAttribute('height', h);" +
-    "    yohoho.setAttribute('style', style);" +
+    "    player.setAttribute('style', style);" +
     '    var q = document.querySelector("[data-yo=\\"quality\\"]");' +
     '    if (q && "iframe-"+"quality" !== "iframe-quality") {q.innerHTML="iframe-quality"};' +
     '    var t = document.querySelector("[data-yo=\\"translate\\"]");' +
