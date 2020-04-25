@@ -811,6 +811,7 @@ ip_install() {
     LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
     LOCAL_CLOUDFLARE_EMAIL=${2:-${CLOUDFLARE_EMAIL}}
     LOCAL_CLOUDFLARE_API_KEY=${3:-${CLOUDFLARE_API_KEY}}
+    if [ "${4}" ]; then LOCAL_SUBDOMAIN="$(echo "${4}" | sed -r "s/[^A-Za-z0-9]//g")."; fi
 
     echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
@@ -839,17 +840,18 @@ ip_install() {
             --email "support@${LOCAL_DOMAIN}" \
             --non-interactive \
             --agree-tos \
-            -d "${LOCAL_DOMAIN}" \
-            -d "*.${LOCAL_DOMAIN}" \
+            -d "${LOCAL_SUBDOMAIN}${LOCAL_DOMAIN}" \
+            -d "*.${LOCAL_SUBDOMAIN}${LOCAL_DOMAIN}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
                 >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
 
         sleep 15
 
-        if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
-            openssl dhparam -out "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem" 2048 \
+        if [ -d "${NGX}/ssl.d/live/${LOCAL_SUBDOMAIN}${LOCAL_DOMAIN}/" ]; then
+            openssl dhparam -out "${NGX}/ssl.d/live/${LOCAL_SUBDOMAIN}${LOCAL_DOMAIN}/dhparam.pem" 2048 \
                 >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
-            sed -Ei "s/self-signed/live/g" "${NGX}/ssl.d/default.conf"
+            sed -Ei "s~/self-signed/~/live/~g" "${NGX}/ssl.d/default.conf"
+            sed -Ei "s~live/${LOCAL_DOMAIN}~live/${LOCAL_SUBDOMAIN}${LOCAL_DOMAIN}~g" "${NGX}/ssl.d/default.conf"
             sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 "/home/${LOCAL_DOMAIN}/config/production/config.js"
@@ -2134,12 +2136,12 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "h"|"https"|6 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            read_cloudflare_email ${3}
-            read_cloudflare_api_key ${4}
-            _s ${4}
-            6_https ${2} ${3} ${4}
+            read_cloudflare_email "${3}"
+            read_cloudflare_api_key "${4}"
+            _s "${4}"
+            6_https "${2}" "${3}" "${4}" "${5}"
             post_commands
             exit 0
         ;;

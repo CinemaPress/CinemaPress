@@ -720,9 +720,9 @@
     }
 
     if (data.config && data.config.subdomain) {
-      data.config.subdomain = data.config.subdomain.replace(/\./g, '') + '.';
-      if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.' || data.config.subdomain === 'app.') {
-        alert('NOT «m.», «tv.», «www.», «app.»!');
+      data.config.subdomain = data.config.subdomain.replace(/\.$/g, '') + '.';
+      if (data.config.subdomain === 'www.' || data.config.subdomain === 'tv.' || data.config.subdomain === 'm.' || data.config.subdomain === 'app.' || data.config.subdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
         self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
         self.addEventListener('click', saveData);
         return;
@@ -730,9 +730,9 @@
     }
 
     if (data.config && data.config.botdomain) {
-      data.config.botdomain = data.config.botdomain.replace(/\./g, '') + '.';
-      if (data.config.botdomain === 'www.' || data.config.botdomain === 'tv.' || data.config.botdomain === 'm.') {
-        alert('NOT «m.», «tv.», «www.»!');
+      data.config.botdomain = data.config.botdomain.replace(/\.$/g, '') + '.';
+      if (data.config.botdomain === 'www.' || data.config.botdomain === 'tv.' || data.config.botdomain === 'm.' || data.config.botdomain === 'app.' || data.config.botdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
         self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
         self.addEventListener('click', saveData);
         return;

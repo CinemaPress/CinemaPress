@@ -112,7 +112,7 @@
                                     <div class="row">
                                         <div class="col-xs-3">
                                             <input name="config.subdomain"
-                                                   value="<%= config.subdomain.replace(/\./g, '') %>"
+                                                   value="<%= config.subdomain.replace(/\.$/, '') %>"
                                                    class="form-control input_url text-right" type="text"
                                                    placeholder="blog">
                                         </div>
@@ -132,7 +132,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
                                                 <input name="config.botdomain"
-                                                       value="<%= config.botdomain.replace(/\./g, '') %>"
+                                                       value="<%= config.botdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
                                                        placeholder="<%= config.language %>">
                                                 <span class="input-group-addon text-muted">.<%= config.domain %></span>
