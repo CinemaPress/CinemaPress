@@ -563,6 +563,8 @@ ip_install() {
         cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
     fi
 
+    sleep 5
+
     RCS=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
@@ -1809,7 +1811,7 @@ docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
-        rm -rf /var/${CP_THEME:?}
+        rm -rf /var/cinemapress/* /var/${CP_THEME:?}
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
@@ -1907,8 +1909,10 @@ docker_restore() {
     docker_stop
     rm -rf /var/mega/new && mkdir -p /var/mega/new
     mkdir -p /home/"${CP_DOMAIN}"/config/custom
+    sleep 5
     sleep 3; rclone -vv --ignore-size copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/config.tar /var/mega/new/"${CP_DOMAIN}"/
     sleep 3; rclone -vv --ignore-size copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/themes.tar /var/mega/new/"${CP_DOMAIN}"/
+    sleep 5
     if [ -f /var/mega/new/"${CP_DOMAIN}"/config.tar ]; then
         cd /home/"${CP_DOMAIN}" && \
         tar -xf /var/mega/new/"${CP_DOMAIN}"/config.tar
