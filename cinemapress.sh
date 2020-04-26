@@ -1925,9 +1925,7 @@ docker_restore() {
         tar --exclude=themes/default/views/desktop \
             -xf /var/mega/"${CP_DOMAIN}"/themes.tar
     fi
-    if [ -d "/home/${CP_DOMAIN}/config/custom" ]; then
-        cp -rf /home/"${CP_DOMAIN}"/config/custom/* /home/"${CP_DOMAIN}"/
-    fi
+    cp -rf /home/"${CP_DOMAIN}"/config/custom/* /home/"${CP_DOMAIN}"/ 2>/dev/null
     sleep 5
     if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
       COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
