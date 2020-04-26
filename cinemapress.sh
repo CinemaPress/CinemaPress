@@ -1907,8 +1907,8 @@ docker_restore() {
     docker_stop
     rm -rf /var/mega/new && mkdir -p /var/mega/new
     mkdir -p /home/"${CP_DOMAIN}"/config/custom
-    sleep 3; rclone -vv copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/config.tar /var/mega/new/"${CP_DOMAIN}"/
-    sleep 3; rclone -vv copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/themes.tar /var/mega/new/"${CP_DOMAIN}"/
+    sleep 3; rclone -vv --ignore-size copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/config.tar /var/mega/new/"${CP_DOMAIN}"/
+    sleep 3; rclone -vv --ignore-size copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/themes.tar /var/mega/new/"${CP_DOMAIN}"/
     if [ -f /var/mega/new/"${CP_DOMAIN}"/config.tar ]; then
         cd /home/"${CP_DOMAIN}" && \
         tar -xf /var/mega/new/"${CP_DOMAIN}"/config.tar
@@ -1993,10 +1993,10 @@ docker_backup() {
     sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
     if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
     sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
-    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
-    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
     KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
     KILOBYTE_DIR=$(du -d 0 /home/"${CP_DOMAIN}"/files | cut -f1)
     RCST=$(rclone config show 2>/dev/null | grep "CINEMASTATIC")
@@ -2014,10 +2014,10 @@ docker_backup() {
                     files/linux \
                     files/osx &>/dev/null
                 sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar &>/dev/null
-                sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
+                sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
             fi
             sleep 3; rclone purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar &>/dev/null
-            sleep 3; rclone -vv copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
+            sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
     fi
@@ -2990,10 +2990,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/app.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy CINEMASTATIC:${CP_DOMAIN}/app.tar /home/${CP_DOMAIN}/
                 if [ -f "/home/${CP_DOMAIN}/app.tar" ]; then
                     cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/app.tar
                     rm -rf /home/${CP_DOMAIN}/app.tar
@@ -3008,10 +3008,10 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/linux \
                         files/osx &>/dev/null
                     sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/app.tar &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:${CP_DOMAIN}/static.tar &>/dev/null
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
             exit 0
