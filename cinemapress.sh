@@ -563,7 +563,7 @@ ip_install() {
         cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
     fi
 
-    RCS=`docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS"`
+    RCS=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
         if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
@@ -1901,35 +1901,49 @@ docker_cron() {
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
-    RCS=`rclone config show 2>/dev/null | grep "CINEMAPRESS"`
+    LATEST_DIR=${2:-latest}
+    RCS=$(rclone config show 2>/dev/null | grep "CINEMAPRESS")
     if [ "${RCS}" = "" ]; then exit 0; fi
     docker_stop
-    sleep 3; rclone -vv copy CINEMAPRESS:${WEB_DIR}/latest/config.tar /var/${CP_DOMAIN}/
-    sleep 3; rclone -vv copy CINEMAPRESS:${WEB_DIR}/latest/themes.tar /var/${CP_DOMAIN}/
-    cd /home/${CP_DOMAIN} && \
-    tar -xf /var/${CP_DOMAIN}/config.tar && \
-    tar --exclude=themes/default/views/desktop \
-        -xf /var/${CP_DOMAIN}/themes.tar
-    mkdir -p /home/${CP_DOMAIN}/config/custom
+    rm -rf /var/mega/new && mkdir -p /var/mega/new
+    mkdir -p /home/"${CP_DOMAIN}"/config/custom
+    sleep 3; rclone -vv copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/config.tar /var/mega/new/"${CP_DOMAIN}"/
+    sleep 3; rclone -vv copy CINEMAPRESS:"${WEB_DIR}"/"${LATEST_DIR}"/themes.tar /var/mega/new/"${CP_DOMAIN}"/
+    if [ -f /var/mega/new/"${CP_DOMAIN}"/config.tar ]; then
+        cd /home/"${CP_DOMAIN}" && \
+        tar -xf /var/mega/new/"${CP_DOMAIN}"/config.tar
+    else
+        cd /home/"${CP_DOMAIN}" && \
+        tar -xf /var/mega/"${CP_DOMAIN}"/config.tar
+    fi
+    if [ -f /var/mega/new/"${CP_DOMAIN}"/themes.tar ]; then
+        cd /home/"${CP_DOMAIN}" && \
+        tar --exclude=themes/default/views/desktop \
+            -xf /var/mega/new/"${CP_DOMAIN}"/themes.tar
+    else
+        cd /home/"${CP_DOMAIN}" && \
+        tar --exclude=themes/default/views/desktop \
+            -xf /var/mega/"${CP_DOMAIN}"/themes.tar
+    fi
     if [ -d "/home/${CP_DOMAIN}/config/custom" ]; then
-        cp -rf /home/${CP_DOMAIN}/config/custom/* /home/${CP_DOMAIN}/
+        cp -rf /home/"${CP_DOMAIN}"/config/custom/* /home/"${CP_DOMAIN}"/
     fi
     sleep 5
     if [ -f "/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram" ]; then
       COMMENTSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/comment/comment_${CP_DOMAIN_}.ram")
       if [ "${COMMENTSIZE}" -le "20" ]; then
-        rm -rf /home/${CP_DOMAIN}/config/comment/*;
+        rm -rf /home/"${CP_DOMAIN}"/config/comment/*;
       fi
     else
-      rm -rf /home/${CP_DOMAIN}/config/comment/*;
+      rm -rf /home/"${CP_DOMAIN}"/config/comment/*;
     fi
     if [ -f "/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram" ]; then
       USERSIZE=$(wc -c <"/home/${CP_DOMAIN}/config/user/user_${CP_DOMAIN_}.ram")
       if [ "${USERSIZE}" -le "20" ]; then
-        rm -rf /home/${CP_DOMAIN}/config/user/*;
+        rm -rf /home/"${CP_DOMAIN}"/config/user/*;
       fi
     else
-      rm -rf /home/${CP_DOMAIN}/config/user/*;
+      rm -rf /home/"${CP_DOMAIN}"/config/user/*;
     fi
     docker_start
 }
@@ -1947,7 +1961,7 @@ docker_backup() {
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
-    rm -rf /var/"${CP_DOMAIN:?}" && mkdir -p /var/"${CP_DOMAIN}"
+    rm -rf /var/mega/"${CP_DOMAIN:?}" && mkdir -p /var/mega/"${CP_DOMAIN}"
     cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
         --exclude=config/update \
@@ -1957,7 +1971,7 @@ docker_backup() {
         --exclude=config/production/filestash \
         --exclude=config/production/sphinx \
         --exclude=config/production/nginx \
-        -uf /var/"${CP_DOMAIN}"/config.tar \
+        -uf /var/mega/"${CP_DOMAIN}"/config.tar \
         config
     cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
@@ -1970,7 +1984,7 @@ docker_backup() {
         --exclude=files/osx \
         --exclude=files/bbb.mp4 \
         --exclude=files/content/collage.psd \
-        -uf /var/"${CP_DOMAIN}"/themes.tar \
+        -uf /var/mega/"${CP_DOMAIN}"/themes.tar \
         themes/default/public/desktop \
         themes/default/public/mobile \
         themes/default/views/mobile \
@@ -1979,11 +1993,10 @@ docker_backup() {
     sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
     if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
     sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
-    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
-    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
-    sleep 3; rclone -vv copy /var/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
-    rm -rf /var/"${CP_DOMAIN:?}"
+    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
+    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
+    sleep 3; rclone -vv copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
     KILOBYTE_ALL=$(df -k /home | tail -1 | awk '{print $4}')
     KILOBYTE_DIR=$(du -d 0 /home/"${CP_DOMAIN}"/files | cut -f1)
     RCST=$(rclone config show 2>/dev/null | grep "CINEMASTATIC")
@@ -2329,7 +2342,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${3}" = "create" ] || [ "${3}" = "1" ]; then
                     docker_backup "${4}"
                 elif [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
-                    docker_restore "${4}"
+                    docker_restore "${4}" "${5}"
                 fi
             elif [ "${2}" = "speed" ]; then
                 if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
