@@ -1809,7 +1809,7 @@ docker_run() {
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
-        rm -rf /var/cinemapress/* /var/${CP_THEME:?}
+        rm -rf /var/${CP_THEME:?}
         cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
         cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
         cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
