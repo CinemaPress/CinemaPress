@@ -445,6 +445,15 @@ ip_install() {
         exit 0
     fi
 
+    if [ ! -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
+        _header "WARNING"
+        _content
+        _content "File config.js not found!"
+        _content
+        _s
+        exit 0
+    fi
+
     AA=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
     KK=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
     DD=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
