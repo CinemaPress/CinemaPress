@@ -744,6 +744,56 @@
                                             <div class="spacer-10"></div>
 
                                             <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.content.data.scraper) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.content.data.scraper.split('\n').filter(Boolean).forEach(function(data) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d.length < 5) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- d[0] %></span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div class="<%- custom_div %>">
+                                                                        <code>
+                                                                            <span class="url"><%= d[1].split('/')[2] %></span>
+                                                                            »
+                                                                            <span class="collection"><%= d[4] %></span>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.content.data.scraper"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.content.data.scraper"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example"
+                                                         style="text-align: center">
+                                                        <code><%= __('Добавьте в парсинг хотя бы один веб-сайт') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
                                                 <div class="faq">
                                                     <article class="faq-group">
                                                         <header class="text-muted text-left">
@@ -902,6 +952,10 @@
                                                                     href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><%- content.content_title %></a></span><br><span
                                                                 class="table-content-url-key"><%= __('URL-ключ:') %></span>
                                                         <span class="table-content-key"><%- content.content_url %></span>
+                                                        <% var content_count = content.content_movies.split(',').filter(Boolean).length; %>
+                                                        <% if (content_count) { %>
+                                                            <span class="table-content-id" style="padding: 0;background: none;font-weight: bold;"><%- content_count %></span>
+                                                        <% } %>
                                                     </td>
                                                     <td class="table-settings">
                                                         <a href="javascript:void(0)" data-type="content"

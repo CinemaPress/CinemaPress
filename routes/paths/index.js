@@ -552,9 +552,6 @@ function dataIndex(options, callback) {
         if (!config.default.lastpage && config.index.count.key) {
           return callback(null, config.default.pages + 1);
         }
-        config.index.count.sorting = config.index.count.sorting
-          ? config.index.count.sorting
-          : config.default.sorting;
         return config.index.count.key
           ? config.index.count.type === 'content_url'
             ? CP_get.contents(qwry, 1, 1, true, options, function(
@@ -562,6 +559,33 @@ function dataIndex(options, callback) {
                 contents
               ) {
                 if (err) return callback(err);
+
+                if (!config.index.count.sorting) {
+                  if (options.debug) {
+                    options.debug.detail.push({
+                      type: 'count',
+                      duration:
+                        new Date() - options.debug.duration.current + 'ms'
+                    });
+                    options.debug.duration.current = new Date();
+                  }
+                  if (
+                    contents &&
+                    contents.length &&
+                    contents[0].movies &&
+                    contents[0].movies.length
+                  ) {
+                    return callback(
+                      null,
+                      Math.ceil(
+                        parseInt(contents[0].movies.length) /
+                          config.default.count
+                      )
+                    );
+                  } else {
+                    return callback(null, 0);
+                  }
+                }
 
                 var qwry2 = {};
 
@@ -592,23 +616,25 @@ function dataIndex(options, callback) {
                     })
                   : callback(null, 0);
               })
-            : CP_get.count(qwry, config.index.count.sorting, function(
-                err,
-                num
-              ) {
-                if (options.debug) {
-                  options.debug.detail.push({
-                    type: 'count',
-                    duration: new Date() - options.debug.duration.current + 'ms'
-                  });
-                  options.debug.duration.current = new Date();
+            : CP_get.count(
+                qwry,
+                config.index.count.sorting || config.default.sorting,
+                function(err, num) {
+                  if (options.debug) {
+                    options.debug.detail.push({
+                      type: 'count',
+                      duration:
+                        new Date() - options.debug.duration.current + 'ms'
+                    });
+                    options.debug.duration.current = new Date();
+                  }
+                  if (err) return callback(err);
+
+                  num = Math.ceil(parseInt(num) / config.default.count);
+
+                  return num ? callback(null, num) : callback(null, 0);
                 }
-                if (err) return callback(err);
-
-                num = Math.ceil(parseInt(num) / config.default.count);
-
-                return num ? callback(null, num) : callback(null, 0);
-              })
+              )
           : callback(null, 0);
       }
     },

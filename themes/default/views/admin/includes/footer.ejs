@@ -471,6 +471,7 @@
           'config.publish.thematic.query_id',
           'config.publish.thematic.search',
           'config.publish.indexing.condition',
+          'config.index.count.sorting',
           'config.index.country.keys',
           'config.index.genre.keys',
           'config.index.year.keys',
@@ -755,15 +756,15 @@
           data.config.urls &&
           data.config.urls.admin &&
           data.config.urls.admin !== '<%- config.urls.admin %>') {
-          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' %>' + data.config.urls.admin;
+          location.href = '/' + data.config.urls.admin;
         } else if (data.config &&
           data.config.subdomain &&
           data.config.subdomain !== '<%- config.subdomain %>') {
           location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
         } else if (data.content && !data.content.id) {
-          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/content' %>';
+          location.href = '<%- '/' + config.urls.admin + '/content' %>';
         } else if (data.movie && !data.movie.id) {
-          location.href = '<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.admin + '/movies' %>';
+          location.href = '<%- '/' + config.urls.admin + '/movies' %>';
         } else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
           self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
           self.addEventListener('click', saveData);
@@ -1060,7 +1061,7 @@
     });
   }
 
-  ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom'].forEach(function(ca) {
+  ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);
     }

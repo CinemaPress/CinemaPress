@@ -209,6 +209,15 @@ function fullMovieSchema(page, movie, movies, comments, options) {
 
   var canonical = '<link rel="canonical" href="' + page.url + '"/>';
 
+  if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
+    canonical +=
+      '<link rel="canonical" href="' +
+      page.url
+        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace('/mobile-version', '') +
+      '">';
+  }
+
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
     config.domain +
@@ -433,7 +442,17 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta property="og:image:height" content="400" />';
 
   var canonical =
-    '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '"/>';
+    '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '" />';
+
+  if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
+    canonical +=
+      '<link rel="canonical" href="' +
+      page.url
+        .replace(/&/gi, '&amp;')
+        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace('/mobile-version', '') +
+      '" />';
+  }
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
@@ -531,7 +550,7 @@ function generalSchema(page, options) {
   opengraph += '<meta property="og:image:height" content="400" />';
 
   var canonical =
-    '<link rel="canonical" href="' + config.protocol + options.domain + '"/>';
+    '<link rel="canonical" href="' + config.protocol + options.domain + '" />';
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
