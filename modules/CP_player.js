@@ -174,9 +174,15 @@ function codePlayer(type, movie, options) {
    */
 
   function scriptPlayer(player) {
-    var data = modules.player.data.script
-      ? JSON.parse(modules.player.data.script)
-      : {};
+    var data = {};
+
+    try {
+      if (modules.player.data.script) {
+        data = JSON.parse(modules.player.data.script);
+      }
+    } catch (e) {
+      console.error(e);
+    }
 
     if (type === 'online' || serial.season) {
       data['data-player'] = data['data-player']

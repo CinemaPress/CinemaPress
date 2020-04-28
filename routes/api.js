@@ -49,11 +49,14 @@ router.post('/comments', function(req, res) {
   var ip = getIp(req);
   var referrer = {};
 
-  if (req.get('Referrer') || form.comment_url) {
-    referrer = new URL(req.get('Referrer') || form.comment_url);
+  if (req.get('Referrer')) {
+    referrer = new URL(req.get('Referrer'));
+  }
+  if ((!referrer.pathname || referrer.pathname === '/') && form.comment_url) {
+    referrer = new URL(form.comment_url);
   }
 
-  if (!referrer.pathname) {
+  if (!referrer.pathname || referrer.pathname === '/') {
     return res.json({ status: 'error', code: 16, message: 'URL undefined' });
   }
 

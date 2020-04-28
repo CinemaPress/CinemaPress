@@ -28,9 +28,15 @@ var router = express.Router();
 router.get('/:id', function(req, res) {
   var id = req.params.id ? ('' + req.params.id).replace(/[^0-9]/g, '') : '';
 
-  var data = modules.player.data.script
-    ? JSON.parse(modules.player.data.script)
-    : {};
+  var data = {};
+
+  try {
+    if (modules.player.data.script) {
+      data = JSON.parse(modules.player.data.script);
+    }
+  } catch (e) {
+    console.error(e);
+  }
 
   var parameters = '';
   data['data-kinopoisk'] = id ? id : '';
