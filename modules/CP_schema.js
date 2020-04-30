@@ -148,7 +148,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + config.domain + '" />';
+    '<meta property="og:site_name" content="' + options.domain + '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -171,13 +171,13 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   opengraph += '<meta property="og:url" content="' + page.url + '" />';
   opengraph +=
     '<meta property="og:video" content="//' +
-    config.domain +
+    options.domain +
     '/iframe/' +
     movie.kp_id +
     '" />';
   opengraph +=
     '<meta property="og:video:url" content="//' +
-    config.domain +
+    options.domain +
     '/iframe/' +
     movie.kp_id +
     '" />';
@@ -193,7 +193,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     movie.poster.indexOf('http') + 1
       ? '<meta property="og:image" content="' + movie.poster + '" />'
       : '<meta property="og:image" content="//' +
-        config.domain +
+        options.domain +
         movie.poster +
         '" />';
 
@@ -220,9 +220,9 @@ function fullMovieSchema(page, movie, movies, comments, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    config.domain +
+    options.domain +
     '" href="//' +
-    config.domain +
+    options.domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -427,7 +427,7 @@ function categorySchema(page, movies, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + config.domain + '" />';
+    '<meta property="og:site_name" content="' + options.domain + '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -435,7 +435,7 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta property="og:url" content="' + page.url + '" />';
   opengraph +=
     '<meta property="og:image" content="//' +
-    config.domain +
+    options.domain +
     config.default.image +
     '" />';
   opengraph += '<meta property="og:image:width" content="600" />';
@@ -456,9 +456,9 @@ function categorySchema(page, movies, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    config.domain +
+    options.domain +
     '" href="//' +
-    config.domain +
+    options.domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -531,7 +531,7 @@ function generalSchema(page, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + config.domain + '" />';
+    '<meta property="og:site_name" content="' + options.domain + '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -554,9 +554,9 @@ function generalSchema(page, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    config.domain +
+    options.domain +
     '" href="//' +
-    config.domain +
+    options.domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -634,7 +634,7 @@ function contentSchema(content, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + config.domain + '" />';
+    '<meta property="og:site_name" content="' + options.domain + '" />';
   opengraph += '<meta property="og:title" content="' + content.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' +
