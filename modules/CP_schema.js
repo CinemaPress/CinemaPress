@@ -543,7 +543,7 @@ function generalSchema(page, options) {
     '" />';
   opengraph +=
     '<meta property="og:image" content="//' +
-    config.domain +
+    options.domain +
     config.default.image +
     '" />';
   opengraph += '<meta property="og:image:width" content="600" />';
