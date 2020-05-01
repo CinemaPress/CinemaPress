@@ -44,7 +44,7 @@ RUN set -o pipefail \
     && rm -rf package-lock.json doc .dockerignore .gitignore .prettierignore .prettierrc Dockerfile LICENSE.txt README.md \
     && dos2unix cinemapress.sh \
     && cp cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
-    && mv config/default/sphinx /etc/sphinx \
+    && rm -rf /etc/sphinx && mv config/default/sphinx /etc/sphinx \
     && mv node_modules/mysql node_modules/sphinx \
     && rm -rf cinemapress.sh \
     && cp -rf themes/default/public/admin/favicon.ico favicon.ico \

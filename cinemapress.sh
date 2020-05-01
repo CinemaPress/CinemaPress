@@ -27,6 +27,8 @@ MEGA_PASSWORD=${MEGA_PASSWORD:-}
 CP_DOMAIN_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 CP_MIRROR_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
+CP_SPB="_${CP_DOMAIN_}_"
+
 CP_IP="domain"
 
 EXTERNAL_PORT=""
