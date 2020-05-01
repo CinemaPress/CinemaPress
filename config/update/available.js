@@ -11,7 +11,8 @@ var fs = require('fs');
  * Global env.
  */
 
-var save = process.argv && typeof process.argv[2] !== 'undefined' && process.argv[2];
+var save =
+  process.argv && typeof process.argv[2] !== 'undefined' && process.argv[2];
 var domain = '';
 
 try {
@@ -44,14 +45,14 @@ var CP_save = require(path.join(
   '..',
   '..',
   'lib',
-  'CP_save.min.js'
+  'CP_save.js'
 ));
 var CP_get = require(path.join(
   path.dirname(__filename),
   '..',
   '..',
   'lib',
-  'CP_get.min.js'
+  'CP_get.js'
 ));
 
 /**

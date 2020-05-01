@@ -43,14 +43,14 @@ var CP_save = require(path.join(
   '..',
   '..',
   'lib',
-  'CP_save.min.js'
+  'CP_save.js'
 ));
 var CP_get = require(path.join(
   path.dirname(__filename),
   '..',
   '..',
   'lib',
-  'CP_get.min.js'
+  'CP_get.js'
 ));
 
 /**

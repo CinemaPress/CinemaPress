@@ -6,7 +6,7 @@
 
 var CP_translit = require('../../lib/CP_translit');
 var CP_structure = require('../../lib/CP_structure');
-var CP_get = require('../../lib/CP_get.min');
+var CP_get = require('../../lib/CP_get');
 
 /**
  * Configuration dependencies.

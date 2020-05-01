@@ -11,12 +11,7 @@ ARG CP_THEME=""
 ENV CP_THEME=${CP_THEME}
 ARG CP_PASSWD=""
 ENV CP_PASSWD=${CP_PASSWD}
-ARG CP_MIRROR=""
-ENV CP_MIRROR=${CP_MIRROR}
-ARG CP_MIRROR_=""
-ENV CP_MIRROR_=${CP_MIRROR_}
-ARG CP_KEY=""
-ENV CP_KEY=${CP_KEY}
+ENV CP_SPB="_${CP_DOMAIN_}_"
 ARG RCLONE_CONFIG=""
 ENV RCLONE_CONFIG=${RCLONE_CONFIG}
 ENV TZ=Europe/Moscow
@@ -39,9 +34,7 @@ RUN set -o pipefail \
     && npm i \
     && mkdir -p \
         /var/ngx_pagespeed_cache \
-        /etc/sphinx \
         /var/lib/sphinx/data \
-        /var/local/images \
         /var/local/balancer \
     && npm cache clean --force \
     && apk del .build-dependencies \
@@ -51,6 +44,8 @@ RUN set -o pipefail \
     && rm -rf package-lock.json doc .dockerignore .gitignore .prettierignore .prettierrc Dockerfile LICENSE.txt README.md \
     && dos2unix cinemapress.sh \
     && cp cinemapress.sh /usr/bin/cinemapress && chmod +x /usr/bin/cinemapress \
+    && mv config/default/sphinx /etc/sphinx \
+    && mv node_modules/mysql node_modules/sphinx \
     && rm -rf cinemapress.sh \
     && cp -rf themes/default/public/admin/favicon.ico favicon.ico \
     && cp -rf themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
@@ -63,3 +58,4 @@ RUN set -o pipefail \
     && chmod a+x /etc/periodic/hourly/cron
 EXPOSE 3000
 CMD ["/usr/bin/cinemapress", "container", "run"]
+HEALTHCHECK --interval=300s --timeout=5s CMD curl -fso /dev/null http://localhost/ || exit 1

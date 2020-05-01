@@ -774,13 +774,13 @@
             data.modules.mobile &&
             data.modules.mobile.data &&
             data.modules.mobile.data.subdomain &&
-            parseInt(data.modules.mobile.data.subdomain) !== parseInt('<%- modules.mobile.data.subdomain %>')
+            parseInt(data.modules.mobile.data.subdomain + '') !== parseInt('<%- modules.mobile.data.subdomain %>')
           ) || (
             data.modules &&
             data.modules.tv &&
             data.modules.tv.data &&
             data.modules.tv.data.subdomain &&
-            parseInt(data.modules.tv.data.subdomain) !== parseInt('<%- modules.tv.data.subdomain %>')
+            parseInt(data.modules.tv.data.subdomain + '') !== parseInt('<%- modules.tv.data.subdomain %>')
           )
         ) {
           self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';

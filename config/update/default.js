@@ -39,7 +39,7 @@ var CP_save = require(path.join(
   '..',
   '..',
   'lib',
-  'CP_save.min.js'
+  'CP_save.js'
 ));
 
 /**

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var CP_get = require('../lib/CP_get.min');
+var CP_get = require('../lib/CP_get');
 var CP_tv = require('../modules/CP_tv');
 var CP_translit = require('../lib/CP_translit');
 

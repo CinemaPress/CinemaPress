@@ -25,12 +25,6 @@ function mobileVersion(url) {
   var data = '';
 
   if (/:\/\/m\.|\/mobile-version/i.test(url)) {
-    data +=
-      '<link rel="canonical" href="' +
-      url
-        .replace('://m.', '://' + (config.botdomain || config.subdomain))
-        .replace('/mobile-version', '') +
-      '">';
     var css = fs.readFileSync(
       path.join(
         path.dirname(__dirname),

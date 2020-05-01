@@ -5,7 +5,7 @@
  */
 
 var CP_cache = require('../lib/CP_cache');
-var CP_get = require('../lib/CP_get.min');
+var CP_get = require('../lib/CP_get');
 var CP_regexp = require('../lib/CP_regexp');
 
 /**

@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2020.1
+// @version 2020.5
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -27,8 +27,6 @@
 // @grant GM_xmlhttpRequest
 // ==/UserScript==
 
-autoComplete();
-
 var omdb = getCookie('omdb');
 var tmdb = getCookie('tmdb');
 
@@ -36,6 +34,8 @@ if (!omdb) inputOMDb();
 if (!tmdb) inputTMDb();
 
 var urls = [];
+
+autoComplete();
 
 function parseData() {
   var movieData = {};
@@ -93,26 +93,6 @@ function parseData() {
     return;
   }
 
-  if ((!tmdb && tmdb_id) || (!omdb && imdb_id)) {
-    icon.setAttribute('class', 'fa fa-bug');
-    text.innerHTML = '&nbsp;&nbsp;API keys not filled!';
-    return;
-  }
-
-  if (kp_id && (lang === 'ru' || (!imdb_id && !tmdb_id && !douban_id))) {
-    urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
-    urls.push(
-      'https://api1573848848.apicollaps.cc/franchise/details?' +
-        'token=6006bca37f7681fe1edf75fcf936aecc&' +
-        'kinopoisk_id=' +
-        '' +
-        kp_id
-    );
-  }
-  if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
-    urls.push('https://api.douban.com/v2/movie/subject/' + '' + douban_id);
-    urls.push('https://movie.douban.com/subject/' + '' + douban_id);
-  }
   if (tmdb && tmdb_id) {
     urls.push(
       'https://api.themoviedb.org/3/' +
@@ -128,23 +108,25 @@ function parseData() {
         tmdb
     );
   }
-  if (omdb && imdb_id) {
-    urls.push(
-      'https://www.omdbapi.com/?' + 'i=tt' + imdb_id + '&' + 'apikey=' + omdb
-    );
-  }
-  if (kp_id && lang !== 'ru') {
-    urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
+  if (
+    kp_id &&
+    (lang === 'ru' || lang === 'uk' || (!imdb_id && !tmdb_id && !douban_id))
+  ) {
     urls.push(
       'https://api1573848848.apicollaps.cc/franchise/details?' +
         'token=6006bca37f7681fe1edf75fcf936aecc&' +
         'kinopoisk_id=' +
-        '' +
         kp_id
     );
+    urls.push('https://pleer.video/' + kp_id + '.json');
+    urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
   }
-  if (douban_id && lang !== 'zh') {
-    urls.push('https://movie.douban.com/subject/' + '' + douban_id);
+  if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
+    urls.push('https://api.douban.com/v2/movie/subject/' + douban_id);
+    urls.push('https://movie.douban.com/subject/' + douban_id);
+  }
+  if (omdb && imdb_id && lang === 'en') {
+    urls.push('https://www.omdbapi.com/?i=tt' + imdb_id + '&apikey=' + omdb);
   }
 
   function api() {
@@ -156,7 +138,7 @@ function parseData() {
             if (lang !== 'ru' && (r === 'translate' || r === 'quality')) {
               continue;
             }
-            movieData[r] = movieData[r] ? movieData[r] : res[r];
+            movieData[r] = res[r] ? res[r] : movieData[r];
             if (
               url.indexOf('omdbapi.com') + 1 &&
               (r === 'imdb_rating' || r === 'imdb_vote')
@@ -168,10 +150,11 @@ function parseData() {
         api();
       });
     } else {
-      if (!movieData.title_ru && !movieData.title_en) {
+      if (!movieData.title_ru || !movieData.title_en) {
         icon.setAttribute('class', 'fa fa-bug');
         text.innerHTML = '&nbsp;&nbsp;No information!';
         console.log(movieData);
+        autoComplete();
         return;
       }
 
@@ -183,15 +166,25 @@ function parseData() {
         : '';
 
       if (movieData.title_ru) {
-        document.querySelector('[name="movie.title_ru"]').value =
-          movieData.title_ru;
+        document.querySelector(
+          '[name="movie.title_ru"]'
+        ).value = document.querySelector('[name="movie.title_ru"]').value
+          ? document.querySelector('[name="movie.title_ru"]').value
+          : movieData.title_ru;
       }
       if (movieData.title_en) {
-        document.querySelector('[name="movie.title_en"]').value =
-          movieData.title_en;
+        document.querySelector(
+          '[name="movie.title_en"]'
+        ).value = document.querySelector('[name="movie.title_en"]').value
+          ? document.querySelector('[name="movie.title_en"]').value
+          : movieData.title_en;
       }
       if (movieData.type) {
-        document.querySelector('[name="movie.type"]').value = movieData.type;
+        document.querySelector(
+          '[name="movie.type"]'
+        ).value = document.querySelector('[name="movie.type"]').value
+          ? document.querySelector('[name="movie.type"]').value
+          : movieData.type;
       }
       if (movieData.premiere) {
         document.querySelector('[name="movie.premiere"]').value =
@@ -227,18 +220,32 @@ function parseData() {
         document.querySelector('[name="movie.year"]').value = movieData.year;
       }
       if (movieData.country) {
-        document.querySelector('[name="movie.country"]').value =
-          movieData.country;
+        document.querySelector(
+          '[name="movie.country"]'
+        ).value = document.querySelector('[name="movie.country"]').value
+          ? document.querySelector('[name="movie.country"]').value
+          : movieData.country;
       }
       if (movieData.genre) {
-        document.querySelector('[name="movie.genre"]').value = movieData.genre;
+        document.querySelector(
+          '[name="movie.genre"]'
+        ).value = document.querySelector('[name="movie.genre"]').value
+          ? document.querySelector('[name="movie.genre"]').value
+          : movieData.genre;
       }
       if (movieData.actor) {
-        document.querySelector('[name="movie.actor"]').value = movieData.actor;
+        document.querySelector(
+          '[name="movie.actor"]'
+        ).value = document.querySelector('[name="movie.actor"]').value
+          ? document.querySelector('[name="movie.actor"]').value
+          : movieData.actor;
       }
       if (movieData.director) {
-        document.querySelector('[name="movie.director"]').value =
-          movieData.director;
+        document.querySelector(
+          '[name="movie.director"]'
+        ).value = document.querySelector('[name="movie.director"]').value
+          ? document.querySelector('[name="movie.director"]').value
+          : movieData.director;
       }
       if (movieData.kp_rating) {
         document.querySelector('[name="movie.kp_rating"]').value =
@@ -259,6 +266,10 @@ function parseData() {
       if (movieData.imdb_id) {
         document.querySelector('[name="movie.imdb_id"]').value =
           movieData.imdb_id;
+      }
+      if (movieData.tmdb_id) {
+        document.querySelector('[name="movie.tmdb_id"]').value =
+          movieData.tmdb_id;
       }
       if (
         movieData.description &&
@@ -394,7 +405,9 @@ function getAPI(url, callback) {
           console.error(e);
         }
         var res = {};
-        if (url.indexOf('apicollaps.cc') + 1) {
+        if (url.indexOf('pleer.video') + 1) {
+          res = parsePleer(result);
+        } else if (url.indexOf('apicollaps.cc') + 1) {
           res = parseKP(result);
         } else if (url.indexOf('omdbapi.com') + 1) {
           res = parseOMDb(result);
@@ -546,6 +559,7 @@ function parseKP(r) {
   if (!r.id) return {};
   var res = r;
   return {
+    imdb_id: res.imdb_id ? res.imdb_id.replace(/[^0-9]/g, '') : '',
     title_ru: res.name
       ? res.name
           .split('(')[0]
@@ -578,7 +592,7 @@ function parseKP(r) {
     ).join(','),
     actor: (res.actors
       ? res.actors.map(function(v, i) {
-          return i < 10 ? v : null;
+          return i < 5 ? v : null;
         })
       : []
     )
@@ -586,7 +600,7 @@ function parseKP(r) {
       .join(','),
     director: (res.director
       ? res.director.map(function(v, i) {
-          return i < 10 ? v : null;
+          return i < 3 ? v : null;
         })
       : []
     )
@@ -606,6 +620,46 @@ function parseKP(r) {
         : '',
     quality: res.quality ? res.quality : '',
     premiere: res.premier ? res.premier : ''
+  };
+}
+
+function parsePleer(r) {
+  if (!r.kp_id) return {};
+  var res = r;
+  return {
+    imdb_id: res.imdb_id ? res.imdb_id : '',
+    tmdb_id: res.tmdb_id ? res.tmdb_id : '',
+    title_ru: res.title_ru ? res.title_ru : '',
+    title_en: res.title_en ? res.title_en : '',
+    year: res.year ? res.year : '',
+    type: res.type ? '1' : '0',
+    genre: res.genre ? res.genre : '',
+    country: res.country ? res.country : '',
+    actor: res.actor
+      ? res.actor
+          .split(',')
+          .map(function(v, i) {
+            return i <= 4 ? v : null;
+          })
+          .filter(Boolean)
+          .join(',')
+      : '',
+    director: res.director
+      ? res.director
+          .split(',')
+          .map(function(v, i) {
+            return i <= 2 ? v : null;
+          })
+          .filter(Boolean)
+          .join(',')
+      : '',
+    description: res.description ? res.description : '',
+    poster: '1',
+    kp_rating: res.kp_rating,
+    kp_vote: res.kp_vote,
+    imdb_rating: res.imdb_rating,
+    imdb_vote: res.imdb_vote,
+    premiere: res.premiere ? res.premiere : ''
   };
 }
 
@@ -675,6 +729,20 @@ function autoComplete() {
     right.parentNode.insertBefore(autoBtn, right);
   }
   autoBtn.addEventListener('click', parseData, false);
+  if (window.location.hash && window.location.hash.substring(1)) {
+    window.history.forward(1);
+    var ids = window.location.hash.substring(1).split(',');
+    document.querySelector('[name="movie.kp_id"]').value = ids.shift();
+    document.querySelector('[name="movie.id"]').value = '';
+    window.location.hash = ids.join(',');
+    if (autoBtn.fireEvent) {
+      autoBtn.fireEvent('onclick');
+    } else {
+      var evObj = document.createEvent('Events');
+      evObj.initEvent('click', true, false);
+      autoBtn.dispatchEvent(evObj);
+    }
+  }
 }
 
 function inputOMDb() {

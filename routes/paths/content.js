@@ -5,7 +5,7 @@
  */
 
 var CP_page = require('../../lib/CP_page');
-var CP_get = require('../../lib/CP_get.min');
+var CP_get = require('../../lib/CP_get');
 
 var CP_comments = require('../../modules/CP_comments');
 
@@ -132,7 +132,7 @@ function allContents(tag, options, callback) {
       soon: function(callback) {
         return modules.soon.status
           ? CP_get.additional(
-              { all_movies: process.env.CP_ALL },
+              { all_movies: process.env.CP_SPB },
               'soon',
               options,
               function(err, movies) {
@@ -361,7 +361,7 @@ function oneContent(url, page, sorting, options, callback) {
       soon: function(callback) {
         return modules.soon.status
           ? CP_get.additional(
-              { all_movies: process.env.CP_ALL },
+              { all_movies: process.env.CP_SPB },
               'soon',
               options,
               function(err, movies) {

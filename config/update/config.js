@@ -51,7 +51,7 @@ function tryParseJSON(jsonString) {
  * Module dependencies.
  */
 
-var CP_save = require(path.join(path.dirname(__filename), '..', '..', 'lib', 'CP_save.min.js'));
+var CP_save = require(path.join(path.dirname(__filename), '..', '..', 'lib', 'CP_save.js'));
 
 /**
  * Configuration dependencies.
@@ -135,9 +135,11 @@ async.series(
       var c = objAdd(objReplace(config_default, config), config);
       c.theme = thm;
       c.protocol = prt || prt2 ? 'https://' : config.protocol;
-      c.database = config_default.database
-        ? config_default.database
-        : c.database;
+      c.database =
+        config_default.database &&
+        config_default.database.toLowerCase() !== 'FREE'.toLowerCase()
+          ? config_default.database
+          : c.database;
       c.domain = config_default.domain
         ? config_default.domain
         : c.domain;

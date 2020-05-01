@@ -11,7 +11,6 @@ NC='\033[0m'
 OPTION=${1:-}
 GIT_SERVER="github.com"
 CP_VER="4.0.0"
-CP_ALL=""
 PRC_=0
 
 CP_DOMAIN=${CP_DOMAIN:-}
@@ -54,7 +53,7 @@ fi
 
 post_commands() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
     if [ "`grep \"${LOCAL_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
     && [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
@@ -222,6 +221,32 @@ docker_install() {
                 exit 0
             fi
         fi
+        for DOMAIN_PATH in /home/*; do
+            DOMAIN_PROCESS="${DOMAIN_PATH}/process.json"
+            DOMAIN_CONFIG="${DOMAIN_PATH}/config/production/config.js"
+            if [ -f "${DOMAIN_PROCESS}" ] && [ -f "${DOMAIN_CONFIG}" ]; then
+                DDD=$(find "${DOMAIN_PATH}" -maxdepth 0 -printf "%f")
+                DDD_=$(echo "${DDD}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                SPS="/var/lib/sphinx/data/movies_${DDD_}.sps"
+                SPB="/var/lib/sphinx/data/movies_${DDD_}.spb"
+                if [ -f "${SPS}" ] && [ ! -f "${SPB}" ]; then
+                    AA=$(grep "\"CP_ALL\"" "${DOMAIN_PROCESS}")
+                    KK=$(grep "\"key\"" "${DOMAIN_CONFIG}")
+                    AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
+                    KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+                    if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
+                        openssl enc \
+                            -aes-256-cbc \
+                            -pbkdf2 \
+                            -iter 100000 \
+                            -in <(echo "${AAA}") \
+                            -out "${SPB}" \
+                            -k "${DDD}/${KKK}" \
+                            -salt 2>/dev/null
+                    fi
+                fi
+            fi
+        done
     fi
 }
 ip_install() {
@@ -248,7 +273,7 @@ ip_install() {
 
 1_install() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_LANG=${2:-${CP_LANG}}
     LOCAL_THEME=${3:-${CP_THEME}}
     LOCAL_PASSWD=${4:-${CP_PASSWD}}
@@ -276,20 +301,20 @@ ip_install() {
 
     docker run \
         -d \
-        --name ${LOCAL_DOMAIN_} \
+        --name "${LOCAL_DOMAIN_}" \
         -e "CP_DOMAIN=${LOCAL_DOMAIN}" \
         -e "CP_DOMAIN_=${LOCAL_DOMAIN_}" \
         -e "CP_LANG=${LOCAL_LANG}" \
         -e "CP_THEME=${LOCAL_THEME}" \
         -e "CP_PASSWD=${LOCAL_PASSWD}" \
         -e "RCLONE_CONFIG=/home/${LOCAL_DOMAIN}/config/production/rclone.conf" \
-        -w /home/${LOCAL_DOMAIN} \
+        -w /home/"${LOCAL_DOMAIN}" \
         --restart always \
         --network cinemapress \
         -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
         -v /var/local/balancer:/var/local/balancer \
-        -v /home/${LOCAL_DOMAIN}:/home/${LOCAL_DOMAIN} \
+        -v /home/"${LOCAL_DOMAIN}":/home/"${LOCAL_DOMAIN}" \
         ${EXTERNAL_DOCKER} \
         cinemapress/docker:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
@@ -410,11 +435,18 @@ ip_install() {
 }
 2_update() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
+    LOCAL_MEGA_EMAIL=${2:-${MEGA_EMAIL}}
+    LOCAL_MEGA_PASSWORD=${3:-${MEGA_PASSWORD}}
+
+    if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
+        docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
+            >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+    fi
 
     echo "${PRC_}% update" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
+    CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${CHECK_MEGA}" = "" ]; then
         _header "WARNING"
@@ -454,15 +486,12 @@ ip_install() {
         exit 0
     fi
 
-    AA=`grep "\"CP_ALL\"" /home/${LOCAL_DOMAIN}/process.json`
-    KK=`grep "\"key\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
-    DD=`grep "\"date\"" /home/${LOCAL_DOMAIN}/config/default/config.js`
-    PP=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
-    CP_ALL=`echo "${AA}" | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-    CP_KEY=`echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/'`
-    CP_DATE=`echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/'`
-    CP_SPEED=`echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
-    if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
+    KK=$(grep "\"key\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
+    DD=$(grep "\"date\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
+    PP=$(grep "\"pagespeed\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
+    CP_KEY=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+    CP_DATE=$(echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/')
+    CP_SPEED=$(echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/')
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     mkdir -p /var/temp
@@ -519,36 +548,32 @@ ip_install() {
     fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
-    if [ "${CP_ALL}" != "" ]; then
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
-            /home/${LOCAL_DOMAIN}/process.json
-    fi
-    if [ "${CP_KEY}" != "" ]; then
+    if [ "${#CP_KEY}" -eq "4" ] || [ "${#CP_KEY}" -eq "32" ]; then
         sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-            /home/${LOCAL_DOMAIN}/config/production/config.js
+            /home/"${LOCAL_DOMAIN}"/config/production/config.js
         sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
-            /home/${LOCAL_DOMAIN}/config/default/config.js
+            /home/"${LOCAL_DOMAIN}"/config/default/config.js
     fi
-    if [ "${CP_DATE}" != "" ]; then
+    if [ "${#CP_DATE}" -eq "10" ]; then
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
-            /home/${LOCAL_DOMAIN}/config/production/config.js
+            /home/"${LOCAL_DOMAIN}"/config/production/config.js
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
-            /home/${LOCAL_DOMAIN}/config/default/config.js
+            /home/"${LOCAL_DOMAIN}"/config/default/config.js
     fi
-    if [ "${CP_SPEED}" != "" ]; then
+    if [ "${#CP_SPEED}" -eq "1" ]; then
         sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-            /home/${LOCAL_DOMAIN}/config/production/config.js
-        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}"
+            /home/"${LOCAL_DOMAIN}"/config/production/config.js
+        docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container speed "${CP_SPEED}"
     fi
     if [ "${DISABLE_SSL}" = "" ]; then
-        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container protocol "https://"
+        docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container protocol "https://"
     fi
-    docker restart ${LOCAL_DOMAIN_} >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
+    docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_ACTION=${2} # 1 | 2 | 3 | create | restore | config
     LOCAL_MEGA_EMAIL=${3:-${MEGA_EMAIL}}
     LOCAL_MEGA_PASSWORD=${4:-${MEGA_PASSWORD}}
@@ -565,7 +590,7 @@ ip_install() {
 
     sleep 5
 
-    RCS=$(docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMAPRESS")
+    RCS=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
         if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
@@ -574,10 +599,9 @@ ip_install() {
 
             echo "${PRC_}% config check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-            docker exec ${LOCAL_DOMAIN_} rclone config delete CINEMAPRESS \
-                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             docker exec ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+            sleep 3
             CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
             sleep 3
             CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
@@ -660,7 +684,7 @@ ip_install() {
 }
 4_theme() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_THEME=${2:-${CP_THEME}}
 
     echo "${PRC_}% theme" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
@@ -780,11 +804,14 @@ ip_install() {
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
-            if [ "$(grep \"_"${CHECK}"_\" /home/"${LOCAL_DOMAIN}"/process.json)" = "" ]; then
-                CURRENT=$(grep "CP_ALL" /home/"${LOCAL_DOMAIN}"/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
-                sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CURRENT} | _${CHECK}_\"/" \
-                    /home/"${LOCAL_DOMAIN}"/process.json
-            fi
+            openssl enc \
+                -aes-256-cbc \
+                -pbkdf2 \
+                -iter 100000 \
+                -in <(echo "${CHECK}") \
+                -out "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.spb" \
+                -k "${LOCAL_DOMAIN}/${LOCAL_KEY}" \
+                -salt 2>/dev/null
             _content "Starting ..."
             if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
                 docker_start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
@@ -819,10 +846,10 @@ ip_install() {
 }
 6_https() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_CLOUDFLARE_EMAIL=${2:-${CLOUDFLARE_EMAIL}}
     LOCAL_CLOUDFLARE_API_KEY=${3:-${CLOUDFLARE_API_KEY}}
-    LOCAL_SUBDOMAIN=${4:-hd}
+    LOCAL_SUBDOMAIN=${4:-}
 
     echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
@@ -840,7 +867,9 @@ ip_install() {
         sleep 5
 
         DOMAINS="-d ${LOCAL_DOMAIN} -d *.${LOCAL_DOMAIN}"
-        for SUBDOMAIN in $LOCAL_SUBDOMAIN; do DOMAINS="${DOMAINS} -d *.${SUBDOMAIN}.${LOCAL_DOMAIN}"; done
+        if [ "${LOCAL_SUBDOMAIN}" != "" ]; then
+            for SUBDOMAIN in $LOCAL_SUBDOMAIN; do DOMAINS="${DOMAINS} -d *.${SUBDOMAIN}.${LOCAL_DOMAIN}"; done
+        fi
 
         docker run \
             --rm \
@@ -906,10 +935,10 @@ ip_install() {
 }
 7_mirror() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
     LOCAL_MIRROR=${2:-${CP_MIRROR}}
-    LOCAL_MIRROR_=`echo ${LOCAL_MIRROR} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_MIRROR_=$(echo "${LOCAL_MIRROR}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
     if [ ! -f "/home/${LOCAL_MIRROR}/process.json" ]; then
         if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
@@ -934,91 +963,82 @@ ip_install() {
 
     echo "${PRC_}% mirror" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    docker stop ${LOCAL_MIRROR_} >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
+    docker stop "${LOCAL_MIRROR_}" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
         3_backup "${LOCAL_DOMAIN}" "create"
-        docker stop ${LOCAL_DOMAIN_} \
+        docker stop "${LOCAL_DOMAIN_}" \
             >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
         rm -rf \
-            /home/${LOCAL_MIRROR}/config/comment \
-            /home/${LOCAL_MIRROR}/config/content \
-            /home/${LOCAL_MIRROR}/config/rt \
-            /home/${LOCAL_MIRROR}/config/user
+            /home/"${LOCAL_MIRROR}"/config/comment \
+            /home/"${LOCAL_MIRROR}"/config/content \
+            /home/"${LOCAL_MIRROR}"/config/rt \
+            /home/"${LOCAL_MIRROR}"/config/user
         cp -r \
             /home/${LOCAL_DOMAIN}/config/comment \
-            /home/${LOCAL_MIRROR}/config/comment
+            /home/"${LOCAL_MIRROR}"/config/comment
         cp -r \
             /home/${LOCAL_DOMAIN}/config/content \
-            /home/${LOCAL_MIRROR}/config/content
+            /home/"${LOCAL_MIRROR}"/config/content
         cp -r \
             /home/${LOCAL_DOMAIN}/config/rt \
-            /home/${LOCAL_MIRROR}/config/rt
+            /home/"${LOCAL_MIRROR}"/config/rt
         cp -r \
             /home/${LOCAL_DOMAIN}/config/user \
-            /home/${LOCAL_MIRROR}/config/user
+            /home/"${LOCAL_MIRROR}"/config/user
         cp -r \
             /home/${LOCAL_DOMAIN}/config/production/config.js \
-            /home/${LOCAL_MIRROR}/config/production/config.js
+            /home/"${LOCAL_MIRROR}"/config/production/config.js
         cp -r \
             /home/${LOCAL_DOMAIN}/config/production/modules.js \
-            /home/${LOCAL_MIRROR}/config/production/modules.js
+            /home/"${LOCAL_MIRROR}"/config/production/modules.js
         cp -r \
             /home/${LOCAL_DOMAIN}/themes/default/public/desktop/* \
-            /home/${LOCAL_MIRROR}/themes/default/public/desktop/
+            /home/"${LOCAL_MIRROR}"/themes/default/public/desktop/
         cp -r \
             /home/${LOCAL_DOMAIN}/themes/default/public/mobile/* \
-            /home/${LOCAL_MIRROR}/themes/default/public/mobile/
+            /home/"${LOCAL_MIRROR}"/themes/default/public/mobile/
         cp -r \
             /home/${LOCAL_DOMAIN}/themes/default/views/mobile/* \
-            /home/${LOCAL_MIRROR}/themes/default/views/mobile/
+            /home/"${LOCAL_MIRROR}"/themes/default/views/mobile/
         cp -r \
             /home/${LOCAL_DOMAIN}/files/* \
-            /home/${LOCAL_MIRROR}/files/
+            /home/"${LOCAL_MIRROR}"/files/
         sed -Ei \
             "s/${LOCAL_DOMAIN_}:3000/${LOCAL_MIRROR_}:3000/g" \
             /home/${LOCAL_DOMAIN}/config/production/nginx/conf.d/default.conf
     fi
     if [ "${LOCAL_DOMAIN_}" != "" ]; then
-        for f in /home/${LOCAL_MIRROR}/config/comment/comment_${LOCAL_DOMAIN_}.*; do
+        for f in /home/"${LOCAL_MIRROR}"/config/comment/comment_${LOCAL_DOMAIN_}.*; do
             mv -f "${f}" "`echo ${f} | sed s/comment_${LOCAL_DOMAIN_}/comment_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${LOCAL_MIRROR}/config/content/content_${LOCAL_DOMAIN_}.*; do
+        for f in /home/"${LOCAL_MIRROR}"/config/content/content_${LOCAL_DOMAIN_}.*; do
             mv -f "${f}" "`echo ${f} | sed s/content_${LOCAL_DOMAIN_}/content_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${LOCAL_MIRROR}/config/rt/rt_${LOCAL_DOMAIN_}.*; do
+        for f in /home/"${LOCAL_MIRROR}"/config/rt/rt_${LOCAL_DOMAIN_}.*; do
             mv -f "${f}" "`echo ${f} | sed s/rt_${LOCAL_DOMAIN_}/rt_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-        for f in /home/${LOCAL_MIRROR}/config/user/user_${LOCAL_DOMAIN_}.*; do
+        for f in /home/"${LOCAL_MIRROR}"/config/user/user_${LOCAL_DOMAIN_}.*; do
             mv -f "${f}" "`echo ${f} | sed s/user_${LOCAL_DOMAIN_}/user_${LOCAL_MIRROR_}/`" 2>/dev/null
         done
-    fi
-    CURRENT=`grep "CP_ALL" /home/${LOCAL_MIRROR}/process.json | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/'`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_MIRROR_}_ | //"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_DOMAIN_}_ | //"`
-    CURRENT=`echo "${CURRENT}" | sed "s/ | _${LOCAL_MIRROR_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/ | _${LOCAL_DOMAIN_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_MIRROR_}_//"`
-    CURRENT=`echo "${CURRENT}" | sed "s/_${LOCAL_DOMAIN_}_//"`
-    if [ "${CURRENT}" != "" ]; then CURRENT=" | ${CURRENT}"; fi
-    if [ -f "/home/${LOCAL_DOMAIN}/process.json" ] && [ ! -f "/home/${LOCAL_MIRROR}/process.json" ]; then
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${LOCAL_DOMAIN_}_ | _${LOCAL_MIRROR_}_${CURRENT}\"/" /home/${LOCAL_MIRROR}/process.json
-    else
-        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"_${LOCAL_MIRROR_}_ | _${LOCAL_DOMAIN_}_${CURRENT}\"/" /home/${LOCAL_MIRROR}/process.json
     fi
 
     sh_progress
 
     echo "${PRC_}% mirror2" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    docker start ${LOCAL_MIRROR_} \
+    docker start "${LOCAL_MIRROR_}" \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
+    sleep 10
+    docker exec "${LOCAL_MIRROR_}" node config/update/mirror.js \
+        >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
+    sleep 10
     docker exec nginx nginx -s reload \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
 8_remove() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
-    LOCAL_DOMAIN_=`echo ${LOCAL_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
+    LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_FULL=${2}
     LOCAL_SAFE=${3}
 
@@ -1100,7 +1120,7 @@ option() {
         fi
         if [ "${OPTION}" != "" ]
         then
-            if echo "${OPTION}" | grep -qE ^\-?[0-9a-z]+$
+            if echo "${OPTION}" | grep -qE ^[0-9a-z]+$
             then
                AGAIN=10
             else
@@ -1143,7 +1163,7 @@ read_domain() {
             fi
             if [ "${CP_DOMAIN}" != "" ]
             then
-                if echo "${CP_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
+                if echo "${CP_DOMAIN}" | grep -qE ^[.a-z0-9-]+$
                 then
                     CP_DOMAIN_=`echo ${CP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
                     if [ "`expr "${CP_DOMAIN}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then
@@ -1195,7 +1215,7 @@ read_mirror() {
             fi
             if [ "${CP_MIRROR}" != "" ]
             then
-                if echo "${CP_MIRROR}" | grep -qE ^\-?[.a-z0-9-]+$
+                if echo "${CP_MIRROR}" | grep -qE ^[.a-z0-9-]+$
                 then
                     if [ "${CP_DOMAIN}" = "${CP_MIRROR}" ]
                     then
@@ -1275,7 +1295,14 @@ read_password() {
             fi
             if [ "${CP_PASSWD}" != "" ]
             then
-                AGAIN=10
+                 if echo "${CP_PASSWD}" | grep -qE ^[a-zA-Z0-9]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${CP_PASSWD}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters and numbers! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
             else
                 printf "${R}WARNING:${NC} Admin panel password cannot be empty. \n"
                 AGAIN=$((${AGAIN}+1))
@@ -1301,13 +1328,13 @@ read_key() {
             fi
             if [ "${CP_KEY}" != "" ]
             then
-                if echo "${CP_KEY}" | grep -qE ^\-?[A-Za-z0-9]+$
+                if echo "${CP_KEY}" | grep -qE ^[A-Za-z0-9]+$
                 then
                     AGAIN=10
                 else
                     printf "${NC}         You entered: ${R}${CP_KEY}${NC} \n "
-                    printf "${R}WARNING:${NC} Only latin characters \n "
-                    printf "${NC}         and numbers! \n "
+                    printf "${R}WARNING:${NC} Only latin characters \n"
+                    printf "${NC}         and numbers are allowed! \n"
                     AGAIN=$((${AGAIN}+1))
                 fi
             else
@@ -1393,7 +1420,7 @@ read_cloudflare_email() {
             fi
             if [ "${CLOUDFLARE_EMAIL}" != "" ]
             then
-                if echo "${CLOUDFLARE_EMAIL}" | grep -qE ^\-?[.a-zA-Z0-9@_-]+$
+                if echo "${CLOUDFLARE_EMAIL}" | grep -qE ^[.a-zA-Z0-9@_-]+$
                 then
                     AGAIN=10
                 else
@@ -1425,7 +1452,7 @@ read_cloudflare_api_key() {
             fi
             if [ "${CLOUDFLARE_API_KEY}" != "" ]
             then
-                if echo "${CLOUDFLARE_API_KEY}" | grep -qE ^\-?[.a-zA-Z0-9-]+$
+                if echo "${CLOUDFLARE_API_KEY}" | grep -qE ^[.a-zA-Z0-9-]+$
                 then
                     AGAIN=10
                 else
@@ -1457,7 +1484,7 @@ read_mega_email() {
             fi
             if [ "${MEGA_EMAIL}" != "" ]
             then
-                if echo "${MEGA_EMAIL}" | grep -qE ^\-?[.a-zA-Z0-9@_-]+$
+                if echo "${MEGA_EMAIL}" | grep -qE ^[.a-zA-Z0-9@_-]+$
                 then
                     AGAIN=10
                 else
@@ -1489,7 +1516,15 @@ read_mega_password() {
             fi
             if [ "${MEGA_PASSWORD}" != "" ]
             then
-                AGAIN=10
+                if echo "${MEGA_PASSWORD}" | grep -qE ^[a-zA-Z0-9]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${MEGA_PASSWORD}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters \n"
+                    printf "${NC}         and numbers are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
             fi
         done
         if [ "${MEGA_PASSWORD}" = "" ]; then exit 1; fi
@@ -1589,7 +1624,7 @@ read_app() {
             fi
             if [ "${APP_DOMAIN}" != "" ]
             then
-                if echo "${APP_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
+                if echo "${APP_DOMAIN}" | grep -qE ^[.a-z0-9-]+$
                 then
                     APP_DOMAIN_=`echo ${APP_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
                     AGAIN=10
@@ -1626,7 +1661,7 @@ read_import() {
             fi
             if [ "${IMPORT_DOMAIN}" != "" ]
             then
-                if echo "${IMPORT_DOMAIN}" | grep -qE ^\-?[.a-z0-9-]+$
+                if echo "${IMPORT_DOMAIN}" | grep -qE ^[.a-z0-9-]+$
                 then
                     IMPORT_DOMAIN_=`echo ${IMPORT_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
                     AGAIN=10
@@ -1808,54 +1843,67 @@ _s() {
 }
 
 docker_run() {
+    sed -Ei "s/options.host/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
+    sed -Ei "s/options.port/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
+    SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
+    CNF="/home/${CP_DOMAIN}/config/production/config.js"
+    CP_SPB="_${CP_DOMAIN_}_"
+    if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
+        KK=$(grep "\"key\"" "${CNF}")
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#KKK}" -eq "32" ]; then
+            AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
+            if [ "${#AAA}" -eq "7" ]; then
+                CP_SPB="${CP_SPB} | _${AAA}_"
+            fi
+        fi
+    fi
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
-        cp -rf /var/cinemapress/* /home/${CP_DOMAIN}
+        cp -rf /var/cinemapress/* /home/"${CP_DOMAIN}"
         rm -rf /var/cinemapress/* /var/${CP_THEME:?}
-        cp -rf /home/${CP_DOMAIN}/config/locales/${CP_LANG}/* /home/${CP_DOMAIN}/config/
-        cp -rf /home/${CP_DOMAIN}/config/default/* /home/${CP_DOMAIN}/config/production/
-        cp -rf /home/${CP_DOMAIN}/files/bbb.mp4 /var/local/balancer/bbb.mp4
-        sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/production/config.js
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/config/default/config.js
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/${CP_DOMAIN}/process.json
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/sphinx/source.xml
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/production/config.js
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/config/default/config.js
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/${CP_DOMAIN}/process.json
-        sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/${CP_DOMAIN}/config/production/config.js
+        cp -rf /home/"${CP_DOMAIN}"/config/locales/${CP_LANG}/* /home/"${CP_DOMAIN}"/config/
+        cp -rf /home/"${CP_DOMAIN}"/config/default/* /home/"${CP_DOMAIN}"/config/production/
+        cp -rf /home/"${CP_DOMAIN}"/files/bbb.mp4 /var/local/balancer/bbb.mp4
+        sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/pagespeed.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/config.js
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/default/config.js
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/process.json
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /etc/sphinx/sphinx.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /etc/sphinx/source.xml
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/pagespeed.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/config.js
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/default/config.js
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/process.json
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /etc/sphinx/sphinx.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /etc/sphinx/source.xml
+        sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/"${CP_DOMAIN}"/config/production/config.js
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /var/${CP_THEME}
-        mkdir -p /home/${CP_DOMAIN}/themes/${CP_THEME}/
-        cp -rf /var/${CP_THEME}/* /home/${CP_DOMAIN}/themes/${CP_THEME}/
-        node /home/${CP_DOMAIN}/optimal.js
-        OPENSSL=`echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP`
-        echo "admin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
-        echo "${CP_DOMAIN}:${OPENSSL}" >> /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
-        if [ "${CP_IP}" = "ip" ]; then rm -rf /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf; fi
-        ln -s /home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf /etc/sphinx/sphinx.conf
-        ln -s /home/${CP_DOMAIN}/config/production/sphinx/source.xml /etc/sphinx/source.xml
+        mkdir -p /home/"${CP_DOMAIN}"/themes/${CP_THEME}/
+        cp -rf /var/${CP_THEME}/* /home/"${CP_DOMAIN}"/themes/${CP_THEME}/
+        node /home/"${CP_DOMAIN}"/optimal.js
+        OPENSSL=$(echo "${CP_PASSWD}" | openssl passwd -1 -stdin -salt CP)
+        echo "admin:${OPENSSL}" > /home/"${CP_DOMAIN}"/config/production/nginx/pass.d/"${CP_DOMAIN}".pass
+        echo "${CP_DOMAIN}:${OPENSSL}" >> /home/"${CP_DOMAIN}"/config/production/nginx/pass.d/"${CP_DOMAIN}".pass
+        if [ "${CP_IP}" = "ip" ]; then rm -rf /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf; fi
         if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
         searchd
         memcached -u root -d
-        node /home/${CP_DOMAIN}/config/update/default.js
+        node /home/"${CP_DOMAIN}"/config/update/default.js
     else
         searchd
         memcached -u root -d
-        node /home/${CP_DOMAIN}/config/update/config.js
+        node /home/"${CP_DOMAIN}"/config/update/config.js
     fi
     crond -L /var/log/cron.log
-    cd /home/${CP_DOMAIN} && pm2-runtime start process.json
+    cd /home/"${CP_DOMAIN}" && pm2-runtime start process.json
 }
 docker_stop() {
     sed -Ei "s/\/\/app\.use\(rebooting\(\)\);/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
@@ -1866,19 +1914,32 @@ docker_stop() {
     sleep 5
 }
 docker_start() {
+    SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
+    CNF="/home/${CP_DOMAIN}/config/production/config.js"
+    CP_SPB="_${CP_DOMAIN_}_"
+    if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
+        KK=$(grep "\"key\"" "${CNF}")
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#KKK}" -eq "32" ]; then
+            AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
+            if [ "${#AAA}" -eq "7" ]; then
+                CP_SPB="${CP_SPB} | _${AAA}_"
+            fi
+        fi
+    fi
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     searchd
     memcached -u root -d
     crond -L /var/log/cron.log
-    node /home/${CP_DOMAIN}/config/update/config.js
-    cd /home/${CP_DOMAIN} && pm2 restart process.json --update-env
+    node /home/"${CP_DOMAIN}"/config/update/config.js
+    cd /home/"${CP_DOMAIN}" && pm2 restart process.json --update-env
 }
 docker_restart() {
     docker_stop
     docker_start
 }
 docker_reload() {
-    cd /home/${CP_DOMAIN} && pm2 reload process.json
+    cd /home/"${CP_DOMAIN}" && pm2 reload process.json
 }
 docker_logs() {
     SHOW_ERR_LOGS=$(pm2 logs --err --lines 50 --nostream | curl -s -F 'clbin=<-' https://clbin.com)
@@ -1894,8 +1955,8 @@ docker_logs() {
     _s
 }
 docker_zero() {
-    sed -i "s/xmlpipe_command =.*/xmlpipe_command =/" "/home/${CP_DOMAIN}/config/production/sphinx/sphinx.conf"
-    indexer xmlpipe2_${CP_DOMAIN_} --rotate
+    sed -i "s/xmlpipe_command =.*/xmlpipe_command =/" "/etc/sphinx/sphinx.conf"
+    indexer "xmlpipe2_${CP_DOMAIN_}" --rotate
     (sleep 2; echo flush_all; sleep 2; echo quit;) | telnet 127.0.0.1 11211
 }
 docker_cron() {
@@ -1958,7 +2019,7 @@ docker_backup() {
     T=$(grep "\"theme\"" /home/"${CP_DOMAIN}"/config/production/config.js)
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
-    PORT_DOMAIN=$(grep "mysql41" /home/"${CP_DOMAIN}"/config/production/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
+    PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
     echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
@@ -2110,54 +2171,54 @@ while [ "${WHILE}" -lt "2" ]; do
     WHILE=$((${WHILE}+1))
     case ${OPTION} in
         "i"|"install"|1 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_yes "reboot"
-            read_lang ${3}
-            read_theme ${4}
-            read_password ${5}
-            _s ${5}
+            read_lang "${3}"
+            read_theme "${4}"
+            read_password "${5}"
+            _s "${5}"
             sh_progress
-            1_install ${2} ${3} ${4} ${5}
+            1_install "${2}" "${3}" "${4}" "${5}"
             sh_progress 100
             success_install
             post_commands
             exit 0
         ;;
         "u"|"update"|2 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
+            _s "${2}"
             sh_progress
-            2_update ${2}
+            2_update "${2}" "${3}" "${4}"
             sh_progress 100
             post_commands
             exit 0
         ;;
         "b"|"backup"|3 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
+            _s "${2}"
             sh_progress
-            3_backup ${2} ${3} ${4} ${5} ${6} ${7}
+            3_backup "${2}" "${3}" "${4}" "${5}" "${6}" "${7}"
             sh_progress 100
             exit 0
         ;;
         "t"|"theme"|4 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            read_theme ${3}
-            _s ${3}
+            read_theme "${3}"
+            _s "${3}"
             sh_progress
-            4_theme ${2} ${3} ${4}
+            4_theme "${2}" "${3}" "${4}"
             sh_progress 100
             exit 0
         ;;
         "d"|"database"|5 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            read_key ${3}
-            _s ${3}
-            5_database ${2} ${3}
+            read_key "${3}"
+            _s "${3}"
+            5_database "${2}" "${3}"
             exit 0
         ;;
         "h"|"https"|6 )
@@ -2171,35 +2232,35 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "m"|"mirror"|7 )
-            read_domain ${2}
-            read_mirror ${3}
-            _s ${3}
+            read_domain "${2}"
+            read_mirror "${3}"
+            _s "${3}"
             sh_progress
-            7_mirror ${2} ${3}
+            7_mirror "${2}" "${3}"
             sh_progress 100
             exit 0
         ;;
         "r"|"rm"|"remove"|8 )
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
+            _s "${2}"
             sh_progress
-            8_remove ${2} ${3} ${4}
+            8_remove "${2}" "${3}" "${4}"
             sh_progress 100
             exit 0
         ;;
         "en"|"ru" )
-            ip_install ${1}
+            ip_install "${1}"
             exit 0
         ;;
         "passwd" )
             _br
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            read_password ${3}
-            _s ${3}
+            read_password "${3}"
+            _s "${3}"
             sh_progress
-            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${CP_PASSWD}" \
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container "${1}" "${CP_PASSWD}" \
                 >>/var/log/docker_passwd_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
             docker exec nginx nginx -s reload \
@@ -2209,10 +2270,10 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "images" )
             _br
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            read_key ${3}
-            _s ${3}
+            read_key "${3}"
+            _s "${3}"
             if [ -f "/home/${CP_DOMAIN}/files/poster/.latest" ]; then
                 wget --progress=bar:force -O /var/images.tar \
                     "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
@@ -2966,7 +3027,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "static" )
             read_domain "${2}"
             sh_not
-            RCS=$(docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container rclone config show 2>/dev/null | grep "CINEMASTATIC")
+            RCS=$(docker exec "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
             if [ "${RCS}" = "" ]; then
                 if [ "${4}" != "" ]; then
                     docker exec "${CP_DOMAIN_}" rclone config delete CINEMASTATIC \

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var CP_get = require('../lib/CP_get.min');
+var CP_get = require('../lib/CP_get');
 var CP_structure = require('../lib/CP_structure');
 
 /**
