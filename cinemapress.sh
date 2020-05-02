@@ -585,9 +585,9 @@ ip_install() {
     echo "${PRC_}% backup" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
-        cp -r /var/rclone.conf /home/${LOCAL_DOMAIN}/config/production/rclone.conf
+        cp -r /var/rclone.conf /home/"${LOCAL_DOMAIN}"/config/production/rclone.conf
     elif [ -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
-        cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
+        cp -r /home/"${LOCAL_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
     fi
 
     sleep 5
@@ -601,12 +601,12 @@ ip_install() {
 
             echo "${PRC_}% config check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-            docker exec ${LOCAL_DOMAIN_} rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
+            docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             sleep 3
-            CHECK_MKDIR=`docker exec ${LOCAL_DOMAIN_} rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
             sleep 3
-            CHECK_PURGE=`docker exec ${LOCAL_DOMAIN_} rclone purge CINEMAPRESS:/check-connection 2>/dev/null`
+            CHECK_PURGE=$(docker exec "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
             if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
                 _header "ERROR"
                 _content
@@ -615,12 +615,12 @@ ip_install() {
                 _s
                 exit 0
             fi
-            cp -r /home/${LOCAL_DOMAIN}/config/production/rclone.conf /var/rclone.conf
+            cp -r /home/"${LOCAL_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
             if [ "${LOCAL_ACTION2}" = "create" ] || [ "${LOCAL_ACTION2}" = "1" ]; then
-                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup create hand \
+                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup create hand \
                     >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${LOCAL_ACTION2}" = "restore" ] || [ "${LOCAL_ACTION2}" = "2" ]; then
-                docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
+                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container backup restore "${LOCAL_DOMAIN2}" \
                     >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
                 docker exec nginx nginx -s reload \
                     >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
@@ -653,7 +653,7 @@ ip_install() {
             printf "${C}---- ${G}2)${NC} restore ${S}------------ Restore Website From Last Backup ${C}----\n"
             _s
             read -e -p 'OPTION [1-2]: ' LOCAL_ACTION
-            LOCAL_ACTION=`echo ${LOCAL_ACTION} | iconv -c -t UTF-8`
+            LOCAL_ACTION=$(echo "${LOCAL_ACTION}" | iconv -c -t UTF-8)
             _br
         fi
 
