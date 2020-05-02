@@ -1864,6 +1864,8 @@ docker_run() {
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/"${CP_DOMAIN}"
         rm -rf /var/cinemapress/* /var/${CP_THEME:?}
+        cp -rf /home/"${CP_DOMAIN}"/config/locales/${CP_LANG}/default/sphinx/source.xml /etc/sphinx/source.xml
+        rm -rf /home/"${CP_DOMAIN}"/config/locales/${CP_LANG}/default/sphinx
         cp -rf /home/"${CP_DOMAIN}"/config/locales/${CP_LANG}/* /home/"${CP_DOMAIN}"/config/
         cp -rf /home/"${CP_DOMAIN}"/config/default/* /home/"${CP_DOMAIN}"/config/production/
         cp -rf /home/"${CP_DOMAIN}"/files/bbb.mp4 /var/local/balancer/bbb.mp4
