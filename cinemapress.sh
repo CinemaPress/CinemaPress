@@ -3083,6 +3083,10 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "ping" )
+            curl --fail http://${CP_DOMAIN}/ping || exit 1
+            exit 0
+        ;;
         "help"|"H"|"--help"|"-h"|"-H" )
             clear
             _line

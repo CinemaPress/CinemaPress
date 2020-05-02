@@ -58,4 +58,4 @@ RUN set -o pipefail \
     && chmod a+x /etc/periodic/hourly/cron
 EXPOSE 3000
 CMD ["/usr/bin/cinemapress", "container", "run"]
-HEALTHCHECK --interval=300s --timeout=5s CMD curl -fso /dev/null http://localhost/ || exit 1
+HEALTHCHECK --interval=100s --timeout=5s CMD /usr/bin/cinemapress ping || exit 1

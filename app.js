@@ -40,6 +40,9 @@ app.use(function(req, res, next) {
   res.setHeader('X-Powered-By', 'CinemaPress');
   next();
 });
+app.use('/ping', function(req, res) {
+  return res.send('pong');
+});
 
 /**
  * Route dependencies.
