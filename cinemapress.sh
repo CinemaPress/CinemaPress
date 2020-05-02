@@ -3084,7 +3084,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "ping" )
-            curl --fail http://${CP_DOMAIN}/ping || exit 1
+            curl --fail http://localhost:3000/ping || exit 1
             exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
