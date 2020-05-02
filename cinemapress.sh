@@ -1934,7 +1934,7 @@ docker_start() {
     memcached -u root -d
     crond -L /var/log/cron.log
     node /home/"${CP_DOMAIN}"/config/update/config.js
-    cd /home/"${CP_DOMAIN}" && pm2 restart process.json --update-env
+    cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
 }
 docker_restart() {
     docker_stop
