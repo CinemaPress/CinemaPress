@@ -219,7 +219,7 @@ module.exports = {
       "legal": {
         "time": 20,
         "countries": [],
-        "message": "The function of the movie information catalog has been activated. To display the player, <a href=\"/admin-secret/blocking\" target=\"_blank\" style=\"color:white;\">disable the «Blocking» module in the admin panel</a>."
+        "message": "Activated module «Blocking - Legal website»<br><br>Automatic embeds search by official sources."
       },
       "app": {
         "download": {

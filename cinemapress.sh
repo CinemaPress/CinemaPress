@@ -83,7 +83,7 @@ docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
         if [ "`basename "${0}"`" != "cinemapress" ] || [ "${1}" != "" ]; then
             echo ""; echo -n "☐ Downloading cinemapress.sh ...";
-            wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh && \
+            wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh -o /dev/null && \
             chmod +x /usr/bin/cinemapress
             echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
             echo -n "☐ Installing packages ..."
@@ -356,8 +356,8 @@ ip_install() {
             BOTS=""
             if [ ! -f "/etc/nginx/bots.d/blacklist-user-agents.conf" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
                 mkdir -p /etc/nginx/bots.d
-                cp -rf /home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/* /etc/nginx/bots.d/
-                BOTS="-v /etc/nginx/bots.d:/etc/nginx/bots.d"
+                cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/bots.d/* /etc/nginx/bots.d/
+                BOTS=(-v /etc/nginx/bots.d:/etc/nginx/bots.d)
             fi
 
             docker run \
@@ -370,7 +370,7 @@ ip_install() {
                 -v /var/local/balancer:/var/local/balancer \
                 -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
-                ${BOTS} \
+                "${BOTS[@]}" \
                 -p 80:80 \
                 -p 443:443 \
                 cinemapress/nginx:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
@@ -868,9 +868,9 @@ ip_install() {
 
         sleep 5
 
-        DOMAINS="-d ${LOCAL_DOMAIN} -d *.${LOCAL_DOMAIN}"
+        DOMAINS=(-d "${LOCAL_DOMAIN}" -d *."${LOCAL_DOMAIN}")
         if [ "${LOCAL_SUBDOMAIN}" != "" ]; then
-            for SUBDOMAIN in $LOCAL_SUBDOMAIN; do DOMAINS="${DOMAINS} -d *.${SUBDOMAIN}.${LOCAL_DOMAIN}"; done
+            for SUBDOMAIN in $LOCAL_SUBDOMAIN; do DOMAINS=("${DOMAINS[@]}" -d *."${SUBDOMAIN}"."${LOCAL_DOMAIN}"); done
         fi
 
         docker run \
@@ -885,21 +885,21 @@ ip_install() {
             --email "support@${LOCAL_DOMAIN}" \
             --non-interactive \
             --agree-tos \
-            "${DOMAINS}" \
+            "${DOMAINS[@]}" \
             --server https://acme-v02.api.letsencrypt.org/directory \
-                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+                >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
 
         sleep 15
 
         if [ -d "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
             openssl dhparam -out "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem" 2048 \
-                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+                >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
             sed -Ei "s~/self-signed/~/live/~g" "${NGX}/ssl.d/default.conf"
             sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 "/home/${LOCAL_DOMAIN}/config/production/config.js"
             docker restart "${LOCAL_DOMAIN_}" \
-                >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+                >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
             _header "Generating wildcard certificate, completed successfully!"
             _br
         else
@@ -929,7 +929,7 @@ ip_install() {
         sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
             /home/"${LOCAL_DOMAIN}"/config/production/config.js
         docker restart "${LOCAL_DOMAIN_}" \
-            >>/var/log/https_"$(date '+%d_%m_%Y')".log 2>&1
+            >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
         _header "Generating self-signed certificate, completed successfully!"
         _br
     fi

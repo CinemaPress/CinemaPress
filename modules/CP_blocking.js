@@ -396,11 +396,11 @@ function blockingPlayer(code, movie, options, display) {
               countdown +
               code.player.replace(
                 /data-player="[a-z0-9,\s%]*?"/i,
-                'data-player="trailer"'
+                'data-player="pleer,trailer"'
               )
             : code.player.replace(
                 /data-player="[a-z0-9,\s%]*?"/i,
-                'data-player="trailer"'
+                'data-player="pleer,trailer"'
               );
         code.footer = code.footer
           .replace(/\?player=.*?"/i, '"')
