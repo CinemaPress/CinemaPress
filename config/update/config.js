@@ -136,8 +136,8 @@ async.series(
       c.theme = thm;
       c.protocol = prt || prt2 ? 'https://' : config.protocol;
       c.database =
-        config_default.database &&
-        config_default.database.toLowerCase() !== 'FREE'.toLowerCase()
+        config_default.database && config_default.database.key &&
+        config_default.database.key.toLowerCase() !== 'FREE'.toLowerCase()
           ? config_default.database
           : c.database;
       c.domain = config_default.domain
