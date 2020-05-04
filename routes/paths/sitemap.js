@@ -58,20 +58,25 @@ function allSitemap(options, callback) {
     for (var year in categories) {
       if (categories.hasOwnProperty(year)) {
         if (categories[year].title === y) y = 0;
-        render.sitemaps[render.sitemaps.length] = categories[year].url.replace(
-          (config.subdomain || config.botdomain) +
-            config.domain +
-            '/' +
-            config.urls.year +
-            config.urls.slash,
-          config.botdomain +
-            config.domain +
-            '/' +
-            config.urls.sitemap +
-            '/' +
-            config.urls.year +
-            '/'
-        );
+        render.sitemaps[render.sitemaps.length] = categories[year].url
+          .replace(
+            (config.subdomain || config.botdomain) + config.domain,
+            config.botdomain + config.domain
+          )
+          .replace(
+            config.botdomain +
+              config.domain +
+              '/' +
+              config.urls.year +
+              config.urls.slash,
+            config.botdomain +
+              config.domain +
+              '/' +
+              config.urls.sitemap +
+              '/' +
+              config.urls.year +
+              '/'
+          );
       }
     }
 

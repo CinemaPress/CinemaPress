@@ -256,11 +256,20 @@ function oneContent(url, page, sorting, options, callback) {
               contents[0].movies.length
             ) {
               var query_id = [];
-              contents[0].movies.forEach(function(item, i, arr) {
-                query_id.push(
-                  item + '^' + (parseInt(arr.length) - parseInt(i))
-                );
-              });
+              if (sorting) {
+                contents[0].movies.forEach(function(item) {
+                  query_id.push(item);
+                });
+              } else {
+                contents[0].movies
+                  .slice(
+                    config.default.count * (page ? page - 1 : 0),
+                    config.default.count * (!page ? 1 : page)
+                  )
+                  .forEach(function(item) {
+                    query_id.push(item);
+                  });
+              }
               query = { query_id: query_id.join('|') };
             }
 
@@ -278,7 +287,7 @@ function oneContent(url, page, sorting, options, callback) {
           query,
           config.default.count,
           sorting,
-          page,
+          sorting ? page : 1,
           true,
           options,
           function(err, movies) {
@@ -292,7 +301,12 @@ function oneContent(url, page, sorting, options, callback) {
             if (err) return callback(err);
 
             return movies && movies.length
-              ? callback(null, movies)
+              ? sorting
+                ? callback(null, movies)
+                : callback(
+                    null,
+                    sortingIds(related.movies, movies, config.default.count)
+                  )
               : callback(null, []);
           }
         );
@@ -479,20 +493,31 @@ function oneContent(url, page, sorting, options, callback) {
       },
       count: function(callback) {
         if (!query) return callback(null, 0);
-        return CP_get.count(query, function(err, num) {
-          if (options.debug) {
-            options.debug.detail.push({
-              type: 'count',
-              duration: new Date() - options.debug.duration.current + 'ms'
-            });
-            options.debug.duration.current = new Date();
-          }
-          if (err) return callback(err);
+        if (sorting) {
+          return CP_get.count(query, function(err, num) {
+            if (options.debug) {
+              options.debug.detail.push({
+                type: 'count',
+                duration: new Date() - options.debug.duration.current + 'ms'
+              });
+              options.debug.duration.current = new Date();
+            }
+            if (err) return callback(err);
 
-          num = Math.ceil(parseInt(num) / config.default.count);
+            num = Math.ceil(parseInt(num) / config.default.count);
 
-          return num ? callback(null, num) : callback(null, 0);
-        });
+            return num ? callback(null, num) : callback(null, 0);
+          });
+        } else {
+          return callback(
+            null,
+            Math.ceil(
+              related.movies && related.movies.length
+                ? related.movies.length / config.default.count
+                : 0
+            )
+          );
+        }
       },
       comments: function(callback) {
         modules.comments.data.fast.active && !/NoComment/i.test(related.tags)
@@ -552,6 +577,34 @@ function oneContent(url, page, sorting, options, callback) {
       });
     }
   );
+
+  /**
+   * Sort films are turned by id list.
+   *
+   * @param {Object} ids
+   * @param {Object} movies
+   * @param {Number} [count]
+   * @return {Array}
+   */
+
+  function sortingIds(ids, movies, count) {
+    if (arguments.length === 2) {
+      count = 0;
+    }
+
+    var result = [];
+
+    for (var id = 0; id < ids.length; id++) {
+      for (var i = 0; i < movies.length; i++) {
+        if (parseInt(movies[i].kp_id) === parseInt(('' + ids[id]).trim())) {
+          result.push(movies[i]);
+          if (result.length === count) return result;
+        }
+      }
+    }
+
+    return result;
+  }
 }
 
 /**
