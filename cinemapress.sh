@@ -2591,12 +2591,11 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "l"|"ll"|"log"|"logs" )
             if [ "${1}" = "ll" ] || [ "${2}" = "live" ] || [ "${2}" = "l" ]; then
-                _line
+                _br
                 tail \
                     -n0 -f /var/log/nginx/*.log \
                     -n0 -f /home/*/log/err*.log \
                     -n0 -f /home/*/log/out*.log
-                _line
                 exit 0
             fi
             _br
