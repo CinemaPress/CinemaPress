@@ -2583,13 +2583,22 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "optimal" )
             _br
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
-            docker exec -t ${CP_DOMAIN_} node optimal.js
+            _s "${2}"
+            docker exec -t "${CP_DOMAIN_}" node optimal.js
             exit 0
         ;;
-        "log"|"logs" )
+        "l"|"ll"|"log"|"logs" )
+            if [ "${1}" = "ll" ] || [ "${2}" = "live" ] || [ "${2}" = "l" ]; then
+                _line
+                tail \
+                    -n0 -f /var/log/nginx/*.log \
+                    -n0 -f /home/*/log/err*.log \
+                    -n0 -f /home/*/log/out*.log
+                _line
+                exit 0
+            fi
             _br
             read_domain "${2}"
             sh_not
