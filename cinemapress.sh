@@ -68,7 +68,7 @@ post_commands() {
     && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
         echo -e "\n" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
-        echo "0 23 * * * root docker run --rm -v /home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${LOCAL_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
+        echo "0 23 * * * root docker run --rm -v /home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini -v /var/log/letsencrypt:/var/log/letsencrypt certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${LOCAL_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
     fi
     CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
