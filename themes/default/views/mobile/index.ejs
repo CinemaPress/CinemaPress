@@ -14,7 +14,7 @@
 if (index.hasOwnProperty(type) && index[type].length && type === 'episode') {
 index[type].forEach(function (category) { %>
 
-    <% if (category.movies.length) { %>
+    <% if (typeof category === 'object' && category.movies && category.movies.length) { %>
         <div class="info block">
             <% var moreEpisodes = false; %>
             <% category.movies.forEach(function (movie) { %>
@@ -61,7 +61,7 @@ index[type].forEach(function (category) { %>
         </div>
     </h2>
 
-    <% if (category.movies.length) {
+    <% if (typeof category === 'object' && category.movies && category.movies.length) {
     category.movies.forEach(function (movie) { %>
 
         <div class="clear"></div>

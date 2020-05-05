@@ -385,7 +385,7 @@ movies[type].forEach(function (category) { %>
 
     <div class="info block">
 
-        <% if (category.movies.length) {
+        <% if (typeof category === 'object' && category.movies && category.movies.length) {
         category.movies.forEach(function (movie) { %>
 
             <a href="<%- movie.url %>" title="<%= movie.title %> (<%- movie.year %>)">
