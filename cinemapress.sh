@@ -3199,6 +3199,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " app       - Create movie application"; _br;
             printf " cms       - Install other CMS (php-mysql,wordpress,drupal,joomla,dle)"; _br;
             printf " cms example.com backup [create,restore]"; _br;
+            printf " bot       - Domain for bots"; _br;
             printf " splash example.com github_login github_pass"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine create_https_restore_mirror"; _br;
