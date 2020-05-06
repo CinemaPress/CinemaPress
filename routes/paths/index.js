@@ -458,18 +458,18 @@ function dataIndex(options, callback) {
                                     block.movies.length &&
                                     block.name
                                   ) {
-                                    content_urls = content_urls.map(function(
-                                      u
-                                    ) {
-                                      if (
-                                        typeof u === 'string' &&
-                                        u === content_url
-                                      ) {
-                                        return block;
-                                      } else {
-                                        return u;
-                                      }
-                                    });
+                                    content_urls = content_urls
+                                      .map(function(u) {
+                                        if (
+                                          typeof u === 'string' &&
+                                          u === content_url
+                                        ) {
+                                          return block;
+                                        } else {
+                                          return 0;
+                                        }
+                                      })
+                                      .filter(Boolean);
                                   }
 
                                   callback();

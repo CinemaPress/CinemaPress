@@ -250,7 +250,8 @@ function parseData() {
       if (
         movieData.kp_rating &&
         parseInt(movieData.kp_rating) &&
-        movieData.kp_vote && parseInt(movieData.kp_vote)
+        movieData.kp_vote &&
+        parseInt(movieData.kp_vote)
       ) {
         document.querySelector('[name="movie.kp_rating"]').value =
           movieData.kp_rating;
@@ -258,7 +259,8 @@ function parseData() {
       if (
         movieData.kp_rating &&
         parseInt(movieData.kp_rating) &&
-        movieData.kp_vote && parseInt(movieData.kp_vote)
+        movieData.kp_vote &&
+        parseInt(movieData.kp_vote)
       ) {
         document.querySelector('[name="movie.kp_vote"]').value =
           movieData.kp_vote;
@@ -266,7 +268,8 @@ function parseData() {
       if (
         movieData.imdb_rating &&
         parseInt(movieData.imdb_rating) &&
-        movieData.imdb_vote && parseInt(movieData.imdb_vote)
+        movieData.imdb_vote &&
+        parseInt(movieData.imdb_vote)
       ) {
         document.querySelector('[name="movie.imdb_rating"]').value =
           movieData.imdb_rating;
@@ -274,7 +277,8 @@ function parseData() {
       if (
         movieData.imdb_rating &&
         parseInt(movieData.imdb_rating) &&
-        movieData.imdb_vote && parseInt(movieData.imdb_vote)
+        movieData.imdb_vote &&
+        parseInt(movieData.imdb_vote)
       ) {
         document.querySelector('[name="movie.imdb_vote"]').value =
           movieData.imdb_vote;
@@ -294,7 +298,8 @@ function parseData() {
         document.querySelector(
           '[name="movie.description"]'
         ).value = decodeURIComponent(movieData.description)
-          .replace(/[а-яё];([а-яё]|$)/gi, '. ')
+          .replace(/(\.);([0-9а-яё]|$)/gi, '$1 $2')
+          .replace(/([^;]);([0-9а-яё]|$)/gi, '$1. $2')
           .replace(/\s+/g, ' ')
           .replace(/(^\s*)|(\s*)$/g, '');
       }

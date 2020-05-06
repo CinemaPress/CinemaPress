@@ -75,8 +75,6 @@ function tryParseJSON(jsonString) {
   return {};
 }
 
-var indexed = 0;
-
 async.series(
   [
     function(callback) {
@@ -84,7 +82,7 @@ async.series(
       async.forever(
         function(next) {
           CP_get.movies(
-            { from: process.env.CP_RT, certainly: true },
+            { from: process.env.CP_RT, certainly: true, full: true },
             500,
             '',
             i,
@@ -107,7 +105,11 @@ async.series(
                     }
                     CP_save.save(movie, 'rt', function(err, result) {
                       console.log(
-                        result,
+                        result && result.trim()
+                          ? result.trim()
+                          : movie.id
+                          ? movie.id
+                          : '',
                         old.replace(/(^_|_$)/gi, '') +
                           ' -> ' +
                           domain.replace(/(^_|_$)/gi, '')
@@ -127,7 +129,6 @@ async.series(
           );
         },
         function() {
-          console.log('INDEXED: ', indexed);
           return callback();
         }
       );
@@ -159,7 +160,11 @@ async.series(
                     }
                     CP_save.save(content, 'content', function(err, result) {
                       console.log(
-                        result,
+                        result && result.trim()
+                          ? result.trim()
+                          : content.id
+                          ? content.id
+                          : '',
                         old.replace(/(^_|_$)/gi, '') +
                           ' -> ' +
                           domain.replace(/(^_|_$)/gi, '')
@@ -210,7 +215,11 @@ async.series(
                     }
                     CP_save.save(comment, 'comment', function(err, result) {
                       console.log(
-                        result,
+                        result && result.trim()
+                          ? result.trim()
+                          : comment.id
+                          ? comment.id
+                          : '',
                         old.replace(/(^_|_$)/gi, '') +
                           ' -> ' +
                           domain.replace(/(^_|_$)/gi, '')

@@ -223,32 +223,6 @@ docker_install() {
                 exit 0
             fi
         fi
-        for DOMAIN_PATH in /home/*; do
-            DOMAIN_PROCESS="${DOMAIN_PATH}/process.json"
-            DOMAIN_CONFIG="${DOMAIN_PATH}/config/production/config.js"
-            if [ -f "${DOMAIN_PROCESS}" ] && [ -f "${DOMAIN_CONFIG}" ]; then
-                DDD=$(find "${DOMAIN_PATH}" -maxdepth 0 -printf "%f")
-                DDD_=$(echo "${DDD}" | sed -r "s/[^A-Za-z0-9]/_/g")
-                SPS="/var/lib/sphinx/data/movies_${DDD_}.sps"
-                SPB="/var/lib/sphinx/data/movies_${DDD_}.spb"
-                if [ -f "${SPS}" ] && [ ! -f "${SPB}" ]; then
-                    AA=$(grep "\"CP_ALL\"" "${DOMAIN_PROCESS}")
-                    KK=$(grep "\"key\"" "${DOMAIN_CONFIG}")
-                    AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
-                    KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
-                    if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
-                        openssl enc \
-                            -aes-256-cbc \
-                            -pbkdf2 \
-                            -iter 100000 \
-                            -in <(echo "${AAA}") \
-                            -out "${SPB}" \
-                            -k "${DDD}/${KKK}" \
-                            -salt 2>/dev/null
-                    fi
-                fi
-            fi
-        done
     fi
 }
 ip_install() {
@@ -488,12 +462,15 @@ ip_install() {
         exit 0
     fi
 
+    AA=$(grep "\"CP_ALL\"" /home/"${LOCAL_DOMAIN}"/process.json)
     KK=$(grep "\"key\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     DD=$(grep "\"date\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     PP=$(grep "\"pagespeed\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
+    CP_ALL=$(echo ${AA} | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
     CP_KEY=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
     CP_DATE=$(echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/')
     CP_SPEED=$(echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/')
+    if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     mkdir -p /var/temp
@@ -550,6 +527,10 @@ ip_install() {
     fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
+    if [ "${CP_ALL}" != "" ] && [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb" ]; then
+        sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
+            /home/"${LOCAL_DOMAIN}"/process.json
+    fi
     if [ "${#CP_KEY}" -eq "4" ] || [ "${#CP_KEY}" -eq "32" ]; then
         sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${CP_KEY}\"/" \
             /home/"${LOCAL_DOMAIN}"/config/production/config.js
@@ -806,14 +787,6 @@ ip_install() {
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
-            openssl enc \
-                -aes-256-cbc \
-                -pbkdf2 \
-                -iter 100000 \
-                -in <(echo "${CHECK}") \
-                -out "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.spb" \
-                -k "${LOCAL_DOMAIN}/${LOCAL_KEY}" \
-                -salt 2>/dev/null
             _content "Starting ..."
             if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
                 docker_start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
@@ -1905,6 +1878,7 @@ docker_run() {
         searchd
         memcached -u root -d
         node /home/"${CP_DOMAIN}"/config/update/config.js
+        node /home/"${CP_DOMAIN}"/config/update/mirror.js
     fi
     crond -L /var/log/cron.log
     cd /home/"${CP_DOMAIN}" && pm2-runtime start process.json
@@ -1920,7 +1894,24 @@ docker_stop() {
 docker_start() {
     SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
     CNF="/home/${CP_DOMAIN}/config/production/config.js"
+    PRC="/home/${CP_DOMAIN}/process.json"
     CP_SPB="_${CP_DOMAIN_}_"
+    if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
+        AA=$(grep "\"CP_ALL\"" "${PRC}")
+        KK=$(grep "\"key\"" "${CNF}")
+        AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
+            openssl enc \
+                -aes-256-cbc \
+                -pbkdf2 \
+                -iter 100000 \
+                -in <(echo "${AAA}") \
+                -out "${SPB}" \
+                -k "${CP_DOMAIN}/${KKK}" \
+                -salt 2>/dev/null
+        fi
+    fi
     if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
         KK=$(grep "\"key\"" "${CNF}")
         KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
