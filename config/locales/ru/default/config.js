@@ -8,6 +8,7 @@ module.exports = {
   "botdomain": "",
   "botdomains": "",
   "domain": "example.com",
+  "bomain": "",
   "email": "support@example.com",
   "theme": "default",
   "country": "RU",

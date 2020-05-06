@@ -163,7 +163,6 @@
 	"Протокол": "Protokol",
 	"Основной протокол веб-сайта": "Protokol utama situs web",
 	"Домен": "Domain",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Parameter informasi dari domain yang ditugaskan kunci basis data",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Email anda untuk menghubungi administrator situs web",
 	"Язык и страна веб-сайта": "Bahasa dan negara situs web",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Tambahkan semua IP",
 	"Поиск по WHOIS в реальном времени": "Mencari WHOIS secara real time",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Apa yang gratis dan premium tema desain CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Menambahkan parsing pada satu situs web paling"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Menambahkan parsing pada satu situs web paling",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Menyiapkan situs pada domain yang terpisah dan sub-domain untuk mesin pencari dan pengguna",
+	"Домен для ботов": "Domain untuk bot",
+	"Домен для людей": "Domain bagi orang-orang",
+	"Поддомен для людей": "Subdomain untuk orang-orang"
 }

@@ -163,7 +163,6 @@
 	"Протокол": "Giao thức",
 	"Основной протокол веб-сайта": "Giao thức chính của trang web",
 	"Домен": "Miền",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Tham số thông tin của tên miền mà khóa cơ sở dữ liệu được gán",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Email của bạn để liên hệ với quản trị viên trang web",
 	"Язык и страна веб-сайта": "Ngôn ngữ và quốc gia của trang web",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Thêm tất cả IP",
 	"Поиск по WHOIS в реальном времени": "Tìm kiếm WHOIS trong thời gian thực",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Miễn phí và phí bảo hiểm thiết kế theme CinemaPress là gì?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Thêm phân tích tại một trang web nhất"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Thêm phân tích tại một trang web nhất",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Thiết lập của trang web trên một tên miền riêng và tên miền phụ cho công cụ tìm kiếm và người dùng",
+	"Домен для ботов": "Miền với bot",
+	"Домен для людей": "Miền với mọi người",
+	"Поддомен для людей": "Tên miền phụ cho người dân"
 }

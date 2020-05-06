@@ -29,13 +29,15 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   if (arguments.length === 4) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) + '' + config.domain;
+      (config.botdomain || config.subdomain) +
+      '' +
+      (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
       (config.botdomain || config.subdomain) +
       '' +
-      config.domain;
+      (config.bomain || config.domain);
   }
 
   if (!movie) return '';
@@ -241,13 +243,15 @@ function onlyMovieSchema(movie, comments, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) + '' + config.domain;
+      (config.botdomain || config.subdomain) +
+      '' +
+      (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
       (config.botdomain || config.subdomain) +
       '' +
-      config.domain;
+      (config.bomain || config.domain);
   }
 
   var result = {};
@@ -265,7 +269,7 @@ function onlyMovieSchema(movie, comments, options) {
       ? movie.poster
       : config.protocol +
         (config.botdomain || config.subdomain) +
-        config.domain +
+        (config.bomain || config.domain) +
         movie.poster;
   result['sameAs'] = movie.url;
   result['url'] = options.url || movie.url;
@@ -359,13 +363,15 @@ function categorySchema(page, movies, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) + '' + config.domain;
+      (config.botdomain || config.subdomain) +
+      '' +
+      (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
       (config.botdomain || config.subdomain) +
       '' +
-      config.domain;
+      (config.bomain || config.domain);
   }
 
   var result = [];
@@ -476,13 +482,15 @@ function generalSchema(page, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) + '' + config.domain;
+      (config.botdomain || config.subdomain) +
+      '' +
+      (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
       (config.botdomain || config.subdomain) +
       '' +
-      config.domain;
+      (config.bomain || config.domain);
   }
 
   var result = {};
@@ -574,13 +582,15 @@ function contentSchema(content, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) + '' + config.domain;
+      (config.botdomain || config.subdomain) +
+      '' +
+      (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
       (config.botdomain || config.subdomain) +
       '' +
-      config.domain;
+      (config.bomain || config.domain);
   }
 
   var result = {};
@@ -590,16 +600,19 @@ function contentSchema(content, options) {
   result['headline'] = content.title;
   result['name'] = content.title;
   result['author'] =
-    config.protocol + (config.botdomain || config.subdomain) + config.domain;
+    config.protocol +
+    (config.botdomain || config.subdomain) +
+    (config.bomain || config.domain);
   result['publisher'] = {
     '@type': 'Organization',
-    name: (config.botdomain || config.subdomain) + config.domain,
+    name:
+      (config.botdomain || config.subdomain) + (config.bomain || config.domain),
     logo: {
       '@type': 'ImageObject',
       url:
         config.protocol +
         (config.botdomain || config.subdomain) +
-        config.domain +
+        (config.bomain || config.domain) +
         config.default.image
     }
   };
@@ -617,7 +630,7 @@ function contentSchema(content, options) {
       ? content.image
       : config.protocol +
         (config.botdomain || config.subdomain) +
-        config.domain +
+        (config.bomain || config.domain) +
         content.image;
   result['sameAs'] = content.url;
   result['url'] = options.url || content.url;

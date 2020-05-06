@@ -163,7 +163,6 @@
 	"Протокол": "Protokol",
 	"Основной протокол веб-сайта": "Websitesinin ana protokolü",
 	"Домен": "Domain",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Veritabanı anahtarının atandığı etki alanının bilgi parametresi",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "E-postanız websitesi yöneticisiyle iletişim kuruyor",
 	"Язык и страна веб-сайта": "Websitesi dili ve ülke",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Tüm IP Ekle",
 	"Поиск по WHOIS в реальном времени": "Gerçek zamanlı olarak WHOIS ara",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Özgür ve prim tasarım teması CinemaPress nedir?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Ayrıştırmayı ekle az bir websitesinde"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Ayrıştırmayı ekle az bir websitesinde",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Arama motorları ve kullanıcılar için ayrı alan adı ve alt alan adlarında sitenin kurulması",
+	"Домен для ботов": "Alan botlar için",
+	"Домен для людей": "Insanlar için alan",
+	"Поддомен для людей": "Insanlar için bir alt alana"
 }

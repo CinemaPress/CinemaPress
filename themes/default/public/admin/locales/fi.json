@@ -163,7 +163,6 @@
 	"Протокол": "Protokolla",
 	"Основной протокол веб-сайта": "Verkkosivun tärkein pöytäkirja",
 	"Домен": "Verkkotunnuksen",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Tietokannan avaimen osoitettu verkkotunnuksen tiedot-parametri",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Sähköpostiosoitteesi voit ottaa yhteyttä sivuston ylläpitäjään",
 	"Язык и страна веб-сайта": "Verkkosivun kieli ja maa",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Lisää kaikki IP",
 	"Поиск по WHOIS в реальном времени": "Hae whois reaaliajassa",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Mikä on ilmainen ja Premium teema CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Lisää jäsennys ainakin yksi web-sivusto"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Lisää jäsennys ainakin yksi web-sivusto",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Perustamalla sivuston erillisellä verkkotunnuksen ja aliverkkotunnuksista hakukoneita ja käyttäjille",
+	"Домен для ботов": "Verkkotunnuksen botit",
+	"Домен для людей": "Verkkotunnuksen ihmisille",
+	"Поддомен для людей": "Subdomain ihmisille"
 }

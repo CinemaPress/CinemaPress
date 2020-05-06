@@ -59,18 +59,19 @@ function allSitemap(options, callback) {
       if (categories.hasOwnProperty(year)) {
         if (categories[year].title === y) y = 0;
         render.sitemaps[render.sitemaps.length] = categories[year].url
+          .replace(config.subdomain, config.botdomain)
           .replace(
-            (config.subdomain || config.botdomain) + config.domain,
-            config.botdomain + config.domain
+            config.domain || config.bomain,
+            config.bomain || config.domain
           )
           .replace(
             config.botdomain +
-              config.domain +
+              (config.bomain || config.domain) +
               '/' +
               config.urls.year +
               config.urls.slash,
             config.botdomain +
-              config.domain +
+              (config.bomain || config.domain) +
               '/' +
               config.urls.sitemap +
               '/' +
@@ -84,7 +85,7 @@ function allSitemap(options, callback) {
       render.sitemaps.unshift(
         config.protocol +
           (config.botdomain || config.subdomain) +
-          config.domain +
+          (config.bomain || config.domain) +
           '/' +
           config.urls.sitemap +
           '/' +
@@ -110,7 +111,7 @@ function allSitemap(options, callback) {
         render.sitemaps[render.sitemaps.length] =
           config.protocol +
           (config.botdomain || config.subdomain) +
-          config.domain +
+          (config.bomain || config.domain) +
           '/' +
           config.urls.sitemap +
           '/' +
@@ -209,7 +210,7 @@ function oneSitemap(type, year, options, callback) {
         loc:
           config.protocol +
           (config.botdomain || config.subdomain) +
-          config.domain +
+          (config.bomain || config.domain) +
           '/' +
           config.urls.type +
           config.urls.slash +
@@ -238,8 +239,10 @@ function oneSitemap(type, year, options, callback) {
         if (categories.hasOwnProperty(year)) {
           render.urls[render.urls.length] = {
             loc: categories[year].url.replace(
-              (config.subdomain || config.botdomain) + config.domain,
-              (config.botdomain || config.subdomain) + config.domain
+              (config.subdomain || config.botdomain) +
+                (config.domain || config.bomain),
+              (config.botdomain || config.subdomain) +
+                (config.bomain || config.domain)
             )
           };
         }
@@ -277,8 +280,10 @@ function oneSitemap(type, year, options, callback) {
         if (contents.hasOwnProperty(content)) {
           render.urls[render.urls.length] = {
             loc: contents[content].url.replace(
-              (config.subdomain || config.botdomain) + config.domain,
-              (config.botdomain || config.subdomain) + config.domain
+              (config.subdomain || config.botdomain) +
+                (config.domain || config.bomain),
+              (config.botdomain || config.subdomain) +
+                (config.bomain || config.domain)
             ),
             lastmod: moment(
               contents[content].publish,

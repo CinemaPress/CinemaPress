@@ -163,7 +163,6 @@
 	"Протокол": "Protokoll",
 	"Основной протокол веб-сайта": "A honlap fő protokollja",
 	"Домен": "Domain",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "A tartomány azon információs paramétere, amelyhez az adatbázis kulcs hozzárendelésre került",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "E-mail címét a weboldal adminisztrátorának felkereséséhez",
 	"Язык и страна веб-сайта": "A honlap nyelve és országa",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Add az összes IP-",
 	"Поиск по WHOIS в реальном времени": "Keresése WHOIS valós időben",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Mi ingyenes és prémium dizájn CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Add elemzésekor legalább egy webhelyet"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Add elemzésekor legalább egy webhelyet",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Beállítása az oldalon egy külön tartomány és al-domain keresők és a felhasználók",
+	"Домен для ботов": "Domain botok",
+	"Домен для людей": "Domain az emberek",
+	"Поддомен для людей": "Aldomainje emberek"
 }

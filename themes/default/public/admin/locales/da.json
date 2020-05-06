@@ -163,7 +163,6 @@
 	"Протокол": "Protokol",
 	"Основной протокол веб-сайта": "Hovedprotokollen på hjemmesiden",
 	"Домен": "Domæne",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Information parameter for det domæne, som databasenøglen er tildelt",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Din email skal du kontakte webstedets administrator",
 	"Язык и страна веб-сайта": "Websteds sprog og land",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Tilføj alle IP",
 	"Поиск по WHOIS в реальном времени": "Søg efter WHOIS i realtid",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Hvad er gratis og premium design tema CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Tilføj parsing mindst ét ​​websted"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Tilføj parsing mindst ét ​​websted",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Opsætning af webstedet på en separat domæne og sub-domæner for søgemaskiner og brugere",
+	"Домен для ботов": "Domæne til robotter",
+	"Домен для людей": "Domæne til mennesker",
+	"Поддомен для людей": "Underdomæne for folk"
 }

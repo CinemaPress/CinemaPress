@@ -1655,6 +1655,50 @@ read_import() {
     fi
     IMPORT_DOMAIN_=`echo ${IMPORT_DOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g"`
 }
+read_bomain() {
+    CP_BOMAIN=${1:-${CP_BOMAIN}}
+    if [ "${CP_BOMAIN}" = "" ]; then
+        _header "DOMAIN FOR BOTS"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                CP_BOMAIN=${1}
+                CP_BOMAIN=`echo ${CP_BOMAIN} | iconv -c -t UTF-8`
+                echo ": ${CP_BOMAIN}"
+            else
+                read -e -p ': ' CP_BOMAIN
+                CP_BOMAIN=`echo ${CP_BOMAIN} | iconv -c -t UTF-8`
+            fi
+            if [ "${CP_BOMAIN}" != "" ]
+            then
+                if echo "${CP_BOMAIN}" | grep -qE ^[.a-z0-9-]+$
+                then
+                    if [ "${CP_DOMAIN}" = "${CP_BOMAIN}" ]
+                    then
+                        printf "${R}WARNING:${NC} The domain for bots cannot be \n"
+                        printf "${NC}         the same as the domain for users! \n"
+                        AGAIN=$((${AGAIN}+1))
+                    else
+                        CP_BOMAIN_=`echo ${CP_BOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
+                        AGAIN=10
+                    fi
+                else
+                    printf "${NC}         You entered: ${R}${CP_BOMAIN}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin lowercase characters, \n"
+                    printf "${NC}         numbers, dots, and hyphens are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            else
+                printf "${R}WARNING:${NC} Mirror domain name cannot be blank. \n"
+                AGAIN=$((${AGAIN}+1))
+            fi
+        done
+        if [ "${CP_BOMAIN}" = "" ]; then exit 1; fi
+    fi
+    CP_BOMAIN_=`echo ${CP_BOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
+}
 
 sh_yes() {
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
@@ -2663,6 +2707,48 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart filestash >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+            fi
+            exit 0
+        ;;
+        "bot" )
+            read_domain "${2}"
+            read_bomain "${3}"
+            sh_not
+            _s "${2}"
+            if [ ! -d /home/"${CP_BOMAIN}" ]; then
+                 _header "ERROR"
+                _content
+                _content "First install ${CP_BOMAIN}"
+                _content
+                _line
+                exit 0
+            fi
+            sed -i "s~root /home/${CP_BOMAIN};~root /home/${CP_DOMAIN};~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            docker stop "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            docker rm -f "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            rm -rf /tmp/nginx && mv /home/"${CP_BOMAIN}"/config/production/nginx /tmp/nginx \
+                >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            rm -rf /home/"${CP_BOMAIN:?}"
+            mkdir -p /home/"${CP_BOMAIN}"/config/production
+            mv /tmp/nginx /home/"${CP_BOMAIN}"/config/production/nginx
+            touch /home/"${CP_BOMAIN}"/process.json
+            NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
+            if [ "${NGINX_STATUS}" != "" ]; then
+                docker exec nginx nginx -s reload >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+                _header "DOMAIN FOR BOTS"
+                _content
+                _content "${CP_BOMAIN}"
+                _content
+                _line
+            else
+                _header "ERROR"
+                _content
+                docker exec -t nginx nginx -t
+                _content
+                _line
             fi
             exit 0
         ;;

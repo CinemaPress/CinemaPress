@@ -163,7 +163,6 @@
 	"Протокол": "Protokolas",
 	"Основной протокол веб-сайта": "Pagrindinis svetainės protokolas",
 	"Домен": "Domenas",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Domeno, kuriam priskirtas duomenų bazės raktas, informacijos parametras",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Jūsų el. paštas susisiekite su svetainės administratoriumi",
 	"Язык и страна веб-сайта": "Svetainės kalba ir šalis",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Pridėti visas IP",
 	"Поиск по WHOIS в реальном времени": "Ieškoti WHOIS realiu laiku",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Kas yra nemokama ir aukščiausios kokybės dizainas tema CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Pridėti apdorojant ne mažiau kaip viena svetaine"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Pridėti apdorojant ne mažiau kaip viena svetaine",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Įsteigti svetainėje ant atskiro domeno ir sub-domenų paieškos sistemoms ir vartotojams",
+	"Домен для ботов": "Domeno žinučių",
+	"Домен для людей": "Domeno žmonėms",
+	"Поддомен для людей": "Subdomenas žmonėms"
 }

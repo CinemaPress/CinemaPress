@@ -163,7 +163,6 @@
 	"Протокол": "Itifaki",
 	"Основной протокол веб-сайта": "Itifaki kuu ya tovuti",
 	"Домен": "Domain",
-	"Информационный параметр домена, за которым закрепляется ключ БД": "Kipengele cha habari cha uwanja ambao ufunguo wa darasani umepewa",
 	"Email": "Email",
 	"Ваш email для связи с администратором веб-сайта": "Barua yako ya kuwasiliana na msimamizi wa tovuti",
 	"Язык и страна веб-сайта": "Lugha ya tovuti na nchi",
@@ -952,5 +951,9 @@
 	"Добавить все IP": "Kuongeza IP kila",
 	"Поиск по WHOIS в реальном времени": "Tafuta WHOIS katika muda halisi",
 	"Что такое бесплатная и премиум тема оформления CinemaPress?": "Je bure na premium kubuni mandhari CinemaPress?",
-	"Добавьте в парсинг хотя бы один веб-сайт": "Kuongeza kuchanganua angalau tovuti"
+	"Добавьте в парсинг хотя бы один веб-сайт": "Kuongeza kuchanganua angalau tovuti",
+	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Kuanzisha ya tovuti kwenye kikoa tofauti na ndogo domains kwa injini za utafutaji na watumiaji",
+	"Домен для ботов": "Domain kwa bots",
+	"Домен для людей": "Domain kwa ajili ya watu",
+	"Поддомен для людей": "Subdomain kwa ajili ya watu"
 }

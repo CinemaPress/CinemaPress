@@ -102,7 +102,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Информационный параметр домена, за которым закрепляется ключ БД') %>"
+                                           title="<%= __('Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -110,32 +110,45 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-xs-3">
-                                            <input name="config.subdomain"
-                                                   value="<%= config.subdomain.replace(/\.$/, '') %>"
-                                                   class="form-control input_url text-right" type="text"
-                                                   placeholder="blog">
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><%= __('Поддомен для людей') %>:</span>
+                                                <input name="config.subdomain"
+                                                       value="<%= config.subdomain.replace(/\.$/, '') %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="hd">
+                                            </div>
                                         </div>
-                                        <div class="col-xs-5">
-                                            <input name="config.domain" value="<%= config.domain %>"
-                                                   class="form-control input_url" type="text" disabled="disabled">
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <input name="config.domain"
-                                                   value="<% if (config.database.key.length > 4) { %><%- config.database.key.slice(0, 3).toUpperCase() + '...' + config.database.key.slice(-3).toUpperCase() %><% } else { %><%- config.database.key.toUpperCase() %><% } %>"
-                                                   class="form-control text-center" type="text" disabled="disabled">
+
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><%= __('Домен для людей') %>:</span>
+                                                <input name="config.domain"
+                                                       value="<%= config.domain %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="<%= config.domain %>" disabled="disabled">
+                                            </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
 
-                                        <div class="col-xs-12">
+                                        <div class="col-xs-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
                                                 <input name="config.botdomain"
                                                        value="<%= config.botdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
                                                        placeholder="<%= config.language %>">
-                                                <span class="input-group-addon text-muted">.<%= config.domain %></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><%= __('Домен для ботов') %>:</span>
+                                                <input name="config.bomain"
+                                                       value="<%= config.bomain %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="<%= config.bomain ? config.bomain : config.domain %>">
                                             </div>
                                         </div>
 
@@ -1489,7 +1502,10 @@
                     if (this.value !== '0') {
                       if (this.checked) {
                         document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
-                        document.querySelector('[name=\'config.botdomain\']').value = '<%- config.language %>';
+                        document.querySelector('[name=\'config.botdomain\']').value =
+                          document.querySelector('[name=\'config.botdomain\']').value === ''
+                            ? '<%- config.language %>'
+                            : document.querySelector('[name=\'config.botdomain\']').value;
                         document.querySelector('#subdomains').style.display = 'block';
                         document.querySelector('#h').style.display = 'block';
                         document.querySelector('#h').setAttribute('class', 'col-sm-7');
