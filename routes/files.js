@@ -207,8 +207,18 @@ router.get(
         })
         .on('response', function(response) {
           if (response.statusCode === 200) {
-            response.pipe(fs.createWriteStream(save));
+            var contentType =
+              response.headers && response.headers['content-type'];
+            if (contentType) {
+              res.setHeader('Content-Type', contentType);
+            }
+            var writeStream = fs.createWriteStream(save);
+            response.pipe(writeStream);
             response.pipe(res);
+            writeStream.on('error', function(err) {
+              console.log('NOT SAVE', save, err);
+              fs.unlinkSync(save);
+            });
           }
         })
         .on('close', function() {
