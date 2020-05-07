@@ -2725,6 +2725,14 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             sed -i "s~root /home/${CP_BOMAIN};~root /home/${CP_DOMAIN};~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/pass.d/${CP_BOMAIN}.pass~/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/error.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sed -i "s~#pagespeed include~pagespeed include~g" \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             docker stop "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
