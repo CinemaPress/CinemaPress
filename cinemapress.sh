@@ -2737,6 +2737,15 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             docker stop "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
             docker rm -f "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            rm -rf /home/"${CP_BOMAIN}"/config/production/nginx/bots.d \
+                /home/"${CP_BOMAIN}"/config/production/nginx/error.d \
+                /home/"${CP_BOMAIN}"/config/production/nginx/html \
+                /home/"${CP_BOMAIN}"/config/production/nginx/pagespeed.d \
+                /home/"${CP_BOMAIN}"/config/production/nginx/pass.d \
+                /home/"${CP_BOMAIN}"/config/production/nginx/nginx.sh \
+                /home/"${CP_BOMAIN}"/config/production/nginx/nginx.conf \
+                /home/"${CP_BOMAIN}"/config/production/nginx/mime.types \
+                /home/"${CP_BOMAIN}"/config/production/nginx/Dockerfile
             rm -rf /tmp/nginx && mv /home/"${CP_BOMAIN}"/config/production/nginx /tmp/nginx \
                 >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
             rm -rf /home/"${CP_BOMAIN:?}"
