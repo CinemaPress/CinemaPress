@@ -58,7 +58,8 @@ post_commands() {
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
     if [ "`grep \"${LOCAL_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
-    && [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
+    && [ -f "/home/${LOCAL_DOMAIN}/process.json" ] \
+    && [ -f "/home/${LOCAL_DOMAIN}/app.js" ]; then
         echo -e "\n" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
         echo "@reboot root /usr/bin/cinemapress autostart \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
@@ -71,12 +72,14 @@ post_commands() {
         echo "0 23 * * * root docker run --rm -v /home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini -v /var/log/letsencrypt:/var/log/letsencrypt certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${LOCAL_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
     fi
-    CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
-    if [ "${CP_SPEED}" != "" ]; then
-        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-            /home/${LOCAL_DOMAIN}/config/production/config.js
-        docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
-        docker exec nginx nginx -s reload >/dev/null
+    if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
+        CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
+        if [ "${CP_SPEED}" != "" ]; then
+            sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
+                /home/${LOCAL_DOMAIN}/config/production/config.js
+            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
+            docker exec nginx nginx -s reload >/dev/null
+        fi
     fi
 }
 docker_install() {
@@ -114,6 +117,8 @@ docker_install() {
             sed -Ei "s/#SyslogFacility AUTH/SyslogFacility AUTH/g" /etc/ssh/sshd_config >/dev/null
             sed -Ei "s/#LogLevel INFO/LogLevel ERROR/g" /etc/ssh/sshd_config >/dev/null
             sed -Ei "s/#MaxAuthTries 6/MaxAuthTries 3/g" /etc/ssh/sshd_config >/dev/null
+            sed -Ei "s/#ClientAliveCountMax 3/ClientAliveCountMax 99999/g" /etc/ssh/sshd_config >/dev/null
+            sed -Ei "s/#ClientAliveInterval 0/ClientAliveInterval 20/g" /etc/ssh/sshd_config >/dev/null
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
@@ -237,7 +242,7 @@ ip_install() {
     elif [ "`expr "${IP3}" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$'`" != "0" ]; then IP_DOMAIN="${IP3}"; fi
     CP_IP="ip"
     CP_LANG="${1}"
-    CP_THEME="arya"
+    CP_THEME="tarly"
     CP_PASSWD="test"
     sh_yes
     _s
@@ -1043,6 +1048,7 @@ ip_install() {
     docker pull cinemapress/docker:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
     rm -rf /home/${LOCAL_DOMAIN:?}
+    rm -rf /root/${LOCAL_DOMAIN:?}
     if [ "${LOCAL_FULL}" != "" ]; then
         echo "STOP NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker stop nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
@@ -2690,6 +2696,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     DD=`find ${D} -maxdepth 0 -printf "%f"`
                     sed -i "s/.*${DD}.*//g" /etc/crontab &> /dev/null
                     rm -rf /home/${DD:?}
+                    rm -rf /root/${DD:?}
                 fi
             done
             rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx/tmp /var/lib/sphinx/old /etc/nginx/bots.d
@@ -2710,19 +2717,25 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "bot" )
+        "bot"|"bot_https" )
             read_domain "${2}"
-            read_bomain "${3}"
             sh_not
-            _s "${2}"
-            if [ ! -d /home/"${CP_BOMAIN}" ]; then
-                 _header "ERROR"
-                _content
-                _content "First install ${CP_BOMAIN}"
-                _content
-                _line
-                exit 0
+            read_bomain "${3}"
+            if [ "${1}" = "bot_https" ]; then
+                read_cloudflare_email "${4}"
+                read_cloudflare_api_key "${5}"
             fi
+            _s "${3}"
+            sh_progress
+            if [ ! -f /home/"${CP_BOMAIN}"/process.json ]; then
+                sh_progress
+                1_install "${CP_BOMAIN}" "ru" "default" "pass"
+            fi
+            if [ "${CLOUDFLARE_EMAIL}" != "" ] && [ "${CLOUDFLARE_API_KEY}" != "" ]; then
+                sh_progress
+                6_https "${CP_BOMAIN}" "${CLOUDFLARE_EMAIL}" "${CLOUDFLARE_API_KEY}"
+            fi
+            sh_progress
             sed -i "s~root /home/${CP_BOMAIN};~root /home/${CP_DOMAIN};~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/pass.d/${CP_BOMAIN}.pass~/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass~g" \
@@ -2735,8 +2748,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+            sh_progress
             docker stop "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            sh_progress
             docker rm -f "${CP_BOMAIN_}" >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
+            sh_progress
             rm -rf /home/"${CP_BOMAIN}"/config/production/nginx/bots.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/error.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/html \
@@ -2754,6 +2770,7 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /home/"${CP_BOMAIN}"/config/production
             mv /tmp/nginx /home/"${CP_BOMAIN}"/config/production/nginx
             touch /home/"${CP_BOMAIN}"/process.json
+            sh_progress
             NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
             if [ "${NGINX_STATUS}" != "" ]; then
                 docker exec nginx nginx -s reload >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
@@ -2769,6 +2786,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content
                 _line
             fi
+            post_commands "${CP_BOMAIN}"
+            sh_progress 100
             exit 0
         ;;
         "bench"|"benchmark"|"speedtest" )
