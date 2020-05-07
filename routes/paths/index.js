@@ -458,18 +458,18 @@ function dataIndex(options, callback) {
                                     block.movies.length &&
                                     block.name
                                   ) {
-                                    content_urls = content_urls
-                                      .map(function(u) {
-                                        if (
-                                          typeof u === 'string' &&
-                                          u === content_url
-                                        ) {
-                                          return block;
-                                        } else {
-                                          return 0;
-                                        }
-                                      })
-                                      .filter(Boolean);
+                                    content_urls = content_urls.map(function(
+                                      u
+                                    ) {
+                                      if (
+                                        typeof u === 'string' &&
+                                        u === content_url
+                                      ) {
+                                        return block;
+                                      } else {
+                                        return u;
+                                      }
+                                    });
                                   }
 
                                   callback();
@@ -489,7 +489,12 @@ function dataIndex(options, callback) {
                       options.debug.duration.current = new Date();
                     }
                     if (err) console.error(err);
-                    callback(null, content_urls);
+                    callback(
+                      null,
+                      content_urls.filter(function(c) {
+                        return typeof c === 'object';
+                      })
+                    );
                   }
                 );
               } else {
