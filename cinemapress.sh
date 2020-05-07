@@ -2745,7 +2745,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.sh \
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.conf \
                 /home/"${CP_BOMAIN}"/config/production/nginx/mime.types \
-                /home/"${CP_BOMAIN}"/config/production/nginx/Dockerfile
+                /home/"${CP_BOMAIN}"/config/production/nginx/Dockerfile \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/globalblacklist.conf \
+                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/real_ip.conf
             rm -rf /tmp/nginx && mv /home/"${CP_BOMAIN}"/config/production/nginx /tmp/nginx \
                 >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
             rm -rf /home/"${CP_BOMAIN:?}"
