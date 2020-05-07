@@ -2744,7 +2744,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
-            sed -i "s~#pagespeed include~pagespeed include~g" \
+            sed -i "s~#pagespeed include~include~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
