@@ -1872,7 +1872,24 @@ docker_run() {
     sed -Ei "s/options.port/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
     SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
     CNF="/home/${CP_DOMAIN}/config/production/config.js"
+    PRC="/home/${CP_DOMAIN}/process.json"
     CP_SPB="_${CP_DOMAIN_}_"
+    if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
+        AA=$(grep "\"CP_ALL\"" "${PRC}")
+        KK=$(grep "\"key\"" "${CNF}")
+        AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
+            openssl enc \
+                -aes-256-cbc \
+                -pbkdf2 \
+                -iter 100000 \
+                -in <(echo "${AAA}") \
+                -out "${SPB}" \
+                -k "${CP_DOMAIN}/${KKK}" \
+                -salt 2>/dev/null
+        fi
+    fi
     if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
         KK=$(grep "\"key\"" "${CNF}")
         KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
