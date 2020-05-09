@@ -319,7 +319,7 @@ form {
   margin-right: 10px;
   margin-bottom: 10px;
 }
-.cinemapress-content-description {
+@media (max-width:600px){.cinemapress-content-image{display:block;float:none;margin-right:auto;margin-left:auto}}.cinemapress-content-description {
   min-height: 127px;
 }
 .cinemapress-content-publish {
