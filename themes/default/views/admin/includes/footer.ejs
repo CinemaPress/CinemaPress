@@ -578,6 +578,10 @@
         ) {
           console.log(configs[i].name, 'empty collection.');
         } else if (
+          configs[i].name === 'comment.comment_admin'
+        ) {
+          console.log(configs[i].name, 'empty comment.');
+        } else if (
           configs[i].name.indexOf('movie.') + 1
         ) {
           console.log(configs[i].name, 'empty movie.');

@@ -36,23 +36,6 @@ EXTERNAL_DOCKER=""
 
 CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
 
-if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
-   [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
-   [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ] || \
-   [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ] || \
-   [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
-   true
-else
-    _header "ERROR"
-    _content
-    _content "This OS is not supported."
-    _content "Please reinstall to"
-    _content "CentOS 7 or Debian 9/10 or Ubuntu 18/19 or Fedora 28/29"
-    _content
-    _s
-    exit 0
-fi
-
 post_commands() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
@@ -792,6 +775,11 @@ ip_install() {
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
             sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
                 /home/"${LOCAL_DOMAIN}"/config/default/config.js
+            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
+                docker_actual >>/var/lib/sphinx/data/"${NOW}".log 2>&1
+            else
+                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container actual >>/var/lib/sphinx/data/"${NOW}".log 2>&1
+            fi
             _content "Starting ..."
             if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
                 docker_start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
@@ -1009,7 +997,7 @@ ip_install() {
     docker start "${LOCAL_MIRROR_}" \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
-    docker exec "${LOCAL_MIRROR_}" node config/update/mirror.js \
+    docker exec "${LOCAL_MIRROR_}" /usr/bin/cinemapress container mirror \
         >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
     docker exec nginx nginx -s reload \
@@ -1870,36 +1858,6 @@ _s() {
 docker_run() {
     sed -Ei "s/options.host/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
     sed -Ei "s/options.port/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
-    SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
-    CNF="/home/${CP_DOMAIN}/config/production/config.js"
-    PRC="/home/${CP_DOMAIN}/process.json"
-    CP_SPB="_${CP_DOMAIN_}_"
-    if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
-        AA=$(grep "\"CP_ALL\"" "${PRC}")
-        KK=$(grep "\"key\"" "${CNF}")
-        AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
-        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
-        if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
-            openssl enc \
-                -aes-256-cbc \
-                -pbkdf2 \
-                -iter 100000 \
-                -in <(echo "${AAA}") \
-                -out "${SPB}" \
-                -k "${CP_DOMAIN}/${KKK}" \
-                -salt 2>/dev/null
-        fi
-    fi
-    if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
-        KK=$(grep "\"key\"" "${CNF}")
-        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
-        if [ "${#KKK}" -eq "32" ]; then
-            AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
-            if [ "${#AAA}" -eq "7" ]; then
-                CP_SPB="${CP_SPB} | _${AAA}_"
-            fi
-        fi
-    fi
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/"${CP_DOMAIN}"
@@ -1959,36 +1917,6 @@ docker_stop() {
     sleep 5
 }
 docker_start() {
-    SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
-    CNF="/home/${CP_DOMAIN}/config/production/config.js"
-    PRC="/home/${CP_DOMAIN}/process.json"
-    CP_SPB="_${CP_DOMAIN_}_"
-    if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
-        AA=$(grep "\"CP_ALL\"" "${PRC}")
-        KK=$(grep "\"key\"" "${CNF}")
-        AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
-        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
-        if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
-            openssl enc \
-                -aes-256-cbc \
-                -pbkdf2 \
-                -iter 100000 \
-                -in <(echo "${AAA}") \
-                -out "${SPB}" \
-                -k "${CP_DOMAIN}/${KKK}" \
-                -salt 2>/dev/null
-        fi
-    fi
-    if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
-        KK=$(grep "\"key\"" "${CNF}")
-        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
-        if [ "${#KKK}" -eq "32" ]; then
-            AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
-            if [ "${#AAA}" -eq "7" ]; then
-                CP_SPB="${CP_SPB} | _${AAA}_"
-            fi
-        fi
-    fi
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     searchd
     memcached -u root -d
@@ -2022,7 +1950,7 @@ docker_zero() {
     (sleep 2; echo flush_all; sleep 2; echo quit;) | telnet 127.0.0.1 11211
 }
 docker_cron() {
-    node /home/"${CP_DOMAIN}"/lib/CP_cron.js >> /home/"${CP_DOMAIN}"/log/CP_cron.log
+    node /home/"${CP_DOMAIN}"/lib/CP_cron.js
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
@@ -2147,6 +2075,9 @@ docker_backup() {
         fi
     fi
 }
+docker_mirror() {
+    node /home/"${CP_DOMAIN}"/config/update/mirror.js
+}
 docker_actual() {
     node /home/"${CP_DOMAIN}"/config/update/actual.js
 }
@@ -2155,6 +2086,38 @@ docker_available() {
 }
 docker_rclone() {
     sleep 3; rclone "${1}" "${2}"
+}
+docker_spb() {
+    SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
+    CNF="/home/${CP_DOMAIN}/config/production/config.js"
+    PRC="/home/${CP_DOMAIN}/process.json"
+    CP_SPB="_${CP_DOMAIN_}_"
+    if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
+        AA=$(grep "\"CP_ALL\"" "${PRC}")
+        KK=$(grep "\"key\"" "${CNF}")
+        AAA=$(echo ${AA} | sed 's/.*"CP_ALL":\s*".*[ |"]\{1\}_\([A-Za-z0-9]\{7\}\)_[ |"]\{1\}.*/\1/')
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#AAA}" -eq "7" ] && [ "${#KKK}" -eq "32" ]; then
+            openssl enc \
+                -aes-256-cbc \
+                -pbkdf2 \
+                -iter 100000 \
+                -in <(echo "${AAA}") \
+                -out "${SPB}" \
+                -k "${CP_DOMAIN}/${KKK}" \
+                -salt 2>/dev/null
+        fi
+    fi
+    if [ -f "${SPB}" ] && [ -f "${CNF}" ]; then
+        KK=$(grep "\"key\"" "${CNF}")
+        KKK=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
+        if [ "${#KKK}" -eq "32" ]; then
+            AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
+            if [ "${#AAA}" -eq "7" ]; then
+                CP_SPB="${CP_SPB} | _${AAA}_"
+            fi
+        fi
+    fi
 }
 docker_passwd() {
     OPENSSL=`echo "${1}" | openssl passwd -1 -stdin -salt CP`
@@ -2226,7 +2189,28 @@ if [ ${EUID} -ne 0 ]; then
 	exit 1
 fi
 
+if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ] || \
+   [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
+   [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ] || \
+   [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ] || \
+   [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+   true
+else
+    _header "ERROR"
+    _content
+    _content "This OS is not supported."
+    _content "Please reinstall to"
+    _content "CentOS 7 or Debian 9/10 or Ubuntu 18/19 or Fedora 28/29"
+    _content
+    _s
+    exit 0
+fi
+
 docker_install
+
+if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
+    docker_spb 2>/dev/null
+fi
 
 WHILE=0
 while [ "${WHILE}" -lt "2" ]; do
@@ -2431,11 +2415,11 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "reload"|"actual"|"available"|"speed"|"cron" )
             _br
-            read_domain ${2}
+            read_domain "${2}"
             sh_not
-            _s ${2}
-            docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container "${1}" "${3}" \
-                >>/var/log/docker_${1}_"$(date '+%d_%m_%Y')".log 2>&1
+            _s "${2}"
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container "${1}" "${3}" \
+                >>/var/log/docker_"${1}"_"$(date '+%d_%m_%Y')".log 2>&1
             exit 0
         ;;
         "container" )
@@ -2457,6 +2441,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_cron
             elif [ "${2}" = "actual" ]; then
                 docker_actual
+            elif [ "${2}" = "mirror" ]; then
+                docker_mirror
             elif [ "${2}" = "available" ]; then
                 docker_available "${3}"
             elif [ "${2}" = "passwd" ]; then
