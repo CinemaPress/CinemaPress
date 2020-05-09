@@ -192,25 +192,25 @@ function codesComments(url, pathname, ids) {
       (modules.comments.data.fast.recaptcha_text || '') +
       '",' +
       'min_symbols:parseInt("' +
-      (modules.comments.data.fast.min_symbols || '') +
+      (modules.comments.data.fast.min_symbols || '0') +
       '"),' +
       'min_symbols_text:"' +
       (modules.comments.data.fast.min_symbols_text || '') +
       '",' +
       'url_links:parseInt("' +
-      (modules.comments.data.fast.url_links || '') +
+      (modules.comments.data.fast.url_links || '0') +
       '"),' +
       'url_links_text:"' +
       (modules.comments.data.fast.url_links_text || '') +
       '",' +
       'bb_codes:parseInt("' +
-      (modules.comments.data.fast.bb_codes || '') +
+      (modules.comments.data.fast.bb_codes || '0') +
       '"),' +
       'bb_codes_text:"' +
       (modules.comments.data.fast.bb_codes_text || '') +
       '",' +
       'html_tags:parseInt("' +
-      (modules.comments.data.fast.html_tags || '') +
+      (modules.comments.data.fast.html_tags || '0') +
       '"),' +
       'html_tags_text:"' +
       (modules.comments.data.fast.html_tags_text || '') +

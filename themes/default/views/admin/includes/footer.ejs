@@ -486,6 +486,8 @@
           'config.urls.movies.download',
           'config.urls.movies.trailer',
           'config.urls.movies.picture',
+          'config.redirect.from',
+          'config.redirect.to',
           'config.geolite2.countries',
           'config.geolite2.ips',
           'config.l.legal'
@@ -673,6 +675,10 @@
 
     if (data.modules && data.modules.blocking && data.modules.blocking.data.sub && data.modules.blocking.data.sub.keys) {
       data.modules.blocking.data.sub.keys = data.modules.blocking.data.sub.keys.replace(/\n/ig, ',');
+    }
+
+    if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.stopworls) {
+      data.modules.comments.data.fast.stopworls = data.modules.comments.data.fast.stopworls.replace(/\n/ig, ',').replace(/,,/ig, ',');
     }
 
     if (data.modules && data.modules.player && data.modules.player.data.custom) {
