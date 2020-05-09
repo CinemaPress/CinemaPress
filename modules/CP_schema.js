@@ -212,7 +212,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   var canonical = '<link rel="canonical" href="' + page.url + '"/>';
 
   if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
-    canonical +=
+    canonical =
       '<link rel="canonical" href="' +
       page.url
         .replace('://m.', '://' + (config.botdomain || config.subdomain))
@@ -451,7 +451,7 @@ function categorySchema(page, movies, options) {
     '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '" />';
 
   if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
-    canonical +=
+    canonical =
       '<link rel="canonical" href="' +
       page.url
         .replace(/&/gi, '&amp;')
