@@ -1119,7 +1119,7 @@ read_domain() {
             else
                 AUTO_DOMAIN=""
                 cd /home && for D in *; do
-                    if [ -d "$D" ] && [ "${AUTO_DOMAIN}" = "" ]; then
+                    if [ -d "$D" ] && [ -f "$D/process.json" ] && [ -f "$D/app.js" ] && [ "${AUTO_DOMAIN}" = "" ]; then
                         AUTO_DOMAIN="$D"
                     fi
                 done
