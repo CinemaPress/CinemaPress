@@ -316,7 +316,7 @@ ip_install() {
             # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
 
             BOTS=()
-            if [ ! -f "/etc/nginx/bots.d/blacklist-user-agents.conf" ] && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/" ]; then
+            if [ ! -f "/etc/nginx/bots.d/blockbots.conf" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/blockbots.conf" ]; then
                 mkdir -p /etc/nginx/bots.d
                 cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/bots.d/* /etc/nginx/bots.d/
                 BOTS=(-v /etc/nginx/bots.d:/etc/nginx/bots.d)
@@ -328,7 +328,6 @@ ip_install() {
                 --restart always \
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
-                -v /etc/nginx/bots.d:/etc/nginx/bots.d \
                 -v /var/local/balancer:/var/local/balancer \
                 -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
@@ -454,10 +453,12 @@ ip_install() {
     KK=$(grep "\"key\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     DD=$(grep "\"date\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     PP=$(grep "\"pagespeed\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
+    BM=$(grep "\"bomain\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
     CP_ALL=$(echo ${AA} | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
     CP_KEY=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
     CP_DATE=$(echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/')
     CP_SPEED=$(echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/')
+    CP_BOMAIN=$(echo ${BM} | sed 's/.*"bomain":\s*"\([a-zA-Z0-9.-]*\)".*/\1/')
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
@@ -480,6 +481,10 @@ ip_install() {
     fi
     if [ ! -d /var/temp/picture ]; then
         mv -f /home/"${LOCAL_DOMAIN}"/files/picture /var/temp/picture 2>/dev/null
+    fi
+    if [ -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf ]; then
+        mv -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf \
+         /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf 2>/dev/null
     fi
     3_backup "${LOCAL_DOMAIN}" "create"
     8_remove "${LOCAL_DOMAIN}" "full" "safe"
@@ -512,6 +517,10 @@ ip_install() {
     if [ -d /var/temp/picture ]; then
         rm -rf /home/"${LOCAL_DOMAIN}"/files/picture
         mv -f /var/temp/picture /home/"${LOCAL_DOMAIN}"/files/picture 2>/dev/null
+    fi
+    if [ -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf ]; then
+        mv -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf \
+         /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null
     fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
@@ -2745,9 +2754,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/error.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
-            sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
-                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
-            sed -i "s~#pagespeed include~include~g" \
+            sed -i "s~#pagespeed include /home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~include /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
@@ -3181,10 +3188,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy CINEMASTATIC:${CP_DOMAIN}/app.tar /home/${CP_DOMAIN}/
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/app.tar /home/${CP_DOMAIN}/
                 if [ -f "/home/${CP_DOMAIN}/app.tar" ]; then
                     cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/app.tar
                     rm -rf /home/${CP_DOMAIN}/app.tar
@@ -3199,10 +3206,10 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/linux \
                         files/osx &>/dev/null
                     sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/app.tar
-                    sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
+                    sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/static.tar
-                sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv --ignore-size copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
+                sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
             exit 0
