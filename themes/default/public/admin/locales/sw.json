@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Kuanzisha ya tovuti kwenye kikoa tofauti na ndogo domains kwa injini za utafutaji na watumiaji",
 	"Домен для ботов": "Domain kwa bots",
 	"Домен для людей": "Domain kwa ajili ya watu",
-	"Поддомен для людей": "Subdomain kwa ajili ya watu"
+	"Поддомен для людей": "Subdomain kwa ajili ya watu",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Orodha ya IP hash au watumiaji kutengwa kwa koma kwamba hawaruhusiwi comments baada",
+	"Заблокированные пользователи": "Watumiaji waliozuiwa"
 }

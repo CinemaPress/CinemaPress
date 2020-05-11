@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Crearea site-ului pe un domeniu separat și sub-domenii pentru motoarele de căutare și utilizatori",
 	"Домен для ботов": "Domeniu pentru roboții",
 	"Домен для людей": "Domeniul pentru persoane",
-	"Поддомен для людей": "Pentru un subdomeniu în oameni"
+	"Поддомен для людей": "Pentru un subdomeniu în oameni",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "O listă de HASH IP sau utilizatorilor separate prin virgula, care nu au voie să posteze comentarii",
+	"Заблокированные пользователи": "Utilizatori blocați"
 }

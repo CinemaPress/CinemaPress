@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Thiết lập của trang web trên một tên miền riêng và tên miền phụ cho công cụ tìm kiếm và người dùng",
 	"Домен для ботов": "Miền với bot",
 	"Домен для людей": "Miền với mọi người",
-	"Поддомен для людей": "Tên miền phụ cho người dân"
+	"Поддомен для людей": "Tên miền phụ cho người dân",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Một danh sách các HASH IP hoặc người sử dụng nhau bằng dấu phẩy mà không được phép bình luận bài",
+	"Заблокированные пользователи": "Người dùng bị chặn"
 }

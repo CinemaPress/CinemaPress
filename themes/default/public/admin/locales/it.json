@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Impostazione del sito su un dominio separato e sotto-domini per i motori di ricerca e gli utenti",
 	"Домен для ботов": "Dominio per i bot",
 	"Домен для людей": "Dominio per le persone",
-	"Поддомен для людей": "Sottodominio per le persone"
+	"Поддомен для людей": "Sottodominio per le persone",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Un elenco di HASH IP o utenti separati da virgole che non sono autorizzati a inviare commenti",
+	"Заблокированные пользователи": "Utenti bloccati"
 }

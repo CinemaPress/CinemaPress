@@ -682,7 +682,11 @@
     }
 
     if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.stopworls) {
-      data.modules.comments.data.fast.stopworls = data.modules.comments.data.fast.stopworls.replace(/\n/ig, ',').replace(/,,/ig, ',');
+      data.modules.comments.data.fast.stopworls = data.modules.comments.data.fast.stopworls.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',').filter(Boolean);
+    }
+
+    if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.blacklist) {
+      data.modules.comments.data.fast.blacklist = data.modules.comments.data.fast.blacklist.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',').filter(Boolean);
     }
 
     if (data.modules && data.modules.player && data.modules.player.data.custom) {

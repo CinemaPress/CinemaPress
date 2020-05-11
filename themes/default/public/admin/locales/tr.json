@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Arama motorları ve kullanıcılar için ayrı alan adı ve alt alan adlarında sitenin kurulması",
 	"Домен для ботов": "Alan botlar için",
 	"Домен для людей": "Insanlar için alan",
-	"Поддомен для людей": "Insanlar için bir alt alana"
+	"Поддомен для людей": "Insanlar için bir alt alana",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Yayın yoruma izin verilmez IP HASH veya virgülle ayırarak kullanıcıların listesi",
+	"Заблокированные пользователи": "Düşmanlarım"
 }

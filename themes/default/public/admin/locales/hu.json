@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Beállítása az oldalon egy külön tartomány és al-domain keresők és a felhasználók",
 	"Домен для ботов": "Domain botok",
 	"Домен для людей": "Domain az emberek",
-	"Поддомен для людей": "Aldomainje emberek"
+	"Поддомен для людей": "Aldomainje emberek",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "A lista IP hasis, vagy a felhasználók, vesszővel elválasztva, hogy nem szabad hozzászóláshoz",
+	"Заблокированные пользователи": "Blokkolt felhasználók"
 }

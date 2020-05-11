@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Įsteigti svetainėje ant atskiro domeno ir sub-domenų paieškos sistemoms ir vartotojams",
 	"Домен для ботов": "Domeno žinučių",
 	"Домен для людей": "Domeno žmonėms",
-	"Поддомен для людей": "Subdomenas žmonėms"
+	"Поддомен для людей": "Subdomenas žmonėms",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Iš IP maišos ar vartotojų atskirtų kableliais sąrašas kad neleidžiama rašyti komentarus",
+	"Заблокированные пользователи": "Užblokuoti vartotojai"
 }

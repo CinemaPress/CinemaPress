@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Seadistamine saidi eraldi domeeni ja sub-domeenid otsingumootorid ja kasutajate",
 	"Домен для ботов": "Domeeni eest",
 	"Домен для людей": "Domeeni inimestele",
-	"Поддомен для людей": "Alamdomeen inimesed"
+	"Поддомен для людей": "Alamdomeen inimesed",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Nimekirja IP HASH või kasutajate komadega eraldatult, mis ei ole lubatud postitada kommentaare",
+	"Заблокированные пользователи": "Blokeeritud kasutajad"
 }

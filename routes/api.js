@@ -74,6 +74,15 @@ router.post('/comments', function(req, res) {
     return res.json({ status: 'error', code: 2, message: 'Not found IP' });
   }
 
+  if (
+    modules.comments.data.fast.blacklist &&
+    modules.comments.data.fast.blacklist.length &&
+    (modules.comments.data.fast.blacklist.indexOf(ip) + 1 ||
+      (ava && modules.comments.data.fast.blacklist.indexOf(ava) + 1))
+  ) {
+    return res.json({ status: 'error', code: 17, message: 'You are blocked' });
+  }
+
   var id =
     form.comment_id && parseInt(form.comment_id)
       ? '' + parseInt(form.comment_id)

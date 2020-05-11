@@ -58,6 +58,7 @@ module.exports = {
         "question_yes": "Great, we really appreciate your feedback. Could you write a comment on the [url] page. For this, we will add any film or series of the series that you ask.",
         "question_not": "Great, when you have time, check out [url]. You should like it!",
         "stopworls": [],
+        "blacklist": [],
         "recent": {
           "num_items": 5,
           "excerpt_length": 250,

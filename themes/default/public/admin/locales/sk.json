@@ -955,5 +955,7 @@
 	"Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей": "Nastavenie miesta na samostatné domény a sub-domén pre vyhľadávače a užívateľov",
 	"Домен для ботов": "Doména pre roboty",
 	"Домен для людей": "Doména pre ľudí",
-	"Поддомен для людей": "Subdoménu pre ľudí"
+	"Поддомен для людей": "Subdoménu pre ľudí",
+	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Zoznam IP HASH alebo používateľov oddelených čiarkami, ktoré nemajú povolené písať komentáre",
+	"Заблокированные пользователи": "Nepriatelia"
 }
