@@ -47,6 +47,12 @@ var last = require(path.join(
 router.post('/comments', function(req, res) {
   var form = req.body;
   var ip = getIp(req);
+  var ava = req.cookies['CP_avatar']
+    ? req.cookies['CP_avatar']
+        .trim()
+        .replace(/[^a-z0-9]/gi, '')
+        .substring(0, 32)
+    : '';
   var referrer = {};
 
   if (req.get('Referrer')) {
@@ -316,7 +322,7 @@ router.post('/comments', function(req, res) {
         data.comment_confirm = modules.comments.data.fast.premoderate ? 0 : 1;
         data.comment_anonymous = form.comment_anonymous;
         data.comment_avatar =
-          '/files/avatar/' + md5(data.comment_anonymous) + '.svg';
+          '/files/avatar/' + (ava || md5(data.comment_anonymous)) + '.svg';
         data.comment_text = form.comment_text
           .replace(/(^\n*)|(\n*)$/g, '')
           .replace(/\n+/g, '[br]')
@@ -390,7 +396,7 @@ router.post('/comments', function(req, res) {
           if (!fs.existsSync(avatar)) {
             fs.writeFileSync(
               avatar,
-              avatars.create(md5(data.comment_anonymous))
+              avatars.create(ava || md5(data.comment_anonymous))
             );
           }
         });

@@ -17,7 +17,7 @@ var cinemapress_comments = {
   bb_codes_text: '',
   html_tags: parseInt(''),
   html_tags_text: '',
-  stopworls: ''
+  stopworls: encodeURIComponent('')
 };
 (function(cc) {
   var comment_text = document.querySelector('[name="comment_text"]');
@@ -157,10 +157,12 @@ var cinemapress_comments = {
       .replace(/(^\s*)|(\s*)$/g, '');
     self.value = self.value.replace(/\s{3,}/g, ' ');
     var error_stopworlds = cc.stopworls
-      ? cc.stopworls.split(',').filter(function(world) {
-          var w = new RegExp(world, 'i');
-          return w.test(self.value);
-        })
+      ? decodeURIComponent(cc.stopworls)
+          .split(',')
+          .filter(function(world) {
+            var w = new RegExp(world, 'i');
+            return w.test(self.value);
+          })
       : [];
     var error_min_symbols = cc.min_symbols && value.length < cc.min_symbols;
     var error_url_links =
