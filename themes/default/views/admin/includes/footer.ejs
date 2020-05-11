@@ -510,6 +510,7 @@
           'modules.comments.data.fast.recaptcha_secret',
           'modules.comments.data.fast.recaptcha_sitekey',
           'modules.comments.data.fast.stopworls',
+          'modules.comments.data.fast.blacklist',
           'modules.slider.data.url',
           'modules.abuse.data.imap.user',
           'modules.abuse.data.imap.password',
@@ -682,11 +683,11 @@
     }
 
     if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.stopworls) {
-      data.modules.comments.data.fast.stopworls = data.modules.comments.data.fast.stopworls.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',').filter(Boolean);
+      data.modules.comments.data.fast.stopworls = data.modules.comments.data.fast.stopworls.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',');
     }
 
     if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.blacklist) {
-      data.modules.comments.data.fast.blacklist = data.modules.comments.data.fast.blacklist.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',').filter(Boolean);
+      data.modules.comments.data.fast.blacklist = data.modules.comments.data.fast.blacklist.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',');
     }
 
     if (data.modules && data.modules.player && data.modules.player.data.custom) {
