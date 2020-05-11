@@ -237,8 +237,9 @@ function codesComments(url, pathname, ids) {
       '",' +
       'stopworls:"' +
       encodeURIComponent(
-        modules.comments.data.fast.stopworls.join(',').replace(/"/g, '\\"') ||
-          ''
+        modules.comments.data.fast.stopworls
+          ? modules.comments.data.fast.stopworls.join(',').replace(/"/g, '\\"')
+          : ''
       ) +
       '"' +
       '};' +
