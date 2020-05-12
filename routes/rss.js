@@ -20,6 +20,7 @@ var modules = require('../config/production/modules');
  */
 
 var md5 = require('md5');
+var _eval = require('eval');
 var express = require('express');
 var router = express.Router();
 
@@ -210,6 +211,20 @@ router.get('/?', function(req, res, next) {
       if (req.query.json) {
         res.json(render);
       } else {
+        if (
+          render.movies &&
+          render.movies.length &&
+          config.publish.indexing.condition
+        ) {
+          var condition = _eval(
+            'module.exports=function(movie){return !!(' +
+              config.publish.indexing.condition.toString() +
+              ');}'
+          );
+          render.movies = render.movies.filter(function(movie) {
+            return !condition(movie);
+          });
+        }
         res.header('Content-Type', 'application/xml');
         res.render('desktop/rss', render, function(err, html) {
           if (err) console.log('[renderData] Render Error:', err);
