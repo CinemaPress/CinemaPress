@@ -518,10 +518,6 @@ ip_install() {
         rm -rf /home/"${LOCAL_DOMAIN}"/files/picture
         mv -f /var/temp/picture /home/"${LOCAL_DOMAIN}"/files/picture 2>/dev/null
     fi
-    if [ -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf ]; then
-        mv -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf \
-         /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null
-    fi
     3_backup "${LOCAL_DOMAIN}" "restore"
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ] && [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb" ]; then
@@ -548,6 +544,11 @@ ip_install() {
     if [ "${DISABLE_SSL}" = "" ]; then
         docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container protocol "https://"
     fi
+    if [ -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf ]; then
+        mv -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf \
+         /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null
+    fi
+    docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
