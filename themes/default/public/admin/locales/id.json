@@ -957,5 +957,7 @@
 	"Домен для людей": "Domain bagi orang-orang",
 	"Поддомен для людей": "Subdomain untuk orang-orang",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Daftar IP Hash atau pengguna dipisahkan dengan koma yang tidak diperbolehkan untuk mengirim komentar",
-	"Заблокированные пользователи": "Pengguna diblokir"
+	"Заблокированные пользователи": "Pengguna diblokir",
+	"Время комментария": "Waktu komentar",
+	"HASH пользователя": "Hash pengguna"
 }

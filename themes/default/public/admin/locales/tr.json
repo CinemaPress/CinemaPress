@@ -957,5 +957,7 @@
 	"Домен для людей": "Insanlar için alan",
 	"Поддомен для людей": "Insanlar için bir alt alana",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Yayın yoruma izin verilmez IP HASH veya virgülle ayırarak kullanıcıların listesi",
-	"Заблокированные пользователи": "Düşmanlarım"
+	"Заблокированные пользователи": "Düşmanlarım",
+	"Время комментария": "Yorum zamanı",
+	"HASH пользователя": "HASH kullanıcı"
 }

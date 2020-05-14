@@ -714,6 +714,12 @@
       data.comment.comment_admin = data.comment.comment_admin.replace(/\n/ig, '\[br]').replace(/(https?:\/\/|\/\/).*?\//ig, '/');
     }
 
+    if (data.comment && data.comment.comment_publish) {
+      if (typeof Date.parse(data.comment.comment_publish + '') === 'number') {
+        data.comment.comment_publish = Date.parse(data.comment.comment_publish + '') + 719528 * 1000 * 60 * 60 * 24;
+      }
+    }
+
     if (data.config && data.config.redirect && data.config.redirect.from && data.config.redirect.to) {
       data.config.redirect.from = data.config.redirect.from.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');
       data.config.redirect.to = data.config.redirect.to.replace(/(https?:\/\/|\/\/).*?\//ig, '/').replace(/\n/ig, ',');

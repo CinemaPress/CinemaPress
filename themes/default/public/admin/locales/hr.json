@@ -957,5 +957,7 @@
 	"Домен для людей": "Domena za ljude",
 	"Поддомен для людей": "Poddomena za ljude",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Popis IP hash ili korisnika razdvojenih zarezom koji se ne smiju postavljati komentare",
-	"Заблокированные пользователи": "Blokirani korisnici"
+	"Заблокированные пользователи": "Blokirani korisnici",
+	"Время комментария": "Vrijeme komentar",
+	"HASH пользователя": "Hash korisnika"
 }

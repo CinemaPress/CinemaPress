@@ -957,5 +957,7 @@
 	"Домен для людей": "Miền với mọi người",
 	"Поддомен для людей": "Tên miền phụ cho người dân",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Một danh sách các HASH IP hoặc người sử dụng nhau bằng dấu phẩy mà không được phép bình luận bài",
-	"Заблокированные пользователи": "Người dùng bị chặn"
+	"Заблокированные пользователи": "Người dùng bị chặn",
+	"Время комментария": "Hiện bình luận",
+	"HASH пользователя": "Sử dụng hASH"
 }

@@ -120,6 +120,16 @@
                                     <div class="spacer-10"></div>
                                     <div class="input-group">
                                         <span class="input-group-addon">
+                                            <%= __('Эмоция комментария') %>
+                                        </span>
+                                        <input type="text" class="form-control input_number" name="comment.comment_star"
+                                               value="<%- comment.comment_star %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
                                             <%= __('Имя пользователя') %>
                                         </span>
                                         <input type="text" class="form-control" name="comment.comment_anonymous"
@@ -130,10 +140,23 @@
                                     <div class="spacer-10"></div>
                                     <div class="input-group">
                                         <span class="input-group-addon">
-                                            <%= __('Эмоция комментария') %>
+                                            <%= __('Время комментария') %>
                                         </span>
-                                        <input type="text" class="form-control input_number" name="comment.comment_star"
-                                               value="<%- comment.comment_star %>">
+                                        <% var dc = new Date(parseInt(comment.comment_publish) - 719528 * 1000 * 60 * 60 * 24) %>
+                                        <% var comment_publish = dc.getFullYear() + "-" + (('0' + (dc.getMonth() + 1)).slice(-2)) + "-" + ('0' + dc.getDate()).slice(-2) + ' ' + ('0' + dc.getHours()).slice(-2) + ":" + ('0' + dc.getMinutes()).slice(-2) + ':00'; %>
+                                        <input type="text" class="form-control" name="comment.comment_publish"
+                                               value="<%- comment_publish %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <%= __('HASH пользователя') %>
+                                        </span>
+                                        <% var comment_hash = comment.comment_avatar.split('/')[comment.comment_avatar.split('/').length - 1] %>
+                                        <input type="text" class="form-control"
+                                               value="<%- comment_hash.split('.')[0] %>">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

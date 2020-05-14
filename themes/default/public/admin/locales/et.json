@@ -957,5 +957,7 @@
 	"Домен для людей": "Domeeni inimestele",
 	"Поддомен для людей": "Alamdomeen inimesed",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Nimekirja IP HASH või kasutajate komadega eraldatult, mis ei ole lubatud postitada kommentaare",
-	"Заблокированные пользователи": "Blokeeritud kasutajad"
+	"Заблокированные пользователи": "Blokeeritud kasutajad",
+	"Время комментария": "Kommentaar aeg",
+	"HASH пользователя": "HASH kasutaja"
 }

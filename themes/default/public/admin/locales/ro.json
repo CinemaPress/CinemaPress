@@ -957,5 +957,7 @@
 	"Домен для людей": "Domeniul pentru persoane",
 	"Поддомен для людей": "Pentru un subdomeniu în oameni",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "O listă de HASH IP sau utilizatorilor separate prin virgula, care nu au voie să posteze comentarii",
-	"Заблокированные пользователи": "Utilizatori blocați"
+	"Заблокированные пользователи": "Utilizatori blocați",
+	"Время комментария": "Comentariu timp",
+	"HASH пользователя": "Utilizator hASH"
 }

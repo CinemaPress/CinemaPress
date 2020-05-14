@@ -957,5 +957,7 @@
 	"Домен для людей": "Domain kwa ajili ya watu",
 	"Поддомен для людей": "Subdomain kwa ajili ya watu",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Orodha ya IP hash au watumiaji kutengwa kwa koma kwamba hawaruhusiwi comments baada",
-	"Заблокированные пользователи": "Watumiaji waliozuiwa"
+	"Заблокированные пользователи": "Watumiaji waliozuiwa",
+	"Время комментария": "Wakati maoni",
+	"HASH пользователя": "Hash user"
 }

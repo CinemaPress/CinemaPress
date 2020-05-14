@@ -957,5 +957,7 @@
 	"Домен для людей": "Dominio per le persone",
 	"Поддомен для людей": "Sottodominio per le persone",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Un elenco di HASH IP o utenti separati da virgole che non sono autorizzati a inviare commenti",
-	"Заблокированные пользователи": "Utenti bloccati"
+	"Заблокированные пользователи": "Utenti bloccati",
+	"Время комментария": "Ora commento",
+	"HASH пользователя": "Utente hASH"
 }

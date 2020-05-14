@@ -957,5 +957,7 @@
 	"Домен для людей": "Domain az emberek",
 	"Поддомен для людей": "Aldomainje emberek",
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "A lista IP hasis, vagy a felhasználók, vesszővel elválasztva, hogy nem szabad hozzászóláshoz",
-	"Заблокированные пользователи": "Blokkolt felhasználók"
+	"Заблокированные пользователи": "Blokkolt felhasználók",
+	"Время комментария": "Megjegyzés idő",
+	"HASH пользователя": "Hash-felhasználó"
 }
