@@ -316,9 +316,13 @@ ip_install() {
             # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
 
             BOTS=()
-            if [ ! -f "/etc/nginx/bots.d/blockbots.conf" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/blockbots.conf" ]; then
+            if [ ! -f "/etc/nginx/bots.d/blockbots.conf" ] \
+            && [ -f "/home/${LOCAL_DOMAIN}/config/production/nginx/bots.d/blockbots.conf" ]; then
                 mkdir -p /etc/nginx/bots.d
                 cp -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/bots.d/* /etc/nginx/bots.d/
+            fi
+
+            if [ -f "/etc/nginx/bots.d/blockbots.conf" ]; then
                 BOTS=(-v /etc/nginx/bots.d:/etc/nginx/bots.d)
             fi
 
