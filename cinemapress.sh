@@ -2992,6 +2992,40 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /var/lib/cinemapress/dump
             mkdir -p /home/${CP_DOMAIN}/config/production/nginx/conf.d
             mkdir -p /home/${CP_DOMAIN}/config/production/nginx/pass.d
+            if [ ! "$(docker network ls | grep cinemapress)" ]; then
+                docker network create \
+                    --driver bridge \
+                    cinemapress
+            fi
+            if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" = "" ]; then
+                if [ "${CP_IP}" = "domain" ] \
+                && [ "`netstat -tunlp | grep 0.0.0.0:80`" = "" ] \
+                && [ "`netstat -tunlp | grep :::80`" = "" ]; then
+                    # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
+
+                    docker run \
+                        -d \
+                        --name nginx \
+                        --restart always \
+                        --network cinemapress \
+                        -v /var/log/nginx:/var/log/nginx \
+                        -v /var/local/balancer:/var/local/balancer \
+                        -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
+                        -v /home:/home \
+                        -p 80:80 \
+                        -p 443:443 \
+                        cinemapress/nginx:latest
+
+                    NGINX_RUN=1
+                    while [ "${NGINX_RUN}" != "50" ]; do
+                        sleep 3
+                        NGINX_RUN=$((1+${NGINX_RUN}))
+                        if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
+                            NGINX_RUN=50
+                        fi
+                    done
+                fi
+            fi
             if [ ! "$(docker ps -a | grep php)" ]; then
                 docker run \
                     -d \
