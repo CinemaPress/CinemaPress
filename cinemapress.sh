@@ -2647,8 +2647,8 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec -t "${CP_DOMAIN_}" node optimal.js
             exit 0
         ;;
-        "l"|"ll"|"log"|"logs" )
-            if [ "${1}" = "ll" ] || [ "${2}" = "live" ] || [ "${2}" = "l" ]; then
+        "l"|"ll"|"log"|"logs"|"live" )
+            if [ "${1}" = "ll" ] || [ "${1}" = "live" ] || [ "${2}" = "live" ] || [ "${2}" = "l" ]; then
                 _br
                 tail \
                     -n0 -f /var/log/nginx/*.log \
@@ -3241,6 +3241,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " zero      - Delete all data from the automatic database"; _br;
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " logs      - Show all logs"; _br;
+            printf " logs live - Show all logs realtime"; _br;
             printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;
@@ -3250,7 +3251,8 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " app       - Create movie application"; _br;
             printf " cms       - Install other CMS (php-mysql,wordpress,drupal,joomla,dle)"; _br;
             printf " cms example.com backup [create,restore]"; _br;
-            printf " bot       - Domain for bots"; _br;
+            printf " bot       - Install website for bots"; _br;
+            printf " bot_https - Install website for bots and generate SSL"; _br;
             printf " splash example.com github_login github_pass"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine create_https_restore_mirror"; _br;
@@ -3265,9 +3267,9 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
-            printf "CinemaPress ${CP_VER}"
+            echo "CinemaPress ${CP_VER}"
             _br
-            printf "Copyright (c) 2014-2020, CinemaPress (https://cinemapress.io)"
+            echo "Copyright (c) 2014-2020, CinemaPress (https://cinemapress.io)"
             _br
             exit 0
         ;;
