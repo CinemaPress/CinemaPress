@@ -3185,6 +3185,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    }"
                 echo "}"
             } >> /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+            if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
+                docker restart nginx
+            fi
             _line
             _header "${NAME_CMS}"
             _line
