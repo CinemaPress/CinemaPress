@@ -2784,7 +2784,7 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /home/"${CP_BOMAIN}"/config/production
             mv /tmp/nginx /home/"${CP_BOMAIN}"/config/production/nginx
             touch /home/"${CP_BOMAIN}"/process.json
-            sh_progress
+            sh_progress 100
             NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
             if [ "${NGINX_STATUS}" != "" ]; then
                 docker exec nginx nginx -s reload >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
@@ -2801,7 +2801,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 _line
             fi
             post_commands "${CP_BOMAIN}"
-            sh_progress 100
             exit 0
         ;;
         "bench"|"benchmark"|"speedtest" )
