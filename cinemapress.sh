@@ -3069,6 +3069,29 @@ while [ "${WHILE}" -lt "2" ]; do
                 tar -xzf "wordpress.tar.gz" -C /var
                 rm -rf "wordpress.tar.gz"
                 cp -rf /var/wordpress/* /home/${CP_DOMAIN}/
+                {
+                    echo "<?php"
+                    echo "define( 'DB_NAME', '${MYSQL_DATABASE}' );"
+                    echo "define( 'DB_USER', '${MYSQL_USER}' );"
+                    echo "define( 'DB_PASSWORD', '${MYSQL_PASSWORD}' );"
+                    echo "define( 'DB_HOST', 'mysql' );"
+                    echo "define( 'DB_CHARSET', 'utf8mb4' );"
+                    echo "define( 'DB_COLLATE', '' );"
+                    echo "define( 'AUTH_KEY',         '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'SECURE_AUTH_KEY',  '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'LOGGED_IN_KEY',    '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'NONCE_KEY',        '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'AUTH_SALT',        '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'SECURE_AUTH_SALT', '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'LOGGED_IN_SALT',   '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "define( 'NONCE_SALT',       '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)' );"
+                    echo "\$table_prefix = 'wp_';"
+                    echo "define( 'WP_DEBUG', false );"
+                    echo "if ( ! defined( 'ABSPATH' ) ) {"
+                    echo "	define( 'ABSPATH', __DIR__ . '/' );"
+                    echo "}"
+                    echo "require_once ABSPATH . 'wp-settings.php';"
+                } >> /home/${CP_DOMAIN}/wp-config.php
             elif [ "${NAME_CMS}" = "drupal" ]; then
                 wget -qO "drupal.tar.gz" "https://www.drupal.org/download-latest/tar.gz"
                 tar -xzf "drupal.tar.gz" -C /var
