@@ -3065,21 +3065,21 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "cinemaadmin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
             fi
             if [ "${NAME_CMS}" = "wordpress" ]; then
-                wget -O "wordpress.tar.gz" "https://wordpress.org/wordpress-latest.tar.gz"
+                wget -qO "wordpress.tar.gz" "https://wordpress.org/wordpress-latest.tar.gz"
                 tar -xzf "wordpress.tar.gz" -C /var
                 rm -rf "wordpress.tar.gz"
                 cp -rf /var/wordpress/* /home/${CP_DOMAIN}/
             elif [ "${NAME_CMS}" = "drupal" ]; then
-                wget -O "drupal.tar.gz" "https://www.drupal.org/download-latest/tar.gz"
+                wget -qO "drupal.tar.gz" "https://www.drupal.org/download-latest/tar.gz"
                 tar -xzf "drupal.tar.gz" -C /var
                 rm -rf "drupal.tar.gz"
                 cp -rf /var/drupal-*/* /home/${CP_DOMAIN}/
             elif [ "${NAME_CMS}" = "joomla" ]; then
-                wget -O "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-9-14/Joomla_3-9-14-Stable-Full_Package.tar.gz?format=gz"
+                wget -qO "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-9-14/Joomla_3-9-14-Stable-Full_Package.tar.gz?format=gz"
                 tar -xzf "joomla3.tar.gz" -C /home/${CP_DOMAIN}/
                 rm -rf "joomla3.tar.gz"
             elif [ "${NAME_CMS}" = "dle" ]; then
-                wget -O "dle_trial.zip" "https://dle-news.ru/files/dle_trial.zip"
+                wget -qO "dle_trial.zip" "https://dle-news.ru/files/dle_trial.zip"
                 mkdir -p /var/dle
                 unzip "dle_trial.zip" -d /var/dle/
                 rm -rf "dle_trial.zip"
@@ -3186,7 +3186,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "}"
             } >> /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
             if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
-                docker restart nginx
+                docker exec nginx nginx -s reload
             fi
             _line
             _header "${NAME_CMS}"
