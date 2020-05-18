@@ -2715,7 +2715,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -rf /root/${DD:?}
                 fi
             done
-            rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx/tmp /var/lib/sphinx/old /etc/nginx/bots.d
+            rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx/tmp /var/lib/sphinx/old /etc/nginx/bots.d /var/lib/cinemapress
             sh_progress 100
             exit 0
         ;;
