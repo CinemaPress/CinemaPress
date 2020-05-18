@@ -2708,8 +2708,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker rm -f $(docker ps -aq) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
             docker rmi -f $(docker images -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
             for D in /home/*; do
-                if [ -f "${D}/process.json" ]
-                then
+                if [ -f "${D}/process.json" ] || [ -f "${D}/index.php" ]; then
                     DD=`find ${D} -maxdepth 0 -printf "%f"`
                     sed -i "s/.*${DD}.*//g" /etc/crontab &> /dev/null
                     rm -rf /home/${DD:?}
