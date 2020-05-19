@@ -2486,7 +2486,7 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "combine" )
+        "combine"|"c" )
             CP_DOMAIN=""
             CP_LANG=""
             CP_THEME=""
@@ -2497,7 +2497,7 @@ while [ "${WHILE}" -lt "2" ]; do
             CLOUDFLARE_API_KEY=""
             MEGA_EMAIL=""
             MEGA_PASSWORD=""
-            if [ "${2}" = "chrm" ] || [ "${2}" = "create_https_restore_mirror" ]; then
+            if [ "${2}" = "chrm" ] || [ "${2}" = "create_https_restore_mirror" ] || [ "${2}" = "ihrm" ] || [ "${2}" = "install_https_restore_mirror" ]; then
                 read_domain ${3}
                 read_mirror ${4}
                 read_lang ${5}
@@ -2516,7 +2516,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "crm" ] || [ "${2}" = "create_restore_mirror" ]; then
+            elif [ "${2}" = "crm" ] || [ "${2}" = "create_restore_mirror" ] || [ "${2}" = "irm" ] || [ "${2}" = "install_restore_mirror" ]; then
                 read_domain ${3}
                 read_mirror ${4}
                 read_lang ${5}
@@ -2532,7 +2532,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "chm" ] || [ "${2}" = "create_https_mirror" ]; then
+            elif [ "${2}" = "chm" ] || [ "${2}" = "create_https_mirror" ] || [ "${2}" = "ihm" ] || [ "${2}" = "install_https_mirror" ]; then
                 read_domain ${3}
                 read_mirror ${4}
                 read_lang ${5}
@@ -2548,7 +2548,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_MIRROR}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "chb" ] || [ "${2}" = "create_https_backup" ]; then
+            elif [ "${2}" = "chb" ] || [ "${2}" = "create_https_backup" ] || [ "${2}" = "ihb" ] || [ "${2}" = "install_https_backup" ]; then
                 read_domain ${3}
                 sh_yes
                 read_lang ${4}
@@ -2566,7 +2566,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "chr" ] || [ "${2}" = "create_https_restore" ]; then
+            elif [ "${2}" = "chr" ] || [ "${2}" = "create_https_restore" ] || [ "${2}" = "ihr" ] || [ "${2}" = "install_https_restore" ]; then
                 read_domain ${3}
                 sh_yes
                 read_lang ${4}
@@ -2584,7 +2584,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "ch" ] || [ "${2}" = "create_https" ]; then
+            elif [ "${2}" = "ch" ] || [ "${2}" = "create_https" ] || [ "${2}" = "ih" ] || [ "${2}" = "install_https" ]; then
                 read_domain ${3}
                 sh_yes
                 read_lang ${4}
@@ -2599,7 +2599,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "cb" ] || [ "${2}" = "create_backup" ]; then
+            elif [ "${2}" = "cb" ] || [ "${2}" = "create_backup" ] || [ "${2}" = "ib" ] || [ "${2}" = "install_backup" ]; then
                 read_domain ${3}
                 sh_yes
                 read_lang ${4}
@@ -2614,7 +2614,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 post_commands "${CP_DOMAIN}"
                 sh_progress 100
                 exit 0
-            elif [ "${2}" = "cr" ] || [ "${2}" = "create_restore" ]; then
+            elif [ "${2}" = "cr" ] || [ "${2}" = "create_restore" ] || [ "${2}" = "ir" ] || [ "${2}" = "install_restore" ]; then
                 read_domain ${3}
                 sh_yes
                 read_lang ${4}
@@ -3313,14 +3313,14 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " bot_https - Install website for bots and generate SSL"; _br;
             printf " splash example.com github_login github_pass"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
-            printf " combine create_https_restore_mirror"; _br;
-            printf " combine create_restore_mirror"; _br;
-            printf " combine create_https_mirror"; _br;
-            printf " combine create_https_backup"; _br;
-            printf " combine create_https_restore"; _br;
-            printf " combine create_https"; _br;
-            printf " combine create_backup"; _br;
-            printf " combine create_restore"; _br; _br;
+            printf " combine install_https_restore_mirror"; _br;
+            printf " combine install_restore_mirror"; _br;
+            printf " combine install_https_mirror"; _br;
+            printf " combine install_https_backup"; _br;
+            printf " combine install_https_restore"; _br;
+            printf " combine install_https"; _br;
+            printf " combine install_backup"; _br;
+            printf " combine install_restore"; _br; _br;
             printf " nohup cinemapress [FULL COMMAND] > log 2>&1; tail -f log"; _br; _br;
             exit 0
         ;;
