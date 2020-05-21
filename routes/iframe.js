@@ -38,6 +38,13 @@ router.get('/:id', function(req, res) {
     console.error(e);
   }
 
+  var origin =
+    config.protocol +
+    '' +
+    (config.botdomain || config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
+
   var parameters = '';
   data['data-kinopoisk'] = id ? id : '';
   data['data-title'] = req.query.title
@@ -69,6 +76,12 @@ router.get('/:id', function(req, res) {
     CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
       if (err) return res.status(404).send(err);
       if (movies && movies.length) {
+        var noindex = config.urls.noindex
+          ? movies[0].custom &&
+            /"unique":true|"unique":"true"/i.test(movies[0].custom)
+            ? config.urls.movie
+            : config.urls.noindex
+          : config.urls.movie;
         if (movies[0] && movies[0].player) {
           var player = CP_player.code('movie', movies[0]);
           return res.send(
@@ -79,6 +92,15 @@ router.get('/:id', function(req, res) {
               '<title>' +
               id +
               '</title>' +
+              '<link rel="canonical" href="' +
+              origin +
+              '/' +
+              noindex +
+              config.urls.slash +
+              config.urls.prefix_id +
+              (parseInt(movies[0].kp_id) +
+                parseInt('' + config.urls.unique_id)) +
+              '"/>' +
               (player.head || '') +
               '</head>' +
               '<body>' +
@@ -111,7 +133,16 @@ router.get('/:id', function(req, res) {
         res.send(
           '<!DOCTYPE html><html lang="' +
             config.language +
-            '"><body>' +
+            '">' +
+            '<link rel="canonical" href="' +
+            origin +
+            '/' +
+            noindex +
+            config.urls.slash +
+            config.urls.prefix_id +
+            (parseInt(movies[0].kp_id) + parseInt('' + config.urls.unique_id)) +
+            '"/>' +
+            '<body>' +
             '<style>body,html{border:0;padding:0;margin:0;width:100%;height:100%;overflow:hidden}</style>' +
             '<div id="yohoho" ' +
             parameters +
