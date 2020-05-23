@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Iš IP maišos ar vartotojų atskirtų kableliais sąrašas kad neleidžiama rašyti komentarus",
 	"Заблокированные пользователи": "Užblokuoti vartotojai",
 	"Время комментария": "Komentuoti laikas",
-	"HASH пользователя": "HASH vartotojas"
+	"HASH пользователя": "HASH vartotojas",
+	"Включить": "Įgalinti",
+	"Автоматическое изменение поддомена": "Automatiškai pakeisti subdomenas",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jei domenas patenka į draudžiamų svetainių registrą bus padaryta automatiškai pakeisti subdomeną pridedant numerius į subdomenas pabaigos (HD1, HD2, HD3 tt)"
 }

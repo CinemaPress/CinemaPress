@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Nimekirja IP HASH või kasutajate komadega eraldatult, mis ei ole lubatud postitada kommentaare",
 	"Заблокированные пользователи": "Blokeeritud kasutajad",
 	"Время комментария": "Kommentaar aeg",
-	"HASH пользователя": "HASH kasutaja"
+	"HASH пользователя": "HASH kasutaja",
+	"Включить": "Võimaldama",
+	"Автоматическое изменение поддомена": "Automaatselt alamdomeen",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Kui domeeni siseneb registrist keelatud saitide tehakse automaatselt muuta alamdomeen lisades numbrid lõppu alamdomeen (HD1, HD2, HD3 jne)"
 }

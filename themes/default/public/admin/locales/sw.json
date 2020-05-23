@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Orodha ya IP hash au watumiaji kutengwa kwa koma kwamba hawaruhusiwi comments baada",
 	"Заблокированные пользователи": "Watumiaji waliozuiwa",
 	"Время комментария": "Wakati maoni",
-	"HASH пользователя": "Hash user"
+	"HASH пользователя": "Hash user",
+	"Включить": "Kuwawezesha",
+	"Автоматическое изменение поддомена": "Mabadiliko subdomain moja kwa moja",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Kama kikoa inaingia rejista ya maeneo marufuku itafanyika moja kwa moja mabadiliko ya subdomain kwa kuongeza tarakimu mwishoni mwa kijikoa (HD1, HD2, HD3 nk)"
 }

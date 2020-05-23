@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "A lista IP hasis, vagy a felhasználók, vesszővel elválasztva, hogy nem szabad hozzászóláshoz",
 	"Заблокированные пользователи": "Blokkolt felhasználók",
 	"Время комментария": "Megjegyzés idő",
-	"HASH пользователя": "Hash-felhasználó"
+	"HASH пользователя": "Hash-felhasználó",
+	"Включить": "Engedélyezze",
+	"Автоматическое изменение поддомена": "Automatikusan változik az aldomain",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Ha a domain belép a nyilvántartásban a tiltott helyek kerül sor automatikusan változik az aldomain hozzáadásával számokat a végén a aldomain (HD1 HD2 HD3 stb)"
 }

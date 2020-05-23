@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Một danh sách các HASH IP hoặc người sử dụng nhau bằng dấu phẩy mà không được phép bình luận bài",
 	"Заблокированные пользователи": "Người dùng bị chặn",
 	"Время комментария": "Hiện bình luận",
-	"HASH пользователя": "Sử dụng hASH"
+	"HASH пользователя": "Sử dụng hASH",
+	"Включить": "Cho phép",
+	"Автоматическое изменение поддомена": "Tự động thay đổi tên miền phụ",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Nếu một miền vào sổ đăng ký các trang web bị cấm sẽ được thực hiện tự động thay đổi tên miền phụ bằng cách thêm số điện thoại vào cuối tên miền phụ (hd1, hd2, HD3, vv)"
 }

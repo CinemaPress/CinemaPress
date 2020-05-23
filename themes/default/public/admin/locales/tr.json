@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Yayın yoruma izin verilmez IP HASH veya virgülle ayırarak kullanıcıların listesi",
 	"Заблокированные пользователи": "Düşmanlarım",
 	"Время комментария": "Yorum zamanı",
-	"HASH пользователя": "HASH kullanıcı"
+	"HASH пользователя": "HASH kullanıcı",
+	"Включить": "Etkinleştirme",
+	"Автоматическое изменение поддомена": "Otomatik olarak alt alan değiştirmek",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Bir etki alanı alt alan sonuna (hd1, HD2, HD3 vb) sayılar ekleyerek alt alanı değiştirmek otomatik olarak yapılacaktır yasaklı sitelerin kaydını girerse"
 }

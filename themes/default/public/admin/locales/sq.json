@@ -959,5 +959,8 @@
 	"Список IP или HASH пользователей, через запятую, которым запрещено оставлять комментарии": "Një listë e hash IP ose përdoruesit të ndara me presje që nuk janë të lejuar për të Komente Dërgo",
 	"Заблокированные пользователи": "Përdoruesit e bllokuara",
 	"Время комментария": "Koment ora",
-	"HASH пользователя": "Përdorues hASH"
+	"HASH пользователя": "Përdorues hASH",
+	"Включить": "Mundësoj",
+	"Автоматическое изменение поддомена": "Automatikisht të ndryshojë subdomain",
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Në qoftë se një domain të hyjë në regjistrin e vendeve të ndaluara do të bëhet automatikisht të ndryshojë subdomain duke shtuar numra në fund të subdomain (HD1, HD2, HD3 etj)"
 }
