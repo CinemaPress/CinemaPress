@@ -1,6 +1,12 @@
 'use strict';
 
 /**
+ * Module dependencies.
+ */
+
+var CP_translit = require('../lib/CP_translit');
+
+/**
  * Configuration dependencies.
  */
 
@@ -206,8 +212,8 @@ router.get('/?', function(req, res) {
           }
           if (iframe && req.query.translate) {
             req.query.translate = decodeURIComponent(
-              req.query.translate.trim()
-            );
+              CP_translit.text(req.query.translate || '', true, 'translate')
+            ).replace(/^-/, '');
             if (typeof translations === 'object') {
               if (Array.isArray(translations)) {
                 if (translations.length) {
