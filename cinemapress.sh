@@ -2954,6 +2954,31 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             exit 0
         ;;
+        "mail" )
+            read_domain "${2}"
+            sh_not
+            docker run \
+                -d \
+                --name mail \
+                --hostname "mail.${CP_DOMAIN}" \
+                --restart always \
+                --cap-add NET_ADMIN \
+                --cap-add SYS_PTRACE \
+                -v /var/docker-mailserver:/tmp/docker-mailserver \
+                -v /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d:/etc/letsencrypt:ro \
+                -e ENABLE_SPAMASSASSIN=1 \
+                -e SPAMASSASSIN_SPAM_TO_INBOX=1 \
+                -e ENABLE_CLAMAV=1 \
+                -e ENABLE_FAIL2BAN=1 \
+                -e DMS_DEBUG=0 \
+                -e SSL_TYPE=letsencrypt \
+                -p 25:25 \
+                -p 143:143 \
+                -p 465:465 \
+                -p 587:587 \
+                -p 993:993 \
+                cinemapress/mail
+        ;;
         "cms" )
             read_domain ${2}
             sh_yes

@@ -283,7 +283,8 @@ module.exports = {
         "latest": 0,
         "custom": []
       },
-      "custom": []
+      "custom": [],
+      "translations": ""
     }
   },
   "adv": {

@@ -962,5 +962,7 @@
 	"HASH пользователя": "Utente hASH",
 	"Включить": "Abilitare",
 	"Автоматическое изменение поддомена": "Cambiare automaticamente il sottodominio",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Se un dominio entra nel registro dei siti vietati verrà fatto automaticamente cambiare il sottodominio con l'aggiunta di numeri alla fine del sottodominio (HD1, HD2, HD3, ecc)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Se un dominio entra nel registro dei siti vietati verrà fatto automaticamente cambiare il sottodominio con l'aggiunta di numeri alla fine del sottodominio (HD1, HD2, HD3, ecc)",
+	"Параметр звука для iframe видео-плеера": "Opzione audio per lettore video iframe",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Su un episodio della serie per visualizzare la pagina lettore video nel voicing desiderato, è necessario un elenco mappatura dei nomi dei suoni e l'ID nel API-service"
 }

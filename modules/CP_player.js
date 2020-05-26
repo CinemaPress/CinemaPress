@@ -45,7 +45,7 @@ function codePlayer(type, movie, options) {
   if (execEpisode) {
     serial.season = execEpisode[1];
     serial.episode = execEpisode[2];
-    serial.translate = encodeURIComponent(execEpisode[4]);
+    serial.translate = execEpisode[4] ? encodeURIComponent(execEpisode[4]) : '';
   }
 
   if (type === 'picture') {

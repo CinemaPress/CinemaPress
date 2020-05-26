@@ -962,5 +962,7 @@
 	"HASH пользователя": "Hash user",
 	"Включить": "Kuwawezesha",
 	"Автоматическое изменение поддомена": "Mabadiliko subdomain moja kwa moja",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Kama kikoa inaingia rejista ya maeneo marufuku itafanyika moja kwa moja mabadiliko ya subdomain kwa kuongeza tarakimu mwishoni mwa kijikoa (HD1, HD2, HD3 nk)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Kama kikoa inaingia rejista ya maeneo marufuku itafanyika moja kwa moja mabadiliko ya subdomain kwa kuongeza tarakimu mwishoni mwa kijikoa (HD1, HD2, HD3 nk)",
+	"Параметр звука для iframe видео-плеера": "Sauti chaguo kwa iframe mchezaji video",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "On sehemu ya mfululizo wa kuonyesha video mchezaji ukurasa katika akielezea taka, unahitaji ramani orodha ya majina sauti na ID katika API huduma"
 }

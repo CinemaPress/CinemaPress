@@ -23,10 +23,23 @@ var router = express.Router();
  * Player.
  */
 
+var translations = false;
+
 router.get('/?', function(req, res) {
   if (!cache.has('CP_VER') || cache.get('CP_VER') !== process.env['CP_VER']) {
     cache.reset();
     cache.set('CP_VER', process.env['CP_VER']);
+    try {
+      if (
+        modules.episode &&
+        modules.episode.data &&
+        modules.episode.data.translations
+      ) {
+        translations = JSON.parse(modules.episode.data.translations);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   var script =
@@ -130,7 +143,13 @@ router.get('/?', function(req, res) {
           /\[title]/,
           req.query.title ? encodeURIComponent(req.query.title) : ''
         );
-      var hash = md5(JSON.stringify(p) + process.env['CP_VER']);
+      var hash = md5(
+        JSON.stringify(p) +
+          process.env['CP_VER'] +
+          ((req.query.season || '') +
+            (req.query.episode || '') +
+            (req.query.translate || ''))
+      );
       if (cache.has(hash)) {
         var c = cache.get(hash);
         if (c.iframe) {
@@ -184,6 +203,39 @@ router.get('/?', function(req, res) {
               iframe.indexOf('?') + 1
                 ? '&episode=' + req.query.episode
                 : '?episode=' + req.query.episode;
+          }
+          if (iframe && req.query.translate) {
+            req.query.translate = decodeURIComponent(
+              req.query.translate.trim()
+            );
+            if (typeof translations === 'object') {
+              if (Array.isArray(translations)) {
+                if (translations.length) {
+                  var value = '';
+                  for (var i = 0, l = translations.length; i < l; i++) {
+                    if (
+                      translations[i].key
+                        .toLowerCase()
+                        .indexOf(req.query.translate.toLowerCase()) + 1
+                    ) {
+                      value = translations[i].value;
+                      break;
+                    }
+                  }
+                  iframe += iframe.indexOf('?') + 1 ? '&' + value : '?' + value;
+                }
+              } else if (translations[req.query.translate]) {
+                iframe +=
+                  iframe.indexOf('?') + 1
+                    ? '&' + translations[req.query.translate]
+                    : '?' + translations[req.query.translate];
+              }
+            } else {
+              iframe +=
+                iframe.indexOf('?') + 1
+                  ? '&translate=' + encodeURIComponent(req.query.translate)
+                  : '?translate=' + encodeURIComponent(req.query.translate);
+            }
           }
           if (iframe) {
             script = script

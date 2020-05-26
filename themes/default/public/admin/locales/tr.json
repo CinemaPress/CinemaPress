@@ -962,5 +962,7 @@
 	"HASH пользователя": "HASH kullanıcı",
 	"Включить": "Etkinleştirme",
 	"Автоматическое изменение поддомена": "Otomatik olarak alt alan değiştirmek",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Bir etki alanı alt alan sonuna (hd1, HD2, HD3 vb) sayılar ekleyerek alt alanı değiştirmek otomatik olarak yapılacaktır yasaklı sitelerin kaydını girerse"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Bir etki alanı alt alan sonuna (hd1, HD2, HD3 vb) sayılar ekleyerek alt alanı değiştirmek otomatik olarak yapılacaktır yasaklı sitelerin kaydını girerse",
+	"Параметр звука для iframe видео-плеера": "Iframe video oynatıcı için ses seçeneği",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "İstenilen dile getiren video oynatıcı sayfasını görüntülemek için serinin bir bölüm üzerinde, API hizmetindeki bir haritalama ses adlarının listesini ve kimliğine gereksinimi"
 }

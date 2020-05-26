@@ -150,7 +150,7 @@
                                                       var customValue = document.querySelector('#customValue');
                                                       if (customKey && customKey.value && customValue && customValue.value) {
                                                         var customString = document.querySelector('[name="modules.player.data.script"]').value;
-                                                        var customJson = JSON.parse(customString);
+                                                        var customJson = JSON.parse(customString || '{}');
                                                         document.querySelector('[name="modules.player.data.script"]').value =
                                                           JSON.stringify(expand(
                                                             customJson,

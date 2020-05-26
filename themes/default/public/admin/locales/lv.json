@@ -962,5 +962,7 @@
 	"HASH пользователя": "HASH lietotāju",
 	"Включить": "Dot iespēju",
 	"Автоматическое изменение поддомена": "Automātiski mainīt apakšdomēna",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Ja domēna nonāk reģistru aizliegto vietās tiks izdarīts automātiski mainīt apakšdomēna pievienojot numurus beigām apakšdomēna (HD1, HD2, HD3 uc)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Ja domēna nonāk reģistru aizliegto vietās tiks izdarīts automātiski mainīt apakšdomēna pievienojot numurus beigām apakšdomēna (HD1, HD2, HD3 uc)",
+	"Параметр звука для iframe видео-плеера": "Skaņas iespēja iFrame video atskaņotājs",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Epizode no sērijas, lai parādītu video atskaņotājs lapu vēlamajā izteikt, jums ir nepieciešams kartēšanas sarakstu skaņas nosaukumu un ID API-pakalpojumu"
 }

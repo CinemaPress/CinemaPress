@@ -962,5 +962,7 @@
 	"HASH пользователя": "HASH käyttäjä",
 	"Включить": "Ota käyttöön",
 	"Автоматическое изменение поддомена": "Muuttaa automaattisesti aliverkkotunnuksen",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jos verkkotunnuksen siirtyy rekisteriin kiellettyjen sivustojen tehdään automaattisesti muuttaa aliverkkotunnuksessa lisäämällä numeroita loppuun aliverkkotunnuksen (HD1, HD2, HD3 jne.)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jos verkkotunnuksen siirtyy rekisteriin kiellettyjen sivustojen tehdään automaattisesti muuttaa aliverkkotunnuksessa lisäämällä numeroita loppuun aliverkkotunnuksen (HD1, HD2, HD3 jne.)",
+	"Параметр звука для iframe видео-плеера": "Ääni vaihtoehto iframe videosoitin",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Joka jakson sarjasta näyttää videosoitin sivua haluamaasi äänityksen, tarvitset kartoitus luettelo äänen nimet ja tunnus API-palvelun"
 }

@@ -962,5 +962,7 @@
 	"HASH пользователя": "Hash pengguna",
 	"Включить": "Memungkinkan",
 	"Автоматическое изменение поддомена": "Mengubah secara otomatis subdomain",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jika domain memasuki register situs yang terlarang akan dilakukan secara otomatis mengubah subdomain dengan menambahkan nomor ke akhir subdomain (hd1, hd2, HD3 dll)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jika domain memasuki register situs yang terlarang akan dilakukan secara otomatis mengubah subdomain dengan menambahkan nomor ke akhir subdomain (hd1, hd2, HD3 dll)",
+	"Параметр звука для iframe видео-плеера": "Pilihan suara untuk pemutar video iframe",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Pada sebuah episode dari seri untuk menampilkan halaman pemutar video di penyuaraan yang diinginkan, Anda perlu daftar pemetaan nama suara dan ID dalam API-layanan"
 }

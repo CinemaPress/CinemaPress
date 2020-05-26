@@ -962,5 +962,7 @@
 	"HASH пользователя": "Hash-felhasználó",
 	"Включить": "Engedélyezze",
 	"Автоматическое изменение поддомена": "Automatikusan változik az aldomain",
-	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Ha a domain belép a nyilvántartásban a tiltott helyek kerül sor automatikusan változik az aldomain hozzáadásával számokat a végén a aldomain (HD1 HD2 HD3 stb)"
+	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Ha a domain belép a nyilvántartásban a tiltott helyek kerül sor automatikusan változik az aldomain hozzáadásával számokat a végén a aldomain (HD1 HD2 HD3 stb)",
+	"Параметр звука для iframe видео-плеера": "Hang opció iframe videolejátszó",
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Egy epizód a sorozat, hogy megjelenítse a videolejátszó oldalt a kívánt zöngésség, szüksége van egy leképezési lista hang nevét és azonosítóját az API-szolgáltatás"
 }
