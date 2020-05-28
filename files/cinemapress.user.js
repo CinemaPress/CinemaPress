@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2020.6
+// @version 2020.7
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -150,7 +150,7 @@ function parseData() {
         api();
       });
     } else {
-      if (!movieData.title_ru || !movieData.title_en) {
+      if (!movieData.title_ru && !movieData.title_en) {
         icon.setAttribute('class', 'fa fa-bug');
         text.innerHTML = '&nbsp;&nbsp;No information!';
         console.log(movieData);
@@ -423,7 +423,11 @@ function getAPI(url, callback) {
                 };
               }
             } else {
-              result = JSON.parse(response.responseText);
+              try {
+                result = JSON.parse(response.responseText);
+              } catch (e) {
+                console.log(e);
+              }
             }
           }
         } catch (e) {
