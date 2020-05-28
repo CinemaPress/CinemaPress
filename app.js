@@ -58,6 +58,7 @@ var rss = require('./routes/rss');
 var admin = require('./routes/admin');
 var website = require('./routes/website');
 var api = require('./routes/api');
+var telegram = require('./routes/telegram');
 
 /**
  * Middleware dependencies.
@@ -100,6 +101,7 @@ app.use(
   /^(?:\/mobile-version|\/tv-version|)?/,
   express.static(path.join(path.dirname(__filename), '/'))
 );
+app.use('/telegram', telegram);
 app.use('/files', files);
 app.use(userinfo(lookup));
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/player.*$/, player);

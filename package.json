@@ -54,7 +54,8 @@
     "react-dom": "16.13.1",
     "avataaars": "1.2.1",
     "@dicebear/avatars": "4.0.8",
-    "@dicebear/avatars-avataaars-sprites": "4.0.8"
+    "@dicebear/avatars-avataaars-sprites": "4.0.8",
+    "node-telegram-bot-api": "0.50.0"
   },
   "devDependencies": {
     "prettier": "1.19.1"
