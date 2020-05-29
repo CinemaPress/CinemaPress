@@ -1731,7 +1731,7 @@ sh_yes() {
     fi
 }
 sh_not() {
-    if [ ! -f "/home/${CP_DOMAIN}/process.json" ]; then
+    if [ ! -f "/home/${CP_DOMAIN}/process.json" ] && [ ! -f "/home/${CP_DOMAIN}/index.php" ]; then
         clear
         _line
         _logo
@@ -3013,8 +3013,11 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /var/lib/cinemapress/php
             mkdir -p /var/lib/cinemapress/mysql
             mkdir -p /var/lib/cinemapress/dump
-            mkdir -p /home/${CP_DOMAIN}/config/production/nginx/conf.d
-            mkdir -p /home/${CP_DOMAIN}/config/production/nginx/pass.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/conf.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/pass.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/conf.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/letsencrypt
             if [ ! "$(docker network ls | grep cinemapress)" ]; then
                 docker network create \
                     --driver bridge \
@@ -3177,8 +3180,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "server {"
                 echo "    listen 80;"
                 echo "    listen [::]:80;"
-                echo "    # listen 443;"
-                echo "    # listen [::]:443;"
+                echo "    #ssl include /home/${CP_DOMAIN}/config/production/nginx/ssl.d/default.conf;"
                 echo "    root /home/${CP_DOMAIN};"
                 echo "    index index.php index.html index.htm;"
                 echo "    server_name .${CP_DOMAIN};"
@@ -3232,6 +3234,24 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    }"
                 echo "}"
             } >> /home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf
+            {
+                echo "listen 443 ssl;"
+                echo "listen [::]:443 ssl;"
+                echo "ssl_certificate /home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/fullchain.pem;"
+                echo "ssl_certificate_key /home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/privkey.pem;"
+                echo "ssl_dhparam /home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/dhparam.pem;"
+                echo "ssl_session_cache shared:SSL:10m;"
+                echo "ssl_session_timeout 1d;"
+                echo "ssl_stapling on;"
+                echo "ssl_stapling_verify on;"
+                echo "ssl_prefer_server_ciphers on;"
+                echo "ssl_protocols TLSv1.2;"
+                echo "ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;"
+                echo "resolver 1.1.1.1;"
+                echo "resolver_timeout 10s;"
+                echo "add_header X-Content-Type-Options \"nosniff\";"
+                echo "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
+            } >> /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
             if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
                 docker exec nginx nginx -s reload
             fi
@@ -3266,6 +3286,24 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    server_name .${2};"
                 echo "    return 301 \$scheme://${3}\$request_uri;"
                 echo "}"
+            } >> /home/"${2}"/config/production/nginx/conf.d/default.conf
+            {
+                echo "listen 443 ssl;"
+                echo "listen [::]:443 ssl;"
+                echo "ssl_certificate /home/${2}/config/production/nginx/ssl.d/live/${2}/fullchain.pem;"
+                echo "ssl_certificate_key /home/${2}/config/production/nginx/ssl.d/live/${2}/privkey.pem;"
+                echo "ssl_dhparam /home/${2}/config/production/nginx/ssl.d/live/${2}/dhparam.pem;"
+                echo "ssl_session_cache shared:SSL:10m;"
+                echo "ssl_session_timeout 1d;"
+                echo "ssl_stapling on;"
+                echo "ssl_stapling_verify on;"
+                echo "ssl_prefer_server_ciphers on;"
+                echo "ssl_protocols TLSv1.2;"
+                echo "ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;"
+                echo "resolver 1.1.1.1;"
+                echo "resolver_timeout 10s;"
+                echo "add_header X-Content-Type-Options \"nosniff\";"
+                echo "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
             } >> /home/"${2}"/config/production/nginx/conf.d/default.conf
             if [ -d "/home/${2}/config/production/nginx/ssl.d/live/${2}/" ] || \
             [ -d "/home/${2}/config/production/nginx/ssl.d/self-signed/${2}/" ]; then
