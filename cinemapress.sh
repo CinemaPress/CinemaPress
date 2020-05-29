@@ -3286,7 +3286,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    server_name .${2};"
                 echo "    return 301 \$scheme://${3}\$request_uri;"
                 echo "}"
-            } >> /home/"${2}"/config/production/nginx/conf.d/default.conf
+            } > /home/"${2}"/config/production/nginx/conf.d/default.conf
             {
                 echo "listen 443 ssl;"
                 echo "listen [::]:443 ssl;"
@@ -3304,7 +3304,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "resolver_timeout 10s;"
                 echo "add_header X-Content-Type-Options \"nosniff\";"
                 echo "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
-            } >> /home/"${2}"/config/production/nginx/ssl.d/default.conf
+            } > /home/"${2}"/config/production/nginx/ssl.d/default.conf
             if [ -d "/home/${2}/config/production/nginx/ssl.d/live/${2}/" ] || \
             [ -d "/home/${2}/config/production/nginx/ssl.d/self-signed/${2}/" ]; then
                 sed -Ei "s/    #ssl include \/home\/${2}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${2}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
