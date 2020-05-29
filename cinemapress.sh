@@ -3249,6 +3249,31 @@ while [ "${WHILE}" -lt "2" ]; do
             _line
             exit 0
         ;;
+        "redirect" )
+            if [ "${2}" = "" ] || [ "${3}" = "" ]; then
+                echo "ERROR: cinemapress redirect example.co hd.example.com"
+                exit 0
+            fi
+            mkdir -p /home/"${2}"/config/production/nginx/conf.d
+            mkdir -p /home/"${2}"/config/production/nginx/ssl.d
+            touch /home/"${2}"/index.php
+            {
+                echo "server {"
+                echo "    listen 80;"
+                echo "    listen [::]:80;"
+                echo "    #ssl include /home/${2}/config/production/nginx/ssl.d/default.conf;"
+                echo "    server_name .${2};"
+                echo "    return 301 \$scheme://${3}\$request_uri;"
+                echo "}"
+            } >> /home/"${2}"/config/production/nginx/conf.d/default.conf
+            if [ -d "/home/${2}/config/production/nginx/ssl.d/live/${2}/" ] || \
+            [ -d "/home/${2}/config/production/nginx/ssl.d/self-signed/${2}/" ]; then
+                sed -Ei "s/    #ssl include \/home\/${2}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${2}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
+                    "/home/${2}/config/production/nginx/conf.d/default.conf"
+            fi
+            echo "SUCCESS: cinemapress redirect ${2} ${3}"
+            exit 0
+        ;;
         "static" )
             read_domain "${2}"
             sh_not
