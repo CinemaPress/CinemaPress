@@ -3254,8 +3254,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "ERROR: cinemapress redirect example.co hd.example.com"
                 exit 0
             fi
-            mkdir -p /home/"${2}"/config/production/nginx/conf.d
             mkdir -p /home/"${2}"/config/production/nginx/ssl.d
+            mkdir -p /home/"${2}"/config/production/nginx/conf.d
+            mkdir -p /home/"${2}"/config/production/nginx/letsencrypt
             touch /home/"${2}"/index.php
             {
                 echo "server {"

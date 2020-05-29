@@ -298,7 +298,7 @@ module.exports = {
       "trailer": "",
       "picture": ""
     },
-    "noindex": "",
+    "noindex": "noindex",
     "slash": "/"
   },
   "l": {
