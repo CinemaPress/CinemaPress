@@ -3271,7 +3271,14 @@ while [ "${WHILE}" -lt "2" ]; do
                 sed -Ei "s/    #ssl include \/home\/${2}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${2}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
                     "/home/${2}/config/production/nginx/conf.d/default.conf"
             fi
-            echo "SUCCESS: cinemapress redirect ${2} ${3}"
+            NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
+            if [ "${NGINX_STATUS}" != "" ]; then
+                docker exec nginx nginx -s reload >/dev/null
+                echo "REDIRECT ${2} -> ${3}"
+            else
+                echo "ERROR NGINX:"
+                docker exec -t nginx nginx -t
+            fi
             exit 0
         ;;
         "static" )
