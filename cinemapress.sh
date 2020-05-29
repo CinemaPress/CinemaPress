@@ -3251,7 +3251,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "resolver_timeout 10s;"
                 echo "add_header X-Content-Type-Options \"nosniff\";"
                 echo "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
-            } >> /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+            } >> /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
             if [ "`docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null`" != "" ]; then
                 docker exec nginx nginx -s reload
             fi
@@ -3304,7 +3304,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "resolver_timeout 10s;"
                 echo "add_header X-Content-Type-Options \"nosniff\";"
                 echo "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
-            } >> /home/"${2}"/config/production/nginx/conf.d/default.conf
+            } >> /home/"${2}"/config/production/nginx/ssl.d/default.conf
             if [ -d "/home/${2}/config/production/nginx/ssl.d/live/${2}/" ] || \
             [ -d "/home/${2}/config/production/nginx/ssl.d/self-signed/${2}/" ]; then
                 sed -Ei "s/    #ssl include \/home\/${2}\/config\/production\/nginx\/ssl\.d\/default\.conf;/    include \/home\/${2}\/config\/production\/nginx\/ssl.d\/default.conf;/" \
