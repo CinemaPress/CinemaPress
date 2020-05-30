@@ -2954,30 +2954,56 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             exit 0
         ;;
-        "mail" )
-            read_domain "${2}"
-            sh_not
-            docker run \
-                -d \
-                --name mail \
-                --hostname "mail.${CP_DOMAIN}" \
-                --restart always \
-                --cap-add NET_ADMIN \
-                --cap-add SYS_PTRACE \
-                -v /var/docker-mailserver:/tmp/docker-mailserver \
-                -v /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d:/etc/letsencrypt:ro \
-                -e ENABLE_SPAMASSASSIN=1 \
-                -e SPAMASSASSIN_SPAM_TO_INBOX=1 \
-                -e ENABLE_CLAMAV=1 \
-                -e ENABLE_FAIL2BAN=1 \
-                -e DMS_DEBUG=0 \
-                -e SSL_TYPE=letsencrypt \
-                -p 25:25 \
-                -p 143:143 \
-                -p 465:465 \
-                -p 587:587 \
-                -p 993:993 \
-                cinemapress/mail
+        "mail"|"setup.sh"|"./setup.sh" )
+            if [ "${3}" = "" ]; then
+                read_domain "${2}"
+                sh_not
+                docker run \
+                    -d \
+                    --name mail \
+                    --hostname "mail.${CP_DOMAIN}" \
+                    --restart always \
+                    --cap-add NET_ADMIN \
+                    --cap-add SYS_PTRACE \
+                    -v /var/docker-mailserver:/tmp/docker-mailserver \
+                    -v /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d:/etc/letsencrypt:ro \
+                    -e ENABLE_SPAMASSASSIN=1 \
+                    -e SPAMASSASSIN_SPAM_TO_INBOX=1 \
+                    -e ENABLE_CLAMAV=1 \
+                    -e ENABLE_FAIL2BAN=1 \
+                    -e DMS_DEBUG=0 \
+                    -e SSL_TYPE=letsencrypt \
+                    -p 25:25 \
+                    -p 143:143 \
+                    -p 465:465 \
+                    -p 587:587 \
+                    -p 993:993 \
+                    cinemapress/mail
+                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
+                chmod a+x /usr/bin/mailcinema
+                _line
+                _header "MAILSERVER"
+                _line
+                _header "${CP_DOMAIN}"
+                _line
+                _br
+            else
+                /usr/bin/mailcinema "${2}" "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}"
+                sleep 5
+                if [ "${3}" = "dkim" ] && [ -d "/var/docker-mailserver/config/opendkim" ]; then
+                    cd /var/docker-mailserver/config/opendkim/keys/ && for f in */; do
+                        if [ -d "${f}" ] && [ -f "/var/docker-mailserver/config/opendkim/keys/${f%%/}/mail.txt" ]; then
+                            _line
+                            _header "${f%%/}"
+                            _line
+                            cat "/var/docker-mailserver/config/opendkim/keys/${f%%/}/mail.txt"
+                            _line
+                            _br
+                        fi
+                    done
+                fi
+            fi
+            exit 0
         ;;
         "cms" )
             read_domain ${2}
@@ -3058,10 +3084,8 @@ while [ "${WHILE}" -lt "2" ]; do
                     --name php \
                     --restart always \
                     --network cinemapress \
-                    -v /var/lib/cinemapress/php:/var/lib/php \
-                    -v /var/lib/cinemapress/extensions:/usr/local/lib/php/extensions \
                     -v /home:/home \
-                    chialab/php:7.4-fpm
+                    cinemapress/php:latest
             fi
             if [ ! "$(docker ps -a | grep mysql)" ]; then
                 docker run \
