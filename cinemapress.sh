@@ -3312,6 +3312,20 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    return 301 \$scheme://${3}\$request_uri;"
                 echo "}"
             } > /home/"${2}"/config/production/nginx/conf.d/default.conf
+            if [ "${4}" = "bot" ]; then
+                {
+                    echo "server {"
+                    echo "    listen 80;"
+                    echo "    listen [::]:80;"
+                    echo "    #ssl include /home/${2}/config/production/nginx/ssl.d/default.conf;"
+                    echo "    server_name .${2};"
+                    echo "    if ( \$http_user_agent ~* (google|yandex|bing|yahoo|baidu|duckduckgo|mail|ask|aol|msn) ) {"
+                    echo "        return 301 \$scheme://${3}\$request_uri;"
+                    echo "    }"
+                    echo "    return 444;"
+                    echo "}"
+                } > /home/"${2}"/config/production/nginx/conf.d/default.conf
+            fi
             {
                 echo "listen 443 ssl;"
                 echo "listen [::]:443 ssl;"
