@@ -3446,6 +3446,8 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " cms example.com backup [create,restore]"; _br;
             printf " bot       - Install website for bots"; _br;
             printf " bot_https - Install website for bots and generate SSL"; _br;
+            printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
+            printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
             printf " splash example.com github_login github_pass"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine install_https_restore_mirror"; _br;
