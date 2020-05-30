@@ -3059,6 +3059,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     --restart always \
                     --network cinemapress \
                     -v /var/lib/cinemapress/php:/var/lib/php \
+                    -v /var/lib/cinemapress/extensions:/usr/local/lib/php/extensions \
                     -v /home:/home \
                     chialab/php:7.4-fpm
             fi
