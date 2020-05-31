@@ -86,7 +86,7 @@ router.post('/message', function(req, res) {
     form.message = decodeURIComponent(form.message);
   }
 
-  if (!req.cookies.CP_rand) {
+  if (!req.session.CP_rand) {
     return res.json({
       color: 'red',
       message: cinemaLang.cookies
@@ -95,15 +95,15 @@ router.post('/message', function(req, res) {
 
   if (
     !form.rand ||
-    !req.cookies.CP_rand ||
-    '' + form.rand !== req.cookies.CP_rand + ''
+    !req.session.CP_rand ||
+    '' + form.rand !== req.session.CP_rand + ''
   ) {
     return res.json({
       color: 'red',
       message: cinemaLang.rand
     });
   } else {
-    res.clearCookie('CP_rand');
+    req.session.CP_rand = '';
   }
 
   var matches = form.message.match(/\bhttps?:\/\/\S+/gi);
@@ -399,11 +399,10 @@ router.get('/script.js', function(req, res) {
 router.get('/rand.js', function(req, res) {
   var rand1 = Math.floor(Math.random() * 10) + 1;
   var rand2 = Math.floor(Math.random() * 10) + 1;
-  res.cookie('CP_rand', '' + (rand1 + rand2), {
-    maxAge: 86400000,
-    httpOnly: true
-  });
-  res.header('Cache-Control', 'private, no-cache, no-store');
+  req.session.CP_rand = '' + (rand1 + rand2);
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
   res.header('Content-Type', 'text/javascript');
   res.send(
     'document.querySelector(".cinemaModal-math").innerHTML = "' +
