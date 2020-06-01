@@ -1,5 +1,7 @@
 'use strict';
 
+process.env['NTBA_FIX_319'] = 1;
+
 /**
  * Configuration dependencies.
  */
@@ -32,6 +34,8 @@ var TOKEN = '';
 var CHAT_ID = 0;
 /* ------------------------------------------------------- */
 
+if (!TOKEN) return (module.exports = router);
+
 var cinemaLang = {
   success: 'Спасибо за Ваше сообщение!',
   id: 'Не заполнен CHAT_ID',
@@ -56,7 +60,7 @@ bot.on('message', function(msg) {
 
 router.post('/bot' + TOKEN, function(req, res) {
   bot.processUpdate(req.body);
-  res.sendStatus(200);
+  res;
 });
 
 router.post('/message', function(req, res) {
@@ -86,24 +90,24 @@ router.post('/message', function(req, res) {
     form.message = decodeURIComponent(form.message);
   }
 
-  if (!req.session.CP_rand) {
+  if (!req.signedCookies || !req.signedCookies.CP_rand) {
     return res.json({
       color: 'red',
       message: cinemaLang.cookies
     });
   }
 
-  if (
-    !form.rand ||
-    !req.session.CP_rand ||
-    '' + form.rand !== req.session.CP_rand + ''
-  ) {
+  var rand1 = req.signedCookies.CP_rand.split('+')[0];
+  var rand2 = req.signedCookies.CP_rand.split('+')[1];
+
+  if (!form.rand || '' + form.rand !== parseInt(rand1) + parseInt(rand2) + '') {
     return res.json({
       color: 'red',
       message: cinemaLang.rand
     });
   } else {
-    req.session.CP_rand = '';
+    req.signedCookies.CP_rand = '';
+    res.clearCookie('CP_rand');
   }
 
   var matches = form.message.match(/\bhttps?:\/\/\S+/gi);
@@ -397,18 +401,20 @@ router.get('/script.js', function(req, res) {
 });
 
 router.get('/rand.js', function(req, res) {
-  var rand1 = Math.floor(Math.random() * 10) + 1;
-  var rand2 = Math.floor(Math.random() * 10) + 1;
-  req.session.CP_rand = '' + (rand1 + rand2);
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   res.header('Expires', '-1');
   res.header('Pragma', 'no-cache');
   res.header('Content-Type', 'text/javascript');
+  if (!req.signedCookies || !req.signedCookies.CP_rand) {
+    return res.send(
+      'document.querySelector(".cinemaModal-math").innerHTML = "ERROR";'
+    );
+  }
   res.send(
     'document.querySelector(".cinemaModal-math").innerHTML = "' +
-      rand1 +
+      req.signedCookies.CP_rand.split('+')[0] +
       ' + ' +
-      rand2 +
+      req.signedCookies.CP_rand.split('+')[1] +
       '";'
   );
 });

@@ -32,7 +32,6 @@ try {
   console.log('NOT FILE GeoLite2-Country.mmdb OR GeoLite2-ASN.mmdb');
 }
 var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
@@ -44,14 +43,6 @@ app.use(function(req, res, next) {
 app.use('/ping', function(req, res) {
   return res.send('pong');
 });
-app.use(
-  expressSession({
-    secret: Math.random().toString(36).substring(7),
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true, httpOnly: true, maxAge: 86400000 }
-  })
-);
 
 /**
  * Route dependencies.
@@ -100,7 +91,7 @@ app.set('view engine', 'ejs');
 
 app.enable('trust proxy');
 
-app.use(cookieParser());
+app.use(cookieParser(config.domain));
 app.use(bodyParser.json({ limit: '64mb' }));
 app.use(bodyParser.urlencoded({ limit: '64mb', extended: true }));
 
