@@ -97,8 +97,8 @@ router.post('/message', function(req, res) {
     });
   }
 
-  var rand1 = req.signedCookies.CP_rand.split('+')[0];
-  var rand2 = req.signedCookies.CP_rand.split('+')[1];
+  var rand1 = req.signedCookies.CP_rand[0];
+  var rand2 = req.signedCookies.CP_rand[1];
 
   if (!form.rand || '' + form.rand !== parseInt(rand1) + parseInt(rand2) + '') {
     return res.json({
@@ -412,9 +412,9 @@ router.get('/rand.js', function(req, res) {
   }
   res.send(
     'document.querySelector(".cinemaModal-math").innerHTML = "' +
-      req.signedCookies.CP_rand.split('+')[0] +
+      req.signedCookies.CP_rand[0] +
       ' + ' +
-      req.signedCookies.CP_rand.split('+')[1] +
+      req.signedCookies.CP_rand[1] +
       '";'
   );
 });
