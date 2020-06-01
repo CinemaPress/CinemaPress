@@ -2981,22 +2981,22 @@ while [ "${WHILE}" -lt "2" ]; do
                     cinemapress/mail
                 wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
                 chmod a+x /usr/bin/mailcinema
+                _br
                 _line
-                _header "MAILSERVER"
-                _line
-                _header "${CP_DOMAIN}"
+                _header "MAIL SERVER STARTED"
                 _line
                 _br
             else
                 /usr/bin/mailcinema "${2}" "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}"
                 sleep 5
+                _br
                 if [ "${3}" = "dkim" ] && [ -d "/var/docker-mailserver/config/opendkim" ]; then
-                    cd /var/docker-mailserver/config/opendkim/keys/ && for f in */; do
-                        if [ -d "${f}" ] && [ -f "/var/docker-mailserver/config/opendkim/keys/${f%%/}/mail.txt" ]; then
+                    cd /var/docker-mailserver/opendkim/keys/ && for f in */; do
+                        if [ -d "${f}" ] && [ -f "/var/docker-mailserver/opendkim/keys/${f%%/}/mail.txt" ]; then
                             _line
                             _header "${f%%/}"
                             _line
-                            cat "/var/docker-mailserver/config/opendkim/keys/${f%%/}/mail.txt"
+                            cat "/var/docker-mailserver/opendkim/keys/${f%%/}/mail.txt"
                             _line
                             _br
                         fi
