@@ -75,10 +75,10 @@ function tryParseJSON(jsonString) {
 
 var run = 0;
 
-if (data[arg || 'movies'] && data[arg || 'movies'].length) {
+if ((!arg || arg === 'movies') && data['movies'] && data['movies'].length) {
   var m = 0;
   async.eachOfLimit(
-    data[arg || 'movies'],
+    data['movies'],
     1,
     function(movie, key, callback) {
       movie.id = movie.kp_id;
@@ -101,10 +101,14 @@ if (data[arg || 'movies'] && data[arg || 'movies'].length) {
   );
 }
 
-if (data[arg || 'contents'] && data[arg || 'contents'].length) {
+if (
+  (!arg || arg === 'contents') &&
+  data['contents'] &&
+  data['contents'].length
+) {
   var c = 0;
   async.eachOfLimit(
-    data[arg || 'contents'],
+    data['contents'],
     1,
     function(content, key, callback) {
       CP_save.save(content, 'content', function(err, result) {
@@ -125,10 +129,14 @@ if (data[arg || 'contents'] && data[arg || 'contents'].length) {
   );
 }
 
-if (data[arg || 'comments'] && data[arg || 'comments'].length) {
+if (
+  (!arg || arg === 'comments') &&
+  data['comments'] &&
+  data['comments'].length
+) {
   var cm = 0;
   async.eachOfLimit(
-    data[arg || 'comments'],
+    data['comments'],
     1,
     function(comment, key, callback) {
       CP_save.save(comment, 'comment', function(err, result) {
