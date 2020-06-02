@@ -190,34 +190,6 @@
   ],
   "comments": [
     {
-      "movie_id": "570402",
-      "comment_ip": "127.0.0.1",
-      "comment_avatar": "/files/avatar/a56c52e91ad861c350f1bdeb6e168235.svg",
-      "comment_title": "Avatar 3",
-      "comment_url": "/movie/id570402",
-      "comment_confirm": 1,
-      "comment_anonymous": "Art",
-      "comment_text": "I don’t know what will happen in the 3rd part, but since there are such incredible plans, then there will be something unforgettable. One must have great confidence that the 2nd part will shoot as successfully as the first. But to be completely honest, the first part was drawn by 3D, since the plot [spoiler]completely repeats the actions in the animated film Pocahontas of 1995[/spoiler] Therefore, I don’t know, I don’t know :)",
-      "comment_admin": "Exactly, we will see :)",
-      "comment_like": 348,
-      "comment_dislike": 12,
-      "comment_star": 2
-    },
-    {
-      "movie_id": "505898",
-      "comment_ip": "127.0.0.1",
-      "comment_avatar": "/files/avatar/a56c52e91ad862c350f1bdeb6e168235.svg",
-      "comment_title": "Avatar 2",
-      "comment_url": "/movie/id505898",
-      "comment_confirm": 1,
-      "comment_anonymous": "Nika",
-      "comment_text": "When Cameron announced the filming of new Avatars ten years ago, I was shocked by the deadline. He planned to release the film 10 years in advance, i.e. 10 years long training. Honestly, I can’t believe in something unbelievable anymore, even if only one year is left.",
-      "comment_admin": "What kind of pessimism, in 2009 he gave us «sugar» for the eyes, and now he'll come up with something :)",
-      "comment_like": 48,
-      "comment_dislike": 2,
-      "comment_star": 1
-    },
-    {
       "movie_id": "1016160",
       "comment_ip": "127.0.0.1",
       "comment_avatar": "/files/avatar/a56c52e91ad863c350f1bdeb6e168235.svg",
@@ -258,6 +230,34 @@
       "comment_like": 36,
       "comment_dislike": 1,
       "comment_star": 2
+    },
+    {
+      "movie_id": "570402",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad861c350f1bdeb6e168235.svg",
+      "comment_title": "Avatar 3",
+      "comment_url": "/movie/id570402",
+      "comment_confirm": 1,
+      "comment_anonymous": "Art",
+      "comment_text": "I don’t know what will happen in the 3rd part, but since there are such incredible plans, then there will be something unforgettable. One must have great confidence that the 2nd part will shoot as successfully as the first. But to be completely honest, the first part was drawn by 3D, since the plot [spoiler]completely repeats the actions in the animated film Pocahontas of 1995[/spoiler] Therefore, I don’t know, I don’t know :)",
+      "comment_admin": "Exactly, we will see :)",
+      "comment_like": 348,
+      "comment_dislike": 12,
+      "comment_star": 2
+    },
+    {
+      "movie_id": "505898",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad862c350f1bdeb6e168235.svg",
+      "comment_title": "Avatar 2",
+      "comment_url": "/movie/id505898",
+      "comment_confirm": 1,
+      "comment_anonymous": "Nika",
+      "comment_text": "When Cameron announced the filming of new Avatars ten years ago, I was shocked by the deadline. He planned to release the film 10 years in advance, i.e. 10 years long training. Honestly, I can’t believe in something unbelievable anymore, even if only one year is left.",
+      "comment_admin": "What kind of pessimism, in 2009 he gave us «sugar» for the eyes, and now he'll come up with something :)",
+      "comment_like": 48,
+      "comment_dislike": 2,
+      "comment_star": 1
     }
   ]
 }
