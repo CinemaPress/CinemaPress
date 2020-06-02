@@ -187,5 +187,77 @@
       "content_image": "/files/content/collection5.png",
       "content_movies": "1118138,1227803,1044004,1228254,1147693,460586,1111018,585727,1178445,464963,1197956,1167154,502838,1048143,1112514"
     }
+  ],
+  "comments": [
+    {
+      "movie_id": "570402",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad861c350f1bdeb6e168235.svg",
+      "comment_title": "Avatar 3",
+      "comment_url": "/movie/id570402",
+      "comment_confirm": 1,
+      "comment_anonymous": "Art",
+      "comment_text": "I don’t know what will happen in the 3rd part, but since there are such incredible plans, then there will be something unforgettable. One must have great confidence that the 2nd part will shoot as successfully as the first. But to be completely honest, the first part was drawn by 3D, since the plot [spoiler]completely repeats the actions in the animated film Pocahontas of 1995[/spoiler] Therefore, I don’t know, I don’t know :)",
+      "comment_admin": "Exactly, we will see :)",
+      "comment_like": 348,
+      "comment_dislike": 12,
+      "comment_star": 2
+    },
+    {
+      "movie_id": "505898",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad862c350f1bdeb6e168235.svg",
+      "comment_title": "Avatar 2",
+      "comment_url": "/movie/id505898",
+      "comment_confirm": 1,
+      "comment_anonymous": "Nika",
+      "comment_text": "When Cameron announced the filming of new Avatars ten years ago, I was shocked by the deadline. He planned to release the film 10 years in advance, i.e. 10 years long training. Honestly, I can’t believe in something unbelievable anymore, even if only one year is left.",
+      "comment_admin": "What kind of pessimism, in 2009 he gave us «sugar» for the eyes, and now he'll come up with something :)",
+      "comment_like": 48,
+      "comment_dislike": 2,
+      "comment_star": 1
+    },
+    {
+      "movie_id": "1016160",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad863c350f1bdeb6e168235.svg",
+      "comment_title": "Sonic the Hedgehog",
+      "comment_url": "/movie/id1016160",
+      "comment_confirm": 1,
+      "comment_anonymous": "Elon",
+      "comment_text": "Viewers in the literal sense of the word, «won back» with their dislikes under the trailer, a view of the future Sonic. No one liked the first version of the character’s rendering, which was hit by a flurry of criticism. The creators redrawn it and now it is the way all gamers of the nineties remember it. Or it was a well-thought-out PR company =)",
+      "comment_admin": "There is a suspicion that this was such a way of promotion, because either Churchill or Twain said: «Any PR is good, except for the obituary»",
+      "comment_like": 488,
+      "comment_dislike": 16,
+      "comment_star": 3
+    },
+    {
+      "movie_id": "1236063",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad864c350f1bdeb6e168235.svg",
+      "comment_title": "Tenet",
+      "comment_url": "/movie/id1236063",
+      "comment_confirm": 1,
+      "comment_anonymous": "Mary",
+      "comment_text": "Nolan loves taking all production into his own hands, including putting personal funds into the budget. This is what distinguishes an excellent director from a hack worker who takes pictures for state funding. Nolan wholeheartedly believes in the success of the project, and will take off so many takes until his internal perfectionist is satisfied.",
+      "comment_admin": "",
+      "comment_like": 1048,
+      "comment_dislike": 32,
+      "comment_star": 3
+    },
+    {
+      "movie_id": "1199100",
+      "comment_ip": "127.0.0.1",
+      "comment_avatar": "/files/avatar/a56c52e91ad865c350f1bdeb6e168235.svg",
+      "comment_title": "Free Guy",
+      "comment_url": "/movie/id1199100",
+      "comment_confirm": 1,
+      "comment_anonymous": "Dana",
+      "comment_text": "I have no idea what kind of movie it is, but since Deadpool is in the frame, oh, I said Deadpool, no, handsome Reynolds, you must watch. It should be funny and «explosive», so we will look only on the big screen. Short videos from the trailer sold well on the Internet, let's hope that these are not all the best moments of the film.",
+      "comment_admin": "",
+      "comment_like": 36,
+      "comment_dislike": 1,
+      "comment_star": 2
+    }
   ]
 }

@@ -12,6 +12,8 @@ var fs = require('fs');
  * Global env.
  */
 
+var arg = process && process.argv && process.argv[2] ? process.argv[2] : '';
+
 try {
   var p = tryParseJSON(
     fs.readFileSync(
@@ -73,10 +75,10 @@ function tryParseJSON(jsonString) {
 
 var run = 0;
 
-if (data.movies && data.movies.length) {
+if (data[arg || 'movies'] && data[arg || 'movies'].length) {
   var m = 0;
   async.eachOfLimit(
-    data.movies,
+    data[arg || 'movies'],
     1,
     function(movie, key, callback) {
       movie.id = movie.kp_id;
@@ -99,10 +101,10 @@ if (data.movies && data.movies.length) {
   );
 }
 
-if (data.contents && data.contents.length) {
+if (data[arg || 'contents'] && data[arg || 'contents'].length) {
   var c = 0;
   async.eachOfLimit(
-    data.contents,
+    data[arg || 'contents'],
     1,
     function(content, key, callback) {
       CP_save.save(content, 'content', function(err, result) {
@@ -116,7 +118,31 @@ if (data.contents && data.contents.length) {
     },
     function(err) {
       console.log('');
-      console.log(err || m + ' contents added.');
+      console.log(err || c + ' contents added.');
+      console.log('');
+      run++;
+    }
+  );
+}
+
+if (data[arg || 'comments'] && data[arg || 'comments'].length) {
+  var cm = 0;
+  async.eachOfLimit(
+    data[arg || 'comments'],
+    1,
+    function(comment, key, callback) {
+      CP_save.save(comment, 'comment', function(err, result) {
+        if (err) console.error(err, result, comment);
+        if (result) {
+          cm = cm + 1;
+          console.log(result, cm);
+        }
+        return callback();
+      });
+    },
+    function(err) {
+      console.log('');
+      console.log(err || cm + ' comments added.');
       console.log('');
       run++;
     }
