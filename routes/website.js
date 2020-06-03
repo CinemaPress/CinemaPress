@@ -150,12 +150,18 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       options.query[t] = CP_regexp.str(
         CP_translit.text(req.query[t], true, config.urls[t])
       );
+      if (!level2) {
+        level2 = 'X';
+      }
     }
   });
 
   Object.keys(req.query).forEach(function(t) {
     if (/^custom\./i.test(t)) {
       options.query[t] = CP_regexp.str(req.query[t]);
+      if (!level2) {
+        level2 = 'X';
+      }
     }
   });
 
@@ -454,7 +460,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       case config.urls.type:
         return level2 ? 'category' : 'error';
       case config.urls.search:
-        return level2 ? 'category' : 'error';
+        return level2 && !/^-/.test(level2) ? 'category' : 'error';
       case config.urls.sitemap:
         return 'sitemap';
       case modules.content.data.url:

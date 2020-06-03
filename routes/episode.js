@@ -107,7 +107,9 @@ router.get('/?', function(req, res) {
           .replace(/\[imdb_id]/, movie.imdb_id ? movie.imdb_id : '')
           .replace(/\[tmdb_id]/, movie.tmdb_id ? movie.tmdb_id : '')
           .replace(/\[douban_id]/, movie.douban_id ? movie.douban_id : '');
-        var hash = md5(JSON.stringify(params) + process.env['CP_VER']);
+        var hash = md5(
+          JSON.stringify(params) + options.origin + process.env['CP_VER']
+        );
         if (cache.has(hash)) {
           serials = cache.get(hash);
           return callback();

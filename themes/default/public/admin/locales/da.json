@@ -964,5 +964,8 @@
 	"Автоматическое изменение поддомена": "Automatisk ændre subdomæne",
 	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Hvis et domæne ind i registret over forbudte steder vil ske automatisk ændre subdomæne ved tilsætning numre til enden af ​​underdomæne (HD1, HD2, HD3 etc.)",
 	"Параметр звука для iframe видео-плеера": "Lyd mulighed for iframe videoafspiller",
-	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "På en episode af serien til at vise videoafspilleren side i den ønskede stemmeføring, du har brug for en kortlægning liste af sunde navne og id i API-tjeneste"
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "På en episode af serien til at vise videoafspilleren side i den ønskede stemmeføring, du har brug for en kortlægning liste af sunde navne og id i API-tjeneste",
+	"Для ботов и людей": "For bots og mennesker",
+	"Для ботов": "Bot",
+	"Для людей": "For folk"
 }

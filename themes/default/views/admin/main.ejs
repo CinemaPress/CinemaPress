@@ -279,7 +279,21 @@
                                                                     <% if (config.blacklist) { %> checked=""
                                                                             <% } %>
                                                                            type="radio"><span></span>
-                                                                    <span><%= __('Включить') %></span>
+                                                                    <span><%= __('Для ботов и людей') %></span>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="config.blacklist" value="2"
+                                                                    <% if (config.blacklist) { %> checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span>
+                                                                    <span><%= __('Для ботов') %></span>
+                                                                </label>
+                                                                <label>
+                                                                    <input name="config.blacklist" value="3"
+                                                                    <% if (config.blacklist) { %> checked=""
+                                                                            <% } %>
+                                                                           type="radio"><span></span>
+                                                                    <span><%= __('Для людей') %></span>
                                                                 </label>
                                                                 <label>
                                                                     <input name="config.blacklist" value="0"

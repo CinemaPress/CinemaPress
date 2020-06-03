@@ -964,5 +964,8 @@
 	"Автоматическое изменение поддомена": "Automatiškai pakeisti subdomenas",
 	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "Jei domenas patenka į draudžiamų svetainių registrą bus padaryta automatiškai pakeisti subdomeną pridedant numerius į subdomenas pabaigos (HD1, HD2, HD3 tt)",
 	"Параметр звука для iframe видео-плеера": "Garso pasirinkimas iframe vaizdo grotuvas",
-	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Ant serijos epizodas rodyti vaizdo grotuvas puslapį į norimą reikšti, jums reikia žemėlapių sąrašą garso vardų ir ID API tarnyba"
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Ant serijos epizodas rodyti vaizdo grotuvas puslapį į norimą reikšti, jums reikia žemėlapių sąrašą garso vardų ir ID API tarnyba",
+	"Для ботов и людей": "Dėl reklaminių žinučių ir žmonėms",
+	"Для ботов": "Botas",
+	"Для людей": "Žmonėms"
 }

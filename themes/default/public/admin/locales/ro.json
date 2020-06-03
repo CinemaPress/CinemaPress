@@ -964,5 +964,8 @@
 	"Автоматическое изменение поддомена": "Schimba automat subdomeniu",
 	"Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)": "În cazul în care un domeniu intră în registrul de site-uri interzise se va face în mod automat schimba subdomeniul prin adăugarea de numere de la sfârșitul subdomeniului (HD1, HD2, HD3, etc.)",
 	"Параметр звука для iframe видео-плеера": "Opțiune de sunet pentru iframe player video",
-	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Pe un episod al seriei pentru a afișa pagina de redare video în dorit Manifestarea, aveți nevoie de o listă de mapare de nume sonore și ID-ul în API-service"
+	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Pe un episod al seriei pentru a afișa pagina de redare video în dorit Manifestarea, aveți nevoie de o listă de mapare de nume sonore și ID-ul în API-service",
+	"Для ботов и людей": "Pentru roboții și oameni",
+	"Для ботов": "Bot",
+	"Для людей": "Pentru oameni"
 }
