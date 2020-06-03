@@ -299,6 +299,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
   if (arguments.length === 5) {
     callback = options;
     options = {};
+    options.query = {};
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;

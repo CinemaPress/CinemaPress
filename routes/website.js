@@ -153,6 +153,12 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     }
   });
 
+  Object.keys(req.query).forEach(function(t) {
+    if (/^custom\./i.test(t)) {
+      options.query[t] = CP_regexp.str(req.query[t]);
+    }
+  });
+
   var template = setTemplate();
 
   getRender(function(err, render) {
