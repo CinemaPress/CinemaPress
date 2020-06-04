@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "På en episod av serien för att visa videospelare webbplatsen på önskad ljudande, behöver du en kartläggning lista över ljud namn och ID i API-tjänsten",
 	"Для ботов и людей": "För bots och människor",
 	"Для ботов": "Bot",
-	"Для людей": "För folk"
+	"Для людей": "För folk",
+	"Рерайт описаний у определенных фильмов": "Skriv om beskrivningarna i vissa movieer",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Villkoret för omskrivning av vissa movieer (om villkoret är sant - kommer att göras omskrivning)"
 }

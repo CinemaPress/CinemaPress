@@ -478,7 +478,8 @@ module.exports = {
       "token": "",
       "double": 1,
       "unique": 0,
-      "publish": 1
+      "publish": 1,
+      "condition": ""
     }
   },
   "voting": {

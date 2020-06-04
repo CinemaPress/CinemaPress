@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Epizode no sērijas, lai parādītu video atskaņotājs lapu vēlamajā izteikt, jums ir nepieciešams kartēšanas sarakstu skaņas nosaukumu un ID API-pakalpojumu",
 	"Для ботов и людей": "Par botiem un cilvēkiem",
 	"Для ботов": "Bot",
-	"Для людей": "Par cilvēkiem"
+	"Для людей": "Par cilvēkiem",
+	"Рерайт описаний у определенных фильмов": "Pārrakstīt aprakstus dažās movieās",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Nosacījums par pārrakstīšanu konkrētu movieu (ja nosacījums ir patiess - tiks veikti pārrakstot)"
 }

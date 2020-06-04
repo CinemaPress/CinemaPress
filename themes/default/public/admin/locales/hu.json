@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Egy epizód a sorozat, hogy megjelenítse a videolejátszó oldalt a kívánt zöngésség, szüksége van egy leképezési lista hang nevét és azonosítóját az API-szolgáltatás",
 	"Для ботов и людей": "A botok és emberek",
 	"Для ботов": "Bot",
-	"Для людей": "Embereknek"
+	"Для людей": "Embereknek",
+	"Рерайт описаний у определенных фильмов": "Átírni a leírások egyes movieek",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "A feltétel az újraírása egyes movieek (ha a feltétel igaz - kerül sor átírásával)"
 }

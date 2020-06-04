@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "On sehemu ya mfululizo wa kuonyesha video mchezaji ukurasa katika akielezea taka, unahitaji ramani orodha ya majina sauti na ID katika API huduma",
 	"Для ботов и людей": "Kwa bots na binadamu",
 	"Для ботов": "Bot",
-	"Для людей": "Kwa watu"
+	"Для людей": "Kwa watu",
+	"Рерайт описаний у определенных фильмов": "Andika upya maelezo katika filamu fulani",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Hali ya kuandika ya filamu fulani (kama hali ni ya kweli - yatafanyika kuandika)"
 }

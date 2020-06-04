@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Sur un épisode de la série pour afficher la page du lecteur vidéo dans le voicing souhaité, vous avez besoin d'une liste de mappage des noms sonores et l'ID dans l'API service",
 	"Для ботов и людей": "Pour les robots et les humains",
 	"Для ботов": "Bot",
-	"Для людей": "Pour les personnes"
+	"Для людей": "Pour les personnes",
+	"Рерайт описаний у определенных фильмов": "Réécrire les descriptions dans certains movies",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "La condition pour la ré-écriture de certains movies (si la condition est vraie - sera fait réécriture)"
 }

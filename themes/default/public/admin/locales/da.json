@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "På en episode af serien til at vise videoafspilleren side i den ønskede stemmeføring, du har brug for en kortlægning liste af sunde navne og id i API-tjeneste",
 	"Для ботов и людей": "For bots og mennesker",
 	"Для ботов": "Bot",
-	"Для людей": "For folk"
+	"Для людей": "For folk",
+	"Рерайт описаний у определенных фильмов": "Omskriv beskrivelserne i visse movie",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Betingelsen for omskrivning af visse movie (hvis betingelsen er sand - vil blive gjort omskrivning)"
 }

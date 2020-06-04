@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "On episoodi seeria kuvamiseks video mängija lehte soovitud väljaütlemine, peate kaardistamise nimekirja heli nimed ja ID API-teenuse",
 	"Для ботов и людей": "Sest robotid ja inimesed",
 	"Для ботов": "Bot",
-	"Для людей": "Inimestele"
+	"Для людей": "Inimestele",
+	"Рерайт описаний у определенных фильмов": "Kirjutada kirjelduse teatud movieide",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Tingimuseks ümberkirjutamise teatud movieide (kui tingimus on tõene - tehakse ümberkirjutamist)"
 }

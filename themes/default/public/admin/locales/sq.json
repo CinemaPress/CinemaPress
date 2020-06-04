@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Në një episod të serisë për të shfaqur faqen e video player në shprehjen e dëshiruar, ju keni nevojë për një listë të hartës të emrave të shëndosha dhe ID-në API-shërbimit",
 	"Для ботов и людей": "Për bots dhe njerëzit",
 	"Для ботов": "Bot",
-	"Для людей": "Per njerezit"
+	"Для людей": "Per njerezit",
+	"Рерайт описаний у определенных фильмов": "Rishkruaj përshkrimet në moviea të caktuara",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Kushti për rishkrimin e movieave të caktuara (nëse gjendja është e vërtetë - do të bëhet rishkrimin)"
 }

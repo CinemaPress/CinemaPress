@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "Mở một tập của loạt bài này để hiển thị các trang nghe nhạc video trong cách phát âm mong muốn, bạn cần có một danh sách bản đồ của tên âm thanh và ID trong API dịch vụ",
 	"Для ботов и людей": "Đối với chương trình và con người",
 	"Для ботов": "Người máy",
-	"Для людей": "Đối với những người"
+	"Для людей": "Đối với những người",
+	"Рерайт описаний у определенных фильмов": "Viết lại các mô tả trong bộ phim nào đó",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Điều kiện để viết lại các bộ phim nào đó (nếu điều kiện là đúng - sẽ được thực hiện viết lại)"
 }

@@ -967,5 +967,7 @@
 	"На странице эпизода сериала для показа видео-плеера в нужном озвучивании, Вам понадобится список сопоставлений из названия озвучивания и его идентификатора в API-сервисе": "İstenilen dile getiren video oynatıcı sayfasını görüntülemek için serinin bir bölüm üzerinde, API hizmetindeki bir haritalama ses adlarının listesini ve kimliğine gereksinimi",
 	"Для ботов и людей": "Botlara ve insanlar için",
 	"Для ботов": "Bot",
-	"Для людей": "İnsanlar için"
+	"Для людей": "İnsanlar için",
+	"Рерайт описаний у определенных фильмов": "Belirli movielerde açıklamaları yeniden yazın",
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Belirli movielerin tekrar yazılmasını şart (koşul doğruysa - yeniden yapılacaktır)"
 }
