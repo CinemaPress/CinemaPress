@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.11
 ARG NODE_ENV="production"
 ENV NODE_ENV=${NODE_ENV}
 ARG CP_DOMAIN=""
