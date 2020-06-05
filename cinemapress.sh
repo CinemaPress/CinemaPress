@@ -409,6 +409,7 @@ ip_install() {
     if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
         docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
             >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+        sleep 10
     fi
 
     echo "${PRC_}% update" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
@@ -586,7 +587,7 @@ ip_install() {
 
             docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
-            sleep 3
+            sleep 10
             CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
             sleep 3
             CHECK_PURGE=$(docker exec "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
@@ -3367,7 +3368,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${4}" != "" ]; then
                     docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
                         >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
-                    sleep 3
+                    sleep 10
                     CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
                     sleep 3
                     CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
