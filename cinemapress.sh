@@ -2955,8 +2955,13 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             exit 0
         ;;
-        "mail"|"setup.sh"|"./setup.sh" )
-            if [ "${3}" = "" ]; then
+        "ms"|"mailserver"|"mail"|"setup.sh"|"./setup.sh" )
+            if [ "${2}" = "help" ]; then
+                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
+                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
+                chmod a+x /usr/bin/mailcinema
+                /usr/bin/mailcinema
+            elif [ "${3}" = "" ]; then
                 read_domain "${2}"
                 sh_not
                 docker run \
@@ -2981,6 +2986,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     -p 993:993 \
                     cinemapress/mail
                 wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
+                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
                 chmod a+x /usr/bin/mailcinema
                 _br
                 _line
