@@ -99,7 +99,7 @@ module.exports = {
           "pass": ""
         },
         "dkim": "",
-        "message": "Greetings! Thank you for your appeal, we have fulfilled all the requirements and removed the indicated materials. We were glad to cooperate!"
+        "message": "Greetings! Thank you for your appeal, we have fulfilled all the requirements and removed the indicated materials. ID movies: [id]. We were glad to cooperate!"
       },
       "country": 0,
       "status_code_country": "200",
