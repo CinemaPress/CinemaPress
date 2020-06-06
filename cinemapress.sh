@@ -2695,6 +2695,11 @@ while [ "${WHILE}" -lt "2" ]; do
             else
                 _content "FTP: stopped"
             fi
+            if [ "$(docker ps -aq -f status=running -f name=^/mail\$ 2>/dev/null)" != "" ]; then
+                _content "MailServer: runnind"
+            else
+                _content "MailServer: stopped"
+            fi
             _content
             _header "NGINX LOGS"
             _content
@@ -2716,7 +2721,14 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -rf /root/${DD:?}
                 fi
             done
-            rm -rf /var/log/* /var/ngx_pagespeed_cache /var/lib/sphinx/tmp /var/lib/sphinx/old /etc/nginx/bots.d /var/lib/cinemapress
+            rm -rf \
+                /var/log/* \
+                /var/ngx_pagespeed_cache \
+                /var/lib/sphinx/tmp \
+                /var/lib/sphinx/old \
+                /etc/nginx/bots.d \
+                /var/lib/cinemapress \
+                /var/docker-mailserver
             sh_progress 100
             exit 0
         ;;
@@ -2964,6 +2976,12 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${3}" = "" ]; then
                 read_domain "${2}"
                 sh_not
+                SSL_TYPE=()
+                SSL_DIR=()
+                if [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ]; then
+                    SSL_TYPE=(-e "SSL_TYPE=letsencrypt")
+                    SSL_DIR=(-v /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d:/etc/letsencrypt:ro)
+                fi
                 docker run \
                     -d \
                     --name mail \
@@ -2972,13 +2990,13 @@ while [ "${WHILE}" -lt "2" ]; do
                     --cap-add NET_ADMIN \
                     --cap-add SYS_PTRACE \
                     -v /var/docker-mailserver:/tmp/docker-mailserver \
-                    -v /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d:/etc/letsencrypt:ro \
+                    "${SSL_DIR[@]}" \
                     -e ENABLE_SPAMASSASSIN=1 \
                     -e SPAMASSASSIN_SPAM_TO_INBOX=1 \
                     -e ENABLE_CLAMAV=1 \
                     -e ENABLE_FAIL2BAN=1 \
-                    -e DMS_DEBUG=0 \
-                    -e SSL_TYPE=letsencrypt \
+                    -e DMS_DEBUG=1 \
+                    "${SSL_TYPE[@]}" \
                     -p 25:25 \
                     -p 143:143 \
                     -p 465:465 \
@@ -2990,20 +3008,64 @@ while [ "${WHILE}" -lt "2" ]; do
                 chmod a+x /usr/bin/mailcinema
                 _br
                 _line
-                _header "MAIL SERVER STARTED"
+                _header "MAIL SERVER ${CP_DOMAIN} STARTED"
+                _line
+                printf "${Y}Type:${NC}     ${G}A${NC}"
+                _br
+                printf "${Y}Name:${NC}     ${G}mail.${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Content:${NC}  ${G}IP of your server${NC}"
+                _br
+                _line
+                printf "${Y}Type:${NC}     ${G}A${NC}"
+                _br
+                printf "${Y}Name:${NC}     ${G}imap.${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Content:${NC}  ${G}IP of your server${NC}"
+                _br
+                _line
+                printf "${Y}Type:${NC}     ${G}A${NC}"
+                _br
+                printf "${Y}Name:${NC}     ${G}smtp.${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Content:${NC}  ${G}IP of your server${NC}"
+                _br
+                _line
+                printf "${Y}Type:${NC}     ${G}MX${NC}"
+                _br
+                printf "${Y}Name:${NC}     ${G}${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Content:${NC}  ${G}mail.${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Priority:${NC} ${G}1${NC}"
+                _br
+                _line
+                printf "${Y}Type:${NC}     ${G}TXT${NC}"
+                _br
+                printf "${Y}Name:${NC}     ${G}${CP_DOMAIN}${NC}"
+                _br
+                printf "${Y}Content:${NC}  ${G}v=spf1 mx -all${NC}"
+                _br
                 _line
                 _br
             else
                 /usr/bin/mailcinema "${2}" "${3}" "${4}" "${5}" "${6}" "${7}" "${8}" "${9}"
                 sleep 5
                 _br
-                if [ "${3}" = "dkim" ] && [ -d "/var/docker-mailserver/config/opendkim" ]; then
+                if [ "${3}" = "dkim" ] && [ -d "/var/docker-mailserver/opendkim/keys" ]; then
+                    docker restart mail &>/dev/null
+                    sleep 15
                     cd /var/docker-mailserver/opendkim/keys/ && for f in */; do
                         if [ -d "${f}" ] && [ -f "/var/docker-mailserver/opendkim/keys/${f%%/}/mail.txt" ]; then
-                            _line
+                            CONTENT_DKIM=""
                             _header "${f%%/}"
-                            _line
-                            cat "/var/docker-mailserver/opendkim/keys/${f%%/}/mail.txt"
+                            printf "${Y}Type:${NC}    ${G}TXT${NC}"
+                            _br
+                            printf "${Y}Name:${NC}    ${G}mail._domainkey${NC}"
+                            _br
+                            while IFS= read -r line; do CONTENT_DKIM_ONE=$(echo ${line} | sed 's/.*"\(.*\)".*/\1/'); CONTENT_DKIM="${CONTENT_DKIM}${CONTENT_DKIM_ONE}"; done < "/var/docker-mailserver/opendkim/keys/${f%%/}/mail.txt"
+                            printf "${Y}Content:${NC} ${G}${CONTENT_DKIM}${NC}"
+                            _br
                             _line
                             _br
                         fi
