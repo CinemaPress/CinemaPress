@@ -293,6 +293,7 @@ module.exports = {
       "target": 0,
       "desktop": {
         "all": {
+          "brand": "",
           "over": "<div class=rklma>Block with your advertisement above the player</div>",
           "under": "<div class=rklma>Block with your advertisement under the player</div>",
           "top": "<div class=rklma>Block with your advertisement at the top of the page</div>",
@@ -301,24 +302,28 @@ module.exports = {
           "right": "<div class=rklma>Block with your advertisement on the right of the page</div>"
         },
         "index": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "category": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "categories": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "movie": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -327,6 +332,7 @@ module.exports = {
           "right": ""
         },
         "online": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -335,6 +341,7 @@ module.exports = {
           "right": ""
         },
         "download": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -343,6 +350,7 @@ module.exports = {
           "right": ""
         },
         "picture": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -351,6 +359,7 @@ module.exports = {
           "right": ""
         },
         "trailer": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -359,6 +368,7 @@ module.exports = {
           "right": ""
         },
         "episode": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -369,6 +379,7 @@ module.exports = {
       },
       "mobile": {
         "all": {
+          "brand": "",
           "over": "<div class=rklma>Block with your advertisement above the player</div>",
           "under": "<div class=rklma>Block with your advertisement under the player</div>",
           "top": "<div class=rklma>Block with your advertisement at the top of the page</div>",
@@ -377,24 +388,28 @@ module.exports = {
           "right": "<div class=rklma>Block with your advertisement on the right of the page</div>"
         },
         "index": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "category": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "categories": {
+          "brand": "",
           "top": "",
           "bottom": "",
           "left": "",
           "right": ""
         },
         "movie": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -403,6 +418,7 @@ module.exports = {
           "right": ""
         },
         "online": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -411,6 +427,7 @@ module.exports = {
           "right": ""
         },
         "download": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -419,6 +436,7 @@ module.exports = {
           "right": ""
         },
         "picture": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -427,6 +445,7 @@ module.exports = {
           "right": ""
         },
         "trailer": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",
@@ -435,6 +454,7 @@ module.exports = {
           "right": ""
         },
         "episode": {
+          "brand": "",
           "over": "",
           "under": "",
           "top": "",

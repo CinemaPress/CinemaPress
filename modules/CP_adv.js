@@ -26,9 +26,11 @@ function codesAdv(options, type) {
         typeof options.userinfo === 'object'
       ) {
         if (
-          modules.blocking.status &&
-          options.subscribe &&
-          modules.blocking.data.sub.keys.indexOf(options.subscribe) + 1
+          (options.subscribe &&
+            modules.blocking.status &&
+            modules.blocking.data.sub.keys.indexOf(options.subscribe) + 1) ||
+          options.userinfo.whois ||
+          options.userinfo.bot
         ) {
           positions[type][position] = '';
         } else if (positions[type][position]) {
@@ -40,8 +42,6 @@ function codesAdv(options, type) {
       }
     }
   }
-
-  return positions[type];
 
   function filterAdv(position) {
     var dflt = true;
@@ -92,6 +92,8 @@ function codesAdv(options, type) {
       ''
     );
   }
+
+  return positions[type];
 }
 
 module.exports = {

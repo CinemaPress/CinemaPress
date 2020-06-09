@@ -2039,6 +2039,8 @@ docker_backup() {
         --exclude=config/production/filestash \
         --exclude=config/production/sphinx \
         --exclude=config/production/nginx \
+        --exclude=config/production/mail \
+        --exclude=config/production/php \
         -uf /var/mega/"${CP_DOMAIN}"/config.tar \
         config
     cd /home/"${CP_DOMAIN}" && \

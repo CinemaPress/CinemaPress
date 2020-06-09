@@ -969,5 +969,6 @@
 	"Для ботов": "Bot",
 	"Для людей": "Inimestele",
 	"Рерайт описаний у определенных фильмов": "Kirjutada kirjelduse teatud movieide",
-	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Tingimuseks ümberkirjutamise teatud movieide (kui tingimus on tõene - tehakse ümberkirjutamist)"
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Tingimuseks ümberkirjutamise teatud movieide (kui tingimus on tõene - tehakse ümberkirjutamist)",
+	"Брендирование веб-страницы": "Branding veebilehe"
 }

@@ -969,5 +969,6 @@
 	"Для ботов": "Bot",
 	"Для людей": "Ihmisille",
 	"Рерайт описаний у определенных фильмов": "Kirjoittaa kuvauksia tiettyjen elokuvien",
-	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Edellytys uudelleenkirjoittamisen tiettyjen kalvojen (jos ehto on tosi - tehdään kirjoittamasta)"
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Edellytys uudelleenkirjoittamisen tiettyjen kalvojen (jos ehto on tosi - tehdään kirjoittamasta)",
+	"Брендирование веб-страницы": "Branding web-sivun"
 }

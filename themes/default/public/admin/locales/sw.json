@@ -969,5 +969,6 @@
 	"Для ботов": "Bot",
 	"Для людей": "Kwa watu",
 	"Рерайт описаний у определенных фильмов": "Andika upya maelezo katika filamu fulani",
-	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Hali ya kuandika ya filamu fulani (kama hali ni ya kweli - yatafanyika kuandika)"
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Hali ya kuandika ya filamu fulani (kama hali ni ya kweli - yatafanyika kuandika)",
+	"Брендирование веб-страницы": "Ukurasa chapa ya tovuti"
 }

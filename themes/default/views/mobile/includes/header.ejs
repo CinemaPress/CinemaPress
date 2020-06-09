@@ -1,3 +1,7 @@
+<% if (typeof page.adv === 'object' && page.adv.brand) { %>
+    <%- page.adv.brand %>
+<% } %>
+
 <a href="<%- page.protocol %><%- page.domain %>/">
     <img src="/themes/default/public/mobile/logo.svg?v=<%- page.ver %>" class="logo" alt="Logo">
 </a>

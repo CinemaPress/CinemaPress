@@ -969,5 +969,6 @@
 	"Для ботов": "Bot",
 	"Для людей": "Per njerezit",
 	"Рерайт описаний у определенных фильмов": "Rishkruaj përshkrimet në moviea të caktuara",
-	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Kushti për rishkrimin e movieave të caktuara (nëse gjendja është e vërtetë - do të bëhet rishkrimin)"
+	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Kushti për rishkrimin e movieave të caktuara (nëse gjendja është e vërtetë - do të bëhet rishkrimin)",
+	"Брендирование веб-страницы": "Branding web faqe"
 }
