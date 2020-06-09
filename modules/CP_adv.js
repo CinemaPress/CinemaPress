@@ -13,18 +13,21 @@ var modules = require('../config/production/modules');
  */
 
 function codesAdv(options, type) {
-  var positions = options && options.userinfo && options.userinfo.device;
-  typeof modules.adv.data[
-    options.userinfo.device === 'app' ? 'desktop' : options.userinfo.device
-  ] !== 'undefined'
-    ? JSON.stringify(
-        modules.adv.data[
-          options.userinfo.device === 'app'
-            ? 'desktop'
-            : options.userinfo.device
-        ]
-      )
-    : '{}';
+  var positions =
+    options &&
+    options.userinfo &&
+    options.userinfo.device &&
+    typeof modules.adv.data[
+      options.userinfo.device === 'app' ? 'desktop' : options.userinfo.device
+    ] !== 'undefined'
+      ? JSON.stringify(
+          modules.adv.data[
+            options.userinfo.device === 'app'
+              ? 'desktop'
+              : options.userinfo.device
+          ]
+        )
+      : '{}';
   positions = JSON.parse(positions);
 
   if (modules.adv.status) {
