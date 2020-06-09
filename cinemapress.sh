@@ -876,6 +876,7 @@ ip_install() {
             openssl dhparam -out "${NGX}/ssl.d/live/${LOCAL_DOMAIN}/dhparam.pem" 2048 \
                 >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
             sed -Ei "s~/self-signed/~/live/~g" "${NGX}/ssl.d/default.conf"
+            sed -Ei "s/ssl_stapling off;/ssl_stapling on;/g" "${NGX}/ssl.d/default.conf"
             sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
                 "/home/${LOCAL_DOMAIN}/config/production/config.js"
@@ -906,6 +907,7 @@ ip_install() {
         openssl dhparam \
             -out "${NGX}"/ssl.d/self-signed/"${LOCAL_DOMAIN}"/dhparam.pem 2048
         sed -Ei "s/live/self-signed/g" "${NGX}/ssl.d/default.conf"
+        sed -Ei "s/ssl_stapling on;/ssl_stapling off;/g" "${NGX}/ssl.d/default.conf"
         sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
         sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
             /home/"${LOCAL_DOMAIN}"/config/production/config.js
@@ -2029,6 +2031,7 @@ docker_backup() {
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    sleep 10
     rm -rf /var/mega/"${CP_DOMAIN:?}" && mkdir -p /var/mega/"${CP_DOMAIN}"
     cd /home/"${CP_DOMAIN}" && \
     tar --ignore-failed-read \
