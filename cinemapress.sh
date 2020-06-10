@@ -2107,6 +2107,9 @@ docker_available() {
 docker_rclone() {
     sleep 3; rclone "${1}" "${2}"
 }
+docker_cinematheme() {
+    cd /home/"${CP_DOMAIN}"/themes && cinematheme "${@}"
+}
 docker_spb() {
     SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
     CNF="/home/${CP_DOMAIN}/config/production/config.js"
@@ -2469,6 +2472,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_passwd "${3}"
             elif [ "${2}" = "rclone" ]; then
                 docker_rclone "${3}" "${4}"
+            elif [ "${2}" = "cinematheme" ]; then
+                docker_cinematheme "${@}"
             elif [ "${2}" = "backup" ]; then
                 if [ "${3}" = "create" ] || [ "${3}" = "1" ]; then
                     docker_backup "${4}"
@@ -3077,6 +3082,12 @@ while [ "${WHILE}" -lt "2" ]; do
                     done
                 fi
             fi
+            exit 0
+        ;;
+        "temp"|"template"|"design"|"cinematheme"|"ct" )
+            read_domain "${2}"
+            sh_yes
+            docker exec "${CP_DOMAIN_}" container cinematheme "${@}"
             exit 0
         ;;
         "cms" )
