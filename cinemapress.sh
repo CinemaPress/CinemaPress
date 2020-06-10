@@ -3086,8 +3086,8 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "temp"|"template"|"design"|"cinematheme"|"ct" )
             read_domain "${2}"
-            sh_yes
-            docker exec "${CP_DOMAIN_}" container cinematheme "${@}"
+            sh_not
+            docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
             exit 0
         ;;
         "cms" )
