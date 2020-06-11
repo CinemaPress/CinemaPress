@@ -2108,7 +2108,12 @@ docker_rclone() {
     sleep 3; rclone "${1}" "${2}"
 }
 docker_cinematheme() {
-    cd /home/"${CP_DOMAIN}"/themes && cinematheme "${@}"
+    rm -rf /var/theme && mkdir -p /var/theme
+    cd /var/theme && cinematheme "${@}"
+    sleep 3
+    cp -rf /var/theme/* /home/"${CP_DOMAIN}"/themes/
+    sleep 3
+    rm -rf /var/theme
 }
 docker_spb() {
     SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
