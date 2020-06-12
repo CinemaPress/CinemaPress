@@ -2118,7 +2118,8 @@ docker_cinematheme() {
         fi
     done
     cp -rf /var/theme/* /home/"${CP_DOMAIN}"/themes/
-    cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
+    pm2 delete process.json &>/dev/null
+    cd /home/"${CP_DOMAIN}" && pm2 start process.json &>/dev/null
     sleep 3
     rm -rf /var/theme
 }
