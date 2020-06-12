@@ -2111,7 +2111,14 @@ docker_cinematheme() {
     rm -rf /var/theme && mkdir -p /var/theme
     cd /var/theme && cinematheme "${@}"
     sleep 3
+    cd /var/theme/ && for i in */; do
+        if [ "${i%%/}" != "" ]; then
+            sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${i%%/}\"/" \
+                /home/"${CP_DOMAIN}"/config/production/config.js
+        fi
+    done
     cp -rf /var/theme/* /home/"${CP_DOMAIN}"/themes/
+    cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
     sleep 3
     rm -rf /var/theme
 }
@@ -3092,7 +3099,9 @@ while [ "${WHILE}" -lt "2" ]; do
         "temp"|"template"|"design"|"cinematheme"|"ct" )
             read_domain "${2}"
             sh_not
-            docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
+            if [ "${3}" != "" ]; then
+                docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
+            fi
             exit 0
         ;;
         "cms" )
