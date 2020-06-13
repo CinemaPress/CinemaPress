@@ -3105,25 +3105,25 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
             else
                 _line
-                read -r -e -p 'Name theme: ' NAME_THEME
+                read -r -e -p '[Name Theme] -n ' NAME_THEME
                 _line
-                read -r -e -p 'URL Index: ' INDEX_PAGE
+                read -r -e -p '[URL Index] -i ' INDEX_PAGE
                 _line
-                read -r -e -p 'URL Movie: ' MOVIE_PAGE
+                read -r -e -p '[URL Movie] -m ' MOVIE_PAGE
                 _line
-                read -r -e -p 'URL Category: ' CATEGORY_PAGE
+                read -r -e -p '[URL Category] -c ' CATEGORY_PAGE
                 _line
-                read -r -e -p 'URL Categories: ' CATEGORIES_PAGE
+                read -r -e -p '[URL Categories] -s ' CATEGORIES_PAGE
                 _line
-                read -r -e -p 'URL Episode: ' EPISODE_PAGE
+                read -r -e -p '[URL Episode] -e ' EPISODE_PAGE
                 _line
-                read -r -e -p 'URL Picture: ' PICTURE_PAGE
+                read -r -e -p '[URL Picture] -p ' PICTURE_PAGE
                 _line
-                read -r -e -p 'URL Trailer: ' TRAILER_PAGE
+                read -r -e -p '[URL Trailer] -t ' TRAILER_PAGE
                 _line
-                read -r -e -p 'URL Online: ' ONLINE_PAGE
+                read -r -e -p '[URL Online] -o ' ONLINE_PAGE
                 _line
-                read -r -e -p 'URL Download: ' DOWNLOAD_PAGE
+                read -r -e -p '[URL Download] -d ' DOWNLOAD_PAGE
                 _line
                 _br
                 ARRAY_PAGE=()
