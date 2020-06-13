@@ -3103,6 +3103,42 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             if [ "${3}" != "" ]; then
                 docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
+            else
+                _line
+                read -r -e -p 'Name theme: ' NAME_THEME
+                _line
+                read -r -e -p 'URL Index: ' INDEX_PAGE
+                _line
+                read -r -e -p 'URL Movie: ' MOVIE_PAGE
+                _line
+                read -r -e -p 'URL Category: ' CATEGORY_PAGE
+                _line
+                read -r -e -p 'URL Categories: ' CATEGORIES_PAGE
+                _line
+                read -r -e -p 'URL Episode: ' EPISODE_PAGE
+                _line
+                read -r -e -p 'URL Picture: ' PICTURE_PAGE
+                _line
+                read -r -e -p 'URL Trailer: ' TRAILER_PAGE
+                _line
+                read -r -e -p 'URL Online: ' ONLINE_PAGE
+                _line
+                read -r -e -p 'URL Download: ' DOWNLOAD_PAGE
+                _line
+                _br
+                ARRAY_PAGE=()
+                if [ "${NAME_THEME}" != "" ]; then ARRAY_PAGE+=(-n "${NAME_THEME}"); fi
+                if [ "${INDEX_PAGE}" != "" ]; then ARRAY_PAGE+=(-i "${INDEX_PAGE}"); fi
+                if [ "${MOVIE_PAGE}" != "" ]; then ARRAY_PAGE+=(-m "${MOVIE_PAGE}"); fi
+                if [ "${CATEGORY_PAGE}" != "" ]; then ARRAY_PAGE+=(-c "${CATEGORY_PAGE}"); fi
+                if [ "${CATEGORIES_PAGE}" != "" ]; then ARRAY_PAGE+=(-s "${CATEGORIES_PAGE}"); fi
+                if [ "${EPISODE_PAGE}" != "" ]; then ARRAY_PAGE+=(-e "${EPISODE_PAGE}"); fi
+                if [ "${PICTURE_PAGE}" != "" ]; then ARRAY_PAGE+=(-p "${PICTURE_PAGE}"); fi
+                if [ "${TRAILER_PAGE}" != "" ]; then ARRAY_PAGE+=(-t "${TRAILER_PAGE}"); fi
+                if [ "${ONLINE_PAGE}" != "" ]; then ARRAY_PAGE+=(-o "${ONLINE_PAGE}"); fi
+                if [ "${DOWNLOAD_PAGE}" != "" ]; then ARRAY_PAGE+=(-d "${DOWNLOAD_PAGE}"); fi
+                docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${ARRAY_PAGE[@]}"
+                _br
             fi
             exit 0
         ;;
