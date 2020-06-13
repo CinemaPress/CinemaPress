@@ -262,6 +262,7 @@ ip_install() {
     fi
 
     # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
+    docker pull cinemapress/docker:latest >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
 
     docker run \
         -d \
