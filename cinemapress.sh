@@ -3101,7 +3101,9 @@ while [ "${WHILE}" -lt "2" ]; do
         "temp"|"template"|"design"|"cinematheme"|"ct" )
             read_domain "${2}"
             sh_not
-            if [ "${3}" != "" ]; then
+            if [ "${3}" = "-h" ]; then
+                docker exec -it "${CP_DOMAIN_}" /usr/bin/cinematheme -h
+            elif [ "${3}" != "" ]; then
                 docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${@}"
             else
                 _line
