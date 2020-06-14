@@ -31,7 +31,7 @@ RUN set -o pipefail \
     && echo "Europe/Moscow" > /etc/timezone \
     && npm i node-gyp -g \
     && npm i pm2@latest -g \
-    && npm i cinematheme@latest -g \
+    && npm i cinematheme@0.0.10 -g \
     && npm i \
     && mkdir -p \
         /var/ngx_pagespeed_cache \
