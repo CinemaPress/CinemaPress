@@ -41,7 +41,8 @@ function codesAdv(options, type) {
             modules.blocking.status &&
             modules.blocking.data.sub.keys.indexOf(options.subscribe) + 1) ||
           options.userinfo.whois ||
-          options.userinfo.bot
+          options.userinfo.bot ||
+          options.userinfo.referrer
         ) {
           positions[type][position] = '';
         } else if (positions[type][position]) {
