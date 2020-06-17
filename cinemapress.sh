@@ -2933,9 +2933,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 --single-instance \
                 --darwin-dark-mode-support \
                 --background-color "#1a2035" \
+                --verbose \
                 --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
                 "${PROTOCOL}://${APP_DOMAIN}" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
+            sleep 10
             sh_progress
             CP_DOMAIN__=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/-/g")
             rm -rf /home/${CP_DOMAIN}/files/"${NAME_OS}"
@@ -2953,7 +2955,7 @@ while [ "${WHILE}" -lt "2" ]; do
             rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
             sh_progress 100
             _line
-            _header "//${CP_DOMAIN}/files/${NAME_OS}/app_${CP_VER}.zip"
+            _header "/files/${NAME_OS}/app_${CP_VER}.zip"
             _line
             _br
             exit 0
