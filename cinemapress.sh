@@ -2908,7 +2908,9 @@ while [ "${WHILE}" -lt "2" ]; do
             PROTOCOLS=$(grep "\"protocol\"" /home/"${CP_DOMAIN}"/config/production/config.js)
             PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
             sh_progress
+            docker rm $(docker ps -aq) >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
+            docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
             docker run \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
@@ -2939,12 +2941,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sleep 10
             sh_progress
-            CP_DOMAIN__=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/-/g")
             rm -rf /home/${CP_DOMAIN}/files/"${NAME_OS}"
             mkdir -p /home/${CP_DOMAIN}/files/"${NAME_OS}"
-            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/"${CP_DOMAIN_}"-* \
-                /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app >/dev/null 2>&1;
-            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/"${CP_DOMAIN__}"-* \
+            mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/* \
                 /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app >/dev/null 2>&1;
             if [ -f /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe ]; then
                 mv /home/${CP_DOMAIN}/config/app/"${NAME_OS}"/app/"${CP_DOMAIN_}".exe \
