@@ -154,6 +154,28 @@
 
                                         <div class="spacer-10"></div>
 
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Альтернативный поддомен, который видит только поисковый бот') %>"><i class="fa fa-info-circle text-muted"></i></a> <%= __('Поддомен для ботов') %>:</span>
+                                                <input name="config.alt.botdomain"
+                                                       value="<%= config.alt.botdomain.replace(/\.$/, '') %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="<%= config.language %>">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon text-muted"><a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Альтернативный домен, который видит только поисковый бот') %>"><i class="fa fa-info-circle text-muted"></i></a> <%= __('Домен для ботов') %>:</span>
+                                                <input name="config.alt.bomain"
+                                                       value="<%= config.alt.bomain %>"
+                                                       class="form-control input_url text-right" type="text"
+                                                       placeholder="<%= config.alt.bomain ? config.alt.bomain : (config.bomain || config.domain) %>">
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
                                         <div class="col-sm-12">
                                             <div class="cinema-box">
                                                 <div class="cinema-box-header">

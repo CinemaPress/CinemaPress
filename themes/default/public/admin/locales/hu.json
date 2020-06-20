@@ -970,5 +970,7 @@
 	"Для людей": "Embereknek",
 	"Рерайт описаний у определенных фильмов": "Átírni a leírások egyes movieek",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "A feltétel az újraírása egyes movieek (ha a feltétel igaz - kerül sor átírásával)",
-	"Брендирование веб-страницы": "Branding weblap"
+	"Брендирование веб-страницы": "Branding weblap",
+	"Альтернативный поддомен, который видит только поисковый бот": "Alternatív aldomain, aki látja, csak a keresési bot",
+	"Альтернативный домен, который видит только поисковый бот": "Egy másik domain látja, csak a keresési bot"
 }

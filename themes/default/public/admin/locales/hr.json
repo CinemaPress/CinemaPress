@@ -970,5 +970,7 @@
 	"Для людей": "Za ljude",
 	"Рерайт описаний у определенных фильмов": "Prepisivanje opise u nekim movieovima",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Uvjet za ponovno pisanje nekih movieova (ako je uvjet istinit - bit će ponovno pisanje)",
-	"Брендирование веб-страницы": "Branding web stranica"
+	"Брендирование веб-страницы": "Branding web stranica",
+	"Альтернативный поддомен, который видит только поисковый бот": "Alternativni poddomena, koji vidi samo bot za pretraživanje",
+	"Альтернативный домен, который видит только поисковый бот": "Alternativni domene koje vidi samo bot za pretraživanje"
 }

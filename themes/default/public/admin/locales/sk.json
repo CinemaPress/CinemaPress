@@ -970,5 +970,7 @@
 	"Для людей": "Pre ľudí",
 	"Рерайт описаний у определенных фильмов": "Prepísať popisy v niektorých movieoch",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Podmienkou pre prepis niektorých movieov (v prípade, že je splnená podmienka - bude prepisovania)",
-	"Брендирование веб-страницы": "Branding webové stránky"
+	"Брендирование веб-страницы": "Branding webové stránky",
+	"Альтернативный поддомен, который видит только поисковый бот": "Alternatívne subdomény, ktorí vidia len vyhľadávacie topánok",
+	"Альтернативный домен, который видит только поисковый бот": "Alternatívne domény, ktorý vidí len vyhľadávacie topánok"
 }

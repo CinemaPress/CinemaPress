@@ -970,5 +970,7 @@
 	"Для людей": "Žmonėms",
 	"Рерайт описаний у определенных фильмов": "Perrašyti tam tikrų movieų aprašymai",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Sąlyga dėl tam tikrų movieų perrašymas (jei sąlyga yra tiesa - bus perrašyti)",
-	"Брендирование веб-страницы": "Branding interneto puslapis"
+	"Брендирование веб-страницы": "Branding interneto puslapis",
+	"Альтернативный поддомен, который видит только поисковый бот": "Alternatyvus subdomenas, kuris mato tik paieškos robotas",
+	"Альтернативный домен, который видит только поисковый бот": "Alternatyva domenų, kad mato tik paieškos robotas"
 }

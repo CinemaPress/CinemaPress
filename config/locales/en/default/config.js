@@ -9,6 +9,10 @@ module.exports = {
   "botdomains": "",
   "domain": "example.com",
   "bomain": "",
+  "alt": {
+    "botdomain": "",
+    "bomain": ""
+  },
   "blacklist": 0,
   "email": "support@example.com",
   "theme": "default",

@@ -970,5 +970,7 @@
 	"Для людей": "Inimestele",
 	"Рерайт описаний у определенных фильмов": "Kirjutada kirjelduse teatud movieide",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Tingimuseks ümberkirjutamise teatud movieide (kui tingimus on tõene - tehakse ümberkirjutamist)",
-	"Брендирование веб-страницы": "Branding veebilehe"
+	"Брендирование веб-страницы": "Branding veebilehe",
+	"Альтернативный поддомен, который видит только поисковый бот": "Alternatiivne alamdomeen, kes näeb ainult otsingu bot",
+	"Альтернативный домен, который видит только поисковый бот": "Alternatiiviks domeeni, mis näeb ainult otsingu bot"
 }

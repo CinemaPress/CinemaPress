@@ -970,5 +970,7 @@
 	"Для людей": "İnsanlar için",
 	"Рерайт описаний у определенных фильмов": "Belirli movielerde açıklamaları yeniden yazın",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Belirli movielerin tekrar yazılmasını şart (koşul doğruysa - yeniden yapılacaktır)",
-	"Брендирование веб-страницы": "Marka web sayfası"
+	"Брендирование веб-страницы": "Marka web sayfası",
+	"Альтернативный поддомен, который видит только поисковый бот": "Sadece arama botu görür alternatif alt alan,",
+	"Альтернативный домен, который видит только поисковый бот": "Yalnızca arama botu görür alternatif alanı"
 }

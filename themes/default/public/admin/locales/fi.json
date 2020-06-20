@@ -970,5 +970,7 @@
 	"Для людей": "Ihmisille",
 	"Рерайт описаний у определенных фильмов": "Kirjoittaa kuvauksia tiettyjen elokuvien",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Edellytys uudelleenkirjoittamisen tiettyjen kalvojen (jos ehto on tosi - tehdään kirjoittamasta)",
-	"Брендирование веб-страницы": "Branding web-sivun"
+	"Брендирование веб-страницы": "Branding web-sivun",
+	"Альтернативный поддомен, который видит только поисковый бот": "Vaihtoehtoiset aliverkkotunnuksen, joka näkee vain hakurobotti",
+	"Альтернативный домен, который видит только поисковый бот": "Vaihtoehtoinen verkkotunnuksen, joka näkee vain hakurobotti"
 }

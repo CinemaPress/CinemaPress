@@ -969,5 +969,7 @@
   "Для людей": "For users",
   "Рерайт описаний у определенных фильмов": "Rewrite descriptions of certain movies",
   "Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "A condition for rewriting certain movies (if the condition is true, a rewrite will be made)",
-  "Брендирование веб-страницы": "Branding web page"
+  "Брендирование веб-страницы": "Branding web page",
+  "Альтернативный поддомен, который видит только поисковый бот": "An alternative subdomain that only a search bot sees",
+  "Альтернативный домен, который видит только поисковый бот": "An alternative domain that only a search bot sees"
 }

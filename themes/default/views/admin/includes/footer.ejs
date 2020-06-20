@@ -753,6 +753,16 @@
       }
     }
 
+    if (data.config && data.config.alt && data.config.alt.botdomain) {
+      data.config.alt.botdomain = data.config.alt.botdomain.replace(/\.$/g, '') + '.';
+      if (data.config.alt.botdomain === 'www.' || data.config.alt.botdomain === 'tv.' || data.config.alt.botdomain === 'm.' || data.alt.config.botdomain === 'app.' || data.config.alt.botdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
     if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
       if (typeof data.config.geolite2.ips === 'object') {
         data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {

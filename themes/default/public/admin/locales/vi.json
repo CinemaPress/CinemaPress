@@ -970,5 +970,7 @@
 	"Для людей": "Đối với những người",
 	"Рерайт описаний у определенных фильмов": "Viết lại các mô tả trong bộ phim nào đó",
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Điều kiện để viết lại các bộ phim nào đó (nếu điều kiện là đúng - sẽ được thực hiện viết lại)",
-	"Брендирование веб-страницы": "Xây dựng thương hiệu trang web"
+	"Брендирование веб-страницы": "Xây dựng thương hiệu trang web",
+	"Альтернативный поддомен, который видит только поисковый бот": "Subdomain thay thế, ai thấy chỉ bot tìm kiếm",
+	"Альтернативный домен, который видит только поисковый бот": "Một miền thay thế mà chỉ nhìn thấy một bot tìm kiếm"
 }
