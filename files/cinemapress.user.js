@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2020.7
+// @version 2020.8
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -603,7 +603,7 @@ function parseKP(r) {
       : '',
     year: res.year ? (res.year + '').split('-')[0].replace(/[^0-9]/g, '') : '',
     type: res.type && res.type === 'series' ? '1' : '0',
-    genre: (res.genre
+    genre: (Array.isArray(res.genre)
       ? res.genre
           .map(function(v) {
             return v.toLowerCase();
@@ -611,11 +611,23 @@ function parseKP(r) {
           .filter(function(g) {
             return g !== 'зарубежные' && g !== 'зарубежный';
           })
+      : typeof res.genre === 'object'
+      ? Object.keys(res.genre)
+          .map(function(g) {
+            return res.genre[g].toLowerCase();
+          })
+          .filter(function(g) {
+            return g !== 'зарубежные' && g !== 'зарубежный';
+          })
       : []
     ).join(','),
-    country: (res.country
+    country: (Array.isArray(res.country)
       ? res.country.map(function(v) {
-          return v;
+          return v.trim();
+        })
+      : typeof res.country === 'object'
+      ? Object.keys(res.country).map(function(c) {
+          return res.country[c].trim();
         })
       : []
     ).join(','),

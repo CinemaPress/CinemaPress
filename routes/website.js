@@ -556,19 +556,11 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
 
               if (err) console.log('[renderData] Render Error:', err);
 
-              if (
-                options.userinfo.bot &&
-                config.alt &&
-                config.alt.bomain &&
-                render.page &&
-                render.page.pathname
-              ) {
+              if (options.userinfo.alt && render.page && render.page.pathname) {
                 res.header(
                   'Link',
                   '<' +
-                    config.protocol +
-                    config.alt.botdomain +
-                    config.alt.bomain +
+                    options.userinfo.alt +
                     render.page.pathname +
                     '>; rel="alternate"; hreflang="x-default"'
                 );
