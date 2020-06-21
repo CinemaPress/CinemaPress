@@ -561,7 +561,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
                   'Link',
                   '<' +
                     options.userinfo.alt +
-                    render.page.pathname +
+                    render.page.pathname.replace(/\/$/, '') +
                     '>; rel="alternate"; hreflang="x-default"'
                 );
               }

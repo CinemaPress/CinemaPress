@@ -209,7 +209,17 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   opengraph +=
     '<meta property="ya:ovs:upload_date" content="' + ya_date + '" />';
 
-  var canonical = '<link rel="canonical" href="' + page.url + '"/>';
+  var canonical =
+    '<link rel="canonical" href="' +
+    (config.alt.bomain
+      ? page.url.replace(
+          '://' + config.alt.botdomain + config.alt.bomain,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain)
+        )
+      : page.url) +
+    '"/>';
 
   if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
     canonical =
@@ -448,7 +458,18 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta property="og:image:height" content="400" />';
 
   var canonical =
-    '<link rel="canonical" href="' + page.url.replace(/&/gi, '&amp;') + '" />';
+    '<link rel="canonical" href="' +
+    (config.alt.bomain
+      ? page.url
+          .replace(/&/gi, '&amp;')
+          .replace(
+            '://' + config.alt.botdomain + config.alt.bomain,
+            '://' +
+              (config.botdomain + config.bomain ||
+                config.subdomain + config.domain)
+          )
+      : page.url.replace(/&/gi, '&amp;')) +
+    '" />';
 
   if (/:\/\/m\.|\/mobile-version/i.test(page.url)) {
     canonical =
@@ -558,7 +579,15 @@ function generalSchema(page, options) {
   opengraph += '<meta property="og:image:height" content="400" />';
 
   var canonical =
-    '<link rel="canonical" href="' + config.protocol + options.domain + '" />';
+    '<link rel="canonical" href="' +
+    config.protocol +
+    (config.alt.bomain
+      ? options.domain.replace(
+          config.alt.botdomain + config.alt.bomain,
+          config.botdomain + config.bomain || config.subdomain + config.domain
+        )
+      : options.domain) +
+    '" />';
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
@@ -659,7 +688,43 @@ function contentSchema(content, options) {
   opengraph += '<meta property="og:image:width" content="600" />';
   opengraph += '<meta property="og:image:height" content="400" />';
 
-  return schema + opengraph;
+  var canonical =
+    options.url || content.url
+      ? '<link rel="canonical" href="' +
+        (config.alt.bomain
+          ? (options.url || content.url)
+              .replace(/&/gi, '&amp;')
+              .replace(
+                '://' + config.alt.botdomain + config.alt.bomain,
+                '://' +
+                  (config.botdomain + config.bomain ||
+                    config.subdomain + config.domain)
+              )
+          : (options.url || content.url).replace(/&/gi, '&amp;')) +
+        '" />'
+      : '';
+
+  if (
+    (options.url || content.url) &&
+    /:\/\/m\.|\/mobile-version/i.test(options.url || content.url)
+  ) {
+    canonical =
+      '<link rel="canonical" href="' +
+      (options.url || content.url)
+        .replace(/&/gi, '&amp;')
+        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace('/mobile-version', '') +
+      '" />';
+  }
+
+  var opensearch =
+    '<link rel="search" type="application/opensearchdescription+xml" title="' +
+    options.domain +
+    '" href="//' +
+    options.domain +
+    '/opensearch.xml"/>';
+
+  return schema + opengraph + canonical + opensearch;
 }
 
 module.exports = {

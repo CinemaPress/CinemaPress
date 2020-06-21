@@ -174,7 +174,7 @@ module.exports = {
     }
   },
   "schema": {
-    "status": false
+    "status": true
   },
   "continue": {
     "status": true

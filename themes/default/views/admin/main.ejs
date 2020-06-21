@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
-                                           class="csstip" title="<%= __('Основной протокол веб-сайта') %>"
+                                           class="csstip" data-title="<%= __('Основной протокол веб-сайта') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -102,7 +102,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей') %>"
+                                           data-title="<%= __('Настройка работы веб-сайта на отдельных доменах и поддоменах для поисковых систем и пользователей') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -155,18 +155,22 @@
                                         <div class="spacer-10"></div>
 
                                         <div class="col-xs-6">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Альтернативный поддомен, который видит только поисковый бот') %>"><i class="fa fa-info-circle text-muted"></i></a> <%= __('Поддомен для ботов') %>:</span>
+                                            <div class="input-group csstip" data-title="<%= __('Альтернативный поддомен, который видит только поисковый бот') %>">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-eye-slash text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Поддомен для ботов') %>:
+                                                </span>
                                                 <input name="config.alt.botdomain"
                                                        value="<%= config.alt.botdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
-                                                       placeholder="<%= config.language %>">
+                                                       placeholder="my">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-6">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><a href="javascript:void(0)" class="csstip text-muted" title="<%= __('Альтернативный домен, который видит только поисковый бот') %>"><i class="fa fa-info-circle text-muted"></i></a> <%= __('Домен для ботов') %>:</span>
+                                            <div class="input-group csstip" data-title="<%= __('Альтернативный домен, который видит только поисковый бот') %>">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-eye-slash text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для ботов') %>:
+                                                </span>
                                                 <input name="config.alt.bomain"
                                                        value="<%= config.alt.bomain %>"
                                                        class="form-control input_url text-right" type="text"
@@ -184,7 +188,7 @@
                                                     <div class="cinema-label hidden-xs" style="float: right">
                                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                                            class="csstip"
-                                                           title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>"
+                                                           data-title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>"
                                                            target="_blank">
                                                             <i class="fa fa-info-circle"></i>
                                                         </a>
@@ -286,7 +290,7 @@
                                                     <div class="cinema-label hidden-xs" style="float: right">
                                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                                            class="csstip"
-                                                           title="<%= __('Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)') %>"
+                                                           data-title="<%= __('Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)') %>"
                                                            target="_blank">
                                                             <i class="fa fa-info-circle"></i>
                                                         </a>
@@ -298,29 +302,25 @@
                                                             <div class="inline-labels">
                                                                 <label>
                                                                     <input name="config.blacklist" value="1"
-                                                                    <% if (config.blacklist) { %> checked=""
-                                                                            <% } %>
+                                                                    <% if (config.blacklist === 1) { %> checked=""<% } %>
                                                                            type="radio"><span></span>
                                                                     <span><%= __('Для ботов и людей') %></span>
                                                                 </label>
                                                                 <label>
                                                                     <input name="config.blacklist" value="2"
-                                                                    <% if (config.blacklist) { %> checked=""
-                                                                            <% } %>
+                                                                    <% if (config.blacklist === 2) { %> checked=""<% } %>
                                                                            type="radio"><span></span>
                                                                     <span><%= __('Для ботов') %></span>
                                                                 </label>
                                                                 <label>
                                                                     <input name="config.blacklist" value="3"
-                                                                    <% if (config.blacklist) { %> checked=""
-                                                                            <% } %>
+                                                                    <% if (config.blacklist === 3) { %> checked=""<% } %>
                                                                            type="radio"><span></span>
                                                                     <span><%= __('Для людей') %></span>
                                                                 </label>
                                                                 <label>
                                                                     <input name="config.blacklist" value="0"
-                                                                    <% if (!config.blacklist) { %> checked=""
-                                                                            <% } %>
+                                                                    <% if (config.blacklist === 0) { %> checked=""<% } %>
                                                                            type="radio"><span></span>
                                                                     <span><%= __('Отключить') %></span>
                                                                 </label>
@@ -346,7 +346,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Ваш email для связи с администратором веб-сайта') %>"
+                                           data-title="<%= __('Ваш email для связи с администратором веб-сайта') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -374,7 +374,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>"
+                                           data-title="<%= __('Указание языка и страны, для аудитории которой работает веб-сайт') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1210,7 +1210,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>"
+                                           data-title="<%= __('Название шаблона веб-сайта, папка которого должна быть в папке themes') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1255,7 +1255,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена') %>"
+                                           data-title="<%= __('По умолчанию все изображения находятся на сторонних сервисах, при активации сохранения, изображение вначале загружается на сервер, а затем отображается с Вашего домена') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1289,7 +1289,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>"
+                                           data-title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1331,7 +1331,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>"
+                                           data-title="<%= __('Укажите процент перегрузки сервера при котором будет показано сообщение об ошибке или выполнено перенаправление (интервал 1 минута, 5 минут и 15 минут)') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1418,7 +1418,7 @@
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
                                            class="csstip"
-                                           title="<%= __('Список стран, которым запрещено посещать сайт') %>"
+                                           data-title="<%= __('Список стран, которым запрещено посещать сайт') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1456,7 +1456,7 @@
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="csstip"
-                                           title="<%= __('Список IP, которым запрещено посещать сайт') %>"
+                                           data-title="<%= __('Список IP, которым запрещено посещать сайт') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
@@ -1484,7 +1484,7 @@
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">
                                         <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html" class="csstip"
-                                           title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>"
+                                           data-title="<%= __('Будет произведена перезагрузка всех сайтов на сервере') %>"
                                            target="_blank">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
