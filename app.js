@@ -98,7 +98,7 @@ app.use(bodyParser.urlencoded({ limit: '64mb', extended: true }));
 //app.use(rebooting());
 app.use(nginx());
 app.use(
-  /^(?:\/mobile-version|\/tv-version|)?/,
+  /^(?:\/mobile-version|\/tv-version|)?\//,
   express.static(path.join(path.dirname(__filename), '/'))
 );
 app.use('/telegram', telegram);
