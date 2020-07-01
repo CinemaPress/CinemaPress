@@ -41,7 +41,7 @@ router.get('/:id', function(req, res) {
   var origin =
     config.protocol +
     '' +
-    (config.botdomain || config.subdomain) +
+    (config.bomain ? config.botdomain : config.subdomain) +
     '' +
     (config.bomain || config.domain);
 
