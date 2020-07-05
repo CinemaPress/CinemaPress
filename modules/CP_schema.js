@@ -29,13 +29,13 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   if (arguments.length === 4) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
   }
@@ -225,7 +225,13 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     canonical =
       '<link rel="canonical" href="' +
       page.url
-        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace(
+          /:\/\/m\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
         .replace('/mobile-version', '') +
       '">';
   }
@@ -253,13 +259,13 @@ function onlyMovieSchema(movie, comments, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
   }
@@ -278,7 +284,7 @@ function onlyMovieSchema(movie, comments, options) {
     movie.poster.indexOf('http') + 1
       ? movie.poster
       : config.protocol +
-        (config.botdomain || config.subdomain) +
+        (config.bomain ? config.botdomain : config.subdomain) +
         (config.bomain || config.domain) +
         movie.poster;
   result['sameAs'] = movie.url;
@@ -373,13 +379,13 @@ function categorySchema(page, movies, options) {
   if (arguments.length === 2) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
   }
@@ -476,7 +482,13 @@ function categorySchema(page, movies, options) {
       '<link rel="canonical" href="' +
       page.url
         .replace(/&/gi, '&amp;')
-        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace(
+          /:\/\/m\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
         .replace('/mobile-version', '') +
       '" />';
   }
@@ -503,13 +515,13 @@ function generalSchema(page, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
   }
@@ -589,6 +601,22 @@ function generalSchema(page, options) {
       : options.domain) +
     '" />';
 
+  if (/:\/\/m\.|\/mobile-version/i.test(config.protocol + options.domain)) {
+    canonical =
+      '<link rel="canonical" href="' +
+      (config.protocol + options.domain)
+        .replace(/&/gi, '&amp;')
+        .replace(
+          /:\/\/m\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
+        .replace('/mobile-version', '') +
+      '" />';
+  }
+
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
     options.domain +
@@ -611,13 +639,13 @@ function contentSchema(content, options) {
   if (arguments.length === 1) {
     options = {};
     options.domain =
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
     options.origin =
       config.protocol +
       '' +
-      (config.botdomain || config.subdomain) +
+      (config.bomain ? config.botdomain : config.subdomain) +
       '' +
       (config.bomain || config.domain);
   }
@@ -630,17 +658,18 @@ function contentSchema(content, options) {
   result['name'] = content.title;
   result['author'] =
     config.protocol +
-    (config.botdomain || config.subdomain) +
+    (config.bomain ? config.botdomain : config.subdomain) +
     (config.bomain || config.domain);
   result['publisher'] = {
     '@type': 'Organization',
     name:
-      (config.botdomain || config.subdomain) + (config.bomain || config.domain),
+      (config.bomain ? config.botdomain : config.subdomain) +
+      (config.bomain || config.domain),
     logo: {
       '@type': 'ImageObject',
       url:
         config.protocol +
-        (config.botdomain || config.subdomain) +
+        (config.bomain ? config.botdomain : config.subdomain) +
         (config.bomain || config.domain) +
         config.default.image
     }
@@ -658,7 +687,7 @@ function contentSchema(content, options) {
     content.image.indexOf('http') + 1
       ? content.image
       : config.protocol +
-        (config.botdomain || config.subdomain) +
+        (config.bomain ? config.botdomain : config.subdomain) +
         (config.bomain || config.domain) +
         content.image;
   result['sameAs'] = content.url;
@@ -712,7 +741,13 @@ function contentSchema(content, options) {
       '<link rel="canonical" href="' +
       (options.url || content.url)
         .replace(/&/gi, '&amp;')
-        .replace('://m.', '://' + (config.botdomain || config.subdomain))
+        .replace(
+          /:\/\/m\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
         .replace('/mobile-version', '') +
       '" />';
   }
