@@ -4,15 +4,15 @@
     <% if (typeof movies === 'object') { %>
         <channel>
             <title><%= config.titles.index %></title>
-            <link><%- config.protocol %><%- (config.botdomain || config.subdomain) %><%- (config.bomain || config.domain) %></link>
+            <link><%- config.protocol %><%- (config.bomain ? config.botdomain : config.subdomain) %><%- (config.bomain || config.domain) %></link>
             <description>
                 <![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>
                 ]]>...
             </description>
             <% movies.forEach(function (movie) { %>
-                <% var poster = (movie.poster) ? config.protocol + (config.botdomain || config.subdomain) + (config.bomain || config.domain) + movie.poster : ''; %>
-                <% var poster_big = (movie.poster_big) ? config.protocol + (config.botdomain || config.subdomain) + (config.bomain || config.domain) + movie.poster_big : ''; %>
-                <% var picture = (movie.picture) ? config.protocol + (config.botdomain || config.subdomain) + (config.bomain || config.domain) + movie.picture : ''; %>
+                <% var poster = (movie.poster) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.poster : ''; %>
+                <% var poster_big = (movie.poster_big) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.poster_big : ''; %>
+                <% var picture = (movie.picture) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.picture : ''; %>
                 <item turbo="true">
                     <title><%= movie.title %></title>
                     <link><%- movie.url %></link>
