@@ -13,6 +13,13 @@ module.exports = {
     "botdomain": "",
     "bomain": ""
   },
+  "ru": {
+    "domain": "",
+    "subdomain": "",
+    "bomain": "",
+    "botdomain": "",
+    "random": 0
+  },
   "blacklist": 0,
   "email": "support@example.com",
   "theme": "default",
