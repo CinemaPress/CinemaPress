@@ -116,6 +116,14 @@ async.series(
                         }
                         if (ms && ms.length) {
                           var m = ms[0];
+                          if (
+                            typeof movie.description === 'string' &&
+                            movie.description === '' &&
+                            typeof m.description === 'string' &&
+                            m.description !== ''
+                          ) {
+                            delete movie.description;
+                          }
                           if (m.year) {
                             delete movie.year;
                           }
