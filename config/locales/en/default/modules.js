@@ -192,7 +192,7 @@ module.exports = {
     "data": {
       "display": "script",
       "js": "https://4h0y.gitlab.io/yo.js",
-      "script": "{\"data-player\":\"videocdn,bazon,collaps,ustore,alloha,hdvb,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
+      "script": "{\"data-player\":\"collaps,videocdn,bazon,ustore,alloha,hdvb,kodik,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": []
     }
   },
