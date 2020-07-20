@@ -15,6 +15,11 @@
 
     <%- include('includes/head.ejs'); -%>
 
+    <style>
+        .csstip2{position:relative;line-height:100%}.csstip2:hover:after{content:attr(data-title);position:absolute;bottom:36px;left:50%;z-index:99;width:160px;margin-left:-80px;padding:5px 10px;font-size:11px;font-weight:400;text-align:center;text-decoration:none}.csstip2:hover:before{content:"";position:absolute;bottom:31px;left:50%;z-index:100;margin-left:-5px;border:solid;border-width:5px 6px 0 5px}.csstip2:hover::after {border-radius: 5px 5px 0 0;border-top: 1px solid #999;border-left: 1px solid #999;border-right: 1px solid #999;}.csstip2:hover::after{background: #1a2035;color: #ededed;border-bottom: 4px solid #999;}.csstip2:hover::before{border-color: #999 transparent;}
+        .csstip3{position:relative;line-height:100%}.csstip3:hover:after{content:attr(data-title);position:absolute;bottom:0;left:100%;z-index:0;width:160px;margin-left:-160px;padding:5px 10px;font-size:11px;font-weight:400;text-align:center;text-decoration:none}
+    </style>
+
 <body>
 <div id="container" class="clearfix">
 
@@ -110,167 +115,214 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-xs-6">
+                                        <div class="col-xs-12">
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><%= __('Поддомен для людей') %>:</span>
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-users text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для людей') %>:
+                                                </span>
                                                 <input name="config.subdomain"
                                                        value="<%= config.subdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
-                                                       placeholder="hd">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-6">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><%= __('Домен для людей') %>:</span>
-                                                <input name="config.domain"
-                                                       value="<%= config.domain %>"
-                                                       class="form-control input_url text-right" type="text"
-                                                       placeholder="<%= config.domain %>" disabled="disabled">
+                                                       placeholder="hd" style="border-right: 0">
+                                                <span class="input-group-addon" style="background-color: #1a2035; border-right: 0;border-left: 0;">
+                                                    .
+                                                </span>
+                                                <input value="<%= config.domain %>"
+                                                       class="form-control input_url text-left" type="text"
+                                                       placeholder="<%= config.domain %>" style="background-color: #1a2035; border-left: 0" disabled="disabled">
                                             </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
 
-                                        <div class="col-xs-6">
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Случайный поддомен каждый день') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-xs-4 text-center">
+                                                                <label>
+                                                                    <input name="config.random" value="0" <% if (!config.random) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-xs-4 text-center">
+                                                                <label>
+                                                                    <input name="config.random" value="3" <% if (config.random === 3) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 3
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-xs-4 text-center">
+                                                                <label>
+                                                                    <input name="config.random" value="4" <% if (config.random === 4 || config.random === 1) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 4
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="col-xs-12">
+                                                                <div class="faq" id="subdomains">
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <article class="faq-group">
+                                                                        <header class="text-muted text-left" id="header_subdomains">
+                                                                            <i class="fa fa-plus"></i>
+                                                                            <h3 id="current_subdomain"><%= __('Случайный поддомен каждый день') %></h3>
+                                                                        </header>
+                                                                        <div class="faq-content clearfix" id="div_subdomains">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="helper-text-box text-left list_subdomains1">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="helper-text-box text-left list_subdomains2">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="helper-text-box text-left list_subdomains3">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-xs-12">
                                             <div class="input-group">
-                                                <span class="input-group-addon text-muted"><%= __('Поддомен для ботов') %>:</span>
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-eye text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для ботов') %>:
+                                                </span>
                                                 <input name="config.botdomain"
                                                        value="<%= config.botdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
-                                                       placeholder="<%= config.language %>">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-6">
-                                            <div class="input-group">
-                                                <span class="input-group-addon text-muted"><%= __('Домен для ботов') %>:</span>
+                                                       placeholder="<%= config.language %>" style="border-right: 0">
+                                                <span class="input-group-addon" style="background-color: #1a2035; border-right: 0;border-left: 0;">
+                                                    .
+                                                </span>
                                                 <input name="config.bomain"
                                                        value="<%= config.bomain %>"
-                                                       class="form-control input_url text-right" type="text"
-                                                       placeholder="<%= config.bomain ? config.bomain : config.domain %>">
+                                                       class="form-control input_url text-left" type="text"
+                                                       placeholder="<%= config.bomain ? config.bomain : config.domain %>" style="border-left: 0">
                                             </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
 
-                                        <div class="col-xs-6">
-                                            <div class="input-group csstip" data-title="<%= __('Альтернативный поддомен, который видит только поисковый бот') %>">
+                                        <div class="col-xs-12">
+                                            <div class="input-group csstip2" data-title="<%= __('Альтернативный домен, который видит только поисковый бот') %>">
                                                 <span class="input-group-addon">
-                                                    <i class="fas fa-eye-slash text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Поддомен для ботов') %>:
+                                                    <i class="fas fa-eye-slash text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для ботов') %>:
                                                 </span>
                                                 <input name="config.alt.botdomain"
                                                        value="<%= config.alt.botdomain.replace(/\.$/, '') %>"
                                                        class="form-control input_url text-right" type="text"
-                                                       placeholder="my">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-6">
-                                            <div class="input-group csstip" data-title="<%= __('Альтернативный домен, который видит только поисковый бот') %>">
-                                                <span class="input-group-addon">
-                                                    <i class="fas fa-eye-slash text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для ботов') %>:
+                                                       placeholder="my" style="border-right: 0">
+                                                <span class="input-group-addon" style="background-color: #1a2035; border-right: 0;border-left: 0;">
+                                                    .
                                                 </span>
                                                 <input name="config.alt.bomain"
                                                        value="<%= config.alt.bomain %>"
-                                                       class="form-control input_url text-right" type="text"
-                                                       placeholder="<%= config.alt.bomain ? config.alt.bomain : (config.bomain || config.domain) %>">
+                                                       class="form-control input_url text-left" type="text"
+                                                       placeholder="<%= config.alt.bomain ? config.alt.bomain : (config.bomain || config.domain) %>" style="border-left: 0">
                                             </div>
                                         </div>
 
                                         <div class="spacer-10"></div>
 
                                         <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %>
-                                                    </div>
-                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
-                                                           class="csstip"
-                                                           data-title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>"
-                                                           target="_blank">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="advanced-textarea">
-                                                                <textarea class="form-control" name="config.botdomains"
-                                                                          placeholder="if (id === 301) { 'matrix' } else if (id > 500 && id < 1000) { 'cinema' } else { url }"><%= config.botdomains %></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="spacer-10"></div>
-
-                                        <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label">
-                                                        <i class="fa fa-random"></i>&nbsp;&nbsp;&nbsp;<%= __('Случайный поддомен каждый день') %>
-                                                    </div>
-                                                </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-sm-5 text-center" id="r">
-                                                            <div class="inline-labels">
-                                                                <label>
-                                                                    <input name="config.random" value="3"
-                                                                    <% if (config.random === 3) { %> checked=""
-                                                                            <% } %>
-                                                                           type="radio"><span></span> <%= __('Да') %> 3
-                                                                </label>
-                                                                <label>
-                                                                    <input name="config.random" value="4"
-                                                                    <% if (config.random === 4 || config.random === 1) { %>
-                                                                           checked=""
-                                                                            <% } %>
-                                                                           type="radio"><span></span> <%= __('Да') %> 4
-                                                                </label>
-                                                                <label>
-                                                                    <input name="config.random" value="0"
-                                                                    <% if (!config.random) { %> checked=""
-                                                                            <% } %>
-                                                                           type="radio"><span></span> <%= __('Нет') %>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-7" id="h">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon text-muted"><%= __('Главная') %>:</span>
-                                                                <input name="config.homepage"
-                                                                       value="<%= config.homepage %>"
-                                                                       class="form-control input_url" type="text"
-                                                                       placeholder="<%= __('Главная страница веб-сайта') %>">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="faq" id="subdomains">
+                                            <div class="faq">
                                                 <article class="faq-group">
-                                                    <header class="text-muted text-left" id="header_subdomains">
+                                                    <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Случайный поддомен каждый день') %></h3>
+                                                        <h3><%= __('Настройка доменов только для России') %></h3>
                                                     </header>
-                                                    <div class="faq-content clearfix" id="div_subdomains">
+                                                    <div class="faq-content clearfix">
                                                         <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <div class="helper-text-box text-left list_subdomains1">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="helper-text-box text-left list_subdomains2">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="helper-text-box text-left list_subdomains3">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label"><i class="fas fa-search-location"></i>&nbsp;&nbsp;&nbsp;<%= __('Настройка доменов только для России') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Настройка отдельных доменов для пользователей с российским IP и поисковых ботов') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fas fa-users text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для людей') %>:
+                                                                                    </span>
+                                                                                    <input name="config.ru.subdomain"
+                                                                                           value="<%= config.ru.subdomain.replace(/\.$/, '') %>"
+                                                                                           class="form-control input_url text-right" type="text"
+                                                                                           placeholder="hd" style="border-right: 0">
+                                                                                    <span class="input-group-addon" style="background-color: #1a2035; border-right: 0;border-left: 0;">
+                                                                                        .
+                                                                                    </span>
+                                                                                    <input name="config.ru.domain"
+                                                                                           value="<%= config.ru.domain %>"
+                                                                                           class="form-control input_url text-left" type="text"
+                                                                                           placeholder="<%= config.domain %>" style="border-left: 0">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-4 text-center">
+                                                                                <label>
+                                                                                    <input name="config.ru.random" value="0" <% if (!config.ru.random) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-xs-4 text-center">
+                                                                                <label>
+                                                                                    <input name="config.ru.random" value="3" <% if (config.ru.random === 3) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 3
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-xs-4 text-center">
+                                                                                <label>
+                                                                                    <input name="config.ru.random" value="4" <% if (config.ru.random === 4 || config.ru.random === 1) { %> checked="" <% } %> type="radio"><span></span> <%= __('Да') %> 4
+                                                                                </label>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-12">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fas fa-eye text-muted" style="color:#4B5B6C !important"></i>&nbsp;&nbsp;<%= __('Домен для ботов') %>:
+                                                                                    </span>
+                                                                                    <input name="config.ru.botdomain"
+                                                                                           value="<%= config.ru.botdomain.replace(/\.$/, '') %>"
+                                                                                           class="form-control input_url text-right" type="text"
+                                                                                           placeholder="<%= config.language %>" style="border-right: 0">
+                                                                                    <span class="input-group-addon" style="background-color: #1a2035; border-right: 0;border-left: 0;">
+                                                                                        .
+                                                                                    </span>
+                                                                                    <input name="config.ru.bomain"
+                                                                                           value="<%= config.ru.bomain %>"
+                                                                                           class="form-control input_url text-left" type="text"
+                                                                                           placeholder="<%= config.bomain ? config.bomain : config.domain %>" style="border-left: 0">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -282,52 +334,121 @@
                                         <div class="spacer-10"></div>
 
                                         <div class="col-sm-12">
-                                            <div class="cinema-box">
-                                                <div class="cinema-box-header">
-                                                    <div class="cinema-label">
-                                                        <i class="fas fa-sort-numeric-down"></i>&nbsp;&nbsp;&nbsp;<%= __('Автоматическое изменение поддомена') %>
-                                                    </div>
-                                                    <div class="cinema-label hidden-xs" style="float: right">
-                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
-                                                           class="csstip"
-                                                           data-title="<%= __('Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)') %>"
-                                                           target="_blank">
-                                                            <i class="fa fa-info-circle"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="inner-padding">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-xs-12 text-center">
-                                                            <div class="inline-labels">
-                                                                <label>
-                                                                    <input name="config.blacklist" value="1"
-                                                                    <% if (config.blacklist === 1) { %> checked=""<% } %>
-                                                                           type="radio"><span></span>
-                                                                    <span><%= __('Для ботов и людей') %></span>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="config.blacklist" value="2"
-                                                                    <% if (config.blacklist === 2) { %> checked=""<% } %>
-                                                                           type="radio"><span></span>
-                                                                    <span><%= __('Для ботов') %></span>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="config.blacklist" value="3"
-                                                                    <% if (config.blacklist === 3) { %> checked=""<% } %>
-                                                                           type="radio"><span></span>
-                                                                    <span><%= __('Для людей') %></span>
-                                                                </label>
-                                                                <label>
-                                                                    <input name="config.blacklist" value="0"
-                                                                    <% if (config.blacklist === 0) { %> checked=""<% } %>
-                                                                           type="radio"><span></span>
-                                                                    <span><%= __('Отключить') %></span>
-                                                                </label>
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Поддомены для ботов') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label"><i class="fas fa-robot"></i>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Укажите для каждого фильма или для группы фильмов поддомен, который увидят только боты') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="advanced-textarea">
+                                                                <textarea class="form-control" name="config.botdomains"
+                                                                          placeholder="if (id === 301) { 'matrix' } else if (id > 500 && id < 1000) { 'cinema' } else { url }"><%= config.botdomains %></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </article>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Автоматическое изменение поддомена') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label">
+                                                                            <i class="fas fa-sort-numeric-down"></i>&nbsp;&nbsp;&nbsp;<%= __('Автоматическое изменение поддомена') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Если домен попадает в реестр запрещенных сайтов, будет сделано автоматическое изменение поддомена, путем добавления цифр в конец поддомена (hd1, hd2, hd3 и т.п.)') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.blacklist" value="1"
+                                                                                        <% if (config.blacklist === 1) { %> checked=""<% } %>
+                                                                                               type="radio"><span></span>
+                                                                                        <span><%= __('Для ботов и людей') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.blacklist" value="2"
+                                                                                        <% if (config.blacklist === 2) { %> checked=""<% } %>
+                                                                                               type="radio"><span></span>
+                                                                                        <span><%= __('Для ботов') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.blacklist" value="3"
+                                                                                        <% if (config.blacklist === 3) { %> checked=""<% } %>
+                                                                                               type="radio"><span></span>
+                                                                                        <span><%= __('Для людей') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xs-3 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.blacklist" value="0"
+                                                                                        <% if (config.blacklist === 0) { %> checked=""<% } %>
+                                                                                               type="radio"><span></span>
+                                                                                        <span><%= __('Отключить') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
                                             </div>
                                         </div>
                                     </div>
@@ -1580,41 +1701,35 @@
                     if (this.value !== '0') {
                       if (this.checked) {
                         document.querySelector('[name=\'config.subdomain\']').value = dayToLetter(this.value);
-                        document.querySelector('[name=\'config.botdomain\']').value =
-                          document.querySelector('[name=\'config.botdomain\']').value === ''
-                            ? '<%- config.language %>'
-                            : document.querySelector('[name=\'config.botdomain\']').value;
                         document.querySelector('#subdomains').style.display = 'block';
-                        document.querySelector('#h').style.display = 'block';
-                        document.querySelector('#h').setAttribute('class', 'col-sm-7');
-                        document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
                         generate_domains(this.value);
+                        document.querySelector('#current_subdomain').innerHTML = formatDate(new Date()) + ' - <code>' + dayToLetter(this.value, new Date()) + '.<%= config.domain %></code>';
                       }
                     } else {
                       if (this.checked) {
                         document.querySelector('#subdomains').style.display = 'none';
-                        document.querySelector('#h').style.display = 'none';
-                        document.querySelector('#h').setAttribute('class', '');
-                        document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
                       }
                     }
                   });
                   if (radio.value !== '0') {
                     if (radio.checked) {
                       document.querySelector('#subdomains').style.display = 'block';
-                      document.querySelector('#h').style.display = 'block';
-                      document.querySelector('#h').setAttribute('class', 'col-sm-7');
-                      document.querySelector('#r').setAttribute('class', 'col-sm-5 text-center');
                       generate_domains(radio.value);
                     }
                   } else {
                     if (radio.checked) {
                       document.querySelector('#subdomains').style.display = 'none';
-                      document.querySelector('#h').style.display = 'none';
-                      document.querySelector('#h').setAttribute('class', '');
-                      document.querySelector('#r').setAttribute('class', 'col-sm-12 text-center');
                     }
                   }
+                });
+              }
+
+              var radios2 = document.querySelectorAll('[name=\'config.ru.random\']');
+              if (radios2) {
+                radios2.forEach(function(radio) {
+                  radio.addEventListener('change', function() {
+                    document.querySelector('[name=\'config.ru.subdomain\']').value = dayToLetter(this.value).split('').reverse().join('');
+                  });
                 });
               }
 
