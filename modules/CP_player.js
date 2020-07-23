@@ -232,7 +232,7 @@ function codePlayer(type, movie, options) {
       '.mp4" type="video/mp4">' +
       '</video>';
 
-    if (player) {
+    if (player || type === 'online') {
       code.footer =
         '<script>(function(){var e=document,t=e.createElement("script");t.async=true;t.src="' +
         modules.player.data.js +
