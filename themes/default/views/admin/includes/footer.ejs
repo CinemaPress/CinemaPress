@@ -766,6 +766,36 @@
       }
     }
 
+    if (data.config && data.config.ru && data.config.ru.subdomain) {
+      data.config.ru.subdomain = data.config.ru.subdomain.replace(/\.$/g, '') + '.';
+      if (data.config.ru.subdomain === 'www.' || data.config.ru.subdomain === 'tv.' || data.config.ru.subdomain === 'm.' || data.config.ru.subdomain === 'app.' || data.config.ru.subdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
+    if (data.config && data.config.ru && data.config.ru.botdomain) {
+      data.config.ru.botdomain = data.config.ru.botdomain.replace(/\.$/g, '') + '.';
+      if (data.config.ru.botdomain === 'www.' || data.config.ru.botdomain === 'tv.' || data.config.ru.botdomain === 'm.' || data.config.ru.botdomain === 'app.' || data.config.ru.botdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
+    if (data.config && data.config.ru && data.config.ru.alt && data.config.ru.alt.botdomain) {
+      data.config.ru.alt.botdomain = data.config.ru.alt.botdomain.replace(/\.$/g, '') + '.';
+      if (data.config.ru.alt.botdomain === 'www.' || data.config.ru.alt.botdomain === 'tv.' || data.config.ru.alt.botdomain === 'm.' || data.config.ru.alt.botdomain === 'app.' || data.config.ru.alt.botdomain === 'ftp.') {
+        alert('NOT «m.», «tv.», «www.», «app.», «ftp.»!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
+    }
+
     if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
       if (typeof data.config.geolite2.ips === 'object') {
         data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {
