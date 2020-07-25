@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<% if (typeof sitemaps === 'object') { %>
+<% if (typeof sitemaps === 'object') { %><?xml version="1.0" encoding="utf-8" ?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <% sitemaps.forEach(function (sitemap) { %>
         <sitemap>
@@ -7,15 +6,15 @@
         </sitemap>
     <% }); %>
 </sitemapindex>
-<% } else if (typeof urls === 'object' || typeof page.custom.urls === 'object') { %>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <% ((typeof urls === 'object' && urls) || (typeof page.custom.urls === 'object' && page.custom.urls)).forEach(function (url) { %>
-            <url>
-                <loc><%- url.loc %></loc>
-                <% if (url.lastmod) { %>
-                    <lastmod><%- url.lastmod %></lastmod>
-                <% } %>
-            </url>
-        <% }); %>
-    </urlset>
+<% } else if (typeof urls === 'object' || typeof page.custom.urls === 'object') { %><?xml version="1.0" encoding="utf-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <% ((typeof urls === 'object' && urls) || (typeof page.custom.urls === 'object' && page.custom.urls)).forEach(function (url) { %>
+        <url>
+            <loc><%- url.loc %></loc>
+            <% if (url.lastmod) { %>
+                <lastmod><%- url.lastmod %></lastmod>
+            <% } %>
+        </url>
+    <% }); %>
+</urlset>
 <% } %>
