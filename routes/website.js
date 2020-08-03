@@ -556,14 +556,28 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
 
               if (err) console.log('[renderData] Render Error:', err);
 
+              var link_header = '';
+
               if (options.userinfo.alt && render.page && render.page.pathname) {
-                res.header(
-                  'Link',
+                link_header +=
+                  (link_header ? ', ' : '') +
                   '<' +
-                    options.userinfo.alt +
-                    render.page.pathname.replace(/\/$/, '') +
-                    '>; rel="alternate"; hreflang="x-default"'
-                );
+                  options.userinfo.alt +
+                  render.page.pathname.replace(/\/$/, '') +
+                  '>; rel="alternate"; hreflang="x-default"';
+              }
+
+              if (options.userinfo.ru && render.page && render.page.pathname) {
+                link_header +=
+                  (link_header ? ', ' : '') +
+                  '<' +
+                  options.userinfo.ru +
+                  render.page.pathname.replace(/\/$/, '') +
+                  '>; rel="alternate"; hreflang="ru"';
+              }
+
+              if (link_header) {
+                res.header('Link', link_header);
               }
 
               res
