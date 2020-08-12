@@ -972,5 +972,7 @@
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Villkoret för omskrivning av vissa movieer (om villkoret är sant - kommer att göras omskrivning)",
 	"Брендирование веб-страницы": "Branding webbsida",
 	"Альтернативный поддомен, который видит только поисковый бот": "Alternativ domän, som ser bara sökandet bot",
-	"Альтернативный домен, который видит только поисковый бот": "Ett alternativ domän som ser bara en sökning bot"
+	"Альтернативный домен, который видит только поисковый бот": "Ett alternativ domän som ser bara en sökning bot",
+	"Настройка доменов только для России": "Ställa in domän för Ryssland",
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Ställa in enskilda domäner för användare med ryska IP och sökmotorn bots"
 }

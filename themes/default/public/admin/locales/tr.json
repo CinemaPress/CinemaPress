@@ -972,5 +972,7 @@
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Belirli movielerin tekrar yazılmasını şart (koşul doğruysa - yeniden yapılacaktır)",
 	"Брендирование веб-страницы": "Marka web sayfası",
 	"Альтернативный поддомен, который видит только поисковый бот": "Sadece arama botu görür alternatif alt alan,",
-	"Альтернативный домен, который видит только поисковый бот": "Yalnızca arama botu görür alternatif alanı"
+	"Альтернативный домен, который видит только поисковый бот": "Yalnızca arama botu görür alternatif alanı",
+	"Настройка доменов только для России": "Rusya için sadece domain ayarlama",
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Rus IP ile kullanıcılar ve arama motoru botlara Tek alanları kurma"
 }

@@ -972,5 +972,7 @@
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Kushti për rishkrimin e movieave të caktuara (nëse gjendja është e vërtetë - do të bëhet rishkrimin)",
 	"Брендирование веб-страницы": "Branding web faqe",
 	"Альтернативный поддомен, который видит только поисковый бот": "Subdomain alternative, i cili sheh vetëm bot e kërkimit",
-	"Альтернативный домен, который видит только поисковый бот": "Një domain alternativë që sheh vetëm një bot kërkimi"
+	"Альтернативный домен, который видит только поисковый бот": "Një domain alternativë që sheh vetëm një bot kërkimi",
+	"Настройка доменов только для России": "Vendosja e domain vetëm për Rusinë",
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Ngritjen domains individuale për përdoruesit me rus IP dhe search engine bots"
 }

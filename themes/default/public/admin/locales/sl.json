@@ -972,5 +972,7 @@
 	"Условие для рерайта определенных фильмов (если условие true - будет сделан рерайт)": "Pogoj za reportaža nekaterih movieov (če je pogoj izpolnjen - bodo reportaža)",
 	"Брендирование веб-страницы": "Branding spletna stran",
 	"Альтернативный поддомен, который видит только поисковый бот": "Alternativna poddomena, ki vidi samo iskanje bot",
-	"Альтернативный домен, который видит только поисковый бот": "Alternativa domene, ki vidi samo iskanje bot"
+	"Альтернативный домен, который видит только поисковый бот": "Alternativa domene, ki vidi samo iskanje bot",
+	"Настройка доменов только для России": "Nastavitev samo domeno za Rusijo",
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Nastavitev posamezne domene uporabnikom z rusko IP in nezaželeno iskalnik"
 }
