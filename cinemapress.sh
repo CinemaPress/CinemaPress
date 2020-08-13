@@ -34,7 +34,7 @@ CP_IP="domain"
 EXTERNAL_PORT=""
 EXTERNAL_DOCKER=""
 
-CP_OS="`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`"
+CP_OS="`awk '/^ID=/' /etc/*os-release | awk -F'=' '{ print tolower($2) }'`"
 
 post_commands() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
