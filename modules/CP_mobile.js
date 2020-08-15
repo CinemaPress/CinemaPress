@@ -65,7 +65,10 @@ function mobileVersion(url) {
       '<link rel="alternate" media="only screen and (max-width: 768px)" href="' +
       (modules.mobile.data.subdomain
         ? url.replace('://' + config.subdomain, '://m.')
-        : url.replace(config.domain, config.domain + '/mobile-version')) +
+        : url.replace(config.domain, config.domain + '/mobile-version')
+      )
+        .replace('://tv.', '://')
+        .replace('/tv-version', '') +
       '">';
   }
 
