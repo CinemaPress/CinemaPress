@@ -1670,7 +1670,7 @@ read_import() {
 read_bomain() {
     CP_BOMAIN=${1:-${CP_BOMAIN}}
     if [ "${CP_BOMAIN}" = "" ]; then
-        _header "DOMAIN FOR BOTS"
+        _header "DOMAIN FOR BOTS / ALTERNATE DOMAIN"
         AGAIN=1
         while [ "${AGAIN}" -lt "10" ]
         do
@@ -1689,7 +1689,7 @@ read_bomain() {
                 then
                     if [ "${CP_DOMAIN}" = "${CP_BOMAIN}" ]
                     then
-                        printf "${R}WARNING:${NC} The domain for bots cannot be \n"
+                        printf "${R}WARNING:${NC} The alternate domain cannot be \n"
                         printf "${NC}         the same as the domain for users! \n"
                         AGAIN=$((${AGAIN}+1))
                     else
@@ -1703,7 +1703,7 @@ read_bomain() {
                     AGAIN=$((${AGAIN}+1))
                 fi
             else
-                printf "${R}WARNING:${NC} Mirror domain name cannot be blank. \n"
+                printf "${R}WARNING:${NC} Alternate domain name cannot be blank. \n"
                 AGAIN=$((${AGAIN}+1))
             fi
         done
@@ -2770,11 +2770,11 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "bot"|"bot_https" )
+        "bot"|"bot_https"|"domain"|"domain_https" )
             read_domain "${2}"
             sh_not
             read_bomain "${3}"
-            if [ "${1}" = "bot_https" ]; then
+            if [ "${1}" = "bot_https" ] || [ "${1}" = "domain_https" ]; then
                 read_cloudflare_email "${4}"
                 read_cloudflare_api_key "${5}"
             fi
