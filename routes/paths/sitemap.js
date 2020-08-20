@@ -59,10 +59,10 @@ function allSitemap(options, callback) {
       if (categories.hasOwnProperty(year)) {
         if (categories[year].title === y) y = 0;
         render.sitemaps[render.sitemaps.length] = categories[year].url
-          .replace(config.subdomain, config.botdomain)
           .replace(
-            config.domain || config.bomain,
-            config.bomain || config.domain
+            config.subdomain + config.domain ||
+              config.botdomain + config.bomain,
+            config.botdomain + config.bomain || config.subdomain + config.domain
           )
           .replace(
             config.botdomain +
