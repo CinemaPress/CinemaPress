@@ -155,7 +155,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
     '<meta property="og:site_name" content="' +
-    config.domain.toUpperCase() +
+    config.domain.split('.')[0].toUpperCase() +
     '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
@@ -470,7 +470,7 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
     '<meta property="og:site_name" content="' +
-    config.domain.toUpperCase() +
+    config.domain.split('.')[0].toUpperCase() +
     '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
@@ -599,7 +599,7 @@ function generalSchema(page, options) {
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
     '<meta property="og:site_name" content="' +
-    config.domain.toUpperCase() +
+    config.domain.split('.')[0].toUpperCase() +
     '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
@@ -738,7 +738,7 @@ function contentSchema(content, options) {
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
     '<meta property="og:site_name" content="' +
-    config.domain.toUpperCase() +
+    config.domain.split('.')[0].toUpperCase() +
     '" />';
   opengraph += '<meta property="og:title" content="' + content.title + '" />';
   opengraph +=
