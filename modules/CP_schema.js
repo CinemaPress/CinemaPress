@@ -26,6 +26,10 @@ moment.locale(config.language);
  */
 
 function fullMovieSchema(page, movie, movies, comments, options) {
+  var options_domain =
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
   if (arguments.length === 4) {
     options = {};
     options.domain =
@@ -86,7 +90,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     item: {
       '@id': '/',
       name: config.l.home,
-      url: config.protocol + options.domain
+      url: config.protocol + options_domain
     }
   });
 
@@ -102,7 +106,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
       name: movie.genre,
       url:
         config.protocol +
-        options.domain +
+        options_domain +
         '/' +
         encodeURIComponent(config.urls.genre) +
         config.urls.slash +
@@ -150,7 +154,9 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + options.domain + '" />';
+    '<meta property="og:site_name" content="' +
+    config.domain.toUpperCase() +
+    '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -173,13 +179,13 @@ function fullMovieSchema(page, movie, movies, comments, options) {
   opengraph += '<meta property="og:url" content="' + page.url + '" />';
   opengraph +=
     '<meta property="og:video" content="//' +
-    options.domain +
+    options_domain +
     '/iframe/' +
     movie.kp_id +
     '" />';
   opengraph +=
     '<meta property="og:video:url" content="//' +
-    options.domain +
+    options_domain +
     '/iframe/' +
     movie.kp_id +
     '" />';
@@ -188,14 +194,20 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     '<meta property="video:duration" content="' +
     (7777 + movie.title.length * 30) +
     '" />';
-  opengraph += '<meta property="og:image" content="' + movie.picture + '" />';
+  opengraph +=
+    movie.picture.indexOf('http') + 1
+      ? '<meta property="og:image" content="' + movie.picture + '" />'
+      : '<meta property="og:image" content="//' +
+        options_domain +
+        movie.picture +
+        '" />';
   opengraph += '<meta property="og:image:width" content="600" />';
   opengraph += '<meta property="og:image:height" content="400" />';
   opengraph +=
     movie.poster.indexOf('http') + 1
       ? '<meta property="og:image" content="' + movie.poster + '" />'
       : '<meta property="og:image" content="//' +
-        options.domain +
+        options_domain +
         movie.poster +
         '" />';
 
@@ -238,9 +250,9 @@ function fullMovieSchema(page, movie, movies, comments, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    options.domain +
+    options_domain +
     '" href="//' +
-    options.domain +
+    options_domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -256,6 +268,10 @@ function fullMovieSchema(page, movie, movies, comments, options) {
  */
 
 function onlyMovieSchema(movie, comments, options) {
+  var options_domain =
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
   if (arguments.length === 2) {
     options = {};
     options.domain =
@@ -310,7 +326,7 @@ function onlyMovieSchema(movie, comments, options) {
         name: actor,
         sameAs:
           config.protocol +
-          options.domain +
+          options_domain +
           '/' +
           encodeURIComponent(config.urls.actor) +
           config.urls.slash +
@@ -326,7 +342,7 @@ function onlyMovieSchema(movie, comments, options) {
         name: director,
         sameAs:
           config.protocol +
-          options.domain +
+          options_domain +
           '/' +
           encodeURIComponent(config.urls.director) +
           config.urls.slash +
@@ -376,6 +392,10 @@ function onlyMovieSchema(movie, comments, options) {
  */
 
 function categorySchema(page, movies, options) {
+  var options_domain =
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
   if (arguments.length === 2) {
     options = {};
     options.domain =
@@ -424,7 +444,7 @@ function categorySchema(page, movies, options) {
     item: {
       '@id': '/',
       name: config.l.home,
-      url: config.protocol + options.domain
+      url: config.protocol + options_domain
     }
   });
 
@@ -449,7 +469,9 @@ function categorySchema(page, movies, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + options.domain + '" />';
+    '<meta property="og:site_name" content="' +
+    config.domain.toUpperCase() +
+    '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -457,7 +479,7 @@ function categorySchema(page, movies, options) {
   opengraph += '<meta property="og:url" content="' + page.url + '" />';
   opengraph +=
     '<meta property="og:image" content="//' +
-    options.domain +
+    options_domain +
     config.default.image +
     '" />';
   opengraph += '<meta property="og:image:width" content="600" />';
@@ -495,9 +517,9 @@ function categorySchema(page, movies, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    options.domain +
+    options_domain +
     '" href="//' +
-    options.domain +
+    options_domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -512,6 +534,10 @@ function categorySchema(page, movies, options) {
  */
 
 function generalSchema(page, options) {
+  var options_domain =
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
   if (arguments.length === 1) {
     options = {};
     options.domain =
@@ -531,12 +557,12 @@ function generalSchema(page, options) {
   result['@context'] = 'http://schema.org';
   result['@type'] = 'WebSite';
   result['name'] = page.title;
-  result['url'] = config.protocol + options.domain;
+  result['url'] = config.protocol + options_domain;
   result['potentialAction'] = {
     '@type': 'SearchAction',
     target:
       config.protocol +
-      options.domain +
+      options_domain +
       '/' +
       config.urls.search +
       '?q={query}',
@@ -572,7 +598,9 @@ function generalSchema(page, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + options.domain + '" />';
+    '<meta property="og:site_name" content="' +
+    config.domain.toUpperCase() +
+    '" />';
   opengraph += '<meta property="og:title" content="' + page.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' + page.description + '" />';
@@ -580,11 +608,11 @@ function generalSchema(page, options) {
   opengraph +=
     '<meta property="og:url" content="' +
     config.protocol +
-    options.domain +
+    options_domain +
     '" />';
   opengraph +=
     '<meta property="og:image" content="//' +
-    options.domain +
+    options_domain +
     config.default.image +
     '" />';
   opengraph += '<meta property="og:image:width" content="600" />';
@@ -619,9 +647,9 @@ function generalSchema(page, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    options.domain +
+    options_domain +
     '" href="//' +
-    options.domain +
+    options_domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
@@ -636,6 +664,10 @@ function generalSchema(page, options) {
  */
 
 function contentSchema(content, options) {
+  var options_domain =
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
   if (arguments.length === 1) {
     options = {};
     options.domain =
@@ -705,7 +737,9 @@ function contentSchema(content, options) {
   var opengraph = '';
   opengraph += '<meta name="twitter:card" content="summary_large_image" />';
   opengraph +=
-    '<meta property="og:site_name" content="' + options.domain + '" />';
+    '<meta property="og:site_name" content="' +
+    config.domain.toUpperCase() +
+    '" />';
   opengraph += '<meta property="og:title" content="' + content.title + '" />';
   opengraph +=
     '<meta property="og:description" content="' +
@@ -754,9 +788,9 @@ function contentSchema(content, options) {
 
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
-    options.domain +
+    options_domain +
     '" href="//' +
-    options.domain +
+    options_domain +
     '/opensearch.xml"/>';
 
   return schema + opengraph + canonical + opensearch;
