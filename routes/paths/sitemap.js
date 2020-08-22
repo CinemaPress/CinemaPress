@@ -246,12 +246,21 @@ function oneSitemap(type, year, options, callback) {
       for (var year in categories) {
         if (categories.hasOwnProperty(year)) {
           render.urls[render.urls.length] = {
-            loc: categories[year].url.replace(
-              (config.subdomain || config.botdomain) +
-                (config.domain || config.bomain),
-              (config.bomain ? config.botdomain : config.subdomain) +
-                (config.bomain || config.domain)
-            )
+            loc: categories[year].url
+              .replace(
+                config.ru.subdomain + config.ru.domain ||
+                  config.subdomain + config.domain ||
+                  config.botdomain + config.bomain,
+                config.ru.botdomain + config.ru.bomain ||
+                  config.botdomain + config.bomain ||
+                  config.subdomain + config.domain
+              )
+              .replace(
+                (config.subdomain || config.botdomain) +
+                  (config.domain || config.bomain),
+                (config.bomain ? config.botdomain : config.subdomain) +
+                  (config.bomain || config.domain)
+              )
           };
         }
       }
@@ -287,12 +296,21 @@ function oneSitemap(type, year, options, callback) {
       for (var content in contents) {
         if (contents.hasOwnProperty(content)) {
           render.urls[render.urls.length] = {
-            loc: contents[content].url.replace(
-              (config.subdomain || config.botdomain) +
-                (config.domain || config.bomain),
-              (config.bomain ? config.botdomain : config.subdomain) +
-                (config.bomain || config.domain)
-            ),
+            loc: contents[content].url
+              .replace(
+                config.ru.subdomain + config.ru.domain ||
+                  config.subdomain + config.domain ||
+                  config.botdomain + config.bomain,
+                config.ru.botdomain + config.ru.bomain ||
+                  config.botdomain + config.bomain ||
+                  config.subdomain + config.domain
+              )
+              .replace(
+                (config.subdomain || config.botdomain) +
+                  (config.domain || config.bomain),
+                (config.bomain ? config.botdomain : config.subdomain) +
+                  (config.bomain || config.domain)
+              ),
             lastmod: moment(
               contents[content].publish,
               config.default.moment
@@ -368,7 +386,14 @@ function oneSitemap(type, year, options, callback) {
                 continue;
               }
               render.urls[render.urls.length] = {
-                loc: movies[i].url,
+                loc: movies[i].url.replace(
+                  config.ru.subdomain + config.ru.domain ||
+                    config.subdomain + config.domain ||
+                    config.botdomain + config.bomain,
+                  config.ru.botdomain + config.ru.bomain ||
+                    config.botdomain + config.bomain ||
+                    config.subdomain + config.domain
+                ),
                 lastmod:
                   movies[i].custom && movies[i].custom.lastmod
                     ? movies[i].custom.lastmod.substr(0, 10)
@@ -404,7 +429,16 @@ function oneSitemap(type, year, options, callback) {
       if (comments && comments.length) {
         for (var i = 0, l = comments.length; i < l; i++) {
           render.urls[render.urls.length] = {
-            loc: options.origin + comments[i].comment_url,
+            loc:
+              options.origin +
+              comments[i].comment_url.replace(
+                config.ru.subdomain + config.ru.domain ||
+                  config.subdomain + config.domain ||
+                  config.botdomain + config.bomain,
+                config.ru.botdomain + config.ru.bomain ||
+                  config.botdomain + config.bomain ||
+                  config.subdomain + config.domain
+              ),
             lastmod: moment(
               new Date(
                 parseInt(comments[i].comment_publish) -
