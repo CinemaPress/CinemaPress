@@ -429,16 +429,14 @@ function oneSitemap(type, year, options, callback) {
       if (comments && comments.length) {
         for (var i = 0, l = comments.length; i < l; i++) {
           render.urls[render.urls.length] = {
-            loc:
-              options.origin +
-              comments[i].comment_url.replace(
-                config.ru.subdomain + config.ru.domain ||
-                  config.subdomain + config.domain ||
-                  config.botdomain + config.bomain,
-                config.ru.botdomain + config.ru.bomain ||
-                  config.botdomain + config.bomain ||
-                  config.subdomain + config.domain
-              ),
+            loc: (options.origin + comments[i].comment_url).replace(
+              config.ru.subdomain + config.ru.domain ||
+                config.subdomain + config.domain ||
+                config.botdomain + config.bomain,
+              config.ru.botdomain + config.ru.bomain ||
+                config.botdomain + config.bomain ||
+                config.subdomain + config.domain
+            ),
             lastmod: moment(
               new Date(
                 parseInt(comments[i].comment_publish) -
