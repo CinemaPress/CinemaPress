@@ -65,6 +65,14 @@ function allSitemap(options, callback) {
             config.botdomain + config.bomain || config.subdomain + config.domain
           )
           .replace(
+            config.ru.subdomain + config.ru.domain ||
+              config.subdomain + config.domain ||
+              config.botdomain + config.bomain,
+            config.ru.botdomain + config.ru.bomain ||
+              config.botdomain + config.bomain ||
+              config.subdomain + config.domain
+          )
+          .replace(
             config.botdomain +
               (config.bomain || config.domain) +
               '/' +
