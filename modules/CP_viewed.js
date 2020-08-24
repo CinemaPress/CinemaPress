@@ -14,7 +14,7 @@ var modules = require('../config/production/modules');
  * @return {String}
  */
 
-function codeViewed() {
+function codeViewed(options) {
   var code = '';
 
   if (modules.viewed.status) {
@@ -47,7 +47,7 @@ function codeViewed() {
       height +
       '";' +
       'var viewed_domain="' +
-      config.domain +
+      (options.current_domain || config.domain) +
       '";' +
       'var viewed_subdomain="' +
       config.subdomain +

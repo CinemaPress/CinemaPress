@@ -89,12 +89,14 @@ function headComments() {
  * @param {String} url
  * @param {String} pathname
  * @param {Object} [ids]
+ * @param {Object} [options]
  * @return {String}
  */
 
-function codesComments(url, pathname, ids) {
+function codesComments(url, pathname, ids, options) {
   var data = {};
   var footer = '';
+  var current_domain = options.current_domain || config.domain;
 
   if (modules.comments.data.cackle.id) {
     data.cackle = '<div id="mc-container"></div>';
@@ -166,7 +168,7 @@ function codesComments(url, pathname, ids) {
       '        Fingerprint2.get(function (components) {' +
       '          var murmur = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31);' +
       '          setCookieCinemaPress("CP_avatar",murmur,{expires:864e6,path:"/",domain:".' +
-      (config.domain || '') +
+      current_domain +
       '"});' +
       '        })' +
       '    })' +
@@ -175,14 +177,14 @@ function codesComments(url, pathname, ids) {
       '        Fingerprint2.get(function (components) {' +
       '          var murmur = Fingerprint2.x64hash128(components.map(function (pair) { return pair.value }).join(), 31);' +
       '          setCookieCinemaPress("CP_avatar",murmur,{expires:864e6,path:"/",domain:".' +
-      (config.domain || '') +
+      current_domain +
       '"});' +
       '        })' +
       '    }, 500)' +
       '}' +
       'var cinemapress_comments={' +
       'domain:"' +
-      (config.domain || '') +
+      current_domain +
       '",' +
       'spoiler:"' +
       ('👻&nbsp;' + config.l.spoiler || '') +
