@@ -1073,6 +1073,7 @@
         .replace(/(^-*)|(-*)$/g, '');
       document.querySelector('input[name="content.content_url"]').value = link;
       document.querySelector('[data-renamed]').dataset.renamed = link;
+      document.querySelector('#rss_content_url').setAttribute('href', '<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=' + link);
     }
   }
 
