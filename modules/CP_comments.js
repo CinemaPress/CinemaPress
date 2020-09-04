@@ -665,7 +665,7 @@ function recentComments(service, options, callback) {
         }
 
         if (config.cache.time && result && result.length) {
-          CP_cache.set(hash, result, config.cache.time);
+          CP_cache.set(hash, result, config.cache.time, function(err) {});
         }
       }
     );

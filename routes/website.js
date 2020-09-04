@@ -590,7 +590,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
 
               if (config.cache.time && render && !render.cache) {
                 render.cache = true;
-                CP_cache.set(urlHash, render, config.cache.time);
+                CP_cache.set(urlHash, render, config.cache.time, function(
+                  err
+                ) {});
               }
 
               if (options.debug) {

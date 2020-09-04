@@ -232,7 +232,7 @@ router.get('/?', function(req, res, next) {
           res.send(html);
 
           if (config.cache.time && html) {
-            CP_cache.set(urlHash, html, config.cache.time);
+            CP_cache.set(urlHash, html, config.cache.time, function(err) {});
           }
         });
       }
