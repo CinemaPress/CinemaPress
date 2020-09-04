@@ -98,7 +98,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   };
 
   var url = parseUrl();
-  var urlHash = md5(JSON.stringify(options) + url.toLowerCase());
+  var urlHash = md5(
+    JSON.stringify(options) + url.toLowerCase() + process.env['CP_VER']
+  );
 
   var level1 = CP_regexp.str(req.params.level1) || null;
   var level2 =

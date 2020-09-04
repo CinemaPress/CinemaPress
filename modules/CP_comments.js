@@ -362,7 +362,11 @@ function recentComments(service, options, callback) {
   var movie = require('../routes/paths/movie');
 
   var hash = md5(
-    config.protocol + options.domain + 'comments' + +JSON.stringify(service)
+    config.protocol +
+      options.domain +
+      'comments' +
+      JSON.stringify(service) +
+      process.env['CP_VER']
   );
 
   return config.cache.time

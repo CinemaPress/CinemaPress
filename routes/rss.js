@@ -33,7 +33,7 @@ router.get('/?', function(req, res, next) {
     (req.userinfo && req.userinfo.origin
       ? req.userinfo.origin
       : config.protocol + config.subdomain + config.domain) + req.originalUrl;
-  var urlHash = md5(url.toLowerCase());
+  var urlHash = md5(url.toLowerCase() + process.env['CP_VER']);
 
   getRender(function(err, render) {
     renderData(err, render);
