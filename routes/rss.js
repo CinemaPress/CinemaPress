@@ -31,7 +31,7 @@ var router = express.Router();
 router.get('/?', function(req, res, next) {
   var url =
     (req.userinfo && req.userinfo.origin
-      ? req.userinfo.origin
+      ? req.userinfo.origin + req.originalUrl
       : config.protocol + config.subdomain + config.domain) + req.originalUrl;
   var urlHash = md5(url.toLowerCase() + process.env['CP_VER']);
 
@@ -137,9 +137,13 @@ router.get('/?', function(req, res, next) {
           return callback('Collection is empty!');
         }
       });
-    } else if (config.index.ids.keys && ids) {
+    } else if (ids) {
       var items = (ids.replace(/[0-9,\s]/g, '')
-        ? config.index.ids.keys
+        ? ids === 'abuse' &&
+          modules.abuse.data.movies &&
+          modules.abuse.data.movies.length
+          ? modules.abuse.data.movies.join(',')
+          : config.index.ids.keys
         : ids.replace(/[^0-9,]/g, '')
       )
         .split(',')
@@ -223,6 +227,22 @@ router.get('/?', function(req, res, next) {
           );
           render.movies = render.movies.filter(function(movie) {
             return !condition(movie);
+          });
+        }
+        if (
+          render.movies &&
+          render.movies.length &&
+          modules.abuse.data.movies &&
+          modules.abuse.data.movies.length
+        ) {
+          render.movies = render.movies.map(function(movie) {
+            for (var i = 0; i < modules.abuse.data.movies.length; i++) {
+              if (modules.abuse.data.movies[i] + '' === movie.kp_id + '') {
+                movie.turbo_false = 1;
+                break;
+              }
+            }
+            return movie;
           });
         }
         res.header('Content-Type', 'application/xml');

@@ -13,7 +13,7 @@
                 <% var poster = (movie.poster) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.poster : ''; %>
                 <% var poster_big = (movie.poster_big) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.poster_big : ''; %>
                 <% var picture = (movie.picture) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + movie.picture : ''; %>
-                <item turbo="true">
+                <item <% if (movie.turbo_false) { %>turbo="false"<% } else { %>turbo="true"<% } %>>
                     <title><%= movie.title %></title>
                     <link><%- movie.url %></link>
                     <description><![CDATA[<img align="left" hspace="5" width="150"
