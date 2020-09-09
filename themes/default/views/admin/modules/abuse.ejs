@@ -412,6 +412,94 @@
 
                         <div class="spacer-10"></div>
 
+                        <div class="faq">
+
+                            <article class="faq-group">
+                                <header>
+                                    <i class="fa fa-minus"></i>
+                                    <h3>
+                                        <%= __('Исключить фильмы из Турбо-страниц') %>
+                                    </h3>
+                                </header>
+                                <div class="faq-content clearfix">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div class="input-group">
+                                                <input class="form-control" type="text"
+                                                       placeholder="<%= __('Идентификатор или ссылка на фильм') %>"
+                                                       data-add-id="modules.abuse.data.turbo">
+                                                <span class="input-group-btn">
+                                                    <a href="javascript:void(0)" class="btn btn-default"
+                                                       data-add-name="modules.abuse.data.turbo">
+                                                        <span class="fa fa-plus"></span> <%= __('Добавить фильм') %>
+                                                    </a>
+                                                </span>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="advanced-textarea">
+
+                                                <div class="thumbs-list thumbs-small">
+                                                    <ul data-add-name="modules.abuse.data.turbo">
+                                                        <% if (modules.abuse.data.turbo) { %>
+                                                            <% modules.abuse.data.turbo.forEach(function (id) { %>
+                                                                <li data-delete-id="<%- id %>"
+                                                                    data-delete-name="modules.abuse.data.turbo" style="display: none">
+                                                                    <img class="media-object"
+                                                                         src="/files/poster/medium/<%- id %>.jpg"
+                                                                         alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                                </li>
+                                                            <% }); %>
+                                                        <% } %>
+                                                    </ul>
+                                                    <script>
+                                                      var turbo = document.querySelectorAll('.thumbs-list li');
+                                                      turbo.forEach(function(m, i) {
+                                                        setTimeout(function() {
+                                                          m.style.display = 'inline-block';
+                                                        }, i * 300);
+                                                      });
+                                                    </script>
+                                                </div>
+
+                                                <div style="display: none" id="abuse_ids">
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="text-muted">
+                                                        <%= __('Фильмы:') %>
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control input_ids" name="modules.abuse.data.turbo"
+                                                              placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.turbo) { %><%- modules.abuse.data.turbo.join(',') %><% } %></textarea>
+
+                                                    <div class="spacer-10"></div>
+
+                                                </div>
+
+                                                <div class="advanced-textarea-footer">
+                                                    <div class="pull-right">
+                                                        <a href="javascript:void(0)"
+                                                           onclick="document.querySelector('#abuse_ids').style.display = 'block'"
+                                                           class="btn btn-default">
+                                                            <%= __('Редактировать список ID') %>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <div class="spacer-10"></div>
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="cinema-box">

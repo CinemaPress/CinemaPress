@@ -974,5 +974,6 @@
 	"Альтернативный поддомен, который видит только поисковый бот": "Subdomeniu alternativă, care vede doar bot de căutare",
 	"Альтернативный домен, который видит только поисковый бот": "Un domeniu alternativ care vede doar un bot de căutare",
 	"Настройка доменов только для России": "Setarea domeniului numai pentru Rusia",
-	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Configurarea domeniilor individuale pentru utilizatorii cu IP Rusă și roboții motoarelor de căutare"
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Configurarea domeniilor individuale pentru utilizatorii cu IP Rusă și roboții motoarelor de căutare",
+	"Исключить фильмы из Турбо-страниц": "Excludeți moviee din pagini Turbo"
 }

@@ -235,19 +235,30 @@ router.get('/?', function(req, res, next) {
             return !condition(movie);
           });
         }
-        if (
-          render.movies &&
-          render.movies.length &&
-          modules.abuse.data.movies &&
-          modules.abuse.data.movies.length
-        ) {
+        if (render.movies && render.movies.length) {
           render.movies = render.movies.map(function(movie) {
             if (typeof req.query.abuse !== 'undefined') {
               movie.turbo_false = 1;
             }
-            if (typeof movie.turbo_false === 'undefined') {
+            if (
+              typeof movie.turbo_false === 'undefined' &&
+              modules.abuse.data.movies &&
+              modules.abuse.data.movies.length
+            ) {
               for (var i = 0; i < modules.abuse.data.movies.length; i++) {
                 if (modules.abuse.data.movies[i] + '' === movie.kp_id + '') {
+                  movie.turbo_false = 1;
+                  break;
+                }
+              }
+            }
+            if (
+              typeof movie.turbo_false === 'undefined' &&
+              modules.abuse.data.turbo &&
+              modules.abuse.data.turbo.length
+            ) {
+              for (var ii = 0; ii < modules.abuse.data.turbo.length; ii++) {
+                if (modules.abuse.data.turbo[ii] + '' === movie.kp_id + '') {
                   movie.turbo_false = 1;
                   break;
                 }

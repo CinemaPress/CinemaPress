@@ -974,5 +974,6 @@
 	"Альтернативный поддомен, который видит только поисковый бот": "Subdomain thay thế, ai thấy chỉ bot tìm kiếm",
 	"Альтернативный домен, который видит только поисковый бот": "Một miền thay thế mà chỉ nhìn thấy một bot tìm kiếm",
 	"Настройка доменов только для России": "Đặt tên miền duy nhất cho Nga",
-	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Thiết lập các lĩnh vực cá nhân cho người dùng với IP ở Nga và chương trình công cụ tìm kiếm"
+	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Thiết lập các lĩnh vực cá nhân cho người dùng với IP ở Nga và chương trình công cụ tìm kiếm",
+	"Исключить фильмы из Турбо-страниц": "Loại trừ các bộ phim từ các trang Turbo"
 }
