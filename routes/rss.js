@@ -104,7 +104,12 @@ router.get('/?', function(req, res, next) {
     var tag = req.query.tag
       ? { content_tags: CP_regexp.str(req.query.tag) }
       : '';
-    var ids = req.query.ids ? req.query.ids : '';
+    var ids =
+      typeof req.query.ids !== 'undefined'
+        ? req.query.ids
+          ? req.query.ids
+          : 'ids'
+        : '';
 
     if (modules.content.status && collection) {
       CP_get.contents({ content_url: collection }, function(err, contents) {
@@ -140,6 +145,7 @@ router.get('/?', function(req, res, next) {
     } else if (ids) {
       var items = (ids.replace(/[0-9,\s]/g, '')
         ? ids === 'abuse' &&
+          modules.abuse.status &&
           modules.abuse.data.movies &&
           modules.abuse.data.movies.length
           ? modules.abuse.data.movies.join(',')
@@ -212,7 +218,7 @@ router.get('/?', function(req, res, next) {
     }
 
     if (typeof render === 'object') {
-      if (req.query.json) {
+      if (typeof req.query.json !== 'undefined') {
         res.json(render);
       } else {
         if (
@@ -236,10 +242,15 @@ router.get('/?', function(req, res, next) {
           modules.abuse.data.movies.length
         ) {
           render.movies = render.movies.map(function(movie) {
-            for (var i = 0; i < modules.abuse.data.movies.length; i++) {
-              if (modules.abuse.data.movies[i] + '' === movie.kp_id + '') {
-                movie.turbo_false = 1;
-                break;
+            if (typeof req.query.abuse !== 'undefined') {
+              movie.turbo_false = 1;
+            }
+            if (typeof movie.turbo_false === 'undefined') {
+              for (var i = 0; i < modules.abuse.data.movies.length; i++) {
+                if (modules.abuse.data.movies[i] + '' === movie.kp_id + '') {
+                  movie.turbo_false = 1;
+                  break;
+                }
               }
             }
             return movie;
