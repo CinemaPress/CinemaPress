@@ -3099,9 +3099,10 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "temp"|"template"|"design"|"cinematheme"|"ct" )
+        "temp"|"template"|"design"|"cinematheme"|"ct"|"uncss" )
             read_domain "${2}"
             sh_not
+            ARRAY_PAGE=()
             if [ "${3}" = "-h" ]; then
                 docker exec -it "${CP_DOMAIN_}" /usr/bin/cinematheme -h
             elif [ "${3}" != "" ]; then
@@ -3129,7 +3130,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 read -r -e -p '[URL Download] -d ' DOWNLOAD_PAGE
                 _line
                 _br
-                ARRAY_PAGE=()
                 if [ "${NAME_THEME}" != "" ]; then ARRAY_PAGE+=(-n "${NAME_THEME}"); fi
                 if [ "${INDEX_PAGE}" != "" ]; then ARRAY_PAGE+=(-i "${INDEX_PAGE}"); fi
                 if [ "${MOVIE_PAGE}" != "" ]; then ARRAY_PAGE+=(-m "${MOVIE_PAGE}"); fi
@@ -3140,7 +3140,12 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${TRAILER_PAGE}" != "" ]; then ARRAY_PAGE+=(-t "${TRAILER_PAGE}"); fi
                 if [ "${ONLINE_PAGE}" != "" ]; then ARRAY_PAGE+=(-o "${ONLINE_PAGE}"); fi
                 if [ "${DOWNLOAD_PAGE}" != "" ]; then ARRAY_PAGE+=(-d "${DOWNLOAD_PAGE}"); fi
-                docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${ARRAY_PAGE[@]}"
+                if [ "${1}" = "uncss" ]; then
+                  ARRAY_PAGE+=(--uncss);
+                  docker exec -it "${CP_DOMAIN_}" /usr/bin/cinematheme "${ARRAY_PAGE[@]}"
+                else
+                  docker exec -it "${CP_DOMAIN_}" /usr/bin/cinemapress container cinematheme "${ARRAY_PAGE[@]}"
+                fi
                 _br
             fi
             exit 0

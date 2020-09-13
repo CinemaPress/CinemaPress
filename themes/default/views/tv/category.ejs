@@ -6,7 +6,7 @@
 
     <script>
       window.onload = function() {
-        TVwww(JSON.parse('<% if (typeof payload !== 'undefined') { %><%- JSON.stringify(payload).replace(/'/g, '`').replace(/<(?:.|\n)*?>/gm, '') %><% } else { %>{}<% } %>'));
+        TVwww(JSON.parse('<% if (typeof payload !== 'undefined') { %><%- JSON.stringify(payload).replace(/'/g, '`').replace(/(^|\s)\\"/g, '$1«').replace(/\\"/g, '»').replace(/<(?:.|\n)*?>/gm, '') %><% } else { %>{}<% } %>'));
       };
     </script>
 </head>
