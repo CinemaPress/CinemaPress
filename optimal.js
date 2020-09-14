@@ -172,6 +172,20 @@ if (['dustin'].indexOf(theme) + 1) {
   );
 }
 
+if (['tormund'].indexOf(theme) + 1) {
+  config.default.count = 12;
+  config.index.year.count = 12;
+  modules.content.data.index.count = 12;
+  modules.episode.data.index.count = 32;
+  modules.related.data.types.year.count = 10;
+  modules.content.data.news.count = 4;
+  modules.comments.data.fast.recent.display = ['index'];
+  modules.player.data.script = modules.player.data.script.replace(
+    /#[a-z0-9]{6}/i,
+    '#111216'
+  );
+}
+
 let mem = parseInt('' + os.totalmem() / 1000000);
 let cpu = os.cpus() ? os.cpus().length : 1;
 let max = parseInt('' + mem / (cpu > 1 ? cpu : 2));
