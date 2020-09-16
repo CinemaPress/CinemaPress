@@ -118,7 +118,7 @@ function parseData() {
         'kinopoisk_id=' +
         kp_id
     );
-    urls.push('https://pleer.video/' + kp_id + '.json');
+    //urls.push('https://pleer.video/' + kp_id + '.json');
     urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
   }
   if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
