@@ -5,6 +5,8 @@
  */
 
 var modules = require('../config/production/modules');
+Object.keys(modules).length === 0 &&
+  (modules = require('../config/production/modules.backup'));
 
 /**
  * Add the function to random movie.

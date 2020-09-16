@@ -11,7 +11,11 @@ var CP_text = require('../lib/CP_text');
  */
 
 var config = require('../config/production/config');
+Object.keys(config).length === 0 &&
+  (config = require('../config/production/config.backup'));
 var modules = require('../config/production/modules');
+Object.keys(modules).length === 0 &&
+  (modules = require('../config/production/modules.backup'));
 
 /**
  * Blocking a page player.

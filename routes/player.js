@@ -11,6 +11,8 @@ var CP_translit = require('../lib/CP_translit');
  */
 
 var modules = require('../config/production/modules');
+Object.keys(modules).length === 0 &&
+  (modules = require('../config/production/modules.backup'));
 
 /**
  * Node dependencies.

@@ -14,7 +14,11 @@ var CP_structure = require('../lib/CP_structure');
  */
 
 var config = require('../config/production/config');
+Object.keys(config).length === 0 &&
+  (config = require('../config/production/config.backup'));
 var modules = require('../config/production/modules');
+Object.keys(modules).length === 0 &&
+  (modules = require('../config/production/modules.backup'));
 
 /**
  * Node dependencies.

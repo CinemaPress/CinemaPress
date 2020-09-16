@@ -1905,6 +1905,10 @@ docker_run() {
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /etc/sphinx/sphinx.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /etc/sphinx/source.xml
         sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" /home/"${CP_DOMAIN}"/config/production/config.js
+        cp -rf /home/"${CP_DOMAIN}"/config/production/config.js /home/"${CP_DOMAIN}"/config/production/config.prev.js
+        cp -rf /home/"${CP_DOMAIN}"/config/production/modules.js /home/"${CP_DOMAIN}"/config/production/modules.prev.js
+        cp -rf /home/"${CP_DOMAIN}"/config/production/config.js /home/"${CP_DOMAIN}"/config/production/config.backup.js
+        cp -rf /home/"${CP_DOMAIN}"/config/production/modules.js /home/"${CP_DOMAIN}"/config/production/modules.backup.js
         git clone https://${GIT_SERVER}/CinemaPress/Theme-${CP_THEME}.git /var/${CP_THEME}
         mkdir -p /home/"${CP_DOMAIN}"/themes/${CP_THEME}/
         cp -rf /var/${CP_THEME}/* /home/"${CP_DOMAIN}"/themes/${CP_THEME}/

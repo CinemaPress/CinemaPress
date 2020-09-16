@@ -9,6 +9,8 @@ require('events').EventEmitter.defaultMaxListeners = 15;
  */
 
 var config = require('./config/production/config');
+Object.keys(config).length === 0 &&
+  (config = require('./config/production/config.backup'));
 
 /**
  * Node dependencies.
