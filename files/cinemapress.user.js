@@ -118,7 +118,7 @@ function parseData() {
         'kinopoisk_id=' +
         kp_id
     );
-    //urls.push('https://pleer.video/' + kp_id + '.json');
+    urls.push('https://pleer.video/' + kp_id + '.json');
     urls.push('https://rating.kinopoisk.ru/' + kp_id + '.xml');
   }
   if (douban_id && (lang === 'zh' || (!imdb_id && !tmdb_id && !kp_id))) {
@@ -674,10 +674,10 @@ function parsePleer(r) {
     title_en: res.title_en ? res.title_en : '',
     year: res.year ? res.year : '',
     type: res.type ? '1' : '0',
-    genre: res.genre ? res.genre : '',
-    country: res.country ? res.country : '',
-    actor: res.actor
-      ? res.actor
+    genre: res.genres ? res.genres : '',
+    country: res.countries ? res.countries : '',
+    actor: res.actors
+      ? res.actors
           .split(',')
           .map(function(v, i) {
             return i <= 4 ? v : null;
@@ -685,8 +685,8 @@ function parsePleer(r) {
           .filter(Boolean)
           .join(',')
       : '',
-    director: res.director
-      ? res.director
+    director: res.directors
+      ? res.directors
           .split(',')
           .map(function(v, i) {
             return i <= 2 ? v : null;
@@ -696,6 +696,7 @@ function parsePleer(r) {
       : '',
     description: res.description ? res.description : '',
     poster: '1',
+    pictures: res.pictures ? res.pictures : '',
     kp_rating: res.kp_rating,
     kp_vote: res.kp_vote,
     imdb_rating: res.imdb_rating,

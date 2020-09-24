@@ -245,12 +245,23 @@ function codePlayer(type, movie, options) {
     } else if (movie.player && /\.(mp4|mkv|avi|mov|flv)$/.test(movie.player)) {
       code.player =
         '' +
-        '<link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css" type="text/css"/>' +
-        '<script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>' +
+        '<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>' +
         '<video id="cinemapress-cdn"><source src="' +
         movie.player +
         '" type="video/mp4"/></video>';
-      code.footer = '' + '<script>fluidPlayer("cinemapress-cdn");</script>';
+      code.footer =
+        '' +
+        '<script>var cinemapress_player = fluidPlayer("cinemapress-cdn");</script>';
+    } else if (movie.player && /\.(m3u8)$/.test(movie.player)) {
+      code.player =
+        '' +
+        '<script src="/files/playerjs.js"></script>' +
+        '<video id="cinemapress-cdn"><source src="' +
+        movie.player +
+        '" type="application/x-mpegURL"/></video>';
+      code.footer =
+        '' +
+        '<script>var cinemapress_player = new Playerjs({replace:"video"});</script>';
     } else {
       var param = {};
 

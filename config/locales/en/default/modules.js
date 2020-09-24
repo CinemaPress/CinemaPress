@@ -194,7 +194,9 @@ module.exports = {
       "display": "script",
       "js": "https://4h0y.gitlab.io/yo.js",
       "script": "{\"data-player\":\"collaps,bazon,ustore,alloha,hdvb,kodik,videocdn,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
-      "custom": []
+      "custom": [
+        "https://pleer.video/[kp_id].json ~ embeds.0.iframe"
+      ]
     }
   },
   "blocking": {
