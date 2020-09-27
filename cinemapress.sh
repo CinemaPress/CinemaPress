@@ -3258,6 +3258,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker run \
                     -d \
                     --name adminer \
+                    --restart always \
                     --network cinemapress \
                     -e ADMINER_DEFAULT_SERVER=mysql \
                     -e ADMINER_DESIGN='galkaev' \
