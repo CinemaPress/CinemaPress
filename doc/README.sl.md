@@ -200,6 +200,16 @@
 
 [![Predloga «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Tema «tormund»
+
+> Namestite prek FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Namestite prek CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Predloga «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Možnosti in moduli CinemaPress
 
 Podrobne informacije o vseh možnostih in sistemskih modulih najdete v [dokumentaciji](https://CInemaPress.io/admin).

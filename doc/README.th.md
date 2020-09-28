@@ -200,6 +200,16 @@
 
 [![แบบ «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## กระทู้ «tormund»
+
+> ติดตั้งผ่าน FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> ติดตั้งผ่าน CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![แบบ «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## ตัวเลือกและโมดูล  CinemaPress
 
 ข้อมูลรายละเอียดเกี่ยวกับตัวเลือกทั้งหมดและโมดูลระบบสามารถพบได้ในเอกสารประกอบ

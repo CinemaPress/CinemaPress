@@ -200,6 +200,16 @@
 
 [![주형 «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## 어간 «tormund»
+
+> FTP를 통해 설치: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> CLI를 통해 설치: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![주형 «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## 옵션 및 모듈 CinemaPress
 
 모든 옵션 및 시스템 모듈에 대한 자세한 정보는 [설명서에서](https://CInemaPress.io/admin) 찾을 수 있습니다.

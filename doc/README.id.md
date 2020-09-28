@@ -200,6 +200,16 @@
 
 [![Templat «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Tema «tormund»
+
+> Instal melalui FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Instal melalui CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Templat «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Opsi dan modul CinemaPress
 
 Informasi terperinci tentang semua opsi dan modul sistem dapat ditemukan dalam [dokumentasi](https://CInemaPress.io/admin).

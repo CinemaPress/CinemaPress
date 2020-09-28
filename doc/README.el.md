@@ -200,6 +200,16 @@
 
 [![Πρότυπο «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Θέμα «tormund»
+
+> Εγκαταστήστε μέσω FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Εγκατάσταση μέσω CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Πρότυπο «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Επιλογές και ενότητες CinemaPress
 
 Λεπτομερείς πληροφορίες σχετικά με όλες τις επιλογές και τις ενότητες του συστήματος διατίθενται στην [τεκμηρίωση](https://CInemaPress.io/admin).

@@ -200,6 +200,16 @@
 
 [![Kigezo «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Mandhari «tormund»
+
+> Sakinisha kupitia FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Sakinisha kupitia CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Kigezo «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Chaguzi na modules CinemaPress
 
 Taarifa kamili juu ya chaguzi zote na modules za mfumo zinaweza kupatikana katika [nyaraka](https://CInemaPress.io/admin).

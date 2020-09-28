@@ -200,6 +200,16 @@
 
 [![Szablon «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Motyw «tormund»
+
+> Zainstaluj przez FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Zainstaluj przez interfejs CLI: `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Szablon «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Opcje i moduły CinemaPress
 
 Szczegółowe informacje na temat wszystkich opcji i modułów systemu można znaleźć w [dokumentacji](https://CInemaPress.io/admin).

@@ -200,6 +200,16 @@
 
 [![खाका «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## विषय «tormund»
+
+> एफ़टीपी के माध्यम से स्थापित करें [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> CLI के माध्यम से स्थापित करें `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![खाका «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## विकल्प और मॉड्यूल CinemaPress
 
 सभी विकल्पों और सिस्टम मॉड्यूल की विस्तृत जानकारी प्रलेखन में पाई जा सकती है।

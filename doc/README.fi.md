@@ -200,6 +200,16 @@
 
 [![Sapluuna «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## Teema «tormund»
+
+> Asenna FTP: n kautta [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> Asenna CLI: n kautta `cinemapress theme example.com tormund`
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![Sapluuna «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## Vaihtoehdot ja moduulit CinemaPress
 
 Yksityiskohtaiset tiedot kaikista vaihtoehdoista ja järjestelmän moduuleista löytyvät [dokumenteista](https://CInemaPress.io/admin).

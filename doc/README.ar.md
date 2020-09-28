@@ -202,6 +202,16 @@
 
 [![قالب «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
 
+## موضوع «tormund»
+
+> FTP: [GitHub](https://github.com/CinemaPress/Theme-Tormund/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Tormund/) / [BitBucket](https://bitbucket.org/cinemapress/theme-tormund/)
+
+> CLI: `cinemapress theme example.com tormund` 
+
+> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+
+[![قالب «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+
 ## الخيارات والوحدات CinemaPress
 
 يمكن الاطلاع على معلومات مفصلة عن جميع الخيارات ووحدات النظام في الوثائق.
