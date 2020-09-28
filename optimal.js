@@ -77,7 +77,7 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 5;
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
-    '#e5e6e8'
+    '#7e8594'
   );
 }
 
@@ -85,7 +85,7 @@ if (['joffrey'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 7;
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
-    '#edeef0'
+    '#5e81a8'
   );
 }
 
