@@ -3365,7 +3365,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 echo "    keepalive_timeout 10;"
                 echo "    client_max_body_size 64m;"
                 echo "    if ( \$host ~* ^www\.(?<domain>.+) ) {"
-                echo "        rewrite ^/(.*)$ \$scheme://\$domain/\$1;"
+                echo "        rewrite ^/(.*)$ \$scheme://\$domain/\$1 permanent;"
                 echo "    }"
                 echo "    if ( \$request_method !~ ^(GET|POST)$ ) {"
                 echo "        return 444;"
