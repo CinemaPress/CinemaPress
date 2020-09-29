@@ -318,7 +318,13 @@ function oneSitemap(type, year, options, callback) {
             lastmod: moment(
               contents[content].publish,
               config.default.moment
-            ).format('YYYY-MM-DD')
+            ).format('YYYY-MM-DD'),
+            image:
+              config.protocol +
+                (config.botdomain + config.bomain ||
+                  config.subdomain + config.domain) +
+                contents[content].image || '',
+            title: contents[content].title || ''
           };
         }
       }
@@ -401,7 +407,13 @@ function oneSitemap(type, year, options, callback) {
                 lastmod:
                   movies[i].custom && movies[i].custom.lastmod
                     ? movies[i].custom.lastmod.substr(0, 10)
-                    : ''
+                    : '',
+                image:
+                  config.protocol +
+                    (config.botdomain + config.bomain ||
+                      config.subdomain + config.domain) +
+                    movies[i].poster || '',
+                title: movies[i].title || ''
               };
             }
 
@@ -446,7 +458,13 @@ function oneSitemap(type, year, options, callback) {
                 parseInt(comments[i].comment_publish) -
                   719528 * 1000 * 60 * 60 * 24
               ).toJSON()
-            ).format('YYYY-MM-DD')
+            ).format('YYYY-MM-DD'),
+            image:
+              config.protocol +
+                (config.botdomain + config.bomain ||
+                  config.subdomain + config.domain) +
+                comments[i].comment_avatar || '',
+            title: comments[i].comment_anonymous || ''
           };
         }
       }

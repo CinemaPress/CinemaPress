@@ -801,6 +801,34 @@
       }
     }
 
+    if (data.config && data.config.botdomain && !data.config.bomain) {
+      data.config.bomain = data.config.alt.bomain || data.config.ru.bomain || '<%- config.domain %>';
+    }
+
+    if (data.config && data.config.alt.botdomain && !data.config.alt.bomain) {
+      data.config.alt.bomain = data.config.bomain || data.config.ru.bomain || '<%- config.domain %>';
+    }
+
+    if (data.config && data.config.ru.subdomain && !data.config.ru.domain) {
+      data.config.ru.domain = '<%- config.domain %>';
+    }
+
+    if (data.config && data.config.ru.botdomain && !data.config.ru.bomain) {
+      data.config.ru.bomain = data.config.bomain || data.config.alt.bomain || '<%- config.domain %>';
+    }
+
+    var bot_domains = [data.config.botdomain + data.config.bomain, data.config.alt.botdomain + data.config.alt.bomain, data.config.ru.botdomain + data.config.ru.bomain].filter(Boolean);
+    var hum_domains = [data.config.subdomain + '<%- config.domain %>', data.config.ru.subdomain + data.config.ru.domain].filter(Boolean);
+
+    if (bot_domains.filter(function(d) {
+      return hum_domains.indexOf(d) + 1;
+    }).length) {
+      alert('Domains for people and for bots should be different!');
+      self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+      self.addEventListener('click', saveData);
+      return;
+    }
+
     if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
       if (typeof data.config.geolite2.ips === 'object') {
         data.config.geolite2.ips = data.config.geolite2.ips.map(function(ip) {
