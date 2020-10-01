@@ -817,16 +817,18 @@
       data.config.ru.bomain = data.config.bomain || data.config.alt.bomain || '<%- config.domain %>';
     }
 
-    var bot_domains = [data.config.botdomain + data.config.bomain, data.config.alt.botdomain + data.config.alt.bomain, data.config.ru.botdomain + data.config.ru.bomain].filter(Boolean);
-    var hum_domains = [data.config.subdomain + '<%- config.domain %>', data.config.ru.subdomain + data.config.ru.domain].filter(Boolean);
+    if (data.config && typeof data.config.botdomain === 'string' && typeof data.config.alt.botdomain === 'string' && typeof data.config.ru.botdomain === 'string' && typeof data.config.bomain === 'string' && typeof data.config.alt.bomain === 'string' && typeof data.config.ru.bomain === 'string' && typeof data.config.subdomain === 'string' && typeof data.config.ru.subdomain === 'string' && typeof data.config.ru.domain === 'string') {
+      var bot_domains = [data.config.botdomain + data.config.bomain, data.config.alt.botdomain + data.config.alt.bomain, data.config.ru.botdomain + data.config.ru.bomain].filter(Boolean);
+      var hum_domains = [data.config.subdomain + '<%- config.domain %>', data.config.ru.subdomain + data.config.ru.domain].filter(Boolean);
 
-    if (bot_domains.filter(function(d) {
-      return hum_domains.indexOf(d) + 1;
-    }).length) {
-      alert('Domains for people and for bots should be different!');
-      self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
-      self.addEventListener('click', saveData);
-      return;
+      if (bot_domains.filter(function(d) {
+        return hum_domains.indexOf(d) + 1;
+      }).length) {
+        alert('Domains for people and for bots should be different!');
+        self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
+        self.addEventListener('click', saveData);
+        return;
+      }
     }
 
     if (data.config && data.config.geolite2 && data.config.geolite2.ips) {
