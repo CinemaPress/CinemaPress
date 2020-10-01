@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2020.9
+// @version 2020.10
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -114,7 +114,7 @@ function parseData() {
   ) {
     urls.push(
       'https://api1573848848.apicollaps.cc/franchise/details?' +
-        'token=6006bca37f7681fe1edf75fcf936aecc&' +
+        'token=eedefb541aeba871dcfc756e6b31c02e&' +
         'kinopoisk_id=' +
         kp_id
     );

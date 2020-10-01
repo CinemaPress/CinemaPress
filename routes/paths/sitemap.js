@@ -324,7 +324,12 @@ function oneSitemap(type, year, options, callback) {
                 (config.botdomain + config.bomain ||
                   config.subdomain + config.domain) +
                 contents[content].image || '',
-            title: contents[content].title || ''
+            title: (contents[content].title || '')
+              .replace(/&/g, '&amp;')
+              .replace(/'/g, '&apos;')
+              .replace(/"/g, '&quot;')
+              .replace(/>/g, '&gt;')
+              .replace(/</g, '&lt;')
           };
         }
       }
@@ -413,7 +418,12 @@ function oneSitemap(type, year, options, callback) {
                     (config.botdomain + config.bomain ||
                       config.subdomain + config.domain) +
                     movies[i].poster || '',
-                title: movies[i].title || ''
+                title: (movies[i].title || '')
+                  .replace(/&/g, '&amp;')
+                  .replace(/'/g, '&apos;')
+                  .replace(/"/g, '&quot;')
+                  .replace(/>/g, '&gt;')
+                  .replace(/</g, '&lt;')
               };
             }
 
@@ -464,7 +474,12 @@ function oneSitemap(type, year, options, callback) {
                 (config.botdomain + config.bomain ||
                   config.subdomain + config.domain) +
                 comments[i].comment_avatar || '',
-            title: comments[i].comment_anonymous || ''
+            title: (comments[i].comment_anonymous || '')
+              .replace(/&/g, '&amp;')
+              .replace(/'/g, '&apos;')
+              .replace(/"/g, '&quot;')
+              .replace(/>/g, '&gt;')
+              .replace(/</g, '&lt;')
           };
         }
       }

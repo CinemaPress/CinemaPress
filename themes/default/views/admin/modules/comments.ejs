@@ -276,6 +276,46 @@
                                         <div class="spacer-10"></div>
 
                                         <textarea class="form-control descriptions" name="comment.comment_text"><% if (comment.comment_text) { %><%- comment.comment_text.trim().replace(/\[br]/ig, '\n') %><% } %></textarea>
+                                        <div class="advanced-textarea-footer">
+                                            <div class="pull-left">
+                                                <a href="javascript:void(0)" data-name="comment.comment_text"
+                                                   data-bb-code2="b" class="btn btn-sm btn-default">
+                                                    <%= '[b]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_text"
+                                                   data-bb-code2="i" class="btn btn-sm btn-default">
+                                                    <%= '[i]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_text"
+                                                   data-bb-code2="spoiler" class="btn btn-sm btn-default">
+                                                    <%= '[spoiler]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_text"
+                                                   data-bb-code2="search" class="btn btn-sm btn-default">
+                                                    <%= '[search]' %>
+                                                </a>
+                                                <a href="javascript:void(0)" data-name="comment.comment_text"
+                                                   data-bb-code2="url" class="btn btn-sm btn-default">
+                                                    <%= '[url]' %>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <script>
+                                          var bb_code2 = document.querySelectorAll("[data-bb-code2]");
+                                          bb_code2.forEach(function(e) {
+                                            e.addEventListener("click", function() {
+                                              var text = document.querySelector('[name="comment.comment_text"]');
+                                              if (this.dataset.bbCode2) {
+                                                var t = text.selectionStart,
+                                                  s = text.selectionEnd,
+                                                  a = text.value.substring(t, s);
+                                                text.value = text.value.substring(0, t) + ("[" + this.dataset.bbCode2 + "]") + a + ("[/" + this.dataset.bbCode2 + "]") + text.value.substring(s), text.focus(), text.selectionEnd = s + (2 * this.dataset.bbCode2.length + 5)
+                                              }
+                                            })
+                                          });
+                                        </script>
+
+                                        <div class="spacer-10"></div>
 
                                         <div class="text-muted" id="comment-admin">
                                             <%= __('Ответ администратора') %>
@@ -287,27 +327,41 @@
                                         <div class="advanced-textarea-footer">
                                             <div class="pull-left">
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin"
-                                                   data-code='[b][/b]' class="btn btn-sm btn-default codes">
+                                                   data-bb-code="b" class="btn btn-sm btn-default">
                                                     <%= '[b]' %>
                                                 </a>
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin"
-                                                   data-code='[i][/i]' class="btn btn-sm btn-default codes">
+                                                   data-bb-code="i" class="btn btn-sm btn-default">
                                                     <%= '[i]' %>
                                                 </a>
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin"
-                                                   data-code='[spoiler][/spoiler]' class="btn btn-sm btn-default codes">
+                                                   data-bb-code="spoiler" class="btn btn-sm btn-default">
                                                     <%= '[spoiler]' %>
                                                 </a>
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin"
-                                                   data-code='[search][/search]' class="btn btn-sm btn-default codes">
+                                                   data-bb-code="search" class="btn btn-sm btn-default">
                                                     <%= '[search]' %>
                                                 </a>
                                                 <a href="javascript:void(0)" data-name="comment.comment_admin"
-                                                   data-code='[url][/url]' class="btn btn-sm btn-default codes">
+                                                   data-bb-code="url" class="btn btn-sm btn-default">
                                                     <%= '[url]' %>
                                                 </a>
                                             </div>
                                         </div>
+                                        <script>
+                                          var bb_code = document.querySelectorAll("[data-bb-code]");
+                                          bb_code.forEach(function(e) {
+                                            e.addEventListener("click", function() {
+                                              var e = document.querySelector('[name="comment.comment_admin"]');
+                                              if (this.dataset.bbCode) {
+                                                var t = e.selectionStart,
+                                                  s = e.selectionEnd,
+                                                  a = e.value.substring(t, s);
+                                                e.value = e.value.substring(0, t) + ("[" + this.dataset.bbCode + "]") + a + ("[/" + this.dataset.bbCode + "]") + e.value.substring(s), e.focus(), e.selectionEnd = s + (2 * this.dataset.bbCode.length + 5)
+                                              }
+                                            })
+                                          })
+                                        </script>
                                     </div>
                                 </div>
 
