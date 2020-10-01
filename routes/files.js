@@ -16,9 +16,26 @@ var LRU = require('lru-cache');
 var cache = new LRU({ maxAge: 2.592e9 });
 var fs = require('fs');
 var path = require('path');
+var disk = require('diskusage');
 var request = require('request');
 var express = require('express');
 var router = express.Router();
+
+var image_save = false;
+
+setInterval(function() {
+  disk.check('/', function(err, info) {
+    if (err) {
+      console.error(err);
+      image_save = false;
+    } else {
+      image_save = info && info.available && info.available > 1073741824;
+    }
+    if (!image_save) {
+      console.log('Server less than 1GB, image saving is disabled!');
+    }
+  });
+}, 3600000);
 
 /**
  * Save file to server.
@@ -44,9 +61,10 @@ router.get(
       return res.redirect(302, cache.get(origin) + '?' + r);
     }
 
-    var save = config.image.save
-      ? path.join(path.dirname(__filename), '..', origin)
-      : false;
+    var save =
+      config.image.save && image_save
+        ? path.join(path.dirname(__filename), '..', origin)
+        : false;
     var no_image =
       config.protocol +
       config.subdomain +
