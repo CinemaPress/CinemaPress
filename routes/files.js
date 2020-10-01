@@ -21,7 +21,7 @@ var request = require('request');
 var express = require('express');
 var router = express.Router();
 
-var image_save = false;
+var image_save = true;
 
 setInterval(function() {
   disk.check('/', function(err, info) {
