@@ -23,7 +23,7 @@ var router = express.Router();
 
 var image_save = true;
 
-setInterval(function() {
+function discCheck() {
   disk.check('/', function(err, info) {
     if (err) {
       console.error(err);
@@ -35,7 +35,10 @@ setInterval(function() {
       console.log('Server less than 1GB, image saving is disabled!');
     }
   });
-}, 3600000);
+}
+
+discCheck();
+setInterval(discCheck, 3600000);
 
 /**
  * Save file to server.
