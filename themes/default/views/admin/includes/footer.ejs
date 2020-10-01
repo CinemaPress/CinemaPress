@@ -805,19 +805,19 @@
       data.config.bomain = data.config.alt.bomain || data.config.ru.bomain || '<%- config.domain %>';
     }
 
-    if (data.config && data.config.alt.botdomain && !data.config.alt.bomain) {
+    if (data.config && data.config.alt && data.config.alt.botdomain && !data.config.alt.bomain) {
       data.config.alt.bomain = data.config.bomain || data.config.ru.bomain || '<%- config.domain %>';
     }
 
-    if (data.config && data.config.ru.subdomain && !data.config.ru.domain) {
+    if (data.config && data.config.ru && data.config.ru.subdomain && !data.config.ru.domain) {
       data.config.ru.domain = '<%- config.domain %>';
     }
 
-    if (data.config && data.config.ru.botdomain && !data.config.ru.bomain) {
+    if (data.config && data.config.ru && data.config.ru.botdomain && !data.config.ru.bomain) {
       data.config.ru.bomain = data.config.bomain || data.config.alt.bomain || '<%- config.domain %>';
     }
 
-    if (data.config && typeof data.config.botdomain === 'string' && typeof data.config.alt.botdomain === 'string' && typeof data.config.ru.botdomain === 'string' && typeof data.config.bomain === 'string' && typeof data.config.alt.bomain === 'string' && typeof data.config.ru.bomain === 'string' && typeof data.config.subdomain === 'string' && typeof data.config.ru.subdomain === 'string' && typeof data.config.ru.domain === 'string') {
+    if (data.config && typeof data.config.botdomain === 'string' && data.config.alt && typeof data.config.alt.botdomain === 'string' && data.config.ru && typeof data.config.ru.botdomain === 'string' && typeof data.config.bomain === 'string' && typeof data.config.alt.bomain === 'string' && typeof data.config.ru.bomain === 'string' && typeof data.config.subdomain === 'string' && typeof data.config.ru.subdomain === 'string' && typeof data.config.ru.domain === 'string') {
       var bot_domains = [data.config.botdomain + data.config.bomain, data.config.alt.botdomain + data.config.alt.bomain, data.config.ru.botdomain + data.config.ru.bomain].filter(Boolean);
       var hum_domains = [data.config.subdomain + '<%- config.domain %>', data.config.ru.subdomain + data.config.ru.domain].filter(Boolean);
 
