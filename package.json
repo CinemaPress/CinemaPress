@@ -49,7 +49,7 @@
     "nodemailer": "6.4.6",
     "lru-cache": "5.1.1",
     "adop": "2.3.0",
-    "object-path": "0.11.4",
+    "object-path": "0.11.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "avataaars": "1.2.1",
