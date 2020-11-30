@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Yalnızca arama botu görür alternatif alanı",
 	"Настройка доменов только для России": "Rusya için sadece domain ayarlama",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Rus IP ile kullanıcılar ve arama motoru botlara Tek alanları kurma",
-	"Исключить фильмы из Турбо-страниц": "Turbo sayfalarından movieleri dışla"
+	"Исключить фильмы из Турбо-страниц": "Turbo sayfalarından movieleri dışla",
+	"Открыть индексацию веб-сайта": "Websitesi dizinini aç"
 }

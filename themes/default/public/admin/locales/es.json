@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Un dominio alternativo que no ve más que un robot de búsqueda",
 	"Настройка доменов только для России": "Configuración del dominio sólo para Rusia",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "La creación de dominios individuales a los usuarios con IP rusa y robots de los motores de búsqueda",
-	"Исключить фильмы из Турбо-страниц": "Suprimir las películas de páginas Turbo"
+	"Исключить фильмы из Турбо-страниц": "Suprimir las películas de páginas Turbo",
+	"Открыть индексацию веб-сайта": "Indexación abierta del sitio web"
 }

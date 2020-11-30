@@ -9,7 +9,7 @@ for NGINX_DIR in $(ls /home/*/config/production/nginx/conf.d/default.conf); do
             nginx -t && nginx -s reload;
         fi
         NGINX_INIT=${NGINX_NOW}
-        sleep 5
+        sleep 60
     done &
 done
 crond && /usr/sbin/nginx -g 'daemon off;'

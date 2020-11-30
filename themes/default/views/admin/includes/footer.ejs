@@ -657,7 +657,7 @@
     }
 
     if (data.content && data.content.content_movies && data.content.content_movies.split(',').length > 100) {
-      self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
+      // self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
     }
 
     if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {

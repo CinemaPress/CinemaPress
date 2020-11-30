@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Uwanja mbadala ambao unaona tu search bot",
 	"Настройка доменов только для России": "Kuweka uwanja tu kwa ajili ya Urusi",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Kuanzisha nyanja binafsi watumiaji na Urusi IP na roboti injini",
-	"Исключить фильмы из Турбо-страниц": "Tenga filamu kutoka kurasa Turbo"
+	"Исключить фильмы из Турбо-страниц": "Tenga filamu kutoka kurasa Turbo",
+	"Открыть индексацию веб-сайта": "Fungua indexation ya tovuti"
 }

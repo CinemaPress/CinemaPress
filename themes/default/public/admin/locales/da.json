@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Et alternativ domæne, som kun ser en søgning bot",
 	"Настройка доменов только для России": "Indstilling domænet kun for Rusland",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Opsætning af individuelle domæner til brugere med russiske IP og søgemaskine bots",
-	"Исключить фильмы из Турбо-страниц": "Udeluk movie fra Turbo-sider"
+	"Исключить фильмы из Турбо-страниц": "Udeluk movie fra Turbo-sider",
+	"Открыть индексацию веб-сайта": "Åbn website indeksering"
 }

@@ -62,12 +62,16 @@ function indexEpisode(options, callback) {
   if (cache.has(hash)) {
     episodes = cache.get(hash);
   } else {
-    episodes = require(path.join(
-      path.dirname(__filename),
-      '..',
-      'files',
-      'episodes.json'
-    ));
+    try {
+      episodes = require(path.join(
+        path.dirname(__filename),
+        '..',
+        'files',
+        'episodes.json'
+      ));
+    } catch (e) {
+      episodes = [];
+    }
     cache.set(hash, episodes);
   }
   var result = {};

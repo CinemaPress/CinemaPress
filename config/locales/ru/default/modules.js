@@ -270,7 +270,7 @@ module.exports = {
     }
   },
   "episode": {
-    "status": false,
+    "status": true,
     "data": {
       "title": "[title] [season] сезон [episode] серия [translate]",
       "h1": "[title] [season] сезон [episode] серия [translate]",
@@ -284,9 +284,13 @@ module.exports = {
         "count": 12,
         "order": 2,
         "latest": 0,
-        "custom": []
+        "custom": [
+          "https://pleer.video/episodes.json ~ results.0.kp_id ~ results.0.season ~ results.0.episode"
+        ]
       },
-      "custom": [],
+      "custom": [
+        "https://pleer.video/[kp_id].json ~ embeds.0.season ~ embeds.0.episode"
+      ],
       "translations": ""
     }
   },
@@ -488,7 +492,10 @@ module.exports = {
         "count": 4,
         "tags": "Обновления"
       },
-      "custom": [],
+      "custom": [
+        "https://pleer.video/movies.json ~ results.0.kp_id ~ poslednie-obnovleniya-filmov",
+        "https://pleer.video/episodes.json ~ results.0.kp_id ~ poslednie-obnovleniya-serialov"
+      ],
       "scraper": ""
     }
   },

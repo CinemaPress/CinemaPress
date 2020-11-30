@@ -126,10 +126,25 @@
                                     </div>
                                     <div class="inner-padding">
                                         <div class="row">
+                                            <% if (config.codes.robots.indexOf('User-agent: *\nDisallow: /\n') + 1) { %>
+                                                <div class="col-lg-12 col-xs-12 text-center" style="margin-bottom: 10px" id="allow">
+                                                    <span class="btn btn-primary btn-sm btn-block allow" onclick="document.getElementById('robots').value = document.getElementById('robots').value.replace('User-agent: *\nDisallow: /\n', 'User-agent: *\nAllow: /\n');document.getElementById('save').click();this.innerHTML='<span class=\'fa fa-spinner fa-spin\'></span>';setTimeout(function() {document.getElementById('allow').style.display = 'none'}, 5000)">
+                                                        <i class="fas fa-robot"></i>&nbsp;&nbsp;<%= __('Открыть индексацию веб-сайта') %>
+                                                    </span>
+                                                </div>
+                                                <style>
+                                                    .allow {
+                                                        background: #1a2035;
+                                                        border: 1px solid #2f374b !important;
+                                                    }
+                                                    .allow:hover {
+                                                        background: #716aca;
+                                                        border: 1px solid #2f374b !important;
+                                                    }
+                                                </style>
+                                            <% } %>
                                             <div class="col-lg-12 col-xs-12 text-center">
-                                                <textarea class="form-control textarea" name="config.codes.robots"
-                                                          autocomplete="off" autocapitalize="off" spellcheck="false"
-                                                          style="border-bottom: 0; border-radius: 3px 3px 0 0; height: 600px !important;"><%- config.codes.robots %></textarea>
+                                                <textarea class="form-control textarea" name="config.codes.robots" autocomplete="off" autocapitalize="off" spellcheck="false" style="border-bottom: 0; border-radius: 3px 3px 0 0" id="robots"><%- config.codes.robots %></textarea>
                                                 <div class="text-left sitemap-robots">
                                                     <div>
                                                         Sitemap: <%- config.protocol + config.subdomain + config.domain + '/' + config.urls.sitemap %>

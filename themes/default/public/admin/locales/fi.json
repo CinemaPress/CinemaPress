@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Vaihtoehtoinen verkkotunnuksen, joka näkee vain hakurobotti",
 	"Настройка доменов только для России": "Asettaminen verkkotunnus vain Venäjä",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Perustamalla yksittäisiä toimialueita käyttäjille Venäjän IP ja hakukonerobotit",
-	"Исключить фильмы из Турбо-страниц": "Sulkea elokuvia Turbo sivut"
+	"Исключить фильмы из Турбо-страниц": "Sulkea elokuvia Turbo sivut",
+	"Открыть индексацию веб-сайта": "Avaa verkkosivuston indeksointi"
 }

@@ -975,5 +975,6 @@
 	"Альтернативный домен, который видит только поисковый бот": "Egy másik domain látja, csak a keresési bot",
 	"Настройка доменов только для России": "Beállítása a domain csak Oroszország",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Beállítása egyes tartományok az oroszországi IP és a keresőrobotok",
-	"Исключить фильмы из Турбо-страниц": "Kizárása movieek Turbo lapok"
+	"Исключить фильмы из Турбо-страниц": "Kizárása movieek Turbo lapok",
+	"Открыть индексацию веб-сайта": "Nyissa meg a weboldal indexációját"
 }

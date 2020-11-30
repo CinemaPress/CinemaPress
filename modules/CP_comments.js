@@ -84,7 +84,7 @@ function headComments() {
     data += admins.join('');
   }
 
-  return data;
+  return modules.comments.data.fast.active ? '' : data;
 }
 
 /**

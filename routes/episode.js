@@ -97,15 +97,17 @@ router.get('/?', function(req, res) {
         if (err || !movies || !movies.length) return callback();
         var movie = movies[0];
         var parse = task.replace(/\s*~\s*/g, '~').split('~');
-        if (task.charAt(0) === '#' || parse.length < 4) {
+        if (task.charAt(0) === '#' || parse.length < 3) {
           return callback();
         }
         var params = {
           url: parse[0],
           season: parse[1],
-          episode: parse[2],
-          translate: parse[3]
+          episode: parse[2]
         };
+        if (parse[3]) {
+          params.translate = parse[3];
+        }
         params.url = params.url
           .replace(/\[kp_id]/, movie.kp_id ? movie.kp_id : '')
           .replace(/\[imdb_id]/, movie.imdb_id ? movie.imdb_id : '')
@@ -118,6 +120,7 @@ router.get('/?', function(req, res) {
           serials = cache.get(hash);
           return callback();
         }
+        var group = 'season.episode';
         var obj = [
           {
             name: 'season',
@@ -128,13 +131,16 @@ router.get('/?', function(req, res) {
             name: 'episode',
             path: parse[2],
             type: 'number'
-          },
-          {
+          }
+        ];
+        if (parse[3]) {
+          group = 'translate.season.episode';
+          obj.push({
             name: 'translate',
             path: parse[3],
             type: 'string'
-          }
-        ];
+          });
+        }
         request(
           {
             url: params.url,
@@ -146,7 +152,12 @@ router.get('/?', function(req, res) {
               console.error(task, (error && error.code) || '', body);
               return callback();
             }
-            serials = adop(tryParseJSON(body), obj, 'translate.season.episode');
+            serials = adop(tryParseJSON(body), obj, group);
+            if (group === 'season.episode') {
+              serials = {
+                '': serials
+              };
+            }
             Object.keys(serials).forEach(function(translate) {
               Object.keys(serials[translate]).forEach(function(season) {
                 Object.keys(serials[translate][season]).forEach(function(
@@ -160,7 +171,9 @@ router.get('/?', function(req, res) {
                     poster: movie.poster,
                     season: season + ' ' + modules.episode.data.season,
                     episode: episode + ' ' + modules.episode.data.episode,
-                    translate: modules.episode.data.translate + ' ' + translate,
+                    translate: translate
+                      ? modules.episode.data.translate + ' ' + translate
+                      : '',
                     pathname:
                       movie.pathname +
                       '/s' +

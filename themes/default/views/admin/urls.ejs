@@ -109,8 +109,7 @@
                                                                    value="<%= config.urls.admin.replace('admin-', '') %>">
                                                         </div>
                                                         <div class="spacer-10"></div>
-                                                        <a href="javascript:void(0)" class="btn btn-default btn-block"
-                                                           onclick="document.getElementById('save').click();this.innerHTML='<span class=\'fa fa-spinner fa-spin\'></span>'"><%= __('Сохранить изменения') %></a>
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-block" onclick="document.getElementById('save').click();this.innerHTML='<span class=\'fa fa-spinner fa-spin\'></span>';var self=this;setTimeout(function(){self.innerHTML='<%= __('Сохранить изменения')  %>'},5000)"><%= __('Сохранить изменения') %></a>
                                                     </div>
                                                 </div>
                                             </div>
