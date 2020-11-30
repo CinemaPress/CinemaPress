@@ -805,6 +805,9 @@ ip_install() {
             wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
             _content "Success ..."
             _s
+            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
+              pm2-runtime stop process.json
+            fi
             exit 0
         else
             wget -qO /dev/null -o /dev/null "${STS}&status=FAIL"
@@ -1387,6 +1390,38 @@ read_lang() {
             fi
         done
         if [ "${CP_LANG}" = "" ]; then exit 1; fi
+    fi
+}
+read_cloudflare_zone_id() {
+    CLOUDFLARE_ZONE_ID=${1:-${CLOUDFLARE_ZONE_ID}}
+    if [ "${CLOUDFLARE_ZONE_ID}" = "" ]; then
+        _header "CLOUDFLARE ZONE ID"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                CLOUDFLARE_ZONE_ID=${1}
+                CLOUDFLARE_ZONE_ID=`echo ${CLOUDFLARE_ZONE_ID} | iconv -c -t UTF-8`
+                echo ": ${CLOUDFLARE_ZONE_ID}"
+            else
+                read -e -p ': ' CLOUDFLARE_ZONE_ID
+                CLOUDFLARE_ZONE_ID=`echo ${CLOUDFLARE_ZONE_ID} | iconv -c -t UTF-8`
+            fi
+            if [ "${CLOUDFLARE_ZONE_ID}" != "" ]
+            then
+                if echo "${CLOUDFLARE_ZONE_ID}" | grep -qE ^[.a-zA-Z0-9-]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${CLOUDFLARE_ZONE_ID}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters \n"
+                    printf "${NC}         and numbers are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${CLOUDFLARE_ZONE_ID}" = "" ]; then exit 1; fi
     fi
 }
 read_cloudflare_email() {
@@ -3515,30 +3550,35 @@ while [ "${WHILE}" -lt "2" ]; do
         "static" )
             read_domain "${2}"
             sh_not
-            RCS=$(docker exec "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
-            if [ "${RCS}" = "" ]; then
-                if [ "${4}" != "" ]; then
-                    docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
-                        >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
-                    sleep 10
-                    CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
-                    sleep 3
-                    CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
-                    if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
-                        _header "ERROR"
-                        _content
-                        _content "Cannot connect to backup storage."
-                        _content
-                        _s
-                        exit 0
-                    fi
-                    cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
+            if [ "${4}" != "" ]; then
+                if [ "${3}" = "config" ]; then
+                  docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${4}" pass "${5}" \
+                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
                 else
-                    echo "NOT CINEMASTATIC"
+                  RCS=$(docker exec "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
+                  if [ "${RCS}" = "" ]; then
+                    docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
+                      >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                  fi
+                fi
+                sleep 10
+                CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
+                sleep 3
+                CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
+                if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+                    _header "ERROR"
+                    _content
+                    _content "Cannot connect to backup storage."
+                    _content
+                    _s
                     exit 0
                 fi
+                cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
+            else
+                echo "NOT CINEMASTATIC"
+                exit 0
             fi
-            if [ "${3}" = "restore" ] || [ "${5}" = "restore" ]; then
+            if [ "${3}" = "restore" ] || [ "${5}" = "restore" ] || [ "${6}" = "restore" ]; then
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
@@ -3547,7 +3587,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/app.tar
                     rm -rf /home/${CP_DOMAIN}/app.tar
                 fi
-            elif [ "${3}" = "create" ] || [ "${5}" = "create" ]; then
+            elif [ "${3}" = "create" ] || [ "${5}" = "create" ] || [ "${6}" = "create" ]; then
                 cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar \
                     files/poster \
                     files/picture
@@ -3563,6 +3603,30 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi
+            exit 0
+        ;;
+        "cf" )
+            _br
+            read_domain "${2}"
+            sh_not
+            read_cloudflare_zone_id "${3}"
+            read_cloudflare_email "${4}"
+            read_cloudflare_api_key "${5}"
+            _s "${2}"
+            IP=$(wget -q "https://ipinfo.io/ip" -O -)
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container cron \
+                >>/var/log/docker_cron_"$(date '+%d_%m_%Y')".log 2>&1
+            if [ -f "/home/${CP_DOMAIN}/files/subdomains.txt" ]; then
+                while IFS= read -r subdomain; do
+                    DOMAIN="${subdomain}.${CP_DOMAIN}"
+                    curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records" \
+                        -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+                        -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+                        -H "Content-Type: application/json" \
+                        --data "{\"type\":\"A\",\"name\":\"${DOMAIN}\",\"content\":\"${IP}\",\"proxied\":true}"
+                done <"/home/${CP_DOMAIN}/files/subdomains.txt"
+            fi
+            _s
             exit 0
         ;;
         "ping" )
@@ -3599,6 +3663,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " cms example.com backup [create,restore]"; _br;
             printf " bot       - Install website for bots"; _br;
             printf " bot_https - Install website for bots and generate SSL"; _br;
+            printf " cf        - Adding all subdomains to CloudFlare"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
             printf " splash example.com github_login github_pass"; _br;
