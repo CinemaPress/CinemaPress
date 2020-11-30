@@ -185,7 +185,7 @@ module.exports = {
     "search" : "Search «[search]» [sorting] [page]",
     "num": "on page [num]",
     "movie": {
-      "movie": "[title]",
+      "movie": "(movies) { Movie «[title]» }\n(series) { TV-Series «[title]» }\n(cartoons) { Cartoon «[title]» }\n(animated) { Animated «[title]» }\n(anime) { Anime «[title]» }\n(tv) { TV-show «[title]» }",
       "online": "[title] online",
       "download": "[title] download",
       "trailer": "[title] trailer",

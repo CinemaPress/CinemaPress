@@ -186,7 +186,7 @@ module.exports = {
     "search": "Поиск фильма «[search]» [sorting] [page]",
     "num": "на странице [num]",
     "movie": {
-      "movie": "[title]",
+      "movie": "(фильмы) { Фильм «[title]» }\n(сериалы) { Сериал «[title]» }\n(мультфильмы) { Мультфильм «[title]» }\n(мультсериалы) { Мультсериал «[title]» }\n(аниме) { Аниме «[title]» }\n(передачи) { ТВ-передача «[title]» }",
       "online": "[title] онлайн",
       "download": "[title] скачать",
       "trailer": "[title] трейлер",
