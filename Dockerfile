@@ -25,7 +25,7 @@ RUN set -o pipefail \
     && apk update \
     && apk --no-cache add --virtual .build-dependencies make g++ gcc gtk-doc gobject-introspection expat-dev glib-dev libpng-dev libjpeg-turbo-dev giflib-dev librsvg-dev \
     && apk add -u --no-cache sudo python wget curl tar gzip unzip git sed bash nano openrc openssl dos2unix busybox-extras tzdata \
-    && apk add -u --no-cache npm mysql-client memcached sphinx=2.2.11-r1 \
+    && apk add -u --no-cache npm mysql-client memcached sphinx=2.2.11-r3 \
     && wget -qO - https://rclone.org/install.sh | bash \
     && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \
