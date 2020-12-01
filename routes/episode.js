@@ -205,7 +205,11 @@ router.get('/?', function(req, res) {
       });
     },
     function() {
-      if (serials && Object.keys(serials).length) {
+      if (
+        serials &&
+        Object.keys(serials).length &&
+        (typeof serials[''] === 'undefined' || Object.keys(serials['']).length)
+      ) {
         return res.json(tv ? CP_tv.episode(serials, options) : serials);
       } else {
         return res.status(404).json({ error: 'NO EPISODES' });
