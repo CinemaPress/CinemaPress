@@ -105,6 +105,7 @@ router.get('/?', function(req, res, next) {
     var collection = req.query.collection
       ? CP_regexp.str(req.query.collection)
       : '';
+    var page = req.query.page ? CP_regexp.str(req.query.page) : 1;
     var tag = req.query.tag
       ? { content_tags: CP_regexp.str(req.query.tag) }
       : '';
@@ -122,13 +123,18 @@ router.get('/?', function(req, res, next) {
         }
         if (contents && contents.length && contents[0].movies) {
           var query_id = [];
-          contents[0].movies.forEach(function(item, i, arr) {
-            query_id.push(item + '^' + (parseInt(arr.length) - parseInt(i)));
-          });
+          contents[0].movies
+            .slice(
+              config.default.count * (page ? page - 1 : 0),
+              config.default.count * (!page ? 1 : page)
+            )
+            .forEach(function(item) {
+              query_id.push(item);
+            });
           var query = { query_id: query_id.join('|') };
           CP_get.movies(
             query,
-            contents[0].movies.length,
+            config.default.count,
             '',
             1,
             true,
