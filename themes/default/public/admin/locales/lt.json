@@ -976,5 +976,11 @@
 	"Настройка доменов только для России": "Jis yra nustatyti tik domeną Rusijai",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Įsteigti individualius domenų vartotojams su Rusijos TL ir paieškos žinučių",
 	"Исключить фильмы из Турбо-страниц": "Išskirkite movieus Turbo puslapių",
-	"Открыть индексацию веб-сайта": "Atidarykite svetainės indeksavimą"
+	"Открыть индексацию веб-сайта": "Atidarykite svetainės indeksavimą",
+	"Автоматическое прописывание поддомена в DNS": "Automatinis subdomeno pateikimas DNS",
+	"API CloudFlare": "API CloudFlare",
+	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Visi subdomenai, kuriuos nurodote, administratoriaus skydelis bus automatiškai išdėstytas DNS Cloudflare",
+	"Global API Key": "Global API Key",
+	"Проксировать": "Pereiti",
+	"Не проксировать": "Negalima tęsti"
 }

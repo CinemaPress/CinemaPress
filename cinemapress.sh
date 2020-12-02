@@ -1897,7 +1897,9 @@ _line() {
     printf "${C}------------------------------------------------------------------\n${NC}"
 }
 _br() {
-    printf "\n${NC}"
+    if [ "${1}" = "" ]; then
+        printf "\n${NC}"
+    fi
 }
 _s() {
     if [ "${1}" = "" ]; then
@@ -2376,7 +2378,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "passwd" )
-            _br
+            _br "${3}"
             read_domain "${2}"
             sh_not
             read_password "${3}"
@@ -2391,7 +2393,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "images" )
-            _br
+            _br "${3}"
             read_domain "${2}"
             sh_not
             read_key "${3}"
@@ -2419,7 +2421,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "premium" )
-            _br
+            _br "${4}"
             read_domain "${2}"
             sh_not
             if [ "${4}" = "" ]; then exit 0; fi
@@ -2454,18 +2456,18 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "stop"|"start"|"restart" )
-            _br
-            read_domain ${2}
+            _br "${2}"
+            read_domain "${2}"
             sh_not
-            _s ${2}
+            _s "${2}"
             docker ${1} ${CP_DOMAIN_} >>/var/log/docker_${1}_"$(date '+%d_%m_%Y')".log 2>&1
             exit 0
         ;;
         "zero" )
-            _br
-            read_domain ${2}
+            _br "${2}"
+            read_domain "${2}"
             sh_not
-            _s ${2}
+            _s "${2}"
             _header "WARNING";
             _content
             _content "This command will delete all movies!"
@@ -2490,7 +2492,7 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
         ;;
         "reload"|"actual"|"available"|"speed"|"cron" )
-            _br
+            _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
@@ -2704,7 +2706,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "optimal" )
-            _br
+            _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
@@ -2720,7 +2722,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     -n0 -f /home/*/log/out*.log
                 exit 0
             fi
-            _br
+            _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
@@ -3605,28 +3607,52 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
-        "cf" )
-            _br
+        "cf"|"subdomains"|"sub" )
+            _br "${4}"
             read_domain "${2}"
-            sh_not
-            read_cloudflare_zone_id "${3}"
-            read_cloudflare_email "${4}"
-            read_cloudflare_api_key "${5}"
-            _s "${2}"
-            IP=$(wget -q "https://ipinfo.io/ip" -O -)
-            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container cron \
-                >>/var/log/docker_cron_"$(date '+%d_%m_%Y')".log 2>&1
-            if [ -f "/home/${CP_DOMAIN}/files/subdomains.txt" ]; then
-                while IFS= read -r subdomain; do
-                    DOMAIN="${subdomain}.${CP_DOMAIN}"
-                    curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records" \
-                        -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
-                        -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
-                        -H "Content-Type: application/json" \
-                        --data "{\"type\":\"A\",\"name\":\"${DOMAIN}\",\"content\":\"${IP}\",\"proxied\":true}"
-                done <"/home/${CP_DOMAIN}/files/subdomains.txt"
+            read_cloudflare_email "${3}"
+            read_cloudflare_api_key "${4}"
+            _s "${4}"
+            CLOUDFLARE_ZONE_ID=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones?name=${CP_DOMAIN}" \
+                -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+                -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+                -H "Content-Type: application/json" | \
+                sed -rn 's/.*"result":\[\{"id":"([A-Za-z0-9]*)".*/\1/p')
+            if [ "${CLOUDFLARE_ZONE_ID}" = "" ]; then
+              _line
+              printf "${Y} ☐ ZONE NOT FOUND [ ${NC}${CP_DOMAIN}${Y} ]\n${NC}"
+              _line
+              exit 0
             fi
-            _s
+            if [ -f "/home/${CP_DOMAIN}/files/${CP_DOMAIN}.sub.txt" ]; then
+                STATUS1=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/import" \
+                    -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+                    -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+                    --form "file=@/home/${CP_DOMAIN}/files/${CP_DOMAIN}.sub.txt" \
+                    --form 'proxied=false' | \
+                    sed -rn 's/.*"success":(true|false).*/\1/p')
+                _line
+                if [ "${STATUS1}" = "true" ]; then
+                  printf "${G} ✓ SUCCESS [ ${NC}${CP_DOMAIN}.sub.txt${G} ]\n${NC}"
+                else
+                  printf "${R} ☐ ERROR [ ${NC}${CP_DOMAIN}.sub.txt${R} ]\n${NC}"
+                fi
+            fi
+            if [ -f "/home/${CP_DOMAIN}/files/${CP_DOMAIN}.proxied.sub.txt" ]; then
+                STATUS2=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/import" \
+                    -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+                    -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+                    --form "file=@/home/${CP_DOMAIN}/files/${CP_DOMAIN}.proxied.sub.txt" \
+                    --form 'proxied=true' | \
+                    sed -rn 's/.*"success":(true|false).*/\1/p')
+                _line
+                if [ "${STATUS2}" = "true" ]; then
+                  printf "${G} ✓ SUCCESS [ ${NC}${CP_DOMAIN}.proxied.sub.txt${G} ]\n${NC}"
+                else
+                  printf "${R} ☐ ERROR [ ${NC}${CP_DOMAIN}.proxied.sub.txt${R} ]\n${NC}"
+                fi
+            fi
+            if [ "${STATUS1}" != "" ] ||  [ "${STATUS2}" != "" ]; then _s; fi
             exit 0
         ;;
         "ping" )

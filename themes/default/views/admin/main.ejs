@@ -451,6 +451,84 @@
                                                 </article>
                                             </div>
                                         </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Автоматическое прописывание поддомена в DNS') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label">
+                                                                            <i class="far fa-keyboard"></i>&nbsp;&nbsp;&nbsp;<%= __('API CloudFlare') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <%= __('Email') %>:
+                                                                                    </span>
+                                                                                    <input name="config.dns.cloudflare.email" value="<%= config.dns.cloudflare.email %>" class="form-control" type="text" placeholder="user@protonmail.com" style="border-right: 0">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-xs-12">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon">
+                                                                                        <%= __('Global API Key') %>:
+                                                                                    </span>
+                                                                                    <input name="config.dns.cloudflare.key" value="<%= config.dns.cloudflare.key %>" class="form-control" type="text" placeholder="22d259e410c39367633fba21988a7d45d05c8" style="border-right: 0">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.dns.cloudflare.proxied" value="true" <% if (config.dns.cloudflare.proxied === 'true') { %> checked=""<% } %> type="radio"><span></span>
+                                                                                        <span><%= __('Проксировать') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-xs-6 text-center">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.dns.cloudflare.proxied" value="false" <% if (config.dns.cloudflare.proxied !== 'true') { %> checked=""<% } %> type="radio"><span></span>
+                                                                                        <span><%= __('Не проксировать') %></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1729,6 +1807,9 @@
                 radios2.forEach(function(radio) {
                   radio.addEventListener('change', function() {
                     document.querySelector('[name=\'config.ru.subdomain\']').value = dayToLetter(this.value).split('').reverse().join('');
+                    if (document.querySelector('[name=\'config.ru.domain\']').value === '') {
+                      document.querySelector('[name=\'config.ru.domain\']').value = '<%= config.domain %>';
+                    }
                   });
                 });
               }

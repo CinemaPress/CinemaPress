@@ -20,6 +20,13 @@ module.exports = {
     "botdomain": "",
     "random": 0
   },
+  "dns": {
+    "cloudflare": {
+      "email": "",
+      "key": "",
+      "proxied": "true"
+    }
+  },
   "blacklist": 0,
   "email": "support@example.com",
   "theme": "default",

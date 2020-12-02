@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var CP_sub = require('../lib/CP_sub');
 var CP_get = require('../lib/CP_get');
 var CP_save = require('../lib/CP_save');
 var CP_cache = require('../lib/CP_cache');
@@ -824,9 +825,54 @@ router.post('/change', function(req, res) {
         ) {
           form.config.urls.admin = configs.config.urls.admin;
         }
+        var dns_cloudflare = false;
+        if (
+          (form.config.dns &&
+            form.config.dns.cloudflare &&
+            form.config.dns.cloudflare.email &&
+            form.config.dns.cloudflare.email !==
+              configs.config.dns.cloudflare.email) ||
+          (form.config.dns &&
+            form.config.dns.cloudflare &&
+            form.config.dns.cloudflare.email &&
+            form.config.dns.cloudflare.key !==
+              configs.config.dns.cloudflare.key) ||
+          (form.config.subdomain &&
+            form.config.subdomain !== configs.config.subdomain) ||
+          (form.config.botdomain &&
+            form.config.botdomain !== configs.config.botdomain) ||
+          (form.config.bomain &&
+            form.config.bomain !== configs.config.bomain) ||
+          (form.config.alt &&
+            form.config.alt.botdomain &&
+            form.config.alt.botdomain !== configs.config.alt.botdomain) ||
+          (form.config.alt &&
+            form.config.alt.bomain &&
+            form.config.alt.bomain !== config.config.alt.bomain) ||
+          (form.config.ru &&
+            form.config.ru.subdomain &&
+            form.config.ru.subdomain !== configs.config.ru.subdomain) ||
+          (form.config.ru &&
+            form.config.ru.domain &&
+            form.config.ru.domain !== configs.config.ru.domain) ||
+          (form.config.ru &&
+            form.config.ru.botdomain &&
+            form.config.ru.botdomain !== configs.config.ru.botdomain) ||
+          (form.config.ru &&
+            form.config.ru.bomain &&
+            form.config.ru.bomain !== configs.config.ru.bomain)
+        ) {
+          dns_cloudflare = true;
+        }
         configs.config = parseData(configs.config, form.config);
         CP_save.save(configs.config, 'config', function(err, result) {
-          return err ? callback(err) : callback(null, result);
+          if (dns_cloudflare) {
+            CP_sub.all(function() {
+              return err ? callback(err) : callback(null, result);
+            });
+          } else {
+            return err ? callback(err) : callback(null, result);
+          }
         });
       },
       modules: function(callback) {

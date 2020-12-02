@@ -976,5 +976,11 @@
 	"Настройка доменов только для России": "Đặt tên miền duy nhất cho Nga",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Thiết lập các lĩnh vực cá nhân cho người dùng với IP ở Nga và chương trình công cụ tìm kiếm",
 	"Исключить фильмы из Турбо-страниц": "Loại trừ các bộ phim từ các trang Turbo",
-	"Открыть индексацию веб-сайта": "Mở lập chỉ mục trang web"
+	"Открыть индексацию веб-сайта": "Mở lập chỉ mục trang web",
+	"Автоматическое прописывание поддомена в DNS": "Tự động gửi tên miền phụ trong DNS",
+	"API CloudFlare": "API CloudFlare",
+	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Tất cả các tên miền phụ mà bạn chỉ định bảng quản trị sẽ được tự động đánh vần trong DNS CloudFlare",
+	"Global API Key": "Global API Key",
+	"Проксировать": "Tiến hành với",
+	"Не проксировать": "Đừng tiến hành"
 }

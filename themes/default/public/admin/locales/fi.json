@@ -976,5 +976,11 @@
 	"Настройка доменов только для России": "Asettaminen verkkotunnus vain Venäjä",
 	"Настройка отдельных доменов для пользователей с российским IP и поисковых ботов": "Perustamalla yksittäisiä toimialueita käyttäjille Venäjän IP ja hakukonerobotit",
 	"Исключить фильмы из Турбо-страниц": "Sulkea elokuvia Turbo sivut",
-	"Открыть индексацию веб-сайта": "Avaa verkkosivuston indeksointi"
+	"Открыть индексацию веб-сайта": "Avaa verkkosivuston indeksointi",
+	"Автоматическое прописывание поддомена в DNS": "Automaattinen aliverkkotunnus DNS: ssä",
+	"API CloudFlare": "API CloudFlare",
+	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Kaikki aliverkkotunnukset, joita määrität Admin-paneelin, kirjoitetaan automaattisesti DNS Cloudflareissa",
+	"Global API Key": "Global API Key",
+	"Проксировать": "Edetä",
+	"Не проксировать": "Älä jatka"
 }
