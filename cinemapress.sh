@@ -2866,7 +2866,7 @@ while [ "${WHILE}" -lt "2" ]; do
             NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
             if [ "${NGINX_STATUS}" != "" ]; then
                 docker exec nginx nginx -s reload >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
-                _header "DOMAIN FOR BOTS"
+                _header "DOMAIN FOR BOTS / ALTERNATE DOMAIN"
                 _content
                 _content "${CP_BOMAIN}"
                 _content

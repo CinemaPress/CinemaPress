@@ -860,7 +860,9 @@ router.post('/change', function(req, res) {
             form.config.ru.botdomain !== configs.config.ru.botdomain) ||
           (form.config.ru &&
             form.config.ru.bomain &&
-            form.config.ru.bomain !== configs.config.ru.bomain)
+            form.config.ru.bomain !== configs.config.ru.bomain) ||
+          (form.config.botdomains &&
+            form.config.botdomains !== configs.config.botdomains)
         ) {
           dns_cloudflare = true;
         }
