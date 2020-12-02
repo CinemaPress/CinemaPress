@@ -848,7 +848,7 @@ router.post('/change', function(req, res) {
             form.config.alt.botdomain !== configs.config.alt.botdomain) ||
           (form.config.alt &&
             form.config.alt.bomain &&
-            form.config.alt.bomain !== config.config.alt.bomain) ||
+            form.config.alt.bomain !== configs.config.alt.bomain) ||
           (form.config.ru &&
             form.config.ru.subdomain &&
             form.config.ru.subdomain !== configs.config.ru.subdomain) ||
