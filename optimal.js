@@ -31,6 +31,7 @@ if (['arya'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 6;
   modules.content.data.news.count = 3;
+  modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
     '#14181c'
@@ -42,6 +43,7 @@ if (['bran'].indexOf(theme) + 1) {
   modules.comments.data.fast.recent.display = [];
   modules.comments.data.disqus.recent.display = [];
   modules.comments.data.fast.recent.num_items = 0;
+  modules.comments.data.fast.recent.display = ['index'];
   modules.comments.data.disqus.recent.num_items = 0;
   modules.comments.data.hypercomments.recent.num_items = 0;
   config.default.count = 12;
@@ -83,6 +85,7 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
 
 if (['joffrey'].indexOf(theme) + 1) {
   modules.related.data.types.year.count = 7;
+  modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
     '#5e81a8'
@@ -152,6 +155,7 @@ if (['mormont'].indexOf(theme) + 1) {
 
 if (['ramsay'].indexOf(theme) + 1) {
   modules.episode.data.index.count = 24;
+  modules.comments.data.fast.recent.display = ['index'];
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
     '#333333'
