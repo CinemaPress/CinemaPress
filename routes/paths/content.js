@@ -259,6 +259,12 @@ function oneContent(url, page, sorting, options, callback) {
               contents[0].movies &&
               contents[0].movies.length
             ) {
+              if (contents[0].tags.indexOf('NoSorting') + 1) {
+                sorting = '';
+              }
+              if (contents[0].tags.indexOf('NoPagination') + 1) {
+                page = 1;
+              }
               var query_id = [];
               if (sorting) {
                 contents[0].movies.forEach(function(item) {

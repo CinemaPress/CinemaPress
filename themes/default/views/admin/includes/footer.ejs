@@ -662,6 +662,28 @@
       // self.innerHTML = '<span class="fa fa-exclamation-triangle text-danger"></span>&nbsp;&nbsp;<%= __('Желательно не больше 100 фильмов') %>';
     }
 
+    var noMore = 0;
+    if (data.content && data.content.content_tags && data.content.content_tags.indexOf('NoMore') + 1) {
+      data.content.content_tags.split(',').forEach(function(tag) {
+        if (tag.indexOf('NoMore') + 1) {
+          noMore = parseInt(tag.replace(/[^0-9]/g, '') || '200');
+        }
+      });
+    }
+
+    if (noMore && data.content && data.content.content_movies && data.content.content_movies.split(',').length > noMore) {
+      data.content.content_movies = data.content.content_movies.split(',').slice(0, noMore);
+    }
+
+    if (!noMore && data.content && data.content.content_movies && data.content.content_movies.split(',').length > 200) {
+      data.content.content_tags =
+        data.content.content_tags.indexOf('NoSorting') + 1
+          ? data.content.content_tags
+          : data.content.content_tags
+            ? data.content.content_tags + ',NoSorting'
+            : 'NoSorting';
+    }
+
     if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {
       data.movie.id = data.movie.kp_id;
     }
