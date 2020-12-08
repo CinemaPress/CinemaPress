@@ -36,6 +36,7 @@ if (['arya'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#14181c'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 6);
 }
 
 if (['bran'].indexOf(theme) + 1) {
@@ -81,6 +82,7 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#7e8594'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 3);
 }
 
 if (['joffrey'].indexOf(theme) + 1) {
@@ -90,6 +92,7 @@ if (['joffrey'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#5e81a8'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 10);
 }
 
 if (['hodor'].indexOf(theme) + 1) {
@@ -109,6 +112,7 @@ if (['hodor'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#1f2123'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 3);
 }
 
 if (['daenerys'].indexOf(theme) + 1) {
@@ -123,6 +127,7 @@ if (['daenerys'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#282350'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 3);
 }
 
 if (['tarly'].indexOf(theme) + 1) {
@@ -139,6 +144,7 @@ if (['tarly'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#333333'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 3);
 }
 
 if (['mormont'].indexOf(theme) + 1) {
@@ -188,6 +194,7 @@ if (['tormund'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#111216'
   );
+  modules.slider.data.movies = modules.slider.data.movies.slice(0, 6);
 }
 
 let mem = parseInt('' + os.totalmem() / 1000000);
