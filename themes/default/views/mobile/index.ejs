@@ -18,19 +18,17 @@ index[type].forEach(function (category) { %>
         <div class="info block">
             <% var moreEpisodes = false; %>
             <% category.movies.forEach(function (movie) { %>
-                <div <% if (movie.hide) { moreEpisodes = true; %>style="display:none" data-more-episodes="hide"
-                        <% } %>
-                >
+                <div <% if (movie.hide) { moreEpisodes = true; %>style="display:none" data-more-episodes="hide"<% } %>>
                     <div class="clear"></div>
                     <a href="<%- movie.url %>"><u><%= movie.title %></u>
-                        <span>
+                        <small style="font-size:10px">
                             <% if (movie.season) { %><%- movie.season %> <%- page.l.season %>
                             <% } %>
                             <% if (movie.episode) { %><%- movie.episode %> <%- page.l.episode %>
                             <% } %>
                             <% if (movie.translate) { %>(<%- movie.translate %>)
                             <% } %>
-                        </span>
+                        </small>
                     </a>
                 </div>
             <% }); %>
