@@ -82,7 +82,6 @@ if (['robb', 'sansa', 'tyrion'].indexOf(theme) + 1) {
     /#[a-z0-9]{6}/i,
     '#7e8594'
   );
-  modules.slider.data.movies = modules.slider.data.movies.slice(0, 3);
 }
 
 if (['joffrey'].indexOf(theme) + 1) {
