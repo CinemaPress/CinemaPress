@@ -50,7 +50,8 @@ post_commands() {
     fi
     if [ "`grep \"${LOCAL_DOMAIN}_renew\" /etc/crontab`" = "" ] \
     && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
-        sed -i "s/.*ssl.*//g" /etc/crontab &> /dev/null
+        sed -i "s/.*${LOCAL_DOMAIN}_ssl.*//g" /etc/crontab &> /dev/null
+        sed -i "s/.*${LOCAL_DOMAIN}\/config\/production\/nginx\/ssl\.d.*//g" /etc/crontab &> /dev/null
         echo -e "\n" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
         echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/renew_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
