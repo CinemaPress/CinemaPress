@@ -48,12 +48,13 @@ post_commands() {
         echo "@reboot root /usr/bin/cinemapress autostart \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
     fi
-    if [ "`grep \"${LOCAL_DOMAIN}_ssl\" /etc/crontab`" = "" ] \
+    if [ "`grep \"${LOCAL_DOMAIN}_renew\" /etc/crontab`" = "" ] \
     && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
+        sed -i "s/.*ssl.*//g" /etc/crontab &> /dev/null
         echo -e "\n" >>/etc/crontab
-        echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
-        echo "0 23 * * * root docker run --rm -v /home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt -v /home/${LOCAL_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini -v /var/log/letsencrypt:/var/log/letsencrypt certbot/dns-cloudflare renew --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini --quiet >>/home/${LOCAL_DOMAIN}/log/https_\$(date '+%d_%m_%Y').log 2>&1; docker exec -d nginx nginx -s reload" >>/etc/crontab
-        echo "# ----- ${LOCAL_DOMAIN}_ssl --------------------------------------" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
+        echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/renew_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
     fi
     if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
         CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
@@ -2703,6 +2704,28 @@ while [ "${WHILE}" -lt "2" ]; do
             docker start nginx
             docker start fail2ban
             docker start filestash
+            exit 0
+        ;;
+        "renew" )
+             _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            quiet=""
+            if [ "${3}" != "" ]; then quiet="--dry-run"; fi
+            docker run \
+                --rm \
+                -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt \
+                -v /home/${CP_DOMAIN}/config/production/nginx/letsencrypt:/var/lib/letsencrypt \
+                -v /home/${CP_DOMAIN}/config/production/nginx/cloudflare.ini:/cloudflare.ini \
+                -v /var/log/letsencrypt:/var/log/letsencrypt \
+                certbot/dns-cloudflare \
+                renew \
+                --dns-cloudflare \
+                --dns-cloudflare-credentials /cloudflare.ini \
+                ${quiet}
+            docker exec -d nginx nginx -s reload
+            post_commands
             exit 0
         ;;
         "optimal" )
