@@ -982,5 +982,6 @@
 	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Wszystkie subdomensy, które określasz panel administracyjny, zostaną automatycznie określone w DNS Cloudflare",
 	"Global API Key": "Global API Key",
 	"Проксировать": "Kontynuować",
-	"Не проксировать": "Nie postępuj"
+	"Не проксировать": "Nie postępuj",
+	"ожидает публикацию": "czekam na wydawnictwo"
 }

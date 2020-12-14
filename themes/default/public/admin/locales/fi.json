@@ -982,5 +982,6 @@
 	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Kaikki aliverkkotunnukset, joita määrität Admin-paneelin, kirjoitetaan automaattisesti DNS Cloudflareissa",
 	"Global API Key": "Global API Key",
 	"Проксировать": "Edetä",
-	"Не проксировать": "Älä jatka"
+	"Не проксировать": "Älä jatka",
+	"ожидает публикацию": "odotetaan julkaisua"
 }

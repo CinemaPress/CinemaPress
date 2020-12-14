@@ -982,5 +982,6 @@
 	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Subdomains zote ambazo unataja jopo la admin zitaelezwa moja kwa moja katika DNS Cloudflare",
 	"Global API Key": "Global API Key",
 	"Проксировать": "Kuendelea",
-	"Не проксировать": "Usiendelee"
+	"Не проксировать": "Usiendelee",
+	"ожидает публикацию": "kusubiri kwa kuchapisha"
 }

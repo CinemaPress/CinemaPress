@@ -981,5 +981,6 @@
   "Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "All subdomains that you specify in the admin panel will be automatically registered in DNS CloudFlare",
   "Global API Key": "Global API Key",
   "Проксировать": "Proxied",
-  "Не проксировать": "No proxied"
+  "Не проксировать": "No proxied",
+  "ожидает публикацию": "awaiting publication"
 }

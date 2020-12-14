@@ -982,5 +982,6 @@
 	"Все поддомены, которые Вы указываете в админ-панели, будут автоматически прописаны в DNS CloudFlare": "Alle underdomæner, som du angiver administratorpanelet, vil blive automatisk stavet ud i DNS Cloudflare",
 	"Global API Key": "Global API Key",
 	"Проксировать": "At fortsætte",
-	"Не проксировать": "Ikke gå videre"
+	"Не проксировать": "Ikke gå videre",
+	"ожидает публикацию": "venter på udgivelse"
 }

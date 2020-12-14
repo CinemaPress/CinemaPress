@@ -94,18 +94,38 @@
 
                     <div class="row" style="margin-top: -10px">
                         <% if (structure.url) { %>
-                            <div class="col-sm-6">
-                                <div class="spacer-10"></div>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" value="<%- structure.pathname %>"
-                                           disabled="disabled" data-movie_kp_id="<%- movie.kp_id %>">
-                                    <span class="input-group-addon">
-                                    <a href="<%- structure.url %>" target="_blank">
-                                        <span class="fa fa-external-link-square-alt"></span>
-                                    </a>
-                                </span>
+                            <% if ((parseInt(movie.kp_id) >= config.publish.start && parseInt(movie.kp_id) <= config.publish.stop) || parseInt(movie.kp_id) > 10000000) { %>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="<%- structure.pathname %>"
+                                               disabled="disabled" data-movie_kp_id="<%- movie.kp_id %>">
+                                        <span class="input-group-addon">
+                                        <a href="<%- structure.url %>" target="_blank">
+                                            <span class="fa fa-external-link-square-alt"></span>
+                                        </a>
+                                    </span>
+                                    </div>
                                 </div>
-                            </div>
+                            <% } else { %>
+                                <div class="col-sm-6">
+                                    <div class="spacer-10"></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="background:#1a2b35">
+                                            <a href="https://href.li/?https://www.kinopoisk.ru/film/<%- movie.kp_id %>/"
+                                               class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                                <span class="fa fa-external-link-square-alt"></span> ID <%- movie.kp_id %>
+                                            </a>
+                                        </span>
+                                        <input type="text" class="form-control" value="<% if (movie.type !== 1) { %><%= __('Фильм') %><% } else { %><%= __('Сериал') %><% } %> <%= __('ожидает публикацию') %>" disabled="disabled" data-movie_kp_id="<%- movie.kp_id %>" style="background:#1a2b35">
+                                        <span class="input-group-addon" style="background:#1a2b35">
+                                            <a href="/<%- config.urls.admin %>/publish" target="_blank">
+                                                <span class="fa fa-clock"></span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            <% } %>
                         <% } else { %>
                             <div class="col-sm-6">
                                 <div class="spacer-10"></div>
