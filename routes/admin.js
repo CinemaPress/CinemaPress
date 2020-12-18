@@ -1173,25 +1173,28 @@ router.post('/upload/:renamed?', function(req, res) {
       ['medium', 'small'],
       1,
       function(size, key, callback) {
-        Sharp.cache(false);
-        Sharp(path.join(filepath, fieldname, 'original', filename))
-          .resize({
-            width: size === 'medium' ? 500 : 120,
-            withoutEnlargement: true
-          })
-          .jpeg({ quality: 80, progressive: true, force: false })
-          .webp({ quality: 80, lossless: true, force: false })
-          .png({ quality: 80, compressionLevel: 8, force: false })
-          .toFile(path.join(filepath, fieldname, size, filename), function(
-            err
-          ) {
-            callback(err);
-          });
+        try {
+          Sharp.cache(false);
+          Sharp(path.join(filepath, fieldname, 'original', filename))
+            .resize({
+              width: size === 'medium' ? 500 : 120,
+              withoutEnlargement: true
+            })
+            .jpeg({ quality: 80, progressive: true, force: false })
+            .webp({ quality: 80, lossless: true, force: false })
+            .png({ quality: 80, compressionLevel: 8, force: false })
+            .toFile(path.join(filepath, fieldname, size, filename), function(
+              e
+            ) {
+              callback(e);
+            });
+        } catch (e) {
+          callback(e);
+        }
       },
       function(err) {
         if (err) {
-          console.error(err);
-          res
+          return res
             .status(200)
             .send(
               '{"file": "' +
