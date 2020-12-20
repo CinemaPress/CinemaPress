@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Lai turpinātu",
 	"Не проксировать": "NELIETOJIET",
-	"ожидает публикацию": "gaida publicēšanu"
+	"ожидает публикацию": "gaida publicēšanu",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Shēmas marķējums «Faqpage», kas parāda bieži uzdoto jautājumu meklēšanas rezultātu sarakstu",
+	"Разметка на главной странице": "Marķējums galvenajā lapā",
+	"Разметка на странице категории": "Marķēšana uz kategorijas lapu",
+	"Разметка на странице фильма": "Marķēšana movieas lapā",
+	"Вопрос": "Apšaubīt",
+	"Ответ": "Atbildēt"
 }

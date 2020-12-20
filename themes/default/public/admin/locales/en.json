@@ -982,5 +982,11 @@
   "Global API Key": "Global API Key",
   "Проксировать": "Proxied",
   "Не проксировать": "No proxied",
-  "ожидает публикацию": "awaiting publication"
+  "ожидает публикацию": "awaiting publication",
+  "Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schema markup «FAQPage» that shows a list of frequently asked questions in search results",
+  "Разметка на главной странице": "Homepage markup",
+  "Разметка на странице категории": "Category page markup",
+  "Разметка на странице фильма": "Movie page markup",
+  "Вопрос": "Question",
+  "Ответ": "Answer"
 }

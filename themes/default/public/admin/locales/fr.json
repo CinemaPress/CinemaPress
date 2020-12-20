@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Procéder",
 	"Не проксировать": "Ne pas procéder",
-	"ожидает публикацию": "en attente de publication"
+	"ожидает публикацию": "en attente de publication",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schéma Marquage «FAQPAGE», qui montre la liste des résultats de la recherche des questions fréquemment posées",
+	"Разметка на главной странице": "Marquage sur la page principale",
+	"Разметка на странице категории": "Marquage sur la page de la catégorie",
+	"Разметка на странице фильма": "Marquage sur la page de cinéma",
+	"Вопрос": "Question",
+	"Ответ": "Répondre"
 }

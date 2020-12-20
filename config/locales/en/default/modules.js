@@ -175,7 +175,42 @@ module.exports = {
     }
   },
   "schema": {
-    "status": true
+    "status": true,
+    "data": {
+      "faq": {
+        "title": "Часто задаваемые вопросы",
+        "index": {
+          "question1": "🥇 Where to watch new TV shows?",
+          "answer1": "On our website you can follow the release of all new series of serials.",
+          "question2": "🥈 Where to watch movies in English?",
+          "answer2": "Watching films in the original language is available on our website.",
+          "question3": "🥉 Where to watch movies on mobile (Android/iPhone)?",
+          "answer3": "The site is adapted for viewing on Android and iPhone mobile screens.",
+          "question4": "🥇 Where to watch movies on TV (Android TV / Smart TV / STB)?",
+          "answer4": "The site is adapted for viewing on Android TV, Smart TV and Set-Top-Boxes."
+        },
+        "category": {
+          "question1": "🥇 How to view the TOP in the category «[category]» by rating on KinoPoisk?",
+          "answer1": "For the movies with the best rating on KinoPoisk to be at the top, click on the sorting «By KP rating»",
+          "question2": "🥈 How to view the TOP in the «[category]» category by rating on IMDb?",
+          "answer2": "To have the movies with the best rating on IMDb at the top, click on the sort «By IMDb rating»",
+          "question3": "🥉 How to watch the best in the «[category]» category by popularity on KinoPoisk?",
+          "answer3": "For the films with the highest number of ratings on KinoPoisk to be at the top, click on the sorting «By KP popularity»",
+          "question4": "🥇 How to watch the best in the «[category]» category by popularity on IMDb?",
+          "answer4": "To have the films with the most ratings on IMDb at the top, click on the sort «By IMDb popularity»"
+        },
+        "movie": {
+          "question1": "🥇 Actor «[actor]» starring?",
+          "answer1": "The main roles went to such actors as [actors]",
+          "question2": "🥈 What is the rating «[title]» on KinoPoisk and on IMDb?",
+          "answer2": "On KinoPoisk rating [kp_rating]% with [kp_vote] votes, on IMDb rating [imdb_rating]% with [imdb_vote] votes",
+          "question3": "🥉 When will «[title]» premiere?",
+          "answer3": "The premiere is set for [premiere]",
+          "question4": "🥇 Where else is «[actor]» filming?",
+          "answer4": "By clicking on the actor's name, you will be taken to all the films in which he took part."
+        }
+      }
+    }
   },
   "continue": {
     "status": true

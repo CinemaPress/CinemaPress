@@ -1,6 +1,12 @@
 'use strict';
 
 /**
+ * Module dependencies.
+ */
+
+var CP_text = require('../lib/CP_text');
+
+/**
  * Configuration dependencies.
  */
 
@@ -138,6 +144,51 @@ function fullMovieSchema(page, movie, movies, comments, options) {
         url: page.url
       }
     });
+  }
+
+  if (
+    page.seo &&
+    modules.schema &&
+    modules.schema.data.faq &&
+    modules.schema.data.faq.movie &&
+    modules.schema.data.faq.movie.question1
+  ) {
+    var schemaFAQPage = {};
+    schemaFAQPage['@context'] = 'http://schema.org';
+    schemaFAQPage['@type'] = 'FAQPage';
+    schemaFAQPage['mainEntity'] = [];
+    [1, 2, 3, 4].forEach(function(i) {
+      if (
+        !modules.schema.data.faq.movie['question' + i] ||
+        !modules.schema.data.faq.movie['answer' + i]
+      ) {
+        return;
+      }
+      var question =
+        movie.custom && (movie.custom['question' + i] || movie.custom['q' + i])
+          ? movie.custom['question' + i] || movie.custom['q' + i]
+          : CP_text.formatting(
+              modules.schema.data.faq.movie['question' + i],
+              movie
+            );
+      var answer =
+        movie.custom && (movie.custom['answer' + i] || movie.custom['a' + i])
+          ? movie.custom &&
+            (movie.custom['answer' + i] || movie.custom['a' + i])
+          : CP_text.formatting(
+              modules.schema.data.faq.movie['answer' + i],
+              movie
+            );
+      schemaFAQPage['mainEntity'].push({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: answer
+        }
+      });
+    });
+    result.push(schemaFAQPage);
   }
 
   var ya_date =
@@ -391,16 +442,17 @@ function onlyMovieSchema(movie, comments, options) {
  *
  * @param {Object} page
  * @param {Object} movies
+ * @param {Object} query
  * @param {Object} [options]
  * @return {String}
  */
 
-function categorySchema(page, movies, options) {
+function categorySchema(page, movies, query, options) {
   var options_domain =
     (config.bomain ? config.botdomain : config.subdomain) +
     '' +
     (config.bomain || config.domain);
-  if (arguments.length === 2) {
+  if (arguments.length === 3) {
     options = {};
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
@@ -461,6 +513,42 @@ function categorySchema(page, movies, options) {
       url: page.url
     }
   });
+
+  if (
+    page.seo &&
+    modules.schema &&
+    modules.schema.data.faq &&
+    modules.schema.data.faq.category &&
+    modules.schema.data.faq.category.question1
+  ) {
+    var schemaFAQPage = {};
+    schemaFAQPage['@context'] = 'http://schema.org';
+    schemaFAQPage['@type'] = 'FAQPage';
+    schemaFAQPage['mainEntity'] = [];
+    [1, 2, 3, 4].forEach(function(i) {
+      if (
+        !modules.schema.data.faq.category['question' + i] ||
+        !modules.schema.data.faq.category['answer' + i]
+      ) {
+        return;
+      }
+      schemaFAQPage['mainEntity'].push({
+        '@type': 'Question',
+        name: CP_text.formatting(
+          modules.schema.data.faq.category['question' + i],
+          query
+        ),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: CP_text.formatting(
+            modules.schema.data.faq.category['answer' + i],
+            query
+          )
+        }
+      });
+    });
+    result.push(schemaFAQPage);
+  }
 
   result.push(schemaItemList);
   result.push(schemaBreadcrumbList);
@@ -556,13 +644,15 @@ function generalSchema(page, options) {
       (config.bomain || config.domain);
   }
 
-  var result = {};
+  var results = [];
 
-  result['@context'] = 'http://schema.org';
-  result['@type'] = 'WebSite';
-  result['name'] = page.title;
-  result['url'] = config.protocol + options_domain;
-  result['potentialAction'] = {
+  var general = {};
+
+  general['@context'] = 'http://schema.org';
+  general['@type'] = 'WebSite';
+  general['name'] = page.title;
+  general['url'] = config.protocol + options_domain;
+  general['potentialAction'] = {
     '@type': 'SearchAction',
     target:
       config.protocol +
@@ -573,30 +663,63 @@ function generalSchema(page, options) {
     'query-input': 'required name=query'
   };
   if (modules.social.status) {
-    result['sameAs'] = [];
+    general['sameAs'] = [];
     if (modules.social.data.vk) {
-      result['sameAs'].push(modules.social.data.vk);
+      general['sameAs'].push(modules.social.data.vk);
     }
     if (modules.social.data.facebook) {
-      result['sameAs'].push(modules.social.data.facebook);
+      general['sameAs'].push(modules.social.data.facebook);
     }
     if (modules.social.data.twitter) {
-      result['sameAs'].push(modules.social.data.twitter);
+      general['sameAs'].push(modules.social.data.twitter);
     }
     if (modules.social.data.telegram) {
-      result['sameAs'].push(modules.social.data.telegram);
+      general['sameAs'].push(modules.social.data.telegram);
     }
     if (modules.social.data.instagram) {
-      result['sameAs'].push(modules.social.data.instagram);
+      general['sameAs'].push(modules.social.data.instagram);
     }
     if (modules.social.data.youtube) {
-      result['sameAs'].push(modules.social.data.youtube);
+      general['sameAs'].push(modules.social.data.youtube);
     }
   }
 
+  if (
+    page.seo &&
+    page.type === 'index' &&
+    modules.schema &&
+    modules.schema.data.faq &&
+    modules.schema.data.faq.index &&
+    modules.schema.data.faq.index.question1
+  ) {
+    var schemaFAQPage = {};
+    schemaFAQPage['@context'] = 'http://schema.org';
+    schemaFAQPage['@type'] = 'FAQPage';
+    schemaFAQPage['mainEntity'] = [];
+    [1, 2, 3, 4].forEach(function(i) {
+      if (
+        !modules.schema.data.faq.index['question' + i] ||
+        !modules.schema.data.faq.index['answer' + i]
+      ) {
+        return;
+      }
+      schemaFAQPage['mainEntity'].push({
+        '@type': 'Question',
+        name: modules.schema.data.faq.index['question' + i],
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: modules.schema.data.faq.index['answer' + i]
+        }
+      });
+    });
+    results.push(schemaFAQPage);
+  }
+
+  results.push(general);
+
   var schema =
     '<script type="application/ld+json">' +
-    JSON.stringify(result) +
+    JSON.stringify(results) +
     '</script>';
 
   var opengraph = '';

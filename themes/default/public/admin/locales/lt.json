@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Pereiti",
 	"Не проксировать": "Negalima tęsti",
-	"ожидает публикацию": "laukiama leidybos"
+	"ожидает публикацию": "laukiama leidybos",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schemos žymėjimas «Faqpage», rodantis dažnai užduodamų klausimų paieškos rezultatus",
+	"Разметка на главной странице": "Žymėjimas pagrindiniame puslapyje",
+	"Разметка на странице категории": "Žymėjimas kategorijoje",
+	"Разметка на странице фильма": "Žymėjimas movieo puslapyje",
+	"Вопрос": "Klausimas",
+	"Ответ": "Atsakymas"
 }

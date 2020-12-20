@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "A inainta, a merge mai departe",
 	"Не проксировать": "Nu continuați",
-	"ожидает публикацию": "așteptând publicarea"
+	"ожидает публикацию": "așteptând publicarea",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schema Marking «Faqpage», care arată lista rezultatelor căutării de întrebări frecvente",
+	"Разметка на главной странице": "Marcarea pe pagina principală",
+	"Разметка на странице категории": "Marcarea pe pagina categorie",
+	"Разметка на странице фильма": "Marcarea pe pagina movieului",
+	"Вопрос": "Întrebare",
+	"Ответ": "Răspuns"
 }

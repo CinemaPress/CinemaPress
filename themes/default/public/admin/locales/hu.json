@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "A folytatáshoz",
 	"Не проксировать": "Ne folytassa",
-	"ожидает публикацию": "várakozás a közzétételre"
+	"ожидает публикацию": "várakozás a közzétételre",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Séma jelölése «GAQPage», amely a gyakran feltett kérdések keresési eredménylistáját mutatja",
+	"Разметка на главной странице": "Jelölés a főoldalon",
+	"Разметка на странице категории": "Jelölés a kategóriaoldalon",
+	"Разметка на странице фильма": "Jelölés a movieoldalon",
+	"Вопрос": "Kérdés",
+	"Ответ": "Válasz"
 }

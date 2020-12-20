@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Devam etmek için",
 	"Не проксировать": "Devam etmeyin",
-	"ожидает публикацию": "yayınlamayı bekliyor"
+	"ожидает публикацию": "yayınlamayı bekliyor",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Sık sık sorulan soruların arama sonuçlarını gösteren «FaSpage» işaretleme şeması",
+	"Разметка на главной странице": "Ana sayfada işaretleme",
+	"Разметка на странице категории": "Kategori sayfasında işaretleme",
+	"Разметка на странице фильма": "Movie sayfasında işaretleme",
+	"Вопрос": "Soru",
+	"Ответ": "Cevap"
 }

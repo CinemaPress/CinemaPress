@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Pokračovať",
 	"Не проксировать": "Nepokračujte",
-	"ожидает публикацию": "čakanie na publikovanie"
+	"ожидает публикацию": "čakanie na publikovanie",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schéma označovanie «FAQPAGE», ktorá zobrazuje zoznam výsledkov vyhľadávania často kladených otázok",
+	"Разметка на главной странице": "Označenie na hlavnej stránke",
+	"Разметка на странице категории": "Označenie na stránke kategórie",
+	"Разметка на странице фильма": "Označenie na moviee",
+	"Вопрос": "Otázka",
+	"Ответ": "Odpoveď"
 }

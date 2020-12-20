@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Kuendelea",
 	"Не проксировать": "Usiendelee",
-	"ожидает публикацию": "kusubiri kwa kuchapisha"
+	"ожидает публикацию": "kusubiri kwa kuchapisha",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "SCHEMA Kuashiria «Faqpage», ambayo inaonyesha orodha ya matokeo ya matokeo ya maswali ya mara kwa mara",
+	"Разметка на главной странице": "Kuashiria kwenye ukurasa kuu",
+	"Разметка на странице категории": "Kuashiria kwenye ukurasa wa kikundi",
+	"Разметка на странице фильма": "Kuashiria kwenye ukurasa wa filamu",
+	"Вопрос": "Swali",
+	"Ответ": "Jibu"
 }

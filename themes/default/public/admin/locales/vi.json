@@ -983,5 +983,11 @@
 	"Global API Key": "Global API Key",
 	"Проксировать": "Tiến hành với",
 	"Не проксировать": "Đừng tiến hành",
-	"ожидает публикацию": "chờ đợi xuất bản"
+	"ожидает публикацию": "chờ đợi xuất bản",
+	"Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов": "Schema đánh dấu «Faqpage», hiển thị danh sách kết quả tìm kiếm các câu hỏi thường gặp",
+	"Разметка на главной странице": "Đánh dấu trên trang chính",
+	"Разметка на странице категории": "Đánh dấu trên trang danh mục",
+	"Разметка на странице фильма": "Đánh dấu trên trang phim",
+	"Вопрос": "Câu hỏi",
+	"Ответ": "Câu trả lời"
 }

@@ -68,19 +68,187 @@
 
                     <% if (modules.schema.status) { %>
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="attention-box attention-success">
-                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('активирован') %></h4>
-                                    <div class="spacer-20"></div>
-                                    <p class="text-muted">
-                                        <%= __('Модуль позволяет добавить Schema и OpenGraph разметку на все страницы веб-сайта.') %>
-                                        <br>
-                                        <%= __('Чтобы деактивировать модуль, нажмите на кнопку «Отключить» вверху экрана.') %>
-                                    </p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
+                                        <i class="fas fa-stream"></i>&nbsp;&nbsp;&nbsp;FAQPage
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/schema.html" class="csstip" data-title="<%= __('Schema разметка «FAQPage», которая показывает в результатах поиска список часто задаваемых вопросов') %>"
+                                           target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <input class="form-control" type="text" placeholder="FAQ" name="modules.schema.data.faq.title" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.title %>">
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-10"></div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="far fa-list-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Разметка на главной странице') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №1" name="modules.schema.data.faq.index.question1" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.index.question1 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.index.answer1" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.index.answer1 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №2" name="modules.schema.data.faq.index.question2" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.index.question2 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.index.answer2" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.index.answer2 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №3" name="modules.schema.data.faq.index.question3" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.index.question3 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.index.answer3" placeholder="<%= __('Ответ') %> №3"><%- modules.schema.data.faq.index.answer3 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №4" name="modules.schema.data.faq.index.question4" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.index.question4 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.index.answer4" placeholder="<%= __('Ответ') %> №4"><%- modules.schema.data.faq.index.answer4 %></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="far fa-list-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Разметка на странице категории') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №1" name="modules.schema.data.faq.category.question1" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.category.question1 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.category.answer1" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.category.answer1 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №2" name="modules.schema.data.faq.category.question2" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.category.question2 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.category.answer2" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.category.answer2 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №3" name="modules.schema.data.faq.category.question3" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.category.question3 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.category.answer3" placeholder="<%= __('Ответ') %> №3"><%- modules.schema.data.faq.category.answer3 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №4" name="modules.schema.data.faq.category.question4" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.category.question4 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.category.answer4" placeholder="<%= __('Ответ') %> №4"><%- modules.schema.data.faq.category.answer4 %></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="cinema-box">
+                                                <div class="cinema-box-header">
+                                                    <div class="cinema-label">
+                                                        <i class="far fa-list-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Разметка на странице фильма') %>
+                                                    </div>
+                                                </div>
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №1" name="modules.schema.data.faq.movie.question1" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.movie.question1 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.movie.answer1" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.movie.answer1 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №2" name="modules.schema.data.faq.movie.question2" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.movie.question2 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.movie.answer2" placeholder="<%= __('Ответ') %> №1"><%- modules.schema.data.faq.movie.answer2 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №3" name="modules.schema.data.faq.movie.question3" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.movie.question3 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.movie.answer3" placeholder="<%= __('Ответ') %> №3"><%- modules.schema.data.faq.movie.answer3 %></textarea>
+
+                                                            <div class="spacer-5"></div>
+                                                            <hr>
+                                                            <div class="spacer-5"></div>
+
+                                                            <input class="form-control" type="text" placeholder="<%= __('Вопрос') %> №4" name="modules.schema.data.faq.movie.question4" autocomplete="off" autocapitalize="off" spellcheck="false" value="<%- modules.schema.data.faq.movie.question4 %>">
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <textarea class="form-control" name="modules.schema.data.faq.movie.answer4" placeholder="<%= __('Ответ') %> №4"><%- modules.schema.data.faq.movie.answer4 %></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                     <% } else { %>
 
