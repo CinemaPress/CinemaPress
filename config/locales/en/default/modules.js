@@ -178,7 +178,7 @@ module.exports = {
     "status": true,
     "data": {
       "faq": {
-        "title": "Часто задаваемые вопросы",
+        "title": "FAQ",
         "index": {
           "question1": "🥇 Where to watch new TV shows?",
           "answer1": "On our website you can follow the release of all new series of serials.",
