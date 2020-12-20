@@ -186,7 +186,7 @@ module.exports = {
           "answer2": "Watching films in the original language is available on our website.",
           "question3": "🥉 Where to watch movies on mobile (Android/iPhone)?",
           "answer3": "The site is adapted for viewing on Android and iPhone mobile screens.",
-          "question4": "🥇 Where to watch movies on TV (Android TV / Smart TV / STB)?",
+          "question4": "🥇 Where to watch movies on TV (Android TV/Smart TV/STB)?",
           "answer4": "The site is adapted for viewing on Android TV, Smart TV and Set-Top-Boxes."
         },
         "category": {
