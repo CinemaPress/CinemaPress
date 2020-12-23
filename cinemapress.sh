@@ -1760,7 +1760,6 @@ sh_yes() {
         _content
         _s
         if [ "${1}" = "reboot" ]; then
-            _content
             _content "Reboot after 10 seconds ..."
             _content "To cancel, press Ctrl + C"
             _content
