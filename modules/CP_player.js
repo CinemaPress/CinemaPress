@@ -191,7 +191,7 @@ function codePlayer(type, movie, options) {
     }
 
     if (type === 'online' || serial.season) {
-      data['data-player'] = data['data-player']
+      data['data-player'] = (data['data-player'] || '')
         .replace(/,trailer|trailer,/gi, '')
         .replace(/,torrent|torrent,/gi, '');
     }
