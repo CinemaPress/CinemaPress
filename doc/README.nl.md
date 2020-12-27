@@ -35,16 +35,16 @@
 
 ## Waar kan ik een VPS-server kopen?
 
-> Het besturingssysteem zou **CentOS 7, Debian 9/10, Ubuntu 18/19, Fedora 28/29** moeten zijn zonder bedieningspanelen!
+> Het besturingssysteem zou **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** moeten zijn zonder bedieningspanelen!
 
-···· | UA-Hosting | Inferno | MyVPS | Zomro
+···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:
-:earth_americas: | `Netherlands` | `Netherlands` | `France` | `Netherlands`
-:computer: | `2x2700MHz` | `2x2600MHz` | `2x2600MHz` | `1x3300MHz`
-:rocket: | `4GB` | `2GB` | `2GB` | `2GB`
-:floppy_disk: | `60GB` |  `30GB` | `50GB` | `12GB`
-:dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
-···· | **[KIEZEN](https://cinemapress.io/ref/ua-hosting.html)** | **[KIEZEN](https://cinemapress.io/ref/inferno.html)** | **[KIEZEN](https://cinemapress.io/ref/myvps.html)** | **[KIEZEN](https://cinemapress.io/ref/zomro.html)**
+:earth_americas: | `Netherlands` | `Netherlands` | `Netherlands` | `Netherlands`
+:computer: | `2x2700MHz` | `2x2600MHz` | `2x2800MHz` | `3x2400MHz`
+:rocket: | `4GB` | `2GB` | `4GB` | `4GB`
+:floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
+:dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
+···· | **[KIEZEN](https://cinemapress.io/ref/ua-hosting.html)** | **[KIEZEN](https://cinemapress.io/ref/inferno.html)** | **[KIEZEN](https://cinemapress.io/ref/pq.html)** | **[KIEZEN](https://cinemapress.io/ref/zomro.html)**
 
 > `*` - **15%** korting, promotiecode: `CinemaPress15`
 
@@ -212,6 +212,6 @@
 
 ## Opties en modules CinemaPress
 
-Gedetailleerde informatie over alle opties en systeemmodules is te vinden in de [documentatie](https://CInemaPress.io/admin).
+Gedetailleerde informatie over alle opties en systeemmodules is te vinden in de [documentatie](https://CInemaPress.io/ru/admin).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

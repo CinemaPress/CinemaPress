@@ -35,16 +35,16 @@
 
 ## Πού να αγοράσετε ένα διακομιστή VPS?
 
-> Το λειτουργικό σύστημα θα πρέπει να είναι **CentOS 7, Debian 9/10, Ubuntu 18/19, Fedora 28/29** χωρίς πίνακες ελέγχου!
+> Το λειτουργικό σύστημα θα πρέπει να είναι **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** χωρίς πίνακες ελέγχου!
 
-···· | UA-Hosting | Inferno | MyVPS | Zomro
+···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:
-:earth_americas: | `Netherlands` | `Netherlands` | `France` | `Netherlands`
-:computer: | `2x2700MHz` | `2x2600MHz` | `2x2600MHz` | `1x3300MHz`
-:rocket: | `4GB` | `2GB` | `2GB` | `2GB`
-:floppy_disk: | `60GB` |  `30GB` | `50GB` | `12GB`
-:dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
-···· | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/ua-hosting.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/inferno.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/myvps.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/zomro.html)**
+:earth_americas: | `Netherlands` | `Netherlands` | `Netherlands` | `Netherlands`
+:computer: | `2x2700MHz` | `2x2600MHz` | `2x2800MHz` | `3x2400MHz`
+:rocket: | `4GB` | `2GB` | `4GB` | `4GB`
+:floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
+:dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
+···· | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/ua-hosting.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/inferno.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/pq.html)** | **[ΕΠΙΛΕΓΩ](https://cinemapress.io/ref/zomro.html)**
 
 > `*` - **15%** έκπτωση, κωδικός προσφοράς: `CinemaPress15`
 
@@ -212,6 +212,6 @@
 
 ## Επιλογές και ενότητες CinemaPress
 
-Λεπτομερείς πληροφορίες σχετικά με όλες τις επιλογές και τις ενότητες του συστήματος διατίθενται στην [τεκμηρίωση](https://CInemaPress.io/admin).
+Λεπτομερείς πληροφορίες σχετικά με όλες τις επιλογές και τις ενότητες του συστήματος διατίθενται στην [τεκμηρίωση](https://CInemaPress.io/ru/admin).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

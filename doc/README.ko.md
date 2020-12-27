@@ -37,14 +37,14 @@
 
 > 운영체제는 제어판이없는 **데비안 9 x64**이어야합니다!
 
-···· | UA-Hosting | Inferno | MyVPS | Zomro
+···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:
-:earth_americas: | `Netherlands` | `Netherlands` | `France` | `Netherlands`
-:computer: | `2x2700MHz` | `2x2600MHz` | `2x2600MHz` | `1x3300MHz`
-:rocket: | `4GB` | `2GB` | `2GB` | `2GB`
-:floppy_disk: | `60GB` |  `30GB` | `50GB` | `12GB`
-:dollar: | `$9.9` | `$8.5*` | `$5.7` | `$3.4`
-···· | **[고르다](https://cinemapress.io/ref/ua-hosting.html)** | **[고르다](https://cinemapress.io/ref/inferno.html)** | **[고르다](https://cinemapress.io/ref/myvps.html)** | **[고르다](https://cinemapress.io/ref/zomro.html)**
+:earth_americas: | `Netherlands` | `Netherlands` | `Netherlands` | `Netherlands`
+:computer: | `2x2700MHz` | `2x2600MHz` | `2x2800MHz` | `3x2400MHz`
+:rocket: | `4GB` | `2GB` | `4GB` | `4GB`
+:floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
+:dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
+···· | **[고르다](https://cinemapress.io/ref/ua-hosting.html)** | **[고르다](https://cinemapress.io/ref/inferno.html)** | **[고르다](https://cinemapress.io/ref/pq.html)** | **[고르다](https://cinemapress.io/ref/zomro.html)**
 
 > `*` - **15%** 할인, 프로모션 코드: `CinemaPress15`
 
@@ -212,6 +212,6 @@
 
 ## 옵션 및 모듈 CinemaPress
 
-모든 옵션 및 시스템 모듈에 대한 자세한 정보는 [설명서에서](https://CInemaPress.io/admin) 찾을 수 있습니다.
+모든 옵션 및 시스템 모듈에 대한 자세한 정보는 [설명서에서](https://CInemaPress.io/ru/admin) 찾을 수 있습니다.
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
