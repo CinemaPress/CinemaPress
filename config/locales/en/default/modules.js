@@ -313,7 +313,7 @@ module.exports = {
       "season": "season",
       "episode": "episode",
       "translate": "Voice:",
-      "default": "Original",
+      "default": "",
       "index": {
         "name": "New series of serials",
         "count": 12,

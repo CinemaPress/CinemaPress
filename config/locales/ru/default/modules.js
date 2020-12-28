@@ -313,7 +313,7 @@ module.exports = {
       "season": "сезон",
       "episode": "серия",
       "translate": "Перевод:",
-      "default": "Оригинал",
+      "default": "",
       "index": {
         "name": "Новые серии сериалов",
         "count": 12,
