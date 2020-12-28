@@ -35,7 +35,7 @@
 
 ## Mua máy chủ VPS ở đâu?
 
-> Hệ điều hành phải là **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** mà không cần bảng điều khiển!
+> Hệ điều hành phải là **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** mà không cần bảng điều khiển!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

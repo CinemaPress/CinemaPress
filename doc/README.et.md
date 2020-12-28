@@ -35,7 +35,7 @@
 
 ## Kust osta VPS-server?
 
-> OS peaks olema **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** ilma juhtpaneelideta!
+> OS peaks olema **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** ilma juhtpaneelideta!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

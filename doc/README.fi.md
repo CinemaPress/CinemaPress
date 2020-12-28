@@ -35,7 +35,7 @@
 
 ## Mistä ostaa VPS-palvelin?
 
-> Käyttöjärjestelmän tulee olla **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** ilman ohjauspaneeleja!
+> Käyttöjärjestelmän tulee olla **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** ilman ohjauspaneeleja!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

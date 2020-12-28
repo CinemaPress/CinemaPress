@@ -35,7 +35,7 @@
 
 ## Bir VPS sunucusu nereden alınır?
 
-> İşletim sistemi, kontrol panelleri olmayan **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** olmalıdır!
+> İşletim sistemi, kontrol panelleri olmayan **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** olmalıdır!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

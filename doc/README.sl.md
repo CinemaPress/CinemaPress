@@ -35,7 +35,7 @@
 
 ## Kje kupiti strežnik VPS?
 
-> OS bi moral biti **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** brez nadzornih plošč!
+> OS bi moral biti **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** brez nadzornih plošč!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

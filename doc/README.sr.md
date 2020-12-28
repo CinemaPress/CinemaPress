@@ -35,7 +35,7 @@
 
 ## Где купити VPS сервер?
 
-> Оперативни систем би требао бити **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** без контролних панела!
+> Оперативни систем би требао бити **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** без контролних панела!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

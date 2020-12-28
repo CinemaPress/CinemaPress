@@ -35,7 +35,7 @@
 
 ## De unde să cumperi un server VPS?
 
-> Sistemul de operare ar trebui să fie **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** fără panouri de control!
+> Sistemul de operare ar trebui să fie **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** fără panouri de control!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

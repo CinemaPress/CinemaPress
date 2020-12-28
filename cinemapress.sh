@@ -3599,9 +3599,6 @@ while [ "${WHILE}" -lt "2" ]; do
                     exit 0
                 fi
                 cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
-            else
-                echo "NOT CINEMASTATIC"
-                exit 0
             fi
             if [ "${3}" = "restore" ] || [ "${5}" = "restore" ] || [ "${6}" = "restore" ]; then
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/

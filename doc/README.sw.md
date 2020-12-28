@@ -35,7 +35,7 @@
 
 ## Ambapo kununua server ya VPS?
 
-> OS lazima iwe **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** bila paneli za kudhibiti!
+> OS lazima iwe **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** bila paneli za kudhibiti!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

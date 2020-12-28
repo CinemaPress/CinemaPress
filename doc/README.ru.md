@@ -35,7 +35,7 @@
 
 ## Где купить VPS сервер?
 
-> ОС выбирайте **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** без панелей управления!
+> ОС выбирайте **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** без панелей управления!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

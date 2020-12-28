@@ -35,7 +35,7 @@
 
 ## Ku mund të blini një server VPS?
 
-> OS duhet të jetë **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** pa panele kontrolli!
+> OS duhet të jetë **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** pa panele kontrolli!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

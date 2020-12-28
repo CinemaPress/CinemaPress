@@ -37,7 +37,7 @@
 
 ## أين تشتري خادم VPS؟
 
-> يجب أن يكون نظام التشغيل **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** بدون لوحات تحكم!
+> يجب أن يكون نظام التشغيل **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** بدون لوحات تحكم!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

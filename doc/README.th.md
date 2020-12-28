@@ -35,7 +35,7 @@
 
 ## จะซื้อเซิร์ฟเวอร์ VPS ได้ที่ไหน
 
-> ระบบปฏิบัติการควรเป็น **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** โดยไม่มีแผงควบคุม!
+> ระบบปฏิบัติการควรเป็น **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** โดยไม่มีแผงควบคุม!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

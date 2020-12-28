@@ -35,7 +35,7 @@
 
 ## VPSサーバーを購入する場所
 
-> OSはコントロールパネルなしの**CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33**であるべきです！
+> OSはコントロールパネルなしの**Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)**であるべきです！
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

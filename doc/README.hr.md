@@ -35,7 +35,7 @@
 
 ## Gdje kupiti VPS poslužitelj?
 
-> OS bi trebao biti **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** bez kontrolnih ploča!
+> OS bi trebao biti **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** bez kontrolnih ploča!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

@@ -35,7 +35,7 @@
 
 ## Wo kaufe ich einen VPS-Server?
 
-> Das Betriebssystem sollte **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** ohne Control Panels sein!
+> Das Betriebssystem sollte **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** ohne Control Panels sein!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

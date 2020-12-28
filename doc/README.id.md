@@ -35,7 +35,7 @@
 
 ## Di mana membeli server VPS?
 
-> OS harus **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** tanpa panel kontrol!
+> OS harus **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** tanpa panel kontrol!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

@@ -35,7 +35,7 @@
 
 ## Gdzie kupić serwer VPS?
 
-> System operacyjny powinien być systemem **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** bez paneli sterowania!
+> System operacyjny powinien być systemem **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** bez paneli sterowania!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

@@ -35,7 +35,7 @@
 
 ## 哪里可以买到VPS服务器？
 
-> 操作系统应该是**CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33**，没有控制面板！
+> 操作系统应该是**Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)**，没有控制面板！
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

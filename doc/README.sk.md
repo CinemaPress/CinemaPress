@@ -35,7 +35,7 @@
 
 ## Kde kúpiť server VPS?
 
-> OS by mal byť **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** bez ovládacích panelov!
+> OS by mal byť **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** bez ovládacích panelov!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

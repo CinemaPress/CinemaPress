@@ -35,7 +35,7 @@
 
 ## Waar kan ik een VPS-server kopen?
 
-> Het besturingssysteem zou **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** moeten zijn zonder bedieningspanelen!
+> Het besturingssysteem zou **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** moeten zijn zonder bedieningspanelen!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

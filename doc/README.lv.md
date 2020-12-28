@@ -35,7 +35,7 @@
 
 ## Kur nopirkt VPS serveri?
 
-> OS vajadzētu būt **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** bez vadības paneļiem!
+> OS vajadzētu būt **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** bez vadības paneļiem!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

@@ -35,7 +35,7 @@
 
 ## Hvor kan man købe en VPS-server?
 
-> Operativsystemet skal være **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** uden kontrolpaneler!
+> Operativsystemet skal være **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** uden kontrolpaneler!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:

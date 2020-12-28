@@ -35,7 +35,7 @@
 
 ## Hol vásárolhat VPS szervert?
 
-> Az operációs rendszernek a **CentOS 7/8, Debian 9/10, Ubuntu 18/20, Fedora 32/33** vezérlőpanel nélkül kell lennie!
+> Az operációs rendszernek a **Debian, CentOS, Fedora, Ubuntu (Latest Stable Version)** vezérlőpanel nélkül kell lennie!
 
 ···· | UA-Hosting | Inferno | PQ | Zomro
 :---: | :---: | :---: | :---: | :---:
