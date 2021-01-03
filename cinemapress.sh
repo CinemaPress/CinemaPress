@@ -1758,7 +1758,6 @@ sh_yes() {
         _content
         _content "Website on this domain is installed!"
         _content
-        _s
         if [ "${1}" = "reboot" ]; then
             _content "Reboot after 10 seconds ..."
             _content "To cancel, press Ctrl + C"
@@ -1767,6 +1766,7 @@ sh_yes() {
             sleep 10
             reboot
         fi
+        _s
         exit 0
     fi
 }
