@@ -449,6 +449,7 @@ router.get('/:type?', function(req, res) {
         function(err, movies) {
           if (err) console.error(err);
 
+          render.count_movies = 0;
           render.movies = [];
 
           if (movies && movies.length) {
@@ -456,7 +457,14 @@ router.get('/:type?', function(req, res) {
             render.movies = movies;
           }
 
-          callback(null, render);
+          CP_get.count(
+            { certainly: true, full: true, from: process.env.CP_RT },
+            function(err, count) {
+              if (err) console.error(err);
+              render.count_movies = count || 0;
+              callback(null, render);
+            }
+          );
         }
       );
     }

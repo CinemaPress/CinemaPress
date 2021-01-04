@@ -872,7 +872,7 @@
                                         <thead>
                                         <tr>
                                             <th class="table-content table-content-head">
-                                                <%= __('Фильмы с уникальным описанием') %>
+                                                <%= __('Фильмы с уникальным описанием') %> <% if (typeof count_movies != 'undefined') { %>(<code><%- count_movies %></code>)<% } %>
                                             </th>
                                             <th class="table-settings"></th>
                                             <th class="table-settings"></th>
