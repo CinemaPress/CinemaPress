@@ -60,7 +60,7 @@ if (['bran'].indexOf(theme) + 1) {
 }
 
 if (['cersei'].indexOf(theme) + 1) {
-  config.default.count = 10;
+  config.default.count = 15;
   config.index.year.count = 10;
   modules.content.data.index.count = 10;
   modules.episode.data.index.count = 20;
