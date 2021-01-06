@@ -36,7 +36,7 @@ EXTERNAL_DOCKER=""
 
 CP_OS="`awk '/^ID=/' /etc/*os-release | awk -F'=' '{ print tolower($2) }'`"
 
-CP_MEM=$(free -t -m | grep -oP '\d+' | sed '1!d')
+CP_MEM=$(free -m | grep -oP '\d+' | sed '1!d')
 if echo "${CP_MEM}" | grep -qE '^[0-9]+$'; then
     DOCKER_MEM=("--memory" "$(( CP_MEM / 2 ))m" "--oom-kill-disable")
 else
