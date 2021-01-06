@@ -66,7 +66,7 @@
 <div class="clear"></div>
 
 <% if (page.social) { %>
-    <div class="info">
+    <div class="info" style="text-align: center">
         <% if (page.social.vk) { %><a href="<%- page.social.vk %>" target="_blank"><%- page.l.vk %></a>
         <% } %>
         <% if (page.social.facebook) { %><span> | </span><a href="<%- page.social.facebook %>"
@@ -87,13 +87,13 @@
     </div>
 <% } %>
 
-<div class="info">
+<div class="info" style="text-align: center">
     <a href="<%- page.url.replace('://m.', '://' + page.subdomain).replace('/mobile-version', '') %>?desktop">
         <%- page.l.full %>
     </a>
 </div>
 
-<div class="info">
+<div class="info" style="text-align: center">
     <strong>&copy;&nbsp;<%- new Date().getFullYear() %>&nbsp;<a href="https://cinemapress.io" target="_blank">CinemaPress</a></strong>
     | <span id="mylo">Activate JS</span>
     <script>(function(d, i, l, r) {
@@ -102,6 +102,8 @@
 </div>
 
 <%- page.codes.footer %>
+
+</div>
 
 </body>
 </html>

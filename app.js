@@ -143,4 +143,15 @@ app.use(function(req, res) {
   });
 });
 
+process.stdout.on('error', function(err) {
+  if (err.code === 'EPIPE') {
+    console.error('---------------', 'ERROR EPIPE', '---------------');
+    process.exit(0);
+  }
+  if (err.code === 'ENOMEM') {
+    console.error('---------------', 'ERROR ENOMEM', '---------------');
+    process.exit(0);
+  }
+});
+
 app.listen(port);

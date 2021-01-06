@@ -770,7 +770,7 @@ router.post('/change', function(req, res) {
             false,
             function(err, movies) {
               if (err) console.error(err);
-              var id = 10000000;
+              var id = 100000000;
               form.movie.id = form.movie.kp_id =
                 movies && movies.length && parseInt(movies[0].id) <= id
                   ? id + 1

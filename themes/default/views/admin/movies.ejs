@@ -62,7 +62,7 @@
                 <div class="inner-padding">
 
                     <% if (movie) {
-                        movie.kp_id = movie.kp_id && parseInt(movie.kp_id) <= 100000000
+                        movie.kp_id = movie.kp_id && parseInt(movie.kp_id) <= 1000000000
                                 ? movie.kp_id
                                 : '';
                         var custom = {};

@@ -72,28 +72,33 @@
 
 <div class="clear"></div>
 
-<div class="info">
-    <%
-    for (var kp = 1; kp <= 10; kp++) {
-        var star_kp = (Math.round(movie.kp_rating / 10) >= kp)
-                ? '<div class="star-true"></div>'
-                : '<div class="star-false"></div>';
-    %>
-    <%- star_kp %>
-    <% } %>
-    <span style="color:#F56504; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.kp %></span>
-</div>
-<div class="info">
-    <%
-    for (var imdb = 1; imdb <= 10; imdb++) {
-        var star_imdb = (Math.round(movie.imdb_rating / 10) >= imdb)
-                ? '<div class="star-true"></div>'
-                : '<div class="star-false"></div>';
-    %>
-    <%- star_imdb %>
-    <% } %>
-    <span style="color:#E3B71E; font-weight: 800; font-size: 18px; opacity: .4;">&nbsp;&nbsp;&nbsp;<%- page.l.imdb %></span>
-</div>
+<% if (movie.kp_vote) { %>
+    <div class="info">
+        <div class="logo-kp"></div>
+        <span style="color:#F56504; font-weight: 800; font-size: 18px;">&nbsp;<%- movie.kp_rating / 10 %>&nbsp;</span>
+        <% for (var kp = 10; kp >= 1; kp--) {
+            var star_kp = (Math.round(movie.kp_rating / 10) >= kp)
+                    ? '<div class="star-true star-true-kp"></div>'
+                    : '<div class="star-false star-false-kp"></div>'; %>
+        <%- star_kp %>
+        <% } %>
+    </div>
+<% } %>
+
+<% if (movie.imdb_vote) { %>
+    <div class="info">
+        <div class="logo-imdb"></div>
+        <span style="color:#E3B71E; font-weight: 800; font-size: 18px;">&nbsp;<%- movie.imdb_rating / 10 %>&nbsp;</span>
+        <% for (var imdb = 10; imdb >= 1; imdb--) {
+            var star_imdb = (Math.round(movie.imdb_rating / 10) >= imdb)
+                    ? '<div class="star-true star-true-imdb"></div>'
+                    : '<div class="star-false star-false-imdb"></div>'; %>
+        <%- star_imdb %>
+        <% } %>
+    </div>
+<% } %>
+
+<div class="clear"></div>
 
 <% if (movie.quality) { %>
 

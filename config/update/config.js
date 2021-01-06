@@ -146,6 +146,7 @@ async.series(
       c.urls.admin = config_default.urls.admin && !(/^admin-/i.test(c.urls.admin))
         ? config_default.urls.admin
         : c.urls.admin;
+      c.publish.stop = c.publish.stop >= 3000000 ? 10000000 : c.publish.stop;
       CP_save.save(
         c,
         'config',
