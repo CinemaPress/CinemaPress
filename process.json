@@ -9,8 +9,6 @@
       "error_file": "./log/err.log",
       "out_file": "./log/out.log",
       "time": true,
-      "node_args": "--max-old-space-size=768",
-      "max_memory_restart": "768M",
       "watch": [
         "app.js",
         "themes/*/views/*.ejs",

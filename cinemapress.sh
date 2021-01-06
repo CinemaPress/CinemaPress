@@ -36,6 +36,13 @@ EXTERNAL_DOCKER=""
 
 CP_OS="`awk '/^ID=/' /etc/*os-release | awk -F'=' '{ print tolower($2) }'`"
 
+CP_MEM=$(free -t -m | grep -oP '\d+' | sed '1!d')
+if echo "${CP_MEM}" | grep -qE '^[0-9]+$'; then
+    DOCKER_MEM=("--memory" "$(( CP_MEM / 2 ))m" "--oom-kill-disable")
+else
+    DOCKER_MEM=()
+fi
+
 post_commands() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
@@ -269,6 +276,7 @@ ip_install() {
     docker run \
         -d \
         --name "${LOCAL_DOMAIN_}" \
+        "${DOCKER_MEM[@]}" \
         -e "CP_DOMAIN=${LOCAL_DOMAIN}" \
         -e "CP_DOMAIN_=${LOCAL_DOMAIN_}" \
         -e "CP_LANG=${LOCAL_LANG}" \
@@ -332,6 +340,7 @@ ip_install() {
             docker run \
                 -d \
                 --name nginx \
+                "${DOCKER_MEM[@]}" \
                 --restart always \
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
@@ -362,6 +371,7 @@ ip_install() {
             docker run \
                 -d \
                 --name fail2ban \
+                "${DOCKER_MEM[@]}" \
                 --restart always \
                 --network host \
                 --cap-add NET_ADMIN \
@@ -386,6 +396,7 @@ ip_install() {
             docker run \
                 -d \
                 --name filestash \
+                "${DOCKER_MEM[@]}" \
                 --restart always \
                 --network cinemapress \
                 cinemapress/filestash >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
