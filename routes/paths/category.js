@@ -361,6 +361,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.search:
+      sorting = '';
       getMovies(Object.assign({ search: key }, options.query), function(
         err,
         render

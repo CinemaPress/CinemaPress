@@ -489,7 +489,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       });
     }
 
-    if (options.userinfo.bot) {
+    if (options.userinfo.bot.all) {
       if (
         config.publish.indexing &&
         config.publish.indexing.condition &&
@@ -501,7 +501,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
             ');}'
         );
         if (condition(render.movie)) {
-          console.log('[Indexing is forbidden]', url);
+          console.log('[Indexing is forbidden in condition]', url);
 
           return next({
             status: 404,
@@ -514,7 +514,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           .substring(0, 30)
           .indexOf('User-agent: *\nDisallow: /\n') + 1
       ) {
-        console.log('[Indexing is forbidden]', url);
+        console.log('[Indexing is forbidden in robots]', url);
 
         return next({
           status: 404,
