@@ -523,6 +523,13 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       }
     }
 
+    if (!req.userinfo.bot.main && template === 'sitemap') {
+      return next({
+        status: 404,
+        message: 'The sitemap is available only to search bots.'
+      });
+    }
+
     if (typeof render === 'object') {
       if (
         config.theme === 'default' ||
