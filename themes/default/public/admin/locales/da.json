@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Mærkning på kategorien side",
 	"Разметка на странице фильма": "Markering på moviesiden",
 	"Вопрос": "Spørgsmål",
-	"Ответ": "Svar"
+	"Ответ": "Svar",
+	"Проверка поискового робота (rDNS)": "Søg robot check (rdns)",
+	"Добавьте в список хотя бы одного поискового робота": "Tilføj til listen mindst en søgning robot"
 }

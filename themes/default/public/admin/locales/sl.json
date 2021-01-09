@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Označevanje na strani kategorije",
 	"Разметка на странице фильма": "Označevanje na strani s movieom",
 	"Вопрос": "Vprašanje",
-	"Ответ": "Odgovor"
+	"Ответ": "Odgovor",
+	"Проверка поискового робота (rDNS)": "Preverjanje robota iskanja (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Dodaj na seznam vsaj en iskalni robot"
 }

@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Menandai pada halaman kategori",
 	"Разметка на странице фильма": "Menandai pada halaman movie",
 	"Вопрос": "Pertanyaan",
-	"Ответ": "Menjawab"
+	"Ответ": "Menjawab",
+	"Проверка поискового робота (rDNS)": "Cari Robot Check (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Tambahkan ke daftar setidaknya satu robot pencarian"
 }

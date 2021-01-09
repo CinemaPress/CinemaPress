@@ -1270,9 +1270,9 @@ read_theme() {
                 then
                     AGAIN=10
                 else
-                    printf "%s         There is no such theme! \n" "${NC}"
-                    printf "%sWARNING:%s Currently there are theme: hodor, sansa, robb, ramsay, tyrion, \n" "${R}" "${NC}"
-                    printf "%s         cersei, joffrey, drogo, bran, arya, mormont, tarly и daenerys, tormund \n" "${NC}"
+                    printf "%b         There is no such theme! \n" "${NC}"
+                    printf "%bWARNING:%b Currently there are theme: hodor, sansa, robb, ramsay, tyrion, \n" "${R}" "${NC}"
+                    printf "%b         cersei, joffrey, drogo, bran, arya, mormont, tarly и daenerys, tormund \n" "${NC}"
                     AGAIN=$(("${AGAIN}"+1))
                 fi
             fi
@@ -2747,7 +2747,52 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec -t "${CP_DOMAIN_}" node optimal.js
             exit 0
         ;;
-        "l"|"ll"|"log"|"logs"|"live" )
+        "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf" )
+            if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
+                _br
+                if [ "${1}" = "live" ]; then
+                    _line
+                    _header "BOT DETECTED"
+                    _line
+                    _br
+                    tail \
+                        -n0 -f /home/*/log/err*.log \
+                        -n0 -f /home/*/log/out*.log \
+                        | grep "BOT DETECTED"
+                    _br
+                fi
+                if [ "${3}" = "" ] && { [ "${1}" = "lb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; }; then
+                    _line
+                    _header "BOT DETECTED"
+                    _line
+                    _br
+                    grep "BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    _br
+                    _line
+                    _br
+                fi
+                if [ "${1}" = "lbt" ] || [ "${3}" = "true" ]; then
+                    _line
+                    _header "TRUE BOT DETECTED"
+                    _line
+                    _br
+                    grep "TRUE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    _br
+                    _line
+                    _br
+                fi
+                if [ "${1}" = "lbf" ] || [ "${3}" = "fake" ]; then
+                    _line
+                    _header "FAKE BOT DETECTED"
+                    _line
+                    _br
+                    grep "FAKE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    _br
+                    _line
+                    _br
+                fi
+                exit 0
+            fi
             if [ "${1}" = "ll" ] || [ "${1}" = "live" ] || [ "${2}" = "live" ] || [ "${2}" = "l" ]; then
                 _br
                 tail \

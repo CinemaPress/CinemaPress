@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Jelölés a kategóriaoldalon",
 	"Разметка на странице фильма": "Jelölés a movieoldalon",
 	"Вопрос": "Kérdés",
-	"Ответ": "Válasz"
+	"Ответ": "Válasz",
+	"Проверка поискового робота (rDNS)": "Keresés Robot Check (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Adja hozzá a listához legalább egy keresési robotot"
 }

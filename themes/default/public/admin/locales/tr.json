@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Kategori sayfasında işaretleme",
 	"Разметка на странице фильма": "Movie sayfasında işaretleme",
 	"Вопрос": "Soru",
-	"Ответ": "Cevap"
+	"Ответ": "Cevap",
+	"Проверка поискового робота (rDNS)": "Arama Robot Check (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Listeye ekle en az bir arama robotu"
 }

@@ -22,7 +22,7 @@ Object.keys(modules).length === 0 &&
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000, max: 100 });
+var cache = new LRU({ maxAge: 3600000, max: 1000 });
 var md5 = require('md5');
 var path = require('path');
 var moment = require('moment');

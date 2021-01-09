@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Duke shënuar në faqen e kategorisë",
 	"Разметка на странице фильма": "Duke shënuar në faqen e movieit",
 	"Вопрос": "Pyetje",
-	"Ответ": "Përgjigje"
+	"Ответ": "Përgjigje",
+	"Проверка поискового робота (rDNS)": "Kërko Robot Check (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Shtoni në listë të paktën një robot kërkimi"
 }

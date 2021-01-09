@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Marcarea pe pagina categorie",
 	"Разметка на странице фильма": "Marcarea pe pagina movieului",
 	"Вопрос": "Întrebare",
-	"Ответ": "Răspuns"
+	"Ответ": "Răspuns",
+	"Проверка поискового робота (rDNS)": "Căutați verificarea robotului (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Adăugați la listă cel puțin un robot de căutare"
 }

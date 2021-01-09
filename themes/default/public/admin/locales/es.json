@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Marcado en la página de categoría",
 	"Разметка на странице фильма": "Marcado en la página de la película",
 	"Вопрос": "Pregunta",
-	"Ответ": "Responder"
+	"Ответ": "Responder",
+	"Проверка поискового робота (rDNS)": "Buscar cheque de robot (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Añadir a la lista al menos un robot de búsqueda"
 }

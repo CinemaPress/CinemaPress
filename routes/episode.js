@@ -25,7 +25,7 @@ Object.keys(modules).length === 0 &&
 
 var adop = require('adop');
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000, max: 100 });
+var cache = new LRU({ maxAge: 3600000, max: 1000 });
 var md5 = require('md5');
 var async = require('async');
 var request = require('request');
@@ -149,7 +149,6 @@ router.get('/?', function(req, res) {
           },
           function(error, response, body) {
             if (error || response.statusCode !== 200 || !body) {
-              console.error(task, (error && error.code) || '', body);
               return callback();
             }
             serials = adop(tryParseJSON(body), obj, group);

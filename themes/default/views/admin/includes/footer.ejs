@@ -463,6 +463,7 @@
           'config.ru.bomain',
           'config.ru.botdomain',
           'config.botdomains',
+          'config.bots',
           'config.dns.cloudflare.email',
           'config.dns.cloudflare.key',
           'config.homepage',
@@ -745,6 +746,10 @@
 
     if (data.modules && data.modules.comments && data.modules.comments.data && data.modules.comments.data.fast && data.modules.comments.data.fast.blacklist) {
       data.modules.comments.data.fast.blacklist = data.modules.comments.data.fast.blacklist.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',');
+    }
+
+    if (data.config && data.config.bots && data.config.bots) {
+      data.config.bots = data.config.bots.split(/(\n\n|\n)/ig).filter(Boolean);
     }
 
     if (data.modules && data.modules.player && data.modules.player.data.custom) {
@@ -1210,7 +1215,7 @@
     });
   }
 
-  ['modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
+  ['config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);
     }

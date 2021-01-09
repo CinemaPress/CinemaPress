@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Märgistamine kategooria lehel",
 	"Разметка на странице фильма": "Märgistamine moviei lehel",
 	"Вопрос": "Küsimus",
-	"Ответ": "Vastus"
+	"Ответ": "Vastus",
+	"Проверка поискового робота (rDNS)": "Otsi robotikontroll (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Lisage loendisse vähemalt üks otsingu robot"
 }

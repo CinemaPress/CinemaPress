@@ -988,5 +988,7 @@
   "Разметка на странице категории": "Category page markup",
   "Разметка на странице фильма": "Movie page markup",
   "Вопрос": "Question",
-  "Ответ": "Answer"
+  "Ответ": "Answer",
+  "Проверка поискового робота (rDNS)": "Search crawler checker (rDNS).",
+  "Добавьте в список хотя бы одного поискового робота": "Add at least one crawler to the list"
 }

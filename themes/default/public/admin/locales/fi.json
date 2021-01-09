@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Merkintä luokka-sivulla",
 	"Разметка на странице фильма": "Merkintä elokuvasivulla",
 	"Вопрос": "Kysymys",
-	"Ответ": "Vastaus"
+	"Ответ": "Vastaus",
+	"Проверка поискового робота (rDNS)": "Haku Robot Check (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Lisää luetteloon vähintään yksi haku robotti"
 }

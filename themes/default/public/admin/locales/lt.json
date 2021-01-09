@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Žymėjimas kategorijoje",
 	"Разметка на странице фильма": "Žymėjimas movieo puslapyje",
 	"Вопрос": "Klausimas",
-	"Ответ": "Atsakymas"
+	"Ответ": "Atsakymas",
+	"Проверка поискового робота (rDNS)": "Ieškoti roboto čekio (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Įdėkite į sąrašą bent vieną paieškos robotą"
 }

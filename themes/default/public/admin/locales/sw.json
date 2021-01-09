@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Kuashiria kwenye ukurasa wa kikundi",
 	"Разметка на странице фильма": "Kuashiria kwenye ukurasa wa filamu",
 	"Вопрос": "Swali",
-	"Ответ": "Jibu"
+	"Ответ": "Jibu",
+	"Проверка поискового робота (rDNS)": "Tafuta Utafutaji wa Robot (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Ongeza kwenye orodha angalau robot moja ya utafutaji"
 }

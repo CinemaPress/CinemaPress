@@ -529,6 +529,174 @@
                                                 </article>
                                             </div>
                                         </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Проверка поискового робота (rDNS)') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <% if (config.bots && config.bots.length) { %>
+                                                                    <table class="table table-bordered table-striped">
+                                                                        <tbody>
+                                                                        <% config.bots.forEach(function(data, num) { %>
+                                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                            <% if (d.length < 1) return; %>
+                                                                            <% if (data.charAt(0) === '#') {
+                                                                                var custom_div = 'no-active';
+                                                                            } %>
+                                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                                custom_i = 'text-success';
+                                                                            } %>
+                                                                            <tr class="<%- custom_div %>">
+                                                                                <td class="table-settings">
+                                                                                    <span><%- num + 1 %>.</span>
+                                                                                </td>
+                                                                                <td class="table-content help-example">
+                                                                                    <div class="<%- custom_div %>">
+                                                                                        <code>
+                                                                                            <span class="url"><%= d[0].replace(/#\s*/,'') %></span>
+                                                                                            <% if (typeof d[1] !== 'undefined') { %>
+                                                                                                ~
+                                                                                                <span class="kinopoisk_id"><%= d[1] || '' %></span>
+                                                                                            <% } %>
+                                                                                            <% if (typeof d[2] !== 'undefined') { %>
+                                                                                                ~
+                                                                                                <span class="collection"><%= d[2] || '' %></span>
+                                                                                            <% } %>
+                                                                                            <% if (typeof d[3] !== 'undefined') { %>
+                                                                                                ~
+                                                                                                <span class="translate"><%= d[3] || '' %></span>
+                                                                                            <% } %>
+                                                                                        </code>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="table-settings">
+                                                                        <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                                 data-parser="<%- encodeURIComponent(data) %>"
+                                                                                 data-activate-api="config.bots"></i></span>
+                                                                                </td>
+                                                                                <td class="table-settings">
+                                                                        <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                                 data-parser="<%- encodeURIComponent(data) %>"
+                                                                                 data-delete-api="config.bots"></i></span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        <% }); %>
+                                                                        </tbody>
+                                                                    </table>
+                                                                <% } else { %>
+                                                                    <div class="help-example"
+                                                                         style="padding-top: 0 !important; text-align: center">
+                                                                        <code><%= __('Добавьте в список хотя бы одного поискового робота') %></code>
+                                                                    </div>
+                                                                <% } %>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="col-lg-12 col-xs-12">
+                                                                <div class="faq">
+                                                                    <article class="faq-group">
+                                                                        <header class="text-muted text-left">
+                                                                            <i class="fa fa-plus"></i>
+                                                                            <h3>
+                                                                                <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                                            </h3>
+                                                                        </header>
+                                                                        <div class="faq-content clearfix">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                        <textarea class="form-control custom"
+                                                                                  name="config.bots"
+                                                                                  placeholder="keyword ~ domains ~ ips ~ message"
+                                                                                  style="height:300px;"><%- config.bots.join('\n\n') %></textarea>
+                                                                                </div>
+
+                                                                                <div class="spacer-10"></div>
+
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                                        <p>
+                                                                                            <code>
+                                                                                                <span class="url">keyword</span>
+                                                                                                ~
+                                                                                                <span class="kinopoisk_id">domains</span>
+                                                                                                ~
+                                                                                                <span class="collection">ips</span>
+                                                                                                ~
+                                                                                                <span class="translate">message</span>
+                                                                                            </code>
+                                                                                        </p>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.<span class="url">google</span>.com/bot.html)
+                                                                                        </code><br>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            66.249.66.47 » crawl-66-249-66-47.<span class="kinopoisk_id">googlebot.com</span> » 66.249.66.47
+                                                                                        </code><br>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            403 Forbidden: <span class="translate">Fake Bot!</span>
+                                                                                        </code><br>
+                                                                                        <p>
+                                                                                            <code>
+                                                                                                <span class="url">google</span>
+                                                                                                ~
+                                                                                                <span class="kinopoisk_id">googlebot.com,google.com</span>
+                                                                                                ~
+                                                                                                <span class="collection"></span>
+                                                                                                ~
+                                                                                                <span class="translate">Fake Bot!</span>
+                                                                                            </code>
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            <code>
+                                                                                                <a href="https://en.wikipedia.org/wiki/Reverse_DNS_lookup" target="_blank">Reverse DNS lookup (rDNS)</a>
+                                                                                            </code>
+                                                                                        </p>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            DuckDuckBot/1.0; (+http://<span class="url">duckduckgo</span>.com/duckduckbot.html)
+                                                                                        </code><br>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            <span class="collection">23.21.227.69</span>
+                                                                                        </code><br>
+                                                                                        <code class="text-muted"
+                                                                                              style="margin:1px 0 0 0">
+                                                                                            403 Forbidden: <span class="translate">Fake Bot!</span>
+                                                                                        </code><br>
+                                                                                        <p>
+                                                                                            <code>
+                                                                                                <span class="url">duckduckgo</span>
+                                                                                                ~
+                                                                                                <span class="kinopoisk_id"></span>
+                                                                                                ~
+                                                                                                <span class="collection">23.21.227.69,40.88.21.235</span>
+                                                                                                ~
+                                                                                                <span class="translate">Fake Bot!</span>
+                                                                                            </code>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

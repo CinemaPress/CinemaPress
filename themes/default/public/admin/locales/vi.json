@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Đánh dấu trên trang danh mục",
 	"Разметка на странице фильма": "Đánh dấu trên trang phim",
 	"Вопрос": "Câu hỏi",
-	"Ответ": "Câu trả lời"
+	"Ответ": "Câu trả lời",
+	"Проверка поискового робота (rDNS)": "Kiểm tra robot tìm kiếm (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Thêm vào danh sách ít nhất một robot tìm kiếm"
 }

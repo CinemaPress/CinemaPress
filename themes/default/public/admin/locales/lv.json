@@ -989,5 +989,7 @@
 	"Разметка на странице категории": "Marķēšana uz kategorijas lapu",
 	"Разметка на странице фильма": "Marķēšana movieas lapā",
 	"Вопрос": "Apšaubīt",
-	"Ответ": "Atbildēt"
+	"Ответ": "Atbildēt",
+	"Проверка поискового робота (rDNS)": "Meklēt robota pārbaude (RDNS)",
+	"Добавьте в список хотя бы одного поискового робота": "Pievienojiet sarakstam vismaz vienu meklēšanas robotu"
 }
