@@ -43,7 +43,8 @@ module.exports = {
   ],
   "defense": {
     "domain": 2,
-    "agent": 2,
+    "domain_key": 2,
+    "agent": 0,
     "message": "We've noticed suspicious activity, please check."
   },
   "blacklist": 0,

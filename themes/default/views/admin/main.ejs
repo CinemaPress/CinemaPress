@@ -725,7 +725,17 @@
                                                                     </div>
                                                                     <div class="inner-padding">
                                                                         <div class="row">
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="inline-labels">
+                                                                                    <label>
+                                                                                        <input name="config.defense.domain_key" value="1" <% if (config.defense.domain_key === 1) { %> checked=""<% } %> type="radio"><span></span> IP
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        <input name="config.defense.domain_key" value="2" <% if (config.defense.domain_key !== 1) { %> checked=""<% } %> type="radio"><span></span> IP+UA
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
                                                                                 <select name="config.defense.domain"
                                                                                         class="form-control without">
                                                                                     <% for (var i = 0; i <= 10; i++) { %>
