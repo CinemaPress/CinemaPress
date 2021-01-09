@@ -3754,6 +3754,10 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " logs      - Show all logs"; _br;
             printf " logs live - Show all logs realtime"; _br;
+            printf " logs bot  - Show logs for fake and true bots"; _br;
+            printf " live bot  - Show realtime logs for fake and true bots"; _br;
+            printf " lbf       - Show logs for fake bots"; _br;
+            printf " lbt       - Show logs for true bots"; _br;
             printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;
