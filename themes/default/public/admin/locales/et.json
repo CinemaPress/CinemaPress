@@ -991,5 +991,12 @@
 	"Вопрос": "Küsimus",
 	"Ответ": "Vastus",
 	"Проверка поискового робота (rDNS)": "Otsi robotikontroll (RDNS)",
-	"Добавьте в список хотя бы одного поискового робота": "Lisage loendisse vähemalt üks otsingu robot"
+	"Добавьте в список хотя бы одного поискового робота": "Lisage loendisse vähemalt üks otsingu robot",
+	"Проверка подозрительной активности": "Kontrollige kahtlast tegevust",
+	"Частое изменение домена": "Domeeni sagedane muutus",
+	"Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "Kui kasutaja läheb veebisaidile mitme erineva domeeni alla ühe tunni jooksul, peab ta kontrollima",
+	"Частое изменение User-Agent": "Sagedaste muudatuste kasutajate agent",
+	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Kui kasutaja läheb veebisaidile ühe tunni jooksul mitme erineva kasutajaagendi all, peab ta kontrollima",
+	"Не использовать": "Ära kasuta",
+	"домен(ов)": "domeen (id)"
 }

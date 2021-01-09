@@ -991,5 +991,12 @@
 	"Вопрос": "Câu hỏi",
 	"Ответ": "Câu trả lời",
 	"Проверка поискового робота (rDNS)": "Kiểm tra robot tìm kiếm (RDNS)",
-	"Добавьте в список хотя бы одного поискового робота": "Thêm vào danh sách ít nhất một robot tìm kiếm"
+	"Добавьте в список хотя бы одного поискового робота": "Thêm vào danh sách ít nhất một robot tìm kiếm",
+	"Проверка подозрительной активности": "Kiểm tra hoạt động đáng ngờ",
+	"Частое изменение домена": "Thay đổi thường xuyên của tên miền",
+	"Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "Nếu người dùng truy cập trang web dưới một số tên miền khác nhau trong vòng một giờ, anh ta sẽ cần phải kiểm tra",
+	"Частое изменение User-Agent": "Đại lý người dùng thay đổi thường xuyên",
+	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Nếu người dùng truy cập trang web dưới một số người dùng khác nhau trong vòng một giờ, anh ta sẽ cần kiểm tra",
+	"Не использовать": "Không được dùng",
+	"домен(ов)": "tên miền"
 }

@@ -991,5 +991,12 @@
 	"Вопрос": "Pytanie",
 	"Ответ": "Odpowiedź",
 	"Проверка поискового робота (rDNS)": "Szukaj Robot Check (RDNS)",
-	"Добавьте в список хотя бы одного поискового робота": "Dodaj do listy przynajmniej jeden robot wyszukiwania"
+	"Добавьте в список хотя бы одного поискового робота": "Dodaj do listy przynajmniej jeden robot wyszukiwania",
+	"Проверка подозрительной активности": "Sprawdź podejrzaną aktywność",
+	"Частое изменение домена": "Częste zmiany domeny",
+	"Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "Jeśli użytkownik trafia na stronę w ramach kilku różnych domen w ciągu jednej godziny, będzie musiał sprawdzić",
+	"Частое изменение User-Agent": "Częste zmiany User-Agent",
+	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Jeśli użytkownik trafi do strony internetowej w ramach kilku różnych agenta użytkownika w ciągu jednej godziny, będzie musiał sprawdzić",
+	"Не использовать": "Nie używać",
+	"домен(ов)": "domeny (ów)"
 }

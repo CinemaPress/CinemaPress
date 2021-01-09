@@ -41,6 +41,11 @@ module.exports = {
     "# whatsapp",
     "# vk"
   ],
+  "defense": {
+    "domain": 2,
+    "agent": 2,
+    "message": "We've noticed suspicious activity, please check."
+  },
   "blacklist": 0,
   "email": "support@example.com",
   "theme": "default",

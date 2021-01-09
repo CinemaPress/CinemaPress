@@ -2747,8 +2747,8 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec -t "${CP_DOMAIN_}" node optimal.js
             exit 0
         ;;
-        "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf" )
-            if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
+        "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )
+            if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${1}" = "lbb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
                 _br
                 if [ "${1}" = "live" ]; then
                     _line
@@ -2787,6 +2787,16 @@ while [ "${WHILE}" -lt "2" ]; do
                     _line
                     _br
                     grep "FAKE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    _br
+                    _line
+                    _br
+                fi
+                if [ "${1}" = "lbb" ] || [ "${3}" = "bad" ]; then
+                    _line
+                    _header "BAD BOT DETECTED"
+                    _line
+                    _br
+                    grep "BAD BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
                     _br
                     _line
                     _br
@@ -3758,6 +3768,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " live bot  - Show realtime logs for fake and true bots"; _br;
             printf " lbf       - Show logs for fake bots"; _br;
             printf " lbt       - Show logs for true bots"; _br;
+            printf " lbb       - Show logs for bad bots"; _br;
             printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;

@@ -990,5 +990,12 @@
   "Вопрос": "Question",
   "Ответ": "Answer",
   "Проверка поискового робота (rDNS)": "Search crawler checker (rDNS).",
-  "Добавьте в список хотя бы одного поискового робота": "Add at least one crawler to the list"
+  "Добавьте в список хотя бы одного поискового робота": "Add at least one crawler to the list",
+  "Проверка подозрительной активности": "Check for suspicious activity",
+  "Частое изменение домена": "Frequent domain changes",
+  "Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "If a user visits a website under several different domains within one hour, he will need to be verified",
+  "Частое изменение User-Agent": "Frequent User-Agent changes",
+  "Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "If a user visits a website under several different User-Agents within one hour, he will need to be verified",
+  "Не использовать": "Do not use",
+  "домен(ов)": "domain(s)"
 }

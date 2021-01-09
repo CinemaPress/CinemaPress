@@ -991,5 +991,12 @@
 	"Вопрос": "Kérdés",
 	"Ответ": "Válasz",
 	"Проверка поискового робота (rDNS)": "Keresés Robot Check (RDNS)",
-	"Добавьте в список хотя бы одного поискового робота": "Adja hozzá a listához legalább egy keresési robotot"
+	"Добавьте в список хотя бы одного поискового робота": "Adja hozzá a listához legalább egy keresési robotot",
+	"Проверка подозрительной активности": "Ellenőrizze a gyanús tevékenységet",
+	"Частое изменение домена": "Gyakori tartományváltozás",
+	"Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "Ha a felhasználó egy óra alatt több különböző domainn belül a weboldalra kerül, akkor ellenőriznie kell",
+	"Частое изменение User-Agent": "Gyakori felhasználói ügynök",
+	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Ha a felhasználó több különböző felhasználói ügynök alá kerül egy órán belül, ellenőriznie kell",
+	"Не использовать": "Ne használja",
+	"домен(ов)": "domain (ek)"
 }

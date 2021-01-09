@@ -991,5 +991,12 @@
 	"Вопрос": "Apšaubīt",
 	"Ответ": "Atbildēt",
 	"Проверка поискового робота (rDNS)": "Meklēt robota pārbaude (RDNS)",
-	"Добавьте в список хотя бы одного поискового робота": "Pievienojiet sarakstam vismaz vienu meklēšanas robotu"
+	"Добавьте в список хотя бы одного поискового робота": "Pievienojiet sarakstam vismaz vienu meklēšanas robotu",
+	"Проверка подозрительной активности": "Pārbaudiet aizdomīgu darbību",
+	"Частое изменение домена": "Bieža domēna maiņa",
+	"Если пользователь зайдет на веб-сайт под несколькими разными доменами в течении одного часа, ему нужно будет пройти проверку": "Ja lietotājs vienas stundas laikā dodas uz vietni ar vairākiem dažādiem domēniem, viņam būs jāpārbauda",
+	"Частое изменение User-Agent": "Bieži mainiet lietotāju aģentu",
+	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Ja lietotājs iet uz tīmekļa vietni ar vairākiem dažādiem lietotāju aģenta vienas stundas laikā, viņam būs jāpārbauda",
+	"Не использовать": "Nelietojiet",
+	"домен(ов)": "domēns (-i)"
 }

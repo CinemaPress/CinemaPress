@@ -69,6 +69,7 @@ var telegram = require('./routes/telegram');
 var rebooting = require('./lib/CP_rebooting');
 var userinfo = require('./lib/CP_userinfo');
 var loadavg = require('./lib/CP_loadavg');
+var defence = require('./lib/CP_defense');
 var nginx = require('./lib/CP_nginx');
 var bots = require('./lib/CP_bots');
 
@@ -107,6 +108,7 @@ app.use(
 app.use('/telegram', telegram);
 app.use('/files', files);
 app.use(bots());
+app.use(defence());
 app.use(userinfo(lookup));
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/player.*$/, player);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode.*$/, episode);
