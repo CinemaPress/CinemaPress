@@ -457,11 +457,35 @@ router.get('/:type?', function(req, res) {
             render.movies = movies;
           }
 
-          CP_get.count(
-            { certainly: true, full: true, from: process.env.CP_RT },
-            function(err, count) {
+          async.series(
+            {
+              all: function(callback) {
+                CP_get.count(
+                  { certainly: true, full: true, from: process.env.CP_RT },
+                  function(err, count) {
+                    if (err) console.error(err);
+                    callback(null, count || 0);
+                  }
+                );
+              },
+              unq: function(callback) {
+                CP_get.count(
+                  {
+                    certainly: true,
+                    uniq: true,
+                    from: process.env.CP_RT
+                  },
+                  function(err, count) {
+                    if (err) console.error(err);
+                    callback(null, count || 0);
+                  }
+                );
+              }
+            },
+            function(err, result) {
               if (err) console.error(err);
-              render.count_movies = count || 0;
+              render.count_movies = (result && result.all) || 0;
+              render.uniq_movies = (result && result.unq) || 0;
               callback(null, render);
             }
           );
