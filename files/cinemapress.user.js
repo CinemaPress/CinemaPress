@@ -10,7 +10,7 @@
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
-// @version 2020.10
+// @version 2021.01
 // @run-at document-end
 // @include http://*/*/movies?id=*
 // @include https://*/*/movies?id=*
@@ -116,6 +116,12 @@ function parseData() {
       'https://api1573848848.apicollaps.cc/franchise/details?' +
         'token=eedefb541aeba871dcfc756e6b31c02e&' +
         'kinopoisk_id=' +
+        kp_id
+    );
+    urls.push(
+      'https://bazon.cc/api/search?' +
+        'token=2848f79ca09d4bbbf419bcdb464b4d11&' +
+        'kp=' +
         kp_id
     );
     urls.push('https://pleer.video/' + kp_id + '.json');
@@ -422,6 +428,19 @@ function getAPI(url, callback) {
                       : '0'
                 };
               }
+            } else if (url.indexOf('bazon.cc') + 1) {
+              try {
+                var result_parse = JSON.parse(response.responseText);
+                if (
+                  result_parse &&
+                  result_parse.results &&
+                  result_parse.results[0]
+                ) {
+                  result = result_parse.results[0];
+                }
+              } catch (e) {
+                console.log(e);
+              }
             } else {
               try {
                 result = JSON.parse(response.responseText);
@@ -436,7 +455,10 @@ function getAPI(url, callback) {
         var res = {};
         if (url.indexOf('pleer.video') + 1) {
           res = parsePleer(result);
-        } else if (url.indexOf('apicollaps.cc') + 1) {
+        } else if (
+          url.indexOf('apicollaps.cc') + 1 ||
+          url.indexOf('bazon.cc') + 1
+        ) {
           res = parseKP(result);
         } else if (url.indexOf('omdbapi.com') + 1) {
           res = parseOMDb(result);
@@ -585,24 +607,34 @@ function parseOMDb(res) {
 }
 
 function parseKP(r) {
-  if (!r.id) return {};
+  if (!r.id && !r.kinopoisk_id) return {};
   var res = r;
   return {
     imdb_id: res.imdb_id ? res.imdb_id.replace(/[^0-9]/g, '') : '',
-    title_ru: res.name
-      ? res.name
-          .split('(')[0]
-          .split('[')[0]
-          .trim()
-      : '',
-    title_en: res.name_eng
-      ? res.name_eng
-          .split('(')[0]
-          .split('[')[0]
-          .trim()
-      : '',
-    year: res.year ? (res.year + '').split('-')[0].replace(/[^0-9]/g, '') : '',
-    type: res.type && res.type === 'series' ? '1' : '0',
+    title_ru:
+      res.name || (res.info && res.info.rus)
+        ? (res.name || (res.info && res.info.rus))
+            .split('(')[0]
+            .split('[')[0]
+            .trim()
+        : '',
+    title_en:
+      res.name_eng || (res.info && res.info.orig)
+        ? (res.name_eng || (res.info && res.info.orig))
+            .split('(')[0]
+            .split('[')[0]
+            .trim()
+        : '',
+    year:
+      res.year || (res.info && res.info.year)
+        ? ((res.year || (res.info && res.info.year)) + '')
+            .split('-')[0]
+            .replace(/[^0-9]/g, '')
+        : '',
+    type:
+      (res.type && res.type === 'series') || (res.serial && res.serial === '1')
+        ? '1'
+        : '0',
     genre: (Array.isArray(res.genre)
       ? res.genre
           .map(function(v) {
@@ -619,6 +651,15 @@ function parseKP(r) {
           .filter(function(g) {
             return g !== 'зарубежные' && g !== 'зарубежный';
           })
+      : res.info && res.info.genre && typeof res.info.genre === 'string'
+      ? res.info.genre
+          .split(',')
+          .map(function(g) {
+            return g.trim().toLowerCase();
+          })
+          .filter(function(g) {
+            return g && g !== 'зарубежные' && g !== 'зарубежный';
+          })
       : []
     ).join(','),
     country: (Array.isArray(res.country)
@@ -629,11 +670,19 @@ function parseKP(r) {
       ? Object.keys(res.country).map(function(c) {
           return res.country[c].trim();
         })
+      : res.info && res.info.country && typeof res.info.country === 'string'
+      ? res.info.country.split(',').map(function(c) {
+          return c.trim();
+        })
       : []
     ).join(','),
     actor: (res.actors
       ? res.actors.map(function(v, i) {
           return i < 5 ? v : null;
+        })
+      : res.info && res.info.actors && typeof res.info.actors === 'string'
+      ? res.info.actors.split(',').map(function(a, i) {
+          return i < 5 ? a.trim() : null;
         })
       : []
     )
@@ -643,24 +692,71 @@ function parseKP(r) {
       ? res.director.map(function(v, i) {
           return i < 3 ? v : null;
         })
+      : res.info && res.info.director && typeof res.info.director === 'string'
+      ? res.info.director.split(',').map(function(d) {
+          return d.trim();
+        })
       : []
     )
       .filter(Boolean)
       .join(','),
-    description: res.description ? res.description : '',
-    poster: res.poster ? '1' : '',
-    kp_rating: res.kinopoisk ? Math.floor(res.kinopoisk * 10) : '',
-    kp_vote: '1000',
-    imdb_rating: res.imdb ? Math.floor(res.imdb * 10) : '',
-    imdb_vote: '1000',
+    description:
+      res.description || (res.info && res.info.description)
+        ? res.description || (res.info && res.info.description)
+        : '',
+    poster: res.poster || (res.info && res.info.poster) ? '1' : '',
+    kp_rating: res.kinopoisk
+      ? Math.floor(res.kinopoisk * 10)
+      : res.info && res.info.rating && res.info.rating.rating_kp
+      ? Math.floor(parseFloat(res.info.rating.rating_kp) * 10)
+      : '',
+    kp_vote:
+      res.info && res.info.rating && res.info.rating.vote_num_kp
+        ? parseInt(res.info.rating.vote_num_kp)
+        : '1000',
+    imdb_rating: res.imdb
+      ? Math.floor(res.imdb * 10)
+      : res.info && res.info.rating && res.info.rating.rating_imdb
+      ? Math.floor(parseFloat(res.info.rating.rating_imdb) * 10)
+      : '',
+    imdb_vote:
+      res.info && res.info.rating && res.info.rating.vote_num_imdb
+        ? parseInt(res.info.rating.vote_num_imdb)
+        : '1000',
     translate:
       res.voiceActing && res.voiceActing[0]
         ? res.voiceActing.filter(function(voice) {
             return !/(укр|eng)/i.test(voice);
           })[0]
+        : res.translation
+        ? res.translation
         : '',
-    quality: res.quality ? res.quality : '',
-    premiere: res.premier ? res.premier : ''
+    quality: res.quality ? res.quality : res.quality ? res.quality : '',
+    premiere: res.premier
+      ? res.premier
+      : res.info && res.info.premiere
+      ? res.info.premiere
+          .split(' ')
+          .reverse()
+          .map(function(d) {
+            return d
+              .toLowerCase()
+              .replace('января', '01')
+              .replace('февраля', '02')
+              .replace('марта', '03')
+              .replace('апреля', '04')
+              .replace('мая', '05')
+              .replace('июня', '06')
+              .replace('июля', '07')
+              .replace('августа', '08')
+              .replace('сентября', '09')
+              .replace('октября', '10')
+              .replace('ноября', '11')
+              .replace('декабря', '12')
+              .padStart(2, '0');
+          })
+          .join('-')
+      : ''
   };
 }
 

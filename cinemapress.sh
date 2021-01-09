@@ -2749,6 +2749,10 @@ while [ "${WHILE}" -lt "2" ]; do
         ;;
         "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )
             if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${1}" = "lbb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
+                RR='\o033[0;31m'
+                GG='\o033[0;32m'
+                YY='\o033[0;33m'
+                NCC='\o033[0m'
                 _br
                 if [ "${1}" = "live" ]; then
                     _line
@@ -2758,7 +2762,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     tail \
                         -n0 -f /home/*/log/err*.log \
                         -n0 -f /home/*/log/out*.log \
-                        | grep "BOT DETECTED"
+                    | sed \
+                        -e 's/\([0-9T:-]*\):\s*/\1/' \
+                        -e 's/\(TRUE BOT DETECTED\)/ \o033[32mTRUE\o033[39m/' \
+                        -e 's/\(FAKE BOT DETECTED\)/ \o033[31mFAKE\o033[39m/' \
+                        -e 's/\(BAD BOT DETECTED\)/ \o033[33mBAD!\o033[39m/'
                     _br
                 fi
                 if [ "${3}" = "" ] && { [ "${1}" = "lb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; }; then
@@ -2766,7 +2774,13 @@ while [ "${WHILE}" -lt "2" ]; do
                     _header "BOT DETECTED"
                     _line
                     _br
-                    grep "BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    grep \
+                        "BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log \
+                        | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
+                        | sed -E "s/TRUE BOT DETECTED/ ${GG}TRUE${NCC}/" \
+                        | sed -E "s/FAKE BOT DETECTED/ ${RR}FAKE${NCC}/" \
+                        | sed -E "s/BAD BOT DETECTED/ ${YY}BAD!${NCC}/" \
+                        | sort -k1
                     _br
                     _line
                     _br
@@ -2776,7 +2790,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     _header "TRUE BOT DETECTED"
                     _line
                     _br
-                    grep "TRUE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    grep \
+                        "TRUE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log \
+                        | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
+                        | sed -E "s/TRUE BOT DETECTED/ ${GG}TRUE${NCC}/" \
+                        | sort -k1
                     _br
                     _line
                     _br
@@ -2786,7 +2804,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     _header "FAKE BOT DETECTED"
                     _line
                     _br
-                    grep "FAKE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    grep \
+                        "FAKE BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log \
+                        | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
+                        | sed -E "s/FAKE BOT DETECTED/ ${RR}FAKE${NCC}/" \
+                        | sort -k1
                     _br
                     _line
                     _br
@@ -2796,7 +2818,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     _header "BAD BOT DETECTED"
                     _line
                     _br
-                    grep "BAD BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log
+                    grep \
+                        "BAD BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log \
+                        | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
+                        | sed -E "s/BAD BOT DETECTED/ ${YY}BAD!${NCC}/" \
+                        | sort -k1
                     _br
                     _line
                     _br
