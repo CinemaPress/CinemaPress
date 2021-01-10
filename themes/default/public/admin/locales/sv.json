@@ -998,5 +998,6 @@
 	"Частое изменение User-Agent": "Frekvent förändring användaragent",
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Om användaren går till webbplatsen under flera olika användaragent inom en timme, måste han kolla",
 	"Не использовать": "Använd inte",
-	"домен(ов)": "domän (er)"
+	"домен(ов)": "domän (er)",
+	"Домены исключения:": "Domäner undantag:"
 }

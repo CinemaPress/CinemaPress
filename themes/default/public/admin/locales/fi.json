@@ -998,5 +998,6 @@
 	"Частое изменение User-Agent": "Usein muutos käyttäjän agentti",
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Jos käyttäjä menee verkkosivustoon useiden eri käyttäjäagentti tunnin sisällä, hänen on tarkistettava",
 	"Не использовать": "Älä käytä",
-	"домен(ов)": "verkkotunnus (t)"
+	"домен(ов)": "verkkotunnus (t)",
+	"Домены исключения:": "Verkkotunnukset poikkeukset:"
 }

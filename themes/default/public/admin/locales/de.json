@@ -998,5 +998,6 @@
 	"Частое изменение User-Agent": "Häufige Änderungsbenutzer",
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Wenn der Benutzer innerhalb einer Stunde unter mehrere verschiedene Benutzer-Agent an die Website geht, muss er überprüfen",
 	"Не использовать": "Verwende nicht",
-	"домен(ов)": "domäne(s)"
+	"домен(ов)": "domäne(s)",
+	"Домены исключения:": "Domains ausnahmen:"
 }

@@ -998,5 +998,6 @@
 	"Частое изменение User-Agent": "Sık Kullanıcı Ajanı Değiştir",
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Kullanıcı, bir saat içinde birkaç farklı kullanıcı aracısı altında websitesine giderse, kontrol etmesi gerekir",
 	"Не использовать": "Kullanmayın",
-	"домен(ов)": "alan (lar)"
+	"домен(ов)": "alan (lar)",
+	"Домены исключения:": "Etki alanları i̇stisnaları:"
 }

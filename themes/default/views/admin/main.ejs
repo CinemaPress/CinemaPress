@@ -765,6 +765,29 @@
                                                                                     <% } %>
                                                                                 </select>
                                                                             </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-sm-12">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-4 text-center">
+                                                                                        <label>
+                                                                                            <%= __('Домены исключения:') %>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" name="config.defense.domain_ex" value="<%- config.defense.domain_ex.join(',') %>" placeholder="...">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <script>
+                                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                                var cgs = document.querySelector('[name="config.defense.domain_ex"]');
+                                                                                var cg = new Tagify(cgs, { whitelist: [ "domain.for.people", "domain.for.bots", "domain2.for.bots", "domain.for.ru.people", "domain.for.ru.bots", "domain.for.app", "domain.for.mobile", "domain.for.tv" ] });
+                                                                                cg.DOM.input.classList.add('form-control');
+                                                                              });
+                                                                            </script>
                                                                         </div>
                                                                     </div>
                                                                 </div>

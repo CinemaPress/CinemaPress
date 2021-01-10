@@ -998,5 +998,6 @@
 	"Частое изменение User-Agent": "Đại lý người dùng thay đổi thường xuyên",
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Nếu người dùng truy cập trang web dưới một số người dùng khác nhau trong vòng một giờ, anh ta sẽ cần kiểm tra",
 	"Не использовать": "Không được dùng",
-	"домен(ов)": "tên miền"
+	"домен(ов)": "tên miền",
+	"Домены исключения:": "Tên miền ngoại lệ:"
 }
