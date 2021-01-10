@@ -44,7 +44,7 @@ module.exports = {
   "defense": {
     "domain": 2,
     "domain_key": 2,
-    "domain_ex": [ "domain.for.people", "domain.for.ru.people" ],
+    "domain_ex": [ "domain.for.people", "domain.for.ru.people", "domain.for.mobile", "domain.for.tv", "domain.for.app", "domain.for.ftp", "domain.for.www" ],
     "agent": 0,
     "message": "We've noticed suspicious activity, please check."
   },
