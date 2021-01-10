@@ -2752,6 +2752,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 RR='\o033[0;31m'
                 GG='\o033[0;32m'
                 YY='\o033[0;33m'
+                BB='\o033[1;36m'
                 NCC='\o033[0m'
                 _br
                 if [ "${1}" = "live" ]; then
@@ -2766,6 +2767,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         -e 's/\([0-9T:-]*\):\s*/\1/' \
                         -e 's/\(TRUE BOT DETECTED\)/ \o033[32mTRUE\o033[39m/' \
                         -e 's/\(FAKE BOT DETECTED\)/ \o033[31mFAKE\o033[39m/' \
+                        -e 's/\(BAD BOT DETECTED \[CAPTCHA \(TRUE\|FALSE\)\]\)/ \o033[36mBAD?\o033[39m [CAPTCHA]/' \
                         -e 's/\(BAD BOT DETECTED\)/ \o033[33mBAD!\o033[39m/'
                     _br
                 fi
@@ -2779,6 +2781,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
                         | sed -E "s/TRUE BOT DETECTED/ ${GG}TRUE${NCC}/" \
                         | sed -E "s/FAKE BOT DETECTED/ ${RR}FAKE${NCC}/" \
+                        | sed -E "s/BAD BOT DETECTED \[CAPTCHA (TRUE|FALSE)\]/ ${BB}BAD?${NCC} [CAPTCHA]/" \
                         | sed -E "s/BAD BOT DETECTED/ ${YY}BAD!${NCC}/" \
                         | sort -k1
                     _br
@@ -2821,6 +2824,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     grep \
                         "BAD BOT DETECTED" /home/*/log/err*.log /home/*/log/out*.log \
                         | sed -E "s/\/home\/([0-9A-Za-z.-]{10})([0-9A-Za-z.-]*)\/log\/(out|err)-0\.log:([0-9T:-]*):\s*/\4 \1/" \
+                        | sed -E "s/BAD BOT DETECTED \[CAPTCHA (TRUE|FALSE)\]/ ${BB}BAD?${NCC} [CAPTCHA]/" \
                         | sed -E "s/BAD BOT DETECTED/ ${YY}BAD!${NCC}/" \
                         | sort -k1
                     _br
