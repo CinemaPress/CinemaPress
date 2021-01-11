@@ -2938,6 +2938,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 sed -i "s~  include ${all_server/conf.d/any.d}~#any include ${all_server/conf.d/any.d}~" "${all_server}"
             done
             if [ "${2}" = "none" ]; then
+                _br
                 _header "DEFAULT SERVER"
                 _content
                 _content "NONE"
@@ -2945,12 +2946,14 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content "(wait 60 seconds)"
                 _content
                 _line
+                _br
                 exit 0
             fi
             read_domain "${2}"
             sh_not
             sed -i "s~#any include /home/${CP_DOMAIN}/config/production/nginx/any.d/default.conf~  include /home/${CP_DOMAIN}/config/production/nginx/any.d/default.conf~" \
                 /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+            _br
             _header "DEFAULT SERVER"
             _content
             _content "${CP_DOMAIN}"
@@ -2958,6 +2961,7 @@ while [ "${WHILE}" -lt "2" ]; do
             _content "(wait 60 seconds)"
             _content
             _line
+            _br
             exit 0
         ;;
         "bot"|"bot_https"|"domain"|"domain_https" )
