@@ -874,6 +874,48 @@
                                                 </article>
                                             </div>
                                         </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><%= __('Ежедневная ротация доменов') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label"><i class="fas fa-history"></i>&nbsp;&nbsp;&nbsp;<%= __('Список доменов') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="advanced-textarea">
+                                                                                    <textarea class="form-control" name="config.rotate.list" placeholder="<%= config.subdomain %><%= config.domain %>"><%= config.rotate.list.join(',') %></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

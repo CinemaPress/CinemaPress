@@ -792,6 +792,10 @@
       }
     }
 
+    if (data.config && data.config.rotate && data.config.rotate.list) {
+      data.config.rotate.list = data.config.rotate.list.replace(/\n/ig, ',').replace(/,,/ig, ',').replace(/\s*,\s*/ig, ',');
+    }
+
     if (data.config && data.config.urls && data.config.urls.admin) {
       data.config.urls.admin = 'admin-' + data.config.urls.admin;
     }
@@ -860,8 +864,16 @@
       data.config.bomain = data.config.alt.bomain || data.config.ru.bomain || '<%- config.domain %>';
     }
 
+    if (data.config && data.config.alt && data.config.alt.botdomain && data.config.bomain && data.config.alt.bomain && data.config.bomain === data.config.alt.bomain && !data.config.botdomain) {
+      data.config.bomain = '';
+    }
+
     if (data.config && data.config.alt && data.config.alt.botdomain && !data.config.alt.bomain) {
       data.config.alt.bomain = data.config.bomain || data.config.ru.bomain || '<%- config.domain %>';
+    }
+
+    if (data.config && data.config.alt && data.config.botdomain && data.config.bomain && data.config.alt.bomain && data.config.bomain === data.config.alt.bomain && !data.config.alt.botdomain) {
+      data.config.alt.bomain = '';
     }
 
     if (data.config && data.config.ru && data.config.ru.subdomain && !data.config.ru.domain) {
@@ -870,6 +882,10 @@
 
     if (data.config && data.config.ru && data.config.ru.botdomain && !data.config.ru.bomain) {
       data.config.ru.bomain = data.config.bomain || data.config.alt.bomain || '<%- config.domain %>';
+    }
+
+    if (data.config && data.config.ru && data.config.botdomain && data.config.bomain && data.config.ru.bomain && data.config.bomain === data.config.ru.bomain && !data.config.ru.botdomain) {
+      data.config.ru.bomain = '';
     }
 
     if (data.config && typeof data.config.botdomain === 'string' && data.config.alt && typeof data.config.alt.botdomain === 'string' && data.config.ru && typeof data.config.ru.botdomain === 'string' && typeof data.config.bomain === 'string' && typeof data.config.alt.bomain === 'string' && typeof data.config.ru.bomain === 'string' && typeof data.config.subdomain === 'string' && typeof data.config.ru.subdomain === 'string' && typeof data.config.ru.domain === 'string') {

@@ -998,5 +998,8 @@
   "Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "If a user visits a website under several different User-Agents within one hour, he will need to be verified",
   "Не использовать": "Do not use",
   "домен(ов)": "domain(s)",
-  "Домены исключения:": "Exclusion domains:"
+  "Домены исключения:": "Exclusion domains:",
+  "Ежедневная ротация доменов": "Daily domain rotation",
+  "Список доменов": "Domain list",
+  "Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Every day a new domain name from the list will be sent to the search engine for indexing"
 }

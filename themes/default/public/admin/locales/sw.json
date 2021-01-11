@@ -999,5 +999,8 @@
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Ikiwa mtumiaji anaenda kwenye tovuti chini ya wakala mbalimbali wa mtumiaji ndani ya saa moja, atahitaji kuangalia",
 	"Не использовать": "Usitumie",
 	"домен(ов)": "domain(s)",
-	"Домены исключения:": "Domains isipokuwa:"
+	"Домены исключения:": "Domains isipokuwa:",
+	"Ежедневная ротация доменов": "Mzunguko wa kila siku wa domains",
+	"Список доменов": "Orodha ya domains",
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Kila siku jina jipya la kikoa kutoka kwenye orodha litatumwa kwa indexation"
 }

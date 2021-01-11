@@ -999,5 +999,8 @@
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Če uporabnik gre na spletno stran pod več različnimi uporabniškimi agentom v eni uri, bo moral preveriti",
 	"Не использовать": "Ne uporabljajte",
 	"домен(ов)": "domene",
-	"Домены исключения:": "Domene izjeme:"
+	"Домены исключения:": "Domene izjeme:",
+	"Ежедневная ротация доменов": "Dnevna vrtenje domen",
+	"Список доменов": "Seznam domen",
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Vsak dan bo na indeksacijo poslano novo ime domene s seznama"
 }

@@ -1939,6 +1939,7 @@ docker_run() {
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
+        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/any.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/default/config.js
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/process.json
@@ -1948,6 +1949,7 @@ docker_run() {
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
+        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/any.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/config.js
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/default/config.js
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/process.json
@@ -2930,6 +2932,34 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "any"|"default_server"|"ds" )
+            for all_server in /home/*/config/production/nginx/conf.d/default.conf; do
+                [ -f "${all_server}" ] || continue
+                sed -i "s~  include ${all_server/conf.d/any.d}~#any include ${all_server/conf.d/any.d}~" "${all_server}"
+            done
+            if [ "${2}" = "none" ]; then
+                _header "DEFAULT SERVER"
+                _content
+                _content "NONE"
+                _content
+                _content "(wait 60 seconds)"
+                _content
+                _line
+                exit 0
+            fi
+            read_domain "${2}"
+            sh_not
+            sed -i "s~#any include /home/${CP_DOMAIN}/config/production/nginx/any.d/default.conf~  include /home/${CP_DOMAIN}/config/production/nginx/any.d/default.conf~" \
+                /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
+            _header "DEFAULT SERVER"
+            _content
+            _content "${CP_DOMAIN}"
+            _content
+            _content "(wait 60 seconds)"
+            _content
+            _line
+            exit 0
+        ;;
         "bot"|"bot_https"|"domain"|"domain_https" )
             read_domain "${2}"
             sh_not
@@ -3715,9 +3745,11 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/linux \
                         files/osx &>/dev/null
                     sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/app.tar
+                    sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                     sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/static.tar
+                sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
             fi

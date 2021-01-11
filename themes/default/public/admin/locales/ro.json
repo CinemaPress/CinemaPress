@@ -999,5 +999,8 @@
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Dacă utilizatorul merge la site-ul web sub mai mulți agenți de utilizator diferit într-o oră, va trebui să verifice",
 	"Не использовать": "Nu folosi",
 	"домен(ов)": "domeniul (domeniile)",
-	"Домены исключения:": "Domenii excepții:"
+	"Домены исключения:": "Domenii excepții:",
+	"Ежедневная ротация доменов": "Rotația zilnică a domeniilor",
+	"Список доменов": "Lista domeniilor",
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "În fiecare zi, un nou nume de domeniu din listă va fi trimis la indexare"
 }

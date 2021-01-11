@@ -999,5 +999,8 @@
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Ha a felhasználó több különböző felhasználói ügynök alá kerül egy órán belül, ellenőriznie kell",
 	"Не использовать": "Ne használja",
 	"домен(ов)": "domain (ek)",
-	"Домены исключения:": "Domainek kivételek:"
+	"Домены исключения:": "Domainek kivételek:",
+	"Ежедневная ротация доменов": "Domainek napi forgása",
+	"Список доменов": "A domainek listája",
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Minden nap új domainnevet fog küldeni az indexáláshoz"
 }

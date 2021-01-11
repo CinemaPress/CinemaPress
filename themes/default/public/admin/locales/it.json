@@ -999,5 +999,8 @@
 	"Если пользователь зайдет на веб-сайт под несколькими разными User-Agent в течении одного часа, ему нужно будет пройти проверку": "Se l'utente va al sito Web in diversi diversi utenti, entro un'ora, dovrà controllare",
 	"Не использовать": "Non usare",
 	"домен(ов)": "domain(s)",
-	"Домены исключения:": "Domini eccezioni:"
+	"Домены исключения:": "Domini eccezioni:",
+	"Ежедневная ротация доменов": "Rotazione giornaliera dei domini",
+	"Список доменов": "Elenco dei domini",
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Ogni giorno un nuovo nome di dominio dall'elenco verrà inviato all'indicizzazione"
 }
