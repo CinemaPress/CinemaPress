@@ -3809,6 +3809,121 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ "${STATUS1}" != "" ] ||  [ "${STATUS2}" != "" ]; then _s; fi
             exit 0
         ;;
+        "debug" )
+            CRASH=()
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("TOP")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(top -b -n 1)")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("DF")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(df -h)")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("DOCKER STATS")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(docker stats -a --no-stream)")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("DOCKER PS")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(docker ps)")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("PS")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(ps auxf)")
+            CRASH+=("
+---------------------------------------------------
+")
+            for D in /home/*; do
+                if [ -f "${D}/process.json" ] || [ -f "${D}/index.php" ]; then
+                    DD=$(find "${D}" -maxdepth 0 -printf "%f")
+                    DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                    CRASH+=("PING ${DD}")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(docker exec -it "${DD_}" cinemapress ping)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("PM2 LIST")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(docker exec -it "${DD_}" pm2 list)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("PM2 ERR")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(docker exec -it "${DD_}" pm2 logs --err --lines 50 --nostream)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("PM2 OUT")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(docker exec -it "${DD_}" pm2 logs --out --lines 50 --nostream)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("NGINX ACCESS ${DD}")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(tail -n 50 "/var/log/nginx/access_${DD}.log")")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("NGINX ACCESS")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(tail -n 50 /var/log/nginx/access.log)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("NGINX ERROR")
+                    CRASH+=("
+---------------------------------------------------
+")
+                    CRASH+=("$(tail -n 50 /var/log/nginx/error.log)")
+                    CRASH+=("
+---------------------------------------------------
+")
+                fi
+            done
+            DEBUG_URL=$(echo "${CRASH[@]}" | curl -s -F 'clbin=<-' https://clbin.com)
+            _header "DEBUG LOGS"
+            _content
+            _content "${DEBUG_URL}?hl"
+            _content
+            _s
+            exit 0
+        ;;
         "ping" )
             curl --fail http://localhost:3000/ping || exit 1
             exit 0
@@ -3837,6 +3952,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " lbf       - Show logs for fake bots"; _br;
             printf " lbt       - Show logs for true bots"; _br;
             printf " lbb       - Show logs for bad bots"; _br;
+            printf " crash     - Getting debug information after a site crash"; _br;
             printf " bench     - System info, I/O test and speedtest"; _br;
             printf " actual    - Updating data from an automatic database"; _br;
             printf "             to a manual database (year, list of actors, list"; _br;
