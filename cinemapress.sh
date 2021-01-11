@@ -3848,7 +3848,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " cms example.com backup [create,restore]"; _br;
             printf " bot       - Install website for bots"; _br;
             printf " bot_https - Install website for bots and generate SSL"; _br;
-            printf " df        - The domain that is the main on the server and accepts all requests"; _br;
+            printf " ds        - The domain that is the main on the server and accepts all requests"; _br;
             printf " cf        - Adding all subdomains to CloudFlare"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
