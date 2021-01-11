@@ -3003,6 +3003,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/html \
                 /home/"${CP_BOMAIN}"/config/production/nginx/pagespeed.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/pass.d \
+                /home/"${CP_BOMAIN}"/config/production/nginx/any.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.sh \
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.conf \
                 /home/"${CP_BOMAIN}"/config/production/nginx/mime.types \
@@ -3381,6 +3382,7 @@ while [ "${WHILE}" -lt "2" ]; do
             mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/conf.d
             mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/pass.d
             mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d
+            mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/any.d
             mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/conf.d
             mkdir -p /home/"${CP_DOMAIN}"/config/production/nginx/letsencrypt
             if [ ! "$(docker network ls | grep cinemapress)" ]; then
