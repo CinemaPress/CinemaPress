@@ -134,6 +134,9 @@ function allSitemap(options, callback) {
     if (options.debug) {
       options.debug.detail.push({
         type: 'sitemaps',
+        mem:
+          Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+          100,
         duration: new Date() - options.debug.duration.current + 'ms'
       });
       options.debug.duration.current = new Date();
@@ -272,6 +275,9 @@ function oneSitemap(type, year, options, callback) {
       if (options.debug) {
         options.debug.detail.push({
           type: 'sitemapCategory',
+          mem:
+            Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+            100,
           duration: new Date() - options.debug.duration.current + 'ms'
         });
         options.debug.duration.current = new Date();
@@ -337,6 +343,9 @@ function oneSitemap(type, year, options, callback) {
       if (options.debug) {
         options.debug.detail.push({
           type: 'sitemapContent',
+          mem:
+            Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+            100,
           duration: new Date() - options.debug.duration.current + 'ms'
         });
         options.debug.duration.current = new Date();
@@ -378,6 +387,10 @@ function oneSitemap(type, year, options, callback) {
           if (options.debug) {
             options.debug.detail.push({
               type: 'sitemapMovies',
+              mem:
+                Math.round(
+                  (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                ) / 100,
               duration: new Date() - options.debug.duration.current + 'ms'
             });
             options.debug.duration.current = new Date();
@@ -487,6 +500,9 @@ function oneSitemap(type, year, options, callback) {
       if (options.debug) {
         options.debug.detail.push({
           type: 'sitemapComment',
+          mem:
+            Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+            100,
           duration: new Date() - options.debug.duration.current + 'ms'
         });
         options.debug.duration.current = new Date();

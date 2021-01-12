@@ -39,6 +39,13 @@ var express = require('express');
 var app = express();
 
 app.use(function(req, res, next) {
+  if (process.env.NODE_ENV !== 'production') {
+    req.start_request = new Date();
+    console.log('GET:', req.originalUrl);
+  }
+  next();
+});
+app.use(function(req, res, next) {
   res.setHeader('X-Powered-By', 'CinemaPress');
   next();
 });

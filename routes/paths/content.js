@@ -61,6 +61,10 @@ function allContents(tag, options, callback) {
           if (options.debug) {
             options.debug.detail.push({
               type: 'contents',
+              mem:
+                Math.round(
+                  (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                ) / 100,
               duration: new Date() - options.debug.duration.current + 'ms'
             });
             options.debug.duration.current = new Date();
@@ -94,6 +98,13 @@ function allContents(tag, options, callback) {
                           if (options.debug) {
                             options.debug.detail.push({
                               type: 'slider',
+                              mem:
+                                Math.round(
+                                  (process.memoryUsage().heapUsed /
+                                    1024 /
+                                    1024) *
+                                    100
+                                ) / 100,
                               duration:
                                 new Date() -
                                 options.debug.duration.current +
@@ -119,6 +130,10 @@ function allContents(tag, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'slider',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -143,6 +158,10 @@ function allContents(tag, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -170,6 +189,10 @@ function allContents(tag, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'news',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -197,6 +220,9 @@ function allContents(tag, options, callback) {
         if (options.debug) {
           options.debug.detail.push({
             type: 'page',
+            mem:
+              Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+              100,
             duration: new Date() - options.debug.duration.current + 'ms'
           });
           options.debug.duration.current = new Date();
@@ -247,6 +273,10 @@ function oneContent(url, page, sorting, options, callback) {
             if (options.debug) {
               options.debug.detail.push({
                 type: 'content',
+                mem:
+                  Math.round(
+                    (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                  ) / 100,
                 duration: new Date() - options.debug.duration.current + 'ms'
               });
               options.debug.duration.current = new Date();
@@ -304,6 +334,10 @@ function oneContent(url, page, sorting, options, callback) {
             if (options.debug) {
               options.debug.detail.push({
                 type: 'movies',
+                mem:
+                  Math.round(
+                    (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                  ) / 100,
                 duration: new Date() - options.debug.duration.current + 'ms'
               });
               options.debug.duration.current = new Date();
@@ -343,6 +377,13 @@ function oneContent(url, page, sorting, options, callback) {
                           if (options.debug) {
                             options.debug.detail.push({
                               type: 'slider',
+                              mem:
+                                Math.round(
+                                  (process.memoryUsage().heapUsed /
+                                    1024 /
+                                    1024) *
+                                    100
+                                ) / 100,
                               duration:
                                 new Date() -
                                 options.debug.duration.current +
@@ -368,6 +409,10 @@ function oneContent(url, page, sorting, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'slider',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -392,6 +437,10 @@ function oneContent(url, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -419,6 +468,10 @@ function oneContent(url, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'news',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -465,6 +518,10 @@ function oneContent(url, page, sorting, options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'recent',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -490,6 +547,10 @@ function oneContent(url, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'comments',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -508,6 +569,10 @@ function oneContent(url, page, sorting, options, callback) {
             if (options.debug) {
               options.debug.detail.push({
                 type: 'count',
+                mem:
+                  Math.round(
+                    (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                  ) / 100,
                 duration: new Date() - options.debug.duration.current + 'ms'
               });
               options.debug.duration.current = new Date();
@@ -541,6 +606,10 @@ function oneContent(url, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'comments',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -571,6 +640,9 @@ function oneContent(url, page, sorting, options, callback) {
         if (options.debug) {
           options.debug.detail.push({
             type: 'page',
+            mem:
+              Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+              100,
             duration: new Date() - options.debug.duration.current + 'ms'
           });
           options.debug.duration.current = new Date();

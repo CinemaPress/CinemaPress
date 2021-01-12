@@ -69,6 +69,10 @@ function dataMovie(id, type, options, callback) {
             if (options.debug) {
               options.debug.detail.push({
                 type: 'movie',
+                mem:
+                  Math.round(
+                    (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                  ) / 100,
                 duration: new Date() - options.debug.duration.current + 'ms'
               });
               options.debug.duration.current = new Date();
@@ -108,6 +112,13 @@ function dataMovie(id, type, options, callback) {
                           if (options.debug) {
                             options.debug.detail.push({
                               type: 'slider',
+                              mem:
+                                Math.round(
+                                  (process.memoryUsage().heapUsed /
+                                    1024 /
+                                    1024) *
+                                    100
+                                ) / 100,
                               duration:
                                 new Date() -
                                 options.debug.duration.current +
@@ -133,6 +144,10 @@ function dataMovie(id, type, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'slider',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -157,6 +172,10 @@ function dataMovie(id, type, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -184,6 +203,10 @@ function dataMovie(id, type, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'news',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -213,6 +236,10 @@ function dataMovie(id, type, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'contents',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -258,6 +285,10 @@ function dataMovie(id, type, options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'recent',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -278,6 +309,10 @@ function dataMovie(id, type, options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'indexer',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -451,6 +486,10 @@ function dataMovie(id, type, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'related',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -511,6 +550,10 @@ function dataMovie(id, type, options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'comments',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();

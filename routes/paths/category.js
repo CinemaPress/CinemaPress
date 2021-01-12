@@ -127,6 +127,10 @@ function allCategory(type, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'categories',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -172,6 +176,13 @@ function allCategory(type, options, callback) {
                             if (options.debug) {
                               options.debug.detail.push({
                                 type: 'slider',
+                                mem:
+                                  Math.round(
+                                    (process.memoryUsage().heapUsed /
+                                      1024 /
+                                      1024) *
+                                      100
+                                  ) / 100,
                                 duration:
                                   new Date() -
                                   options.debug.duration.current +
@@ -197,6 +208,10 @@ function allCategory(type, options, callback) {
                     if (options.debug) {
                       options.debug.detail.push({
                         type: 'slider',
+                        mem:
+                          Math.round(
+                            (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                          ) / 100,
                         duration:
                           new Date() - options.debug.duration.current + 'ms'
                       });
@@ -221,6 +236,10 @@ function allCategory(type, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'soon',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -249,6 +268,10 @@ function allCategory(type, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'news',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -277,6 +300,10 @@ function allCategory(type, options, callback) {
           if (options.debug) {
             options.debug.detail.push({
               type: 'page',
+              mem:
+                Math.round(
+                  (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                ) / 100,
               duration: new Date() - options.debug.duration.current + 'ms'
             });
             options.debug.duration.current = new Date();
@@ -395,6 +422,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'category',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -413,6 +444,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'top',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -447,6 +482,13 @@ function oneCategory(type, key, page, sorting, options, callback) {
                             if (options.debug) {
                               options.debug.detail.push({
                                 type: 'slider',
+                                mem:
+                                  Math.round(
+                                    (process.memoryUsage().heapUsed /
+                                      1024 /
+                                      1024) *
+                                      100
+                                  ) / 100,
                                 duration:
                                   new Date() -
                                   options.debug.duration.current +
@@ -472,6 +514,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
                     if (options.debug) {
                       options.debug.detail.push({
                         type: 'slider',
+                        mem:
+                          Math.round(
+                            (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                          ) / 100,
                         duration:
                           new Date() - options.debug.duration.current + 'ms'
                       });
@@ -496,6 +542,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'soon',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -524,6 +574,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'news',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -571,6 +625,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'recent',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -593,6 +651,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
             if (options.debug) {
               options.debug.detail.push({
                 type: 'count',
+                mem:
+                  Math.round(
+                    (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                  ) / 100,
                 duration: new Date() - options.debug.duration.current + 'ms'
               });
               options.debug.duration.current = new Date();
@@ -628,6 +690,10 @@ function oneCategory(type, key, page, sorting, options, callback) {
           if (options.debug) {
             options.debug.detail.push({
               type: 'page',
+              mem:
+                Math.round(
+                  (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                ) / 100,
               duration: new Date() - options.debug.duration.current + 'ms'
             });
             options.debug.duration.current = new Date();

@@ -2749,6 +2749,16 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec -t "${CP_DOMAIN_}" node optimal.js
             exit 0
         ;;
+        "mode" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${3}\"~" "/home/${CP_DOMAIN}/process.json"
+            docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container reload
+            sleep 5
+            exit 0
+        ;;
         "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )
             if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${1}" = "lbb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
                 RR='\o033[0;31m'
@@ -3862,7 +3872,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -it "${DD_}" cinemapress ping)")
+                    CRASH+=("$(docker exec -t "${DD_}" cinemapress ping)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3870,7 +3880,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -it "${DD_}" pm2 list)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 list)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3878,7 +3888,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -it "${DD_}" pm2 logs --err --lines 50 --nostream)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --err --lines 50 --nostream)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3886,7 +3896,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -it "${DD_}" pm2 logs --out --lines 50 --nostream)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --out --lines 50 --nostream)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3966,6 +3976,8 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " bot_https - Install website for bots and generate SSL"; _br;
             printf " ds        - The domain that is the main on the server and accepts all requests"; _br;
             printf " cf        - Adding all subdomains to CloudFlare"; _br;
+            printf " mode production - Standard operating mode"; _br;
+            printf " mode debug      - More information about the speed and memory of each request"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
             printf " splash example.com github_login github_pass"; _br;

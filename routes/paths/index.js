@@ -75,6 +75,13 @@ function dataIndex(options, callback) {
                           if (options.debug) {
                             options.debug.detail.push({
                               type: 'slider',
+                              mem:
+                                Math.round(
+                                  (process.memoryUsage().heapUsed /
+                                    1024 /
+                                    1024) *
+                                    100
+                                ) / 100,
                               duration:
                                 new Date() -
                                 options.debug.duration.current +
@@ -100,6 +107,10 @@ function dataIndex(options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'slider',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -124,6 +135,10 @@ function dataIndex(options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -151,6 +166,10 @@ function dataIndex(options, callback) {
                 if (options.debug) {
                   options.debug.detail.push({
                     type: 'news',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
                     duration: new Date() - options.debug.duration.current + 'ms'
                   });
                   options.debug.duration.current = new Date();
@@ -196,6 +215,10 @@ function dataIndex(options, callback) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'recent',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -219,6 +242,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'type',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -243,6 +271,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'country',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -267,6 +300,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'genre',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -291,6 +329,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'director',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -315,6 +358,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'actor',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -339,6 +387,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'year',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -363,6 +416,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'ids',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -487,6 +545,10 @@ function dataIndex(options, callback) {
                     if (options.debug) {
                       options.debug.detail.push({
                         type: 'content',
+                        mem:
+                          Math.round(
+                            (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                          ) / 100,
                         duration:
                           new Date() - options.debug.duration.current + 'ms'
                       });
@@ -511,6 +573,10 @@ function dataIndex(options, callback) {
                     if (options.debug) {
                       options.debug.detail.push({
                         type: 'episode',
+                        mem:
+                          Math.round(
+                            (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                          ) / 100,
                         duration:
                           new Date() - options.debug.duration.current + 'ms'
                       });
@@ -573,6 +639,10 @@ function dataIndex(options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'count',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -612,6 +682,11 @@ function dataIndex(options, callback) {
                       if (options.debug) {
                         options.debug.detail.push({
                           type: 'count',
+                          mem:
+                            Math.round(
+                              (process.memoryUsage().heapUsed / 1024 / 1024) *
+                                100
+                            ) / 100,
                           duration:
                             new Date() - options.debug.duration.current + 'ms'
                         });
@@ -632,6 +707,10 @@ function dataIndex(options, callback) {
                   if (options.debug) {
                     options.debug.detail.push({
                       type: 'count',
+                      mem:
+                        Math.round(
+                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                        ) / 100,
                       duration:
                         new Date() - options.debug.duration.current + 'ms'
                     });
@@ -660,6 +739,9 @@ function dataIndex(options, callback) {
         if (options.debug) {
           options.debug.detail.push({
             type: 'page',
+            mem:
+              Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+              100,
             duration: new Date() - options.debug.duration.current + 'ms'
           });
           options.debug.duration.current = new Date();

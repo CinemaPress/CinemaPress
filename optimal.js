@@ -200,8 +200,8 @@ let mem = parseInt('' + os.totalmem() / 1000000);
 let cpu = os.cpus() ? os.cpus().length : 1;
 let max = parseInt('' + mem / (cpu > 1 ? cpu : 2));
 
-process_json.apps[0].node_args = '--max-old-space-size=' + max;
-process_json.apps[0].max_memory_restart = max + 'M';
+//process_json.apps[0].node_args = '--max-old-space-size=' + max;
+//process_json.apps[0].max_memory_restart = max + 'M';
 //process_json.apps[0].instances = cpu + '';
 
 fs.writeFileSync(

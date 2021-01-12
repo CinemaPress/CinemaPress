@@ -91,8 +91,20 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     process.env.NODE_ENV !== 'production'
       ? {
           url: parseUrl(),
-          duration: { current: new Date(), all: new Date() },
-          detail: []
+          duration: {
+            current: new Date(),
+            all: req.start_request || new Date()
+          },
+          detail: [
+            {
+              type: 'website',
+              mem:
+                Math.round(
+                  (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                ) / 100,
+              duration: new Date() - (req.start_request || new Date()) + 'ms'
+            }
+          ]
         }
       : null;
   options.comments = {
@@ -575,6 +587,10 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
               if (options.debug) {
                 options.debug.detail.push({
                   type: 'render',
+                  mem:
+                    Math.round(
+                      (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                    ) / 100,
                   duration: new Date() - options.debug.duration.current + 'ms'
                 });
                 options.debug.duration.current = new Date();
@@ -634,6 +650,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       if (options.debug) {
         options.debug.detail.push({
           type: 'cache',
+          mem:
+            Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) /
+            100,
           duration: new Date() - options.debug.duration.current + 'ms'
         });
         options.debug.duration.current = new Date();
