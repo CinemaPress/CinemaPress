@@ -1759,6 +1759,41 @@ read_bomain() {
     fi
     CP_BOMAIN_=`echo ${CP_BOMAIN} | sed -r "s/[^A-Za-z0-9]/_/g" | sed -r "s/www\.//g" | sed -r "s/http:\/\///g" | sed -r "s/https:\/\///g"`
 }
+read_mode() {
+    CP_MODE=${1:-${CP_MODE}}
+    if [ "${CP_MODE}" = "" ]; then
+        _header "MODE debug/production"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                CP_MODE=${1}
+                CP_MODE=$(echo ${CP_MODE} | iconv -c -t UTF-8)
+                echo ": ${CP_MODE}"
+            else
+                read -e -p ': ' -i "production" CP_MODE
+                CP_MODE=$(echo ${CP_MODE} | iconv -c -t UTF-8)
+            fi
+            if [ "${CP_MODE}" = "" ]
+            then
+                AGAIN=10
+                CP_MODE='production'
+                echo ": ${CP_MODE}"
+            else
+                if [ "${CP_MODE}" = "production" ] || [ "${CP_MODE}" = "debug" ]
+                then
+                    AGAIN=10
+                else
+                    printf "%b         There is no mode! \n" "${NC}"
+                    printf "%bWARNING:%b Currently: debug, production \n" "${R}" "${NC}"
+                    AGAIN=$(("${AGAIN}"+1))
+                fi
+            fi
+        done
+        if [ "${CP_MODE}" = "" ]; then exit 1; fi
+    fi
+}
 
 sh_yes() {
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
@@ -2753,8 +2788,9 @@ while [ "${WHILE}" -lt "2" ]; do
             _br "${2}"
             read_domain "${2}"
             sh_not
+            read_mode "${3}"
             _s "${2}"
-            sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${3}\"~" "/home/${CP_DOMAIN}/process.json"
+            sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${CP_MODE}\"~" "/home/${CP_DOMAIN}/process.json"
             docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container reload
             sleep 5
             exit 0
