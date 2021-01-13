@@ -3978,6 +3978,8 @@ while [ "${WHILE}" -lt "2" ]; do
         "uptimerobot" )
             if [ -n "${2}" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
+                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
+                touch "/home/${2}/.uptimerobot"
                 DD=${2}
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
                 PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
@@ -3992,8 +3994,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 else
                     echo "$(date) ${DD} WEBSITE reboot"
                     /usr/bin/cinemapress debug
+                    rm -f "/home/${2}/.uptimerobot"
                     reboot
                 fi
+                rm -f "/home/${2}/.uptimerobot"
             else
                 for D in /home/*; do
                     if [ -f "${D}/app.js" ] || [ -f "${D}/index.php" ]; then
