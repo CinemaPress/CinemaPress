@@ -2018,6 +2018,7 @@ docker_run() {
 }
 docker_stop() {
     sed -Ei "s/\/\/app\.use\(rebooting\(\)\);/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
+    touch "/home/${CP_DOMAIN}/.uptimerobot"
     pm2 reload all
     searchd --stop
     killall memcached
@@ -2026,6 +2027,7 @@ docker_stop() {
 }
 docker_start() {
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
+    rm -f "/home/${CP_DOMAIN}/.uptimerobot"
     searchd
     memcached -u root -d
     crond -L /var/log/cron.log
