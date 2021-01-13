@@ -47,21 +47,25 @@ post_commands() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
-    if [ "`grep \"${LOCAL_DOMAIN}_autostart\" /etc/crontab`" = "" ] \
+    if [ "$(grep "%d_%m_%Y" /etc/crontab)" != "" ]; then
+        sed -i "s/%d_%m_%Y/\\\%d_\\\%m_\\\%Y/g" /etc/crontab &> /dev/null
+    fi
+
+    if [ "$(grep "${LOCAL_DOMAIN}_autostart" /etc/crontab)" = "" ] \
     && [ -f "/home/${LOCAL_DOMAIN}/process.json" ] \
     && [ -f "/home/${LOCAL_DOMAIN}/app.js" ]; then
         echo -e "\n" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
-        echo "@reboot root /usr/bin/cinemapress autostart \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/autostart_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "@reboot root /usr/bin/cinemapress autostart \"${LOCAL_DOMAIN}\" >>\"/home/${LOCAL_DOMAIN}/log/autostart_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_autostart --------------------------------------" >>/etc/crontab
     fi
-    if [ "`grep \"${LOCAL_DOMAIN}_renew\" /etc/crontab`" = "" ] \
+    if [ "$(grep "${LOCAL_DOMAIN}_renew" /etc/crontab)" = "" ] \
     && [ -d "/home/${LOCAL_DOMAIN}/config/production/nginx/ssl.d/live/${LOCAL_DOMAIN}/" ]; then
         sed -i "s/.*${LOCAL_DOMAIN}_ssl.*//g" /etc/crontab &> /dev/null
         sed -i "s/.*${LOCAL_DOMAIN}\/config\/production\/nginx\/ssl\.d.*//g" /etc/crontab &> /dev/null
         echo -e "\n" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
-        echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>/home/${LOCAL_DOMAIN}/log/renew_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+        echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>\"/home/${LOCAL_DOMAIN}/log/renew_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
     fi
     if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
@@ -4008,7 +4012,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         if [ "$(grep "${DD}_uptimerobot" /etc/crontab)" = "" ]; then
                             echo -e "\n" >>/etc/crontab
                             echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
-                            echo "*/2 * * * * root /usr/bin/cinemapress uptimerobot \"${DD}\" >>/home/${DD}/log/uptimerobot_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+                            echo "*/2 * * * * root /usr/bin/cinemapress uptimerobot \"${DD}\" >>\"/home/${DD}/log/uptimerobot_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
                             echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
                         fi
                     fi
