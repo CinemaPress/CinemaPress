@@ -4049,6 +4049,8 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " ds        - The domain that is the main on the server and accepts all requests"; _br;
             printf " cf        - Adding all subdomains to CloudFlare"; _br;
             printf " mode      - debug: more information about the speed and memory of each request"; _br;
+            printf " uptimerobot - Ping check for container and website every 2 minutes, if the website"; _br;
+            printf "               is offline, the server will be rebooted"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
             printf " splash example.com github_login github_pass"; _br;
