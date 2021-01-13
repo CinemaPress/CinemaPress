@@ -3908,7 +3908,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" cinemapress ping)")
+                    CRASH+=("$(docker exec -t "${DD_}" cinemapress ping 2>/dev/null)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3916,7 +3916,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 list)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 list 2>/dev/null)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3924,7 +3924,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --err --lines 50 --nostream)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --err --lines 50 --nostream 2>/dev/null)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3932,7 +3932,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --out --lines 50 --nostream)")
+                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --out --lines 50 --nostream 2>/dev/null)")
                     CRASH+=("
 ---------------------------------------------------
 ")
@@ -3963,6 +3963,7 @@ while [ "${WHILE}" -lt "2" ]; do
 ---------------------------------------------------
 ")
             DEBUG_URL=$(echo "${CRASH[@]}" | curl -s -F 'clbin=<-' https://clbin.com)
+            _br
             _header "DEBUG LOGS"
             _content
             _content "${DEBUG_URL}?hl"
@@ -3971,7 +3972,42 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "ping" )
-            curl --fail http://localhost:3000/ping || exit 1
+            curl -s --fail http://localhost:3000/ping || exit 1
+            exit 0
+        ;;
+        "uptimerobot" )
+            if [ -n "${2}" ]; then
+                [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
+                DD=${2}
+                DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
+                if [ "${PONG1}" != "pong" ]; then
+                    echo "$(date) ${DD} DOCKER restart"
+                    docker restart "${DD_}"
+                    sleep 30
+                fi
+                PONG2=$(curl -s --fail http://"${DD}"/ping)
+                if [ "${PONG2}" = "pong" ]; then
+                    echo "$(date) ${DD} WEBSITE online"
+                else
+                    echo "$(date) ${DD} WEBSITE reboot"
+                    /usr/bin/cinemapress debug
+                    reboot
+                fi
+            else
+                for D in /home/*; do
+                    if [ -f "${D}/app.js" ] || [ -f "${D}/index.php" ]; then
+                        DD=$(find "${D}" -maxdepth 0 -printf "%f")
+                        DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                        if [ "$(grep "${DD}_uptimerobot" /etc/crontab)" = "" ]; then
+                            echo -e "\n" >>/etc/crontab
+                            echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
+                            echo "*/2 * * * * root /usr/bin/cinemapress uptimerobot \"${DD}\" >>/home/${DD}/log/uptimerobot_\$(date '+%d_%m_%Y').log 2>&1" >>/etc/crontab
+                            echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
+                        fi
+                    fi
+                done
+            fi
             exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
