@@ -3160,6 +3160,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress
             docker run \
+                --rm \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
                 -v /home/"${CP_DOMAIN}"/config/app/"${NAME_OS}":/app \
                 cinemapress/app:latest \
@@ -3199,6 +3200,7 @@ while [ "${WHILE}" -lt "2" ]; do
             cd /home/${CP_DOMAIN}/config/app/"${NAME_OS}" && \
             zip -rq /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".zip app
             rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
+            docker image prune -af 2>&1
             sh_progress 100
             _line
             _header "/files/${NAME_OS}/app_${CP_VER}.zip"

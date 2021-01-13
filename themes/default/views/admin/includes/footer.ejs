@@ -334,13 +334,13 @@
     if (id.value.indexOf('<%- config.domain %>') + 1) {
 
       var prefix_id = '<%- config.urls.prefix_id %>' || '/';
-      var regexpId = new RegExp(prefix_id + '([0-9]{1,8})', 'ig');
+      var regexpId = new RegExp(prefix_id + '([0-9]{1,10})', 'ig');
       var execId = regexpId.exec(id.value);
       id_kp = (execId) ? parseInt(execId[1]) : 0;
 
       kp_id = parseInt(id_kp) - parseInt(<%- config.urls.unique_id %>);
     } else if (id.value.indexOf('kinopoisk.ru') + 1) {
-      id_kp = /(film\/|movie\/|series\/).*?([0-9]{3,8})\//gi.exec(id.value);
+      id_kp = /(film\/|movie\/|series\/).*?([0-9]{3,10})\//gi.exec(id.value);
       kp_id = (id_kp) ? parseInt(id_kp[2]) : 0;
     }
 

@@ -340,7 +340,7 @@ function getAPI(url, callback) {
               var matchDate = /("datePublished":\s*")([0-9]{4}-[0-9]{2}-[0-9]{2})/gi.exec(
                 response.responseText
               );
-              var matchId = /(title\/tt)([0-9]{1,8})/gi.exec(
+              var matchId = /(title\/tt)([0-9]{1,10})/gi.exec(
                 response.responseText
               );
               result.imdb_id = matchId ? matchId[2].replace(/[^0-9]/g, '') : '';
