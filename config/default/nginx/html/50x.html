@@ -26,7 +26,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CinemaPress/CinemaPress@master/themes/default/public/admin/js/all.min.js"></script>
 
     <style>
-        html{height:100%;min-height:100%;margin:0;padding:0}body{position:relative;height:100%;min-height:100%;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px}#error-container{height:100%;min-height:100%;width:100%;background-image: url("https://cdn.jsdelivr.net/gh/CinemaPress/CinemaPress@master/themes/default/public/admin/images/404.jpg");background-size:cover;}#error-box{height:100%;min-height:100%;width:380px;padding:60px 40px 40px}  header h1{width:100%;float:left;font-size:80px;font-weight:700;line-height:80px;margin:5px 0}  header h2{width:100%;float:left;font-size:16px;font-weight:400;margin:0}.error-content{float:left;width:100%;margin:30px 0;text-align:center}.breadcrumb{float:left;width:100%;margin:30px 0 0}.breadcrumb a:hover{text-decoration:underline}
+        html{height:100%;min-height:100%;margin:0;padding:0}body{position:relative;height:100%;min-height:100%;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px}#error-container{height:100%;min-height:100%;width:100%;background-image: url("https://cdn.jsdelivr.net/gh/CinemaPress/CinemaPress@master/themes/default/public/admin/images/404.jpg");background-size:cover;}#error-box{height:100%;min-height:100%;width:380px;padding:60px 40px 40px}  header h1{width:100%;float:left;font-size:80px;font-weight:700;line-height:80px;margin:5px 0}  header h2{width:100%;float:left;font-size:16px;font-weight:400;margin:0}.error-content{float:left;width:100%;margin:30px 0;text-align:center}.breadcrumb{float:left;width:100%;margin:30px 0 0}.breadcrumb a:hover{text-decoration:underline}.w{background:#000;border-radius:4px;padding:5px 10px;color:#fff;margin:10px 3px}
     </style>
 
 </head>
@@ -51,7 +51,7 @@
                 </div>
             </form>
         </div>
-        <div class="error-content">
+        <div class="error-content error-content-text">
             Internal Server Error. The site administrator is already taking action to resolve it. Please visit this page later.
         </div>
     </div>
@@ -59,7 +59,22 @@
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CinemaPress/CinemaPress@master/themes/default/public/admin/js/particles.min.js"></script>
 <script>
-    particlesJS("particles-top", {"particles":{"number":{"value":160,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"bubble"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"enable":false,"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+  var dt = new Date();
+  if (dt.getMinutes() === 0 || dt.getMinutes() === 1) {
+    var wait = 5;
+    var si = setInterval(function() {
+      if (wait) {
+        document.querySelector('h1').innerHTML = wait;
+        document.querySelector('h2').innerHTML = 'seconds';
+        document.querySelector('.error-content-text').innerHTML = 'Please wait <strong class=w>' + wait + '</strong> seconds ...';
+        wait = wait - 1;
+      } else {
+        clearInterval(si);
+        location.reload();
+      }
+    }, 1000);
+  }
+  particlesJS("particles-top", {"particles":{"number":{"value":160,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"bubble"},"onclick":{"enable":false,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"enable":false,"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
 </script>
 </body>
 </html>
