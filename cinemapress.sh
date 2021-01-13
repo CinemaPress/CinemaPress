@@ -3049,7 +3049,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/html \
                 /home/"${CP_BOMAIN}"/config/production/nginx/pagespeed.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/pass.d \
-                /home/"${CP_BOMAIN}"/config/production/nginx/any.d \
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.sh \
                 /home/"${CP_BOMAIN}"/config/production/nginx/nginx.conf \
                 /home/"${CP_BOMAIN}"/config/production/nginx/mime.types \
@@ -3060,6 +3059,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 >>/var/log/docker_bot_"$(date '+%d_%m_%Y')".log 2>&1
             rm -rf /home/"${CP_BOMAIN:?}"
             mkdir -p /home/"${CP_BOMAIN}"/config/production
+            mkdir -p /home/"${CP_BOMAIN}"/log
             mv /tmp/nginx /home/"${CP_BOMAIN}"/config/production/nginx
             touch /home/"${CP_BOMAIN}"/process.json
             sh_progress 100
@@ -3944,24 +3944,24 @@ while [ "${WHILE}" -lt "2" ]; do
                     CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("NGINX ACCESS")
-                    CRASH+=("
----------------------------------------------------
-")
-                    CRASH+=("$(tail -n 50 /var/log/nginx/access.log)")
-                    CRASH+=("
----------------------------------------------------
-")
-                    CRASH+=("NGINX ERROR")
-                    CRASH+=("
----------------------------------------------------
-")
-                    CRASH+=("$(tail -n 50 /var/log/nginx/error.log)")
-                    CRASH+=("
----------------------------------------------------
-")
                 fi
             done
+            CRASH+=("NGINX ACCESS")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(tail -n 50 /var/log/nginx/access.log)")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("NGINX ERROR")
+            CRASH+=("
+---------------------------------------------------
+")
+            CRASH+=("$(tail -n 50 /var/log/nginx/error.log)")
+            CRASH+=("
+---------------------------------------------------
+")
             DEBUG_URL=$(echo "${CRASH[@]}" | curl -s -F 'clbin=<-' https://clbin.com)
             _header "DEBUG LOGS"
             _content
