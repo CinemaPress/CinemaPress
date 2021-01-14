@@ -4012,6 +4012,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
                     else
                         echo "$(date) ${DD} WEBSITE reboot"
+                        rm -f "/home/${2}/.uptimerobot"
                         reboot
                     fi
                 fi
