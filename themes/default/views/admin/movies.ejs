@@ -98,8 +98,7 @@
                                 <div class="col-sm-6">
                                     <div class="spacer-10"></div>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="<%- structure.pathname %>"
-                                               disabled="disabled" data-movie_kp_id="<%- movie.kp_id %>">
+                                        <input type="text" class="form-control" value="<%- structure.pathname %>" data-movie_kp_id="<%- movie.kp_id %>" onclick="this.value = parseInt(<%- movie.kp_id %>) % 1000000000; this.setAttribute('name', 'movie.kp_id')" style="background: #1f283e;cursor: progress">
                                         <span class="input-group-addon">
                                         <a href="<%- structure.url %>" target="_blank">
                                             <span class="fa fa-external-link-square-alt"></span>

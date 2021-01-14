@@ -3984,7 +3984,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "uptimerobot" )
-            if [ -n "${2}" ]; then
+            if [ -n "${2}" ] && [ "${2}" != "push" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
                 [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 touch "/home/${2}/.uptimerobot"
@@ -3993,31 +3993,44 @@ while [ "${WHILE}" -lt "2" ]; do
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
                 PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                 if [ "${PONG1}" != "pong" ]; then
-                    echo "$(date) ${DD} DOCKER restart"
-                    docker restart "${DD_}"
-                    sleep 30
+                    echo "$(date) ${DD} DOCKER warning"
+                    sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                    PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
+                    if [ "${PONG1}" != "pong" ]; then
+                        echo "$(date) ${DD} DOCKER restart"
+                        docker restart "${DD_}"
+                        sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                    fi
                 fi
-                PONG2=$(curl -s --fail http://"${DD}"/ping)
+                PONG2=$(curl -s --fail http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
                 if [ "${PONG2}" = "pong" ]; then
                     echo "$(date) ${DD} WEBSITE online"
                 else
-                    echo "$(date) ${DD} WEBSITE reboot"
                     /usr/bin/cinemapress debug
-                    rm -f "/home/${2}/.uptimerobot"
-                    reboot
+                    if [ -n "${3}" ] && [ -n "${4}" ]; then # botTOKEN chat_id
+                        echo "$(date) ${DD} WEBSITE push"
+                        curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
+                    else
+                        echo "$(date) ${DD} WEBSITE reboot"
+                        reboot
+                    fi
                 fi
                 rm -f "/home/${2}/.uptimerobot"
             else
                 for D in /home/*; do
-                    if [ -f "${D}/app.js" ] || [ -f "${D}/index.php" ]; then
-                        DD=$(find "${D}" -maxdepth 0 -printf "%f")
-                        DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                    DD=$(find "${D}" -maxdepth 0 -printf "%f")
+                    DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                    PONG1=$(curl -s --fail http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
+                    if { [ -f "${D}/app.js" ] || [ -f "${D}/index.php" ]; } && [ "${PONG1}" = "pong" ]; then
                         if [ "$(grep "${DD}_uptimerobot" /etc/crontab)" = "" ]; then
                             echo -e "\n" >>/etc/crontab
                             echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
-                            echo "*/2 * * * * root /usr/bin/cinemapress uptimerobot \"${DD}\" >>\"/home/${DD}/log/uptimerobot_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
+                            echo "*/2 * * * * root /usr/bin/cinemapress uptimerobot \"${DD}\" \"${3}\" \"${4}\" >>\"/home/${DD}/log/uptimerobot_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
                             echo "# ----- ${DD}_uptimerobot --------------------------------------" >>/etc/crontab
+                            echo "Added to monitoring: ${DD}"
                         fi
+                    else
+                        echo "Not added to monitoring: ${DD}"
                     fi
                 done
             fi
