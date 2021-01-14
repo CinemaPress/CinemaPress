@@ -2314,7 +2314,6 @@ success_install(){
     _content "Forum: enota.club"
     _content
     _s
-    exit 0
 }
 
 if [ ${EUID} -ne 0 ]; then
@@ -2754,10 +2753,10 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "autostart" )
-            docker start ${CP_DOMAIN_}
-            docker start nginx
+            docker start "${CP_DOMAIN_}"
             docker start fail2ban
             docker start filestash
+            docker start nginx
             exit 0
         ;;
         "renew" )
@@ -2978,9 +2977,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             rm -rf /var/ngx_pagespeed_cache/*
             if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
-                docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart fail2ban >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
                 docker restart filestash >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
+                docker restart nginx >>/var/log/docker_logrotate_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             exit 0
         ;;
@@ -3984,6 +3983,13 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "uptimerobot" )
+            MIN=$(date '+%M')
+            if [ "${MIN}" = "00" ] || [ "${MIN}" = "01" ]; then
+                for D_MIN in /home/*; do
+                    DD_MIN=$(find "${D_MIN}" -maxdepth 0 -printf "%f")
+                    rm -f "/home/${DD_MIN}/.uptimerobot"
+                done
+            fi
             if [ -n "${2}" ] && [ "${2}" != "push" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
                 [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
@@ -4007,12 +4013,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     echo "$(date) ${DD} WEBSITE online"
                 else
                     /usr/bin/cinemapress debug
-                    if [ -n "${3}" ] && [ -n "${4}" ]; then # tocken chat_id
+                    if [ -n "${3}" ] && [ -n "${4}" ]; then
                         echo "$(date) ${DD} WEBSITE push"
                         curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
                     else
                         echo "$(date) ${DD} WEBSITE reboot"
-                        rm -f "/home/${2}/.uptimerobot"
                         reboot
                     fi
                 fi
