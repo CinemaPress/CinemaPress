@@ -4007,7 +4007,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     echo "$(date) ${DD} WEBSITE online"
                 else
                     /usr/bin/cinemapress debug
-                    if [ -n "${3}" ] && [ -n "${4}" ]; then # botTOKEN chat_id
+                    if [ -n "${3}" ] && [ -n "${4}" ]; then # tocken chat_id
                         echo "$(date) ${DD} WEBSITE push"
                         curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
                     else
