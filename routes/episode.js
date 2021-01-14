@@ -109,7 +109,12 @@ router.get('/?', function(req, res) {
           params.translate = parse[3];
         }
         params.url = params.url
-          .replace(/\[kp_id]/, movie.kp_id ? movie.kp_id : '')
+          .replace(
+            /\[kp_id]/,
+            movie.kp_id && parseInt(movie.kp_id)
+              ? '' + (parseInt(movie.kp_id) % 1000000000)
+              : ''
+          )
           .replace(/\[imdb_id]/, movie.imdb_id ? movie.imdb_id : '')
           .replace(/\[tmdb_id]/, movie.tmdb_id ? movie.tmdb_id : '')
           .replace(/\[douban_id]/, movie.douban_id ? movie.douban_id : '');

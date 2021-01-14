@@ -199,7 +199,10 @@ function codePlayer(type, movie, options) {
     data['data-player'] =
       typeof player === 'string' ? player : data['data-player'];
     data['data-title'] = movie.title_full ? movie.title_full : '';
-    data['data-kinopoisk'] = movie.kp_id ? movie.kp_id : '';
+    data['data-kinopoisk'] =
+      movie.kp_id && parseInt(movie.kp_id)
+        ? '' + (parseInt(movie.kp_id) % 1000000000)
+        : '';
     data['data-imdb'] = movie.custom.imdb_id ? movie.custom.imdb_id : '';
     data['data-tmdb'] = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';
     data['data-douban'] = movie.custom.douban_id ? movie.custom.douban_id : '';

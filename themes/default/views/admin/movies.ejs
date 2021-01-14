@@ -62,7 +62,7 @@
                 <div class="inner-padding">
 
                     <% if (movie) {
-                        movie.kp_id = movie.kp_id && parseInt(movie.kp_id) <= 1000000000
+                        movie.kp_id = movie.kp_id && parseInt(movie.kp_id)
                                 ? movie.kp_id
                                 : '';
                         var custom = {};
@@ -117,7 +117,7 @@
                                                 <span class="fa fa-external-link-square-alt"></span> ID <%- movie.kp_id %>
                                             </a>
                                         </span>
-                                        <input type="text" class="form-control" value="<% if (movie.type !== 1) { %><%= __('Фильм') %><% } else { %><%= __('Сериал') %><% } %> <%= __('ожидает публикацию') %>" disabled="disabled" data-movie_kp_id="<%- movie.kp_id %>" style="background:#1a2b35">
+                                        <input type="text" class="form-control" value="<% if (movie.type !== 1) { %><%= __('Фильм') %><% } else { %><%= __('Сериал') %><% } %> <%= __('ожидает публикацию') %>" data-movie_kp_id="<%- movie.kp_id %>" style="background:#1a2b35;cursor: progress" onclick="this.value = parseInt(<%- movie.kp_id %>) + 1000000000; this.setAttribute('name', 'movie.kp_id')">
                                         <span class="input-group-addon" style="background:#1a2b35">
                                             <a href="/<%- config.urls.admin %>/publish" target="_blank">
                                                 <span class="fa fa-clock"></span>

@@ -142,7 +142,12 @@ router.get('/?', function(req, res) {
             : ''
       };
       p.url = p.url
-        .replace(/\[kp_id]/, req.query.kp_id ? req.query.kp_id : '')
+        .replace(
+          /\[kp_id]/,
+          req.query.kp_id && parseInt(req.query.kp_id)
+            ? '' + (parseInt(req.query.kp_id) % 1000000000)
+            : ''
+        )
         .replace(/\[imdb_id]/, req.query.imdb_id ? req.query.imdb_id : '')
         .replace(/\[tmdb_id]/, req.query.tmdb_id ? req.query.tmdb_id : '')
         .replace(/\[douban_id]/, req.query.douban_id ? req.query.douban_id : '')
