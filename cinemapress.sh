@@ -516,6 +516,7 @@ ip_install() {
         cp -rf /var/lib/sphinx/data/* /var/temp/sphinx/ 2>/dev/null
     fi
     1_install "${LOCAL_DOMAIN}"
+    touch "/home/${CP_DOMAIN}/.uptimerobot"
     if [ -d /var/temp/sphinx ] && [ -d /var/lib/sphinx/data ]; then
         cp -rf /var/temp/sphinx/* /var/lib/sphinx/data/ 2>/dev/null
         rm -rf /var/temp/sphinx
@@ -574,6 +575,7 @@ ip_install() {
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
+    rm -f "/home/${CP_DOMAIN}/.uptimerobot"
 }
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -1053,7 +1055,7 @@ ip_install() {
     if [ "${LOCAL_SAFE}" = "safe" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
         T=`grep "\"theme\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
         L=`grep "\"language\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
-        CP_THEME=`echo ${T} | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/'`
+        CP_THEME=`echo ${T} | sed 's/.*"theme":\s*"\([a-zA-Z0-9_-]*\)".*/\1/'`
         CP_LANG=`echo ${L} | sed 's/.*"language":\s*"\([a-z]*\)".*/\1/'`
         if [ "${CP_THEME}" = "" ] \
         || [ "${CP_LANG}" = "" ] \
@@ -4008,7 +4010,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                     fi
                 fi
-                PONG2=$(curl -s --fail http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
+                PONG2=$(curl -s --fail -A "PING" http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
                 if [ "${PONG2}" = "pong" ]; then
                     echo "$(date) ${DD} WEBSITE online"
                 else
@@ -4026,7 +4028,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 for D in /home/*; do
                     DD=$(find "${D}" -maxdepth 0 -printf "%f")
                     DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
-                    PONG1=$(curl -s --fail http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
+                    PONG1=$(curl -s --fail -A "PING" http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
                     if { [ -f "${D}/app.js" ] || [ -f "${D}/index.php" ]; } && [ "${PONG1}" = "pong" ]; then
                         if [ "$(grep "${DD}_uptimerobot" /etc/crontab)" = "" ]; then
                             echo -e "\n" >>/etc/crontab
