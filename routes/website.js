@@ -521,18 +521,6 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           });
         }
       }
-      if (
-        config.codes.robots
-          .substring(0, 30)
-          .indexOf('User-agent: *\nDisallow: /\n') + 1
-      ) {
-        console.log('[Indexing is forbidden in robots]', url);
-
-        return next({
-          status: 404,
-          message: err
-        });
-      }
     }
 
     if (!req.userinfo.bot.main && template === 'sitemap') {
