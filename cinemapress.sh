@@ -257,6 +257,10 @@ ip_install() {
 
     echo "${PRC_}% install" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
+
     # MEMTOTATAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     # SWAPTOTAL=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
     # MEMORY_DOCKER=""
@@ -417,6 +421,10 @@ ip_install() {
 
         fi
     fi
+
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
 }
 2_update() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -431,6 +439,10 @@ ip_install() {
     fi
 
     echo "${PRC_}% update" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
 
     CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
@@ -516,7 +528,6 @@ ip_install() {
         cp -rf /var/lib/sphinx/data/* /var/temp/sphinx/ 2>/dev/null
     fi
     1_install "${LOCAL_DOMAIN}"
-    touch "/home/${CP_DOMAIN}/.uptimerobot"
     if [ -d /var/temp/sphinx ] && [ -d /var/lib/sphinx/data ]; then
         cp -rf /var/temp/sphinx/* /var/lib/sphinx/data/ 2>/dev/null
         rm -rf /var/temp/sphinx
@@ -575,7 +586,6 @@ ip_install() {
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
-    rm -f "/home/${CP_DOMAIN}/.uptimerobot"
 }
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -587,6 +597,10 @@ ip_install() {
     LOCAL_DOMAIN2=${6:-${LOCAL_DOMAIN}}
 
     echo "${PRC_}% backup" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
 
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
         cp -r /var/rclone.conf /home/"${LOCAL_DOMAIN}"/config/production/rclone.conf
@@ -755,6 +769,10 @@ ip_install() {
 
     echo "${PRC_}% database" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
+
     STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
     CHECK=$(wget -qO- "${STS}&status=CHECK")
     if [ "${CHECK}" = "" ]; then
@@ -858,6 +876,10 @@ ip_install() {
     LOCAL_SUBDOMAIN=${4:-}
 
     echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
 
     NGX="/home/${LOCAL_DOMAIN}/config/production/nginx"
 
@@ -970,6 +992,10 @@ ip_install() {
     sh_progress
 
     echo "${PRC_}% mirror" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
+
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
 
     docker stop "${LOCAL_MIRROR_}" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
     if [ -f "/home/${LOCAL_DOMAIN}/process.json" ]; then
@@ -3999,10 +4025,12 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                 DD=${2}
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
+                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                 if [ "${PONG1}" != "pong" ]; then
                     echo "$(date) ${DD} DOCKER warning"
                     sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                    [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                     PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                     if [ "${PONG1}" != "pong" ]; then
                         echo "$(date) ${DD} DOCKER restart"
@@ -4010,6 +4038,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                     fi
                 fi
+                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 PONG2=$(curl -s --fail -A "PING" http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
                 if [ "${PONG2}" = "pong" ]; then
                     echo "$(date) ${DD} WEBSITE online"
@@ -4020,6 +4049,7 @@ while [ "${WHILE}" -lt "2" ]; do
                         curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
                     else
                         echo "$(date) ${DD} WEBSITE reboot"
+                        [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                         reboot
                     fi
                 fi
