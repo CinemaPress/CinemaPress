@@ -1110,18 +1110,18 @@ ip_install() {
         docker rm -f nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         echo "PULL NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker pull cinemapress/nginx:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "STOP FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "RM FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "STOP FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker stop filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "RM FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker rm -f filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        echo "PULL FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
-        docker pull cinemapress/filestash:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "STOP FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "RM FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "STOP FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker stop filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "RM FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker rm -f filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        echo "PULL FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        docker pull cinemapress/filestash:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     echo "RMI OLD" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     docker rmi -f $(docker images -f 'dangling=true' -q) >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
