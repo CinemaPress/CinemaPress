@@ -4018,19 +4018,17 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -f "/home/${DD_MIN}/.uptimerobot"
                 done
             fi
+            [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
+            touch "/home/${2}/.uptimerobot"
             if [ -n "${2}" ] && [ "${2}" != "push" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
-                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
-                touch "/home/${2}/.uptimerobot"
                 sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                 DD=${2}
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
-                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                 if [ "${PONG1}" != "pong" ]; then
                     echo "$(date) ${DD} DOCKER warning"
                     sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
-                    [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                     PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                     if [ "${PONG1}" != "pong" ]; then
                         echo "$(date) ${DD} DOCKER restart"
@@ -4038,7 +4036,6 @@ while [ "${WHILE}" -lt "2" ]; do
                         sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                     fi
                 fi
-                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 PONG2=$(curl -s --fail -A "PING" http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
                 if [ "${PONG2}" = "pong" ]; then
                     echo "$(date) ${DD} WEBSITE online"
@@ -4048,9 +4045,13 @@ while [ "${WHILE}" -lt "2" ]; do
                         echo "$(date) ${DD} WEBSITE push"
                         curl -d "{\"chat_id\":${4}, \"text\":\"Website down?\", \"reply_markup\": {\"inline_keyboard\": [[{\"text\":\"ping.${DD}\", \"url\": \"http://ping.${DD}\"}]]} }" -H "Content-Type: application/json" -X POST "https://api.telegram.org/bot${3}/sendMessage" &>/dev/null
                     else
-                        echo "$(date) ${DD} WEBSITE reboot"
-                        [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
-                        reboot
+                        echo "$(date) ${DD} WEBSITE restart"
+                        docker stop "${DD_}"
+                        sleep 5
+                        docker start "${DD_}"
+                        docker stop nginx
+                        sleep 5
+                        docker start nginx
                     fi
                 fi
                 rm -f "/home/${2}/.uptimerobot"
