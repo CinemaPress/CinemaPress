@@ -191,8 +191,7 @@
     <% contents.forEach(function (content) { %>
         <div class="cinemapress-news-block">
             <div style="margin: 0; padding: 10px">
-                <a href="<%- content.url %>" class="cinemapress-news"
-                   style="background-image:url('<%- content.image %>');">
+                <a href="<%- content.url %>" class="cinemapress-news lazy" style="background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAADICAQAAABrVzQQAAABLUlEQVR42u3RMQEAAAgDoC251W3hI1SgmfBMpUtHOtKRjnSkIx3pSEc60pGOdKQjHelIl450pCMd6UhHOtKRjnSkIx3pSEc60pEuHelIRzrSkY50pCMd6UhHOtKRjnSkI1060pGOdKQjHelIRzrSkY50pCMd6UhHunSkIx3pSEc60pGOdKQjHelIRzrSkY506dKlIx3pSEc60pGOdKQjHelIRzrSkY50pEtHOtKRjnSkIx3pSEc60pGOdKQjHelIl450pCMd6UhHOtKRjnSkIx3pSEc60pEuHelIRzrSkY50pCMd6UhHOtKRjnSkI1060pGOdKQjHelIRzrSkY50pCMd6UhHunTp0pGOdKQjHelIRzrSkY50pCMd6UhHOtKlIx3pSEc60pGOdKRzawFrr2QBa00SvgAAAABJRU5ErkJggg==');" data-bg="<%- content.image %>">
                     <div class="cinemapress-news-title">
                         <%= content.title %>
                     </div>
