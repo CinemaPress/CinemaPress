@@ -126,7 +126,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   var level3 = CP_regexp.str(req.params.level3 || '') || null;
   var sorting =
     CP_regexp.str(req.query.sorting) ||
-    (level1 === modules.content.data.url ? '' : config.default.sorting);
+    (level1 === modules.content.data.url || level1 === config.urls.search
+      ? ''
+      : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
   var id = level2 ? movie.id(level2) : '';
   var filename = level2
@@ -618,7 +620,12 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
                 )
                 .send(html);
 
-              if (config.cache.time && render && !render.cache) {
+              if (
+                config.cache.time &&
+                render &&
+                !render.cache &&
+                !req.userinfo.bot.all
+              ) {
                 render.cache = true;
                 CP_cache.set(urlHash, render, config.cache.time, function(
                   err

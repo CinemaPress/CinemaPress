@@ -22,11 +22,28 @@ Object.keys(modules).length === 0 &&
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000, max: 1000 });
+var cache = new LRU({
+  maxAge: 3600000,
+  max: 1000
+});
 var md5 = require('md5');
 var path = require('path');
 var moment = require('moment');
 moment.locale(config.language);
+
+try {
+  cache.set('CP_VER', process.env['CP_VER']);
+  var episodes_json = path.join(
+    path.dirname(__filename),
+    '..',
+    'files',
+    'episodes.json'
+  );
+  cache.set(
+    md5('episodes' + process.env['CP_VER']),
+    fs.existsSync(episodes_json) ? require(episodes_json) : []
+  );
+} catch (e) {}
 
 /**
  * Callback.

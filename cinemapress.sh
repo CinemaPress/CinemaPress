@@ -2037,11 +2037,11 @@ docker_run() {
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf; fi
         if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
         searchd
-        memcached -u root -d
+        #memcached -u root -d
         node /home/"${CP_DOMAIN}"/config/update/default.js
     else
         searchd
-        memcached -u root -d
+        #memcached -u root -d
         node /home/"${CP_DOMAIN}"/config/update/config.js
         node /home/"${CP_DOMAIN}"/config/update/mirror.js
     fi
@@ -2053,7 +2053,7 @@ docker_stop() {
     touch "/home/${CP_DOMAIN}/.uptimerobot"
     pm2 reload all
     searchd --stop
-    killall memcached
+    #killall memcached
     killall crond
     sleep 5
 }
@@ -2061,7 +2061,7 @@ docker_start() {
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     rm -f "/home/${CP_DOMAIN}/.uptimerobot"
     searchd
-    memcached -u root -d
+    #memcached -u root -d
     crond -L /var/log/cron.log
     node /home/"${CP_DOMAIN}"/config/update/config.js
     cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json

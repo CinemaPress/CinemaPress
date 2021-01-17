@@ -13,7 +13,7 @@ Object.keys(config).length === 0 &&
  */
 
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 2.592e9 });
+var cache = new LRU({ maxAge: 2.592e9, max: 100000 });
 var fs = require('fs');
 var path = require('path');
 var disk = require('diskusage');

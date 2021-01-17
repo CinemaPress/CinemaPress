@@ -25,7 +25,15 @@ Object.keys(modules).length === 0 &&
 
 var adop = require('adop');
 var LRU = require('lru-cache');
-var cache = new LRU({ maxAge: 3600000, max: 1000 });
+var cache = new LRU({
+  maxAge: 3600000,
+  max: 1000,
+  length: function(n, key) {
+    return (
+      (new TextEncoder().encode(JSON.stringify(n)).length + key.length) / 1024
+    );
+  }
+});
 var md5 = require('md5');
 var async = require('async');
 var request = require('request');
