@@ -2825,6 +2825,7 @@ while [ "${WHILE}" -lt "2" ]; do
             _s "${2}"
             sh_progress
             sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${CP_MODE}\"~" "/home/${CP_DOMAIN}/process.json" &>/dev/null
+            sed -i "s~\"NODE_ENV\": \"debug\"~\"NODE_ENV\": \"${CP_MODE}\"~" "/home/${CP_DOMAIN}/process.json" &>/dev/null
             sh_progress
             docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container reload &>/dev/null
             sh_progress 100
