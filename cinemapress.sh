@@ -1078,6 +1078,10 @@ ip_install() {
 
     echo "${PRC_}% remove" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
+    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    fi
+
     if [ "${LOCAL_SAFE}" = "safe" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
         T=`grep "\"theme\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
         L=`grep "\"language\"" /home/${LOCAL_DOMAIN}/config/production/config.js`
