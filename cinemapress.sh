@@ -2823,9 +2823,11 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             read_mode "${3}"
             _s "${2}"
-            sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${CP_MODE}\"~" "/home/${CP_DOMAIN}/process.json"
-            docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container reload
-            sleep 5
+            sh_progress
+            sed -i "s~\"NODE_ENV\": \"production\"~\"NODE_ENV\": \"${CP_MODE}\"~" "/home/${CP_DOMAIN}/process.json" &>/dev/null
+            sh_progress
+            docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress container reload &>/dev/null
+            sh_progress 100
             exit 0
         ;;
         "l"|"ll"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )

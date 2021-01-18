@@ -113,7 +113,9 @@ router.get('/?', function(req, res) {
   }
 
   if (
-    /googlebot|crawler|spider|robot|crawling|bot/i.test(req.get('User-Agent'))
+    /googlebot|crawler|spider|robot|crawling|bot|Chrome-Lighthouse/i.test(
+      req.get('User-Agent')
+    )
   ) {
     res.setHeader('Content-Type', 'application/javascript');
     res.send("console.log('Hello CinemaPress!');");

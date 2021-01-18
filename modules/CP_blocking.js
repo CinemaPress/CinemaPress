@@ -398,10 +398,18 @@ function blockingPlayer(code, movie, options, display) {
           time && !tv_version
             ? blocking +
               countdown +
-              code.player.replace(
-                /data-player="[a-z0-9,\s%]*?"/i,
-                'data-player="pleer,trailer"'
-              )
+              (options.userinfo &&
+              options.userinfo.agent &&
+              options.userinfo.agent.indexOf('chrome-lighthouse') + 1
+                ? ''
+                : code.player.replace(
+                    /data-player="[a-z0-9,\s%]*?"/i,
+                    'data-player="pleer,trailer"'
+                  ))
+            : options.userinfo &&
+              options.userinfo.agent &&
+              options.userinfo.agent.indexOf('chrome-lighthouse') + 1
+            ? ''
             : code.player.replace(
                 /data-player="[a-z0-9,\s%]*?"/i,
                 'data-player="pleer,trailer"'
