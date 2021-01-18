@@ -1804,7 +1804,7 @@
                                 </div>
                                 <div class="inner-padding">
                                     <div class="row">
-                                        <div class="col-xs-6 text-center">
+                                        <div class="col-xs-12 text-center">
                                             <select name="config.theme" class="form-control">
                                                 <% themes.forEach(function(theme) { %>
                                                     <% if (config.theme === theme) { %>
@@ -1818,12 +1818,6 @@
                                                     <% } %>
                                                 <% }); %>
                                             </select>
-                                        </div>
-                                        <div class="col-xs-6 text-center">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/article/cinemapress-themes.html"
-                                               target="_blank" class="btn btn-block btn-default">
-                                                <span class="fa fa-money-bill-alt"></span>&nbsp;&nbsp;<%= __('Премиум тема') %>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
