@@ -4025,10 +4025,10 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -f "/home/${DD_MIN}/.uptimerobot"
                 done
             fi
-            [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
-            touch "/home/${2}/.uptimerobot"
             if [ -n "${2}" ] && [ "${2}" != "push" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
+                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
+                touch "/home/${2}/.uptimerobot"
                 sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                 DD=${2}
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
