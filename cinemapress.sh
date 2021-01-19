@@ -4021,6 +4021,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "uptimerobot" )
             MIN=$(date '+%M')
             if [ "${MIN}" = "00" ] || [ "${MIN}" = "01" ]; then
+                rm -f "/home/.uptimerobot"
                 for D_MIN in /home/*; do
                     DD_MIN=$(find "${D_MIN}" -maxdepth 0 -printf "%f")
                     rm -f "/home/${DD_MIN}/.uptimerobot"
@@ -4028,7 +4029,7 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             if [ -n "${2}" ] && [ "${2}" != "push" ]; then
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
-                [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
+                [ ! -f "/home/.uptimerobot" ] || [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 touch "/home/${2}/.uptimerobot"
                 sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
                 DD=${2}

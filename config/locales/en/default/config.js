@@ -117,7 +117,7 @@ module.exports = {
     "categories": {
       "countries": ["USA","France","Japan","Britain","Spain","Italy","Canada","India","Germany","Poland"],
       "genres": ['anime','biography','action','western','military','detective','children','adults','documentary','drama','game','history','comedy','concert','short film','crime','melodrama','music','cartoon','musical','news','adventure','real TV','family','sport','talk show','thriller','horrors','fantastic','film-noir','fantasy','ceremony'],
-      "years": ["2020","2019","2018","2017","2016","2015","2014","2013","2012","2011","2010"]
+      "years": ["2021","2020","2019","2018","2017","2016","2015","2014","2013","2012","2011"]
     },
     "types": {
       "movie": "!cartoon !anime !short !show !news !real !ceremony !concert !children !documentary",
