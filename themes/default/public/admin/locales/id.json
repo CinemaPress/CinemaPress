@@ -1002,5 +1002,7 @@
 	"Домены исключения:": "Pengecualian domain:",
 	"Ежедневная ротация доменов": "Rotasi harian domain",
 	"Список доменов": "Daftar domains",
-	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Setiap hari nama domain baru dari daftar akan dikirim ke indeksasi"
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Setiap hari nama domain baru dari daftar akan dikirim ke indeksasi",
+	"Зафиксировать кэш": "Tunai",
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Setelah Anda mengubah gambar situs web dan templat situs web, Anda dapat menentukan versi file-file ini dan tidak akan lagi berubah setelah setiap pembersihan cache"
 }

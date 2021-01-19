@@ -1002,5 +1002,7 @@
 	"Домены исключения:": "Domini eccezioni:",
 	"Ежедневная ротация доменов": "Rotazione giornaliera dei domini",
 	"Список доменов": "Elenco dei domini",
-	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Ogni giorno un nuovo nome di dominio dall'elenco verrà inviato all'indicizzazione"
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Ogni giorno un nuovo nome di dominio dall'elenco verrà inviato all'indicizzazione",
+	"Зафиксировать кэш": "Contanti",
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Dopo aver modificato le immagini del sito Web e il modello del sito Web, è possibile specificare la versione di questi file e non cambierà più dopo ogni pulizia della cache"
 }

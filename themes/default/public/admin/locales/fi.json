@@ -1002,5 +1002,7 @@
 	"Домены исключения:": "Verkkotunnukset poikkeukset:",
 	"Ежедневная ротация доменов": "Verkkotunnusten päivittäinen kierto",
 	"Список доменов": "Luettelo verkkotunnuksista",
-	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Joka päivä luettelosta uusi verkkotunnus lähetetään indeksointiin"
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Joka päivä luettelosta uusi verkkotunnus lähetetään indeksointiin",
+	"Зафиксировать кэш": "Käteinen raha",
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Kun vaihdat verkkosivuston kuvat ja Web-sivuston mallia, voit määrittää näiden tiedostojen version ja se ei enää muutu jokaisen välimuistin puhdistuksen jälkeen"
 }

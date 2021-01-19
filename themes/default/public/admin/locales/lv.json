@@ -1002,5 +1002,7 @@
 	"Домены исключения:": "Domēni izņēmumi:",
 	"Ежедневная ротация доменов": "Dienas rotācija domēnu",
 	"Список доменов": "Domēnu saraksts",
-	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Katru dienu indeksācijai tiks nosūtīts jauns domēna vārds no saraksta"
+	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Katru dienu indeksācijai tiks nosūtīts jauns domēna vārds no saraksta",
+	"Зафиксировать кэш": "Nauda",
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pēc tam, kad esat mainījis tīmekļa vietnes attēlus un tīmekļa vietnes veidni, varat norādīt šo failu versiju, un tas vairs nemainīsies pēc katras kešatmiņas tīrīšanas"
 }
