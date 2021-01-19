@@ -3263,7 +3263,8 @@ while [ "${WHILE}" -lt "2" ]; do
             fi;
             git add . >/dev/null 2>&1; \
             git commit -a -m "${3}" >/dev/null 2>&1; \
-            git push --force >/dev/null 2>&1
+            git branch -M main >/dev/null 2>&1; \
+            git push -u origin main >/dev/null 2>&1
             sh_progress
             sleep 20
             sh_progress 100
