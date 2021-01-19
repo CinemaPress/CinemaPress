@@ -15,6 +15,15 @@ Object.keys(modules).length === 0 &&
  */
 
 function codesAdv(options, type) {
+  if (
+    options &&
+    options.userinfo &&
+    options.userinfo.bot &&
+    options.userinfo.bot.all
+  ) {
+    return {};
+  }
+
   var positions =
     options &&
     options.userinfo &&

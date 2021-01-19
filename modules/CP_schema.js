@@ -54,7 +54,17 @@ function fullMovieSchema(page, movie, movies, comments, options) {
       (config.bomain || config.domain);
   }
 
-  if (!movie) return '';
+  if (
+    !movie ||
+    !(
+      options &&
+      options.userinfo &&
+      options.userinfo.bot &&
+      options.userinfo.bot.all
+    )
+  ) {
+    return '';
+  }
 
   var result = [];
 
