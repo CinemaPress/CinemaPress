@@ -2797,7 +2797,11 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s "${2}"
             quiet=""
-            if [ "${3}" != "" ]; then quiet="--dry-run"; fi
+            if [ "${3}" != "" ]; then
+              quiet="--dry-run"
+            else
+              sleep $(( ( "${RANDOM}" % 900 ) ))
+            fi
             docker run \
                 --rm \
                 -v /home/${CP_DOMAIN}/config/production/nginx/ssl.d:/etc/letsencrypt \
@@ -4040,18 +4044,18 @@ while [ "${WHILE}" -lt "2" ]; do
                 [ -f "/home/${2}/app.js" ] || [ -f "/home/${2}/index.php" ] || exit 0
                 [ ! -f "/home/.uptimerobot" ] || [ ! -f "/home/${2}/.uptimerobot" ] || exit 0
                 touch "/home/${2}/.uptimerobot"
-                sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                sleep $(( ( "${RANDOM}" % 30 ) ))
                 DD=${2}
                 DD_=$(echo "${2}" | sed -r "s/[^A-Za-z0-9]/_/g")
                 PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                 if [ "${PONG1}" != "pong" ]; then
                     echo "$(date) ${DD} DOCKER warning"
-                    sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                    sleep $(( ( "${RANDOM}" % 30 ) ))
                     PONG1=$(docker exec -t "${DD_}" /usr/bin/cinemapress ping 2>/dev/null)
                     if [ "${PONG1}" != "pong" ]; then
                         echo "$(date) ${DD} DOCKER restart"
                         docker restart "${DD_}"
-                        sleep $(( ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) + ( "${RANDOM}" % 10 ) ))
+                        sleep $(( ( "${RANDOM}" % 30 ) ))
                     fi
                 fi
                 PONG2=$(curl -s --fail -A "PING" http://"${DD}"/ping || curl -s --fail http://ping."${DD}"/ping)
