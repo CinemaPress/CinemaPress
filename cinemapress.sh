@@ -257,8 +257,8 @@ ip_install() {
 
     echo "${PRC_}% install" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     # MEMTOTATAL=$(grep MemTotal /proc/meminfo | awk '{print $2}')
@@ -422,8 +422,8 @@ ip_install() {
         fi
     fi
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 }
 2_update() {
@@ -440,8 +440,8 @@ ip_install() {
 
     echo "${PRC_}% update" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
@@ -598,8 +598,8 @@ ip_install() {
 
     echo "${PRC_}% backup" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     if [ -f "/var/rclone.conf" ] && [ ! -f "/home/${LOCAL_DOMAIN}/config/production/rclone.conf" ]; then
@@ -769,8 +769,8 @@ ip_install() {
 
     echo "${PRC_}% database" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
@@ -877,8 +877,8 @@ ip_install() {
 
     echo "${PRC_}% https" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     NGX="/home/${LOCAL_DOMAIN}/config/production/nginx"
@@ -993,8 +993,8 @@ ip_install() {
 
     echo "${PRC_}% mirror" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     docker stop "${LOCAL_MIRROR_}" >>/var/log/docker_mirror_"$(date '+%d_%m_%Y')".log 2>&1
@@ -1078,8 +1078,8 @@ ip_install() {
 
     echo "${PRC_}% remove" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-    if [ "$(grep "${LOCAL_DOMAIN}_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/${LOCAL_DOMAIN}/.uptimerobot" &>/dev/null
+    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
+        touch "/home/.uptimerobot" &>/dev/null
     fi
 
     if [ "${LOCAL_SAFE}" = "safe" ] && [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
