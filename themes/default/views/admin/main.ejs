@@ -1906,6 +1906,46 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
+                                        <i class="fas fa-photo-video"></i>&nbsp;&nbsp;&nbsp;<%= __('Зафиксировать кэш') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                           class="csstip"
+                                           data-title="<%= __('После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша') %>"
+                                           target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 text-center">
+                                            <% if (config.cache.ver === 0) { %>
+                                                <div class="input-group" style="display: none" id="ver">
+                                                    <span class="input-group-addon text-muted"><span class="hidden-xs">logo.svg?v=</span><span class="visible-xs">?v=</span></span>
+                                                    <input name="config.cache.ver" value="<%= new Date().getTime().toString() %>" class="form-control input_url" type="text">
+                                                </div>
+                                                <span class="btn btn-default btn-block" onclick='document.getElementById("ver").style.display="inline-table";this.style.display="none"'>
+                                                    <i class="fas fa-hammer"></i>&nbsp;&nbsp;<%= __('Зафиксировать кэш') %>
+                                                </span>
+                                            <% } else { %>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><span class="hidden-xs">logo.svg?v=</span><span class="visible-xs">?v=</span></span>
+                                                    <input name="config.cache.ver" value="<%= config.cache.ver %>" class="form-control input_url" type="text">
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
                                         <i class="fa fa-fire"></i>&nbsp;&nbsp;&nbsp;<%= __('Перегрузка сервера') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">

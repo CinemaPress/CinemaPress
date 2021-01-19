@@ -17,16 +17,17 @@ Object.keys(config).length === 0 &&
  */
 
 var path = require('path');
+var fs = require('fs');
 var lookup = {};
 try {
   var MaxMindReader = require('maxmind').Reader;
   lookup.country = new MaxMindReader(
-    require('fs').readFileSync(
+    fs.readFileSync(
       path.join(path.dirname(__filename), 'files', 'GeoLite2-Country.mmdb')
     )
   );
   lookup.asn = new MaxMindReader(
-    require('fs').readFileSync(
+    fs.readFileSync(
       path.join(path.dirname(__filename), 'files', 'GeoLite2-ASN.mmdb')
     )
   );

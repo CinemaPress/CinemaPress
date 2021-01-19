@@ -65,7 +65,8 @@ module.exports = {
     "save": 1
   },
   "cache": {
-    "time": 3600
+    "time": 3600,
+    "ver": 0
   },
   "pagespeed": 0,
   "loadavg": {
