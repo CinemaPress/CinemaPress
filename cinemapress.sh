@@ -4126,7 +4126,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "               is offline, the server will be rebooted"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
-            printf " splash example.com github_login github_pass"; _br;
+            printf " splash example.com github_login github_token"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine install_https_restore_mirror"; _br;
             printf " combine install_restore_mirror"; _br;
