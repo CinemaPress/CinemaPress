@@ -82,20 +82,22 @@ RUN cd /tmp && \
 	curl -L http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -zx && \
 	cd /tmp/nginx-${NGINX_VERSION} && \
 	LD_LIBRARY_PATH=/tmp/incubator-pagespeed-ngx-${PAGESPEED_VERSION}/usr/lib:/usr/lib ./configure \
-	--sbin-path=/usr/sbin \
-	--modules-path=/usr/lib/nginx \
-	--with-http_ssl_module \
-	--with-http_gzip_static_module \
-	--with-file-aio \
-	--with-http_v2_module \
-	--with-http_realip_module \
-	--with-http_sub_module \
-	--with-http_gunzip_module \
-	--with-http_secure_link_module \
-	--with-http_stub_status_module \
-	--with-threads \
-	--with-stream \
-	--with-stream_ssl_module \
+    --sbin-path=/usr/sbin \
+    --modules-path=/usr/lib/nginx \
+    --user=nginx \
+    --group=nginx \
+    --with-http_ssl_module \
+    --with-http_gzip_static_module \
+    --with-file-aio \
+    --with-http_v2_module \
+    --with-http_realip_module \
+    --with-http_sub_module \
+    --with-http_gunzip_module \
+    --with-http_secure_link_module \
+    --with-http_stub_status_module \
+    --with-threads \
+    --with-stream \
+    --with-stream_ssl_module \
     --with-http_addition_module \
     --with-http_dav_module \
     --with-http_flv_module \
@@ -103,37 +105,39 @@ RUN cd /tmp && \
     --with-stream_ssl_preread_module \
     --with-http_slice_module \
     --with-compat \
-	--without-http_autoindex_module \
-	--without-http_browser_module \
-	--without-http_userid_module \
-	--without-mail_pop3_module \
-	--without-mail_imap_module \
-	--without-mail_smtp_module \
-	--without-http_split_clients_module \
-	--without-http_uwsgi_module \
-	--without-http_scgi_module \
-	--without-http_upstream_ip_hash_module \
-	--prefix=/etc/nginx \
-	--conf-path=/etc/nginx/nginx.conf \
-	--http-log-path=/var/log/nginx/access.log \
-	--error-log-path=/var/log/nginx/error.log \
-	--pid-path=/var/run/nginx.pid \
-	--add-module=/tmp/ngx_devel_kit \
-	--add-module=/tmp/ngx_cache_purge \
-	--add-module=/tmp/nginx-module-vts \
-	--add-module=/tmp/echo-nginx-module \
-	--add-module=/tmp/redis-nginx-module \
-	--add-module=/tmp/redis2-nginx-module \
-	--add-module=/tmp/srcache-nginx-module \
-	--add-module=/tmp/set-misc-nginx-module \
-	--add-module=/tmp/ngx_http_geoip2_module \
-	--add-module=/tmp/headers-more-nginx-module \
-	--add-module=/tmp/ngx_http_substitutions_filter_module \
-	--add-module=/tmp/incubator-pagespeed-ngx-${PAGESPEED_VERSION}-stable && \
+    --without-http_autoindex_module \
+    --without-http_browser_module \
+    --without-http_userid_module \
+    --without-mail_pop3_module \
+    --without-mail_imap_module \
+    --without-mail_smtp_module \
+    --without-http_split_clients_module \
+    --without-http_uwsgi_module \
+    --without-http_scgi_module \
+    --without-http_upstream_ip_hash_module \
+    --prefix=/etc/nginx \
+    --conf-path=/etc/nginx/nginx.conf \
+    --http-log-path=/var/log/nginx/access.log \
+    --error-log-path=/var/log/nginx/error.log \
+    --pid-path=/var/run/nginx.pid \
+    --add-module=/tmp/ngx_devel_kit \
+    --add-module=/tmp/ngx_cache_purge \
+    --add-module=/tmp/nginx-module-vts \
+    --add-module=/tmp/echo-nginx-module \
+    --add-module=/tmp/redis-nginx-module \
+    --add-module=/tmp/redis2-nginx-module \
+    --add-module=/tmp/srcache-nginx-module \
+    --add-module=/tmp/set-misc-nginx-module \
+    --add-module=/tmp/ngx_http_geoip2_module \
+    --add-module=/tmp/headers-more-nginx-module \
+    --add-module=/tmp/ngx_http_substitutions_filter_module \
+    --add-module=/tmp/incubator-pagespeed-ngx-${PAGESPEED_VERSION}-stable && \
 	make install --silent
 
 RUN apt-get remove -y git
-RUN rm -rf /var/lib/apt/lists/* && rm -rf /tmp/* && \
+RUN addgroup -S nginx && \
+    adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx && \
+    rm -rf /var/lib/apt/lists/* && rm -rf /tmp/* && \
 	ln -sf /dev/stdout /var/log/nginx/access.log && \
 	ln -sf /dev/stderr /var/log/nginx/error.log && \
 	mkdir -p /var/cache/ngx_pagespeed && \
