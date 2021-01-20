@@ -58,7 +58,7 @@ module.exports = {
     "to": []
   },
   "geolite2": {
-    "countries": [],
+    "countries": ["Netherlands"],
     "ips": []
   },
   "image": {
