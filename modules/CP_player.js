@@ -242,7 +242,12 @@ function codePlayer(type, movie, options) {
     if (player || type === 'online') {
       code.footer =
         '<script>(function(){var e=document,t=e.createElement("script");t.async=true;t.src="' +
-        modules.player.data.js +
+        (options &&
+        options.userinfo &&
+        options.userinfo.bot &&
+        options.userinfo.bot.all
+          ? ''
+          : modules.player.data.js) +
         '",(e.head||e.body).appendChild(t)})();</script>' +
         '<script>document.addEventListener("DOMContentLoaded",function(){window.addEventListener("message",function(t){if(t&&t.data){var a=document.querySelector(\'[data-yo="quality"]\'),e=document.querySelector(\'[data-yo="translate"]\');t.data.quality&&a&&(a.innerHTML=t.data.quality),t.data.translate&&e&&(e.innerHTML=t.data.translate)}})});</script>';
     } else if (movie.player && /\.(mp4|mkv|avi|mov|flv)$/.test(movie.player)) {
