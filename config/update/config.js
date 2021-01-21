@@ -13,6 +13,8 @@ var fs = require('fs');
  * Global env.
  */
 
+process.env['NO_CACHE'] = true;
+
 try {
   var p = tryParseJSON(
     fs.readFileSync(

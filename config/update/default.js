@@ -12,6 +12,7 @@ var fs = require('fs');
  * Global env.
  */
 
+process.env['NO_CACHE'] = true;
 var arg = process && process.argv && process.argv[2] ? process.argv[2] : '';
 
 try {

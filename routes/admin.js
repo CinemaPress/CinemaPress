@@ -407,39 +407,63 @@ router.get('/:type?', function(req, res) {
         return callback(null, render);
       }
 
-      CP_get.movies(query, 1, 'kinopoisk-id-up', 1, false, function(
-        err,
-        movies
-      ) {
-        if (err) console.error(err);
-        render.structure = {};
-        render.movie = {
-          kp_id: kp_id,
-          type: type
-        };
-        render.movie.custom = JSON.stringify({
-          imdb_id: imdb_id,
-          tmdb_id: tmdb_id,
-          douban_id: douban_id
-        });
-        if (movies && movies.length) {
-          render.movie = JSON.parse(JSON.stringify(movies[0]));
-          render.structure = CP_structure.movie(movies)[0];
+      CP_get.movies(
+        Object.assign(query, { from: process.env.CP_RT, certainly: true }),
+        1,
+        '',
+        1,
+        false,
+        function(err1, movies1) {
+          if (err1) console.error(err1);
+          render.structure = {};
+          render.movie = {
+            kp_id: kp_id,
+            type: type
+          };
+          render.movie.custom = JSON.stringify({
+            imdb_id: imdb_id,
+            tmdb_id: tmdb_id,
+            douban_id: douban_id
+          });
+          if (movies1 && movies1.length) {
+            render.movie = JSON.parse(JSON.stringify(movies1[0]));
+            render.structure = CP_structure.movie(movies1)[0];
+            if (req.params.type === 'poster') {
+              return callback(
+                null,
+                render.structure.poster
+                  ? render.structure.poster
+                  : config.protocol +
+                      config.subdomain +
+                      config.domain +
+                      '/files/poster/no.jpg'
+              );
+            } else {
+              return callback(null, render);
+            }
+          }
+          CP_get.movies(query, 1, '', 1, false, function(err2, movies2) {
+            if (err2) console.error(err2);
+            if (movies2 && movies2.length) {
+              render.movie = JSON.parse(JSON.stringify(movies2[0]));
+              render.structure = CP_structure.movie(movies2)[0];
+            }
+            if (req.params.type === 'poster') {
+              return callback(
+                null,
+                render.structure.poster
+                  ? render.structure.poster
+                  : config.protocol +
+                      config.subdomain +
+                      config.domain +
+                      '/files/poster/no.jpg'
+              );
+            } else {
+              return callback(null, render);
+            }
+          });
         }
-        if (req.params.type === 'poster') {
-          callback(
-            null,
-            render.structure.poster
-              ? render.structure.poster
-              : config.protocol +
-                  config.subdomain +
-                  config.domain +
-                  '/files/poster/no.jpg'
-          );
-        } else {
-          callback(null, render);
-        }
-      });
+      );
     } else {
       CP_get.movies(
         { from: process.env.CP_RT, certainly: true },

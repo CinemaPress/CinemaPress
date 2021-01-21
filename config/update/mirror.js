@@ -11,6 +11,7 @@ var fs = require('fs');
  * Global env.
  */
 
+process.env['NO_CACHE'] = true;
 var domain = '';
 
 try {
