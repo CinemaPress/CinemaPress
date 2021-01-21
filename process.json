@@ -31,7 +31,8 @@
         "CP_CONTENT": "content_example_com",
         "CP_COMMENT": "comment_example_com",
         "CP_USER": "user_example_com",
-        "CP_VER": "1"
+        "CP_VER": "1",
+        "NO_CACHE": ""
       }
     }
   ]

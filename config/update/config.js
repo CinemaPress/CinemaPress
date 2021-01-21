@@ -13,8 +13,6 @@ var fs = require('fs');
  * Global env.
  */
 
-process.env['NO_CACHE'] = true;
-
 try {
   var p = tryParseJSON(
     fs.readFileSync(
@@ -73,6 +71,8 @@ try {
   console.log('NOT DEFAULT CONFIG AND MODULES');
   process.exit();
 }
+
+process.env['NO_CACHE'] = true;
 
 /**
  * New configuration dependencies.
@@ -186,6 +186,7 @@ async.series(
   },
   function(err, result) {
     if (err) return console.error(err);
+    process.env['NO_CACHE'] = undefined;
     exec('pm2 reload ' + config.domain, function(
       error,
       stdout,

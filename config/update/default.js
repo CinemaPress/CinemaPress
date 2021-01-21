@@ -12,7 +12,6 @@ var fs = require('fs');
  * Global env.
  */
 
-process.env['NO_CACHE'] = true;
 var arg = process && process.argv && process.argv[2] ? process.argv[2] : '';
 
 try {
@@ -57,6 +56,8 @@ try {
   console.log('NOT FILE DEFAULT DATA');
   process.exit();
 }
+
+process.env['NO_CACHE'] = true;
 
 /**
  * Valid JSON.
@@ -161,6 +162,7 @@ if (
 var ii = 1;
 setInterval(function() {
   if (run === 2 || ii >= 10) {
+    process.env['NO_CACHE'] = undefined;
     process.exit();
   }
   ii++;

@@ -11,7 +11,6 @@ var fs = require('fs');
  * Global env.
  */
 
-process.env['NO_CACHE'] = true;
 var save =
   process.argv && typeof process.argv[2] !== 'undefined' && process.argv[2];
 var domain = '';
@@ -36,6 +35,8 @@ try {
   console.log('NOT FILE PROCESS DATA');
   process.exit();
 }
+
+process.env['NO_CACHE'] = true;
 
 /**
  * Module dependencies.
@@ -154,6 +155,7 @@ async.series(
     }
   ],
   function() {
+    process.env['NO_CACHE'] = undefined;
     return process.exit();
   }
 );
