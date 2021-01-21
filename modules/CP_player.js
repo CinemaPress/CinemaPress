@@ -230,14 +230,19 @@ function codePlayer(type, movie, options) {
     }
 
     code.player =
-      '' +
-      '<video id="yohoho" controls  ' +
-      video +
-      ' style="display:none">' +
-      '  <source src="/balancer/' +
-      movie.kp_id +
-      '.mp4" type="video/mp4">' +
-      '</video>';
+      options &&
+      options.userinfo &&
+      options.userinfo.bot &&
+      options.userinfo.bot.all
+        ? '' +
+          '<video id="yohoho" controls  ' +
+          video +
+          ' style="display:none">' +
+          '  <source src="/balancer/' +
+          movie.kp_id +
+          '.mp4" type="video/mp4">' +
+          '</video>'
+        : '<div id="yohoho" ' + video + ' style="display:none"></div>';
 
     if (player || type === 'online') {
       code.footer =
