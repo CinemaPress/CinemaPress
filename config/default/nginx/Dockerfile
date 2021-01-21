@@ -5,7 +5,7 @@ RUN mkdir -p \
     /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
-RUN apk add bash dos2unix gzip \
+RUN apk add bash dos2unix gzip curl \
     && dos2unix /etc/nginx/nginx.sh \
     && chmod +x /etc/nginx/nginx.sh \
     && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
