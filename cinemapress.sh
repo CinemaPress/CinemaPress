@@ -2041,13 +2041,11 @@ docker_run() {
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf; fi
         if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
         searchd
-        #memcached -u root -d
         node /home/"${CP_DOMAIN}"/config/update/default.js
     else
         searchd
-        #memcached -u root -d
         node /home/"${CP_DOMAIN}"/config/update/config.js
-        node /home/"${CP_DOMAIN}"/config/update/mirror.js
+        #node /home/"${CP_DOMAIN}"/config/update/mirror.js
     fi
     crond -L /var/log/cron.log
     cd /home/"${CP_DOMAIN}" && pm2-runtime start process.json
@@ -2057,7 +2055,6 @@ docker_stop() {
     touch "/home/${CP_DOMAIN}/.uptimerobot"
     pm2 reload all
     searchd --stop
-    #killall memcached
     killall crond
     sleep 5
 }
@@ -2065,7 +2062,6 @@ docker_start() {
     sed -Ei "s/app\.use\(rebooting\(\)\);/\/\/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     rm -f "/home/${CP_DOMAIN}/.uptimerobot"
     searchd
-    #memcached -u root -d
     crond -L /var/log/cron.log
     node /home/"${CP_DOMAIN}"/config/update/config.js
     cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
@@ -2093,7 +2089,9 @@ docker_logs() {
 docker_zero() {
     sed -i "s/xmlpipe_command =.*/xmlpipe_command =/" "/etc/sphinx/sphinx.conf"
     indexer "xmlpipe2_${CP_DOMAIN_}" --rotate
-    (sleep 2; echo flush_all; sleep 2; echo quit;) | telnet 127.0.0.1 11211
+}
+docker_hand() {
+    node /home/"${CP_DOMAIN}"/config/update/hand.js
 }
 docker_cron() {
     node /home/"${CP_DOMAIN}"/lib/CP_cron.js
@@ -2577,6 +2575,22 @@ while [ "${WHILE}" -lt "2" ]; do
                 exit 0
             fi
         ;;
+        "hand" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container hand
+            exit 0
+        ;;
+        "main_mirror" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container mirror
+            exit 0
+        ;;
         "reload"|"actual"|"available"|"speed"|"cron" )
             _br "${2}"
             read_domain "${2}"
@@ -2601,6 +2615,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_logs
             elif [ "${2}" = "zero" ]; then
                 docker_zero
+            elif [ "${2}" = "hand" ]; then
+                docker_hand
             elif [ "${2}" = "cron" ]; then
                 docker_cron
             elif [ "${2}" = "actual" ]; then

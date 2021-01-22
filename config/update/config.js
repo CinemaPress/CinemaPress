@@ -187,14 +187,6 @@ async.series(
   function(err, result) {
     if (err) return console.error(err);
     process.env['NO_CACHE'] = undefined;
-    exec('pm2 reload ' + config.domain, function(
-      error,
-      stdout,
-      stderr
-    ) {
-      if (stdout) console.log(stdout);
-      if (stderr) console.log(stderr);
-      return error ? console.error(error) : console.log(null, 'Reload server.');
-    });
+    process.exit();
   }
 );
