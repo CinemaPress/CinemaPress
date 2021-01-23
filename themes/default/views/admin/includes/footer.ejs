@@ -780,7 +780,7 @@
     }
 
     if (data.config && data.config.publish && data.config.publish.indexing && data.config.publish.indexing.condition) {
-      data.config.publish.indexing.condition = data.config.publish.indexing.condition.replace(/(^\s*)|(\s*)$/g, '').replace(/\n*/ig, ' ').replace(/\s*/ig, ' ').replace(/\)\s*\(/ig, ')||(');
+      //data.config.publish.indexing.condition = data.config.publish.indexing.condition.replace(/(^\s*)|(\s*)$/g, '').replace(/\n*/ig, ' ').replace(/\s*/ig, ' ').replace(/\)\s*\(/ig, ')||(');
     }
 
     if (data.comment && data.comment.comment_publish) {
