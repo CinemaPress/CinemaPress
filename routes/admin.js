@@ -408,7 +408,7 @@ router.get('/:type?', function(req, res) {
       }
 
       CP_get.movies(
-        Object.assign(query, { from: process.env.CP_RT, certainly: true }),
+        Object.assign({}, query, { from: process.env.CP_RT, certainly: true }),
         1,
         '',
         1,
@@ -793,7 +793,7 @@ router.post('/change', function(req, res) {
       delete form.movie.imdb_id;
       delete form.movie.douban_id;
       form.movie.custom = JSON.stringify(
-        Object.assign(JSON.parse(form.movie.custom), custom)
+        Object.assign({}, JSON.parse(form.movie.custom), custom)
       );
     } catch (e) {
       console.error(e);
@@ -1030,6 +1030,19 @@ router.post('/change', function(req, res) {
               form.flush = true;
               return err ? callback(err) : callback(null, 'PageSpeed');
             }, 5000);
+          }
+        );
+      },
+      movies_cron: function(callback) {
+        if (!form.movies_cron) return callback(null, 'Null');
+        exec(
+          'nohup /usr/bin/cinemapress container movies run > /home/' +
+            config.domain +
+            '/log/movies_' +
+            new Date().toISOString().split('T')[0] +
+            '.log 2>&1',
+          function(err) {
+            return callback(err);
           }
         );
       },

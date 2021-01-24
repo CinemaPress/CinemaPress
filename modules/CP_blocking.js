@@ -73,7 +73,7 @@ function blockingPlayer(code, movie, options, display) {
       '</div>';
 
     var adblock =
-      '<script src="/themes/default/public/desktop/js/ads.js" charset="utf-8"></script>' +
+      '<script src="/themes/default/public/desktop/js/prebid-ads.js" charset="utf-8"></script>' +
       '<script>document.addEventListener("DOMContentLoaded",function(){if(document.getElementById("CinemaPress")){var t=document.getElementById("blockingPlayer");t.parentElement.removeChild(t)}});</script>';
 
     var sub =

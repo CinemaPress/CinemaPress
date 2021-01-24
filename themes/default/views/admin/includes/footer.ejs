@@ -47,6 +47,10 @@
     if (flush_memcached)
       flush_memcached.addEventListener('click', flushMemcachedData);
 
+    var movies_cron = document.querySelector('#movies_cron');
+    if (movies_cron)
+      movies_cron.addEventListener('click', moviesCronData);
+
     var database = document.querySelector('#database');
     if (database)
       database.addEventListener('click', databaseData);
@@ -204,6 +208,38 @@
       } else {
         self.innerHTML = '<i class="fa fa-tachometer-alt"></i>';
         self.addEventListener('click', flushMemcachedData);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      location.reload();
+    }, 25000);
+
+  }
+
+  function moviesCronData() {
+
+    var self = this;
+    self.removeEventListener('click', moviesCronData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'movies_cron': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<i class="fa fa-bug"></i>';
+      } else {
+        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+        setTimeout(function() {
+          self.innerHTML = '<i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации')  %>';
+          self.addEventListener('click', moviesCronData);
+        },60000);
       }
     });
 
@@ -759,6 +795,10 @@
       data.modules.player.data.custom = data.modules.player.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
     }
 
+    if (data.config && data.config.movies && data.config.movies.cron) {
+      data.config.movies.cron = data.config.movies.cron.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
     if (data.modules && data.modules.content && data.modules.content.data.custom) {
       data.modules.content.data.custom = data.modules.content.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
     }
@@ -1238,7 +1278,7 @@
     });
   }
 
-  ['config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
+  ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);
     }

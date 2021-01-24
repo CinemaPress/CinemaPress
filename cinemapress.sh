@@ -485,16 +485,19 @@ ip_install() {
     fi
 
     AA=$(grep "\"CP_ALL\"" /home/"${LOCAL_DOMAIN}"/process.json)
+    XX=$(grep "\"CP_XMLPIPE2\"" /home/"${LOCAL_DOMAIN}"/process.json)
     KK=$(grep "\"key\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     DD=$(grep "\"date\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     PP=$(grep "\"pagespeed\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
     BM=$(grep "\"bomain\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
     CP_ALL=$(echo ${AA} | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
+    CP_XMLPIPE2=$(echo ${XX} | sed 's/.*"CP_XMLPIPE2":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
     CP_KEY=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
     CP_DATE=$(echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/')
     CP_SPEED=$(echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/')
     CP_BOMAIN=$(echo ${BM} | sed 's/.*"bomain":\s*"\([a-zA-Z0-9.-]*\)".*/\1/')
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
+    if [ "${CP_XMLPIPE2}" = "" ] || [ "${CP_XMLPIPE2}" = "${AA}" ]; then CP_XMLPIPE2=""; fi
     DISABLE_SSL=$(grep "#ssl" /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null)
     rm -rf /home/"${LOCAL_DOMAIN}"/config/production/nginx/conf.d/default.conf
     mkdir -p /var/temp
@@ -557,6 +560,10 @@ ip_install() {
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     if [ "${CP_ALL}" != "" ] && [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb" ]; then
         sed -E -i "s/\"CP_ALL\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_ALL\":\"${CP_ALL}\"/" \
+            /home/"${LOCAL_DOMAIN}"/process.json
+    fi
+    if [ "${CP_XMLPIPE2}" != "" ]; then
+        sed -E -i "s/\"CP_XMLPIPE2\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_XMLPIPE2\":\"${CP_XMLPIPE2}\"/" \
             /home/"${LOCAL_DOMAIN}"/process.json
     fi
     if [ "${#CP_KEY}" -eq "4" ] || [ "${#CP_KEY}" -eq "32" ]; then
@@ -2087,14 +2094,32 @@ docker_logs() {
     _s
 }
 docker_zero() {
-    sed -i "s/xmlpipe_command =.*/xmlpipe_command =/" "/etc/sphinx/sphinx.conf"
-    indexer "xmlpipe2_${CP_DOMAIN_}" --rotate
+    if [ -n "${1}" ]; then
+        sed -E -i "s/\"CP_XMLPIPE2\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_XMLPIPE2\":\"xmlpipe2_${CP_DOMAIN_}\"/" \
+            /home/"${CP_DOMAIN}"/process.json
+    else
+        sed -E -i "s/\"CP_XMLPIPE2\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_XMLPIPE2\":\"rt_${CP_DOMAIN_}\"/" \
+            /home/"${CP_DOMAIN}"/process.json
+    fi
+    cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
 }
 docker_hand() {
-    node /home/"${CP_DOMAIN}"/config/update/hand.js
+    if [ -n "${1}" ]; then
+        node /home/"${CP_DOMAIN}"/config/update/hand.js "player"
+    else
+        node /home/"${CP_DOMAIN}"/config/update/hand.js
+    fi
+}
+docker_movies() {
+    if [ -n "${1}" ]; then
+        node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
+    else
+        node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+    fi
 }
 docker_cron() {
     node /home/"${CP_DOMAIN}"/lib/CP_cron.js
+    node /home/"${CP_DOMAIN}"/lib/CP_movies.js
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
@@ -2560,27 +2585,28 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ ${3} ]; then
                 YES=${3}
                 YES=`echo ${YES} | iconv -c -t UTF-8`
-                echo "Delete? [NOT/yes] : ${YES}"
+                echo "Deactivate Automatic Index? [NOT/yes] : ${YES}"
             else
-                read -e -p 'Delete? [NOT/yes] : ' YES
+                read -e -p 'Deactivate Automatic Index? [NOT/yes] : ' YES
                 YES=`echo ${YES} | iconv -c -t UTF-8`
             fi
             _br
 
             if [ "${YES}" != "ДА" ] && [ "${YES}" != "Да" ] && [ "${YES}" != "да" ] && [ "${YES}" != "YES" ] && [ "${YES}" != "Yes" ] && [ "${YES}" != "yes" ] && [ "${YES}" != "Y" ] && [ "${YES}" != "y" ]; then
-                exit 0
-            else
-                docker exec ${CP_DOMAIN_} /usr/bin/cinemapress container zero \
+                docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container zero "NOT" \
                     >>/var/log/docker_zero_"$(date '+%d_%m_%Y')".log 2>&1
-                exit 0
+            else
+                docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container zero \
+                    >>/var/log/docker_zero_"$(date '+%d_%m_%Y')".log 2>&1
             fi
+            exit 0
         ;;
         "hand" )
             _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
-            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container hand
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container hand "${3}"
             exit 0
         ;;
         "main_mirror" )
@@ -2589,6 +2615,14 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s "${2}"
             docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container mirror
+            exit 0
+        ;;
+        "movies" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container movies
             exit 0
         ;;
         "reload"|"actual"|"available"|"speed"|"cron" )
@@ -2614,9 +2648,11 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${2}" = "logs" ]; then
                 docker_logs
             elif [ "${2}" = "zero" ]; then
-                docker_zero
+                docker_zero "${3}"
             elif [ "${2}" = "hand" ]; then
-                docker_hand
+                docker_hand "${3}"
+            elif [ "${2}" = "movies" ]; then
+                docker_movies "${3}"
             elif [ "${2}" = "cron" ]; then
                 docker_cron
             elif [ "${2}" = "actual" ]; then

@@ -340,7 +340,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
 
   switch (type) {
     case config.urls.year:
-      getMovies(Object.assign({ year: key }, options.query), function(
+      getMovies(Object.assign({}, { year: key }, options.query), function(
         err,
         render
       ) {
@@ -348,7 +348,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.genre:
-      getMovies(Object.assign({ genre: key }, options.query), function(
+      getMovies(Object.assign({}, { genre: key }, options.query), function(
         err,
         render
       ) {
@@ -356,7 +356,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.country:
-      getMovies(Object.assign({ country: key }, options.query), function(
+      getMovies(Object.assign({}, { country: key }, options.query), function(
         err,
         render
       ) {
@@ -364,7 +364,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.actor:
-      getMovies(Object.assign({ actor: key }, options.query), function(
+      getMovies(Object.assign({}, { actor: key }, options.query), function(
         err,
         render
       ) {
@@ -372,7 +372,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.director:
-      getMovies(Object.assign({ director: key }, options.query), function(
+      getMovies(Object.assign({}, { director: key }, options.query), function(
         err,
         render
       ) {
@@ -380,7 +380,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.type:
-      getMovies(Object.assign({ type: key }, options.query), function(
+      getMovies(Object.assign({}, { type: key }, options.query), function(
         err,
         render
       ) {
@@ -388,7 +388,7 @@ function oneCategory(type, key, page, sorting, options, callback) {
       });
       break;
     case config.urls.search:
-      getMovies(Object.assign({ search: key }, options.query), function(
+      getMovies(Object.assign({}, { search: key }, options.query), function(
         err,
         render
       ) {
@@ -717,7 +717,7 @@ function randomCategory(type, key, options, callback) {
   switch (type) {
     case config.urls.year:
       CP_get.movies(
-        Object.assign({ year: key }, options.query),
+        Object.assign({}, { year: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -744,7 +744,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.genre:
       CP_get.movies(
-        Object.assign({ genre: key }, options.query),
+        Object.assign({}, { genre: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -771,7 +771,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.country:
       CP_get.movies(
-        Object.assign({ country: key }, options.query),
+        Object.assign({}, { country: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -798,7 +798,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.actor:
       CP_get.movies(
-        Object.assign({ actor: key }, options.query),
+        Object.assign({}, { actor: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -825,7 +825,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.director:
       CP_get.movies(
-        Object.assign({ director: key }, options.query),
+        Object.assign({}, { director: key }, options.query),
         -3,
         undefined,
         undefined,
@@ -852,7 +852,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.type:
       CP_get.movies(
-        Object.assign({ type: key }, options.query),
+        Object.assign({}, { type: key }, options.query),
         -3,
         undefined,
         undefined,
