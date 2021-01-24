@@ -1004,5 +1004,8 @@
 	"Список доменов": "Lijst met domeinen",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Elke dag wordt een nieuwe domeinnaam uit de lijst verzonden naar de indexatie",
 	"Зафиксировать кэш": "Contant geld",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Nadat u de Sjabloon voor websites van de website en de website hebt gewijzigd, kunt u de versie van deze bestanden opgeven en deze zal niet langer worden gewijzigd na elke cache-reiniging"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Nadat u de Sjabloon voor websites van de website en de website hebt gewijzigd, kunt u de versie van deze bestanden opgeven en deze zal niet langer worden gewijzigd na elke cache-reiniging",
+	"Автоматическое заполнение информации о фильмах": "Automatische vulling van movies informatie",
+	"Запустить получение информации": "Voer informatie uit",
+	"Доступные для заполнения информации параметры": "Beschikbaar om informatieparameters te vullen"
 }

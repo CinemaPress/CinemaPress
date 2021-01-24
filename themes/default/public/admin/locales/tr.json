@@ -1004,5 +1004,8 @@
 	"Список доменов": "Etki alanları listesi",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Her gün listeden yeni bir alan adı indekslemeye gönderilecektir",
 	"Зафиксировать кэш": "Nakit",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Websitesi resimlerini ve websitesi şablonunu değiştirdikten sonra, bu dosyaların sürümünü belirleyebilirsiniz ve her önbellek temizlemesinden sonra artık değişmeyecek"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Websitesi resimlerini ve websitesi şablonunu değiştirdikten sonra, bu dosyaların sürümünü belirleyebilirsiniz ve her önbellek temizlemesinden sonra artık değişmeyecek",
+	"Автоматическое заполнение информации о фильмах": "Movie bilgisinin otomatik doldurulması",
+	"Запустить получение информации": "Bilgi çalıştırmak",
+	"Доступные для заполнения информации параметры": "Bilgi parametrelerini doldurmak için kullanılabilir"
 }

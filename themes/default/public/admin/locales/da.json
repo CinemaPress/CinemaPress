@@ -1004,5 +1004,8 @@
 	"Список доменов": "Liste over domæner",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Hver dag vil et nyt domænenavn fra listen blive sendt til indekseringen",
 	"Зафиксировать кэш": "Kontanter",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Når du har ændret webstedets billeder og webstedets skabelon, kan du angive versionen af ​​disse filer, og det vil ikke længere ændre sig efter hver cache-rengøring"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Når du har ændret webstedets billeder og webstedets skabelon, kan du angive versionen af ​​disse filer, og det vil ikke længere ændre sig efter hver cache-rengøring",
+	"Автоматическое заполнение информации о фильмах": "Automatisk påfyldning af movieoplysninger",
+	"Запустить получение информации": "Kør information",
+	"Доступные для заполнения информации параметры": "Tilgængelig til at udfylde informationsparametre"
 }

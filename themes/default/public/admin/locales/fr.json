@@ -1004,5 +1004,8 @@
 	"Список доменов": "Liste de domaines",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Chaque jour, un nouveau nom de domaine de la liste sera envoyé à l'indexation",
 	"Зафиксировать кэш": "En espèces",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Après avoir modifié le modèle de site Web et le modèle de site Web, vous pouvez spécifier la version de ces fichiers et ne changera plus après chaque nettoyage de cache"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Après avoir modifié le modèle de site Web et le modèle de site Web, vous pouvez spécifier la version de ces fichiers et ne changera plus après chaque nettoyage de cache",
+	"Автоматическое заполнение информации о фильмах": "Remplissage automatique des informations sur les movies",
+	"Запустить получение информации": "Exécuter des informations",
+	"Доступные для заполнения информации параметры": "Disponible pour remplir les paramètres d'information"
 }

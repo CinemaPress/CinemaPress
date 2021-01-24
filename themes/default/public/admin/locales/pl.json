@@ -1004,5 +1004,8 @@
 	"Список доменов": "Lista domen",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Codziennie nowa nazwa domeny z listy zostanie wysłana do indeksacji",
 	"Зафиксировать кэш": "Gotówka",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Po zmianie zdjęcia i szablon witryny internetowej można określić wersję tych plików i nie będzie już zmieni się po każdym czyszczeniu pamięci podręcznej"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Po zmianie zdjęcia i szablon witryny internetowej można określić wersję tych plików i nie będzie już zmieni się po każdym czyszczeniu pamięci podręcznej",
+	"Автоматическое заполнение информации о фильмах": "Automatyczne wypełnienie informacji o movieach",
+	"Запустить получение информации": "Uruchom informacje",
+	"Доступные для заполнения информации параметры": "Dostępne do wypełnienia parametrów informacji"
 }

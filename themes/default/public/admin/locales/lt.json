@@ -1004,5 +1004,8 @@
 	"Список доменов": "Domenų sąrašas. \\ t",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Kiekvieną dieną iš sąrašo bus išsiųstas naujas domeno vardas bus išsiųstas į indeksavimą",
 	"Зафиксировать кэш": "Pinigai",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pakeitus svetainės nuotraukas ir interneto svetainės šabloną, galite nurodyti šių failų versiją ir po kiekvieno talpyklos valymo nebebus pasikeis"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pakeitus svetainės nuotraukas ir interneto svetainės šabloną, galite nurodyti šių failų versiją ir po kiekvieno talpyklos valymo nebebus pasikeis",
+	"Автоматическое заполнение информации о фильмах": "Automatinis movieų informacijos užpildymas",
+	"Запустить получение информации": "Vykdyti informaciją",
+	"Доступные для заполнения информации параметры": "Galima užpildyti informacijos parametrus"
 }

@@ -68,15 +68,15 @@ post_commands() {
         echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>\"/home/${LOCAL_DOMAIN}/log/renew_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
     fi
-    if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
-        CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
-        if [ "${CP_SPEED}" != "" ]; then
-            sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-                /home/${LOCAL_DOMAIN}/config/production/config.js
-            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
-            docker exec nginx nginx -s reload >/dev/null
-        fi
-    fi
+#    if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
+#        CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
+#        if [ "${CP_SPEED}" != "" ]; then
+#            sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
+#                /home/${LOCAL_DOMAIN}/config/production/config.js
+#            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
+#            docker exec nginx nginx -s reload >/dev/null
+#        fi
+#    fi
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
@@ -578,11 +578,11 @@ ip_install() {
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
             /home/"${LOCAL_DOMAIN}"/config/default/config.js
     fi
-    if [ "${#CP_SPEED}" -eq "1" ]; then
-        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-            /home/"${LOCAL_DOMAIN}"/config/production/config.js
-        docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container speed "${CP_SPEED}"
-    fi
+#    if [ "${#CP_SPEED}" -eq "1" ]; then
+#        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
+#            /home/"${LOCAL_DOMAIN}"/config/production/config.js
+#        docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container speed "${CP_SPEED}"
+#    fi
     if [ "${DISABLE_SSL}" = "" ]; then
         docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container protocol "https://"
     fi
@@ -3140,8 +3140,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/error.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
-            sed -i "s~#pagespeed include /home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~include /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
-                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
+#            sed -i "s~#pagespeed include /home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~include /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
+#                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sh_progress

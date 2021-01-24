@@ -1003,5 +1003,8 @@
   "Список доменов": "Domain list",
   "Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Every day a new domain name from the list will be sent to the search engine for indexing",
   "Зафиксировать кэш": "Commit cache",
-  "После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "After you change the pictures and styles of the website in the template, you can specify the version of these files and it will no longer change after every cache clearing"
+  "После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "After you change the pictures and styles of the website in the template, you can specify the version of these files and it will no longer change after every cache clearing",
+  "Автоматическое заполнение информации о фильмах": "Auto fill in movie information",
+  "Запустить получение информации": "Start receiving information",
+  "Доступные для заполнения информации параметры": "Parameters available for filling in the information"
 }

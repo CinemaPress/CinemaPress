@@ -1004,5 +1004,8 @@
 	"Список доменов": "Domeenide loetelu",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Iga päev saadetakse indekseerimisele uus domeeninimi nimekirjast",
 	"Зафиксировать кэш": "Raha",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pärast veebisaidi piltide ja veebisaidi malli muutmist saate määrata nende failide versiooni ja see ei muutu enam pärast iga vahemälu puhastamist"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pärast veebisaidi piltide ja veebisaidi malli muutmist saate määrata nende failide versiooni ja see ei muutu enam pärast iga vahemälu puhastamist",
+	"Автоматическое заполнение информации о фильмах": "Movieide teabe automaatne täitmine",
+	"Запустить получение информации": "Informatsioon",
+	"Доступные для заполнения информации параметры": "Saadaval teabe parameetrite täitmiseks"
 }

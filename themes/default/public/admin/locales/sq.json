@@ -1004,5 +1004,8 @@
 	"Список доменов": "Lista e domains",
 	"Каждый день в поисковую систему на индексацию будет отправляться новое доменное имя из списка": "Çdo ditë një emër i ri domain nga lista do të dërgohet në indeksim",
 	"Зафиксировать кэш": "Para",
-	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pasi të ndryshoni fotot e internetit dhe modelin e faqes së internetit, mund të specifikoni versionin e këtyre skedarëve dhe nuk do të ndryshojë më pas çdo pastrimi të cache"
+	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Pasi të ndryshoni fotot e internetit dhe modelin e faqes së internetit, mund të specifikoni versionin e këtyre skedarëve dhe nuk do të ndryshojë më pas çdo pastrimi të cache",
+	"Автоматическое заполнение информации о фильмах": "Mbushja automatike e informacionit të movieave",
+	"Запустить получение информации": "Run informacion",
+	"Доступные для заполнения информации параметры": "Në dispozicion për të mbushur parametrat e informacionit"
 }
