@@ -1278,6 +1278,14 @@
     });
   }
 
+  var name_movie_description = document.querySelector('[name="movie.description"]');
+  if (name_movie_description && name_movie_description.addEventListener) {
+    name_movie_description.addEventListener('input', function() {
+      var name_movie_custom = document.querySelector('[name="movie.custom"]');
+      name_movie_custom.value = name_movie_custom.value.replace('"unique": false','"unique": true');
+    }, false);
+  }
+
   ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);

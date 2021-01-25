@@ -1036,13 +1036,13 @@ router.post('/change', function(req, res) {
       movies_cron: function(callback) {
         if (!form.movies_cron) return callback(null, 'Null');
         exec(
-          'nohup /usr/bin/cinemapress container movies run > /home/' +
+          '(nohup /usr/bin/cinemapress container movies run >> /home/' +
             config.domain +
             '/log/movies_' +
             new Date().toISOString().split('T')[0] +
-            '.log 2>&1',
+            '.log 2>&1) &',
           function(err) {
-            return callback(err);
+            return callback();
           }
         );
       },
