@@ -2891,7 +2891,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress 100
             exit 0
         ;;
-        "l"|"ll"|"llp"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )
+        "l"|"ll"|"lp"|"lm"|"ls"|"llp"|"log"|"logs"|"live"|"lb"|"lbt"|"lbf"|"lbb" )
             if [ "${1}" = "lb" ] || [ "${1}" = "lbt" ] || [ "${1}" = "lbf" ] || [ "${1}" = "lbb" ] || [ "${2}" = "bot" ] || [ "${2}" = "bots" ]; then
                 RR='\o033[0;31m'
                 GG='\o033[0;32m'
@@ -2985,13 +2985,26 @@ while [ "${WHILE}" -lt "2" ]; do
                     -n0 -f /home/*/log/out*.log
                 exit 0
             fi
-            if [ "${1}" = "llp" ]; then
+            if [ "${1}" = "llp" ] || [ "${1}" = "lp" ]; then
                 _br
                 tail \
                     -n0 -f /var/log/nginx/*.log \
                     -n0 -f /home/*/log/err*.log \
                     -n0 -f /home/*/log/out*.log \
                 | grep -v ping
+                exit 0
+            fi
+            if [ "${1}" = "lm" ]; then
+                _br
+                tail \
+                    -n0 -f /home/*/log/movies*.log
+                exit 0
+            fi
+            if [ "${1}" = "ls" ]; then
+                _br
+                tail \
+                    -n0 -f /home/*/log/movies*.log \
+                | grep -v REALTIME
                 exit 0
             fi
             _br "${2}"
