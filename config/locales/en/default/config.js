@@ -84,7 +84,6 @@ module.exports = {
     },
     "text": 0,
     "required": [
-      "poster"
     ],
     "thematic": {
       "type": "",

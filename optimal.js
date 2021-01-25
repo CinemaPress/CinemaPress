@@ -196,10 +196,6 @@ if (['tormund'].indexOf(theme) + 1) {
   modules.slider.data.movies = modules.slider.data.movies.slice(0, 6);
 }
 
-if (config.language !== 'ru') {
-  config.publish.required = ['poster'];
-}
-
 let mem = parseInt('' + os.totalmem() / 1000000);
 let cpu = os.cpus() ? os.cpus().length : 1;
 let max = parseInt('' + mem / (cpu > 1 ? cpu : 2));
