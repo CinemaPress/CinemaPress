@@ -157,6 +157,18 @@ router.get('/?', function(req, res) {
             ? parse[1].split('<>')[1].trim()
             : ''
       };
+      var ip_hash = '';
+      if (
+        p.url.indexOf('[ip]') + 1 &&
+        (p.url.indexOf('[imdb_id]') + 1 || p.url.indexOf('[tmdb_id]') + 1)
+      ) {
+        p.url = p.url.replace(/\[ip]/, ip ? ip : '');
+        p.url =
+          p.url.indexOf('?') + 1
+            ? p.url + '&s=' + req.query.season || 0
+            : p.url + '?s=' + req.query.season || 0;
+        ip_hash = ip;
+      }
       p.url = p.url
         .replace(
           /\[kp_id]/,
@@ -174,15 +186,6 @@ router.get('/?', function(req, res) {
           /\[title]/,
           req.query.title ? encodeURIComponent(req.query.title) : ''
         );
-      var ip_hash = '';
-      if (p.url.indexOf('[ip]') + 1) {
-        p.url = p.url.replace(/\[ip]/, ip ? ip : '');
-        p.url =
-          p.url.indexOf('?') + 1
-            ? p.url + '&s=' + req.query.season || 0
-            : p.url + '?s=' + req.query.season || 0;
-        ip_hash = ip;
-      }
       var hash = md5(
         JSON.stringify(p) +
           process.env['CP_VER'] +
@@ -217,7 +220,7 @@ router.get('/?', function(req, res) {
             );
             return callback();
           }
-          var json = tryParseJSON(body);
+          var json = ip_hash ? { iframe: body } : tryParseJSON(body);
           var iframe = p.iframe ? op.get(json, p.iframe) || '' : '';
           var translate = p.translate ? op.get(json, p.translate) || '' : '';
           var quality = p.quality ? op.get(json, p.quality) || '' : '';
