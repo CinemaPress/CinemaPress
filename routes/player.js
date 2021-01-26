@@ -50,6 +50,20 @@ router.get('/?', function(req, res) {
     }
   }
 
+  var ip = (
+    (
+      req.headers['x-real-ip'] ||
+      req.headers['cf-connecting-ip'] ||
+      req.headers['x-forwarded-for'] ||
+      ''
+    )
+      .split(',')
+      .pop()
+      .trim() ||
+    req.ip ||
+    req.connection.remoteAddress
+  ).replace('::ffff:', '');
+
   var script =
     '(function() {' +
     "    var y = document.querySelector('#yohoho');" +
@@ -160,12 +174,22 @@ router.get('/?', function(req, res) {
           /\[title]/,
           req.query.title ? encodeURIComponent(req.query.title) : ''
         );
+      var ip_hash = '';
+      if (p.url.indexOf('[ip]') + 1) {
+        p.url = p.url.replace(/\[ip]/, ip ? ip : '');
+        p.url =
+          p.url.indexOf('?') + 1
+            ? p.url + '&s=' + req.query.season || 0
+            : p.url + '?s=' + req.query.season || 0;
+        ip_hash = ip;
+      }
       var hash = md5(
         JSON.stringify(p) +
           process.env['CP_VER'] +
           ((req.query.season || '') +
             (req.query.episode || '') +
-            (req.query.translate || ''))
+            (req.query.translate || '')) +
+          ip_hash
       );
       if (cache.has(hash)) {
         var c = cache.get(hash);
@@ -212,14 +236,14 @@ router.get('/?', function(req, res) {
           if (iframe && req.query.season) {
             iframe +=
               iframe.indexOf('?') + 1
-                ? '&season=' + req.query.season
-                : '?season=' + req.query.season;
+                ? '&season=' + req.query.season + '&s=' + req.query.season
+                : '?season=' + req.query.season + '&s=' + req.query.season;
           }
           if (iframe && req.query.episode) {
             iframe +=
               iframe.indexOf('?') + 1
-                ? '&episode=' + req.query.episode
-                : '?episode=' + req.query.episode;
+                ? '&episode=' + req.query.episode + '&e=' + req.query.episode
+                : '?episode=' + req.query.episode + '&e=' + req.query.episode;
           }
           if (iframe && req.query.translate) {
             req.query.translate = decodeURIComponent(

@@ -731,7 +731,7 @@
                                                             ? parseInt(customValue.value)
                                                             : /^\[.*]$/.test(customValue.value)
                                                               ? JSON.parse(customValue.value.replace(/'/g, '"'))
-                                                              : customValue.value
+                                                              : customValue.value.trim()
                                                         )
                                                       );
                                                     jsonPretty();

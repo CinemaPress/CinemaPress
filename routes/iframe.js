@@ -30,9 +30,25 @@ var router = express.Router();
  */
 
 router.get('/:id', function(req, res) {
-  var id = req.params.id ? ('' + req.params.id).replace(/[^0-9]/g, '') : '';
+  var id = req.params.id ? ('' + req.params.id).trim() : '';
+  var season = (req.query.season || '').replace(/[^0-9]/g, '');
+  var episode = (req.query.episode || '').replace(/[^0-9]/g, '');
 
+  var id_key = id.replace(/[0-9]/g, '');
+  var id_value = id.replace(/[^0-9]/g, '');
+
+  var query = {};
   var data = {};
+
+  if (id_value === id) {
+    query['id'] = id;
+  } else if (
+    ['tmdb_id', 'imdb_id', 'douban_id', 'wa_id', 'movie_id'].indexOf(id_key) + 1
+  ) {
+    query['custom.' + id_key] = id_value;
+  } else {
+    id = '';
+  }
 
   try {
     if (modules.player.data.script) {
@@ -50,6 +66,12 @@ router.get('/:id', function(req, res) {
     (config.bomain || config.domain);
 
   var parameters = '';
+  if (season) {
+    data['data-season'] = season;
+  }
+  if (episode) {
+    data['data-episode'] = episode;
+  }
   data['data-kinopoisk'] = id ? id : '';
   data['data-title'] = req.query.title
     ? req.query.title.replace(/"/g, "'")
@@ -77,7 +99,13 @@ router.get('/:id', function(req, res) {
         '</body></html>'
     );
   } else if (id) {
-    CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
+    var req1 = {};
+    req1['from'] = process.env.CP_RT;
+    req1['certainly'] = true;
+    CP_get.movies(Object.assign({}, req1, query), 1, '', 1, false, function(
+      err,
+      movies
+    ) {
       if (err) return res.status(404).send(err);
       if (movies && movies.length) {
         var noindex = config.urls.noindex
@@ -86,8 +114,62 @@ router.get('/:id', function(req, res) {
             ? config.urls.movie
             : config.urls.noindex
           : config.urls.movie;
-        if (movies[0] && movies[0].player) {
-          var player = CP_player.code('movie', movies[0]);
+        var movie = (movies && movies[0]) || {};
+        if (
+          movie &&
+          (movie.player ||
+            (movie.custom &&
+              (movie.custom.indexOf('"player1"') + 1 ||
+                movie.custom.indexOf('"player2"') + 1 ||
+                movie.custom.indexOf('"player3"') + 1 ||
+                movie.custom.indexOf('"player4"') + 1 ||
+                movie.custom.indexOf('"player5"') + 1)))
+        ) {
+          try {
+            movie.custom = JSON.parse(movie.custom || '{}');
+            if (movie.custom.imdb_id) {
+              movie.imdb_id = movie.custom.imdb_id;
+            }
+            if (movie.custom.tmdb_id) {
+              movie.tmdb_id = movie.custom.tmdb_id;
+            }
+            if (movie.custom.douban_id) {
+              movie.douban_id = movie.custom.douban_id;
+            }
+            if (movie.custom['player1']) {
+              movie.player +=
+                (movie.player ? ',' : '') + movie.custom['player1'];
+            }
+            if (movie.custom['player2']) {
+              movie.player +=
+                (movie.player ? ',' : '') + movie.custom['player2'];
+            }
+            if (movie.custom['player3']) {
+              movie.player +=
+                (movie.player ? ',' : '') + movie.custom['player3'];
+            }
+            if (movie.custom['player4']) {
+              movie.player +=
+                (movie.player ? ',' : '') + movie.custom['player4'];
+            }
+            if (movie.custom['player5']) {
+              movie.player +=
+                (movie.player ? ',' : '') + movie.custom['player5'];
+            }
+          } catch (e) {
+            movie.custom = {};
+          }
+          var player = CP_player.code('movie', movie);
+          player.player = player.player.replace(
+            'data-player=',
+            'data-url="' +
+              origin +
+              '/api?' +
+              (id_key || 'kp_id') +
+              '=' +
+              id_value +
+              '&player" data-player='
+          );
           return res.send(
             '<!DOCTYPE html><html lang="' +
               config.language +
@@ -118,6 +200,8 @@ router.get('/:id', function(req, res) {
           var custom = movies[0].custom ? JSON.parse(movies[0].custom) : {};
           data['data-imdb'] = custom.imdb_id ? custom.imdb_id : '';
           data['data-tmdb'] = custom.tmdb_id ? custom.tmdb_id : '';
+          data['data-douban'] = custom.douban_id ? custom.douban_id : '';
+          data['data-wa'] = custom.wa_id ? custom.wa_id : '';
         } catch (e) {
           console.error(e);
         }
@@ -157,11 +241,11 @@ router.get('/:id', function(req, res) {
             '</body></html>'
         );
       } else {
-        res.status(404).send(config.l.notFound);
+        res.status(404).send('');
       }
     });
   } else {
-    res.status(404).send(config.l.notFound);
+    res.status(404).send('');
   }
 });
 

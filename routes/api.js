@@ -424,30 +424,167 @@ router.post('/comments', function(req, res) {
   );
 });
 
-router.get('/', function(req, res) {
-  var id = (req.query.id || req.query.kp_id).replace(/[^0-9]/, '');
-  if (!id) {
+router.all('/', function(req, res) {
+  var player = typeof req.query['player'] !== 'undefined';
+  var queries = [];
+  if (req.query['id'] && parseInt(req.query['id'].replace(/[^0-9]/g, ''))) {
+    queries.push({
+      id: parseInt(req.query['id'].replace(/[^0-9]/g, '')) + ''
+    });
+  } else if (
+    req.query['kp_id'] &&
+    parseInt(req.query['kp_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: parseInt(req.query['kp_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
+    req.query['tmdb_id'] &&
+    parseInt(req.query['tmdb_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.tmdb_id',
+      'custom.tmdb_id':
+        parseInt(req.query['tmdb_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
+    req.query['imdb_id'] &&
+    parseInt(req.query['imdb_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.imdb_id',
+      'custom.imdb_id':
+        parseInt(req.query['imdb_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
+    req.query['douban_id'] &&
+    parseInt(req.query['douban_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.douban_id',
+      'custom.douban_id':
+        parseInt(req.query['douban_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
+    req.query['wa_id'] &&
+    parseInt(req.query['wa_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.wa_id',
+      'custom.wa_id': parseInt(req.query['wa_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
+    req.query['movie_id'] &&
+    parseInt(req.query['movie_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.movie_id',
+      'custom.movie_id':
+        parseInt(req.query['movie_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (!queries.length) {
     return res.status(404).json({});
   }
-  CP_get.movies({ query_id: id }, 1, '', 1, false, function(err, movies) {
-    if (err || !movies || !movies.length || !movies[0].player) {
-      return res.status(404).json([]);
-    }
-    return res.json({
-      results: [
-        {
-          iframe:
-            config.protocol +
-            config.subdomain +
-            config.domain +
-            '/iframe/' +
-            id,
-          translate: movies[0].translate,
-          quality: movies[0].quality
+  var current_movie = null;
+  async.eachOfLimit(
+    queries,
+    1,
+    function(query, query_index, callback) {
+      if (current_movie) {
+        return callback('STOP');
+      }
+      var req1 = {};
+      req1['from'] = process.env.CP_RT;
+      req1['certainly'] = true;
+      CP_get.movies(Object.assign({}, req1, query), 1, '', 1, false, function(
+        err,
+        rt
+      ) {
+        if (err) {
+          console.error(err);
+          return callback('STOP');
         }
-      ]
-    });
-  });
+        var movie = (rt && rt[0]) || null;
+        if (typeof movie.custom === 'object') {
+          movie.custom = JSON.stringify(movie.custom);
+        }
+        if (
+          movie &&
+          (movie.player ||
+            (movie.custom &&
+              (movie.custom.indexOf('"player1"') + 1 ||
+                movie.custom.indexOf('"player2"') + 1 ||
+                movie.custom.indexOf('"player3"') + 1 ||
+                movie.custom.indexOf('"player4"') + 1 ||
+                movie.custom.indexOf('"player5"') + 1)))
+        ) {
+          if (player) {
+            var players = [];
+            try {
+              var movie_custom = JSON.parse(movie.custom);
+              players = (movie.player
+                ? movie.player.split(req.body.separator || ',')
+                : [
+                    movie_custom['player1'],
+                    movie_custom['player2'],
+                    movie_custom['player3'],
+                    movie_custom['player4'],
+                    movie_custom['player5']
+                  ]
+              ).filter(Boolean);
+            } catch (e) {}
+            if (players.length) {
+              current_movie = {};
+              for (var i = 0; i < players.length; i++) {
+                var reg_player = players[i].match(/^(.*?)(http.*|\/\/.*)$/i);
+                if (!reg_player || !reg_player[2]) continue;
+                var iframe = reg_player[2];
+                var name = reg_player[1].trim()
+                  ? reg_player[1].trim()
+                  : 'PLAYER ' + i;
+                current_movie[name.toLowerCase()] = {
+                  iframe: iframe,
+                  translate: '',
+                  quality: ''
+                };
+              }
+            }
+          } else {
+            current_movie = {
+              iframe:
+                config.protocol +
+                config.subdomain +
+                config.domain +
+                '/iframe/' +
+                (query.id.replace('custom.', '') +
+                  (query[query.id] ? query[query.id] : '')),
+              translate: rt[0].translate,
+              quality: rt[0].quality
+            };
+          }
+          return callback('STOP');
+        }
+        return callback();
+      });
+    },
+    function() {
+      if (!current_movie) {
+        return res.status(404).json({});
+      }
+      if (player) {
+        return res.status(200).json(current_movie);
+      }
+      return res.status(200).json({
+        results: [current_movie]
+      });
+    }
+  );
 });
 
 function getIp(req) {
