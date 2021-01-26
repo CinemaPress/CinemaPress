@@ -1007,5 +1007,7 @@
 	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Ko spremenite spletne slike in predloge spletnega mesta, lahko določite različico teh datotek in se ne bo več spremenilo po vsakem čiščenju predpomnilnika",
 	"Автоматическое заполнение информации о фильмах": "Samodejno polnjenje informacij o movieih",
 	"Запустить получение информации": "Zaženite informacije",
-	"Доступные для заполнения информации параметры": "Na voljo za polnjenje parametrov informacij"
+	"Доступные для заполнения информации параметры": "Na voljo za polnjenje parametrov informacij",
+	"ID TVmaze": "ID TVmaze",
+	"ID World-Art": "ID World-Art"
 }

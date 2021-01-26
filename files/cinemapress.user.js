@@ -22,6 +22,10 @@
 // @include https://*/*/movies?imdb_id=*
 // @include http://*/*/movies?douban_id=*
 // @include https://*/*/movies?douban_id=*
+// @include http://*/*/movies?wa_id=*
+// @include https://*/*/movies?wa_id=*
+// @include http://*/*/movies?tvmaze_id=*
+// @include https://*/*/movies?tvmaze_id=*
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_xmlhttpRequest
@@ -86,8 +90,14 @@ function parseData() {
   var douban_id = document.querySelector('[name="movie.douban_id"]')
     ? document.querySelector('[name="movie.douban_id"]').value
     : '';
+  var tvmaze_id = document.querySelector('[name="movie.tvmaze_id"]')
+    ? document.querySelector('[name="movie.tvmaze_id"]').value
+    : '';
+  var wa_id = document.querySelector('[name="movie.wa_id"]')
+    ? document.querySelector('[name="movie.wa_id"]').value
+    : '';
 
-  if (!kp_id && !tmdb_id && !douban_id && !imdb_id) {
+  if (!kp_id && !tmdb_id && !douban_id && !imdb_id && !wa_id && !tvmaze_id) {
     icon.setAttribute('class', 'fa fa-bug');
     text.innerHTML = '&nbsp;&nbsp;IDs not filled!';
     return;
@@ -110,7 +120,9 @@ function parseData() {
   }
   if (
     kp_id &&
-    (lang === 'ru' || lang === 'uk' || (!imdb_id && !tmdb_id && !douban_id))
+    (lang === 'ru' ||
+      lang === 'uk' ||
+      (!imdb_id && !tmdb_id && !douban_id && !tvmaze_id && !wa_id))
   ) {
     urls.push(
       'https://api1573848848.apicollaps.cc/franchise/details?' +

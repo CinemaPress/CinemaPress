@@ -470,6 +470,16 @@ router.all('/', function(req, res) {
     });
   }
   if (
+    req.query['tvmaze_id'] &&
+    parseInt(req.query['tvmaze_id'].replace(/[^0-9]/g, ''))
+  ) {
+    queries.push({
+      id: 'custom.tvmaze_id',
+      'custom.tvmaze_id':
+        parseInt(req.query['tvmaze_id'].replace(/[^0-9]/g, '')) + ''
+    });
+  }
+  if (
     req.query['wa_id'] &&
     parseInt(req.query['wa_id'].replace(/[^0-9]/g, ''))
   ) {

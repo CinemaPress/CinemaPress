@@ -43,7 +43,14 @@ router.get('/:id', function(req, res) {
   if (id_value === id) {
     query['id'] = id;
   } else if (
-    ['tmdb_id', 'imdb_id', 'douban_id', 'wa_id', 'movie_id'].indexOf(id_key) + 1
+    [
+      'tmdb_id',
+      'imdb_id',
+      'douban_id',
+      'tvmaze_id',
+      'wa_id',
+      'movie_id'
+    ].indexOf(id_key) + 1
   ) {
     query['custom.' + id_key] = id_value;
   } else {
@@ -136,6 +143,12 @@ router.get('/:id', function(req, res) {
             if (movie.custom.douban_id) {
               movie.douban_id = movie.custom.douban_id;
             }
+            if (movie.custom.tvmaze_id) {
+              movie.tvmaze_id = movie.custom.tvmaze_id;
+            }
+            if (movie.custom.wa_id) {
+              movie.wa_id = movie.custom.wa_id;
+            }
             if (movie.custom['player1']) {
               movie.player +=
                 (movie.player ? ',' : '') + movie.custom['player1'];
@@ -201,6 +214,7 @@ router.get('/:id', function(req, res) {
           data['data-imdb'] = custom.imdb_id ? custom.imdb_id : '';
           data['data-tmdb'] = custom.tmdb_id ? custom.tmdb_id : '';
           data['data-douban'] = custom.douban_id ? custom.douban_id : '';
+          data['data-tvmaze'] = custom.tvmaze_id ? custom.tvmaze_id : '';
           data['data-wa'] = custom.wa_id ? custom.wa_id : '';
         } catch (e) {
           console.error(e);

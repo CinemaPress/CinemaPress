@@ -1007,5 +1007,7 @@
 	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "După ce schimbați fotografiile site-ului și șablonul site-ului web, puteți specifica versiunea acestor fișiere și nu se va mai schimba după fiecare curățare a cache-ului",
 	"Автоматическое заполнение информации о фильмах": "Umplerea automată a informațiilor despre moviee",
 	"Запустить получение информации": "Rulați informații",
-	"Доступные для заполнения информации параметры": "Disponibil pentru a completa parametrii de informații"
+	"Доступные для заполнения информации параметры": "Disponibil pentru a completa parametrii de informații",
+	"ID TVmaze": "ID TVmaze",
+	"ID World-Art": "ID World-Art"
 }

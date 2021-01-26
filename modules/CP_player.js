@@ -206,6 +206,7 @@ function codePlayer(type, movie, options) {
     data['data-imdb'] = movie.custom.imdb_id ? movie.custom.imdb_id : '';
     data['data-tmdb'] = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';
     data['data-douban'] = movie.custom.douban_id ? movie.custom.douban_id : '';
+    data['data-tvmaze'] = movie.custom.tvmaze_id ? movie.custom.tvmaze_id : '';
     data['data-wa'] = movie.custom.wa_id ? movie.custom.wa_id : '';
     data['data-videospider_tv'] = '' + movie.type === '1' ? '1' : '0';
     data['data-season'] = serial.season ? serial.season : '';
@@ -285,6 +286,7 @@ function codePlayer(type, movie, options) {
       param.imdb_id = movie.custom.imdb_id ? movie.custom.imdb_id : '';
       param.tmdb_id = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';
       param.douban_id = movie.custom.douban_id ? movie.custom.douban_id : '';
+      param.tvmaze_id = movie.custom.tvmaze_id ? movie.custom.tvmaze_id : '';
       param.wa_id = movie.custom.wa_id ? movie.custom.wa_id : '';
       param.movie_id = movie.custom.movie_id ? movie.custom.movie_id : '';
       param.season = serial.season ? serial.season : '';

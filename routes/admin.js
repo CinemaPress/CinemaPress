@@ -174,7 +174,9 @@ router.get('/:type?', function(req, res) {
     typeof req.query.kp_id !== 'undefined' ||
     typeof req.query.imdb_id !== 'undefined' ||
     typeof req.query.tmdb_id !== 'undefined' ||
-    typeof req.query.douban_id !== 'undefined'
+    typeof req.query.douban_id !== 'undefined' ||
+    typeof req.query.tvmaze_id !== 'undefined' ||
+    typeof req.query.wa_id !== 'undefined'
       ? '_add_'
       : '';
 
@@ -192,6 +194,10 @@ router.get('/:type?', function(req, res) {
   var douban_id = req.query.douban_id
     ? req.query.douban_id.replace(/[^0-9]/g, '')
     : '';
+  var tvmaze_id = req.query.tvmaze_id
+    ? req.query.tvmaze_id.replace(/[^0-9]/g, '')
+    : '';
+  var wa_id = req.query.wa_id ? req.query.wa_id.replace(/[^0-9]/g, '') : '';
   var comment_id = req.query.comment_id ? req.query.comment_id : null;
   var url = req.query.url ? req.query.url : null;
   var num = req.query.num ? parseInt(req.query.num) : 1;
@@ -401,6 +407,10 @@ router.get('/:type?', function(req, res) {
         query['custom.tmdb_id'] = tmdb_id;
       } else if (douban_id) {
         query['custom.douban_id'] = douban_id;
+      } else if (tvmaze_id) {
+        query['custom.tvmaze_id'] = tvmaze_id;
+      } else if (wa_id) {
+        query['custom.wa_id'] = wa_id;
       } else {
         render.movie = {};
         render.structure = {};
@@ -423,7 +433,9 @@ router.get('/:type?', function(req, res) {
           render.movie.custom = JSON.stringify({
             imdb_id: imdb_id,
             tmdb_id: tmdb_id,
-            douban_id: douban_id
+            douban_id: douban_id,
+            tvmaze_id: tvmaze_id,
+            wa_id: wa_id
           });
           if (movies1 && movies1.length) {
             render.movie = JSON.parse(JSON.stringify(movies1[0]));
@@ -775,7 +787,9 @@ router.post('/change', function(req, res) {
     form.movie &&
     (typeof form.movie.tmdb_id !== 'undefined' ||
       typeof form.movie.imdb_id !== 'undefined' ||
-      typeof form.movie.douban_id !== 'undefined')
+      typeof form.movie.douban_id !== 'undefined' ||
+      typeof form.movie.tvmaze_id !== 'undefined' ||
+      typeof form.movie.wa_id !== 'undefined')
   ) {
     try {
       var custom = {};
@@ -789,9 +803,19 @@ router.post('/change', function(req, res) {
         custom.douban_id = form.movie.douban_id.replace(/[^0-9]/g, '');
         delete form.movie.douban_id;
       }
+      if (form.movie.tvmaze_id && form.movie.tvmaze_id.replace(/[^0-9]/g, '')) {
+        custom.tvmaze_id = form.movie.tvmaze_id.replace(/[^0-9]/g, '');
+        delete form.movie.tvmaze_id;
+      }
+      if (form.movie.wa_id && form.movie.wa_id.replace(/[^0-9]/g, '')) {
+        custom.wa_id = form.movie.wa_id.replace(/[^0-9]/g, '');
+        delete form.movie.wa_id;
+      }
       delete form.movie.tmdb_id;
       delete form.movie.imdb_id;
       delete form.movie.douban_id;
+      delete form.movie.tvmaze_id;
+      delete form.movie.wa_id;
       form.movie.custom = JSON.stringify(
         Object.assign({}, JSON.parse(form.movie.custom), custom)
       );

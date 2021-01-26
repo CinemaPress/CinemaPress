@@ -1007,5 +1007,7 @@
 	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Websitesi resimlerini ve websitesi şablonunu değiştirdikten sonra, bu dosyaların sürümünü belirleyebilirsiniz ve her önbellek temizlemesinden sonra artık değişmeyecek",
 	"Автоматическое заполнение информации о фильмах": "Movie bilgisinin otomatik doldurulması",
 	"Запустить получение информации": "Bilgi çalıştırmak",
-	"Доступные для заполнения информации параметры": "Bilgi parametrelerini doldurmak için kullanılabilir"
+	"Доступные для заполнения информации параметры": "Bilgi parametrelerini doldurmak için kullanılabilir",
+	"ID TVmaze": "ID TVmaze",
+	"ID World-Art": "ID World-Art"
 }

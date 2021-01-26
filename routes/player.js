@@ -179,6 +179,7 @@ router.get('/?', function(req, res) {
         .replace(/\[imdb_id]/, req.query.imdb_id ? req.query.imdb_id : '')
         .replace(/\[tmdb_id]/, req.query.tmdb_id ? req.query.tmdb_id : '')
         .replace(/\[douban_id]/, req.query.douban_id ? req.query.douban_id : '')
+        .replace(/\[tvmaze_id]/, req.query.tvmaze_id ? req.query.tvmaze_id : '')
         .replace(/\[wa_id]/, req.query.wa_id ? req.query.wa_id : '')
         .replace(/\[movie_id]/, req.query.movie_id ? req.query.movie_id : '')
         .replace(/\[year]/, req.query.year ? req.query.year : '')

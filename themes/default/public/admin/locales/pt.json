@@ -1007,5 +1007,7 @@
 	"После того, как Вы измените в шаблоне картинки и стили веб-сайта, Вы можете указать версию этих файлов и она больше не будет меняться после каждой очистки кэша": "Depois de alterar as imagens do site e o modelo website, você pode especificar a versão desses arquivos e ele não será mais alterado após cada limpeza de cache",
 	"Автоматическое заполнение информации о фильмах": "Preenchimento automático de informações de moviees",
 	"Запустить получение информации": "Executar informações",
-	"Доступные для заполнения информации параметры": "Disponível para preencher parâmetros de informação"
+	"Доступные для заполнения информации параметры": "Disponível para preencher parâmetros de informação",
+	"ID TVmaze": "ID TVmaze",
+	"ID World-Art": "ID World-Art"
 }

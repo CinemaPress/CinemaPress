@@ -82,6 +82,14 @@
                                         ? c.douban_id.replace(/[^0-9]/g, '')
                                         : '';
                                 delete c.douban_id;
+                                custom.tvmaze_id = c.tvmaze_id && c.tvmaze_id.replace(/[^0-9]/g, '')
+                                        ? c.tvmaze_id.replace(/[^0-9]/g, '')
+                                        : '';
+                                delete c.tvmaze_id;
+                                custom.wa_id = c.wa_id && c.wa_id.replace(/[^0-9]/g, '')
+                                        ? c.wa_id.replace(/[^0-9]/g, '')
+                                        : '';
+                                delete c.wa_id;
                                 c = Object.keys(c).length ? JSON.stringify(c) : '';
                             } catch (e) {
                                 console.error(e);
@@ -211,6 +219,48 @@
                                 </span>
                                 <input type="text" class="form-control input_number" name="movie.douban_id"
                                        placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.douban_id %>">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                            <span class="input-group-addon">
+                                <% if (custom.tvmaze_id) { %>
+                                    <a href="https://href.li/?https://www.tvmaze.com/shows/<%- custom.tvmaze_id %>"
+                                       class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                    <span class="fa fa-external-link-square-alt"></span> <%= __('ID TVmaze') %>
+                                </a>
+                                <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline"
+                                       style="text-decoration:none;"
+                                       onclick="window.open('https://href.li/?https://www.tvmaze.com/search?q=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                    <span class="fa fa-search"></span> <%= __('ID TVmaze') %>
+                                </a>
+                                <% } %>
+                            </span>
+                                <input type="text" class="form-control input_number" name="movie.tvmaze_id"
+                                       placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.tvmaze_id %>">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="spacer-10"></div>
+                            <div class="input-group">
+                            <span class="input-group-addon">
+                                <% if (custom.wa_id) { %>
+                                    <a href="https://href.li/?http://www.world-art.ru/animation/animation.php?id=<%- custom.wa_id %>"
+                                       class="visible-xs-inline" style="text-decoration:none;" target="_blank">
+                                    <span class="fa fa-external-link-square-alt"></span> <%= __('ID World-Art') %>
+                                </a>
+                                <% } else { %>
+                                    <a href="javascript:void(0)" class="visible-xs-inline"
+                                       style="text-decoration:none;"
+                                       onclick="window.open('https://href.li/?http://www.world-art.ru/search.php?global_sector=animation&public_search=' + encodeURIComponent(document.querySelector('[name=\'movie.title_en\']').value))">
+                                    <span class="fa fa-search"></span> <%= __('ID World-Art') %>
+                                </a>
+                                <% } %>
+                            </span>
+                                <input type="text" class="form-control input_number" name="movie.wa_id"
+                                       placeholder="<%= __('Укажите ID фильма') %>" value="<%- custom.wa_id %>">
                             </div>
                         </div>
                     </div>
@@ -1158,12 +1208,16 @@
                                                                         <span>26584183</span>
                                                                     </div>
                                                                     <div>
+                                                                        <code>custom.tvmaze_id</code>
+                                                                        <span>82</span>
+                                                                    </div>
+                                                                    <div>
                                                                         <code>custom.wa_id</code>
                                                                         <span>36896</span>
                                                                     </div>
                                                                     <div>
                                                                         <code>custom.movie_id</code>
-                                                                        <span>[integer]</span>
+                                                                        <span>[number]</span>
                                                                     </div>
                                                                     <div>
                                                                         <code>custom.other_key</code>
@@ -1207,6 +1261,8 @@
                                     var tmdb_id = '';
                                     var imdb_id = '';
                                     var douban_id = '';
+                                    var tvmaze_id = '';
+                                    var wa_id = '';
                                     var match = null;
                                     if (idElem.value.indexOf('<%- config.domain %>') + 1) {
                                       var uniqueId = parseInt('<%- config.urls.unique_id %>') || 0;
@@ -1229,6 +1285,12 @@
                                     } else if (idElem.value.indexOf('movie.douban.com') + 1) {
                                       match = /(subject\/)([0-9]{1,10})/gi.exec(id.value);
                                       douban_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    } else if (idElem.value.indexOf('tvmaze.com') + 1) {
+                                      match = /(shows\/)([0-9]{1,10})/gi.exec(id.value);
+                                      tvmaze_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
+                                    } else if (idElem.value.indexOf('world-art.ru') + 1) {
+                                      match = /(animation\.php\?id=)([0-9]{1,10})/gi.exec(id.value);
+                                      wa_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
                                     } else {
                                       if (idElem && idElem.value) {
                                         var idOne = idElem.value.trim();
@@ -1243,6 +1305,8 @@
                                       'tmdb_id=' + tmdb_id + '&' +
                                       'imdb_id=' + imdb_id + '&' +
                                       'douban_id=' + douban_id + '&' +
+                                      'tvmaze_id=' + tvmaze_id + '&' +
+                                      'wa_id=' + wa_id + '&' +
                                       'type=' + type;
                                   }
                                 </script>
