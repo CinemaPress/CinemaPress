@@ -134,6 +134,12 @@ module.exports = {
       "format": "[Type] [year] [genre] [country]"
     }
   },
+  "movies": {
+    "cron": [
+      "# 0 ~ https://api.themoviedb.org/3/movie/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?api_key=TOKEN&append_to_response=credits,external_ids ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> <> job = Director ~ production_countries.0.name <> country",
+      "# 0 ~ https://api.themoviedb.org/3/tv/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?api_key=TOKEN&append_to_response=credits,external_ids ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> <> job = Director ~ production_countries.0.name <> country"
+    ]
+  },
   "codes": {
     "head": "",
     "footer": "<script>window.lazyLoadOptions = {};</script>\n<script async src='https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js'></script>",
