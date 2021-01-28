@@ -218,6 +218,19 @@ router.get('/?', function(req, res) {
         }
         return callback();
       }
+      if (p.iframe === 'iframe') {
+        script = script.replace(
+          /iframe-src/gi,
+          p.url.replace(/^.*?(http.*?)$/i, '$1')
+        );
+        result = true;
+        cache.set(hash, {
+          iframe: p.url,
+          translate: '',
+          quality: ''
+        });
+        callback();
+      }
       request(
         {
           url: p.url,
@@ -233,7 +246,7 @@ router.get('/?', function(req, res) {
             );
             return callback();
           }
-          var json = ip_hash ? { iframe: body } : tryParseJSON(body);
+          var json = p.iframe === 'body' ? { body: body } : tryParseJSON(body);
           var iframe = p.iframe ? op.get(json, p.iframe) || '' : '';
           var translate = p.translate ? op.get(json, p.translate) || '' : '';
           var quality = p.quality ? op.get(json, p.quality) || '' : '';

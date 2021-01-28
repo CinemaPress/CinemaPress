@@ -542,23 +542,107 @@ router.all('/', function(req, res) {
                 movie.custom.indexOf('"player2"') + 1 ||
                 movie.custom.indexOf('"player3"') + 1 ||
                 movie.custom.indexOf('"player4"') + 1 ||
-                movie.custom.indexOf('"player5"') + 1)))
+                movie.custom.indexOf('"player5"') + 1)) ||
+            (modules.player.data.custom &&
+              modules.player.data.custom.length &&
+              modules.player.data.custom.filter(function(l) {
+                return !/^#/i.test(l) && /~\s*iframe$/i.test(l);
+              }).length))
         ) {
+          var movie_custom = {};
+          try {
+            movie_custom = JSON.parse(movie.custom);
+          } catch (e) {}
           if (player) {
-            var players = [];
-            try {
-              var movie_custom = JSON.parse(movie.custom);
-              players = (movie.player
-                ? movie.player.split(req.body.separator || ',')
-                : [
-                    movie_custom['player1'],
-                    movie_custom['player2'],
-                    movie_custom['player3'],
-                    movie_custom['player4'],
-                    movie_custom['player5']
-                  ]
-              ).filter(Boolean);
-            } catch (e) {}
+            var players = movie.player
+              ? movie.player.split(req.body.separator || ',')
+              : [];
+            [1, 2, 3, 4, 5].forEach(function(i) {
+              if (movie_custom['player' + i]) {
+                players.push(movie_custom['player' + i]);
+              }
+            });
+            if (
+              modules.player.data.custom &&
+              modules.player.data.custom.length
+            ) {
+              for (var c = 0; c < modules.player.data.custom.length; c++) {
+                var parse = modules.player.data.custom[c]
+                  .replace(/\s*~\s*/g, '~')
+                  .split('~');
+                if (
+                  modules.player.data.custom[c].charAt(0) === '#' ||
+                  modules.player.data.custom[c].length < 2
+                ) {
+                  continue;
+                }
+                var p = {
+                  url: parse[0],
+                  iframe: parse[1] && parse[1].split('<>')[0].trim(),
+                  translate: parse[2] || '',
+                  quality: parse[3] || '',
+                  uid: parse[4] || '',
+                  format:
+                    parse[1] && parse[1].split('<>')[1]
+                      ? parse[1].split('<>')[1].trim()
+                      : ''
+                };
+                if (p.iframe === 'iframe') {
+                  if (p.url.indexOf('[imdb_id]') + 1 && !movie_custom.imdb_id) {
+                    continue;
+                  }
+                  if (p.url.indexOf('[tmdb_id]') + 1 && !movie_custom.tmdb_id) {
+                    continue;
+                  }
+                  p.url = p.url
+                    .replace(
+                      /\[kp_id]/,
+                      movie.kp_id && parseInt(movie.kp_id)
+                        ? '' + (parseInt(movie.kp_id) % 1000000000)
+                        : ''
+                    )
+                    .replace(
+                      /\[imdb_id]/,
+                      movie_custom.imdb_id ? movie_custom.imdb_id : ''
+                    )
+                    .replace(
+                      /\[tmdb_id]/,
+                      movie_custom.tmdb_id ? movie_custom.tmdb_id : ''
+                    )
+                    .replace(
+                      /\[douban_id]/,
+                      movie_custom.douban_id ? movie_custom.douban_id : ''
+                    )
+                    .replace(
+                      /\[tvmaze_id]/,
+                      movie_custom.tvmaze_id ? movie_custom.tvmaze_id : ''
+                    )
+                    .replace(
+                      /\[wa_id]/,
+                      movie_custom.wa_id ? movie_custom.wa_id : ''
+                    )
+                    .replace(
+                      /\[movie_id]/,
+                      movie_custom.movie_id ? movie_custom.movie_id : ''
+                    )
+                    .replace(
+                      /\[year]/,
+                      movie_custom.year ? movie_custom.year : ''
+                    )
+                    .replace(
+                      /\[type]/,
+                      movie_custom.type ? movie_custom.type : ''
+                    )
+                    .replace(
+                      /\[title]/,
+                      movie_custom.title
+                        ? encodeURIComponent(movie_custom.title)
+                        : ''
+                    );
+                  players.push(p.url);
+                }
+              }
+            }
             if (players.length) {
               current_movie = {};
               for (var i = 0; i < players.length; i++) {

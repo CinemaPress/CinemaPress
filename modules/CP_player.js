@@ -196,8 +196,13 @@ function codePlayer(type, movie, options) {
         .replace(/,torrent|torrent,/gi, '');
     }
 
-    data['data-player'] =
-      typeof player === 'string' ? player : data['data-player'];
+    data['data-player'] = (typeof player === 'string'
+      ? player
+      : data['data-player']
+    )
+      .replace(/\[imdb_id]/, movie.custom.imdb_id ? movie.custom.imdb_id : '')
+      .replace(/\[tmdb_id]/, movie.custom.tmdb_id ? movie.custom.tmdb_id : '')
+      .replace(/\[type]/, '' + movie.type === '1' ? movie.type : '');
     data['data-title'] = movie.title_full ? movie.title_full : '';
     data['data-kinopoisk'] =
       movie.kp_id && parseInt(movie.kp_id)

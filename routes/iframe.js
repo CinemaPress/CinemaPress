@@ -138,44 +138,24 @@ router.get('/:id', function(req, res) {
         ) {
           try {
             movie.custom = JSON.parse(movie.custom || '{}');
-            if (movie.custom.imdb_id) {
-              movie.imdb_id = movie.custom.imdb_id;
-            }
-            if (movie.custom.tmdb_id) {
-              movie.tmdb_id = movie.custom.tmdb_id;
-            }
-            if (movie.custom.douban_id) {
-              movie.douban_id = movie.custom.douban_id;
-            }
-            if (movie.custom.tvmaze_id) {
-              movie.tvmaze_id = movie.custom.tvmaze_id;
-            }
-            if (movie.custom.wa_id) {
-              movie.wa_id = movie.custom.wa_id;
-            }
-            if (movie.custom.movie_id) {
-              movie.movie_id = movie.custom.movie_id;
-            }
-            if (movie.custom['player1']) {
-              movie.player +=
-                (movie.player ? ',' : '') + movie.custom['player1'];
-            }
-            if (movie.custom['player2']) {
-              movie.player +=
-                (movie.player ? ',' : '') + movie.custom['player2'];
-            }
-            if (movie.custom['player3']) {
-              movie.player +=
-                (movie.player ? ',' : '') + movie.custom['player3'];
-            }
-            if (movie.custom['player4']) {
-              movie.player +=
-                (movie.player ? ',' : '') + movie.custom['player4'];
-            }
-            if (movie.custom['player5']) {
-              movie.player +=
-                (movie.player ? ',' : '') + movie.custom['player5'];
-            }
+            [
+              'imdb_id',
+              'tmdb_id',
+              'douban_id',
+              'tvmaze_id',
+              'wa_id',
+              'movie_id'
+            ].forEach(function(i) {
+              if (movie.custom[i]) {
+                movie[i] = movie.custom[i];
+              }
+            });
+            [1, 2, 3, 4, 5].forEach(function(p) {
+              if (movie.custom['player' + p]) {
+                movie.player +=
+                  (movie.player ? ',' : '') + movie.custom['player' + p];
+              }
+            });
           } catch (e) {
             movie.custom = {};
           }
