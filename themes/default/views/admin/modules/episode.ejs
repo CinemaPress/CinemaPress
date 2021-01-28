@@ -689,11 +689,9 @@
                                                                     <div class="<%- custom_div %>">
                                                                         <code>
                                                                             <span class="url"><%= d[0].split('/')[2] %></span>
-                                                                            ~
-                                                                            <span class="kinopoisk_id"><%= d[1] %></span>
+                                                                            ~ <span class="kinopoisk_id"><%= d[1] %></span>
                                                                             ~ <span class="season"><%= d[2] %></span>
-                                                                            ~
-                                                                            <span class="episode"><%= d[3] || '' %></span>
+                                                                            ~ <span class="episode"><%= d[3] || '' %></span>
                                                                             <% if (typeof d[4] !== 'undefined') { %>
                                                                                 ~
                                                                                 <span class="translate"><%= d[4] || '' %></span>
@@ -739,7 +737,7 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea class="form-control custom"
                                                                               name="modules.episode.data.index.custom"
-                                                                              placeholder="url ~ kinopoisk_id ~ season ~ episode ~ translate"
+                                                                              placeholder="url ~ id ~ season ~ episode ~ translate"
                                                                               style="height:300px;"><%- modules.episode.data.index.custom.join('\n\n') %></textarea>
                                                                 </div>
 
@@ -750,7 +748,7 @@
                                                                         <p>
                                                                             <code>
                                                                                 <span class="url">url</span> ~
-                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                <span class="kinopoisk_id">id</span>
                                                                                 ~
                                                                                 <span class="season">season</span> ~
                                                                                 <span class="episode">episode</span> ~
@@ -765,7 +763,7 @@
                                                                             &nbsp;&nbsp;{ "results": [ {
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id":
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
                                                                             <span class="kinopoisk_id">1048334</span>,
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
@@ -785,7 +783,7 @@
                                                                             &nbsp;&nbsp;} ] }
                                                                         </code><br>
                                                                         <code class="kinopoisk_id">
-                                                                            results.0.kinopoisk_id
+                                                                            results.0.id <> kp_id
                                                                         </code><br>
                                                                         <code class="season">
                                                                             results.0.season
@@ -800,7 +798,7 @@
                                                                             <code>
                                                                                 <span class="url">https://example.com/tv</span>
                                                                                 ~
-                                                                                <span class="kinopoisk_id">results.0.kinopoisk_id</span>
+                                                                                <span class="kinopoisk_id">results.0.id <> kp_id</span>
                                                                                 ~
                                                                                 <span class="season">results.0.season</span>
                                                                                 ~
@@ -924,16 +922,23 @@
                                                                                 <span class="translate">translate</span>
                                                                             </code>
                                                                         </p>
-                                                                        <code class="text-muted"
-                                                                              style="margin:1px 0 0 0">
+                                                                        <code class="text-muted" style="margin:1px 0 0 0">
                                                                             &nbsp;&nbsp;[imdb_id] - ID imdb.com
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
                                                                             &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
                                                                         </code><br>
-                                                                        <code class="text-muted"
-                                                                              style="margin:0 0 1px 0">
+                                                                        <code class="text-muted" style="margin:0">
                                                                             &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[wa_id] - ID world-art.ru
                                                                         </code><br>
                                                                         <code class="url">
                                                                             https://example.com/tv?imdb_id=[imdb_id]

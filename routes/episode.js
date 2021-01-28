@@ -127,7 +127,8 @@ router.get('/?', function(req, res) {
           .replace(/\[tmdb_id]/, movie.tmdb_id ? movie.tmdb_id : '')
           .replace(/\[douban_id]/, movie.douban_id ? movie.douban_id : '')
           .replace(/\[tvmaze_id]/, movie.tvmaze_id ? movie.tvmaze_id : '')
-          .replace(/\[wa_id]/, movie.wa_id ? movie.wa_id : '');
+          .replace(/\[wa_id]/, movie.wa_id ? movie.wa_id : '')
+          .replace(/\[movie_id]/, movie.movie_id ? movie.movie_id : '');
         var hash = md5(
           JSON.stringify(params) + options.origin + process.env['CP_VER']
         );

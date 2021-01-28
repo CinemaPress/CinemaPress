@@ -52,10 +52,12 @@ router.get(
     var id = req.params[2];
     var format = req.params[3];
     var file = id + '.' + format;
+    var tvmaze_file = file.replace('-', '/');
     var url_kp = /^[0-9]*$/.test(id);
+    var url_tvmaze = /^[0-9]{1,3}-[0-9]*$/.test(id);
     var url_tmdb = /^[a-z0-9]*$/i.test(id);
     var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
-    var origin = '/files/' + type + '/' + size + '/' + file;
+    var origin = '/files/' + type + '/' + size + '/' + id + '.jpg';
 
     if (cache.has(origin)) {
       var r = Math.random()
@@ -79,6 +81,8 @@ router.get(
 
     if (url_kp) {
       source = 'kinopoisk';
+    } else if (url_tvmaze) {
+      source = 'tvmaze';
     } else if (url_tmdb) {
       source = 'tmdb';
     } else if (url_imdb) {
@@ -108,6 +112,20 @@ router.get(
                 break;
             }
             break;
+          case 'tvmaze':
+            image += 'static.tvmaze.com';
+            switch (size) {
+              case 'small':
+                image += '/uploads/images/medium_untouched/' + tvmaze_file;
+                break;
+              case 'medium':
+                image += '/uploads/images/original_untouched/' + tvmaze_file;
+                break;
+              case 'original':
+                image += '/uploads/images/original_untouched/' + tvmaze_file;
+                break;
+            }
+            break;
           case 'tmdb':
             image += 'image.tmdb.org';
             switch (size) {
@@ -127,15 +145,30 @@ router.get(
             switch (size) {
               case 'small':
                 image +=
-                  '/images/M/' + id + '._V1_SX90_CR0,0,0,0_AL_.' + format;
+                  '/images/' +
+                  id.charAt(0) +
+                  '/' +
+                  id +
+                  '._V1_SX90_CR0,0,0,0_AL_.' +
+                  format;
                 break;
               case 'medium':
                 image +=
-                  '/images/M/' + id + '._V1_SX180_CR0,0,0,0_AL_.' + format;
+                  '/images/' +
+                  id.charAt(0) +
+                  '/' +
+                  id +
+                  '._V1_SX180_CR0,0,0,0_AL_.' +
+                  format;
                 break;
               case 'original':
                 image +=
-                  '/images/M/' + id + '._V1_SX300_CR0,0,0,0_AL_.' + format;
+                  '/images/' +
+                  id.charAt(0) +
+                  '/' +
+                  id +
+                  '._V1_SX300_CR0,0,0,0_AL_.' +
+                  format;
                 break;
             }
             break;
@@ -154,6 +187,20 @@ router.get(
                 break;
               case 'original':
                 image += '/images/kadr/' + file;
+                break;
+            }
+            break;
+          case 'tvmaze':
+            image += 'static.tvmaze.com';
+            switch (size) {
+              case 'small':
+                image += '/uploads/images/medium_untouched/' + tvmaze_file;
+                break;
+              case 'medium':
+                image += '/uploads/images/original_untouched/' + tvmaze_file;
+                break;
+              case 'original':
+                image += '/uploads/images/original_untouched/' + tvmaze_file;
                 break;
             }
             break;
@@ -215,12 +262,13 @@ router.get(
           url: image,
           timeout: 1000,
           headers: {
-            'User-Agent':
-              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
-              'AppleWebKit/537.36 (KHTML, like Gecko) ' +
-              'Chrome/79.0.' +
-              (Math.floor(Math.random() * 600) + 1) +
-              '.100 Safari/537.36'
+            'User-Agent': req.get('user-agent')
+              ? req.get('user-agent')
+              : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
+                'AppleWebKit/537.36 (KHTML, like Gecko) ' +
+                'Chrome/79.0.' +
+                (Math.floor(Math.random() * 600) + 1) +
+                '.100 Safari/537.36'
           }
         })
         .on('error', function(err) {

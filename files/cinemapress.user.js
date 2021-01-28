@@ -26,6 +26,8 @@
 // @include https://*/*/movies?wa_id=*
 // @include http://*/*/movies?tvmaze_id=*
 // @include https://*/*/movies?tvmaze_id=*
+// @include http://*/*/movies?movie_id=*
+// @include https://*/*/movies?movie_id=*
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_xmlhttpRequest
@@ -95,6 +97,9 @@ function parseData() {
     : '';
   var wa_id = document.querySelector('[name="movie.wa_id"]')
     ? document.querySelector('[name="movie.wa_id"]').value
+    : '';
+  var movie_id = document.querySelector('[name="movie.movie_id"]')
+    ? document.querySelector('[name="movie.movie_id"]').value
     : '';
 
   if (!kp_id && !tmdb_id && !douban_id && !imdb_id && !wa_id && !tvmaze_id) {

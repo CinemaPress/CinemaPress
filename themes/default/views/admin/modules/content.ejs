@@ -246,7 +246,7 @@
                                                 <% if (content.content_movies) { %>
                                                     <% content.content_movies.split(',').forEach(function (id) { %>
                                                         <li data-delete-id="<%- id %>" data-delete-name="content.content_movies" style="display:none">
-                                                            <img class="media-object" src="/files/poster/medium/<%- id %>.jpg" alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                            <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                         </li>
                                                     <% }); %>
                                                 <% } %>
@@ -666,7 +666,7 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea class="form-control custom"
                                                                               name="modules.content.data.custom"
-                                                                              placeholder="url ~ kinopoisk_id ~ collection ~ translate ~ quality"
+                                                                              placeholder="url ~ id ~ collection ~ translate ~ quality"
                                                                               style="height:300px;"><%- modules.content.data.custom.join('\n\n') %></textarea>
                                                                 </div>
 
@@ -677,7 +677,7 @@
                                                                         <p>
                                                                             <code>
                                                                                 <span class="url">url</span> ~
-                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                <span class="kinopoisk_id">id</span>
                                                                                 ~
                                                                                 <span class="collection">collection</span>
                                                                                 ~
@@ -695,7 +695,7 @@
                                                                             &nbsp;&nbsp;{ "results": [ {
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"kinopoisk_id":
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
                                                                             <span class="iframe">1048334</span>,
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
@@ -716,7 +716,7 @@
                                                                             &nbsp;&nbsp;} ] }
                                                                         </code><br>
                                                                         <code class="iframe">
-                                                                            results.0.kinopoisk_id
+                                                                            results.0.id <> kp_id
                                                                         </code><br>
                                                                         <code class="translate">
                                                                             results.0.translate.0
@@ -731,7 +731,7 @@
                                                                             <code>
                                                                                 <span class="url">https://example.com/updates</span>
                                                                                 ~
-                                                                                <span class="kinopoisk_id">results.0.kinopoisk_id</span>
+                                                                                <span class="kinopoisk_id">results.0.id <> kp_id</span>
                                                                                 ~
                                                                                 <span class="collection">latest-updates</span>
                                                                             </code>
@@ -810,7 +810,7 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea class="form-control"
                                                                               name="modules.content.data.scraper"
-                                                                              placeholder="hour ~ url ~ post ~ kinopoisk_id ~ collection"
+                                                                              placeholder="hour ~ url ~ post ~ id ~ collection"
                                                                               style="height:300px;"><% if (modules.content.data.scraper) { %><%- modules.content.data.scraper %><% } %></textarea>
                                                                 </div>
 
@@ -823,7 +823,7 @@
                                                                                 <span class="quality">hour</span> ~
                                                                                 <span class="url">url</span> ~
                                                                                 <span class="translate">post</span> ~
-                                                                                <span class="kinopoisk_id">kinopoisk_id</span>
+                                                                                <span class="kinopoisk_id">id</span>
                                                                                 ~
                                                                                 <span class="collection">collection</span>
                                                                             </code>
@@ -859,7 +859,7 @@
                                                                             &nbsp;&nbsp;&lt;/body&gt;
                                                                         </code><br>
                                                                         <code class="kinopoisk_id">
-                                                                            \/film\/([0-9]{3,10})\/&quot;
+                                                                            \/film\/([0-9]{3,10})\/&quot; <> kp_id
                                                                         </code><br>
                                                                         <code class="collection">
                                                                             latest-updates
@@ -871,7 +871,7 @@
                                                                                 ~
                                                                                 <span class="translate">href=&quot;(\/.*?\.html)&quot;</span>
                                                                                 ~
-                                                                                <span class="kinopoisk_id">\/film\/([0-9]{3,10})\/&quot;</span>
+                                                                                <span class="kinopoisk_id">\/film\/([0-9]{3,10})\/&quot; <> kp_id</span>
                                                                                 ~
                                                                                 <span class="collection">latest-updates</span>
                                                                             </code>

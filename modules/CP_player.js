@@ -282,6 +282,7 @@ function codePlayer(type, movie, options) {
 
       param.title = movie.title ? movie.title : '';
       param.year = movie.year ? movie.year : '';
+      param.type = movie.type + '' ? movie.type : '';
       param.kp_id = movie.kp_id ? movie.kp_id : '';
       param.imdb_id = movie.custom.imdb_id ? movie.custom.imdb_id : '';
       param.tmdb_id = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';

@@ -34,6 +34,7 @@ var multer = require('multer');
 var async = require('async');
 var Sharp = require('sharp');
 var i18n = require('i18n');
+var moment = require('moment');
 var router = express.Router();
 
 /**
@@ -176,7 +177,8 @@ router.get('/:type?', function(req, res) {
     typeof req.query.tmdb_id !== 'undefined' ||
     typeof req.query.douban_id !== 'undefined' ||
     typeof req.query.tvmaze_id !== 'undefined' ||
-    typeof req.query.wa_id !== 'undefined'
+    typeof req.query.wa_id !== 'undefined' ||
+    typeof req.query.movie_id !== 'undefined'
       ? '_add_'
       : '';
 
@@ -198,6 +200,9 @@ router.get('/:type?', function(req, res) {
     ? req.query.tvmaze_id.replace(/[^0-9]/g, '')
     : '';
   var wa_id = req.query.wa_id ? req.query.wa_id.replace(/[^0-9]/g, '') : '';
+  var movie_id = req.query.movie_id
+    ? req.query.movie_id.replace(/[^0-9]/g, '')
+    : '';
   var comment_id = req.query.comment_id ? req.query.comment_id : null;
   var url = req.query.url ? req.query.url : null;
   var num = req.query.num ? parseInt(req.query.num) : 1;
@@ -217,6 +222,8 @@ router.get('/:type?', function(req, res) {
 
   render.languages = res.getLocales();
   render.language = res.getLocale();
+
+  moment.locale(render.language);
 
   switch (req.params.type) {
     case 'homepage':
@@ -400,17 +407,26 @@ router.get('/:type?', function(req, res) {
       var query = { certainly: true };
 
       if (kp_id) {
-        query['query_id'] = kp_id;
+        query['id'] = kp_id;
       } else if (imdb_id) {
+        query['id'] = 'custom.imdb_id';
         query['custom.imdb_id'] = imdb_id;
       } else if (tmdb_id) {
+        query['id'] = 'custom.tmdb_id';
+        query['type'] = type;
         query['custom.tmdb_id'] = tmdb_id;
       } else if (douban_id) {
+        query['id'] = 'custom.douban_id';
         query['custom.douban_id'] = douban_id;
       } else if (tvmaze_id) {
+        query['id'] = 'custom.tvmaze_id';
         query['custom.tvmaze_id'] = tvmaze_id;
       } else if (wa_id) {
+        query['id'] = 'custom.wa_id';
         query['custom.wa_id'] = wa_id;
+      } else if (movie_id) {
+        query['id'] = 'custom.movie_id';
+        query['custom.movie_id'] = movie_id;
       } else {
         render.movie = {};
         render.structure = {};
@@ -430,13 +446,18 @@ router.get('/:type?', function(req, res) {
             kp_id: kp_id,
             type: type
           };
-          render.movie.custom = JSON.stringify({
+          var rmc = {
             imdb_id: imdb_id,
             tmdb_id: tmdb_id,
             douban_id: douban_id,
             tvmaze_id: tvmaze_id,
-            wa_id: wa_id
-          });
+            wa_id: wa_id,
+            movie_id: movie_id
+          };
+          if (movie_id) {
+            rmc.movie_id = movie_id;
+          }
+          render.movie.custom = JSON.stringify(rmc);
           if (movies1 && movies1.length) {
             render.movie = JSON.parse(JSON.stringify(movies1[0]));
             render.structure = CP_structure.movie(movies1)[0];
@@ -480,7 +501,7 @@ router.get('/:type?', function(req, res) {
       CP_get.movies(
         { from: process.env.CP_RT, certainly: true },
         config.default.count,
-        'kinopoisk-id-up',
+        'lastmod',
         num,
         function(err, movies) {
           if (err) console.error(err);
@@ -490,7 +511,20 @@ router.get('/:type?', function(req, res) {
 
           if (movies && movies.length) {
             render.next = !(movies.length % config.default.count) ? 1 : 0;
-            render.movies = movies;
+            render.movies = movies.map(function(m) {
+              if (m && m.custom && m.custom.lastmod) {
+                var lastmod = m.custom.lastmod + '';
+                try {
+                  lastmod = moment(m.custom.lastmod).fromNow();
+                } catch (e) {}
+                if (lastmod !== 'Invalid date') {
+                  m.lastmod = lastmod;
+                } else {
+                  m.lastmod = m.custom.lastmod;
+                }
+              }
+              return m;
+            });
           }
 
           async.series(
@@ -789,9 +823,11 @@ router.post('/change', function(req, res) {
       typeof form.movie.imdb_id !== 'undefined' ||
       typeof form.movie.douban_id !== 'undefined' ||
       typeof form.movie.tvmaze_id !== 'undefined' ||
-      typeof form.movie.wa_id !== 'undefined')
+      typeof form.movie.wa_id !== 'undefined' ||
+      typeof form.movie.movie_id !== 'undefined')
   ) {
     try {
+      var movie_custom = JSON.parse(form.movie.custom);
       var custom = {};
       if (form.movie.tmdb_id && form.movie.tmdb_id.replace(/[^0-9]/g, '')) {
         custom.tmdb_id = form.movie.tmdb_id.replace(/[^0-9]/g, '');
@@ -811,13 +847,26 @@ router.post('/change', function(req, res) {
         custom.wa_id = form.movie.wa_id.replace(/[^0-9]/g, '');
         delete form.movie.wa_id;
       }
+      if (form.movie.movie_id && form.movie.movie_id.replace(/[^0-9]/g, '')) {
+        custom.movie_id = form.movie.movie_id.replace(/[^0-9]/g, '');
+        delete form.movie.movie_id;
+      }
+      if (
+        movie_custom.movie_id &&
+        movie_custom.movie_id.replace(/[^0-9]/g, '')
+      ) {
+        custom.movie_id = movie_custom.movie_id.replace(/[^0-9]/g, '');
+      } else {
+        delete movie_custom.movie_id;
+      }
       delete form.movie.tmdb_id;
       delete form.movie.imdb_id;
       delete form.movie.douban_id;
       delete form.movie.tvmaze_id;
       delete form.movie.wa_id;
+      delete form.movie.movie_id;
       form.movie.custom = JSON.stringify(
-        Object.assign({}, JSON.parse(form.movie.custom), custom)
+        Object.assign({}, movie_custom, custom)
       );
     } catch (e) {
       console.error(e);
@@ -835,7 +884,7 @@ router.post('/change', function(req, res) {
         }
         if (form.movie && !form.movie.id) {
           CP_get.movies(
-            { certainly: true },
+            { less200m: true, certainly: true },
             1,
             'kinopoisk-id-up',
             1,
@@ -1210,7 +1259,7 @@ router.post('/change', function(req, res) {
 
 router.post('/upload/:renamed?', function(req, res) {
   var filepath = path.join(__dirname, '..', 'files');
-  var filename = 'CinemaPress.png';
+  var filename = 'CinemaPress.jpg';
   var fieldname = '';
   var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -1249,6 +1298,7 @@ router.post('/upload/:renamed?', function(req, res) {
         ext !== '.png' &&
         ext !== '.jpg' &&
         ext !== '.gif' &&
+        ext !== '.webp' &&
         ext !== '.jpeg'
       ) {
         return callback('Only images are allowed', null);

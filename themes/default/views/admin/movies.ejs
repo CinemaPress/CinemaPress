@@ -90,6 +90,9 @@
                                         ? c.wa_id.replace(/[^0-9]/g, '')
                                         : '';
                                 delete c.wa_id;
+                                if (typeof c.movie_id && !c.movie_id) {
+                                  delete c.movie_id;
+                                }
                                 c = Object.keys(c).length ? JSON.stringify(c) : '';
                             } catch (e) {
                                 console.error(e);
@@ -449,7 +452,7 @@
                                                   if (movie_custom && movie_custom.value) {
                                                     custom = JSON.parse(movie_custom.value);
                                                   } else {
-                                                    custom.unique = true;
+                                                    custom.unique = false;
                                                   }
                                                   custom.rewrite = {};
                                                   if (typeof result.percent !== 'undefined') {
@@ -751,7 +754,7 @@
                                             </div>
                                             <div class="spacer-10"></div>
                                             <textarea class="form-control custom" name="movie.custom"
-                                                      placeholder='{"name": "<%= __('Текст к этому полю') %>", "name2": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } else { %>{"unique": true}<% } %></textarea>
+                                                      placeholder='{"name": "<%= __('Текст к этому полю') %>", "name2": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } else { %>{"unique": false}<% } %></textarea>
                                             <script>
                                               document.addEventListener('DOMContentLoaded', function() {
                                                 var json = document.querySelector('[name="movie.custom"]');
@@ -859,380 +862,384 @@
                         </style>
 
                         <div class="faq">
-                            <article class="faq-group">
-                                <header>
-                                    <i class="fa fa-minus"></i>
-                                    <h3><%= __('Автоматическое заполнение информации о фильмах') %></h3>
-                                </header>
-                                <div class="faq-content clearfix">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12">
-                                            <% if (config && config.movies && config.movies.cron && config.movies.cron.length) { %>
-                                                <table class="table table-bordered table-striped">
-                                                    <tbody>
-                                                    <% config.movies.cron.forEach(function(data, num) { %>
-                                                        <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                        <% if (d.length < 6) return; %>
-                                                        <% if (data.charAt(0) === '#') {
-                                                            var custom_div = 'no-active';
-                                                        } %>
-                                                        <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#' && data.charAt(0) !== '0') {
-                                                            custom_i = 'text-success';
-                                                        } %>
-                                                        <tr class="<%- custom_div %>">
-                                                            <td class="table-settings">
-                                                                <span><%- d[0].replace('#','') %></span>
-                                                            </td>
-                                                            <td class="table-content help-example">
-                                                                <div class="<%- custom_div %>">
-                                                                    <code>
-                                                                        <span class="items_url"><%= d[1].split('/')[2] %></span>
-                                                                        ~
-                                                                        <span class="items_id"><%= d[2] %></span>
-                                                                        ~
-                                                                        <span class="item_url"><%= d[3].split('/')[2] %></span>
-                                                                        ~
-                                                                        <span class="item_data">+<%= d.length - 4 %> info</span>
-                                                                    </code>
-                                                                </div>
-                                                            </td>
-                                                            <td class="table-settings">
-                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
-                                                                             data-parser="<%- encodeURIComponent(data) %>"
-                                                                             data-activate-api="config.movies.cron"></i></span>
-                                                            </td>
-                                                            <td class="table-settings">
-                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
-                                                                             data-parser="<%- encodeURIComponent(data) %>"
-                                                                             data-delete-api="config.movies.cron"></i></span>
-                                                            </td>
-                                                        </tr>
-                                                    <% }); %>
-                                                    </tbody>
-                                                </table>
-                                            <% } else { %>
-                                                <div class="help-example"
-                                                     style="padding-top: 0 !important; text-align: center">
-                                                    <code><%= __('Добавьте в список хотя бы один API-сервис данных') %></code>
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12">
+                                    <article class="faq-group">
+                                        <header>
+                                            <i class="fa fa-minus"></i>
+                                            <h3><%= __('Автоматическое заполнение информации о фильмах') %></h3>
+                                        </header>
+                                        <div class="faq-content clearfix">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <% if (config && config.movies && config.movies.cron && config.movies.cron.length) { %>
+                                                        <table class="table table-bordered table-striped">
+                                                            <tbody>
+                                                            <% config.movies.cron.forEach(function(data, num) { %>
+                                                                <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                <% if (d.length < 6) return; %>
+                                                                <% if (data.charAt(0) === '#') {
+                                                                    var custom_div = 'no-active';
+                                                                } %>
+                                                                <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#' && data.charAt(0) !== '0') {
+                                                                    custom_i = 'text-success';
+                                                                } %>
+                                                                <tr class="<%- custom_div %>">
+                                                                    <td class="table-settings">
+                                                                        <span><%- d[0].replace('#','') %></span>
+                                                                    </td>
+                                                                    <td class="table-content help-example">
+                                                                        <div class="<%- custom_div %>">
+                                                                            <code>
+                                                                                <span class="items_url"><%= d[1].split('/')[2] %></span>
+                                                                                ~
+                                                                                <span class="items_id"><%= d[2] %></span>
+                                                                                ~
+                                                                                <span class="item_url"><%= d[3].split('/')[2] %></span>
+                                                                                ~
+                                                                                <span class="item_data">+<%= d.length - 4 %> info</span>
+                                                                            </code>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                            <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                                     data-parser="<%- encodeURIComponent(data) %>"
+                                                                                     data-activate-api="config.movies.cron"></i></span>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                            <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                                     data-parser="<%- encodeURIComponent(data) %>"
+                                                                                     data-delete-api="config.movies.cron"></i></span>
+                                                                    </td>
+                                                                </tr>
+                                                            <% }); %>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } else { %>
+                                                        <div class="help-example"
+                                                             style="padding-top: 0 !important; text-align: center">
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис данных') %></code>
+                                                        </div>
+                                                    <% } %>
                                                 </div>
-                                            <% } %>
-                                        </div>
 
-                                        <div class="spacer-10"></div>
+                                                <div class="spacer-10"></div>
 
-                                        <div class="col-lg-12 col-xs-12">
-                                            <div class="faq">
-                                                <article class="faq-group">
-                                                    <header class="text-muted text-left">
-                                                        <i class="fa fa-plus"></i>
-                                                        <h3>
-                                                            <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
-                                                        </h3>
-                                                    </header>
-                                                    <div class="faq-content clearfix">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                    <textarea class="form-control custom"
-                                                                              name="config.movies.cron"
-                                                                              placeholder="hour ~ url ~ id ~ url ~ info..."
-                                                                              style="height:300px;"><%- config.movies.cron.join('\n\n') %></textarea>
-                                                            </div>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="faq">
+                                                        <article class="faq-group">
+                                                            <header class="text-muted text-left">
+                                                                <i class="fa fa-plus"></i>
+                                                                <h3>
+                                                                    <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                                </h3>
+                                                            </header>
+                                                            <div class="faq-content clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                            <textarea class="form-control custom"
+                                                                                      name="config.movies.cron"
+                                                                                      placeholder="hour ~ url ~ id ~ url ~ info..."
+                                                                                      style="height:300px;"><%- config.movies.cron.join('\n\n') %></textarea>
+                                                                    </div>
 
-                                                            <div class="spacer-10"></div>
+                                                                    <div class="spacer-10"></div>
 
-                                                            <div class="col-lg-12 col-xs-12 text-center" style="margin-bottom: 10px">
-                                                                <span class="btn btn-primary btn-sm btn-block movies_cron">
-                                                                    <span id="movies_cron">
-                                                                        <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-                                                            <style>
-                                                                .movies_cron {
-                                                                    background: #1a2035;
-                                                                    border: 1px solid #2f374b !important;
-                                                                }
-                                                                .movies_cron:hover {
-                                                                    background: #151a2a;
-                                                                    border: 1px solid #2f374b !important;
-                                                                }
-                                                            </style>
+                                                                    <div class="col-lg-12 col-xs-12 text-center" style="margin-bottom: 10px">
+                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron">
+                                                                            <span id="movies_cron">
+                                                                                <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <style>
+                                                                        .movies_cron {
+                                                                            background: #1a2035;
+                                                                            border: 1px solid #2f374b !important;
+                                                                        }
+                                                                        .movies_cron:hover {
+                                                                            background: #151a2a;
+                                                                            border: 1px solid #2f374b !important;
+                                                                        }
+                                                                    </style>
 
-                                                            <div class="col-sm-12">
-                                                                <div class="helper-text-box text-left help-example-code">
-                                                                    <p>
-                                                                        <code>
-                                                                            <span style="color: #999">hour</span>
-                                                                            ~
-                                                                            <span class="items_url">url</span>
-                                                                            ~
-                                                                            <span class="items_id">id</span>
-                                                                            ~
-                                                                            <span class="item_url">url</span>
-                                                                            ~
-                                                                            <span class="item_data">info</span>
-                                                                        </code>
-                                                                    </p>
-                                                                    <code class="items_url">
-                                                                        https://example.com/updates?page=[page]
-                                                                    </code><br>
-                                                                    <code class="text-muted"
-                                                                          style="margin:1px 0 0 0">
-                                                                        &nbsp;&nbsp;{ "results": [ {
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
-                                                                        <span class="items_id">301</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
-                                                                        "The Matrix",
-                                                                    </code><br>
-                                                                    <code class="text-muted"
-                                                                          style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;}, {
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
-                                                                        <span class="items_id">299</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
-                                                                        "The Matrix Reloaded",
-                                                                    </code><br>
-                                                                    <code class="text-muted"
-                                                                          style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;} ] }
-                                                                    </code><br>
-                                                                    <code class="items_id">
-                                                                        results.0.id
-                                                                    </code><br>
-                                                                    <code class="item_url">
-                                                                        https://example.com/movie?id=[id]
-                                                                    </code><br>
-                                                                    <code class="text-muted"
-                                                                          style="margin:1px 0 0 0">
-                                                                        &nbsp;&nbsp;{ "results": [ {
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
-                                                                        <span class="get_id">301</span>,
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imdb_id":
-                                                                        "<span class="get_imdb_id">tt0133093</span>",
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
-                                                                        "<span class="get_title">The Matrix</span>",
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"genre":
-                                                                        ["<span class="get_genre">action</span>",
-                                                                        "<span class="get_genre">sci-fi</span>"],
-                                                                    </code><br>
-                                                                    <code class="text-muted" style="margin:0">
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date":
-                                                                        "<span class="get_premiere">1999-06-24T00:00:00.000Z</span>"
-                                                                    </code><br>
-                                                                    <code class="text-muted"
-                                                                          style="margin:0 0 1px 0">
-                                                                        &nbsp;&nbsp;} ] }
-                                                                    </code><br>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span style="color: #999">path</span> <>
-                                                                            <span style="color: #999">param</span> <>
-                                                                            <span style="color: #999">limit</span> <>
-                                                                            <span style="color: #999">filter</span> <>
-                                                                            <span style="color: #999">eval</span>
-                                                                        </code>
-                                                                    </p>
-                                                                    <code class="get_id">
-                                                                        results.0.id <> kp_id
-                                                                    </code><br>
-                                                                    <code class="get_imdb_id">
-                                                                        results.0.imdb_id <> custom.imdb_id
-                                                                    </code><br>
-                                                                    <code class="get_title">
-                                                                        results.0.title <> title_en
-                                                                    </code><br>
-                                                                    <code class="get_genre">
-                                                                        results.0.genre.0 <> genre <> 2
-                                                                    </code>
-                                                                    <code class="get_premiere">
-                                                                        results.0.date <> premiere
-                                                                    </code>
-                                                                    <code style="color: #999;font-weight: bold">
-                                                                        "movie" <> type
-                                                                    </code>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span style="color: #999">3</span>
-                                                                            ~
-                                                                            <span class="items_url">https://example.com/updates?page=[page]</span>
-                                                                            ~
-                                                                            <span class="items_id">results.0.id</span>
-                                                                            ~
-                                                                            <span class="item_url">https://example.com/movie?id=[id]</span>
-                                                                            ~
-                                                                        </code>
-                                                                    </p>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="item_data">results.0.id <> kp_id</span>
-                                                                            ~
-                                                                            <span class="item_data">results.0.imdb_id <> custom.imdb_id</span>
-                                                                            ~
-                                                                            <span class="item_data">results.0.title <> title_en</span>
-                                                                            ~
-                                                                        </code>
-                                                                    </p>
-                                                                    <p>
-                                                                        <code>
-                                                                            <span class="item_data">results.0.genre.0 <> genre <> 2</span>
-                                                                            ~
-                                                                            <span class="item_data">results.0.date <> premiere</span>
-                                                                            ~
-                                                                            <span class="item_data">"movie" <> type</span>
-                                                                        </code>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                            </div>
-
-                                            <div class="spacer-10"></div>
-
-                                            <div class="faq">
-                                                <article class="faq-group">
-                                                    <header class="text-muted text-left">
-                                                        <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Доступные для заполнения информации параметры') %></h3>
-                                                    </header>
-                                                    <div class="faq-content clearfix">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <div class="helper-text-box text-left condition-params">
-                                                                    <div>
-                                                                        <code>kp_id</code> <span>464963</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>title_ru</code>
-                                                                        <span><%= __('Игра престолов') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>title_en</code>
-                                                                        <span>Game of Thrones</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>quality</code>
-                                                                        <span>4K</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>translate</code>
-                                                                        <span>English</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>year</code>
-                                                                        <span><%= __('2020') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>country</code>
-                                                                        <span><%= __('США') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>director</code>
-                                                                        <span><%= __('Тим Бертон') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>genre</code>
-                                                                        <span><%= __('комедия') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>actor</code>
-                                                                        <span><%= __('Том Круз') %></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>rating</code>
-                                                                        <span>92</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>vote</code>
-                                                                        <span>1871227</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>kp_rating</code>
-                                                                        <span>90</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>kp_vote</code>
-                                                                        <span>278374</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>imdb_rating</code>
-                                                                        <span>94</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>imdb_vote</code>
-                                                                        <span>1592853</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>type</code>
-                                                                        <span>0</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>premiere</code>
-                                                                        <span>2011-04-17</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>poster</code>
-                                                                        <span>1</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>pictures</code>
-                                                                        <span>/suopoADq0k8YZr4dQXcU6pToj6s.jpg</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.imdb_id</code>
-                                                                        <span>tt0944947</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.tmdb_id</code>
-                                                                        <span>1399</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.douban_id</code>
-                                                                        <span>26584183</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.tvmaze_id</code>
-                                                                        <span>82</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.wa_id</code>
-                                                                        <span>36896</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.movie_id</code>
-                                                                        <span>[number]</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <code>custom.other_key</code>
-                                                                        <span>[string]</span>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="helper-text-box text-left help-example-code">
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span style="color: #999">hour</span>
+                                                                                    ~
+                                                                                    <span class="items_url">url</span>
+                                                                                    ~
+                                                                                    <span class="items_id">id</span>
+                                                                                    ~
+                                                                                    <span class="item_url">url</span>
+                                                                                    ~
+                                                                                    <span class="item_data">info</span>
+                                                                                </code>
+                                                                            </p>
+                                                                            <code class="items_url">
+                                                                                https://example.com/updates?page=[page]
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;{ "results": [ {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
+                                                                                <span class="items_id">301</span>,
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
+                                                                                "The Matrix",
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;}, {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
+                                                                                <span class="items_id">299</span>,
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
+                                                                                "The Matrix Reloaded",
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;} ] }
+                                                                            </code><br>
+                                                                            <code class="items_id">
+                                                                                results.0.id
+                                                                            </code><br>
+                                                                            <code class="item_url">
+                                                                                https://example.com/movie?id=[id]
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;{ "results": [ {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":
+                                                                                <span class="get_id">301</span>,
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imdb_id":
+                                                                                "<span class="get_imdb_id">tt0133093</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title":
+                                                                                "<span class="get_title">The Matrix</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"genre":
+                                                                                ["<span class="get_genre">action</span>",
+                                                                                "<span class="get_genre">sci-fi</span>"],
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date":
+                                                                                "<span class="get_premiere">1999-06-24T00:00:00.000Z</span>"
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;} ] }
+                                                                            </code><br>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span style="color: #999">path</span> <>
+                                                                                    <span style="color: #999">param</span> <>
+                                                                                    <span style="color: #999">limit</span> <>
+                                                                                    <span style="color: #999">filter</span> <>
+                                                                                    <span style="color: #999">eval</span>
+                                                                                </code>
+                                                                            </p>
+                                                                            <code class="get_id">
+                                                                                results.0.id <> kp_id
+                                                                            </code><br>
+                                                                            <code class="get_imdb_id">
+                                                                                results.0.imdb_id <> custom.imdb_id
+                                                                            </code><br>
+                                                                            <code class="get_title">
+                                                                                results.0.title <> title_en
+                                                                            </code><br>
+                                                                            <code class="get_genre">
+                                                                                results.0.genre.0 <> genre <> 2
+                                                                            </code>
+                                                                            <code class="get_premiere">
+                                                                                results.0.date <> premiere
+                                                                            </code>
+                                                                            <code style="color: #999;font-weight: bold">
+                                                                                "movie" <> type
+                                                                            </code>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span style="color: #999">3</span>
+                                                                                    ~
+                                                                                    <span class="items_url">https://example.com/updates?page=[page]</span>
+                                                                                    ~
+                                                                                    <span class="items_id">results.0.id</span>
+                                                                                    ~
+                                                                                    <span class="item_url">https://example.com/movie?id=[id]</span>
+                                                                                    ~
+                                                                                </code>
+                                                                            </p>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="item_data">results.0.id <> kp_id</span>
+                                                                                    ~
+                                                                                    <span class="item_data">results.0.imdb_id <> custom.imdb_id</span>
+                                                                                    ~
+                                                                                    <span class="item_data">results.0.title <> title_en</span>
+                                                                                    ~
+                                                                                </code>
+                                                                            </p>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="item_data">results.0.genre.0 <> genre <> 2</span>
+                                                                                    ~
+                                                                                    <span class="item_data">results.0.date <> premiere</span>
+                                                                                    ~
+                                                                                    <span class="item_data">"movie" <> type</span>
+                                                                                </code>
+                                                                            </p>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </article>
                                                     </div>
-                                                </article>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="faq">
+                                                        <article class="faq-group">
+                                                            <header class="text-muted text-left">
+                                                                <i class="fa fa-plus"></i>
+                                                                <h3><%= __('Доступные для заполнения информации параметры') %></h3>
+                                                            </header>
+                                                            <div class="faq-content clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="helper-text-box text-left condition-params">
+                                                                            <div>
+                                                                                <code>kp_id</code> <span>464963</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>title_ru</code>
+                                                                                <span><%= __('Игра престолов') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>title_en</code>
+                                                                                <span>Game of Thrones</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>quality</code>
+                                                                                <span>4K</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>translate</code>
+                                                                                <span>English</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>year</code>
+                                                                                <span><%= __('2020') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>country</code>
+                                                                                <span><%= __('США') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>director</code>
+                                                                                <span><%= __('Тим Бертон') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>genre</code>
+                                                                                <span><%= __('комедия') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>actor</code>
+                                                                                <span><%= __('Том Круз') %></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>rating</code>
+                                                                                <span>92</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>vote</code>
+                                                                                <span>1871227</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>kp_rating</code>
+                                                                                <span>90</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>kp_vote</code>
+                                                                                <span>278374</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>imdb_rating</code>
+                                                                                <span>94</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>imdb_vote</code>
+                                                                                <span>1592853</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>type</code>
+                                                                                <span>0</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>premiere</code>
+                                                                                <span>2011-04-17</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>poster</code>
+                                                                                <span>1</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>pictures</code>
+                                                                                <span>/suopoADq0k8YZr4dQXcU6pToj6s.jpg</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.imdb_id</code>
+                                                                                <span>tt0944947</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.tmdb_id</code>
+                                                                                <span>1399</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.douban_id</code>
+                                                                                <span>26584183</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.tvmaze_id</code>
+                                                                                <span>82</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.wa_id</code>
+                                                                                <span>36896</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.movie_id</code>
+                                                                                <span>[number]</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <code>custom.other_key</code>
+                                                                                <span>[string]</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </article>
                                 </div>
-                            </article>
+                            </div>
                         </div>
 
                         <div class="spacer-10"></div>
@@ -1287,6 +1294,7 @@
                                       douban_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
                                     } else if (idElem.value.indexOf('tvmaze.com') + 1) {
                                       match = /(shows\/)([0-9]{1,10})/gi.exec(id.value);
+                                      type = '1';
                                       tvmaze_id = (match) ? match[2].replace(/[^0-9]/g, '') : '';
                                     } else if (idElem.value.indexOf('world-art.ru') + 1) {
                                       match = /(animation\.php\?id=)([0-9]{1,10})/gi.exec(id.value);
@@ -1322,8 +1330,9 @@
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
+                                            <th class="table-settings"></th>
                                             <th class="table-content table-content-head">
-                                                <%= __('Фильмы с уникальным описанием') %> <% if (typeof count_movies != 'undefined') { %>(<code><% if (typeof uniq_movies != 'undefined') { %><%- uniq_movies %><span style="color:#666"> / </span><% } %><span style="color:#666"><%- count_movies %></span></code>)<% } %>
+                                                <%= __('Фильмы') %> <% if (typeof count_movies != 'undefined') { %>(<code><% if (typeof uniq_movies != 'undefined') { %><%- uniq_movies %><span style="color:#666"> / </span><% } %><span style="color:#666"><%- count_movies %></span></code>)<% } %>
                                             </th>
                                             <th class="table-settings"></th>
                                             <th class="table-settings"></th>
@@ -1332,8 +1341,8 @@
                                         </thead>
                                         <tfoot>
                                         <tr>
-                                            <th>
-                                                <div style="margin: 0">
+                                            <th colspan="5">
+                                                <div style="margin: 0 auto; text-align: center">
                                                     <% if (num - 1) { %>
                                                         <a href="/<%- config.urls.admin %>/movies?num=<%- num - 1 %>"
                                                            class="table-arrow"><i class="fa fa-chevron-left"></i></a>
@@ -1349,36 +1358,48 @@
                                                     <% } %>
                                                 </div>
                                             </th>
-                                            <th class="table-settings"></th>
-                                            <th class="table-settings"></th>
-                                            <th class="table-settings"></th>
                                         </tr>
                                         </tfoot>
                                         <tbody>
+                                        <style>
+                                            .id_kp{color:#ff6600;}
+                                            .id_tmdb{color:#07b4e2;}
+                                            .id_imdb{color:#f5c511;}
+                                            .id_douban{color:#2d913b;}
+                                            .id_tvmaze{color:#3c948b;}
+                                            .id_wa{color:#990000;}
+                                        </style>
                                         <% movies.forEach(function(movie) { %>
+                                            <% var id_key = 'id_movie'; %>
+                                            <% if (movie.id > 0 && movie.id <= 100000000) {id_key = 'id_kp';} %>
+                                            <% if (movie.id > 100000000 && movie.id <= 200000000) {id_key = 'id_movie';} %>
+                                            <% if (movie.id > 200000000 && movie.id <= 400000000) {id_key = 'id_tmdb';} %>
+                                            <% if (movie.id > 400000000 && movie.id <= 600000000) {id_key = 'id_imdb';} %>
+                                            <% if (movie.id > 600000000 && movie.id <= 700000000) {id_key = 'id_douban';} %>
+                                            <% if (movie.id > 700000000 && movie.id <= 800000000) {id_key = 'id_wa';} %>
+                                            <% if (movie.id > 800000000 && movie.id <= 900000000) {id_key = 'id_tvmaze';} %>
                                             <tr>
+                                                <td class="table-settings" style="background: url('<%- movie.poster %>') center center;background-size: cover;">
+                                                </td>
                                                 <td class="table-content">
-                                                    <span class="table-content-id">ID: <%- movie.id %></span> <span
-                                                            class="table-content-t"><a
-                                                                href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>">
-                                                            <% if (movie.title) { %><%- movie.title %>
-                                                            <% } else { %><%= __('Фильм с ID') %> <%- movie.kp_id %>
-                                                            <% } %>
-                                                        </a></span>
+                                                    <span class="table-content-id" style="text-align: center;opacity: .6">
+                                                        <span class="<%- id_key %>">ID: <%- movie.id %></span><br>
+                                                        <%- movie.lastmod ? movie.lastmod : '-' %>
+                                                    </span>
+                                                    <span class="table-content-t">
+                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><% if (movie.title) { %><%- movie.title %><% } else { %><%= __('Фильм с ID') %> <%- movie.kp_id %><% } %>
+                                                        </a><br>
+                                                        <%- movie.year ? '<code class="text-muted">' + movie.year + '</code>' : '' %>
+                                                    </span>
                                                 </td>
                                                 <td class="table-settings">
-                                                    <a href="javascript:void(0)" data-type="movie"
-                                                       data-id="<%- movie.id %>" class="del"><i
-                                                                class="fa fa-trash-alt text-danger"></i></a>
+                                                    <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
                                                 </td>
                                                 <td class="table-settings">
-                                                    <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><i
-                                                                class="fa fa-edit text-warning"></i></a>
+                                                    <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><i class="fa fa-edit text-warning"></i></a>
                                                 </td>
                                                 <td class="table-settings">
-                                                    <a href="<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>"
-                                                       target="_blank"><span
-                                                                class="fa fa-external-link-square-alt text-info"></span></a>
+                                                    <a href="<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>
                                                 </td>
                                             </tr>
                                         <% }); %>

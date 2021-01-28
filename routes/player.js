@@ -158,15 +158,26 @@ router.get('/?', function(req, res) {
             : ''
       };
       var ip_hash = '';
-      if (
-        p.url.indexOf('[ip]') + 1 &&
-        (p.url.indexOf('[imdb_id]') + 1 || p.url.indexOf('[tmdb_id]') + 1)
-      ) {
+      if (p.url.indexOf('[ip]') + 1) {
+        if (p.url.indexOf('[imdb_id]') + 1 && !req.query.imdb_id) {
+          return callback();
+        }
+        if (p.url.indexOf('[tmdb_id]') + 1 && !req.query.tmdb_id) {
+          return callback();
+        }
         p.url = p.url.replace(/\[ip]/, ip ? ip : '');
-        p.url =
-          p.url.indexOf('?') + 1
-            ? p.url + '&s=' + req.query.season || 0
-            : p.url + '?s=' + req.query.season || 0;
+        if (req.query.season || req.query.type === '1') {
+          p.url =
+            p.url.indexOf('?') + 1
+              ? p.url + '&tv=1&s=' + (req.query.season || req.query.type || 1)
+              : p.url + '?tv=1&s=' + (req.query.season || req.query.type || 1);
+        }
+        if (req.query.episode) {
+          p.url =
+            p.url.indexOf('?') + 1
+              ? p.url + '&e=' + (req.query.episode || 1)
+              : p.url + '?e=' + (req.query.episode || 1);
+        }
         ip_hash = ip;
       }
       p.url = p.url
@@ -183,6 +194,7 @@ router.get('/?', function(req, res) {
         .replace(/\[wa_id]/, req.query.wa_id ? req.query.wa_id : '')
         .replace(/\[movie_id]/, req.query.movie_id ? req.query.movie_id : '')
         .replace(/\[year]/, req.query.year ? req.query.year : '')
+        .replace(/\[type]/, req.query.type ? req.query.type : '')
         .replace(
           /\[title]/,
           req.query.title ? encodeURIComponent(req.query.title) : ''
@@ -238,12 +250,14 @@ router.get('/?', function(req, res) {
                 : '?autoplay=' + req.query.autoplay;
           }
           if (iframe && req.query.season) {
+            iframe = iframe.replace(/[&?](s|season)=[0-9]{1,4}/gi, '');
             iframe +=
               iframe.indexOf('?') + 1
                 ? '&season=' + req.query.season + '&s=' + req.query.season
                 : '?season=' + req.query.season + '&s=' + req.query.season;
           }
           if (iframe && req.query.episode) {
+            iframe = iframe.replace(/[&?](e|episode)=[0-9]{1,4}/gi, '');
             iframe +=
               iframe.indexOf('?') + 1
                 ? '&episode=' + req.query.episode + '&e=' + req.query.episode

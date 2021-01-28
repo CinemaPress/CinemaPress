@@ -31,6 +31,7 @@ var router = express.Router();
 
 router.get('/:id', function(req, res) {
   var id = req.params.id ? ('' + req.params.id).trim() : '';
+  var type = (req.query.type || '').replace(/[^0-9]/g, '');
   var season = (req.query.season || '').replace(/[^0-9]/g, '');
   var episode = (req.query.episode || '').replace(/[^0-9]/g, '');
 
@@ -52,6 +53,9 @@ router.get('/:id', function(req, res) {
       'movie_id'
     ].indexOf(id_key) + 1
   ) {
+    if (type) {
+      query['type'] = type;
+    }
     query['custom.' + id_key] = id_value;
   } else {
     id = '';
@@ -149,6 +153,9 @@ router.get('/:id', function(req, res) {
             if (movie.custom.wa_id) {
               movie.wa_id = movie.custom.wa_id;
             }
+            if (movie.custom.movie_id) {
+              movie.movie_id = movie.custom.movie_id;
+            }
             if (movie.custom['player1']) {
               movie.player +=
                 (movie.player ? ',' : '') + movie.custom['player1'];
@@ -181,6 +188,8 @@ router.get('/:id', function(req, res) {
               (id_key || 'kp_id') +
               '=' +
               id_value +
+              '&type=' +
+              movie.type +
               '&player" data-player='
           );
           return res.send(

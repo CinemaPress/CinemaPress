@@ -394,7 +394,7 @@
           ids.unshift(kp_id);
         }
         addList.value = ids.join(',');
-        addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/files/poster/medium/' + kp_id + '.jpg" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
+        addPoster.innerHTML = (id.dataset.last ? addPoster.innerHTML : '') + '<li data-delete-id="' + kp_id + '" data-delete-name="' + self.dataset.addName + '"><img class="media-object" src="/<%- config.urls.admin %>/poster?id=' + kp_id + '" alt="ID: ' + kp_id + '" title="ID: ' + kp_id + '"></li>' + (!id.dataset.last ? addPoster.innerHTML : '');
         var delId = document.querySelectorAll('li[data-delete-name]');
         if (delId)
           for (var i = 0; i < delId.length; i++)
@@ -751,6 +751,47 @@
 
     if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {
       data.movie.id = data.movie.kp_id;
+    }
+
+    if (data.movie && !data.movie.id) {
+      var cst = {};
+      try {
+        cst = data.movie['custom'] ? JSON.parse(data.movie['custom']) : {};
+      } catch (e) {
+        console.error(e);
+      }
+      data.movie.id =
+        (data.movie['kp_id'] && parseInt(data.movie['kp_id'])) ||
+        (
+          !parseInt(data.movie['type']) &&
+          data.movie['tmdb_id'] &&
+          parseInt(data.movie['tmdb_id']) &&
+          parseInt(data.movie['tmdb_id']) + 200000000) ||
+        (data.movie &&
+          parseInt(data.movie['type']) &&
+          data.movie['tmdb_id'] &&
+          parseInt(data.movie['tmdb_id']) &&
+          parseInt(data.movie['tmdb_id']) + 300000000) ||
+        (data.movie &&
+          data.movie['imdb_id'] &&
+          parseInt(data.movie['imdb_id']) &&
+          parseInt(data.movie['imdb_id']) + 400000000) ||
+        (data.movie &&
+          data.movie['douban_id'] &&
+          parseInt(data.movie['douban_id']) &&
+          parseInt(data.movie['douban_id']) + 600000000) ||
+        (data.movie &&
+          data.movie['wa_id'] &&
+          parseInt(data.movie['wa_id']) &&
+          parseInt(data.movie['wa_id']) + 700000000) ||
+        (data.movie &&
+          data.movie['tvmaze_id'] &&
+          parseInt(data.movie['tvmaze_id']) &&
+          parseInt(data.movie['tvmaze_id']) + 800000000) ||
+        (cst &&
+          cst['movie_id'] &&
+          parseInt(cst['movie_id']) &&
+          parseInt(cst['movie_id']) + 900000000) || 0;
     }
 
     if (data.movie && data.movie.player) {

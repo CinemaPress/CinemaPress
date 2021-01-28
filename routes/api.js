@@ -426,17 +426,26 @@ router.post('/comments', function(req, res) {
 
 router.all('/', function(req, res) {
   var player = typeof req.query['player'] !== 'undefined';
+  var type = typeof req.query['type'] !== 'undefined' ? req.query['type'] : '';
   var queries = [];
   if (req.query['id'] && parseInt(req.query['id'].replace(/[^0-9]/g, ''))) {
     queries.push({
       id: parseInt(req.query['id'].replace(/[^0-9]/g, '')) + ''
     });
   } else if (
-    req.query['kp_id'] &&
-    parseInt(req.query['kp_id'].replace(/[^0-9]/g, ''))
+    (req.query['kp_id'] &&
+      parseInt(req.query['kp_id'].replace(/[^0-9]/g, ''))) ||
+    (req.body &&
+      req.body['kinopoisk'] &&
+      parseInt(req.body['kinopoisk'].replace(/[^0-9]/g, '')))
   ) {
     queries.push({
-      id: parseInt(req.query['kp_id'].replace(/[^0-9]/g, '')) + ''
+      id:
+        (req.query['kp_id'] &&
+          parseInt(req.query['kp_id'].replace(/[^0-9]/g, '')) + '') ||
+        (req.body &&
+          req.body['kinopoisk'] &&
+          parseInt(req.body['kinopoisk'].replace(/[^0-9]/g, '')))
     });
   }
   if (
@@ -444,6 +453,7 @@ router.all('/', function(req, res) {
     parseInt(req.query['tmdb_id'].replace(/[^0-9]/g, ''))
   ) {
     queries.push({
+      type: type,
       id: 'custom.tmdb_id',
       'custom.tmdb_id':
         parseInt(req.query['tmdb_id'].replace(/[^0-9]/g, '')) + ''
@@ -556,7 +566,7 @@ router.all('/', function(req, res) {
                 if (!reg_player || !reg_player[2]) continue;
                 var iframe = reg_player[2];
                 var name = reg_player[1].trim()
-                  ? reg_player[1].trim()
+                  ? reg_player[1].trim().replace('{N}', i)
                   : 'PLAYER ' + i;
                 current_movie[name.toLowerCase()] = {
                   iframe: iframe,
@@ -573,7 +583,10 @@ router.all('/', function(req, res) {
                 config.domain +
                 '/iframe/' +
                 (query.id.replace('custom.', '') +
-                  (query[query.id] ? query[query.id] : '')),
+                  (query[query.id] ? query[query.id] : '')) +
+                (movie && movie.type && movie.type.toString() === '1'
+                  ? '?type=' + movie.type
+                  : ''),
               translate: rt[0].translate,
               quality: rt[0].quality
             };
