@@ -588,10 +588,49 @@ router.all('/', function(req, res) {
                       : ''
                 };
                 if (p.iframe === 'iframe') {
+                  if (movie_custom.type === '1') {
+                    movie_custom.season =
+                      (req.body &&
+                        req.body['season'] &&
+                        parseInt(req.body['season'].replace(/[^0-9]/g, ''))) ||
+                      '1';
+                    movie_custom.episode =
+                      (req.body &&
+                        req.body['episode'] &&
+                        parseInt(req.body['episode'].replace(/[^0-9]/g, ''))) ||
+                      '1';
+                  }
                   if (p.url.indexOf('[imdb_id]') + 1 && !movie_custom.imdb_id) {
                     continue;
                   }
                   if (p.url.indexOf('[tmdb_id]') + 1 && !movie_custom.tmdb_id) {
+                    continue;
+                  }
+                  if (
+                    p.url.indexOf('[douban_id]') + 1 &&
+                    !movie_custom.douban_id
+                  ) {
+                    continue;
+                  }
+                  if (
+                    p.url.indexOf('[tvmaze_id]') + 1 &&
+                    !movie_custom.tvmaze_id
+                  ) {
+                    continue;
+                  }
+                  if (p.url.indexOf('[wa_id]') + 1 && !movie_custom.wa_id) {
+                    continue;
+                  }
+                  if (
+                    p.url.indexOf('[movie_id]') + 1 &&
+                    !movie_custom.movie_id
+                  ) {
+                    continue;
+                  }
+                  if (p.url.indexOf('[season]') + 1 && !movie_custom.season) {
+                    continue;
+                  }
+                  if (p.url.indexOf('[episode]') + 1 && !movie_custom.episode) {
                     continue;
                   }
                   p.url = p.url

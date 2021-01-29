@@ -157,46 +157,64 @@ router.get('/?', function(req, res) {
             ? parse[1].split('<>')[1].trim()
             : ''
       };
+      if (req.query.type === '1') {
+        req.query.season = req.query.season || '1';
+        req.query.episode = req.query.episode || '1';
+      }
+      if (p.url.indexOf('[imdb_id]') + 1 && !req.query.imdb_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[tmdb_id]') + 1 && !req.query.tmdb_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[douban_id]') + 1 && !req.query.douban_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[tvmaze_id]') + 1 && !req.query.tvmaze_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[wa_id]') + 1 && !req.query.wa_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[movie_id]') + 1 && !req.query.movie_id) {
+        return callback();
+      }
+      if (p.url.indexOf('[season]') + 1 && !req.query.season) {
+        return callback();
+      }
+      if (p.url.indexOf('[episode]') + 1 && !req.query.episode) {
+        return callback();
+      }
       var ip_hash = '';
       if (p.url.indexOf('[ip]') + 1) {
-        if (p.url.indexOf('[imdb_id]') + 1 && !req.query.imdb_id) {
-          return callback();
-        }
-        if (p.url.indexOf('[tmdb_id]') + 1 && !req.query.tmdb_id) {
-          return callback();
-        }
-        p.url = p.url.replace(/\[ip]/, ip ? ip : '');
-        if (req.query.season || req.query.type === '1') {
-          p.url =
-            p.url.indexOf('?') + 1
-              ? p.url + '&tv=1&s=' + (req.query.season || req.query.type || 1)
-              : p.url + '?tv=1&s=' + (req.query.season || req.query.type || 1);
-        }
-        if (req.query.episode) {
-          p.url =
-            p.url.indexOf('?') + 1
-              ? p.url + '&e=' + (req.query.episode || 1)
-              : p.url + '?e=' + (req.query.episode || 1);
-        }
+        p.url = p.url.replace(/\[ip]/gi, ip ? ip : '');
         ip_hash = ip;
       }
       p.url = p.url
         .replace(
-          /\[kp_id]/,
+          /\[kp_id]/gi,
           req.query.kp_id && parseInt(req.query.kp_id)
             ? '' + (parseInt(req.query.kp_id) % 1000000000)
             : ''
         )
-        .replace(/\[imdb_id]/, req.query.imdb_id ? req.query.imdb_id : '')
-        .replace(/\[tmdb_id]/, req.query.tmdb_id ? req.query.tmdb_id : '')
-        .replace(/\[douban_id]/, req.query.douban_id ? req.query.douban_id : '')
-        .replace(/\[tvmaze_id]/, req.query.tvmaze_id ? req.query.tvmaze_id : '')
-        .replace(/\[wa_id]/, req.query.wa_id ? req.query.wa_id : '')
-        .replace(/\[movie_id]/, req.query.movie_id ? req.query.movie_id : '')
-        .replace(/\[year]/, req.query.year ? req.query.year : '')
-        .replace(/\[type]/, req.query.type ? req.query.type : '')
+        .replace(/\[imdb_id]/gi, req.query.imdb_id ? req.query.imdb_id : '')
+        .replace(/\[tmdb_id]/gi, req.query.tmdb_id ? req.query.tmdb_id : '')
         .replace(
-          /\[title]/,
+          /\[douban_id]/gi,
+          req.query.douban_id ? req.query.douban_id : ''
+        )
+        .replace(
+          /\[tvmaze_id]/gi,
+          req.query.tvmaze_id ? req.query.tvmaze_id : ''
+        )
+        .replace(/\[wa_id]/gi, req.query.wa_id ? req.query.wa_id : '')
+        .replace(/\[movie_id]/gi, req.query.movie_id ? req.query.movie_id : '')
+        .replace(/\[year]/gi, req.query.year ? req.query.year : '')
+        .replace(/\[type]/gi, req.query.type ? req.query.type : '')
+        .replace(/\[season]/gi, req.query.season ? req.query.season : '')
+        .replace(/\[episode]/gi, req.query.episode ? req.query.episode : '')
+        .replace(
+          /\[title]/gi,
           req.query.title ? encodeURIComponent(req.query.title) : ''
         );
       var hash = md5(

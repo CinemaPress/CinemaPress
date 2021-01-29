@@ -134,7 +134,12 @@ router.get('/:id', function(req, res) {
                 movie.custom.indexOf('"player2"') + 1 ||
                 movie.custom.indexOf('"player3"') + 1 ||
                 movie.custom.indexOf('"player4"') + 1 ||
-                movie.custom.indexOf('"player5"') + 1)))
+                movie.custom.indexOf('"player5"') + 1)) ||
+            (modules.player.data.custom &&
+              modules.player.data.custom.length &&
+              modules.player.data.custom.filter(function(l) {
+                return !/^#/i.test(l) && /~\s*iframe$/i.test(l);
+              }).length))
         ) {
           try {
             movie.custom = JSON.parse(movie.custom || '{}');
