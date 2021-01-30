@@ -21,7 +21,8 @@ module.exports = {
     "random": 0
   },
   "rotate": {
-    "list": []
+    "list": [],
+    "area": [ "domain.for.bots", "domain2.for.bots", "domain.for.ru.bots" ]
   },
   "dns": {
     "cloudflare": {

@@ -907,6 +907,24 @@
                                                                                     <textarea class="form-control" name="config.rotate.list" placeholder="<%= config.subdomain %><%= config.domain %>"><%= config.rotate.list.join(',') %></textarea>
                                                                                 </div>
                                                                             </div>
+
+                                                                            <div class="spacer-10"></div>
+
+                                                                            <div class="col-sm-12">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="text" name="config.rotate.area" value="<%- config.rotate.area.join(',') %>" placeholder="...">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <script>
+                                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                                var cgs = document.querySelector('[name="config.rotate.area"]');
+                                                                                var cg = new Tagify(cgs, { whitelist: [ "domain.for.bots", "domain2.for.bots", "domain.for.ru.people", "domain.for.ru.bots",  ] });
+                                                                                cg.DOM.input.classList.add('form-control');
+                                                                              });
+                                                                            </script>
                                                                         </div>
                                                                     </div>
                                                                 </div>
