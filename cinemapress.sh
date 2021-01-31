@@ -3107,10 +3107,24 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content
                 _content "NONE"
                 _content
-                _content "(wait 60 seconds)"
+                _content "(wait 20 seconds)"
                 _content
                 _line
                 _br
+                mkdir -p /home/default_server/config/production/nginx/conf.d/
+                mkdir -p /home/default_server/config/production/nginx/any.d/
+                echo "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /home/default_server;
+    server_name _;
+    deny all;
+    location / {return 444;}
+}
+                " > /home/default_server/config/production/nginx/any.d/default.conf
+                echo "  include /home/default_server/config/production/nginx/any.d/default.conf;" \
+                  > /home/default_server/config/production/nginx/conf.d/default.conf
+                docker restart nginx &>/dev/null
                 exit 0
             fi
             read_domain "${2}"
