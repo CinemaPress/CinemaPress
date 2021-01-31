@@ -1941,9 +1941,9 @@
                                             <% if (config.cache.ver === 0) { %>
                                                 <div class="input-group" style="display: none" id="ver">
                                                     <span class="input-group-addon text-muted"><span class="hidden-xs">logo.svg?v=</span><span class="visible-xs">?v=</span></span>
-                                                    <input name="config.cache.ver" value="<%= new Date().getTime().toString() %>" class="form-control input_url" type="text">
+                                                    <input name="config.cache.ver" id="cache_ver" value="0" class="form-control input_url" type="text">
                                                 </div>
-                                                <span class="btn btn-default btn-block" onclick='document.getElementById("ver").style.display="inline-table";this.style.display="none"'>
+                                                <span class="btn btn-default btn-block" onclick='document.getElementById("ver").style.display="inline-table";document.getElementById("cache_ver").value="<%= new Date().getTime().toString() %>";this.style.display="none"'>
                                                     <i class="fas fa-hammer"></i>&nbsp;&nbsp;<%= __('Зафиксировать кэш') %>
                                                 </span>
                                             <% } else { %>
