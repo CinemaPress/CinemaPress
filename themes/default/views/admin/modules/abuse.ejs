@@ -445,22 +445,24 @@
                                                     <ul data-add-name="modules.abuse.data.turbo">
                                                         <% if (modules.abuse.data.turbo) { %>
                                                             <% modules.abuse.data.turbo.forEach(function (id) { %>
-                                                                <li data-delete-id="<%- id %>"
-                                                                    data-delete-name="modules.abuse.data.turbo" style="display: none">
-                                                                    <img class="media-object"
-                                                                         src="/<%- config.urls.admin %>/poster?id=<%- id %>"
-                                                                         alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                                <li data-delete-id="<%- id %>" data-delete-name="modules.abuse.data.turbo" style="display: none">
+                                                                    <img class="media-object" data-src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                                 </li>
                                                             <% }); %>
                                                         <% } %>
                                                     </ul>
                                                     <script>
-                                                      var turbo = document.querySelectorAll('.thumbs-list li');
-                                                      turbo.forEach(function(m, i) {
-                                                        setTimeout(function() {
-                                                          m.style.display = 'inline-block';
-                                                        }, i * 300);
-                                                      });
+                                                      function show_posters() {
+                                                        var turbo = document.querySelectorAll('.thumbs-list li');
+                                                        turbo.forEach(function(m, i) {
+                                                          setTimeout(function() {
+                                                            m.querySelector('img').src = m.querySelector('img').dataset.src;
+                                                            setTimeout(function() {
+                                                              m.style.display = 'inline-block';
+                                                            }, i * 100);
+                                                          }, i * 300);
+                                                        });
+                                                      }
                                                     </script>
                                                 </div>
 
@@ -474,14 +476,20 @@
 
                                                     <div class="spacer-10"></div>
 
-                                                    <textarea class="form-control input_ids" name="modules.abuse.data.turbo"
-                                                              placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.turbo) { %><%- modules.abuse.data.turbo.join(',') %><% } %></textarea>
+                                                    <textarea class="form-control input_ids" name="modules.abuse.data.turbo" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.turbo) { %><%- modules.abuse.data.turbo.join(',') %><% } %></textarea>
 
                                                     <div class="spacer-10"></div>
 
                                                 </div>
 
                                                 <div class="advanced-textarea-footer">
+                                                    <% if (modules.abuse.data.turbo && modules.abuse.data.turbo.length > 100) { %>
+                                                        <div class="pull-left">
+                                                            <a href="javascript:void(0)" onclick="show_posters()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.turbo.length %></strong></a>
+                                                        </div>
+                                                    <% } else { %>
+                                                        <script>show_posters();</script>
+                                                    <% } %>
                                                     <div class="pull-right">
                                                         <a href="javascript:void(0)"
                                                            onclick="document.querySelector('#turbo_ids').style.display = 'block'"
@@ -728,22 +736,24 @@
                                         <ul data-add-name="modules.abuse.data.movies">
                                             <% if (modules.abuse.data.movies) { %>
                                                 <% modules.abuse.data.movies.forEach(function (id) { %>
-                                                    <li data-delete-id="<%- id %>"
-                                                        data-delete-name="modules.abuse.data.movies" style="display: none">
-                                                        <img class="media-object"
-                                                             src="/<%- config.urls.admin %>/poster?id=<%- id %>"
-                                                             alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                    <li data-delete-id="<%- id %>" data-delete-name="modules.abuse.data.movies" style="display: none">
+                                                        <img class="media-object" data-src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                     </li>
                                                 <% }); %>
                                             <% } %>
                                         </ul>
                                         <script>
-                                          var movies = document.querySelectorAll('.thumbs-list li');
-                                          movies.forEach(function(m, i) {
-                                            setTimeout(function() {
-                                              m.style.display = 'inline-block';
-                                            }, i * 300);
-                                          });
+                                          function show_posters2() {
+                                            var movies = document.querySelectorAll('.thumbs-list li');
+                                            movies.forEach(function(m, i) {
+                                              setTimeout(function() {
+                                                m.querySelector('img').src = m.querySelector('img').dataset.src;
+                                                setTimeout(function() {
+                                                  m.style.display = 'inline-block';
+                                                }, i * 100);
+                                              }, i * 300);
+                                            });
+                                          }
                                         </script>
                                     </div>
 
@@ -757,14 +767,20 @@
 
                                         <div class="spacer-10"></div>
 
-                                        <textarea class="form-control input_ids" name="modules.abuse.data.movies"
-                                                  placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %><% } %></textarea>
+                                        <textarea class="form-control input_ids" name="modules.abuse.data.movies" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (modules.abuse.data.movies) { %><%- modules.abuse.data.movies.join(',') %><% } %></textarea>
 
                                         <div class="spacer-10"></div>
 
                                     </div>
 
                                     <div class="advanced-textarea-footer">
+                                        <% if (modules.abuse.data.movies && modules.abuse.data.movies.length > 100) { %>
+                                            <div class="pull-left">
+                                                <a href="javascript:void(0)" onclick="show_posters2()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.movies.length %></strong></a>
+                                            </div>
+                                        <% } else { %>
+                                            <script>show_posters2();</script>
+                                        <% } %>
                                         <div class="pull-right">
                                             <a href="javascript:void(0)"
                                                onclick="document.querySelector('#abuse_ids').style.display = 'block'"

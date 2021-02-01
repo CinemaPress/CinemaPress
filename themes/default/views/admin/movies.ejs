@@ -280,14 +280,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><%= __('Тип:') %></span>
                                 <select name="movie.type" class="form-control">
-                                    <option value="0" <% if (movie.type !== 1) { %>selected="selected"
-                                            <% } %>
-                                    >
+                                    <option value="0" <% if (movie.type !== 1) { %>selected="selected"<% } %>>
                                         <%= __('Фильм') %>
                                     </option>
-                                    <option value="1" <% if (movie.type === 1) { %>selected="selected"
-                                            <% } %>
-                                    >
+                                    <option value="1" <% if (movie.type === 1) { %>selected="selected"<% } %>>
                                         <%= __('Сериал') %>
                                     </option>
                                 </select>
@@ -941,6 +937,28 @@
                                                                                       name="config.movies.cron"
                                                                                       placeholder="hour ~ url ~ id ~ url ~ info..."
                                                                                       style="height:300px;"><%- config.movies.cron.join('\n\n') %></textarea>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-lg-12 col-xs-12">
+                                                                        <div class="faq">
+                                                                            <article class="faq-group">
+                                                                                <header class="text-muted text-left">
+                                                                                    <i class="fa fa-plus"></i>
+                                                                                    <h3>
+                                                                                        <span class="fas fa-list-ol"></span> <%= __('Прокси-сервера') %>
+                                                                                    </h3>
+                                                                                </header>
+                                                                                <div class="faq-content clearfix">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-12">
+                                                                                            <textarea class="form-control custom" name="config.movies.proxy" placeholder="login:pass@192.168.0.1:1234, login:pass@192.168.0.2:4321 <> www.imdb.com" style="height:300px;"><%- config.movies.proxy.join('\n') %></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
                                                                     </div>
 
                                                                     <div class="spacer-10"></div>

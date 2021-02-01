@@ -174,13 +174,9 @@
                                                             <div class="thumbs-list thumbs-small">
                                                                 <ul>
                                                                     <% soon_id.forEach(function (id) { %>
-                                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- id %>"
-                                                                           target="_blank">
+                                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- id %>" target="_blank">
                                                                             <li style="background: none !important; display: none">
-                                                                                <img class="media-object"
-                                                                                     src="/<%- config.urls.admin %>/poster?id=<%- id %>"
-                                                                                     alt="ID: <%- id %>"
-                                                                                     title="ID: <%- id %>">
+                                                                                <img class="media-object" data-src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                                             </li>
                                                                         </a>
                                                                     <% }); %>
@@ -189,7 +185,8 @@
                                                                   var movies = document.querySelectorAll('.thumbs-list li');
                                                                   movies.forEach(function(m, i) {
                                                                     setTimeout(function() {
-                                                                      m.style.display = 'inline-block';
+                                                                      m.querySelector('img').src = m.querySelector('img').dataset.src;
+                                                                      setTimeout(function() {m.style.display = 'inline-block';}, i * 100);
                                                                     }, i * 300);
                                                                   });
                                                                 </script>

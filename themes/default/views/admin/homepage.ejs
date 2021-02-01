@@ -282,11 +282,8 @@
                                                     <ul data-add-name="config.index.ids.keys">
                                                         <% if (config.index.ids.keys) { %>
                                                             <% config.index.ids.keys.split(',').forEach(function (id) { %>
-                                                                <li data-delete-id="<%- id %>"
-                                                                    data-delete-name="config.index.ids.keys" style="display: none">
-                                                                    <img class="media-object"
-                                                                         src="/<%- config.urls.admin %>/poster?id=<%- id %>"
-                                                                         alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                                <li data-delete-id="<%- id %>" data-delete-name="config.index.ids.keys" style="display: none">
+                                                                    <img class="media-object" data-src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                                 </li>
                                                             <% }); %>
                                                         <% } %>
@@ -295,7 +292,8 @@
                                                       var movies = document.querySelectorAll('.thumbs-list li');
                                                       movies.forEach(function(m, i) {
                                                         setTimeout(function() {
-                                                          m.style.display = 'inline-block';
+                                                          m.querySelector('img').src = m.querySelector('img').dataset.src;
+                                                          setTimeout(function() {m.style.display = 'inline-block';}, i * 100);
                                                         }, i * 300);
                                                       });
                                                     </script>

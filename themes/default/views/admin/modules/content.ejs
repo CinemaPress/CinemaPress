@@ -246,18 +246,21 @@
                                                 <% if (content.content_movies) { %>
                                                     <% content.content_movies.split(',').forEach(function (id) { %>
                                                         <li data-delete-id="<%- id %>" data-delete-name="content.content_movies" style="display:none">
-                                                            <img class="media-object" src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
+                                                            <img class="media-object" data-src="/<%- config.urls.admin %>/poster?id=<%- id %>" alt="ID: <%- id %>" title="ID: <%- id %>">
                                                         </li>
                                                     <% }); %>
                                                 <% } %>
                                             </ul>
                                             <script>
-                                              var movies = document.querySelectorAll('.thumbs-list li');
-                                              movies.forEach(function(m, i) {
-                                                setTimeout(function() {
-                                                  m.style.display = 'inline-block';
-                                                }, i * 300);
-                                              });
+                                                function show_posters() {
+                                                  var movies = document.querySelectorAll('.thumbs-list li');
+                                                  movies.forEach(function(m, i) {
+                                                    setTimeout(function() {
+                                                      m.querySelector('img').src = m.querySelector('img').dataset.src;
+                                                      setTimeout(function() {m.style.display = 'inline-block';}, i * 100);
+                                                    }, i * 300);
+                                                  });
+                                                }
                                             </script>
                                         </div>
 
@@ -271,14 +274,20 @@
 
                                             <div class="spacer-10"></div>
 
-                                            <textarea class="form-control input_ids" name="content.content_movies"
-                                                      placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (content.content_movies) { %><%- content.content_movies %><% } %></textarea>
+                                            <textarea class="form-control input_ids" name="content.content_movies" placeholder="<%= __('Список идентификаторов фильмов') %>"><% if (content.content_movies) { %><%- content.content_movies %><% } %></textarea>
 
                                             <div class="spacer-10"></div>
 
                                         </div>
 
                                         <div class="advanced-textarea-footer">
+                                            <% if (content.content_movies && content.content_movies.split(',').length > 100) { %>
+                                            <div class="pull-left">
+                                                <a href="javascript:void(0)" onclick="show_posters()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- content.content_movies.split(',').length %></strong></a>
+                                            </div>
+                                            <% } else { %>
+                                                <script>show_posters();</script>
+                                            <% } %>
                                             <div class="pull-right">
                                                 <a href="javascript:void(0)"
                                                    onclick="document.querySelector('#content_ids').style.display = 'block'"
