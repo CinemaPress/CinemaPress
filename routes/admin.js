@@ -434,7 +434,7 @@ router.get('/:type?', function(req, res) {
       }
 
       CP_get.movies(
-        Object.assign({}, query, { from: process.env.CP_RT, certainly: true }),
+        Object.assign({}, query, { certainly: true }),
         1,
         '',
         1,
@@ -1055,7 +1055,8 @@ router.post('/change', function(req, res) {
               .replace(/\s+/g, ' ')
               .replace(/(^\s*)|(\s*)$/g, '')
           : '_empty';
-        form.movie.type = form.movie.type ? form.movie.type : '0';
+        form.movie.type =
+          form.movie.type && form.movie.type.toString() === '1' ? '1' : '0';
         form.movie.poster = form.movie.poster ? form.movie.poster : '';
         addMovie(form.movie, function(err, result) {
           return err ? callback(err) : callback(null, result);
