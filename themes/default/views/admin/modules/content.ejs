@@ -283,7 +283,7 @@
                                         <div class="advanced-textarea-footer">
                                             <% if (content.content_movies && content.content_movies.split(',').length > 100) { %>
                                             <div class="pull-left">
-                                                <a href="javascript:void(0)" onclick="show_posters()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- content.content_movies.split(',').length %></strong></a>
+                                                <a href="javascript:void(0)" onclick="show_posters();this.style.display='none'" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- content.content_movies.split(',').length %></strong></a>
                                             </div>
                                             <% } else { %>
                                                 <script>show_posters();</script>

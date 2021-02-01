@@ -485,7 +485,7 @@
                                                 <div class="advanced-textarea-footer">
                                                     <% if (modules.abuse.data.turbo && modules.abuse.data.turbo.length > 100) { %>
                                                         <div class="pull-left">
-                                                            <a href="javascript:void(0)" onclick="show_posters()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.turbo.length %></strong></a>
+                                                            <a href="javascript:void(0)" onclick="show_posters();this.style.display='none'" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.turbo.length %></strong></a>
                                                         </div>
                                                     <% } else { %>
                                                         <script>show_posters();</script>
@@ -776,7 +776,7 @@
                                     <div class="advanced-textarea-footer">
                                         <% if (modules.abuse.data.movies && modules.abuse.data.movies.length > 100) { %>
                                             <div class="pull-left">
-                                                <a href="javascript:void(0)" onclick="show_posters2()" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.movies.length %></strong></a>
+                                                <a href="javascript:void(0)" onclick="show_posters2();this.style.display='none'" class="btn btn-default"><i class="fas fa-images"></i> <strong><%- modules.abuse.data.movies.length %></strong></a>
                                             </div>
                                         <% } else { %>
                                             <script>show_posters2();</script>
