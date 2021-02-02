@@ -198,7 +198,7 @@ function codePlayer(type, movie, options) {
 
     data['data-player'] = (typeof player === 'string'
       ? player
-      : data['data-player']
+      : data['data-player'] || ''
     )
       .replace(/\[imdb_id]/, movie.custom.imdb_id ? movie.custom.imdb_id : '')
       .replace(/\[tmdb_id]/, movie.custom.tmdb_id ? movie.custom.tmdb_id : '')
