@@ -2837,6 +2837,10 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "autostart" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
             docker start "${CP_DOMAIN_}"
             docker start fail2ban
             docker start filestash
@@ -2844,7 +2848,7 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "renew" )
-             _br "${2}"
+            _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
