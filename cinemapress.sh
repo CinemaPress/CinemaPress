@@ -444,7 +444,7 @@ ip_install() {
         touch "/home/.uptimerobot" &>/dev/null
     fi
 
-    CHECK_MEGA=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
+    CHECK_MEGA=$(docker exec -t "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${CHECK_MEGA}" = "" ]; then
         _header "WARNING"
@@ -617,7 +617,7 @@ ip_install() {
 
     sleep 5
 
-    RCS=$(docker exec "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
+    RCS=$(docker exec -t "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
         if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
@@ -629,9 +629,9 @@ ip_install() {
             docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             sleep 10
-            CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
+            CHECK_MKDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
             sleep 3
-            CHECK_PURGE=$(docker exec "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
+            CHECK_PURGE=$(docker exec -t "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
             if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
                 _header "ERROR"
                 _content
@@ -686,9 +686,9 @@ ip_install() {
 
         echo "${PRC_}% backup check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-        CHECK_MKDIR=$(docker exec "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
+        CHECK_MKDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
         sleep 3
-        CHECK_PURGE=$(docker exec "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
+        CHECK_PURGE=$(docker exec -t "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
         if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
             _header "ERROR"
             _content
@@ -3894,16 +3894,16 @@ while [ "${WHILE}" -lt "2" ]; do
                   docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${4}" pass "${5}" \
                     >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
                 else
-                  RCS=$(docker exec "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
+                  RCS=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
                   if [ "${RCS}" = "" ]; then
                     docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${3}" pass "${4}" \
                       >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
                   fi
                 fi
                 sleep 10
-                CHECK_MKDIR=$(docker exec "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
+                CHECK_MKDIR=$(docker exec -t "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
                 sleep 3
-                CHECK_PURGE=$(docker exec "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
+                CHECK_PURGE=$(docker exec -t "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
                 if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
                     _header "ERROR"
                     _content
