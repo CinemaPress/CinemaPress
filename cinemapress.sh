@@ -2246,6 +2246,17 @@ docker_backup() {
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
     fi
+    CHECK_MKDIR=$(rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
+    sleep 3
+    CHECK_PURGE=$(rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
+    if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+        _header "ERROR"
+        _content
+        _content "Cannot connect to backup storage."
+        _content
+        _s
+        exit 0
+    fi
 }
 docker_mirror() {
     node /home/"${CP_DOMAIN}"/config/update/mirror.js
