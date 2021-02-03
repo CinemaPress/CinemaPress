@@ -318,7 +318,7 @@
                             </div>
                             <input type="text" class="form-control" name="movie.quality"
                                    value="<% if (movie.quality) { %><%- movie.quality %><% } %>"
-                                   placeholder="<%= __('Например:') %> <%= __('1080p') %>"
+                                   placeholder="<% if (!movie.quality) { %><%= __('Например:') %> <%= __('1080p') %><% } %>"
                                    style="font-weight: normal; font-size: 14px;">
                             <script>
                               document.addEventListener('DOMContentLoaded', function() {
@@ -333,7 +333,7 @@
                             </div>
                             <input type="text" class="form-control" name="movie.translate"
                                    value="<% if (movie.translate) { %><%- movie.translate %><% } %>"
-                                   placeholder="<%= __('Например:') %> <%= __('Субтитры') %>"
+                                   placeholder="<% if (!movie.translate) { %><%= __('Например:') %> <%= __('Субтитры') %><% } %>"
                                    style="font-weight: normal; font-size: 14px;">
                             <script>
                               document.addEventListener('DOMContentLoaded', function() {
