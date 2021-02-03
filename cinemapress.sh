@@ -431,9 +431,19 @@ ip_install() {
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
     LOCAL_MEGA_EMAIL=${2:-${MEGA_EMAIL}}
     LOCAL_MEGA_PASSWORD=${3:-${MEGA_PASSWORD}}
+    LOCAL_NAME_STORAGE=${4:-mega}
+    LOCAL_FTP_HOST=${5}
 
     if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
-        docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
+        LOCAL_CONF_STORAGE=()
+        if [ "${LOCAL_NAME_STORAGE}" = "mega" ]; then
+            LOCAL_CONF_STORAGE=(mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}")
+        elif [ "${LOCAL_NAME_STORAGE}" = "opendrive" ]; then
+            LOCAL_CONF_STORAGE=(opendrive username "${LOCAL_MEGA_EMAIL}" password "${LOCAL_MEGA_PASSWORD}")
+        elif [ "${LOCAL_NAME_STORAGE}" = "ftp" ]; then
+            LOCAL_CONF_STORAGE=(ftp user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" host "${LOCAL_FTP_HOST}")
+        fi
+        docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS "${LOCAL_CONF_STORAGE[@]}" \
             >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
         sleep 10
     fi
@@ -458,6 +468,15 @@ ip_install() {
         _content
         _content "email - your email on MEGA.nz"
         _content "pass - your password on MEGA.nz"
+        _content
+        _content "Configure for FTP storage in one line:"
+        _content
+        printf "     ~# cinemapress b %s ftp \"user\" \"pass\" \"host\"" "${LOCAL_DOMAIN}"
+        _br
+        _content
+        _content "user - your username on FTP"
+        _content "pass - your password on FTP"
+        _content "host - your IP/host on FTP"
         _content
         _s
         exit 0
@@ -488,13 +507,11 @@ ip_install() {
     XX=$(grep "\"CP_XMLPIPE2\"" /home/"${LOCAL_DOMAIN}"/process.json)
     KK=$(grep "\"key\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
     DD=$(grep "\"date\"" /home/"${LOCAL_DOMAIN}"/config/default/config.js)
-    PP=$(grep "\"pagespeed\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
     BM=$(grep "\"bomain\"" /home/"${LOCAL_DOMAIN}"/config/production/config.js)
     CP_ALL=$(echo ${AA} | sed 's/.*"CP_ALL":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
     CP_XMLPIPE2=$(echo ${XX} | sed 's/.*"CP_XMLPIPE2":\s*"\([a-zA-Z0-9_| -]*\)".*/\1/')
     CP_KEY=$(echo ${KK} | sed 's/.*"key":\s*"\(FREE\|[a-zA-Z0-9-]\{32\}\)".*/\1/')
     CP_DATE=$(echo ${DD} | sed 's/.*"date":\s*"\([0-9-]*\)".*/\1/')
-    CP_SPEED=$(echo ${PP} | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/')
     CP_BOMAIN=$(echo ${BM} | sed 's/.*"bomain":\s*"\([a-zA-Z0-9.-]*\)".*/\1/')
     if [ "${CP_ALL}" = "" ] || [ "${CP_ALL}" = "${AA}" ]; then CP_ALL=""; fi
     if [ "${CP_XMLPIPE2}" = "" ] || [ "${CP_XMLPIPE2}" = "${AA}" ]; then CP_XMLPIPE2=""; fi
@@ -578,11 +595,6 @@ ip_install() {
         sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${CP_DATE}\"/" \
             /home/"${LOCAL_DOMAIN}"/config/default/config.js
     fi
-#    if [ "${#CP_SPEED}" -eq "1" ]; then
-#        sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-#            /home/"${LOCAL_DOMAIN}"/config/production/config.js
-#        docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container speed "${CP_SPEED}"
-#    fi
     if [ "${DISABLE_SSL}" = "" ]; then
         docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container protocol "https://"
     fi
@@ -597,7 +609,7 @@ ip_install() {
 3_backup() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
-    LOCAL_ACTION=${2} # 1 | 2 | 3 | create | restore | config
+    LOCAL_ACTION=${2} # 1 | 2 | 3 | create | restore | config | opendrive | ftp
     LOCAL_MEGA_EMAIL=${3:-${MEGA_EMAIL}}
     LOCAL_MEGA_PASSWORD=${4:-${MEGA_PASSWORD}}
     LOCAL_ACTION2=${5} # 1 | 2 | create | restore
@@ -619,6 +631,30 @@ ip_install() {
 
     RCS=$(docker exec -t "${LOCAL_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMAPRESS")
 
+    LOCAL_CONF_STORAGE=()
+    if [ "${LOCAL_ACTION}" = "opendrive" ]; then
+        LOCAL_CONF_STORAGE=(opendrive username "${LOCAL_MEGA_EMAIL}" password "${LOCAL_MEGA_PASSWORD}")
+        docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS "${LOCAL_CONF_STORAGE[@]}" \
+              >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+        sh_progress 100
+        exit 0
+    elif [ "${LOCAL_ACTION}" = "ftp" ]; then
+        if [ "${LOCAL_DOMAIN2}" = "static" ]; then
+            LOCAL_CONF_STORAGE=(ftp user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" host "${LOCAL_ACTION2}")
+            docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMASTATIC "${LOCAL_CONF_STORAGE[@]}" \
+                >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+            sh_progress 100
+            exit 0
+        fi
+        LOCAL_CONF_STORAGE=(ftp user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" host "${LOCAL_ACTION2}")
+        docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS "${LOCAL_CONF_STORAGE[@]}" \
+              >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
+        sh_progress 100
+        exit 0
+    else
+        LOCAL_CONF_STORAGE=(mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}")
+    fi
+
     if [ "${LOCAL_ACTION}" = "config" ] || [ "${LOCAL_ACTION}" = "3" ] || [ "${RCS}" = "" ]; then
         if [ "${LOCAL_MEGA_EMAIL}" != "" ] && [ "${LOCAL_MEGA_PASSWORD}" != "" ]; then
 
@@ -626,7 +662,7 @@ ip_install() {
 
             echo "${PRC_}% config check-connection" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
-            docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS mega user "${LOCAL_MEGA_EMAIL}" pass "${LOCAL_MEGA_PASSWORD}" \
+            docker exec "${LOCAL_DOMAIN_}" rclone config create CINEMAPRESS "${LOCAL_CONF_STORAGE[@]}" \
                 >>/var/log/docker_backup_"$(date '+%d_%m_%Y')".log 2>&1
             sleep 10
             CHECK_MKDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
@@ -660,6 +696,15 @@ ip_install() {
             _content
             _content "email - your email on MEGA.nz"
             _content "pass - your password on MEGA.nz"
+            _content
+            _content "Configure for FTP storage in one line:"
+            _content
+            printf "     ~# cinemapress b %s ftp \"user\" \"pass\" \"host\"" "${LOCAL_DOMAIN}"
+            _br
+            _content
+            _content "user - your username on FTP"
+            _content "pass - your password on FTP"
+            _content "host - your IP/host on FTP"
             _content
             _content "after creating config, you can create/restore backup:"
             _content
@@ -1547,7 +1592,7 @@ read_cloudflare_api_key() {
 read_mega_email() {
     MEGA_EMAIL=${1:-${MEGA_EMAIL}}
     if [ "${MEGA_EMAIL}" = "" ]; then
-        _header "MEGA EMAIL"
+        _header "BACKUP EMAIL"
         AGAIN=1
         while [ "${AGAIN}" -lt "10" ]
         do
@@ -1579,7 +1624,7 @@ read_mega_email() {
 read_mega_password() {
     MEGA_PASSWORD=${1:-${MEGA_PASSWORD}}
     if [ "${MEGA_PASSWORD}" = "" ]; then
-        _header "MEGA PASSWORD"
+        _header "BACKUP PASSWORD"
         AGAIN=1
         while [ "${AGAIN}" -lt "10" ]
         do
@@ -2433,7 +2478,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_not
             _s "${2}"
             sh_progress
-            2_update "${2}" "${3}" "${4}"
+            2_update "${2}" "${3}" "${4}" "${5}" "${6}"
             sh_progress 100
             post_commands
             exit 0
@@ -3904,6 +3949,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ "${3}" = "config" ]; then
                   docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC mega user "${4}" pass "${5}" \
                     >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
+                elif [ "${3}" = "ftp" ]; then
+                  docker exec "${CP_DOMAIN_}" rclone config create CINEMASTATIC ftp user "${4}" pass "${5}" host "${6}" \
+                    >>/var/log/docker_static_"$(date '+%d_%m_%Y')".log 2>&1
                 else
                   RCS=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMASTATIC")
                   if [ "${RCS}" = "" ]; then
@@ -3925,7 +3973,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
                 cp -r /home/"${CP_DOMAIN}"/config/production/rclone.conf /var/rclone.conf
             fi
-            if [ "${3}" = "restore" ] || [ "${5}" = "restore" ] || [ "${6}" = "restore" ]; then
+            if [ "${3}" = "restore" ] || [ "${5}" = "restore" ] || [ "${6}" = "restore" ] || [ "${7}" = "restore" ]; then
                 sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv copy CINEMASTATIC:${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/
                 cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/static.tar
                 rm -rf /home/${CP_DOMAIN}/static.tar
@@ -3934,7 +3982,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     cd /home/${CP_DOMAIN} && tar -xf /home/${CP_DOMAIN}/app.tar
                     rm -rf /home/${CP_DOMAIN}/app.tar
                 fi
-            elif [ "${3}" = "create" ] || [ "${5}" = "create" ] || [ "${6}" = "create" ]; then
+            elif [ "${3}" = "create" ] || [ "${5}" = "create" ] || [ "${6}" = "create" ] || [ "${7}" = "create" ]; then
                 cd /home/${CP_DOMAIN} && tar -uf /home/${CP_DOMAIN}/static.tar \
                     files/poster \
                     files/picture
@@ -4225,6 +4273,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " bot       - Install website for bots"; _br;
             printf " bot_https - Install website for bots and generate SSL"; _br;
             printf " ds        - The domain that is the main on the server and accepts all requests"; _br;
+            printf " ds none   - Deny access to the site by IP address"; _br;
             printf " cf        - Adding all subdomains to CloudFlare"; _br;
             printf " mode      - debug: more information about the speed and memory of each request"; _br;
             printf " uptimerobot - Ping check for container and website every 2 minutes, if the website"; _br;
