@@ -31,6 +31,9 @@ module.exports = {
       "proxied": "true"
     }
   },
+  "realtime": {
+    "only_realtime": 0
+  },
   "bots": [
     "google ~ googlebot.com,google.com ~ ~ Fake Google Bot!",
     "yandex. ~ yandex.ru,yandex.net,yandex.com ~ ~ Fake Yandex Bot!",

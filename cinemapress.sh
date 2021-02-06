@@ -2142,9 +2142,13 @@ docker_zero() {
     if [ -n "${1}" ]; then
         sed -E -i "s/\"CP_XMLPIPE2\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_XMLPIPE2\":\"xmlpipe2_${CP_DOMAIN_}\"/" \
             /home/"${CP_DOMAIN}"/process.json
+        sed -Ei "s/\"only_realtime\":\s*[0-9]*,/\"only_realtime\":0,/" \
+            /home/"${CP_DOMAIN}"/config/production/config.js
     else
         sed -E -i "s/\"CP_XMLPIPE2\":\s*\"[a-zA-Z0-9_| -]*\"/\"CP_XMLPIPE2\":\"rt_${CP_DOMAIN_}\"/" \
             /home/"${CP_DOMAIN}"/process.json
+        sed -Ei "s/\"only_realtime\":\s*[0-9]*,/\"only_realtime\":1,/" \
+            /home/"${CP_DOMAIN}"/config/production/config.js
     fi
     cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
 }
@@ -2211,6 +2215,11 @@ docker_restore() {
       fi
     else
       rm -rf /home/"${CP_DOMAIN}"/config/user/*;
+    fi
+    R=$(grep "\"only_realtime\"" /home/"${CP_DOMAIN}"/config/production/config.js)
+    ONLY_REALTIME=$(echo "${R}" | sed 's/.*"only_realtime":\s*\([0-9]*\).*/\1/')
+    if [ "${ONLY_REALTIME}" = "1" ]; then
+        docker_zero
     fi
     docker_start
 }
