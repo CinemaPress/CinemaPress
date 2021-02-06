@@ -845,9 +845,11 @@
     }
 
     if (data.config && data.config.movies && data.config.movies.proxy) {
-      data.config.movies.proxy = data.config.movies.proxy.split(/(\n)/ig).filter(Boolean);
-      data.config.movies.proxy = data.config.movies.proxy.join(',').split(/(,)/ig).filter(function(p) {
-        return p.replace(/(^\s*)|(\s*)$/g, '');
+      data.config.movies.proxy = data.config.movies.proxy.split(/\n/ig).filter(Boolean);
+      data.config.movies.proxy = data.config.movies.proxy.join(',').split(/,/ig).filter(function(p) {
+        var pp = p.replace(/\s*/g, '').trim();
+        console.log('pp', pp);
+        return pp ? pp : false;
       });
     }
 
