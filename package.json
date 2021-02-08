@@ -61,7 +61,8 @@
     "xml-js": "1.6.11",
     "htmlparser2": "6.0.0",
     "htmlmetaparser": "2.1.1",
-    "i18n-iso-countries": "6.4.0"
+    "i18n-iso-countries": "6.4.0",
+    "https-proxy-agent": "5.0.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"
