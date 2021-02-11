@@ -893,9 +893,13 @@ router.post('/change', function(req, res) {
               if (err) console.error(err);
               var id = 100000000;
               form.movie.id = form.movie.kp_id =
-                movies && movies.length && parseInt(movies[0].id) <= id
+                movies &&
+                movies.length &&
+                movies[0] &&
+                movies[0].id &&
+                parseInt(movies[0].id) <= id
                   ? id + 1
-                  : parseInt(movies[0].id) + 1;
+                  : parseInt((movies && movies[0] && movies[0].id) || id) + 1;
               callback(null, form.movie.id);
             }
           );
