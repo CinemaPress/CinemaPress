@@ -4108,59 +4108,61 @@ while [ "${WHILE}" -lt "2" ]; do
                 if [ -f "${D}/process.json" ] || [ -f "${D}/index.php" ]; then
                     DD=$(find "${D}" -maxdepth 0 -printf "%f")
                     DD_=$(echo "${DD}" | sed -r "s/[^A-Za-z0-9]/_/g")
-                    CRASH+=("PING ${DD}")
-                    CRASH+=("
+                    if [ "$(docker ps -aq -f status=running -f name=^/"${DD_}"\$ 2>/dev/null)" != "" ]; then
+                        CRASH+=("PING ${DD}")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" cinemapress ping 2>/dev/null)")
-                    CRASH+=("
+                        CRASH+=("$(docker exec -t "${DD_}" cinemapress ping 2>/dev/null)")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("PS ${DD}")
-                    CRASH+=("
+                        CRASH+=("PS ${DD}")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" ps 2>/dev/null)")
-                    CRASH+=("
+                        CRASH+=("$(docker exec -t "${DD_}" ps 2>/dev/null)")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("PM2 LIST")
-                    CRASH+=("
+                        CRASH+=("PM2 LIST")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 list 2>/dev/null)")
-                    CRASH+=("
+                        CRASH+=("$(docker exec -t "${DD_}" pm2 list 2>/dev/null)")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("PM2 ERR")
-                    CRASH+=("
+                        CRASH+=("PM2 ERR")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --err --lines 50 --nostream 2>/dev/null)")
-                    CRASH+=("
+                        CRASH+=("$(docker exec -t "${DD_}" pm2 logs --err --lines 50 --nostream 2>/dev/null)")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("PM2 OUT")
-                    CRASH+=("
+                        CRASH+=("PM2 OUT")
+                        CRASH+=("
 ---------------------------------------------------
 ")
-                    CRASH+=("$(docker exec -t "${DD_}" pm2 logs --out --lines 50 --nostream 2>/dev/null)")
-                    CRASH+=("
+                        CRASH+=("$(docker exec -t "${DD_}" pm2 logs --out --lines 50 --nostream 2>/dev/null)")
+                        CRASH+=("
 ---------------------------------------------------
 ")
+                        CRASH+=("CRON LOG ${DD}")
+                        CRASH+=("
+---------------------------------------------------
+")
+                        CRASH+=("$(docker exec -t "${DD_}" tail -n 50 "/home/${DD}/log/cron_$(date '+%d_%m_%Y').log" | grep -v CP_save)")
+                        CRASH+=("
+---------------------------------------------------
+")
+                    fi
                     CRASH+=("NGINX ACCESS ${DD}")
                     CRASH+=("
 ---------------------------------------------------
 ")
                     CRASH+=("$(tail -n 50 "/var/log/nginx/access_${DD}.log")")
-                    CRASH+=("
----------------------------------------------------
-")
-                    CRASH+=("CRON LOG ${DD}")
-                    CRASH+=("
----------------------------------------------------
-")
-                    CRASH+=("$(docker exec -t "${DD_}" tail -n 50 "/home/${DD}/log/cron_$(date '+%d_%m_%Y').log" | grep -v CP_save)")
                     CRASH+=("
 ---------------------------------------------------
 ")
