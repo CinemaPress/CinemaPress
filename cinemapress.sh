@@ -1892,7 +1892,14 @@ sh_yes() {
         _content
         _content "Website on this domain is installed!"
         _content
-        if [ "${1}" = "reboot" ]; then
+        if [ -n "${1}" ]; then
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container "passwd" "${1}" \
+                >>/var/log/docker_passwd_"$(date '+%d_%m_%Y')".log 2>&1
+            docker exec nginx nginx -s reload \
+                >>/var/log/docker_passwd_"$(date '+%d_%m_%Y')".log 2>&1
+            _content "USERNAME: admin"
+            _content "PASSWORD: ${1}"
+            _content
             _content "Reboot after 10 seconds ..."
             _content "To cancel, press Ctrl + C"
             _content
@@ -2470,7 +2477,7 @@ while [ "${WHILE}" -lt "2" ]; do
     case ${OPTION} in
         "i"|"install"|1 )
             read_domain "${2}"
-            sh_yes "reboot"
+            sh_yes "${5}"
             read_lang "${3}"
             read_theme "${4}"
             read_password "${5}"
