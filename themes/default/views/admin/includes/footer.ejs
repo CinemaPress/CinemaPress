@@ -51,6 +51,10 @@
     if (movies_cron)
       movies_cron.addEventListener('click', moviesCronData);
 
+    var movies_cron_stop = document.querySelector('#movies_cron_stop');
+    if (movies_cron_stop)
+      movies_cron_stop.addEventListener('click', moviesCronStopData);
+
     var database = document.querySelector('#database');
     if (database)
       database.addEventListener('click', databaseData);
@@ -239,6 +243,38 @@
         setTimeout(function() {
           self.innerHTML = '<i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации')  %>';
           self.addEventListener('click', moviesCronData);
+        },60000);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      location.reload();
+    }, 25000);
+
+  }
+
+  function moviesCronStopData() {
+
+    var self = this;
+    self.removeEventListener('click', moviesCronStopData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'movies_cron_stop': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<i class="fa fa-bug"></i>';
+      } else {
+        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+        setTimeout(function() {
+          self.innerHTML = '<i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<%= __('Остановить получение информации')  %>';
+          self.addEventListener('click', moviesCronStopData);
         },60000);
       }
     });

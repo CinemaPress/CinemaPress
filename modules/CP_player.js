@@ -205,8 +205,12 @@ function codePlayer(type, movie, options) {
       .replace(/\[type]/, '' + movie.type === '1' ? movie.type : '');
     data['data-title'] = movie.title_full ? movie.title_full : '';
     data['data-kinopoisk'] =
-      movie.kp_id && parseInt(movie.kp_id)
+      movie.kp_id &&
+      parseInt(movie.kp_id) &&
+      (parseInt(movie.kp_id) <= 100000000 || parseInt(movie.kp_id) > 1000000000)
         ? '' + (parseInt(movie.kp_id) % 1000000000)
+        : movie.custom && movie.custom.movie_id
+        ? movie.custom.movie_id
         : '';
     data['data-imdb'] = movie.custom.imdb_id ? movie.custom.imdb_id : '';
     data['data-tmdb'] = movie.custom.tmdb_id ? movie.custom.tmdb_id : '';

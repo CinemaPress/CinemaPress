@@ -963,20 +963,35 @@
 
                                                                     <div class="spacer-10"></div>
 
-                                                                    <div class="col-lg-12 col-xs-12 text-center" style="margin-bottom: 10px">
+                                                                    <div class="col-lg-6 col-xs-6 text-center" style="margin-bottom: 10px">
                                                                         <span class="btn btn-primary btn-sm btn-block movies_cron">
                                                                             <span id="movies_cron">
                                                                                 <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>
                                                                             </span>
                                                                         </span>
                                                                     </div>
+                                                                    <div class="col-lg-6 col-xs-6 text-center" style="margin-bottom: 10px">
+                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron_stop">
+                                                                            <span id="movies_cron_stop">
+                                                                                <i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<%= __('Остановить получение информации') %>
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
                                                                     <style>
                                                                         .movies_cron {
-                                                                            background: #1a2035;
+                                                                            background: #192c35;
                                                                             border: 1px solid #2f374b !important;
                                                                         }
                                                                         .movies_cron:hover {
-                                                                            background: #151a2a;
+                                                                            background: #16252a;
+                                                                            border: 1px solid #2f374b !important;
+                                                                        }
+                                                                        .movies_cron_stop {
+                                                                            background: #261d35;
+                                                                            border: 1px solid #2f374b !important;
+                                                                        }
+                                                                        .movies_cron_stop:hover {
+                                                                            background: #22172a;
                                                                             border: 1px solid #2f374b !important;
                                                                         }
                                                                     </style>

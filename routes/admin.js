@@ -1118,7 +1118,26 @@ router.post('/change', function(req, res) {
             config.domain +
             '/log/movies_' +
             new Date().toISOString().split('T')[0] +
-            '.log 2>&1) &',
+            '.log 2>&1) & ' +
+            'echo $! > /home/' +
+            config.domain +
+            '/log/movies.pid',
+          function(err) {
+            return callback();
+          }
+        );
+      },
+      movies_cron_stop: function(callback) {
+        if (!form.movies_cron_stop) return callback(null, 'Null');
+        exec(
+          'if [ -f "/home/' +
+            config.domain +
+            '/log/movies.pid" ]; ' +
+            'then pkill -P $(cat /home/' +
+            config.domain +
+            '/log/movies.pid); rm -f /home/' +
+            config.domain +
+            '/log/movies.pid; fi',
           function(err) {
             return callback();
           }
