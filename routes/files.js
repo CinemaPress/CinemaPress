@@ -54,6 +54,9 @@ router.get(
     var file = id + '.' + format;
     var tvmaze_file = file.replace('-', '/');
     var url_kp = /^[0-9]*$/.test(id);
+    var url_ya = /^(get-kinopoisk-image|get-kino-vod-films-gallery)[a-z0-9\-]*$/.test(
+      id
+    );
     var url_tvmaze = /^[0-9]{1,3}-[0-9]*$/.test(id);
     var url_tmdb = /^[a-z0-9]*$/i.test(id);
     var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
@@ -81,6 +84,8 @@ router.get(
 
     if (url_kp) {
       source = 'kinopoisk';
+    } else if (url_ya) {
+      source = 'yandex';
     } else if (url_tvmaze) {
       source = 'tvmaze';
     } else if (url_tmdb) {
@@ -109,6 +114,26 @@ router.get(
                 break;
               case 'original':
                 image += '/images/film_big/' + file;
+                break;
+            }
+            break;
+          case 'yandex':
+            file = id
+              .replace(
+                /(get-kinopoisk-image-|get-kino-vod-films-gallery-)/i,
+                ''
+              )
+              .replace('-', '/');
+            image += 'avatars.mds.yandex.net';
+            switch (size) {
+              case 'small':
+                image += '/get-kinopoisk-image/' + file + '/180';
+                break;
+              case 'medium':
+                image += '/get-kinopoisk-image/' + file + '/360';
+                break;
+              case 'original':
+                image += '/get-kinopoisk-image/' + file + '/orig';
                 break;
             }
             break;
@@ -187,6 +212,26 @@ router.get(
                 break;
               case 'original':
                 image += '/images/kadr/' + file;
+                break;
+            }
+            break;
+          case 'yandex':
+            file = id
+              .replace(
+                /(get-kinopoisk-image-|get-kino-vod-films-gallery-)/i,
+                ''
+              )
+              .replace('-', '/');
+            image += 'avatars.mds.yandex.net';
+            switch (size) {
+              case 'small':
+                image += '/get-kino-vod-films-gallery/' + file + '/280x178';
+                break;
+              case 'medium':
+                image += '/get-kino-vod-films-gallery/' + file + '/600x380';
+                break;
+              case 'original':
+                image += '/get-kino-vod-films-gallery/' + file + '/orig';
                 break;
             }
             break;

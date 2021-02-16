@@ -963,18 +963,36 @@
 
                                                                     <div class="spacer-10"></div>
 
+                                                                    <div class="col-lg-12 col-xs-12">
+                                                                        <div class="faq">
+                                                                            <article class="faq-group">
+                                                                                <header class="text-muted text-left">
+                                                                                    <i class="fa fa-plus"></i>
+                                                                                    <h3>
+                                                                                        <span class="fas fa-cookie-bite"></span>&nbsp;&nbsp;Cookies
+                                                                                    </h3>
+                                                                                </header>
+                                                                                <div class="faq-content clearfix">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-12">
+                                                                                            <textarea class="form-control custom" name="config.movies.cookies" placeholder='{"https://www.imdb.com": [ { "key": "value" } ]}' style="height:300px;"><%- JSON.stringify(JSON.parse(config.movies.cookies), null, 2) %></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
                                                                     <div class="col-lg-6 col-xs-6 text-center" style="margin-bottom: 10px">
-                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron">
-                                                                            <span id="movies_cron">
-                                                                                <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>
-                                                                            </span>
+                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron" id="movies_cron">
+                                                                            <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>
                                                                         </span>
                                                                     </div>
                                                                     <div class="col-lg-6 col-xs-6 text-center" style="margin-bottom: 10px">
-                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron_stop">
-                                                                            <span id="movies_cron_stop">
-                                                                                <i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<%= __('Остановить получение информации') %>
-                                                                            </span>
+                                                                        <span class="btn btn-primary btn-sm btn-block movies_cron_stop" id="movies_cron_stop">
+                                                                            <i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<%= __('Остановить получение информации') %>
                                                                         </span>
                                                                     </div>
                                                                     <style>

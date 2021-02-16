@@ -579,7 +579,8 @@
           'config.l.legal',
           'config.cache.ver',
           'config.movies.cron',
-          'config.movies.proxy'
+          'config.movies.proxy',
+          'config.movies.cookies'
         ];
         var empty_module = [
           'modules.comments.data.cackle.id',
@@ -791,6 +792,42 @@
 
     if (data.movie && data.movie.id && data.movie.kp_id && data.movie.id !== data.movie.kp_id) {
       data.movie.id = data.movie.kp_id;
+    }
+
+    if (data.movie && data.movie.poster) {
+      if (
+        data.movie.poster &&
+        data.movie.poster.toLowerCase().indexOf('/st.kp.') + 1
+      ) {
+        data.movie.poster = '1';
+      } else if (
+        /^.*?avatars\.mds\.yandex\.net\/(get-kinopoisk-image|get-kino-vod-films-gallery)\/([0-9]*)\/([a-z0-9\-]*)\/[0-9x_]$/i.test(
+          data.movie.poster
+        )
+      ) {
+        data.movie.poster = data.movie.poster.replace(
+          /^.*?avatars\.mds\.yandex\.net\/(get-kinopoisk-image|get-kino-vod-films-gallery)\/([0-9]*)\/([a-z0-9\-]*)\/[0-9x_]$/i,
+          '/$1-$2-$3'
+        );
+      } else if (
+        /^.*?media-amazon\.com\/images\/[a-z0-9]\/([a-z0-9@.,_\-]*)$/i.test(
+          data.movie.poster
+        )
+      ) {
+        data.movie.poster = data.movie.poster.replace(
+          /^.*?media-amazon\.com\/images\/[a-z0-9]\/([a-z0-9@.,_\-]*)$/i,
+          '/$1'
+        );
+      } else if (
+        /^.*?static\.tvmaze\.com\/uploads\/images\/[a-z_]*\/([0-9]*)\/([0-9]*)\.([a-z0-9]*)$/i.test(
+          data.movie.poster
+        )
+      ) {
+        data.movie.poster = data.movie.poster.replace(
+          /^.*?static\.tvmaze\.com\/uploads\/images\/[a-z_]*\/([0-9]*)\/([0-9]*)\.([a-z0-9]*)$/i,
+          '/$1-$2.$3'
+        );
+      }
     }
 
     if (data.movie && !data.movie.id) {

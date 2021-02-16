@@ -62,7 +62,9 @@
     "htmlparser2": "6.0.0",
     "htmlmetaparser": "2.1.1",
     "i18n-iso-countries": "6.4.0",
-    "https-proxy-agent": "5.0.0"
+    "https-proxy-agent": "5.0.0",
+    "tough-cookie": "4.0.0",
+    "axios-cookiejar-support": "1.0.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"
