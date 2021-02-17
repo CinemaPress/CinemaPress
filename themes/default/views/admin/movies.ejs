@@ -975,7 +975,7 @@
                                                                                 <div class="faq-content clearfix">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-12">
-                                                                                            <textarea class="form-control custom" name="config.movies.cookies" placeholder='{"https://www.imdb.com": [ { "key": "value" } ]}' style="height:300px;"><%- JSON.stringify(JSON.parse(config.movies.cookies), null, 2) %></textarea>
+                                                                                            <textarea class="form-control custom" name="config.movies.cookies" placeholder='{"https://www.imdb.com": [ { "key": "value" } ]}' style="height:300px;"><%- config.movies && config.movies.cookies ? JSON.stringify(JSON.parse(config.movies.cookies), null, 2) : '' %></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
