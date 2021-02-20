@@ -4018,6 +4018,14 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "scp" )
+            if [ "${2}" = "" ] || [ "${3}" = "" ]; then
+                exit 0
+            fi
+            read_domain "${2}"
+            scp -r -q root@"${3}":/var/lib/sphinx/data/movies_"${CP_DOMAIN_}"* /var/lib/sphinx/data/
+            exit 0
+        ;;
         "cf"|"subdomains"|"sub" )
             _br "${4}"
             read_domain "${2}"
