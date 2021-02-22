@@ -1012,5 +1012,9 @@
 	"ID World-Art": "ID World-Art",
 	"Список фильмов": "Popis movieova",
 	"Прокси-сервера": "Proxy poslužitelji",
-	"Остановить получение информации": "Prestanite primati informacije"
+	"Остановить получение информации": "Prestanite primati informacije",
+	"Просмотр файла robots.txt и карты сайта": "Pogledajte datoteku robots.txt i kartice",
+	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Ograničenje na pregledavanje robots.txt datoteke i web kartica za osobe i za robote",
+	"Разрешить всем": "Dopusti sve",
+	"Только ботам": "Samo botam"
 }

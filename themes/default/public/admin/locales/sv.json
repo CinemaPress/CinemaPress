@@ -1012,5 +1012,9 @@
 	"ID World-Art": "ID World-Art",
 	"Список фильмов": "Lista över movieer",
 	"Прокси-сервера": "Proxyservrar",
-	"Остановить получение информации": "Sluta ta emot information"
+	"Остановить получение информации": "Sluta ta emot information",
+	"Просмотр файла robots.txt и карты сайта": "Visa robots.txt-filen och platskorten",
+	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Begränsning för att visa robotar.txt-filen och platskort för människor och för bots",
+	"Разрешить всем": "Tillåt alla",
+	"Только ботам": "Bara botam"
 }

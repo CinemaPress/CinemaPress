@@ -44,7 +44,7 @@ router.get('/?', function(req, res) {
   if (
     (config.bomain && host_domain === config.subdomain + config.domain) ||
     (config.bomain && host_domain === config.ru.subdomain + config.ru.domain) ||
-    !req.userinfo.bot.main
+    (!req.userinfo.bot.main && !config.user_bot)
   ) {
     res.send('User-agent: *\nDisallow: /');
   } else {

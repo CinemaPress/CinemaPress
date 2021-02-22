@@ -1012,5 +1012,9 @@
 	"ID World-Art": "ID World-Art",
 	"Список фильмов": "Seznam movieov",
 	"Прокси-сервера": "Proxy strežniki",
-	"Остановить получение информации": "Nehajte prejemati informacije"
+	"Остановить получение информации": "Nehajte prejemati informacije",
+	"Просмотр файла robots.txt и карты сайта": "Oglejte si datoteke robots.txt in spletne strani",
+	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Omejitev pri ogledu robots.txt kartic in spletnih mest za ljudi in za robote",
+	"Разрешить всем": "Dovolite vse",
+	"Только ботам": "Samo botam"
 }

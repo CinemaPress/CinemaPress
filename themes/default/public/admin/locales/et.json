@@ -1012,5 +1012,9 @@
 	"ID World-Art": "ID World-Art",
 	"Список фильмов": "Nimekiri movieide",
 	"Прокси-сервера": "Puhverserverid",
-	"Остановить получение информации": "Lõpetage teabe saamine"
+	"Остановить получение информации": "Lõpetage teabe saamine",
+	"Просмотр файла robots.txt и карты сайта": "Vaata robots.txt faili ja saidi kaardid",
+	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Piirang robots.txt faili ja saidi kaartide vaatamiseks inimestele ja botidele",
+	"Разрешить всем": "Lubama kõiki",
+	"Только ботам": "Ainult botami"
 }
