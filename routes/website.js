@@ -167,9 +167,13 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     t
   ) {
     if (req.query[t] && level1 !== config.urls[t]) {
-      options.query[t] = CP_regexp.str(
-        CP_translit.text(req.query[t], true, config.urls[t])
-      );
+      if (t === 'year') {
+        options.query[t] = CP_regexp.str(req.query[t]);
+      } else {
+        options.query[t] = CP_regexp.str(
+          CP_translit.text(req.query[t], true, config.urls[t])
+        );
+      }
       if (!level2) {
         level2 = 'X';
       }
