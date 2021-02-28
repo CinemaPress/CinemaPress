@@ -221,7 +221,7 @@ module.exports = {
     "director": "Фильмы которые срежиссировал [director] [sorting] [page]",
     "directors": "Самые популярные режиссеры",
     "type": "[Type] [year] [genre] [country] [sorting] [page]",
-    "search": "Поиск фильма «[search]» [sorting] [page]",
+    "search": "(X) { [Type] +? [year] +? [Genre] +? [Country] +? [sorting] [page] }\n(default) { Поиск фильма «[search]» [sorting] [page] }",
     "num": "на странице [num]",
     "movie": {
       "movie": "(фильмы) { Фильм «[title]» }\n(сериалы) { Сериал «[title]» }\n(мультфильмы) { Мультфильм «[title]» }\n(мультсериалы) { Мультсериал «[title]» }\n(аниме) { Аниме «[title]» }\n(передачи) { ТВ-передача «[title]» }\n(default) { «[title]» }",
@@ -258,7 +258,7 @@ module.exports = {
     "director": "Фильмы которые срежиссировал [director] [sorting] [page]",
     "directors": "Самые популярные режиссеры",
     "type": "[Type] [year] [genre] [country] [sorting] [page]",
-    "search": "Поиск фильма «[search]» [sorting] [page]",
+    "search": "(X) { [Type] +? [year] +? [Genre] +? [Country] +? [sorting] [page] }\n(default) { Поиск фильма «[search]» [sorting] [page] }",
     "num": "на странице [num]",
     "movie": {
       "movie": "[title]",
@@ -295,7 +295,7 @@ module.exports = {
     "director": "Фильмы которые срежиссировал [director]",
     "directors": "Самые популярные режиссеры",
     "type": "[Type] [year] [genre] [country]",
-    "search" : "Поиск фильма «[search]»",
+    "search" : "(X) { [Type] +? [year] +? [Genre] +? [Country] }\n(default) { Поиск фильма «[search]» }",
     "movie": {
       "movie": "Картина «[title]» была выпущена в [year] году и сразу завоевала внимание зрителей в разных [уголках Земли|частях планеты]. Киноленты из жанра [genre] всегда пользовались особой популярностью, к тому же, когда их снимают такие именитые режиссеры, как [director]. Страна, которая приложила руку к этому кинопроизведению считается [country], потому зрители уже могут приблизительно представить уровень [красочности|логики|картинки|искусства] по аналогичным творениям.",
       "online": "[title] онлайн",

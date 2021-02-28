@@ -221,7 +221,7 @@ module.exports = {
     "director": "Movies that directed [director] [sorting] [page]",
     "directors": "Most popular directors",
     "type": "[Type] [year] [genre] [country] [sorting] [page]",
-    "search" : "Search «[search]» [sorting] [page]",
+    "search" : "(X) { [Type] +? [year] +? [Genre] +? [Country] +? [sorting] [page] }\n(default) { Search «[search]» [sorting] [page] }",
     "num": "on page [num]",
     "movie": {
       "movie": "(movies) { Movie «[title]» }\n(series) { TV-Series «[title]» }\n(cartoons) { Cartoon «[title]» }\n(animated) { Animated «[title]» }\n(anime) { Anime «[title]» }\n(tv) { TV-show «[title]» }\n(default) { «[title]» }",
@@ -258,7 +258,7 @@ module.exports = {
     "director": "Movies that directed [director] [sorting] [page]",
     "directors": "Most popular directors",
     "type": "[Type] [year] [genre] [country] [sorting] [page]",
-    "search" : "Search «[search]» [sorting] [page]",
+    "search" : "(X) { [Type] +? [year] +? [Genre] +? [Country] +? [sorting] [page] }\n(default) { Search «[search]» [sorting] [page] }",
     "num": "on page [num]",
     "movie": {
       "movie": "[title] [year]",
@@ -295,7 +295,7 @@ module.exports = {
     "director": "Movies that directed [director]",
     "directors": "Most popular directors",
     "type": "[Type] [year] [genre] [country]",
-    "search" : "Search «[search]»",
+    "search" : "(X) { [Type] +? [year] +? [Genre] +? [Country] }\n(default) { Search «[search]» }",
     "movie": {
       "movie": "The picture «[title]» was released in [year] year and immediately won the attention of viewers in different parts of the earth. Film genre [genre] has always been very popular, moreover, when they are shot by such eminent directors as [director]. The country that put a hand to this film is considered [country], because viewers can already approximately imagine the level of [color|logic|art|pictures] for similar creations.",
       "online": "[title] online",
