@@ -145,7 +145,8 @@ module.exports = {
       "# 0 ~ https://api.themoviedb.org/3/tv/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?api_key=TOKEN&append_to_response=credits,external_ids&language=ru ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_ru ~ original_name <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country"
     ],
     "proxy": [],
-    "cookies": ""
+    "cookies": "",
+    "skip": []
   },
   "codes": {
     "head": "",
@@ -449,6 +450,7 @@ module.exports = {
     "downloading": "Скачать",
     "safety": "Безопасно",
     "instruction": "Инструкция",
-    "legal": "Изображения/видео могут быть защищены авторским правом. Подробнее…"
+    "legal": "Изображения/видео могут быть защищены авторским правом. Подробнее…",
+    "reset": "Сбросить"
   }
 };

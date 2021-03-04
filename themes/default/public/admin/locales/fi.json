@@ -1016,5 +1016,6 @@
 	"Просмотр файла robots.txt и карты сайта": "Näytä robots.txt-tiedosto ja sivustokortit",
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Rajoittaminen robots.txt-tiedostojen ja paikan korttien katseluun ihmisille ja botit",
 	"Разрешить всем": "Salli kaikki",
-	"Только ботам": "Vain botam"
+	"Только ботам": "Vain botam",
+	"Пропускать фильмы": "Ohita elokuvat"
 }

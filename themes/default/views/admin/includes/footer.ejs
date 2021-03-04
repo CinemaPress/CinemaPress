@@ -580,6 +580,7 @@
           'config.cache.ver',
           'config.movies.cron',
           'config.movies.proxy',
+          'config.movies.skip',
           'config.movies.cookies'
         ];
         var empty_module = [
@@ -922,6 +923,14 @@
       data.config.movies.proxy = data.config.movies.proxy.join(',').split(/,/ig).filter(function(p) {
         var pp = p.replace(/\s*/g, '').trim();
         return pp ? pp : false;
+      });
+    }
+
+    if (data.config && data.config.movies && data.config.movies.skip) {
+      data.config.movies.skip = data.config.movies.skip.split(/\n/ig).filter(Boolean);
+      data.config.movies.skip = data.config.movies.skip.join(',').split(/,/ig).filter(function(s) {
+        var ss = s.replace(/\s*/g, '').trim();
+        return ss ? ss : false;
       });
     }
 

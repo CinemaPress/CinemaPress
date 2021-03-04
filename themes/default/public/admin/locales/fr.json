@@ -1016,5 +1016,6 @@
 	"Просмотр файла robots.txt и карты сайта": "Voir les robots.txt file et cartes de site",
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Restriction sur la visualisation du fichier robots.txt et des cartes de site pour les personnes et pour les bots",
 	"Разрешить всем": "Autorise tout",
-	"Только ботам": "Seulement botam"
+	"Только ботам": "Seulement botam",
+	"Пропускать фильмы": "Sauter des movies"
 }

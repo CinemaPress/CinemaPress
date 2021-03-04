@@ -985,6 +985,28 @@
 
                                                                     <div class="spacer-10"></div>
 
+                                                                    <div class="col-lg-12 col-xs-12">
+                                                                        <div class="faq">
+                                                                            <article class="faq-group">
+                                                                                <header class="text-muted text-left">
+                                                                                    <i class="fa fa-plus"></i>
+                                                                                    <h3>
+                                                                                        <span class="fas fa-window-close"></span>&nbsp;&nbsp;<%= __('Пропускать фильмы') %>
+                                                                                    </h3>
+                                                                                </header>
+                                                                                <div class="faq-content clearfix">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-12">
+                                                                                            <textarea class="form-control custom" name="config.movies.skip" placeholder="<%= __('Список идентификаторов фильмов') %>" style="height:300px;"><%- config.movies.skip.join(',') %></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
                                                                     <div class="col-lg-6 col-xs-6 text-center" style="margin-bottom: 10px">
                                                                         <span class="btn btn-primary btn-sm btn-block movies_cron" id="movies_cron">
                                                                             <i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации') %>

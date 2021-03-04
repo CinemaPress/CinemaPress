@@ -1016,5 +1016,6 @@
 	"Просмотр файла robots.txt и карты сайта": "Se robotterne.txt-fil- og webstedskort",
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Begrænsning ved visning af robotter.txt fil og webstedskort til mennesker og til bots",
 	"Разрешить всем": "Tillad aLL",
-	"Только ботам": "Kun botam"
+	"Только ботам": "Kun botam",
+	"Пропускать фильмы": "Spring over movie"
 }
