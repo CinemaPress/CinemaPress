@@ -451,6 +451,7 @@ module.exports = {
     "safety": "Safety",
     "instruction": "Instruction",
     "legal": "Images/videos may be subject to copyright. Learn More",
-    "reset": "Reset"
+    "reset": "Reset",
+    "filter": "Filter"
   }
 };
