@@ -206,7 +206,7 @@ if (['snow'].indexOf(theme) + 1) {
   modules.comments.data.fast.recent.display = [];
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
-    '#111216'
+    '#21202a'
   );
   modules.slider.data.movies = modules.slider.data.movies.slice(0, 5);
   modules.soon.data.count = 5;
