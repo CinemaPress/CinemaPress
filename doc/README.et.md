@@ -210,6 +210,16 @@
 
 [![Mall «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Teema «snow»
+
+> Installige FTP kaudu: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Installige CLI kaudu: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![Mall «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Valikud ja moodulid CinemaPress
 
 Üksikasjalik teave kõigi valikute ja süsteemimoodulite kohta on [dokumentatsioonis](https://CInemaPress.io/ru/admin).

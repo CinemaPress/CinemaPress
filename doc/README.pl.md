@@ -210,6 +210,16 @@
 
 [![Szablon «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Motyw «snow»
+
+> Zainstaluj przez FTP: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Zainstaluj przez interfejs CLI: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![Szablon «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Opcje i moduły CinemaPress
 
 Szczegółowe informacje na temat wszystkich opcji i modułów systemu można znaleźć w [dokumentacji](https://CInemaPress.io/ru/admin).

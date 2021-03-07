@@ -210,6 +210,16 @@
 
 [![Bản mẫu «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Chủ đề «snow»
+
+> Cài đặt qua FTP: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Cài đặt qua CLI: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![Bản mẫu «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Tùy chọn và mô-đun CinemaPress
 
 Thông tin chi tiết về tất cả các tùy chọn và mô-đun hệ thống có thể được tìm thấy [trong tài liệu](https://CInemaPress.io/ru/admin).

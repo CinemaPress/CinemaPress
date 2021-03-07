@@ -210,6 +210,16 @@
 
 [![แบบ «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## กระทู้ «snow»
+
+> ติดตั้งผ่าน FTP: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> ติดตั้งผ่าน CLI: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![แบบ «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## ตัวเลือกและโมดูล  CinemaPress
 
 ข้อมูลรายละเอียดเกี่ยวกับตัวเลือกทั้งหมดและโมดูลระบบสามารถพบได้ในเอกสารประกอบ

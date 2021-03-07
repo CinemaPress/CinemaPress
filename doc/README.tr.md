@@ -210,6 +210,16 @@
 
 [![şablon «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Tema «snow»
+
+> FTP ile kurun: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> CLI ile yükle: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![şablon «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Seçenekler ve modüller CinemaPress
 
 Tüm seçeneklere ve sistem modüllerine ilişkin ayrıntılı bilgileri [belgelerde](https://CInemaPress.io/ru/admin) bulabilirsiniz.

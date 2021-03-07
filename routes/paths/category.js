@@ -879,7 +879,7 @@ function randomCategory(type, key, options, callback) {
       break;
     case config.urls.search:
       CP_get.movies(
-        { search: key },
+        Object.assign({}, { search: key }, options.query),
         -3,
         undefined,
         undefined,

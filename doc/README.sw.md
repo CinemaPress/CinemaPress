@@ -210,6 +210,16 @@
 
 [![Kigezo «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Mandhari «snow»
+
+> Sakinisha kupitia FTP: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Sakinisha kupitia CLI: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![Kigezo «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Chaguzi na modules CinemaPress
 
 Taarifa kamili juu ya chaguzi zote na modules za mfumo zinaweza kupatikana katika [nyaraka](https://CInemaPress.io/ru/admin).

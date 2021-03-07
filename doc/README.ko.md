@@ -210,6 +210,16 @@
 
 [![주형 «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## 어간 «snow»
+
+> FTP를 통해 설치: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> CLI를 통해 설치: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![주형 «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## 옵션 및 모듈 CinemaPress
 
 모든 옵션 및 시스템 모듈에 대한 자세한 정보는 [설명서에서](https://CInemaPress.io/ru/admin) 찾을 수 있습니다.

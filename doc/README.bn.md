@@ -210,6 +210,16 @@
 
 [![টেমপ্লেট «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## বিষয় «snow»
+
+> FTP মাধ্যমে ইনস্টল করুন: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![টেমপ্লেট «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## বিকল্প এবং মডিউল CinemaPress
 
 সমস্ত বিকল্প এবং সিস্টেম মডিউল বিস্তারিত তথ্য ডকুমেন্টেশন পাওয়া যাবে।

@@ -210,6 +210,16 @@
 
 [![Sapluuna «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Teema «snow»
+
+> Asenna FTP: n kautta [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Asenna CLI: n kautta `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![Sapluuna «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Vaihtoehdot ja moduulit CinemaPress
 
 Yksityiskohtaiset tiedot kaikista vaihtoehdoista ja järjestelmän moduuleista löytyvät [dokumenteista](https://CInemaPress.io/ru/admin).

@@ -210,6 +210,16 @@
 
 [![खाका «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## विषय «snow»
+
+> एफ़टीपी के माध्यम से स्थापित करें [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> CLI के माध्यम से स्थापित करें `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![खाका «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## विकल्प और मॉड्यूल CinemaPress
 
 सभी विकल्पों और सिस्टम मॉड्यूल की विस्तृत जानकारी प्रलेखन में पाई जा सकती है।

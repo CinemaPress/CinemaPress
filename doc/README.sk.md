@@ -210,6 +210,16 @@
 
 [![šablóna «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
 
+## Téma «snow»
+
+> Inštalácia cez FTP: [GitHub](https://github.com/CinemaPress/Theme-Snow/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Snow/) / [BitBucket](https://bitbucket.org/cinemapress/theme-snow/)
+
+> Inštalácia cez CLI: `cinemapress theme example.com snow`
+
+> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+
+[![šablóna «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+
 ## Možnosti a moduly CinemaPress
 
 Podrobné informácie o všetkých možnostiach a systémových moduloch nájdete v [dokumentácii](https://CInemaPress.io/ru/admin).
