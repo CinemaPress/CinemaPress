@@ -202,7 +202,7 @@ if (['snow'].indexOf(theme) + 1) {
   modules.content.data.index.count = 20;
   modules.episode.data.index.count = 12;
   modules.related.data.types.year.count = 10;
-  modules.content.data.news.count = 4;
+  modules.content.data.news.count = 2;
   modules.comments.data.fast.recent.display = [];
   modules.player.data.script = modules.player.data.script.replace(
     /#[a-z0-9]{6}/i,
