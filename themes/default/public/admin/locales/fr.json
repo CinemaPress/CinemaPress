@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Restriction sur la visualisation du fichier robots.txt et des cartes de site pour les personnes et pour les bots",
 	"Разрешить всем": "Autorise tout",
 	"Только ботам": "Seulement botam",
-	"Пропускать фильмы": "Sauter des movies"
+	"Пропускать фильмы": "Sauter des movies",
+	"Сортировка фильмов в поиске:": "Tri des movies à la recherche:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indiquez le tri sur lequel les movies seront triés dans la recherche"
 }

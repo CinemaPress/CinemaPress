@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Begrænsning ved visning af robotter.txt fil og webstedskort til mennesker og til bots",
 	"Разрешить всем": "Tillad aLL",
 	"Только ботам": "Kun botam",
-	"Пропускать фильмы": "Spring over movie"
+	"Пропускать фильмы": "Spring over movie",
+	"Сортировка фильмов в поиске:": "Sortering af movie i søgning:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Angiv sorteringen, som movie vil blive sorteret i søgning"
 }

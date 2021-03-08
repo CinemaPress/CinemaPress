@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "İnsanlar için ve botlar için robots.txt dosyasını ve site kartlarını görüntüleme kısıtlaması",
 	"Разрешить всем": "Hepsine izin ver",
 	"Только ботам": "Sadece botam",
-	"Пропускать фильмы": "Movie atla"
+	"Пропускать фильмы": "Movie atla",
+	"Сортировка фильмов в поиске:": "Ara movieleri sıralama:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Hangi movielerin arama sırasında sıralanacağını belirtin"
 }

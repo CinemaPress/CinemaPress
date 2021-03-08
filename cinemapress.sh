@@ -1345,7 +1345,7 @@ read_theme() {
                 CP_THEME=$(echo ${CP_THEME} | iconv -c -t UTF-8)
                 echo ": ${CP_THEME}"
             else
-                read -e -p ': ' -i "mormont" CP_THEME
+                read -e -p ': ' -i "snow" CP_THEME
                 CP_THEME=$(echo ${CP_THEME} | iconv -c -t UTF-8)
             fi
             if [ "${CP_THEME}" = "" ]

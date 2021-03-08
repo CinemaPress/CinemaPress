@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Rajoittaminen robots.txt-tiedostojen ja paikan korttien katseluun ihmisille ja botit",
 	"Разрешить всем": "Salli kaikki",
 	"Только ботам": "Vain botam",
-	"Пропускать фильмы": "Ohita elokuvat"
+	"Пропускать фильмы": "Ohita elokuvat",
+	"Сортировка фильмов в поиске:": "Elokuvien lajittelu haussa:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Ilmoita lajittelu, johon kalvot lajitellaan haussa"
 }

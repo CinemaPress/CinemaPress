@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Hạn chế khi xem tệp robot.txt và thẻ trang web cho người và cho bots",
 	"Разрешить всем": "Chấp nhận tất cả",
 	"Только ботам": "Chỉ botam",
-	"Пропускать фильмы": "Bỏ qua phim"
+	"Пропускать фильмы": "Bỏ qua phim",
+	"Сортировка фильмов в поиске:": "Sắp xếp phim trong tìm kiếm:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Cho biết việc sắp xếp các bộ phim nào sẽ được sắp xếp trong tìm kiếm"
 }

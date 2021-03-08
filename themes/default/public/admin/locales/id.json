@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Pembatasan melihat file robots.txt dan kartu situs untuk orang-orang dan untuk bot",
 	"Разрешить всем": "Perbolehkan semua",
 	"Только ботам": "Hanya botam",
-	"Пропускать фильмы": "Lewati movie"
+	"Пропускать фильмы": "Lewati movie",
+	"Сортировка фильмов в поиске:": "Menyortir movie dalam pencarian:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Menunjukkan penyortiran pada movie mana yang akan disortir dalam pencarian"
 }

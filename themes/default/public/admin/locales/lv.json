@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Ierobežojumi skatīšanai robots.txt failu un vietņu kartes cilvēkiem un robotiem",
 	"Разрешить всем": "Atļaut visu",
 	"Только ботам": "Tikai botam",
-	"Пропускать фильмы": "Izlaist movieas"
+	"Пропускать фильмы": "Izlaist movieas",
+	"Сортировка фильмов в поиске:": "Movieu šķirošana meklēšanā:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Norādiet šķirošanu, kurā movieas tiks sakārtotas meklēšanā"
 }

@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Kizuizi cha kutazama faili ya robots.txt na kadi za tovuti kwa watu na kwa bots",
 	"Разрешить всем": "Ruhusu yote",
 	"Только ботам": "Botam tu",
-	"Пропускать фильмы": "Ruka sinema"
+	"Пропускать фильмы": "Ruka sinema",
+	"Сортировка фильмов в поиске:": "Kupanga sinema katika utafutaji:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Onyesha kuchagua ambayo filamu zitapangwa katika utafutaji"
 }

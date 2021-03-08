@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Omejitev pri ogledu robots.txt kartic in spletnih mest za ljudi in za robote",
 	"Разрешить всем": "Dovolite vse",
 	"Только ботам": "Samo botam",
-	"Пропускать фильмы": "Preskoči moviee"
+	"Пропускать фильмы": "Preskoči moviee",
+	"Сортировка фильмов в поиске:": "Razvrščanje movieov v iskanju:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Navedite razvrščanje, na katerem bodo moviei razvrščeni v iskanju"
 }

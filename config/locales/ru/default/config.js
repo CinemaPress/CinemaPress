@@ -109,6 +109,7 @@ module.exports = {
   "default": {
     "count": 15,
     "sorting": "kinopoisk-vote-up",
+    "sorting_search": "",
     "pages": 4,
     "lastpage": 0,
     "days": 0,

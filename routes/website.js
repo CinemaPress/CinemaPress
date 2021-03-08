@@ -127,7 +127,9 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   var sorting =
     CP_regexp.str(req.query.sorting) ||
     (level1 === modules.content.data.url || level1 === config.urls.search
-      ? ''
+      ? level1 === config.urls.search
+        ? config.default.sorting_search
+        : ''
       : config.default.sorting);
   var tag = CP_regexp.str(req.query.tag) || null;
   var id = level2 ? movie.id(level2) : '';

@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Beperking bij het bekijken van de robots.txt-bestand en sitekaarten voor mensen en voor bots",
 	"Разрешить всем": "Sta alles toe",
 	"Только ботам": "Alleen botam",
-	"Пропускать фильмы": "Sla movies over"
+	"Пропускать фильмы": "Sla movies over",
+	"Сортировка фильмов в поиске:": "Movies sorteren op zoek:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Geef de sortering aan waarop movies op zoek worden gesorteerd"
 }

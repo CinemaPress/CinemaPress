@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Kufizimi në shikimin e skedarëve robots.txt dhe kartat e faqes për njerëzit dhe për bots",
 	"Разрешить всем": "Lejo të gjithë",
 	"Только ботам": "Vetëm botam",
-	"Пропускать фильмы": "Kaloni moviea"
+	"Пропускать фильмы": "Kaloni moviea",
+	"Сортировка фильмов в поиске:": "Renditja e movieave në kërkim:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Tregoni klasifikimin në të cilin movieat do të renditen në kërkim"
 }

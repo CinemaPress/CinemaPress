@@ -1017,5 +1017,7 @@
 	"Ограничение на просмотр файла robots.txt и карты сайта для людей и для ботов": "Piirang robots.txt faili ja saidi kaartide vaatamiseks inimestele ja botidele",
 	"Разрешить всем": "Lubama kõiki",
 	"Только ботам": "Ainult botami",
-	"Пропускать фильмы": "Skip movieid"
+	"Пропускать фильмы": "Skip movieid",
+	"Сортировка фильмов в поиске:": "Movieide sorteerimine otsingus:",
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Märkige sorteerimine, milliseid moviee sorteeritakse otsingus"
 }

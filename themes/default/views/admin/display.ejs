@@ -109,7 +109,7 @@
 
                                             <div class="spacer-10"></div>
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                 <div>
                                                     <a href="javascript:void(0)" class="csstip text-muted"
                                                        data-title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории и результатах поиска') %>">
@@ -131,6 +131,9 @@
                                                     <% } %>
                                                 </select>
                                             </div>
+
+                                            <div class="spacer-10"></div>
+
                                             <div class="col-sm-6">
                                                 <div>
                                                     <a href="javascript:void(0)" class="csstip text-muted"
@@ -150,6 +153,37 @@
                                                             <%- config.sorting[name] %>
                                                         </option>
                                                     <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       data-title="<%= __('Укажите сортировку по которой будут сортироваться фильмы в поиске') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Сортировка фильмов в поиске:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.sorting_search" class="form-control">
+                                                    <% if (config.default.sorting_search === "") { %>
+                                                        <option value="" selected="selected">
+                                                            <%= __('Нет') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="">
+                                                            <%= __('Нет') %>
+                                                        </option>
+                                                    <% } %>
+                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                        <% if (config.default.sorting_search === name) { %>
+                                                            <option value="<%= name %>" selected="selected">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } else { %>
+                                                            <option value="<%= name %>">
+                                                                <%- config.sorting[name] %>
+                                                            </option>
+                                                        <% } %>
                                                     <% } %>
                                                 </select>
                                             </div>
