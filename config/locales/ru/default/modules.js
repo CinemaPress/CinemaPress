@@ -227,7 +227,7 @@ module.exports = {
     "status": true,
     "data": {
       "display": "script",
-      "js": "https://4h0y.gitlab.io/yo.js",
+      "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"collaps,bazon,ustore,alloha,hdvb,kodik,videocdn,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
         "https://pleer.video/[kp_id].json ~ embeds.0.iframe"
