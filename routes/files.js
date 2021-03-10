@@ -110,7 +110,7 @@ router.get(
                 image += '/images/film_iphone/iphone90_' + file;
                 break;
               case 'medium':
-                image += '/images/film_iphone/iphone180_' + file;
+                image += '/images/film_iphone/iphone360_' + file;
                 break;
               case 'original':
                 image += '/images/film_big/' + file;
@@ -127,7 +127,7 @@ router.get(
             image += 'avatars.mds.yandex.net';
             switch (size) {
               case 'small':
-                image += '/get-kinopoisk-image/' + file + '/180';
+                image += '/get-kinopoisk-image/' + file + '/90';
                 break;
               case 'medium':
                 image += '/get-kinopoisk-image/' + file + '/360';
@@ -158,7 +158,7 @@ router.get(
                 image += '/t/p/w92/' + file;
                 break;
               case 'medium':
-                image += '/t/p/w185/' + file;
+                image += '/t/p/w342/' + file;
                 break;
               case 'original':
                 image += '/t/p/original/' + file;
@@ -183,7 +183,7 @@ router.get(
                   id.charAt(0) +
                   '/' +
                   id +
-                  '._V1_SX180_CR0,0,0,0_AL_.' +
+                  '._V1_SX360_CR0,0,0,0_AL_.' +
                   format;
                 break;
               case 'original':
@@ -192,7 +192,7 @@ router.get(
                   id.charAt(0) +
                   '/' +
                   id +
-                  '._V1_SX300_CR0,0,0,0_AL_.' +
+                  '._V1_SX500_CR0,0,0,0_AL_.' +
                   format;
                 break;
             }
