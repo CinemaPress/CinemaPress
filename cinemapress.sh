@@ -2159,6 +2159,13 @@ docker_zero() {
     fi
     cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
 }
+docker_zero_rt() {
+    searchd --stop
+    sleep 2
+    rm -rf /home/"${CP_DOMAIN}"/config/rt/* /home/"${CP_DOMAIN}"/config/binlog/*
+    searchd
+    cd /home/"${CP_DOMAIN}" && pm2 delete process.json && pm2 start process.json
+}
 docker_hand() {
     if [ -n "${1}" ]; then
         node /home/"${CP_DOMAIN}"/config/update/hand.js "player"
@@ -2673,6 +2680,34 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "zero_rt"|"zero_realtime" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            _header "WARNING";
+            _content
+            _content "This command will delete all movies!"
+            _content
+            _s
+            if [ ${3} ]; then
+                YES=${3}
+                YES=`echo ${YES} | iconv -c -t UTF-8`
+                echo "Delete Realtime Index? [NOT/yes] : ${YES}"
+            else
+                read -e -p 'Delete Realtime Index? [NOT/yes] : ' YES
+                YES=`echo ${YES} | iconv -c -t UTF-8`
+            fi
+            _br
+
+            if [ "${YES}" != "ДА" ] && [ "${YES}" != "Да" ] && [ "${YES}" != "да" ] && [ "${YES}" != "YES" ] && [ "${YES}" != "Yes" ] && [ "${YES}" != "yes" ] && [ "${YES}" != "Y" ] && [ "${YES}" != "y" ]; then
+                exit 0
+            else
+                docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container zero_rt \
+                    >>/var/log/docker_zero_rt_"$(date '+%d_%m_%Y')".log 2>&1
+            fi
+            exit 0
+        ;;
         "hand" )
             _br "${2}"
             read_domain "${2}"
@@ -2721,6 +2756,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_logs
             elif [ "${2}" = "zero" ]; then
                 docker_zero "${3}"
+            elif [ "${2}" = "zero_rt" ]; then
+                docker_zero_rt
             elif [ "${2}" = "hand" ]; then
                 docker_hand "${3}"
             elif [ "${2}" = "movies" ]; then
@@ -4294,6 +4331,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " restart   - Restart website (docker container)"; _br;
             printf " reload    - Reload website (PM2)"; _br;
             printf " zero      - Delete all data from the automatic database"; _br;
+            printf " zero_rt   - Delete all data from the realtime database"; _br;
             printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " logs      - Show all logs"; _br;
             printf " logs live - Show all logs realtime"; _br;
