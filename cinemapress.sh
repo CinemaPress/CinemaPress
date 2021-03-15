@@ -4245,6 +4245,85 @@ while [ "${WHILE}" -lt "2" ]; do
             _s
             exit 0
         ;;
+        "people" )
+            _br "${3}"
+            read_domain "${2}"
+            read_theme "${3}"
+            _s "${3}"
+            if [ "${CP_DOMAIN}" = "" ] || [ "${CP_THEME}" = "" ]; then
+              exit 0
+            fi
+            if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
+                [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install jq
+            elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
+                dnf -y install jq
+            elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+                yum install -y jq
+            fi
+            api="https://api.themoviedb.org/3/person/id?api_key=269890f657dddf4635473cf4cf456576&language=ru"
+            tmp_dir="/var/tmp"
+            people_images="/home/${CP_DOMAIN}/files/poster/people"
+            director_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/director"
+            actor_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/actor"
+            director_dir_tmp="${tmp_dir}/director"
+            actor_dir_tmp="${tmp_dir}/actor"
+            mkdir -p "${people_images}"
+            mkdir -p "${director_dir_tmp}"
+            mkdir -p "${actor_dir_tmp}"
+            mkdir -p "${director_dir}"
+            mkdir -p "${actor_dir}"
+            rm -rf "${director_dir}"
+            rm -rf "${actor_dir}"
+            for l in {1..10}; do
+                start=$(( l * 310000 - 309999 ))
+                stop=$(( l * 310000 ))
+                ( for (( i=start; i<=stop; i++ )); do
+                    people_url="${api//id/${i}}"
+                    people="${tmp_dir}/${i}.json"
+                    wget "${people_url}" -qO "${people}"
+                    if [ ! -f "${people}" ]; then
+                        rm -f "${people}"
+                        continue
+                    fi
+                    people_json="$(cat "${people}")"
+                    profile_path=$( echo "${people_json}" | jq -r ".profile_path" )
+                    if [ "${profile_path}" = "null" ] || [ "${profile_path}" = "" ]; then
+                        rm -f "${people}"
+                        continue
+                    fi
+                    adult=$( echo "${people_json}" | jq -r ".adult" )
+                    if [ "${adult}" != "false" ]; then
+                        rm -f "${people}"
+                        continue
+                    fi
+                    name=$( echo "${people_json}" | jq -r ".name" )
+                    known_for_department=$( echo "${people_json}" | jq -r ".known_for_department" )
+                    also_known_as=$( echo "${people_json}" | jq -r ".also_known_as[] | @base64" )
+                    wget "https://image.tmdb.org/t/p/w185${profile_path}" -qO "${people_images}/${name}.jpg"
+                    echo "${i}/${stop}) ${name}.jpg"
+                    department=""
+                    if [ "${known_for_department}" = "Directing" ]; then
+                        department="${director_dir_tmp}"
+                    else
+                        department="${actor_dir_tmp}"
+                    fi
+                    mv "${people}" "${department}/${name}.json"
+                    echo "${i}/${stop}) ${name}.json"
+                    for row in ${also_known_as}; do
+                        other_name="$(echo "${row}" | base64 --decode)"
+                        cd "${department}" && ln -s "${name}.json" "${other_name}.json" &>/dev/null
+                        cd "${people_images}" && ln -s "${name}.jpg" "${other_name}.jpg" &>/dev/null
+                        echo "${i}/${stop}) ${name} » ${other_name}"
+                    done
+                done ) &
+            done
+            wait
+            mv "${actor_dir_tmp}" "${actor_dir}"
+            mv "${director_dir_tmp}" "${director_dir}"
+            rm -rf "${tmp_dir}"
+            exit 0
+        ;;
         "ping" )
             curl -s --fail http://localhost:3000/ping || exit 1
             exit 0
