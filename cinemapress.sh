@@ -4274,6 +4274,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 yum install -y jq
             fi
             api="https://api.themoviedb.org/3/person/id?api_key=269890f657dddf4635473cf4cf456576&language=ru"
+            if [ "${PEOPLE_LANG}" = "en" ]; then
+                api="https://api.themoviedb.org/3/person/id?api_key=269890f657dddf4635473cf4cf456576&language=en"
+            fi
             tmp_dir="/var/tmp-people"
             mkdir -p "${tmp_dir}"
             json_dir="/var/json-people"
