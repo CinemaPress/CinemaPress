@@ -1019,5 +1019,7 @@
 	"Только ботам": "Seulement botam",
 	"Пропускать фильмы": "Sauter des movies",
 	"Сортировка фильмов в поиске:": "Tri des movies à la recherche:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indiquez le tri sur lequel les movies seront triés dans la recherche"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indiquez le tri sur lequel les movies seront triés dans la recherche",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Afficher les photos des acteurs sur la page de cinéma (avant que vous devez télécharger toutes les photos)",
+	"Фото актеров:": "Photo des acteurs:"
 }

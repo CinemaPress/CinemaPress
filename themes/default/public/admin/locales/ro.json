@@ -1019,5 +1019,7 @@
 	"Только ботам": "Doar botam",
 	"Пропускать фильмы": "Skip moviee",
 	"Сортировка фильмов в поиске:": "Sortarea movieelor în căutare:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indicați sortarea pe care vor fi sortate moviee în căutare"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indicați sortarea pe care vor fi sortate moviee în căutare",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Arătați fotografii ale actorilor pe pagina movieului (înainte de a trebui să descărcați toate fotografiile)",
+	"Фото актеров:": "Fotografie a actorilor:"
 }

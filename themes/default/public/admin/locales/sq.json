@@ -1019,5 +1019,7 @@
 	"Только ботам": "Vetëm botam",
 	"Пропускать фильмы": "Kaloni moviea",
 	"Сортировка фильмов в поиске:": "Renditja e movieave në kërkim:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Tregoni klasifikimin në të cilin movieat do të renditen në kërkim"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Tregoni klasifikimin në të cilin movieat do të renditen në kërkim",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Tregoni fotot e aktorëve në faqen e movieit (para se të keni nevojë të shkarkoni të gjitha fotot)",
+	"Фото актеров:": "Foto e aktorëve:"
 }

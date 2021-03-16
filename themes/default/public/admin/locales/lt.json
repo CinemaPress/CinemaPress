@@ -1019,5 +1019,7 @@
 	"Только ботам": "Tik botam",
 	"Пропускать фильмы": "Praleiskite movieus",
 	"Сортировка фильмов в поиске:": "Movieų rūšiavimas paieškoje:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Nurodykite rūšiavimą, kuriame movieai bus surūšiuoti paieškoje"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Nurodykite rūšiavimą, kuriame movieai bus surūšiuoti paieškoje",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Rodyti aktorių nuotraukas movieo puslapyje (prieš tai jums reikia atsisiųsti visas nuotraukas)",
+	"Фото актеров:": "Aktorių nuotrauka:"
 }

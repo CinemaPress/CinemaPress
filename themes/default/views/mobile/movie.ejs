@@ -55,7 +55,7 @@
     </div>
 
 <% } %>
-<% if (movie.actors_url) { %>
+<% if (movie.actors_url && !(typeof movie.actors_arr2 === 'object' && movie.actors_arr2.length)) { %>
 
     <div class="info">
         <%- page.l.actors %>: <%- movie.actors_url %>
@@ -71,6 +71,23 @@
 <% } %>
 
 <div class="clear"></div>
+
+<% if (typeof movie.actors_arr2 === 'object' && movie.actors_arr2.length) { %>
+
+    <% movie.actors_arr2.forEach(function (actor) { %>
+        <div class="cinemapress-news-block cinemapress-people-block">
+            <div style="margin: 0; padding: 10px">
+                <a href="<%- actor.url %>" class="cinemapress-news lazy" style="background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAADICAQAAABrVzQQAAABLUlEQVR42u3RMQEAAAgDoC251W3hI1SgmfBMpUtHOtKRjnSkIx3pSEc60pGOdKQjHelIl450pCMd6UhHOtKRjnSkIx3pSEc60pEuHelIRzrSkY50pCMd6UhHOtKRjnSkI1060pGOdKQjHelIRzrSkY50pCMd6UhHunSkIx3pSEc60pGOdKQjHelIRzrSkY506dKlIx3pSEc60pGOdKQjHelIRzrSkY50pEtHOtKRjnSkIx3pSEc60pGOdKQjHelIl450pCMd6UhHOtKRjnSkIx3pSEc60pEuHelIRzrSkY50pCMd6UhHOtKRjnSkI1060pGOdKQjHelIRzrSkY50pCMd6UhHunTp0pGOdKQjHelIRzrSkY50pCMd6UhHOtKlIx3pSEc60pGOdKRzawFrr2QBa00SvgAAAABJRU5ErkJggg==');" data-bg="<%- actor.image %>">
+                    <div class="cinemapress-news-title">
+                        <%= actor.title %>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <% }); %>
+    <div class="clear"></div>
+
+<% } %>
 
 <% if (movie.kp_vote) { %>
     <div class="info">

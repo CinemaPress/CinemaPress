@@ -1019,5 +1019,7 @@
 	"Только ботам": "Bara botam",
 	"Пропускать фильмы": "Hoppa över movieer",
 	"Сортировка фильмов в поиске:": "Sortera movieer i sökning:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Ange sorteringen på vilka movieer sorteras i sökning"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Ange sorteringen på vilka movieer sorteras i sökning",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Visa bilder av aktörer på moviesidan (innan du behöver ladda ner alla bilder)",
+	"Фото актеров:": "Foto av aktörer:"
 }

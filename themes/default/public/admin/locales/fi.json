@@ -1019,5 +1019,7 @@
 	"Только ботам": "Vain botam",
 	"Пропускать фильмы": "Ohita elokuvat",
 	"Сортировка фильмов в поиске:": "Elokuvien lajittelu haussa:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Ilmoita lajittelu, johon kalvot lajitellaan haussa"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Ilmoita lajittelu, johon kalvot lajitellaan haussa",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Näytä valokuvia näyttelijöistä elokuvasivulla (ennen kuin sinun on ladattava kaikki kuvat)",
+	"Фото актеров:": "Kuva näyttelijöistä:"
 }

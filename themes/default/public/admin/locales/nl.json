@@ -1019,5 +1019,7 @@
 	"Только ботам": "Alleen botam",
 	"Пропускать фильмы": "Sla movies over",
 	"Сортировка фильмов в поиске:": "Movies sorteren op zoek:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Geef de sortering aan waarop movies op zoek worden gesorteerd"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Geef de sortering aan waarop movies op zoek worden gesorteerd",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Toon foto's van acteurs op de moviepagina (voordat u alle foto's wilt downloaden)",
+	"Фото актеров:": "Foto van acteurs:"
 }

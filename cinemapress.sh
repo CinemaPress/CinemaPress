@@ -4251,7 +4251,19 @@ while [ "${WHILE}" -lt "2" ]; do
             read_theme "${3}"
             _s "${3}"
             if [ "${CP_DOMAIN}" = "" ] || [ "${CP_THEME}" = "" ]; then
-              exit 0
+                exit 0
+            fi
+            PEOPLE_INFO="jpg"
+            if [ "${4}" = "json" ] || [ "${4}" = "jpg" ] || [ "${4}" = "all" ]; then
+                PEOPLE_INFO="${4}"
+            fi
+            PEOPLE_LANG="ru"
+            if [ "${5}" = "ru" ] || [ "${5}" = "en" ] || [ "${5}" = "all" ]; then
+                PEOPLE_LANG="${5}"
+            fi
+            PEOPLE_CACHE=""
+            if [ "${6}" = "cache" ]; then
+                PEOPLE_CACHE="${6}"
             fi
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
                 [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
@@ -4262,26 +4274,39 @@ while [ "${WHILE}" -lt "2" ]; do
                 yum install -y jq
             fi
             api="https://api.themoviedb.org/3/person/id?api_key=269890f657dddf4635473cf4cf456576&language=ru"
-            tmp_dir="/var/tmp"
-            people_images="/home/${CP_DOMAIN}/files/poster/people"
-            director_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/director"
-            actor_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/actor"
-            director_dir_tmp="${tmp_dir}/director"
-            actor_dir_tmp="${tmp_dir}/actor"
-            mkdir -p "${people_images}"
-            mkdir -p "${director_dir_tmp}"
-            mkdir -p "${actor_dir_tmp}"
-            mkdir -p "${director_dir}"
-            mkdir -p "${actor_dir}"
-            rm -rf "${director_dir}"
-            rm -rf "${actor_dir}"
+            tmp_dir="/var/tmp-people"
+            mkdir -p "${tmp_dir}"
+            json_dir="/var/json-people"
+            mkdir -p "${json_dir}"
+            if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "jpg" ]; then
+                people_images="/home/${CP_DOMAIN}/files/poster/people"
+                mkdir -p "${people_images}"
+            fi
+            if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "json" ]; then
+                director_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/director"
+                actor_dir="/home/${CP_DOMAIN}/themes/${CP_THEME}/views/actor"
+                director_dir_tmp="${tmp_dir}/director"
+                actor_dir_tmp="${tmp_dir}/actor"
+                mkdir -p "${director_dir_tmp}"
+                mkdir -p "${actor_dir_tmp}"
+                mkdir -p "${director_dir}"
+                mkdir -p "${actor_dir}"
+                rm -rf "${director_dir}"
+                rm -rf "${actor_dir}"
+            fi
             for l in {1..10}; do
                 start=$(( l * 310000 - 309999 ))
                 stop=$(( l * 310000 ))
                 ( for (( i=start; i<=stop; i++ )); do
                     people_url="${api//id/${i}}"
-                    people="${tmp_dir}/${i}.json"
-                    wget "${people_url}" -qO "${people}"
+                    people="${json_dir}/${i}.json"
+                    if [ "${PEOPLE_CACHE}" = "cache" ]; then
+                        if [ ! -f "${people}" ]; then
+                            wget "${people_url}" -qO "${people}"
+                        fi
+                    else
+                        wget "${people_url}" -qO "${people}"
+                    fi
                     if [ ! -f "${people}" ]; then
                         rm -f "${people}"
                         continue
@@ -4298,29 +4323,62 @@ while [ "${WHILE}" -lt "2" ]; do
                         continue
                     fi
                     name=$( echo "${people_json}" | jq -r ".name" )
-                    known_for_department=$( echo "${people_json}" | jq -r ".known_for_department" )
-                    also_known_as=$( echo "${people_json}" | jq -r ".also_known_as[] | @base64" )
-                    wget "https://image.tmdb.org/t/p/w185${profile_path}" -qO "${people_images}/${name}.jpg"
-                    echo "${i}/${stop}) ${name}.jpg"
-                    department=""
-                    if [ "${known_for_department}" = "Directing" ]; then
-                        department="${director_dir_tmp}"
-                    else
-                        department="${actor_dir_tmp}"
+                    if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "jpg" ]; then
+                        if [ "${PEOPLE_CACHE}" = "cache" ]; then
+                            if [ ! -f "${people_images}/${name}.jpg" ]; then
+                                wget "https://image.tmdb.org/t/p/w185${profile_path}" -qO "${people_images}/${name}.jpg"
+                            fi
+                        else
+                            wget "https://image.tmdb.org/t/p/w185${profile_path}" -qO "${people_images}/${name}.jpg"
+                        fi
+                        echo "${i}/${stop}) ${name}.jpg"
                     fi
-                    mv "${people}" "${department}/${name}.json"
-                    echo "${i}/${stop}) ${name}.json"
-                    for row in ${also_known_as}; do
-                        other_name="$(echo "${row}" | base64 --decode)"
-                        cd "${department}" && ln -s "${name}.json" "${other_name}.json" &>/dev/null
-                        cd "${people_images}" && ln -s "${name}.jpg" "${other_name}.jpg" &>/dev/null
-                        echo "${i}/${stop}) ${name} » ${other_name}"
-                    done
+                    if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "json" ]; then
+                        known_for_department=$( echo "${people_json}" | jq -r ".known_for_department" )
+                        department=""
+                        if [ "${known_for_department}" = "Directing" ]; then
+                            department="${director_dir_tmp}"
+                        else
+                            department="${actor_dir_tmp}"
+                        fi
+                        mv "${people}" "${department}/${name}.json" &>/dev/null
+                        echo "${i}/${stop}) ${name}.json"
+                    fi
+                    if [ "${PEOPLE_LANG}" = "all" ] || [ "${PEOPLE_LANG}" = "ru" ]; then
+                        also_known_as=$( echo "${people_json}" | jq -r ".also_known_as[] | @base64" )
+                        for row in ${also_known_as}; do
+                            other_name="$(echo "${row}" | base64 --decode)"
+                            other_name="${other_name//Ё/Е}"
+                            other_name="${other_name//ё/е}"
+                            if [ "${PEOPLE_LANG}" = "all" ]; then
+                                if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "json" ]; then
+                                    cd "${department}" && ln -s "${name}.json" "${other_name}.json" &>/dev/null
+                                fi
+                                if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "jpg" ]; then
+                                    cd "${people_images}" && ln -s "${name}.jpg" "${other_name}.jpg" &>/dev/null
+                                fi
+                                echo "${i}/${stop}) ${name} » ${other_name}"
+                            else
+                                cyrillic="$(echo "${other_name}" | grep -Eo "[А-Яа-я]*")"
+                                if [ -n "${cyrillic}" ]; then
+                                    if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "json" ]; then
+                                        cd "${department}" && ln -s "${name}.json" "${other_name}.json" &>/dev/null
+                                    fi
+                                    if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "jpg" ]; then
+                                        cd "${people_images}" && ln -s "${name}.jpg" "${other_name}.jpg" &>/dev/null
+                                    fi
+                                    echo "${i}/${stop}) ${name} » ${other_name}"
+                                fi
+                            fi
+                        done
+                    fi
                 done ) &
             done
             wait
-            mv "${actor_dir_tmp}" "${actor_dir}"
-            mv "${director_dir_tmp}" "${director_dir}"
+            if [ "${PEOPLE_INFO}" = "all" ] || [ "${PEOPLE_INFO}" = "json" ]; then
+                mv "${actor_dir_tmp}" "${actor_dir}"
+                mv "${director_dir_tmp}" "${director_dir}"
+            fi
             rm -rf "${tmp_dir}"
             exit 0
         ;;

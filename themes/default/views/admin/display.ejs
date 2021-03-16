@@ -109,7 +109,7 @@
 
                                             <div class="spacer-10"></div>
 
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                                 <div>
                                                     <a href="javascript:void(0)" class="csstip text-muted"
                                                        data-title="<%= __('Укажите какое число фильмов будет отображаться в каждой категории и результатах поиска') %>">
@@ -128,6 +128,33 @@
                                                                 <%- i %> <%= __('фильма(ов)') %>
                                                             </option>
                                                         <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a href="javascript:void(0)" class="csstip text-muted"
+                                                       data-title="<%= __('Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)') %>">
+                                                        <i class="fa fa-info-circle text-muted"></i>
+                                                        <%= __('Фото актеров:') %>
+                                                    </a>
+                                                </div>
+                                                <select name="config.default.people_image" class="form-control">
+                                                    <% if (config.default.people_image) { %>
+                                                        <option value="1" selected="selected">
+                                                            <%= __('Показывать') %>
+                                                        </option>
+                                                        <option value="0">
+                                                            <%= __('Не показывать') %>
+                                                        </option>
+                                                    <% } else { %>
+                                                        <option value="1">
+                                                            <%= __('Показывать') %>
+                                                        </option>
+                                                        <option value="0" selected="selected">
+                                                            <%= __('Не показывать') %>
+                                                        </option>
                                                     <% } %>
                                                 </select>
                                             </div>

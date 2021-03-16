@@ -1019,5 +1019,7 @@
 	"Только ботам": "Samo botam",
 	"Пропускать фильмы": "Skip movieova",
 	"Сортировка фильмов в поиске:": "Sortiranje movieova u potrazi:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Navedite sortiranje na koji će se movieovi razvrstati u pretraživanju"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Navedite sortiranje na koji će se movieovi razvrstati u pretraživanju",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Prikažite fotografije glumaca na stranici Movie (prije koje trebate preuzeti sve fotografije)",
+	"Фото актеров:": "Fotografija glumaca:"
 }

@@ -1019,5 +1019,7 @@
 	"Только ботам": "Botam tu",
 	"Пропускать фильмы": "Ruka sinema",
 	"Сортировка фильмов в поиске:": "Kupanga sinema katika utafutaji:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Onyesha kuchagua ambayo filamu zitapangwa katika utafutaji"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Onyesha kuchagua ambayo filamu zitapangwa katika utafutaji",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Onyesha picha za watendaji kwenye ukurasa wa filamu (kabla ya kwamba unahitaji kupakua picha zote)",
+	"Фото актеров:": "Picha ya watendaji:"
 }

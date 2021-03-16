@@ -1019,5 +1019,7 @@
 	"Только ботам": "Len botam",
 	"Пропускать фильмы": "Preskočiť moviey",
 	"Сортировка фильмов в поиске:": "Triedenie movieov pri vyhľadávaní:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Uveďte triedenie, na ktorých budú moviey zoradené do vyhľadávania"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Uveďte triedenie, na ktorých budú moviey zoradené do vyhľadávania",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Zobraziť fotografie hercov na stránke videozáznamu (pred tým, než potrebujete stiahnuť všetky fotografie)",
+	"Фото актеров:": "Foto hercov:"
 }

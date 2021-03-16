@@ -118,6 +118,7 @@ module.exports = {
       "kp": 5000,
       "imdb": 5000
     },
+    "people_image": 0,
     "donotuse": ["actor","director","search"],
     "categories": {
       "countries": ["USA","France","Japan","Britain","Spain","Italy","Canada","India","Germany","Poland"],

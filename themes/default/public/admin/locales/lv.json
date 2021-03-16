@@ -1019,5 +1019,7 @@
 	"Только ботам": "Tikai botam",
 	"Пропускать фильмы": "Izlaist movieas",
 	"Сортировка фильмов в поиске:": "Movieu šķirošana meklēšanā:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Norādiet šķirošanu, kurā movieas tiks sakārtotas meklēšanā"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Norādiet šķirošanu, kurā movieas tiks sakārtotas meklēšanā",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Parādīt fotogrāfijas dalībnieku movieas lapā (pirms tam jums ir nepieciešams lejupielādēt visas fotogrāfijas)",
+	"Фото актеров:": "Foto dalībnieku:"
 }

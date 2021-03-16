@@ -1019,5 +1019,7 @@
 	"Только ботам": "Solo botam",
 	"Пропускать фильмы": "Salta movieati",
 	"Сортировка фильмов в поиске:": "Ordinamento dei movie in cerca:",
-	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indicare l'ordinamento su quali movie saranno ordinati nella ricerca"
+	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Indicare l'ordinamento su quali movie saranno ordinati nella ricerca",
+	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Mostra foto di attori sulla pagina del movie (prima che tu abbia bisogno di scaricare tutte le foto)",
+	"Фото актеров:": "Foto degli attori:"
 }
