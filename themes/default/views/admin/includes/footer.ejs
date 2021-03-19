@@ -829,6 +829,54 @@
           /^.*?static\.tvmaze\.com\/uploads\/images\/[a-z_]*\/([0-9]*)\/([0-9]*)\.([a-z0-9]*)$/i,
           '/$1-$2.$3'
         );
+      } else if (
+        /^.*?shikimori\.one\/system\/(animes|mangas)\/([a-z0-9]+)\/([a-z0-9]+)\.([a-z0-9]+)[?0-9]*$/i.test(
+          data.movie.poster
+        )
+      ) {
+        data.movie.poster = data.movie.poster.replace(
+          /^.*?shikimori\.one\/system\/(animes|mangas)\/([a-z0-9]+)\/([a-z0-9]+)\.([a-z0-9]+)[?0-9]*$/i,
+          '/$1-original-$3.$4'
+        );
+      }
+    }
+
+    if (data.movie && data.movie.pictures) {
+      if (
+        data.movie.pictures.indexOf('shikimori.one/system/screenshots') + 1
+      ) {
+        data.movie.pictures = data.movie.pictures.split(',').map(function(picture) {
+          if (
+            /^.*?shikimori\.one\/system\/screenshots\/[a-z0-9]+\/([a-z0-9]+)\.([a-z0-9]+)[?0-9]*$/i.test(
+              picture.trim()
+            )
+          ) {
+            return picture.trim().replace(
+              /^.*?shikimori\.one\/system\/screenshots\/[a-z0-9]+\/([a-z0-9]+)\.([a-z0-9]+)[?0-9]*$/i,
+              '/screenshots-original-$1.$2'
+            )
+          } else {
+            return false;
+          }
+        }).filter(Boolean).join(',');
+      }
+      if (
+        data.movie.pictures.indexOf('avatars.mds.yandex.net') + 1
+      ) {
+        data.movie.pictures = data.movie.pictures.split(',').map(function(picture) {
+          if (
+            /^.*?avatars\.mds\.yandex\.net\/(get-kinopoisk-image|get-kino-vod-films-gallery)\/([0-9]*)\/([a-z0-9\-]*)\/[0-9x_]*$/i.test(
+              picture.trim()
+            )
+          ) {
+            return picture.trim().replace(
+              /^.*?avatars\.mds\.yandex\.net\/(get-kinopoisk-image|get-kino-vod-films-gallery)\/([0-9]*)\/([a-z0-9\-]*)\/[0-9x_]*$/i,
+              '/$1-$2-$3'
+            );
+          } else {
+            return picture.trim();
+          }
+        }).filter(Boolean).join(',');
       }
     }
 

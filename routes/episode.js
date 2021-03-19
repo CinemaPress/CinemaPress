@@ -23,6 +23,7 @@ Object.keys(modules).length === 0 &&
  * Node dependencies.
  */
 
+var op = require('object-path');
 var adop = require('adop');
 var LRU = require('lru-cache');
 var cache = new LRU({
@@ -108,8 +109,9 @@ router.get('/?', function(req, res) {
         if (task.charAt(0) === '#' || parse.length < 3) {
           return callback();
         }
+        var changes = (parse[0].split('<>')[1] || '').split(',');
         var params = {
-          url: parse[0],
+          url: parse[0].split('<>')[0].trim(),
           season: parse[1],
           episode: parse[2]
         };
@@ -167,7 +169,48 @@ router.get('/?', function(req, res) {
             if (error || response.statusCode !== 200 || !body) {
               return callback();
             }
-            serials = adop(tryParseJSON(body), obj, group);
+            var body_json = tryParseJSON(body);
+            if (typeof body_json !== 'object') {
+              return callback();
+            }
+            function zero(first_path, id, key_paths) {
+              var add_path = id && key_paths[id] ? key_paths[id] : '';
+              var next_id = key_paths[id + 1] ? id + 1 : 0;
+              var array_key_path = op.get(body_json, first_path);
+              if (typeof array_key_path !== 'object') return;
+              if (!Array.isArray(array_key_path)) {
+                var key_array = [];
+                Object.keys(array_key_path).forEach(function(key) {
+                  key_array.push({
+                    key: key,
+                    value: array_key_path[key]
+                  });
+                });
+                op.set(body_json, first_path, key_array);
+              } else {
+                array_key_path.forEach(function(akp, i) {
+                  var curr_key_path = [first_path, i, add_path]
+                    .filter(function(p) {
+                      return p !== '';
+                    })
+                    .join('.');
+                  var key_object = op.get(body_json, curr_key_path);
+                  if (typeof key_object !== 'object') return;
+                  zero(curr_key_path, next_id, key_paths);
+                });
+              }
+            }
+            if (changes && changes.length) {
+              changes.forEach(function(change) {
+                var key_path = change.trim();
+                if (!key_path) return;
+                var key_paths = key_path.split('0').map(function(p) {
+                  return p.replace(/\.+/g, '.').replace(/(^\.*)|(\.*)$/g, '');
+                });
+                zero(key_paths[0], key_paths[1] ? 1 : 0, key_paths);
+              });
+            }
+            serials = adop(body_json, obj, group);
             if (group === 'season.episode') {
               serials = {
                 '': serials

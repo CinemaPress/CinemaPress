@@ -887,7 +887,7 @@
                                                                     <td class="table-content help-example">
                                                                         <div class="<%- custom_div %>">
                                                                             <code>
-                                                                                <span class="items_url"><%= d[1].split('/')[2] %></span>
+                                                                                <span class="items_url"><%= d[1].indexOf('//') + 1 ? d[1].split('/')[2] : d[1] %></span>
                                                                                 ~
                                                                                 <span class="items_id"><%= d[2] %></span>
                                                                                 ~

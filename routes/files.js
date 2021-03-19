@@ -45,7 +45,7 @@ setInterval(discCheck, 3600000);
  */
 
 router.get(
-  /\/(poster|picture)\/(small|medium|original)\/([a-z0-9@.,_\-]*)\.(jpg|png)/i,
+  /\/(poster|picture)\/(small|medium|original)\/([a-z0-9@.,_\-]*)\.(jpg|jpeg|gif|png)/i,
   function(req, res) {
     var type = req.params[0];
     var size = req.params[1];
@@ -54,13 +54,16 @@ router.get(
     var file = id + '.' + format;
     var tvmaze_file = file.replace('-', '/');
     var url_kp = /^[0-9]*$/.test(id);
-    var url_ya = /^(get-kinopoisk-image|get-kino-vod-films-gallery)[a-z0-9\-]*$/.test(
+    var url_ya = /^(get-kinopoisk-image|get-kino-vod-films-gallery)[a-z0-9\-]*$/i.test(
+      id
+    );
+    var url_shikimori = /^(animes|mangas|screenshots)-[a-z0-9]+-[a-z0-9]*$/i.test(
       id
     );
     var url_tvmaze = /^[0-9]{1,3}-[0-9]*$/.test(id);
     var url_tmdb = /^[a-z0-9]*$/i.test(id);
     var url_imdb = /^[a-z0-9\-_.,@]*$/i.test(id);
-    var origin = '/files/' + type + '/' + size + '/' + id + '.jpg';
+    var origin = '/files/' + type + '/' + size + '/' + id + '.' + format;
 
     if (cache.has(origin)) {
       var r = Math.random()
@@ -86,6 +89,8 @@ router.get(
       source = 'kinopoisk';
     } else if (url_ya) {
       source = 'yandex';
+    } else if (url_shikimori) {
+      source = 'shikimori';
     } else if (url_tvmaze) {
       source = 'tvmaze';
     } else if (url_tmdb) {
@@ -134,6 +139,25 @@ router.get(
                 break;
               case 'original':
                 image += '/get-kinopoisk-image/' + file + '/orig';
+                break;
+            }
+            break;
+          case 'shikimori':
+            var path_type = 'animes';
+            if (id.indexOf('system-mangas') + 1) {
+              path_type = 'mangas';
+            }
+            file = id.replace(/(animes|mangas)-[a-z0-9]+-/i, '') + '.' + format;
+            image += 'shikimori.one';
+            switch (size) {
+              case 'small':
+                image += '/system/' + path_type + '/x96/' + file;
+                break;
+              case 'medium':
+                image += '/system/' + path_type + '/original/' + file;
+                break;
+              case 'original':
+                image += '/system/' + path_type + '/original/' + file;
                 break;
             }
             break;
@@ -232,6 +256,21 @@ router.get(
                 break;
               case 'original':
                 image += '/get-kino-vod-films-gallery/' + file + '/orig';
+                break;
+            }
+            break;
+          case 'shikimori':
+            file = id.replace(/screenshots-[a-z0-9]+-/i, '') + '.' + format;
+            image += 'shikimori.one';
+            switch (size) {
+              case 'small':
+                image += '/system/screenshots/x332/' + file;
+                break;
+              case 'medium':
+                image += '/system/screenshots/original/' + file;
+                break;
+              case 'original':
+                image += '/system/screenshots/original/' + file;
                 break;
             }
             break;
