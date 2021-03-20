@@ -1020,5 +1020,7 @@
   "Сортировка фильмов в поиске:": "Sorting movies in search:",
   "Укажите сортировку по которой будут сортироваться фильмы в поиске": "Specify the sorting on which movies will be sorted in search",
   "Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Show photos of actors on the movie page (before that you need to download all photos)",
-  "Фото актеров:": "Photo of actors:"
+  "Фото актеров:": "Photo of actors:",
+  "Домен для фото актеров:": "Domain for photo actors:",
+  "Укажите доменное имя с которого будут показаны фото актеров": "Specify the domain name from which the photo of the actors will be shown"
 }

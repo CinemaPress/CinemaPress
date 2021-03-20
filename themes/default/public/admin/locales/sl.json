@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Razvrščanje movieov v iskanju:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Navedite razvrščanje, na katerem bodo moviei razvrščeni v iskanju",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Prikaži fotografije igralcev na movieski strani (pred tem morate prenesti vse fotografije)",
-	"Фото актеров:": "Fotografija igralcev:"
+	"Фото актеров:": "Fotografija igralcev:",
+	"Домен для фото актеров:": "Domena za foto igralce:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Določite ime domene, iz katere bo prikazana fotografija igralcev"
 }

@@ -119,6 +119,7 @@ module.exports = {
       "imdb": 5000
     },
     "people_image": 0,
+    "people_image_domain": "",
     "donotuse": ["actor","director","search"],
     "categories": {
       "countries": ["США","Россия","СССР","Индия","Франция","Япония","Великобритания","Испания","Италия","Канада"],

@@ -119,6 +119,7 @@ module.exports = {
       "imdb": 5000
     },
     "people_image": 0,
+    "people_image_domain": "",
     "donotuse": ["actor","director","search"],
     "categories": {
       "countries": ["USA","France","Japan","Britain","Spain","Italy","Canada","India","Germany","Poland"],
@@ -308,12 +309,12 @@ module.exports = {
     }
   },
   "sorting": {
-    "kinopoisk-rating-up": "Rated KP ⬆",
-    "kinopoisk-rating-down": "Rated KP ⬇",
+    "kinopoisk-rating-up": "",
+    "kinopoisk-rating-down": "",
     "imdb-rating-up": "Rated IMDb ⬆",
     "imdb-rating-down": "Rated IMDb ⬇",
-    "kinopoisk-vote-up": "Popularity KP ⬆",
-    "kinopoisk-vote-down": "Popularity KP ⬇",
+    "kinopoisk-vote-up": "",
+    "kinopoisk-vote-down": "",
     "imdb-vote-up": "Popularity IMDb ⬆",
     "imdb-vote-down": "Popularity IMDb ⬇",
     "year-up": "Year ⬆",

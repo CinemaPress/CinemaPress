@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Movieu šķirošana meklēšanā:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Norādiet šķirošanu, kurā movieas tiks sakārtotas meklēšanā",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Parādīt fotogrāfijas dalībnieku movieas lapā (pirms tam jums ir nepieciešams lejupielādēt visas fotogrāfijas)",
-	"Фото актеров:": "Foto dalībnieku:"
+	"Фото актеров:": "Foto dalībnieku:",
+	"Домен для фото актеров:": "Domēns foto aktieriem:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Norādiet domēna nosaukumu, no kura tiks parādīts dalībnieku fotoattēls"
 }

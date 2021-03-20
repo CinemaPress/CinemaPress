@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Sortowanie movieów w wyszukiwarce:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Wskazać sortowanie, na którym moviey będą sortowane w poszukiwaniu",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Pokaż zdjęcia aktorów na stronie movieowej (wcześniej, aby pobrać wszystkie zdjęcia)",
-	"Фото актеров:": "Zdjęcie aktorów:"
+	"Фото актеров:": "Zdjęcie aktorów:",
+	"Домен для фото актеров:": "Domena dla aktorów zdjęć:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Określ nazwę domeny, z której zostanie wyświetlone zdjęcie podmiotów"
 }

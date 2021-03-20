@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Menyortir movie dalam pencarian:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Menunjukkan penyortiran pada movie mana yang akan disortir dalam pencarian",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Tampilkan foto-foto aktor di halaman movie (sebelum itu Anda perlu mengunduh semua foto)",
-	"Фото актеров:": "Foto aktor:"
+	"Фото актеров:": "Foto aktor:",
+	"Домен для фото актеров:": "Domain untuk aktor foto:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Tentukan nama domain dari mana foto aktor akan ditampilkan"
 }

@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Sắp xếp phim trong tìm kiếm:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Cho biết việc sắp xếp các bộ phim nào sẽ được sắp xếp trong tìm kiếm",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Hiển thị hình ảnh của các diễn viên trên trang phim (trước đó bạn cần tải tất cả ảnh)",
-	"Фото актеров:": "Hình ảnh diễn viên:"
+	"Фото актеров:": "Hình ảnh diễn viên:",
+	"Домен для фото актеров:": "Tên miền cho diễn viên ảnh:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Chỉ định tên miền mà từ đó ảnh của các diễn viên sẽ được hiển thị"
 }

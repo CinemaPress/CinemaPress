@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Kupanga sinema katika utafutaji:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Onyesha kuchagua ambayo filamu zitapangwa katika utafutaji",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Onyesha picha za watendaji kwenye ukurasa wa filamu (kabla ya kwamba unahitaji kupakua picha zote)",
-	"Фото актеров:": "Picha ya watendaji:"
+	"Фото актеров:": "Picha ya watendaji:",
+	"Домен для фото актеров:": "Domain kwa watendaji wa picha:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Taja jina la kikoa ambalo picha ya watendaji itaonyeshwa"
 }

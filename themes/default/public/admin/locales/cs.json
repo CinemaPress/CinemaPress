@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Třídění movieů ve vyhledávání:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Uveďte třídění, na kterých budou moviey seřazeny ve vyhledávání",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Zobrazit fotografie herců na movieové stránce (předtím, než je třeba stáhnout všechny fotografie)",
-	"Фото актеров:": "Fotografie herců:"
+	"Фото актеров:": "Fotografie herců:",
+	"Домен для фото актеров:": "Doména pro fotogramy:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Určete název domény, ze kterého bude zobrazena fotografie herců"
 }

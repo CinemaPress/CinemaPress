@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Ara movieleri sıralama:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Hangi movielerin arama sırasında sıralanacağını belirtin",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Movie sayfasındaki aktörlerin fotoğraflarını göster (Bundan önce tüm fotoğrafları indirmeniz gerekir)",
-	"Фото актеров:": "Aktörlerin fotoğrafı:"
+	"Фото актеров:": "Aktörlerin fotoğrafı:",
+	"Домен для фото актеров:": "Fotoğraf aktörlerinin etki alanı:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Aktörlerin fotoğrafının gösterileceği etki alanı adını belirtin"
 }

@@ -1021,5 +1021,7 @@
 	"Сортировка фильмов в поиске:": "Movieek rendezése a keresésben:",
 	"Укажите сортировку по которой будут сортироваться фильмы в поиске": "Jelölje meg azokat a rendezést, amelyeken a movieek keresésére kerülnek sorrendben",
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Fényképek képei a movieoldalon (mielőtt letölteni kell az összes fényképet)",
-	"Фото актеров:": "A színészek fotója:"
+	"Фото актеров:": "A színészek fotója:",
+	"Домен для фото актеров:": "Domain fotó szereplők számára:",
+	"Укажите доменное имя с которого будут показаны фото актеров": "Adja meg azt a tartománynevet, amelyből a színészek fotó megjelenik"
 }
