@@ -143,12 +143,14 @@ router.get('/?', function(req, res) {
           {
             name: 'season',
             path: parse[1],
-            type: 'number'
+            type: 'number',
+            regex: /([0-9]{1,4})/
           },
           {
             name: 'episode',
             path: parse[2],
-            type: 'number'
+            type: 'number',
+            regex: /([0-9]{1,4})/
           }
         ];
         if (parse[3]) {
@@ -210,18 +212,18 @@ router.get('/?', function(req, res) {
                 zero(key_paths[0], key_paths[1] ? 1 : 0, key_paths);
               });
             }
-            serials = adop(body_json, obj, group);
+            var get_serials = adop(body_json, obj, group);
             if (group === 'season.episode') {
-              serials = {
-                '': serials
+              get_serials = {
+                '': get_serials
               };
             }
-            Object.keys(serials).forEach(function(translate) {
-              Object.keys(serials[translate]).forEach(function(season) {
-                Object.keys(serials[translate][season]).forEach(function(
+            Object.keys(get_serials).forEach(function(translate) {
+              Object.keys(get_serials[translate]).forEach(function(season) {
+                Object.keys(get_serials[translate][season]).forEach(function(
                   episode
                 ) {
-                  serials[translate][season][episode] = {
+                  get_serials[translate][season][episode] = {
                     kp_id: movie.kp_id,
                     title: movie.title,
                     title_ru: movie.title_ru,
@@ -256,6 +258,7 @@ router.get('/?', function(req, res) {
                 });
               });
             });
+            serials = Object.assign({}, get_serials, serials);
             cache.set(hash, serials);
             callback();
           }
