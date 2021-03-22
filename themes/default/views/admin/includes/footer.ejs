@@ -55,6 +55,10 @@
     if (movies_cron_stop)
       movies_cron_stop.addEventListener('click', moviesCronStopData);
 
+    var movies_zero_rt = document.querySelector('#movies_zero_rt');
+    if (movies_zero_rt)
+      movies_zero_rt.addEventListener('click', moviesZeroRtData);
+
     var database = document.querySelector('#database');
     if (database)
       database.addEventListener('click', databaseData);
@@ -111,7 +115,7 @@
       if (err) {
         self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
       } else {
-        location.reload();
+        window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
       }
     });
 
@@ -160,7 +164,7 @@
 
     setTimeout(function() {
       if (stop) return;
-      location.reload();
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
   }
 
@@ -188,7 +192,7 @@
 
     setTimeout(function() {
       if (stop) return;
-      location.reload();
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
 
   }
@@ -217,7 +221,7 @@
 
     setTimeout(function() {
       if (stop) return;
-      location.reload();
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
 
   }
@@ -249,7 +253,7 @@
 
     setTimeout(function() {
       if (stop) return;
-      location.reload();
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
 
   }
@@ -281,8 +285,35 @@
 
     setTimeout(function() {
       if (stop) return;
-      location.reload();
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
+
+  }
+
+  function moviesZeroRtData() {
+
+    var r = prompt('This will delete all movies from your database! Please enter your domain «<%- config.domain.toLowerCase() %>»:');
+    if (!r || r !== '<%- config.domain.toLowerCase() %>') {
+      return;
+    }
+
+    var self = this;
+    self.removeEventListener('click', moviesZeroRtData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'movies_zero_rt': true
+    };
+
+    saveData();
+    setTimeout(function() {
+        sendServer(data, function(err, result) {});
+    }, 5000);
+
+    setTimeout(function() {
+      self.innerHTML = '<span class="fa fa-check text-success"></span>';
+      alert('Restart page 2 times.');
+    }, 10000);
 
   }
 
@@ -1169,15 +1200,15 @@
           data.config.urls &&
           data.config.urls.admin &&
           data.config.urls.admin !== '<%- config.urls.admin %>') {
-          location.href = '/' + data.config.urls.admin;
+          window.location.href = '/' + data.config.urls.admin;
         } else if (data.config &&
           data.config.subdomain &&
           data.config.subdomain !== '<%- config.subdomain %>') {
-          location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
+          window.location.href = '<%- config.protocol %>' + data.config.subdomain + '<%- config.domain + '/' + config.urls.admin %>';
         } else if (data.content && !data.content.id) {
-          location.href = '<%- '/' + config.urls.admin + '/content' %>';
+          window.location.href = '<%- '/' + config.urls.admin + '/content' %>';
         } else if (data.movie && !data.movie.id) {
-          location.href = '<%- '/' + config.urls.admin + '/movies' %>';
+          window.location.href = '<%- '/' + config.urls.admin + '/movies' %>';
         } else if (data.config && data.config.theme && data.config.theme !== '<%- config.theme %>') {
           self.innerHTML = '<span class="fa fa-save"></span>&nbsp;&nbsp;<%= __('Сохранить изменения') %>';
           self.addEventListener('click', saveData);

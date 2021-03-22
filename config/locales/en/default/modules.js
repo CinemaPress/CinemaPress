@@ -317,6 +317,7 @@ module.exports = {
       "index": {
         "name": "New series of serials",
         "count": 12,
+        "max": 60,
         "order": 2,
         "latest": 0,
         "custom": []

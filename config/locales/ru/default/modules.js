@@ -317,6 +317,7 @@ module.exports = {
       "index": {
         "name": "Новые серии сериалов",
         "count": 12,
+        "max": 60,
         "order": 2,
         "latest": 0,
         "custom": [

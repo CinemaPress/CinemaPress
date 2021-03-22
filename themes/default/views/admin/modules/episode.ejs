@@ -632,7 +632,7 @@
                                                     <% } %>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-4">
                                                 <select name="modules.episode.data.index.count"
                                                         class="form-control without">
                                                     <% for (var i = 0; i <= 99; i++) { %>
@@ -660,7 +660,41 @@
                                                     <% } %>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-2 text-center">
+                                                /
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select name="modules.episode.data.index.max"
+                                                        class="form-control without">
+                                                    <% for (var i = 0; i <= 99; i++) { %>
+                                                        <% if (modules.episode.data.index.max === i) { %>
+                                                            <% if (i === 0) { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%= __('Не показывать') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>" selected="selected">
+                                                                    <%- i %> <%= __('серий') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } else { %>
+                                                            <% if (i === 0) { %>
+                                                                <option value="<%= i %>">
+                                                                    <%= __('Не показывать') %>
+                                                                </option>
+                                                            <% } else { %>
+                                                                <option value="<%= i %>">
+                                                                    <%- i %> <%= __('серий') %>
+                                                                </option>
+                                                            <% } %>
+                                                        <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-12">
                                                 <input type="text" name="modules.episode.data.index.name"
                                                        value="<%= modules.episode.data.index.name %>"
                                                        class="form-control">

@@ -217,7 +217,6 @@ function codePlayer(type, movie, options) {
     data['data-douban'] = movie.custom.douban_id ? movie.custom.douban_id : '';
     data['data-tvmaze'] = movie.custom.tvmaze_id ? movie.custom.tvmaze_id : '';
     data['data-wa'] = movie.custom.wa_id ? movie.custom.wa_id : '';
-    data['data-videospider_tv'] = '' + movie.type === '1' ? '1' : '0';
     data['data-season'] = serial.season ? serial.season : '';
     data['data-episode'] = serial.episode ? serial.episode : '';
     data['data-translate'] = serial.translate ? serial.translate : '';

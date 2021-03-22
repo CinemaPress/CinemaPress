@@ -1123,7 +1123,9 @@ router.post('/change', function(req, res) {
             config.domain +
             '/log/movies.pid',
           function(err) {
-            return callback();
+            setTimeout(function() {
+              return callback();
+            }, 5000);
           }
         );
       },
@@ -1139,9 +1141,17 @@ router.post('/change', function(req, res) {
             config.domain +
             '/log/movies.pid; fi',
           function(err) {
-            return callback();
+            setTimeout(function() {
+              return callback();
+            }, 5000);
           }
         );
+      },
+      movies_zero_rt: function(callback) {
+        if (!form.movies_zero_rt) return callback(null, 'Null');
+        exec('/usr/bin/cinemapress container zero_rt &', function(err) {
+          return callback();
+        });
       },
       protocol: function(callback) {
         if (!form.config || typeof form.config.protocol === 'undefined')
