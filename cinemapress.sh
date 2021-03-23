@@ -1193,7 +1193,7 @@ option() {
     printf "${C}---- ${G}2)${NC} update ${S}------------------- Upgrade CinemaPress System ${C}----\n"
     printf "${C}---- ${G}3)${NC} backup ${S}-------------------- Backup System Master Data ${C}----\n"
     printf "${C}---- ${G}4)${NC} theme ${S}------------- Install / Update Website Template ${C}----\n"
-    printf "${C}---- ${G}5)${NC} database ${S}------------- Import All Movies In The World ${C}----\n"
+    # printf "${C}---- ${G}5)${NC} database ${S}------------- Import All Movies In The World ${C}----\n"
     printf "${C}---- ${G}6)${NC} https ${S}-------------- Getting Wildcard SSL Certificate ${C}----\n"
     printf "${C}---- ${G}7)${NC} mirror ${S}------------------------- Moving To New Domain ${C}----\n"
     printf "${C}---- ${G}8)${NC} remove ${S}---------------------------- Uninstall Website ${C}----\n"

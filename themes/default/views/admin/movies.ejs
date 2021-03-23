@@ -873,7 +873,7 @@
                                                             <tbody>
                                                             <% config.movies.cron.forEach(function(data, num) { %>
                                                                 <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                                <% if (d.length < 6) return; %>
+                                                                <% if (d.length < 5) return; %>
                                                                 <% if (data.charAt(0) === '#') {
                                                                     var custom_div = 'no-active';
                                                                 } %>

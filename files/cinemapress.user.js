@@ -348,6 +348,7 @@ function getAPI(url, callback) {
   GM_xmlhttpRequest({
     method: 'GET',
     url: url,
+    timeout: 5000,
     onload: function(response) {
       if (response.readyState === 4 && response.status === 200) {
         var result = {};

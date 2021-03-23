@@ -538,6 +538,10 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       });
     }
 
+    if (req.userinfo.bot.main) {
+      res.header('X-Robots-Tag', 'noarchive');
+    }
+
     if (typeof render === 'object') {
       if (
         config.theme === 'default' ||
