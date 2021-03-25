@@ -517,16 +517,10 @@
                                             }
                                           });
                                         </script>
-                                    <% } else { %>
-                                        <a href="/<%- config.urls.admin %>/rewrite" class="btn btn-primary btn-sm"
-                                           style="float:right;margin:0;height:18px;padding:1px 10px 0 10px;"><i
-                                                    class="far fa-hand-rock"></i> <%= __('Сделать текст уникальным') %>
-                                        </a>
                                     <% } %>
                                 </div>
                                 <div class="spacer-10"></div>
-                                <textarea class="form-control descriptions" name="movie.description"
-                                          placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni"><% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
+                                <textarea class="form-control descriptions" name="movie.description" placeholder="<%= __('Уникальное описание ...') %>" id="text-sinoni"><% if (movie.description) { %><%- movie.description.trim().replace(/<br>/ig, '\n') %><% } %></textarea>
                                 <div class="advanced-textarea-footer">
                                     <div class="pull-left">
                                         <div class="text text-muted" style="float: none;"><span
@@ -830,15 +824,15 @@
                                 </div>
                             </fieldset>
 
-                            <div class="spacer-10"></div>
+                        </div>
+                    </div>
 
-                            <div class="row">
-                                <div class="col-xs-3 col-md-3">
-                                    <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>"
-                                       class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
-                                </div>
-                            </div>
+                    <div class="spacer-10"></div>
 
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3">
+                            <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>"
+                               class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
                         </div>
                     </div>
 
