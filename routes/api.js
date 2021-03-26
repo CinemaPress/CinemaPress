@@ -445,7 +445,7 @@ router.all('/', function(req, res) {
           parseInt(req.query['kp_id'].replace(/[^0-9]/g, '')) + '') ||
         (req.body &&
           req.body['kinopoisk'] &&
-          parseInt(req.body['kinopoisk'].replace(/[^0-9]/g, '')))
+          parseInt(req.body['kinopoisk'].replace(/[^0-9]/g, '')) + '')
     });
   }
   if (

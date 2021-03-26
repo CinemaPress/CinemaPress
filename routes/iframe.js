@@ -165,18 +165,20 @@ router.get('/:id', function(req, res) {
             movie.custom = {};
           }
           var player = CP_player.code('movie', movie);
-          player.player = player.player.replace(
-            'data-player=',
-            'data-url="' +
-              origin +
-              '/api?' +
-              (id_key || 'kp_id') +
-              '=' +
-              id_value +
-              '&type=' +
-              movie.type +
-              '&player" data-player='
-          );
+          player.player = player.player
+            .replace(/data-url="[^"]*"/, '')
+            .replace(
+              'data-player=',
+              'data-url="' +
+                origin +
+                '/api?' +
+                (id_key || 'kp_id') +
+                '=' +
+                id_value +
+                '&type=' +
+                movie.type +
+                '&player" data-player='
+            );
           return res.send(
             '<!DOCTYPE html><html lang="' +
               config.language +
