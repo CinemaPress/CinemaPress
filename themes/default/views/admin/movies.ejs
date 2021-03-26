@@ -831,8 +831,13 @@
 
                     <div class="row">
                         <div class="col-xs-3 col-md-3">
-                            <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>"
-                               class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
+                            <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>" class="btn btn-danger btn-block del"><span class="fa fa-trash"></span></a>
+                        </div>
+                        <div class="col-xs-offset-5 col-md-offset-5 col-xs-4 col-md-4">
+                            <a href="javascript:void(0)" class="btn btn-link btn-block" id="movies_saved" title="/files/saved/<%- movie.id %>.json">
+                                <span class="visible-xs"><i class="fas fa-file-download"></i></span>
+                                <span class="hidden-xs"><i class="fas fa-file-download"></i>&nbsp;&nbsp;<span><%- movie.id %>.json</span></span>
+                            </a>
                         </div>
                     </div>
 

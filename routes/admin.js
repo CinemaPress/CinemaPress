@@ -1124,7 +1124,7 @@ router.post('/change', function(req, res) {
             '/log/movies.pid',
           function(err) {
             setTimeout(function() {
-              return callback();
+              return callback(null, 'Cron');
             }, 5000);
           }
         );
@@ -1142,7 +1142,7 @@ router.post('/change', function(req, res) {
             '/log/movies.pid; fi',
           function(err) {
             setTimeout(function() {
-              return callback();
+              return callback(null, 'Stop');
             }, 5000);
           }
         );
@@ -1150,8 +1150,28 @@ router.post('/change', function(req, res) {
       movies_zero_rt: function(callback) {
         if (!form.movies_zero_rt) return callback(null, 'Null');
         exec('/usr/bin/cinemapress container zero_rt &', function(err) {
-          return callback();
+          return callback(null, 'Zero');
         });
+      },
+      movies_saved: function(callback) {
+        if (!form.movies_saved || !form.movie) return callback(null, 'Null');
+        fs.writeFile(
+          '/home/' +
+            config.domain +
+            '/files/saved/' +
+            form.movie.id +
+            '-' +
+            Math.random()
+              .toString(36)
+              .substring(7)
+              .toUpperCase() +
+            '.json',
+          JSON.stringify(form.movie, null, 2),
+          function(err) {
+            if (err) return console.log(err);
+            return callback(null, 'Saved');
+          }
+        );
       },
       protocol: function(callback) {
         if (!form.config || typeof form.config.protocol === 'undefined')

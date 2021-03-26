@@ -59,6 +59,10 @@
     if (movies_zero_rt)
       movies_zero_rt.addEventListener('click', moviesZeroRtData);
 
+    var movies_saved = document.querySelector('#movies_saved');
+    if (movies_saved)
+      movies_saved.addEventListener('click', saveData);
+
     var database = document.querySelector('#database');
     if (database)
       database.addEventListener('click', databaseData);
@@ -243,7 +247,7 @@
       if (err) {
         self.innerHTML = '<i class="fa fa-bug"></i>';
       } else {
-        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+        self.innerHTML = '<span class="fa fa-check"></span>';
         setTimeout(function() {
           self.innerHTML = '<i class="fas fa-receipt"></i>&nbsp;&nbsp;<%= __('Запустить получение информации')  %>';
           self.addEventListener('click', moviesCronData);
@@ -275,7 +279,7 @@
       if (err) {
         self.innerHTML = '<i class="fa fa-bug"></i>';
       } else {
-        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+        self.innerHTML = '<span class="fa fa-check"></span>';
         setTimeout(function() {
           self.innerHTML = '<i class="fas fa-hand-paper"></i>&nbsp;&nbsp;<%= __('Остановить получение информации')  %>';
           self.addEventListener('click', moviesCronStopData);
@@ -311,7 +315,7 @@
     }, 5000);
 
     setTimeout(function() {
-      self.innerHTML = '<span class="fa fa-check text-success"></span>';
+      self.innerHTML = '<span class="fa fa-check"></span>';
       alert('Restart page 2 times.');
     }, 10000);
 
@@ -381,7 +385,7 @@
       if (err) {
         self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
       } else {
-        self.innerHTML = '<span class="fa fa-check text-success"></span>';
+        self.innerHTML = '<span class="fa fa-check"></span>';
       }
     });
 
@@ -539,11 +543,21 @@
 
     if (!configs || !configs.length) return false;
 
+    var movies_saved_data = false;
+    if (this && this.innerHTML.indexOf('.json') + 1) {
+      movies_saved_data = true;
+    }
+
     var self = this;
     self.removeEventListener('click', saveData);
     self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Сохраняются изменения') %>';
 
     var data = {};
+
+    if (movies_saved_data) {
+      self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+      data.movies_saved = true;
+    }
 
     for (var i = 0; i < configs.length; i++) {
 
@@ -1196,6 +1210,10 @@
 
     sendServer(data, function(err, result) {
       setTimeout(function() {
+        if (!err && typeof movies_saved_data !== 'undefined' && movies_saved_data) {
+          self.innerHTML = '<span class="fa fa-check"></span>';
+          return;
+        }
         if (data.config &&
           data.config.urls &&
           data.config.urls.admin &&
