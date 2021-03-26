@@ -7,7 +7,7 @@ for NGINX_DIR in /home/*/config/production/nginx/conf.d/default.conf; do
     [ -f "${NGINX_DIR}" ] || break
     NGINX_NOW=$(md5sum "${NGINX_DIR}" | awk '{ print $1 }')
     if [ "${NGINX_INIT}" != "${NGINX_NOW}" ]; then
-      echo "$(date) Reloading... [${NGINX_DIR}]"
+      echo "$(date) Reloading ... [${NGINX_DIR}]"
       nginx -t && nginx -s reload;
     fi
     NGINX_INIT=${NGINX_NOW}

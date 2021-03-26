@@ -1,8 +1,5 @@
 FROM pagespeed/nginx-pagespeed:1.13.35.2-alpine3.8-ngx1.15
-RUN mkdir -p \
-    /var/log/nginx \
-    /etc/nginx \
-    /var/run
+RUN mkdir -p /var/log/nginx /etc/nginx /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
 RUN apk add bash dos2unix gzip curl \
