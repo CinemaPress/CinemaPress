@@ -84,7 +84,6 @@ docker_install() {
             echo ""; echo -n "☐ Downloading cinemapress.sh ...";
             wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh -o /dev/null && \
             chmod +x /usr/bin/cinemapress
-            /usr/bin/cinemapress ms upd
             echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
             echo -n "☐ Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
