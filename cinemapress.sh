@@ -3480,24 +3480,10 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "ms"|"mailserver"|"mail"|"setup.sh"|"./setup.sh" )
-            if [ "${2}" = "upd" ] && [ ! -f "/usr/bin/mailcinema" ]; then
-                exit 0
-            fi
-            if [ "${2}" = "upd" ] || [ ! -f "/usr/bin/mailcinema" ]; then
-                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
-                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
-                sed -Ei "s/\.\/setup\.sh/cinemapress ms/g" /usr/bin/mailcinema
-                sed -Ei "s/setup\.sh/cinemapress ms/g" /usr/bin/mailcinema
-                sed -Ei "s/\.\/\\\$\{SCRIPT:-\\\$\{0\}\}/cinemapress ms/g" /usr/bin/mailcinema
-                sed -Ei "s/\\\$\{0\}/cinemapress ms/g" /usr/bin/mailcinema
-                sed -Ei "s/IMAGE_NAME=\\\$\{INFO\%;\*\}/IMAGE_NAME=\"cinemapress\/mail\"/" /usr/bin/mailcinema
-                sed -Ei "s/CONTAINER_NAME=\\\$\{INFO\#\*;\}/CONTAINER_NAME=\"mail\"/" /usr/bin/mailcinema
-                sed -Ei "s/\\\$\{CDIR\}\/config/\/var\/docker-mailserver/" /usr/bin/mailcinema
-                sed -Ei "s/\"\\\$\{IMAGE_NAME\}\" \"\\\$\{@\}\"/\"\\\$\{IMAGE_NAME\}\" \"\\\$\{1\}\" \"\\\$\{2\}\" \"\\\$\{3\}\"/" /usr/bin/mailcinema
-                chmod +x /usr/bin/mailcinema
-                exit 0
-            fi
             if [ "${2}" = "help" ]; then
+                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/docker-mailserver/docker-mailserver/2527ebfaf2b3eee11b11c4ee589010e8c7a61a99/setup.sh
+                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
+                chmod a+x /usr/bin/mailcinema
                 /usr/bin/mailcinema
             elif [ "${3}" = "" ]; then
                 read_domain "${2}"
@@ -3529,6 +3515,9 @@ while [ "${WHILE}" -lt "2" ]; do
                     -p 587:587 \
                     -p 993:993 \
                     cinemapress/mail
+                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/docker-mailserver/docker-mailserver/2527ebfaf2b3eee11b11c4ee589010e8c7a61a99/setup.sh
+                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
+                chmod a+x /usr/bin/mailcinema
                 _br
                 _line
                 _header "MAIL SERVER ${CP_DOMAIN} STARTED"
