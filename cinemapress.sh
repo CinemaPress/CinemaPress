@@ -84,6 +84,7 @@ docker_install() {
             echo ""; echo -n "☐ Downloading cinemapress.sh ...";
             wget -qO /usr/bin/cinemapress https://gitlab.com/CinemaPress/CinemaPress/raw/master/cinemapress.sh -o /dev/null && \
             chmod +x /usr/bin/cinemapress
+            /usr/bin/cinemapress ms upd
             echo -e "\\r${G}✓ Downloading cinemapress.sh ...${NC}"
             echo -n "☐ Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
@@ -3479,10 +3480,24 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "ms"|"mailserver"|"mail"|"setup.sh"|"./setup.sh" )
-            if [ "${2}" = "help" ]; then
+            if [ "${2}" = "upd" ] && [ ! -f "/usr/bin/mailcinema" ]; then
+                exit 0
+            fi
+            if [ "${2}" = "upd" ] || [ ! -f "/usr/bin/mailcinema" ]; then
                 wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
                 sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
-                chmod a+x /usr/bin/mailcinema
+                sed -Ei "s/\.\/setup\.sh/cinemapress ms/g" /usr/bin/mailcinema
+                sed -Ei "s/setup\.sh/cinemapress ms/g" /usr/bin/mailcinema
+                sed -Ei "s/\.\/\\\$\{SCRIPT:-\\\$\{0\}\}/cinemapress ms/g" /usr/bin/mailcinema
+                sed -Ei "s/\\\$\{0\}/cinemapress ms/g" /usr/bin/mailcinema
+                sed -Ei "s/IMAGE_NAME=\\\$\{INFO\%;\*\}/IMAGE_NAME=\"cinemapress\/mail\"/" /usr/bin/mailcinema
+                sed -Ei "s/CONTAINER_NAME=\\\$\{INFO\#\*;\}/CONTAINER_NAME=\"mail\"/" /usr/bin/mailcinema
+                sed -Ei "s/\\\$\{CDIR\}\/config/\/var\/docker-mailserver/" /usr/bin/mailcinema
+                sed -Ei "s/\"\\\$\{IMAGE_NAME\}\" \"\\\$\{@\}\"/\"\\\$\{IMAGE_NAME\}\" \"\\\$\{1\}\" \"\\\$\{2\}\" \"\\\$\{3\}\"/" /usr/bin/mailcinema
+                chmod +x /usr/bin/mailcinema
+                exit 0
+            fi
+            if [ "${2}" = "help" ]; then
                 /usr/bin/mailcinema
             elif [ "${3}" = "" ]; then
                 read_domain "${2}"
@@ -3514,9 +3529,6 @@ while [ "${WHILE}" -lt "2" ]; do
                     -p 587:587 \
                     -p 993:993 \
                     cinemapress/mail
-                wget -qO /usr/bin/mailcinema https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh
-                sed -Ei "s/\\\$0/cinemapress ms/" /usr/bin/mailcinema
-                chmod a+x /usr/bin/mailcinema
                 _br
                 _line
                 _header "MAIL SERVER ${CP_DOMAIN} STARTED"
