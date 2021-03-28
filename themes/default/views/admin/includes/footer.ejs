@@ -544,7 +544,7 @@
     if (!configs || !configs.length) return false;
 
     var movies_saved_data = false;
-    if (this && this.innerHTML.indexOf('.json') + 1) {
+    if (this && this.innerHTML && this.innerHTML.indexOf('.json') + 1) {
       movies_saved_data = true;
     }
 

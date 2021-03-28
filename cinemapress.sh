@@ -2101,6 +2101,9 @@ docker_run() {
         if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
         searchd
         node /home/"${CP_DOMAIN}"/config/update/default.js
+        if [ "${CP_LANG}" = "en" ]; then
+            nohup /usr/bin/cinemapress container movies run >/dev/null 2>&1 &
+        fi
     else
         searchd
         node /home/"${CP_DOMAIN}"/config/update/config.js

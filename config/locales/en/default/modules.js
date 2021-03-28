@@ -73,9 +73,9 @@ module.exports = {
   "slider": {
     "status": true,
     "data": {
-      "count": 0,
-      "url": "",
-      "movies": ["1047883","460586","843650","843859","840372","916498","1008445","1009536","1007049","994864","1005878","846824","706655","489414","843649","961715","924311","935940","926540","839650","840829","843479","843790"]
+      "count": 15,
+      "url": "slider-movies",
+      "movies": []
     }
   },
   "abuse": {
@@ -105,7 +105,7 @@ module.exports = {
       "status_code_country": "200",
       "status_code_list": "404",
       "message": "Viewing is prohibited, the site is subject<br>to copyright law in the digital age!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
-      "movies": ["840372"],
+      "movies": ["412361974"],
       "status_code_whois": "404",
       "whois": [],
       "ips": [],
@@ -226,11 +226,11 @@ module.exports = {
   "player": {
     "status": true,
     "data": {
-      "display": "script",
+      "display": "custom",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
-      "script": "{\"data-player\":\"collaps,bazon,ustore,alloha,hdvb,kodik,videocdn,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
+      "script": "{\"data-player\":\"\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
-        "https://pleer.video/[kp_id].json ~ embeds.0.iframe"
+        "https://api.themoviedb.org/3/movie/[tmdb_id]?append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_"
       ]
     }
   },
@@ -524,7 +524,11 @@ module.exports = {
         "count": 4,
         "tags": "Updates"
       },
-      "custom": [],
+      "custom": [
+        "https://api.themoviedb.org/3/movie/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-movie-updates",
+        "https://api.themoviedb.org/3/tv/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-tv-updates",
+        "https://api.themoviedb.org/3/movie/upcoming?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ slider-movies"
+      ],
       "scraper": ""
     }
   },

@@ -81,11 +81,11 @@ module.exports = {
     "message": "The server is overloaded by [percent] please come back later."
   },
   "publish": {
-    "start": 400000,
+    "start": 298,
     "stop": 10000000,
     "every" : {
-      "hours": 2,
-      "movies": 4
+      "hours": 0,
+      "movies": 0
     },
     "text": 0,
     "required": [
@@ -144,8 +144,16 @@ module.exports = {
   },
   "movies": {
     "cron": [
-      "# 0 ~ https://api.themoviedb.org/3/movie/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?api_key=TOKEN&append_to_response=credits,external_ids ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country",
-      "# 0 ~ https://api.themoviedb.org/3/tv/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?api_key=TOKEN&append_to_response=credits,external_ids ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country"
+      "1 ~ https://api.themoviedb.org/3/movie/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?language=en&append_to_response=credits,external_ids&api_key=269890f657dddf4635473cf4cf456576 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "1 ~ https://api.themoviedb.org/3/tv/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?language=en&append_to_response=credits,external_ids&api_key=269890f657dddf4635473cf4cf456576 ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "1 ~ https://api.themoviedb.org/3/movie/upcoming?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?language=en&append_to_response=credits,external_ids&api_key=269890f657dddf4635473cf4cf456576 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "1 ~ lastmod ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=269890f657dddf4635473cf4cf456576 ~ movie_results.0.id <> custom.tmdb_id <> 1",
+      "1 ~ lastmod ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=269890f657dddf4635473cf4cf456576 ~ tv_results.0.id <> custom.tmdb_id <> 1",
+      "0 ~ https://api.themoviedb.org/3/movie/popular?api_key=269890f657dddf4635473cf4cf456576&page=[page][25] ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?language=en&append_to_response=credits,external_ids&api_key=269890f657dddf4635473cf4cf456576 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "0 ~ https://api.themoviedb.org/3/tv/popular?api_key=269890f657dddf4635473cf4cf456576&page=[page][25] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?language=en&append_to_response=credits,external_ids&api_key=269890f657dddf4635473cf4cf456576 ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "0 ~ lastmod ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=269890f657dddf4635473cf4cf456576 ~ movie_results.0.id <> custom.tmdb_id <> 1",
+      "0 ~ lastmod ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=269890f657dddf4635473cf4cf456576 ~ tv_results.0.id <> custom.tmdb_id <> 1",
+      "0 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote"
     ],
     "proxy": [],
     "cookies": "",
