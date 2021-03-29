@@ -320,11 +320,11 @@ module.exports = {
         "max": 60,
         "order": 2,
         "latest": 0,
-        "custom": []
+        "custom": [
+          "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
+        ]
       },
-      "custom": [
-        "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
-      ],
+      "custom": [],
       "translations": ""
     }
   },
