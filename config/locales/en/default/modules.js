@@ -235,7 +235,7 @@ module.exports = {
     }
   },
   "blocking": {
-    "status": true,
+    "status": false,
     "data": {
       "display": "legal",
       "share": {
@@ -322,7 +322,9 @@ module.exports = {
         "latest": 0,
         "custom": []
       },
-      "custom": [],
+      "custom": [
+        "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
+      ],
       "translations": ""
     }
   },
