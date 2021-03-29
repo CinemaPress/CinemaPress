@@ -2102,7 +2102,7 @@ docker_run() {
         searchd
         node /home/"${CP_DOMAIN}"/config/update/default.js
         if [ "${CP_LANG}" = "en" ]; then
-            nohup /usr/bin/cinemapress container cron >/dev/null 2>&1 &
+            nohup /usr/bin/cinemapress container cron run >/dev/null 2>&1 &
         fi
     else
         searchd
@@ -2184,7 +2184,11 @@ docker_movies() {
     fi
 }
 docker_cron() {
-    node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+    if [ -n "${1}" ]; then
+        node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
+    else
+        node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+    fi
     node /home/"${CP_DOMAIN}"/lib/CP_cron.js
 }
 docker_restore() {
@@ -2766,7 +2770,7 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${2}" = "movies" ]; then
                 docker_movies "${3}"
             elif [ "${2}" = "cron" ]; then
-                docker_cron
+                docker_cron "${3}"
             elif [ "${2}" = "actual" ]; then
                 docker_actual
             elif [ "${2}" = "mirror" ]; then
