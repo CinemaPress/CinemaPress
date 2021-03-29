@@ -53,6 +53,14 @@ app.use(function(req, res, next) {
 app.use('/ping', function(req, res) {
   return res.send('pong');
 });
+app.use('/flush-cache-' + config.urls.admin, function(req, res) {
+  require('./lib/CP_cache').flush(function() {
+    process.env.CP_VER = process.env.CP_VER
+      ? parseInt(process.env.CP_VER) + 1
+      : new Date().getTime().toString();
+    return res.send('OK');
+  });
+});
 
 /**
  * Route dependencies.

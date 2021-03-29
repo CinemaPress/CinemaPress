@@ -313,9 +313,10 @@ function codePlayer(type, movie, options) {
 
       var script = '';
       for (var pkey in param) {
-        if (param.hasOwnProperty(pkey) && param[pkey]) {
+        if (pkey && param.hasOwnProperty(pkey) && param[pkey]) {
           param[pkey] = ('' + param[pkey]).trim();
-          script += '&' + pkey + '=' + encodeURIComponent(param[pkey]);
+          script +=
+            (script ? '&' : '') + pkey + '=' + encodeURIComponent(param[pkey]);
         }
       }
 

@@ -74,7 +74,7 @@ module.exports = {
     "status": true,
     "data": {
       "count": 15,
-      "url": "slider-movies",
+      "url": "carousel-movies",
       "movies": []
     }
   },
@@ -190,20 +190,20 @@ module.exports = {
           "answer4": "The site is adapted for viewing on Android TV, Smart TV and Set-Top-Boxes."
         },
         "category": {
-          "question1": "🥇 How to view the TOP in the category «[category]» by rating on KinoPoisk?",
-          "answer1": "For the movies with the best rating on KinoPoisk to be at the top, click on the sorting «By KP rating»",
-          "question2": "🥈 How to view the TOP in the «[category]» category by rating on IMDb?",
-          "answer2": "To have the movies with the best rating on IMDb at the top, click on the sort «By IMDb rating»",
-          "question3": "🥉 How to watch the best in the «[category]» category by popularity on KinoPoisk?",
-          "answer3": "For the films with the highest number of ratings on KinoPoisk to be at the top, click on the sorting «By KP popularity»",
-          "question4": "🥇 How to watch the best in the «[category]» category by popularity on IMDb?",
-          "answer4": "To have the films with the most ratings on IMDb at the top, click on the sort «By IMDb popularity»"
+          "question1": "🥇 How to view the TOP in the «[category]» category by rating on IMDb?",
+          "answer1": "To have the movies with the best rating on IMDb at the top, click on the sort «By IMDb rating»",
+          "question2": "🥈 How to watch the best in the «[category]» category by popularity on IMDb?",
+          "answer2": "To have the films with the most ratings on IMDb at the top, click on the sort «By IMDb popularity»",
+          "question3": "",
+          "answer3": "",
+          "question4": "",
+          "answer4": ""
         },
         "movie": {
           "question1": "🥇 Actor «[actor]» starring?",
           "answer1": "The main roles went to such actors as [actors]",
-          "question2": "🥈 What is the rating «[title]» on KinoPoisk and on IMDb?",
-          "answer2": "On KinoPoisk rating [kp_rating]% with [kp_vote] votes, on IMDb rating [imdb_rating]% with [imdb_vote] votes",
+          "question2": "🥈 What is the rating «[title]» on IMDb?",
+          "answer2": "On IMDb rating [imdb_rating]% with [imdb_vote] votes",
           "question3": "🥉 When will «[title]» premiere?",
           "answer3": "The premiere is set for [premiere]",
           "question4": "🥇 Where else is «[actor]» filming?",
@@ -228,9 +228,10 @@ module.exports = {
     "data": {
       "display": "custom",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
-      "script": "{\"data-player\":\"\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
+      "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
-        "https://api.themoviedb.org/3/movie/[tmdb_id]?append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_"
+        "https://api.themoviedb.org/3/[type]/[tmdb_id]?append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
+        "# https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=KEY_YOUTUBE_API&q=[title]%20trailer ~ items[0].id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ]
     }
   },
@@ -321,7 +322,8 @@ module.exports = {
         "order": 2,
         "latest": 0,
         "custom": [
-          "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
+          "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number",
+          "https://api.tvmaze.com/schedule ~ 0.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
         ]
       },
       "custom": [],
@@ -527,9 +529,12 @@ module.exports = {
         "tags": "Updates"
       },
       "custom": [
-        "https://api.themoviedb.org/3/movie/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-movie-updates",
-        "https://api.themoviedb.org/3/tv/popular?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-tv-updates",
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ slider-movies"
+        "https://api.themoviedb.org/3/movie/popular?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-movie-updates",
+        "https://api.themoviedb.org/3/tv/popular?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-tv-updates",
+        "https://api.themoviedb.org/3/movie/upcoming?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ carousel-movies",
+        "https://api.themoviedb.org/3/movie/popular?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-movie-updates",
+        "https://api.themoviedb.org/3/tv/popular?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ latest-tv-updates",
+        "https://api.themoviedb.org/3/movie/upcoming?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ carousel-movies"
       ],
       "scraper": ""
     }

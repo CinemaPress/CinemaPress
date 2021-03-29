@@ -26,25 +26,25 @@
       "content_movies": ""
     },
     {
-      "content_url": "slider-movies",
-      "content_title": "Slider movies",
-      "content_description": "Slider movies",
+      "content_url": "carousel-movies",
+      "content_title": "Carousel Movies",
+      "content_description": "Carousel Movies",
       "content_tags": "",
-      "content_image": "",
+      "content_image": "/files/content/pages2.png",
       "content_movies": ""
     },
     {
       "content_url": "latest-movie-updates",
-      "content_title": "Latest movie updates",
-      "content_description": "Latest movie updates",
+      "content_title": "Latest Movie Updates",
+      "content_description": "Latest Movie Updates",
       "content_tags": "Collections,Updates",
       "content_image": "/files/content/collection4.png",
       "content_movies": ""
     },
     {
       "content_url": "latest-tv-updates",
-      "content_title": "Latest TV updates",
-      "content_description": "Latest TV updates",
+      "content_title": "Latest TV Updates",
+      "content_description": "Latest TV Updates",
       "content_tags": "Collections,Updates",
       "content_image": "/files/content/collection5.png",
       "content_movies": ""

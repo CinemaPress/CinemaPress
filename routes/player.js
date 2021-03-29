@@ -210,7 +210,16 @@ router.get('/?', function(req, res) {
         .replace(/\[wa_id]/gi, req.query.wa_id ? req.query.wa_id : '')
         .replace(/\[movie_id]/gi, req.query.movie_id ? req.query.movie_id : '')
         .replace(/\[year]/gi, req.query.year ? req.query.year : '')
-        .replace(/\[type]/gi, req.query.type ? req.query.type : '')
+        .replace(
+          /\[type]/gi,
+          p.url.indexOf('[tmdb_id]') + 1
+            ? req.query.type
+              ? 'tv'
+              : 'movie'
+            : req.query.type
+            ? req.query.type
+            : ''
+        )
         .replace(/\[season]/gi, req.query.season ? req.query.season : '')
         .replace(/\[episode]/gi, req.query.episode ? req.query.episode : '')
         .replace(

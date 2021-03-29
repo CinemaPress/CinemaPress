@@ -938,6 +938,14 @@
       }
     }
 
+    if (data.movie && data.movie.genre) {
+      data.movie['genre'] = (data.movie['genre'] + '').replace(/\s*&\s*/g, ',');
+      data.movie['genre'] = data.movie['genre']
+        .replace(/Science Fiction/i, 'Sci-Fi')
+        .replace(/Science-Fiction/i, 'Sci-Fi')
+        .replace(/SciFi/i, 'Sci-Fi');
+    }
+
     if (data.movie && !data.movie.id) {
       var cst = {};
       try {
