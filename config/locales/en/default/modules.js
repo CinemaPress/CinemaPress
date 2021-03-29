@@ -305,7 +305,7 @@ module.exports = {
     }
   },
   "episode": {
-    "status": false,
+    "status": true,
     "data": {
       "title": "[title] [season] season [episode] episode [translate]",
       "h1": "[title] [season] season [episode] episode [translate]",
