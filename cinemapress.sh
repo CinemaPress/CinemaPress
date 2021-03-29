@@ -2102,7 +2102,7 @@ docker_run() {
         searchd
         node /home/"${CP_DOMAIN}"/config/update/default.js
         if [ "${CP_LANG}" = "en" ]; then
-            nohup /usr/bin/cinemapress container movies run >/dev/null 2>&1 &
+            nohup /usr/bin/cinemapress container cron >/dev/null 2>&1 &
         fi
     else
         searchd
@@ -2184,8 +2184,8 @@ docker_movies() {
     fi
 }
 docker_cron() {
-    node /home/"${CP_DOMAIN}"/lib/CP_cron.js
     node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+    node /home/"${CP_DOMAIN}"/lib/CP_cron.js
 }
 docker_restore() {
     WEB_DIR=${1:-${CP_DOMAIN}}
