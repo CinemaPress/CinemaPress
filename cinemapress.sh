@@ -2102,7 +2102,7 @@ docker_run() {
         searchd
         node /home/"${CP_DOMAIN}"/config/update/default.js
         if [ "${CP_LANG}" = "en" ]; then
-            nohup /usr/bin/cinemapress container cron run >/dev/null 2>&1 &
+            nohup /usr/bin/cinemapress container cron run >/var/log/nohup.log 2>&1 &
         fi
     else
         searchd
