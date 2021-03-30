@@ -4700,6 +4700,18 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
                 mv "/home/${CP_DOMAIN}/files/torrent/uploads" "/home/${CP_DOMAIN}/files/torrent/.process"
                 mkdir -p "/home/${CP_DOMAIN}/files/torrent/uploads"
+                for DIR in "/home/${CP_DOMAIN}/files/torrent/.process"/*; do
+                    if [ ! -f "${DIR}" ]; then continue; fi
+                    DIR_NAME="${DIR##*/}"
+                    IFS='.' read -r -a FILE_ARR <<< "${DIR_NAME}"
+                    if [ "${FILE_ARR[1]}" = "dir" ] || \
+                       [ "${FILE_ARR[1]}" = "Dir" ] || \
+                       [ "${FILE_ARR[1]}" = "DIR" ]; then
+                          mkdir -p "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}"
+                          mv "${DIR}" \
+                             "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}/${DIR##*/${FILE_ARR[0]}.${FILE_ARR[1]}.}"
+                    fi
+                done
                 for N in {1..9}; do
                     CINEMATORRENT_NAME="CINEMATORRENT${N}"
                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
@@ -4734,40 +4746,16 @@ while [ "${WHILE}" -lt "2" ]; do
                                 fi
                             done
                         elif [ -f "${DIR}" ]; then
-                            IFS='.' read -r -a FILE_ARR <<< "${DIR_NAME}"
-                            if [ "${FILE_ARR[1]}" = "dir" ] || \
-                               [ "${FILE_ARR[1]}" = "Dir" ] || \
-                               [ "${FILE_ARR[1]}" = "DIR" ]; then
-                                  DIR_NAME="${FILE_ARR[0]}"
-                                  echo "CREATE DIR ${DIR_NAME}"
-                                  if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                      rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                                  else
-                                      docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                                  fi
-                                  FILE_NAME="${DIR##*/${FILE_ARR[0]}.${FILE_ARR[1]}.}"
-                                  echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
-                                  if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                      rclone -vv --ignore-size copy \
-                                          "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}.${FILE_ARR[1]}.${FILE_NAME}" \
-                                          "${CINEMATORRENT_NAME}:${DIR_NAME}/${FILE_NAME}"
-                                  else
-                                      docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
-                                          "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}.${FILE_ARR[1]}.${FILE_NAME}" \
-                                          "${CINEMATORRENT_NAME}:${DIR_NAME}/${FILE_NAME}"
-                                  fi
+                            FILE_NAME="${DIR##*/}"
+                            echo "UPLOAD FILE ${FILE_NAME}"
+                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                rclone -vv --ignore-size copy \
+                                    "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
+                                    "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             else
-                                FILE_NAME="${DIR##*/}"
-                                echo "UPLOAD FILE ${FILE_NAME}"
-                                if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                    rclone -vv --ignore-size copy \
-                                        "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
-                                        "${CINEMATORRENT_NAME}:${DIR_NAME}/"
-                                else
-                                    docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
-                                        "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
-                                        "${CINEMATORRENT_NAME}:${DIR_NAME}/"
-                                fi
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                    "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
+                                    "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             fi
                         fi
                     done
