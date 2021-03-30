@@ -231,7 +231,7 @@ module.exports = {
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
-        "# https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=KEY_YOUTUBE_API&q=[title]%20trailer ~ items[0].id.videoId <> https://www.youtube.com/embed/_VALUE_"
+        "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCL85Aun0K58V1YhjUtm0fryvRoBHNUREE&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ]
     }
   },

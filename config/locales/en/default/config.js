@@ -365,8 +365,8 @@ module.exports = {
       "trailer": "",
       "picture": ""
     },
-    "noindex": "noindex",
-    "slash": "/"
+    "noindex": "",
+    "slash": "-"
   },
   "l": {
     "more": "More",

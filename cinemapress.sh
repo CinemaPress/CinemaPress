@@ -23,6 +23,10 @@ CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-}
 CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY:-}
 MEGA_EMAIL=${MEGA_EMAIL:-}
 MEGA_PASSWORD=${MEGA_PASSWORD:-}
+FTP_USERNAME=${FTP_USERNAME:-}
+FTP_PASSWORD=${FTP_PASSWORD:-}
+FTP_HOSTNAME=${FTP_HOSTNAME:-}
+FTP_NAME=${FTP_NAME:-}
 
 CP_DOMAIN_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 CP_MIRROR_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
@@ -1882,6 +1886,142 @@ read_mode() {
         if [ "${CP_MODE}" = "" ]; then exit 1; fi
     fi
 }
+read_ftp_name() {
+    FTP_NAME=${1:-${FTP_NAME}}
+    if [ "${FTP_NAME}" = "" ]; then
+        _header "FTP NAME"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                FTP_NAME=${1}
+                FTP_NAME=`echo ${FTP_NAME} | iconv -c -t UTF-8`
+                echo ": ${FTP_NAME}"
+            else
+                AUTO_FTP_NAME=""
+                for N in {1..9}; do
+                    CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "CINEMATORRENT${N}")
+                    if [ "${CINEMATORRENT}" = "" ]; then
+                        AUTO_FTP_NAME="CINEMATORRENT${N}"
+                        break
+                    fi
+                done
+                read -e -p ': ' -i "${AUTO_FTP_NAME}" FTP_NAME
+                FTP_NAME=`echo ${FTP_NAME} | iconv -c -t UTF-8`
+            fi
+            if [ "${FTP_NAME}" != "" ]
+            then
+                if echo "${FTP_NAME}" | grep -qE ^[A-Z0-9]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${FTP_NAME}${NC} \n"
+                    printf "${R}WARNING:${NC} Only upper case latin characters \n"
+                    printf "${NC}         and numbers are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${FTP_NAME}" = "" ]; then exit 1; fi
+    fi
+}
+read_ftp_username() {
+    FTP_USERNAME=${1:-${FTP_USERNAME}}
+    if [ "${FTP_USERNAME}" = "" ]; then
+        _header "FTP USERNAME"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                FTP_USERNAME=${1}
+                FTP_USERNAME=`echo ${FTP_USERNAME} | iconv -c -t UTF-8`
+                echo ": ${FTP_USERNAME}"
+            else
+                read -e -p ': ' FTP_USERNAME
+                FTP_USERNAME=`echo ${FTP_USERNAME} | iconv -c -t UTF-8`
+            fi
+            if [ "${FTP_USERNAME}" != "" ]
+            then
+                if echo "${FTP_USERNAME}" | grep -qE ^[.a-zA-Z0-9@_-]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${FTP_USERNAME}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters, @, numbers, \n"
+                    printf "${NC}         dots, underscore and hyphens are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${FTP_USERNAME}" = "" ]; then exit 1; fi
+    fi
+}
+read_ftp_password() {
+    FTP_PASSWORD=${1:-${FTP_PASSWORD}}
+    if [ "${FTP_PASSWORD}" = "" ]; then
+        _header "FTP PASSWORD"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                FTP_PASSWORD=${1}
+                FTP_PASSWORD=`echo ${FTP_PASSWORD} | iconv -c -t UTF-8`
+                echo ": ${FTP_PASSWORD}"
+            else
+                read -e -p ': ' FTP_PASSWORD
+                FTP_PASSWORD=`echo ${FTP_PASSWORD} | iconv -c -t UTF-8`
+            fi
+            if [ "${FTP_PASSWORD}" != "" ]
+            then
+                if echo "${FTP_PASSWORD}" | grep -qE ^[a-zA-Z0-9]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${FTP_PASSWORD}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters \n"
+                    printf "${NC}         and numbers are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${FTP_PASSWORD}" = "" ]; then exit 1; fi
+    fi
+}
+read_ftp_hostname() {
+    FTP_HOSTNAME=${1:-${FTP_HOSTNAME}}
+    if [ "${FTP_HOSTNAME}" = "" ]; then
+        _header "FTP HOSTNAME"
+        AGAIN=1
+        while [ "${AGAIN}" -lt "10" ]
+        do
+            if [ ${1} ]
+            then
+                FTP_HOSTNAME=${1}
+                FTP_HOSTNAME=`echo ${FTP_HOSTNAME} | iconv -c -t UTF-8`
+                echo ": ${FTP_HOSTNAME}"
+            else
+                read -e -p ': ' FTP_HOSTNAME
+                FTP_HOSTNAME=`echo ${FTP_HOSTNAME} | iconv -c -t UTF-8`
+            fi
+            if [ "${FTP_HOSTNAME}" != "" ]
+            then
+                if echo "${FTP_HOSTNAME}" | grep -qE ^[.a-zA-Z0-9-]+$
+                then
+                    AGAIN=10
+                else
+                    printf "${NC}         You entered: ${R}${FTP_HOSTNAME}${NC} \n"
+                    printf "${R}WARNING:${NC} Only latin characters, numbers, \n"
+                    printf "${NC}         dots and hyphens are allowed! \n"
+                    AGAIN=$((${AGAIN}+1))
+                fi
+            fi
+        done
+        if [ "${FTP_HOSTNAME}" = "" ]; then exit 1; fi
+    fi
+}
 
 sh_yes() {
     if [ -f "/home/${CP_DOMAIN}/process.json" ]; then
@@ -2184,6 +2324,7 @@ docker_movies() {
     fi
 }
 docker_cron() {
+    nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload >/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
     if [ -n "${1}" ]; then
         node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
     else
@@ -2419,6 +2560,9 @@ docker_ssl_off() {
 }
 docker_ftp_on() {
     sed -Ei "s/#ftp //g" "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
+}
+docker_torrent_on() {
+    sed -Ei "s/#torrent //g" "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
 }
 
 success_install(){
@@ -2803,6 +2947,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
             elif [ "${2}" = "ftp" ]; then
                 docker_ftp_on
+            elif [ "${2}" = "torrent" ]; then
+                docker_torrent_on
             fi
             exit 0
         ;;
@@ -4459,6 +4605,174 @@ while [ "${WHILE}" -lt "2" ]; do
                         echo "Not added to monitoring: ${DD}"
                     fi
                 done
+            fi
+            exit 0
+        ;;
+        "aria2"|"cloudtorrent"|"torrent"|"torrentclient" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            LOCAL_ACTION="${3}"
+            if [ "${LOCAL_ACTION}" = "" ]; then
+                _header "MAKE A CHOICE"
+                printf "${C}---- ${G}1)${NC} run ${S}------------------------ Run Torrent Cloud Client ${C}----\n"
+                printf "${C}---- ${G}2)${NC} ftp ${S}---------------------- Configuration FTP Storages ${C}----\n"
+                printf "${C}---- ${G}3)${NC} show ${S}-------------------------- Show FTP Storage List ${C}----\n"
+                _s
+                read -e -p 'OPTION [1-3]: ' LOCAL_ACTION
+                LOCAL_ACTION=$(echo "${LOCAL_ACTION}" | iconv -c -t UTF-8)
+                _br
+            fi
+            if [ "${LOCAL_ACTION}" = "run" ] || [ "${LOCAL_ACTION}" = "1" ]; then
+                if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ] || \
+                   [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
+                    DEBIAN_FRONTEND=noninteractive apt-get -y -qq install jq
+                elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
+                    dnf -y install jq
+                elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
+                    yum install -y jq
+                fi
+                RPC_SECRET=$(cat "/dev/urandom" | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
+                RPC_SECRET=$(printf '%s\n' "${RPC_SECRET}" | awk '{ print toupper($0) }')
+                docker run \
+                    -d \
+                    --name torrent \
+                    "${DOCKER_MEM[@]}" \
+                    --restart always \
+                    --network cinemapress \
+                    --env="PUID=${UID}" \
+                    --env="PGID=${GID}" \
+                    --env="UMASK_SET=022" \
+                    --env="RPC_SECRET=${RPC_SECRET}" \
+                    --env="RPC_PORT=6800" \
+                    -p 6800:6800 \
+                    --env="LISTEN_PORT=6888" \
+                    -p 6888:6888 \
+                    -p 6888:6888/udp \
+                    -v "/home/${CP_DOMAIN}/files/torrent/config":/config \
+                    -v "/home/${CP_DOMAIN}/files/torrent/downloads":/downloads \
+                    p3terx/aria2-pro >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
+                TORRENT_RUN=1
+                while [ "${TORRENT_RUN}" != "50" ]; do
+                    sleep 3
+                    TORRENT_RUN=$((1+${TORRENT_RUN}))
+                    if [ "`docker ps -aq -f status=running -f name=^/torrent\$ 2>/dev/null`" != "" ]; then
+                        docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container torrent
+                        TORRENT_RUN=50
+                    fi
+                done
+                mkdir -p "/home/${CP_DOMAIN}/files/torrent/uploads"
+                _line
+                _content
+                _content "Torrent client is running!"
+                _content
+                _content "torrent.${CP_DOMAIN}"
+                _content
+                _content "RPC SECRET: ${RPC_SECRET}"
+                _content
+                _content "Configure your video storage."
+                _content
+                _content "You have questions?"
+                _content "Forum: enota.club"
+                _content
+                _s
+            elif [ "${LOCAL_ACTION}" = "ftp" ] || [ "${LOCAL_ACTION}" = "2" ]; then
+                read_ftp_name "${4}"
+                read_ftp_hostname "${5}"
+                read_ftp_username "${6}"
+                read_ftp_password "${7}"
+                TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${FTP_HOSTNAME}")
+                docker exec "${CP_DOMAIN_}" rclone config create "CINEMATORRENT${N}" "${TORRENT_STORAGE[@]}" \
+                    >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
+                _s
+            elif [ "${LOCAL_ACTION}" = "show" ] || [ "${LOCAL_ACTION}" = "3" ]; then
+                if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                    rclone config show
+                else
+                    docker exec -t "${CP_DOMAIN_}" rclone config show
+                fi
+            elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "4" ]; then
+                if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ] || \
+                   [ ! -d "/home/${CP_DOMAIN}/files/torrent/uploads" ] || \
+                   [ -d "/home/${CP_DOMAIN}/files/torrent/.process" ]; then
+                    exit 0
+                fi
+                mv "/home/${CP_DOMAIN}/files/torrent/uploads" "/home/${CP_DOMAIN}/files/torrent/.process"
+                mkdir -p "/home/${CP_DOMAIN}/files/torrent/uploads"
+                for N in {1..9}; do
+                    CINEMATORRENT_NAME="CINEMATORRENT${N}"
+                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                        CINEMATORRENT=$(rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    else
+                        CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    fi
+                    if [ "${CINEMATORRENT}" = "" ]; then continue; fi
+                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
+                    for DIR in "/home/${CP_DOMAIN}/files/torrent/.process"/*; do
+                        DIR_NAME="${DIR##*/}"
+                        if [ -d "${DIR}" ]; then
+                            echo "CREATE DIR ${DIR_NAME}"
+                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            else
+                                docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            fi
+                            for FILE in "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}"/*; do
+                                FILE_NAME="${FILE##*/}"
+                                if [ -f "${FILE}" ]; then
+                                    echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                        rclone -vv --ignore-size copy \
+                                            "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
+                                            "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                    else
+                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                            "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
+                                            "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                    fi
+                                fi
+                            done
+                        elif [ -f "${DIR}" ]; then
+                            IFS='.' read -r -a FILE_ARR <<< "${DIR_NAME}"
+                            if [ "${FILE_ARR[1]}" = "dir" ] || \
+                               [ "${FILE_ARR[1]}" = "Dir" ] || \
+                               [ "${FILE_ARR[1]}" = "DIR" ]; then
+                                  DIR_NAME="${FILE_ARR[0]}"
+                                  echo "CREATE DIR ${DIR_NAME}"
+                                  if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                      rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                                  else
+                                      docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                                  fi
+                                  FILE_NAME="${DIR##*/${FILE_ARR[0]}.${FILE_ARR[1]}.}"
+                                  echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                  if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                      rclone -vv --ignore-size copy \
+                                          "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}.${FILE_ARR[1]}.${FILE_NAME}" \
+                                          "${CINEMATORRENT_NAME}:${DIR_NAME}/${FILE_NAME}"
+                                  else
+                                      docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                          "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}.${FILE_ARR[1]}.${FILE_NAME}" \
+                                          "${CINEMATORRENT_NAME}:${DIR_NAME}/${FILE_NAME}"
+                                  fi
+                            else
+                                FILE_NAME="${DIR##*/}"
+                                echo "UPLOAD FILE ${FILE_NAME}"
+                                if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                    rclone -vv --ignore-size copy \
+                                        "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
+                                        "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                else
+                                    docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                        "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
+                                        "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                fi
+                            fi
+                        fi
+                    done
+                done
+                rm -rf "/home/${CP_DOMAIN}/files/torrent/.process"
             fi
             exit 0
         ;;

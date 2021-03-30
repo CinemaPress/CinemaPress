@@ -230,7 +230,8 @@ module.exports = {
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"collaps,bazon,ustore,alloha,hdvb,kodik,videocdn,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
-        "https://pleer.video/[kp_id].json ~ embeds.0.iframe"
+        "https://pleer.video/[kp_id].json ~ embeds.0.iframe",
+        "# https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ]
     }
   },
