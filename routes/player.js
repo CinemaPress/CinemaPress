@@ -76,6 +76,7 @@ router.get('/?', function(req, res) {
     "    i.setAttribute('id', 'yohoho-iframe');" +
     "    i.setAttribute('frameborder', '0');" +
     "    i.setAttribute('allowfullscreen', 'allowfullscreen');" +
+    "    i.setAttribute('scrolling', 'no');" +
     '    i.setAttribute("src", decodeURIComponent("iframe-src"));' +
     '    player.appendChild(i);' +
     '    if (parseInt(player.offsetWidth)) {' +

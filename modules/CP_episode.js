@@ -27,23 +27,10 @@ var cache = new LRU({
   max: 1000
 });
 var md5 = require('md5');
+var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
 moment.locale(config.language);
-
-try {
-  cache.set('CP_VER', process.env['CP_VER']);
-  var episodes_json = path.join(
-    path.dirname(__filename),
-    '..',
-    'files',
-    'episodes.json'
-  );
-  cache.set(
-    md5('episodes' + process.env['CP_VER']),
-    fs.existsSync(episodes_json) ? require(episodes_json) : []
-  );
-} catch (e) {}
 
 /**
  * Callback.
@@ -75,21 +62,23 @@ function indexEpisode(options, callback) {
 
   var hash = md5('episodes' + process.env['CP_VER']);
 
-  var episodes;
+  var episodes = [];
   if (cache.has(hash)) {
     episodes = cache.get(hash);
   } else {
     try {
-      episodes = require(path.join(
+      var episodes_json = path.join(
         path.dirname(__filename),
         '..',
         'files',
         'episodes.json'
-      ));
-    } catch (e) {
-      episodes = [];
-    }
-    cache.set(hash, episodes);
+      );
+      var raw = fs.existsSync(episodes_json)
+        ? fs.readFileSync(episodes_json)
+        : '[]';
+      episodes = JSON.parse(raw);
+      cache.set(hash, episodes);
+    } catch (e) {}
   }
   var result = {};
   result.name = modules.episode.data.index.name;

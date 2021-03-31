@@ -1643,7 +1643,7 @@ read_mega_password() {
             fi
             if [ "${MEGA_PASSWORD}" != "" ]
             then
-                if echo "${MEGA_PASSWORD}" | grep -qE ^[a-zA-Z0-9]+$
+                if echo "${MEGA_PASSWORD}" | grep -qE ^[.a-zA-Z0-9@_-!?]+$
                 then
                     AGAIN=10
                 else
@@ -1976,7 +1976,7 @@ read_ftp_password() {
             fi
             if [ "${FTP_PASSWORD}" != "" ]
             then
-                if echo "${FTP_PASSWORD}" | grep -qE ^[a-zA-Z0-9]+$
+                if echo "${FTP_PASSWORD}" | grep -qE ^[.a-zA-Z0-9@_-!?]+$
                 then
                     AGAIN=10
                 else
