@@ -64,7 +64,8 @@
     "i18n-iso-countries": "6.4.0",
     "https-proxy-agent": "5.0.0",
     "tough-cookie": "4.0.0",
-    "axios-cookiejar-support": "1.0.1"
+    "axios-cookiejar-support": "1.0.1",
+    "episode-parser": "2.0.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"
