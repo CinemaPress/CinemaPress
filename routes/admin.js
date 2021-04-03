@@ -1072,9 +1072,21 @@ router.post('/change', function(req, res) {
         form.flush_memcached = true;
         configs.modules[form.switch.module].status =
           form.switch.status === 'true';
-        CP_save.save(configs.modules, 'modules', function(err, result) {
-          return err ? callback(err) : callback(null, result);
-        });
+        if (
+          configs.modules[form.switch.module].status &&
+          form.switch.module === 'ftp'
+        ) {
+          exec('/usr/bin/cinemapress container ftp', function(err) {});
+          setTimeout(function() {
+            CP_save.save(configs.modules, 'modules', function(err, result) {
+              return err ? callback(err) : callback(null, result);
+            });
+          }, 15000);
+        } else {
+          CP_save.save(configs.modules, 'modules', function(err, result) {
+            return err ? callback(err) : callback(null, result);
+          });
+        }
       },
       content: function(callback) {
         if (!form.content) return callback(null, 'Null');

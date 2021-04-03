@@ -4635,6 +4635,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 fi
                 RPC_SECRET=$(cat "/dev/urandom" | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)
                 RPC_SECRET=$(printf '%s\n' "${RPC_SECRET}" | awk '{ print toupper($0) }')
+                if [ "`docker ps -aq -f status=running -f name=^/torrent\$ 2>/dev/null`" != "" ]; then
+                    docker stop torrent >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
+                    docker rm -f torrent >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
+                fi
                 docker run \
                     -d \
                     --name torrent \
