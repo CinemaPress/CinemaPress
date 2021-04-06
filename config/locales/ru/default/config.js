@@ -89,6 +89,7 @@ module.exports = {
     },
     "text": 0,
     "required": [
+      "title_ru"
     ],
     "thematic": {
       "type": "",
