@@ -190,7 +190,7 @@
                                                     </a>
                                                 </div>
                                                 <select name="modules.random.data.sorting" class="form-control">
-                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (modules.random.data.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>

@@ -375,7 +375,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.type.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.type.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -463,7 +463,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.year.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.year.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -551,7 +551,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.genre.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.genre.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -640,7 +640,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.country.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.country.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -728,7 +728,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.actor.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.actor.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -817,7 +817,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <select name="config.index.director.sorting" class="form-control without">
-                                                <% for (name in config.sorting) { %>
+                                                <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.director.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -1084,7 +1084,7 @@
                                                         <%= __('По умолчанию') %>
                                                     </option>
                                                 <% } %>
-                                                <% for (var name in config.sorting) { %>
+                                                <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.index.count.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>

@@ -339,6 +339,21 @@ function fullMovieSchema(page, movie, movies, comments, options) {
       '">';
   }
 
+  if (/:\/\/tv\.|\/tv-version/i.test(page.url)) {
+    canonical =
+      '<link rel="canonical" href="' +
+      page.url
+        .replace(
+          /:\/\/tv\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
+        .replace('/tv-version', '') +
+      '">';
+  }
+
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
     options_domain +
@@ -643,6 +658,22 @@ function categorySchema(page, movies, query, options) {
       '" />';
   }
 
+  if (/:\/\/tv\.|\/tv-version/i.test(page.url)) {
+    canonical =
+      '<link rel="canonical" href="' +
+      page.url
+        .replace(/&/gi, '&amp;')
+        .replace(
+          /:\/\/tv\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
+        .replace('/tv-version', '') +
+      '" />';
+  }
+
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
     options_domain +
@@ -808,6 +839,22 @@ function generalSchema(page, options) {
       '" />';
   }
 
+  if (/:\/\/tv\.|\/tv-version/i.test(config.protocol + options.domain)) {
+    canonical =
+      '<link rel="canonical" href="' +
+      (config.protocol + options.domain)
+        .replace(/&/gi, '&amp;')
+        .replace(
+          /:\/\/tv\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
+        .replace('/tv-version', '') +
+      '" />';
+  }
+
   var opensearch =
     '<link rel="search" type="application/opensearchdescription+xml" title="' +
     options_domain +
@@ -946,6 +993,25 @@ function contentSchema(content, options) {
             '$1'
         )
         .replace('/mobile-version', '') +
+      '" />';
+  }
+
+  if (
+    (options.url || content.url) &&
+    /:\/\/tv\.|\/tv-version/i.test(options.url || content.url)
+  ) {
+    canonical =
+      '<link rel="canonical" href="' +
+      (options.url || content.url)
+        .replace(/&/gi, '&amp;')
+        .replace(
+          /:\/\/tv\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
+        .replace('/tv-version', '') +
       '" />';
   }
 

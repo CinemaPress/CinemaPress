@@ -101,7 +101,7 @@
                                             </div>
                                             <div class="col-lg-6 col-xs-6 text-center">
                                                 <select name="modules.top.data.sorting" class="form-control">
-                                                    <% for (name in config.sorting) { %>
+                                                    <% for (name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                         <% if (modules.top.data.sorting === name) { %>
                                                             <option value="<%= name %>" selected="selected">
                                                                 <%- config.sorting[name] %>

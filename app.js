@@ -23,6 +23,12 @@ process.env['CP_CONFIG_MD5'] = require('md5')(JSON.stringify(config));
 process.env['CP_MODULES_MD5'] = require('md5')(JSON.stringify(modules));
 
 /**
+ * Module dependencies.
+ */
+
+var CP_cache = require('./lib/CP_cache');
+
+/**
  * Node dependencies.
  */
 
@@ -64,7 +70,7 @@ app.use('/ping', function(req, res) {
   return res.send('pong');
 });
 app.use('/flush-cache-' + config.urls.admin, function(req, res) {
-  require('./lib/CP_cache').flush(function() {
+  CP_cache.flush(function() {
     return res.send('OK');
   });
 });

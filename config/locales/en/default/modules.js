@@ -147,27 +147,27 @@ module.exports = {
         "year": {
           "count": 6,
           "name": "[year] Movies",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "genre": {
           "count": 5,
           "name": "Movies in the genre of [genre]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "country": {
           "count": 10,
           "name": "Films from [country]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "actor": {
           "count": 15,
           "name": "Best actor movies - [actor]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "director": {
           "count": 5,
           "name": "Best director movies - [director]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         }
       },
       "same": 1,

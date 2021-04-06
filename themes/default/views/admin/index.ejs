@@ -78,12 +78,18 @@
                                 <span class="sr-only"><%- line.percent.all %>%</span>
                             </div>
                         </div>
-                        <div class="progress-project-footer">
-                            <% if (line.days) { %>
-                                <p><%= __('Автопубликация на %s дней', line.days) %></p>
-                            <% } %>
-                            <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
-                        </div>
+                        <% if (config.language && config.language === 'ru') { %>
+                            <div class="progress-project-footer">
+                                <% if (line.days) { %>
+                                    <p><%= __('Автопубликация на %s дней', line.days) %></p>
+                                <% } %>
+                                <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
+                            </div>
+                        <% } else { %>
+                            <div class="progress-project-footer">
+                                <span><strong><%- line.counts.pub %></strong></span>
+                            </div>
+                        <% } %>
 
                     <% } %>
 

@@ -187,7 +187,7 @@
                                                     </a>
                                                 </div>
                                                 <select name="config.default.sorting" class="form-control">
-                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                     <% if (config.default.sorting === name) { %>
                                                         <option value="<%= name %>" selected="selected">
                                                             <%- config.sorting[name] %>
@@ -218,7 +218,7 @@
                                                             <%= __('Нет') %>
                                                         </option>
                                                     <% } %>
-                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name)) continue; %>
+                                                    <% for (var name in config.sorting) { if (!config.sorting.hasOwnProperty(name) || !config.sorting[name]) continue; %>
                                                         <% if (config.default.sorting_search === name) { %>
                                                             <option value="<%= name %>" selected="selected">
                                                                 <%- config.sorting[name] %>

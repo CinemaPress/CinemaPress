@@ -108,7 +108,7 @@ module.exports = {
   },
   "default": {
     "count": 15,
-    "sorting": "kinopoisk-vote-up",
+    "sorting": "imdb-vote-up",
     "sorting_search": "",
     "pages": 4,
     "lastpage": 0,
@@ -175,7 +175,7 @@ module.exports = {
     "type": {
       "name": "Top [type]",
       "keys": "",
-      "sorting": "kinopoisk-rating-up",
+      "sorting": "imdb-rating-up",
       "count": 15,
       "order": 2
     },
@@ -203,14 +203,14 @@ module.exports = {
     "actor": {
       "name": "Top movies with [actor]",
       "keys": "",
-      "sorting": "kinopoisk-vote-up",
+      "sorting": "imdb-vote-up",
       "count": 10,
       "order": 6
     },
     "director": {
       "name": "Top movies with [director]",
       "keys": "",
-      "sorting": "kinopoisk-vote-up",
+      "sorting": "imdb-vote-up",
       "count": 10,
       "order": 7
     },

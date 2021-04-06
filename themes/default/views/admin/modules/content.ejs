@@ -335,8 +335,8 @@
                                                                            value="<%= modules.content.data.url %>"
                                                                            type="text">
                                                                     <span class="input-group-addon text-muted"><span
-                                                                                class="hidden-xs">/avatar-5-will-be-released-in-2027</span><span
-                                                                                class="visible-xs">/avatar-5</span></span>
+                                                                                class="hidden-xs"><%- config.urls.slash %>avatar-5-will-be-released-in-2027</span><span
+                                                                                class="visible-xs"><%- config.urls.slash %>avatar-5</span></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -960,9 +960,7 @@
                                                 <tr>
                                                     <td class="table-content">
                                                         <span class="table-content-id"><%- content.content_tags %></span>
-                                                        <span class="table-content-t"><a
-                                                                    href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><%- content.content_title %></a></span><br><span
-                                                                class="table-content-url-key"><%= __('URL-ключ:') %></span>
+                                                        <span class="table-content-t"><a href="/<%- config.urls.admin %>/content?url=<%- encodeURIComponent(content.content_url) %>"><%- content.content_title %></a></span><br><span class="table-content-url-key"><%= __('URL-ключ:') %></span>
                                                         <span class="table-content-key"><%- content.content_url %></span>
                                                         <% var content_count = content.content_movies.split(',').filter(Boolean).length; %>
                                                         <% if (content_count) { %>
