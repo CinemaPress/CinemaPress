@@ -15,9 +15,35 @@ var CP_translit = require('../lib/CP_translit');
 var config = require('../config/production/config');
 Object.keys(config).length === 0 &&
   (config = require('../config/production/config.backup'));
+var config_md5 = require('md5')(JSON.stringify(config));
+
 var modules = require('../config/production/modules');
 Object.keys(modules).length === 0 &&
   (modules = require('../config/production/modules.backup'));
+var modules_md5 = require('md5')(JSON.stringify(modules));
+
+setInterval(function() {
+  if (
+    config_md5 &&
+    process.env['CP_CONFIG_MD5'] &&
+    config_md5 !== process.env['CP_CONFIG_MD5']
+  ) {
+    config = require('../config/production/config');
+    Object.keys(config).length === 0 &&
+      (config = require('../config/production/config.backup'));
+    config_md5 = process.env['CP_CONFIG_MD5'];
+  }
+  if (
+    modules_md5 &&
+    process.env['CP_MODULES_MD5'] &&
+    modules_md5 !== process.env['CP_MODULES_MD5']
+  ) {
+    modules = require('../config/production/modules');
+    Object.keys(modules).length === 0 &&
+      (modules = require('../config/production/modules.backup'));
+    modules_md5 = process.env['CP_MODULES_MD5'];
+  }
+}, 3333);
 
 /**
  * Node dependencies.

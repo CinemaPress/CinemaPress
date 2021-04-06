@@ -11,6 +11,16 @@ require('events').EventEmitter.defaultMaxListeners = 15;
 var config = require('./config/production/config');
 Object.keys(config).length === 0 &&
   (config = require('./config/production/config.backup'));
+var modules = require('./config/production/modules');
+Object.keys(modules).length === 0 &&
+  (modules = require('./config/production/modules.backup'));
+
+/**
+ * Global configuration.
+ */
+
+process.env['CP_CONFIG_MD5'] = require('md5')(JSON.stringify(config));
+process.env['CP_MODULES_MD5'] = require('md5')(JSON.stringify(modules));
 
 /**
  * Node dependencies.
@@ -55,9 +65,6 @@ app.use('/ping', function(req, res) {
 });
 app.use('/flush-cache-' + config.urls.admin, function(req, res) {
   require('./lib/CP_cache').flush(function() {
-    process.env.CP_VER = process.env.CP_VER
-      ? parseInt(process.env.CP_VER) + 1
-      : new Date().getTime().toString();
     return res.send('OK');
   });
 });

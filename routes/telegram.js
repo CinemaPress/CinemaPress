@@ -9,6 +9,20 @@ process.env['NTBA_FIX_319'] = 1;
 var config = require('../config/production/config');
 Object.keys(config).length === 0 &&
   (config = require('../config/production/config.backup'));
+var config_md5 = require('md5')(JSON.stringify(config));
+
+setInterval(function() {
+  if (
+    config_md5 &&
+    process.env['CP_CONFIG_MD5'] &&
+    config_md5 !== process.env['CP_CONFIG_MD5']
+  ) {
+    config = require('../config/production/config');
+    Object.keys(config).length === 0 &&
+      (config = require('../config/production/config.backup'));
+    config_md5 = process.env['CP_CONFIG_MD5'];
+  }
+}, 3333);
 
 /**
  * Node dependencies.
