@@ -84,7 +84,6 @@ if ((!arg || arg === 'movies') && data['movies'] && data['movies'].length) {
     1,
     function(movie, key, callback) {
       movie.id = movie.kp_id;
-      movie.duplicate = true;
       CP_save.save(movie, 'rt', function(err, result) {
         if (err) console.error(err, result, movie);
         if (result) {
