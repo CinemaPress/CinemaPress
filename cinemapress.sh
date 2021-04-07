@@ -2324,7 +2324,8 @@ docker_movies() {
     fi
 }
 docker_cron() {
-    nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload >/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
+    nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload \
+        >/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
     if [ -n "${1}" ]; then
         node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
     else
@@ -2337,6 +2338,10 @@ docker_restore() {
     LATEST_DIR=${2:-latest}
     RCS=$(rclone config show 2>/dev/null | grep "CINEMAPRESS")
     if [ "${RCS}" = "" ]; then exit 0; fi
+    if [ -f "/home/${CP_DOMAIN}/log/movies.pid" ]; then
+      pkill -P "$(cat "/home/${CP_DOMAIN}/log/movies.pid")" >/dev/null
+      rm -f "/home/${CP_DOMAIN}/log/movies.pid" >/dev/null
+    fi
     docker_stop
     rm -rf /var/mega/new && mkdir -p /var/mega/new
     mkdir -p /home/"${CP_DOMAIN}"/config/custom
@@ -2388,6 +2393,10 @@ docker_restore() {
 docker_backup() {
     RCS=$(rclone config show 2>/dev/null | grep "CINEMAPRESS")
     if [ "${RCS}" = "" ]; then exit 0; fi
+    if [ -f "/home/${CP_DOMAIN}/log/movies.pid" ]; then
+      pkill -P "$(cat "/home/${CP_DOMAIN}/log/movies.pid")" >/dev/null
+      rm -f "/home/${CP_DOMAIN}/log/movies.pid" >/dev/null
+    fi
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
     BACKUP_DELETE=$(date +%Y-%m-%d -d "@$(($(date +%s) - 864000))")

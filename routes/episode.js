@@ -245,6 +245,15 @@ router.get('/?', function(req, res) {
               };
             }
             Object.keys(get_serials).forEach(function(translate) {
+              if (translate.indexOf("'") + 1 || translate.indexOf('"') + 1) {
+                get_serials[
+                  translate.replace(/"/g, '&#34;').replace(/'/g, '&#39;')
+                ] = get_serials[translate];
+                delete get_serials[translate];
+                translate = translate
+                  .replace(/"/g, '&#34;')
+                  .replace(/'/g, '&#39;');
+              }
               Object.keys(get_serials[translate]).forEach(function(season) {
                 Object.keys(get_serials[translate][season]).forEach(function(
                   episode

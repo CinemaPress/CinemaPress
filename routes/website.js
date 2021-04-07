@@ -191,11 +191,18 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     filename + '.json'
   );
 
-  ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(function(
-    t
-  ) {
+  [
+    'type',
+    'year',
+    'genre',
+    'country',
+    'actor',
+    'director',
+    'kp_rating',
+    'imdb_rating'
+  ].forEach(function(t) {
     if (req.query[t] && level1 !== config.urls[t]) {
-      if (t === 'year') {
+      if (t === 'year' || t === 'kp_rating' || t === 'imdb_rating') {
         options.query[t] = CP_regexp.str(req.query[t]);
       } else {
         options.query[t] = CP_regexp.str(
@@ -474,13 +481,20 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
           'tag=' +
           CP_regexp.str(req.query.tag);
       }
-      ['type', 'year', 'genre', 'country', 'actor', 'director'].forEach(
-        function(t) {
-          if (req.query[t]) {
-            url += (url.indexOf('?') + 1 ? '&' : '?') + t + '=' + req.query[t];
-          }
+      [
+        'type',
+        'year',
+        'genre',
+        'country',
+        'actor',
+        'director',
+        'kp_rating',
+        'imdb_rating'
+      ].forEach(function(t) {
+        if (req.query[t]) {
+          url += (url.indexOf('?') + 1 ? '&' : '?') + t + '=' + req.query[t];
         }
-      );
+      });
       if (typeof req.query.json !== 'undefined') {
         url += (url.indexOf('?') + 1 ? '&' : '?') + 'json=1';
       }
