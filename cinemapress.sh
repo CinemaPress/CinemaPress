@@ -2239,7 +2239,9 @@ docker_run() {
         echo "${CP_DOMAIN}:${OPENSSL}" >> /home/"${CP_DOMAIN}"/config/production/nginx/pass.d/"${CP_DOMAIN}".pass
         if [ "${CP_IP}" = "ip" ]; then rm -rf /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf; fi
         if [ ! -f "/var/lib/sphinx/data/movies_${CP_DOMAIN_}.sps" ]; then indexer --all; fi
+        sleep 5
         searchd
+        sleep 5
         node /home/"${CP_DOMAIN}"/config/update/default.js
         if [ "${CP_LANG}" = "en" ]; then
             nohup /usr/bin/cinemapress container cron run >/var/log/nohup.log 2>&1 &
@@ -2441,11 +2443,6 @@ docker_backup() {
         --exclude=config/production/nginx \
         --exclude=config/production/mail \
         --exclude=config/production/php \
-        --exclude=config/rt/rt_"${CP_DOMAIN_}".lock \
-        --exclude=config/content/content_"${CP_DOMAIN_}".lock \
-        --exclude=config/comment/comment_"${CP_DOMAIN_}".lock \
-        --exclude=config/user/user_"${CP_DOMAIN_}".lock \
-        --exclude=config/binlog/binlog.lock \
         -uf /var/mega/"${CP_DOMAIN}"/config.tar \
         config
     cd /home/"${CP_DOMAIN}" && \
