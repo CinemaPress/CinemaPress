@@ -2403,6 +2403,7 @@ docker_backup() {
     echo "FLUSH RAMCHUNK content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RAMCHUNK comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RAMCHUNK user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    sleep 15
     FLUSH_RAMCHUNK=1
     while [ "${FLUSH_RAMCHUNK}" != "100" ]; do
         sleep 3
