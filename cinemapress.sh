@@ -2398,34 +2398,50 @@ docker_backup() {
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
     PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
-    echo "FLUSH RAMCHUNK"
-    echo "FLUSH RAMCHUNK rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
-    echo "FLUSH RAMCHUNK content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
-    echo "FLUSH RAMCHUNK comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
-    echo "FLUSH RAMCHUNK user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
-    sleep 15
-    FLUSH_RAMCHUNK=1
-    while [ "${FLUSH_RAMCHUNK}" != "100" ]; do
-        sleep 3
-        FLUSH_RAMCHUNK=$((1+FLUSH_RAMCHUNK))
-        TMP_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".tmp.")
-        OLD_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".old.")
-        if [ "${TMP_FILES}" = "" ]; then
-            echo "${FLUSH_RAMCHUNK}) TMP FILES: ${TMP_FILES}"
-        fi
-        if [ "${OLD_FILES}" = "" ]; then
-            echo "${FLUSH_RAMCHUNK}) OLD FILES: ${OLD_FILES}"
-        fi
-        if [ "${TMP_FILES}" = "" ] && [ "${OLD_FILES}" = "" ]; then
-            FLUSH_RAMCHUNK=100
-        fi
-    done
+#    echo "FLUSH RAMCHUNK"
+#    echo "FLUSH RAMCHUNK rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+#    echo "FLUSH RAMCHUNK content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+#    echo "FLUSH RAMCHUNK comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+#    echo "FLUSH RAMCHUNK user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+#    sleep 10
+#    FLUSH_RAMCHUNK=1
+#    while [ "${FLUSH_RAMCHUNK}" != "100" ]; do
+#        sleep 3
+#        FLUSH_RAMCHUNK=$((1+FLUSH_RAMCHUNK))
+#        TMP_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".tmp.")
+#        OLD_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".old.")
+#        if [ "${TMP_FILES}" = "" ]; then
+#            echo "${FLUSH_RAMCHUNK}) TMP FILES: ${TMP_FILES}"
+#        fi
+#        if [ "${OLD_FILES}" = "" ]; then
+#            echo "${FLUSH_RAMCHUNK}) OLD FILES: ${OLD_FILES}"
+#        fi
+#        if [ "${TMP_FILES}" = "" ] && [ "${OLD_FILES}" = "" ]; then
+#            FLUSH_RAMCHUNK=100
+#        fi
+#    done
     echo "OPTIMIZE INDEX"
     echo "OPTIMIZE INDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "OPTIMIZE INDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "OPTIMIZE INDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "OPTIMIZE INDEX user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     sleep 10
+    OPTIMIZE_INDEX=1
+    while [ "${OPTIMIZE_INDEX}" != "100" ]; do
+        sleep 3
+        OPTIMIZE_INDEX=$((1+OPTIMIZE_INDEX))
+        TMP_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".tmp.")
+        OLD_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".old.")
+        if [ "${TMP_FILES}" = "" ]; then
+            echo "${OPTIMIZE_INDEX}) TMP FILES: ${TMP_FILES}"
+        fi
+        if [ "${OLD_FILES}" = "" ]; then
+            echo "${OPTIMIZE_INDEX}) OLD FILES: ${OLD_FILES}"
+        fi
+        if [ "${TMP_FILES}" = "" ] && [ "${OLD_FILES}" = "" ]; then
+            OPTIMIZE_INDEX=100
+        fi
+    done
     echo "FLUSH RTINDEX"
     echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
