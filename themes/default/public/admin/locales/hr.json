@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Prikažite fotografije glumaca na stranici Movie (prije koje trebate preuzeti sve fotografije)",
 	"Фото актеров:": "Fotografija glumaca:",
 	"Домен для фото актеров:": "Domena za fotografije glumci:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Navedite naziv domene iz kojeg će se prikazati fotografija glumaca"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Navedite naziv domene iz kojeg će se prikazati fotografija glumaca",
+	"Фильтрация фильмов": "Filter filtri"
 }

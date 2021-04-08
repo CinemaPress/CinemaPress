@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Rodyti aktorių nuotraukas movieo puslapyje (prieš tai jums reikia atsisiųsti visas nuotraukas)",
 	"Фото актеров:": "Aktorių nuotrauka:",
 	"Домен для фото актеров:": "Nuotraukų veikėjų domenas:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Nurodykite domeno vardą, iš kurio bus rodoma veikėjų nuotrauka"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Nurodykite domeno vardą, iš kurio bus rodoma veikėjų nuotrauka",
+	"Фильтрация фильмов": "Filtrų filtrai"
 }

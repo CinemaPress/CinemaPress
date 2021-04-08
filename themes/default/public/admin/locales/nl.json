@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Toon foto's van acteurs op de moviepagina (voordat u alle foto's wilt downloaden)",
 	"Фото актеров:": "Foto van acteurs:",
 	"Домен для фото актеров:": "Domein voor fotoacteurs:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Geef de domeinnaam op waaruit de foto van de acteurs wordt getoond"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Geef de domeinnaam op waaruit de foto van de acteurs wordt getoond",
+	"Фильтрация фильмов": "Filterfilters"
 }

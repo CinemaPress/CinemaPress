@@ -328,211 +328,207 @@
                         <div class="spacer-10"></div>
 
                         <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label"><i
-                                                class="fa fa-eye-slash"></i>&nbsp;&nbsp;&nbsp;<%= __('Тематический веб-сайт') %>
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header class="text-muted text-left">
+                                        <i class="fa fa-plus"></i>
+                                        <h3><%= __('Фильтрация фильмов') %></h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="cinema-box">
+                                            <div class="cinema-box-header">
+                                                <div class="cinema-label"><i class="fa fa-eye-slash"></i>&nbsp;&nbsp;&nbsp;<%= __('Тематический веб-сайт') %>
+                                                </div>
+                                                <div class="cinema-label hidden-xs" style="float: right">
+                                                    <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html" class="csstip"
+                                                       data-title="<%= __('Вы можете создать тематический веб-сайт, на котором будут опубликованы только «Аниме», «Российские фильмы», и т.п.') %>"
+                                                       target="_blank">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-padding">
+                                                <div class="row">
+
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Тип:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <select name="config.publish.thematic.type" class="form-control">
+                                                            <option value="0"
+                                                                    <% if (config.publish.thematic.type === '0') { %>selected="selected"
+                                                                    <% } %>
+                                                            >
+                                                                <%= __('Фильмы') %>
+                                                            </option>
+                                                            <option value="1"
+                                                                    <% if (config.publish.thematic.type === '1') { %>selected="selected"
+                                                                    <% } %>
+                                                            >
+                                                                <%= __('Сериалы') %>
+                                                            </option>
+                                                            <option value=""
+                                                                    <% if (config.publish.thematic.type === '') { %>selected="selected"
+                                                                    <% } %>
+                                                            >
+                                                                <%= __('Все') %>
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+
+                                                    <div class="col-sm-4">
+                                                        <label><%= __('Число голосов KinoPoisk:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <select name="config.publish.thematic.kp_vote" class="form-control">
+                                                            <% var plusKp = 10; var k; for (k = 0; k <= 10000; k = k + plusKp) { %>
+                                                                <% if (k === 100) {
+                                                                    plusKp = 100;
+                                                                } %>
+                                                                <% if (config.publish.thematic.kp_vote === k) { %>
+                                                                    <option value="<%= k %>" selected="selected">
+                                                                        > <%- k %> <%= __('голос(ов)') %>
+                                                                    </option>
+                                                                <% } else { %>
+                                                                    <option value="<%= k %>">
+                                                                        > <%- k %> <%= __('голос(ов)') %>
+                                                                    </option>
+                                                                <% } %>
+                                                            <% } %>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+
+                                                    <div class="col-sm-4">
+                                                        <label><%= __('Число голосов IMDb:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <select name="config.publish.thematic.imdb_vote" class="form-control">
+                                                            <% var plusImdb = 10; var i; for (i = 0; i <= 10000; i = i + plusImdb) { %>
+                                                                <% if (i === 100) {
+                                                                    plusImdb = 100;
+                                                                } %>
+                                                                <% if (config.publish.thematic.imdb_vote === i) { %>
+                                                                    <option value="<%= i %>" selected="selected">
+                                                                        > <%- i %> <%= __('голос(ов)') %>
+                                                                    </option>
+                                                                <% } else { %>
+                                                                    <option value="<%= i %>">
+                                                                        > <%- i %> <%= __('голос(ов)') %>
+                                                                    </option>
+                                                                <% } %>
+                                                            <% } %>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Годы:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.year"
+                                                               value="<%= config.publish.thematic.year %>" class="form-control"
+                                                               placeholder="&#34;2018&#34; | &#34;2019&#34; | &#34;2020&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Жанры:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.genre"
+                                                               value="<%= config.publish.thematic.genre %>" class="form-control"
+                                                               placeholder="!&#34;<%= __('для взрослых') %>&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Страны:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.country"
+                                                               value="<%= config.publish.thematic.country %>" class="form-control"
+                                                               placeholder="&#34;<%= __('США') %>&#34; !&#34;<%= __('Китай') %>&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Актеры:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.actor"
+                                                               value="<%= config.publish.thematic.actor %>" class="form-control"
+                                                               placeholder="!&#34;<%= __('Александр Невский') %>&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Режиссеры:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.director"
+                                                               value="<%= config.publish.thematic.director %>" class="form-control"
+                                                               placeholder="!&#34;<%= __('Сарик Андреасян') %>&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Фильмы:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.query_id"
+                                                               value="<%= config.publish.thematic.query_id %>" class="form-control"
+                                                               placeholder="!&#34;298&#34; !&#34;299&#34; !&#34;300&#34;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <label><%= __('Стоп-слова:') %></label>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="config.publish.thematic.search"
+                                                               value="<%= config.publish.thematic.search %>" class="form-control"
+                                                               placeholder="!&#34;erotic&#34; !&#34;porn&#34;">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/publish.html" class="csstip"
-                                           data-title="<%= __('Вы можете создать тематический веб-сайт, на котором будут опубликованы только «Аниме», «Российские фильмы», и т.п.') %>"
-                                           target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Тип:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <select name="config.publish.thematic.type" class="form-control">
-                                                <option value="0"
-                                                        <% if (config.publish.thematic.type === '0') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    <%= __('Фильмы') %>
-                                                </option>
-                                                <option value="1"
-                                                        <% if (config.publish.thematic.type === '1') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    <%= __('Сериалы') %>
-                                                </option>
-                                                <option value=""
-                                                        <% if (config.publish.thematic.type === '') { %>selected="selected"
-                                                        <% } %>
-                                                >
-                                                    <%= __('Все') %>
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-4">
-                                            <label><%= __('Число голосов KinoPoisk:') %></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <select name="config.publish.thematic.kp_vote" class="form-control">
-                                                <% var plusKp = 10; var k; for (k = 0; k <= 10000; k = k + plusKp) { %>
-                                                    <% if (k === 100) {
-                                                        plusKp = 100;
-                                                    } %>
-                                                    <% if (config.publish.thematic.kp_vote === k) { %>
-                                                        <option value="<%= k %>" selected="selected">
-                                                            > <%- k %> <%= __('голос(ов)') %>
-                                                        </option>
-                                                    <% } else { %>
-                                                        <option value="<%= k %>">
-                                                            > <%- k %> <%= __('голос(ов)') %>
-                                                        </option>
-                                                    <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-4">
-                                            <label><%= __('Число голосов IMDb:') %></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <select name="config.publish.thematic.imdb_vote" class="form-control">
-                                                <% var plusImdb = 10; var i; for (i = 0; i <= 10000; i = i + plusImdb) { %>
-                                                    <% if (i === 100) {
-                                                        plusImdb = 100;
-                                                    } %>
-                                                    <% if (config.publish.thematic.imdb_vote === i) { %>
-                                                        <option value="<%= i %>" selected="selected">
-                                                            > <%- i %> <%= __('голос(ов)') %>
-                                                        </option>
-                                                    <% } else { %>
-                                                        <option value="<%= i %>">
-                                                            > <%- i %> <%= __('голос(ов)') %>
-                                                        </option>
-                                                    <% } %>
-                                                <% } %>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Годы:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.year"
-                                                   value="<%= config.publish.thematic.year %>" class="form-control"
-                                                   placeholder="&#34;2018&#34; | &#34;2019&#34; | &#34;2020&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Жанры:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.genre"
-                                                   value="<%= config.publish.thematic.genre %>" class="form-control"
-                                                   placeholder="!&#34;<%= __('для взрослых') %>&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Страны:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.country"
-                                                   value="<%= config.publish.thematic.country %>" class="form-control"
-                                                   placeholder="&#34;<%= __('США') %>&#34; !&#34;<%= __('Китай') %>&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Актеры:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.actor"
-                                                   value="<%= config.publish.thematic.actor %>" class="form-control"
-                                                   placeholder="!&#34;<%= __('Александр Невский') %>&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Режиссеры:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.director"
-                                                   value="<%= config.publish.thematic.director %>" class="form-control"
-                                                   placeholder="!&#34;<%= __('Сарик Андреасян') %>&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Фильмы:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.query_id"
-                                                   value="<%= config.publish.thematic.query_id %>" class="form-control"
-                                                   placeholder="!&#34;298&#34; !&#34;299&#34; !&#34;300&#34;">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="spacer-10"></div>
-
-                                    <div class="row">
-
-                                        <div class="col-sm-3">
-                                            <label><%= __('Стоп-слова:') %></label>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="config.publish.thematic.search"
-                                                   value="<%= config.publish.thematic.search %>" class="form-control"
-                                                   placeholder="!&#34;erotic&#34; !&#34;porn&#34;">
-                                        </div>
-
-                                    </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 

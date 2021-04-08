@@ -2391,11 +2391,39 @@ docker_backup() {
     if [ "${RCS}" = "" ]; then exit 0; fi
     BACKUP_DAY=$(date +%d)
     BACKUP_NOW=$(date +%Y-%m-%d)
-    BACKUP_DELETE=$(date +%Y-%m-%d -d "@$(($(date +%s) - 864000))")
+    BACKUP_DELETE=$(date +%Y-%m-%d -d "@$(($(date +%s) - 432000))")
     T=$(grep "\"theme\"" /home/"${CP_DOMAIN}"/config/production/config.js)
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
     PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
+    echo "FLUSH RAMCHUNK"
+    echo "FLUSH RAMCHUNK rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RAMCHUNK content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RAMCHUNK comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "FLUSH RAMCHUNK user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    FLUSH_RAMCHUNK=1
+    while [ "${FLUSH_RAMCHUNK}" != "100" ]; do
+        sleep 3
+        FLUSH_RAMCHUNK=$((1+FLUSH_RAMCHUNK))
+        TMP_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".tmp.")
+        OLD_FILES=$(ls /home/"${CP_DOMAIN}"/config/rt/ | grep ".old.")
+        if [ "${TMP_FILES}" = "" ]; then
+            echo "${FLUSH_RAMCHUNK}) TMP FILES: ${TMP_FILES}"
+        fi
+        if [ "${OLD_FILES}" = "" ]; then
+            echo "${FLUSH_RAMCHUNK}) OLD FILES: ${OLD_FILES}"
+        fi
+        if [ "${TMP_FILES}" = "" ] && [ "${OLD_FILES}" = "" ]; then
+            FLUSH_RAMCHUNK=100
+        fi
+    done
+    echo "OPTIMIZE INDEX"
+    echo "OPTIMIZE INDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "OPTIMIZE INDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "OPTIMIZE INDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    echo "OPTIMIZE INDEX user_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
+    sleep 10
+    echo "FLUSH RTINDEX"
     echo "FLUSH RTINDEX rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX content_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
     echo "FLUSH RTINDEX comment_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"
@@ -2413,6 +2441,11 @@ docker_backup() {
         --exclude=config/production/nginx \
         --exclude=config/production/mail \
         --exclude=config/production/php \
+        --exclude=config/rt/rt_"${CP_DOMAIN_}".lock \
+        --exclude=config/content/content_"${CP_DOMAIN_}".lock \
+        --exclude=config/comment/comment_"${CP_DOMAIN_}".lock \
+        --exclude=config/user/user_"${CP_DOMAIN_}".lock \
+        --exclude=config/binlog/binlog.lock \
         -uf /var/mega/"${CP_DOMAIN}"/config.tar \
         config
     cd /home/"${CP_DOMAIN}" && \
@@ -2420,6 +2453,7 @@ docker_backup() {
         --exclude=files/GeoLite2-Country.mmdb \
         --exclude=files/GeoLite2-ASN.mmdb \
         --exclude=files/poster \
+        --exclude=files/torrent \
         --exclude=files/picture \
         --exclude=files/windows \
         --exclude=files/linux \

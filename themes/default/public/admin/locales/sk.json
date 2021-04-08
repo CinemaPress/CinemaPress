@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Zobraziť fotografie hercov na stránke videozáznamu (pred tým, než potrebujete stiahnuť všetky fotografie)",
 	"Фото актеров:": "Foto hercov:",
 	"Домен для фото актеров:": "Doména pre hercov fotografií:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Zadajte názov domény, z ktorého sa zobrazí fotografia hercov"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Zadajte názov domény, z ktorého sa zobrazí fotografia hercov",
+	"Фильтрация фильмов": "Filtračné filtre"
 }

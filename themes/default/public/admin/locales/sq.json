@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Tregoni fotot e aktorëve në faqen e movieit (para se të keni nevojë të shkarkoni të gjitha fotot)",
 	"Фото актеров:": "Foto e aktorëve:",
 	"Домен для фото актеров:": "Domain për aktorët e fotografive:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Specifikoni emrin e domain-it nga i cili do të shfaqet fotografia e aktorëve"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Specifikoni emrin e domain-it nga i cili do të shfaqet fotografia e aktorëve",
+	"Фильтрация фильмов": "Filtrat e filtrave"
 }

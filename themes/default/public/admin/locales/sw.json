@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Onyesha picha za watendaji kwenye ukurasa wa filamu (kabla ya kwamba unahitaji kupakua picha zote)",
 	"Фото актеров:": "Picha ya watendaji:",
 	"Домен для фото актеров:": "Domain kwa watendaji wa picha:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Taja jina la kikoa ambalo picha ya watendaji itaonyeshwa"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Taja jina la kikoa ambalo picha ya watendaji itaonyeshwa",
+	"Фильтрация фильмов": "Futa filters"
 }

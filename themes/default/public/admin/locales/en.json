@@ -1022,5 +1022,6 @@
   "Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Show photos of actors on the movie page (before that you need to download all photos)",
   "Фото актеров:": "Photo of actors:",
   "Домен для фото актеров:": "Domain for photo actors:",
-  "Укажите доменное имя с которого будут показаны фото актеров": "Specify the domain name from which the photo of the actors will be shown"
+  "Укажите доменное имя с которого будут показаны фото актеров": "Specify the domain name from which the photo of the actors will be shown",
+  "Фильтрация фильмов": "Filtering movies"
 }

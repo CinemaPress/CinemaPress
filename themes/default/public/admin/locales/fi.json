@@ -1023,5 +1023,6 @@
 	"Показывать фото актеров на странице фильма (перед этим нужно загрузить все фото)": "Näytä valokuvia näyttelijöistä elokuvasivulla (ennen kuin sinun on ladattava kaikki kuvat)",
 	"Фото актеров:": "Kuva näyttelijöistä:",
 	"Домен для фото актеров:": "Valokuvien toimijoiden verkkotunnus:",
-	"Укажите доменное имя с которого будут показаны фото актеров": "Määritä verkkotunnus, josta näyttelijöiden kuva näytetään"
+	"Укажите доменное имя с которого будут показаны фото актеров": "Määritä verkkotunnus, josta näyttelijöiden kuva näytetään",
+	"Фильтрация фильмов": "Suodatin suodattimet"
 }
