@@ -89,6 +89,7 @@ module.exports = {
     },
     "text": 0,
     "required": [
+      "poster"
     ],
     "thematic": {
       "type": "",
@@ -160,7 +161,8 @@ module.exports = {
       "0 ~ lastmod_movie ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ movie_results.0.id <> custom.tmdb_id <> 1",
       "0 ~ lastmod_tv ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ tv_results.0.id <> custom.tmdb_id <> 1",
       "0 ~ lastmod_tv ~ custom.imdb_id ~ https://api.tvmaze.com/lookup/shows?imdb=tt[imdb_id] ~ id <> custom.tvmaze_id",
-      "0 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote"
+      "0 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote",
+      "720 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote"
     ],
     "proxy": [],
     "cookies": "",

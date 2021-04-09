@@ -129,11 +129,11 @@ module.exports = {
   "social": {
     "status": false,
     "data": {
-      "vk": "https://vk.com/CinemaPress",
-      "facebook": "https://www.facebook.com/CinemaPress.org",
-      "twitter": "https://twitter.com/CinemaPress_org",
-      "telegram": "https://t.me/CinemaPress_org",
-      "instagram": "https://www.instagram.com/CinemaPressOrg",
+      "vk": "https://github.com/CinemaPress/CinemaPress",
+      "facebook": "https://gitlab.com/CinemaPress/CinemaPress",
+      "twitter": "https://bitbucket.org/CinemaPress/CinemaPress",
+      "telegram": "https://hub.docker.com/r/cinemapress/docker",
+      "instagram": "https://enota.club/forums/help",
       "youtube": "https://www.youtube.com/CinemaPressOrg"
     }
   },
@@ -230,7 +230,7 @@ module.exports = {
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
-        "https://api.themoviedb.org/3/[type]/[tmdb_id]?append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
+        "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
         "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCL85Aun0K58V1YhjUtm0fryvRoBHNUREE&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ]
     }

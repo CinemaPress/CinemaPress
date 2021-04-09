@@ -89,6 +89,7 @@ module.exports = {
     },
     "text": 0,
     "required": [
+      "poster",
       "title_ru"
     ],
     "thematic": {
@@ -109,7 +110,7 @@ module.exports = {
   },
   "default": {
     "count": 15,
-    "sorting": "kinopoisk-vote-up",
+    "sorting": "imdb-vote-up",
     "sorting_search": "",
     "pages": 4,
     "lastpage": 0,
@@ -146,8 +147,21 @@ module.exports = {
   },
   "movies": {
     "cron": [
-      "# 0 ~ https://api.themoviedb.org/3/movie/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?api_key=TOKEN&append_to_response=credits,external_ids&language=ru ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_ru ~ original_title <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country",
-      "# 0 ~ https://api.themoviedb.org/3/tv/popular?api_key=TOKEN&page=[page] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?api_key=TOKEN&append_to_response=credits,external_ids&language=ru ~ id <> custom.tmdb_id ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_ru ~ original_name <> title_en ~ overview <> description ~ vote_average <> rating ~ vote_count <> vote ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country"
+      "1 ~ https://api.themoviedb.org/3/movie/popular?api_key=af6887753365e14160254ac7f4345dd2 ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_ru ~ original_title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country",
+      "1 ~ https://api.themoviedb.org/3/tv/popular?api_key=af6887753365e14160254ac7f4345dd2 ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_ru ~ original_name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country",
+      "1 ~ https://api.themoviedb.org/3/movie/upcoming?api_key=af6887753365e14160254ac7f4345dd2 ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_ru ~ original_title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country",
+      "1 ~ lastmod_movie ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ movie_results.0.id <> custom.tmdb_id <> 1",
+      "1 ~ lastmod_tv ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ tv_results.0.id <> custom.tmdb_id <> 1",
+      "1 ~ lastmod_tv ~ custom.imdb_id ~ https://api.tvmaze.com/lookup/shows?imdb=tt[imdb_id] ~ id <> custom.tvmaze_id",
+      "1 ~ lastmod_tv ~ custom.tmdb_id ~ https://api.themoviedb.org/3/tv/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_ru ~ original_name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country",
+      "1 ~ lastmod_movie ~ custom.tmdb_id ~ https://api.themoviedb.org/3/movie/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_ru ~ original_title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country",
+      "0 ~ https://api.themoviedb.org/3/movie/popular?api_key=af6887753365e14160254ac7f4345dd2&page=[page][26] ~ results.0.id ~ https://api.themoviedb.org/3/movie/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"movie\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ release_date <> premiere ~ title <> title_ru ~ original_title <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ production_countries.0.iso_3166_1 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "0 ~ https://api.themoviedb.org/3/tv/popular?api_key=af6887753365e14160254ac7f4345dd2&page=[page][26] ~ results.0.id ~ https://api.themoviedb.org/3/tv/[id]?language=ru&append_to_response=credits,external_ids&api_key=af6887753365e14160254ac7f4345dd2 ~ external_ids.imdb_id <> custom.imdb_id ~ \"tv\" <> type ~ backdrop_path <> pictures ~ poster_path <> poster ~ first_air_date <> premiere ~ name <> title_ru ~ original_name <> title_en ~ overview <> description ~ genres.0.name <> genre ~ credits.cast.0.name <> actor <> 5 ~ credits.crew.0.name <> director <> 5 <> job == Director ~ origin_country.0 <> country ~ vote_average <> rating ~ vote_count <> vote",
+      "0 ~ lastmod_movie ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ movie_results.0.id <> custom.tmdb_id <> 1",
+      "0 ~ lastmod_tv ~ custom.imdb_id ~ https://api.themoviedb.org/3/find/tt[imdb_id]?external_source=imdb_id&api_key=af6887753365e14160254ac7f4345dd2 ~ tv_results.0.id <> custom.tmdb_id <> 1",
+      "0 ~ lastmod_tv ~ custom.imdb_id ~ https://api.tvmaze.com/lookup/shows?imdb=tt[imdb_id] ~ id <> custom.tvmaze_id",
+      "0 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote",
+      "720 ~ https://datasets.imdbws.com/title.ratings.tsv.gz ~ ~ ~ tconst <> custom.imdb_id ~ averageRating <> imdb_rating ~ numVotes <> imdb_vote"
     ],
     "proxy": [],
     "cookies": "",
@@ -162,7 +176,7 @@ module.exports = {
     "type": {
       "name": "Лучшие [type]",
       "keys": "",
-      "sorting": "kinopoisk-rating-up",
+      "sorting": "imdb-rating-up",
       "count": 15,
       "order": 2
     },
@@ -190,14 +204,14 @@ module.exports = {
     "actor": {
       "name": "Лучшие фильмы [actor]",
       "keys": "",
-      "sorting": "kinopoisk-vote-up",
+      "sorting": "imdb-vote-up",
       "count": 10,
       "order": 6
     },
     "director": {
       "name": "Лучшие фильмы [director]",
       "keys": "",
-      "sorting": "kinopoisk-vote-up",
+      "sorting": "imdb-vote-up",
       "count": 10,
       "order": 7
     },

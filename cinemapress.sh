@@ -2243,9 +2243,8 @@ docker_run() {
         searchd
         sleep 5
         node /home/"${CP_DOMAIN}"/config/update/default.js
-        if [ "${CP_LANG}" = "en" ]; then
-            nohup /usr/bin/cinemapress container cron run >/var/log/nohup.log 2>&1 &
-        fi
+        nohup /usr/bin/cinemapress container cron run >/home/"${CP_DOMAIN}"/log/nohup.log 2>&1 &
+        echo $! >/home/"${CP_DOMAIN}"/log/nohup.pid
     else
         searchd
         node /home/"${CP_DOMAIN}"/config/update/config.js
@@ -2255,6 +2254,14 @@ docker_run() {
     cd /home/"${CP_DOMAIN}" && pm2-runtime start process.json
 }
 docker_stop() {
+    if [ -f /home/"${CP_DOMAIN}"/log/nohup.pid ]; then
+        NOHUP_PID=$(cat /home/"${CP_DOMAIN}"/log/nohup.pid)
+        if [ "${NOHUP_PID}" != "" ]; then
+            kill -9 "${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
+            echo "KILL PID ${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
+            rm -f /home/"${CP_DOMAIN}"/log/nohup.pid
+        fi
+    fi
     sed -Ei "s/\/\/app\.use\(rebooting\(\)\);/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     touch "/home/${CP_DOMAIN}/.uptimerobot"
     pm2 reload all
@@ -2397,6 +2404,14 @@ docker_backup() {
     T=$(grep "\"theme\"" /home/"${CP_DOMAIN}"/config/production/config.js)
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
+    if [ -f /home/"${CP_DOMAIN}"/log/nohup.pid ]; then
+        NOHUP_PID=$(cat /home/"${CP_DOMAIN}"/log/nohup.pid)
+        if [ "${NOHUP_PID}" != "" ]; then
+            kill -9 "${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
+            echo "KILL PID ${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
+            rm -f /home/"${CP_DOMAIN}"/log/nohup.pid
+        fi
+    fi
     PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
 #    echo "FLUSH RAMCHUNK"
 #    echo "FLUSH RAMCHUNK rt_${CP_DOMAIN_};" | mysql -h0 -P"${PORT_DOMAIN}"

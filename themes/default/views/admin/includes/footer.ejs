@@ -1474,6 +1474,8 @@
       link = link
         .replace(/-+/g, '-')
         .replace(/(^-*)|(-*)$/g, '');
+      var content_url = document.querySelector('input[name="content.content_url"]');
+      if (!content_url) return;
       document.querySelector('input[name="content.content_url"]').value = link;
       document.querySelector('[data-renamed]').dataset.renamed = link;
       document.querySelector('#rss_content_url').setAttribute('href', '<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=' + link);

@@ -136,15 +136,22 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-xs-12 text-center">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon text-muted"><span
-                                                                    class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %>/</span><span
-                                                                    class="visible-xs">/<%- modules.content.data.url %>/</span></span>
-                                                        <input class="form-control input_url" name="content.content_url"
-                                                               value="<% if (content.content_url) { %><%- content.content_url %><% } %>"
-                                                               placeholder="<%= __('Уникальный ключ для URL') %>"
-                                                               type="text">
-                                                        <% if (modules.rss.status) { %>
-                                                        <span class="input-group-addon text-warning"><a href="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=<% if (content.content_url) { %><%- encodeURIComponent(content.content_url) %><% } %>" id="rss_content_url" target="_blank"><i class="fas fa-rss text-warning"></i></a></span>
+                                                        <% if (content.content_url) { %>
+                                                            <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %><%- config.urls.slash %></span><span class="visible-xs">/<%- modules.content.data.url %><%- config.urls.slash %></span></span>
+                                                            <input value="<%- content.content_url %>" class="form-control input_url text-left" type="text" placeholder="<%- content.content_url %>" style="background-color: #1a2035; border-left: 0" disabled="disabled" autocomplete="off" autocapitalize="none" spellcheck="false">
+                                                            <span class="input-group-addon text-info"><a href="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %><%- config.urls.slash %><%- encodeURIComponent(content.content_url) %>" target="_blank"><i class="fa fa-external-link-square-alt text-info"></i></a></span>
+                                                            <% if (modules.rss.status) { %>
+                                                                <span class="input-group-addon text-warning"><a href="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=<%- encodeURIComponent(content.content_url) %>" id="rss_content_url" target="_blank"><i class="fas fa-rss text-warning"></i></a></span>
+                                                            <% } %>
+                                                        <% } else { %>
+                                                            <span class="input-group-addon text-muted"><span class="hidden-xs"><%- config.subdomain %><%- config.domain %>/<%- modules.content.data.url %><%- config.urls.slash %></span><span class="visible-xs">/<%- modules.content.data.url %><%- config.urls.slash %></span></span>
+                                                            <input class="form-control input_url" name="content.content_url"
+                                                                   value="<% if (content.content_url) { %><%- content.content_url %><% } %>"
+                                                                   placeholder="<%= __('Уникальный ключ для URL') %>"
+                                                                   type="text">
+                                                            <% if (modules.rss.status) { %>
+                                                                <span class="input-group-addon text-warning"><a href="<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=<% if (content.content_url) { %><%- encodeURIComponent(content.content_url) %><% } %>" id="rss_content_url" target="_blank"><i class="fas fa-rss text-warning"></i></a></span>
+                                                            <% } %>
                                                         <% } %>
                                                     </div>
                                                 </div>

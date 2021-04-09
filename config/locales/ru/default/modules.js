@@ -74,8 +74,8 @@ module.exports = {
     "status": true,
     "data": {
       "count": 0,
-      "url": "",
-      "movies": ["1047883","460586","843650","843859","840372","916498","1008445","1009536","1007049","994864","1005878","846824","706655","489414","843649","961715","924311","935940","926540","839650","840829","843479","843790"]
+      "url": "filmy-v-slaydere",
+      "movies": []
     }
   },
   "abuse": {
@@ -129,11 +129,11 @@ module.exports = {
   "social": {
     "status": false,
     "data": {
-      "vk": "https://vk.com/CinemaPress",
-      "facebook": "https://www.facebook.com/CinemaPress.org",
-      "twitter": "https://twitter.com/CinemaPress_org",
-      "telegram": "https://t.me/CinemaPress_org",
-      "instagram": "https://www.instagram.com/CinemaPressOrg",
+      "vk": "https://github.com/CinemaPress/CinemaPress",
+      "facebook": "https://gitlab.com/CinemaPress/CinemaPress",
+      "twitter": "https://bitbucket.org/CinemaPress/CinemaPress",
+      "telegram": "https://hub.docker.com/r/cinemapress/docker",
+      "instagram": "https://enota.club/forums/help",
       "youtube": "https://www.youtube.com/CinemaPressOrg"
     }
   },
@@ -147,27 +147,27 @@ module.exports = {
         "year": {
           "count": 6,
           "name": "Фильмы [year] года",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "genre": {
           "count": 5,
           "name": "Фильмы в жанре - [genre]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "country": {
           "count": 10,
           "name": "Фильмы из страны - [country]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "actor": {
           "count": 15,
           "name": "Лучшие фильмы актера - [actor]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         },
         "director": {
           "count": 5,
           "name": "Лучшие фильмы режиссера - [director]",
-          "sorting": "kinopoisk-vote-up"
+          "sorting": "imdb-vote-up"
         }
       },
       "same": 1,
@@ -228,15 +228,15 @@ module.exports = {
     "data": {
       "display": "script",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
-      "script": "{\"data-player\":\"collaps,bazon,ustore,alloha,hdvb,kodik,videocdn,trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
+      "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
-        "https://pleer.video/[kp_id].json ~ embeds.0.iframe",
-        "# https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
+        "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
+        "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ]
     }
   },
   "blocking": {
-    "status": true,
+    "status": false,
     "data": {
       "display": "legal",
       "share": {
@@ -322,12 +322,11 @@ module.exports = {
         "order": 2,
         "latest": 0,
         "custom": [
-          "https://pleer.video/episodes.json ~ results.0.kp_id ~ results.0.season ~ results.0.episode"
+          "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number",
+          "https://api.tvmaze.com/schedule ~ 0.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
         ]
       },
-      "custom": [
-        "https://pleer.video/[kp_id].json ~ embeds.0.season ~ embeds.0.episode"
-      ],
+      "custom": [],
       "translations": ""
     }
   },
@@ -530,8 +529,12 @@ module.exports = {
         "tags": "Обновления"
       },
       "custom": [
-        "https://pleer.video/movies.json ~ results.0.kp_id ~ poslednie-obnovleniya-filmov",
-        "https://pleer.video/episodes.json ~ results.0.kp_id ~ poslednie-obnovleniya-serialov"
+        "https://api.themoviedb.org/3/movie/popular?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ poslednie-obnovleniya-filmov",
+        "https://api.themoviedb.org/3/tv/popular?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ poslednie-obnovleniya-serialov",
+        "https://api.themoviedb.org/3/movie/upcoming?page=2&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ filmy-v-slaydere",
+        "https://api.themoviedb.org/3/movie/popular?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ poslednie-obnovleniya-filmov",
+        "https://api.themoviedb.org/3/tv/popular?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ poslednie-obnovleniya-serialov",
+        "https://api.themoviedb.org/3/movie/upcoming?page=1&api_key=269890f657dddf4635473cf4cf456576 ~ results.0.id <> custom.tmdb_id ~ filmy-v-slaydere"
       ],
       "scraper": ""
     }
@@ -581,7 +584,7 @@ module.exports = {
       "index": 1,
       "related": 1,
       "count": 200,
-      "sorting": "kinopoisk-vote-up"
+      "sorting": "imdb-vote-up"
     }
   },
   "app": {
