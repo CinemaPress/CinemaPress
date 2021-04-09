@@ -81,11 +81,11 @@ module.exports = {
     "message": "Сервер перегружен на [percent] пожалуйста зайдите позже."
   },
   "publish": {
-    "start": 400000,
+    "start": 298,
     "stop": 10000000,
     "every" : {
-      "hours": 2,
-      "movies": 4
+      "hours": 0,
+      "movies": 0
     },
     "text": 0,
     "required": [

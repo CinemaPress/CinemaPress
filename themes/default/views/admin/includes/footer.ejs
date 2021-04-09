@@ -47,6 +47,10 @@
     if (flush_memcached)
       flush_memcached.addEventListener('click', flushMemcachedData);
 
+    var reload_movies = document.querySelector('#reload_movies');
+    if (reload_movies)
+      reload_movies.addEventListener('click', reloadMoviesData);
+
     var movies_cron = document.querySelector('#movies_cron');
     if (movies_cron)
       movies_cron.addEventListener('click', moviesCronData);
@@ -216,6 +220,36 @@
       } else {
         self.innerHTML = '<i class="fa fa-tachometer-alt"></i>';
         self.addEventListener('click', flushMemcachedData);
+      }
+    });
+
+    setTimeout(function() {
+      if (stop) return;
+      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+    }, 25000);
+
+  }
+
+  function reloadMoviesData() {
+
+    var self = this;
+    self.removeEventListener('click', reloadMoviesData);
+    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
+
+    var data = {
+      'flush_memcached': true
+    };
+
+    var stop = false;
+
+    sendServer(data, function(err, result) {
+      stop = true;
+      if (err) {
+        self.innerHTML = '<i class="fa fa-bug"></i>';
+      } else {
+        self.innerHTML = '<i class="fa fa-sync-alt"></i>';
+        self.addEventListener('click', reloadMoviesData);
+        window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
       }
     });
 
