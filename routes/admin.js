@@ -1249,23 +1249,6 @@ router.post('/change', function(req, res) {
           }, 3333);
         });
       },
-      database: function(callback) {
-        if (!form.database) return callback(null, 'Null');
-        exec(
-          'nohup /usr/bin/cinemapress database ' +
-            config.domain +
-            ' ' +
-            form.database +
-            ' > ' +
-            path.join(path.dirname(__filename), '..', 'log', 'database.log') +
-            ' &',
-          function(err) {
-            setTimeout(function() {
-              return err ? callback(err) : callback(null, 'Database');
-            }, 1000 * 60 * 9.5);
-          }
-        );
-      },
       restart: function(callback) {
         if (!form.restart) return callback(null, 'Null');
         exec(

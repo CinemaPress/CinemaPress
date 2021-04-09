@@ -63,10 +63,6 @@
     if (movies_saved)
       movies_saved.addEventListener('click', saveData);
 
-    var database = document.querySelector('#database');
-    if (database)
-      database.addEventListener('click', databaseData);
-
     var del = document.querySelectorAll('.del');
     if (del)
       for (i = 0; i < del.length; i++)
@@ -318,51 +314,6 @@
       self.innerHTML = '<span class="fa fa-check"></span>';
       alert('Restart page 2 times.');
     }, 10000);
-
-  }
-
-  function databaseData() {
-
-      <% if (config.database.key === 'FREE') { %>
-    if (!confirm('<%= __('База закрепится на сервере за доменом %s Импорт делается только один раз, дальнейшие импорты - это обновления.', config.domain.toUpperCase() + '\\n') %>')) {
-      return;
-    }
-      <% } %>
-
-    var key = document.querySelector('#key');
-
-    if (!key || !key.value) return;
-
-    var self = this;
-    self.removeEventListener('click', databaseData);
-    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Загружаются (около 10 минут)') %>';
-
-    var data = {
-      'database': key.value
-    };
-
-    sendServer(data, true, function(err, result) {
-      if (err) {
-        self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
-      } else {
-        setTimeout(function() {
-          self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;<%= __('Перезагрузка') %>';
-          var data = {
-            'restart': true
-          };
-          sendServer(data, function() {
-            window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-          });
-        }, 25000);
-        setTimeout(function() {
-          window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-        }, 35000);
-      }
-    });
-
-    setTimeout(function() {
-      window.location.href = "<%- config.protocol %><%- config.subdomain %><%- config.domain %>/<%- config.urls.admin %>";
-    }, 600000);
 
   }
 

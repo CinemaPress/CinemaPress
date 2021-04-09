@@ -73,7 +73,7 @@ module.exports = {
   "slider": {
     "status": true,
     "data": {
-      "count": 0,
+      "count": 18,
       "url": "filmy-v-slaydere",
       "movies": []
     }
@@ -226,7 +226,7 @@ module.exports = {
   "player": {
     "status": true,
     "data": {
-      "display": "script",
+      "display": "custom",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [

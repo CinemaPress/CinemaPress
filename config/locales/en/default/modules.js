@@ -73,7 +73,7 @@ module.exports = {
   "slider": {
     "status": true,
     "data": {
-      "count": 15,
+      "count": 18,
       "url": "carousel-movies",
       "movies": []
     }
