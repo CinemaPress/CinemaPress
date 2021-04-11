@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Fotografija glumaca:",
 	"Домен для фото актеров:": "Domena za fotografije glumci:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Navedite naziv domene iz kojeg će se prikazati fotografija glumaca",
-	"Фильтрация фильмов": "Filter filtri"
+	"Фильтрация фильмов": "Filter filtri",
+	"Основной идентификатор у фильмов": "Glavni identifikator movieova",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ako u movieu nema osnovnog identifikatora, podaci se ne spremaju u bazu podataka"
 }

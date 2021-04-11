@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "A színészek fotója:",
 	"Домен для фото актеров:": "Domain fotó szereplők számára:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Adja meg azt a tartománynevet, amelyből a színészek fotó megjelenik",
-	"Фильтрация фильмов": "Szűrőszűrők"
+	"Фильтрация фильмов": "Szűrőszűrők",
+	"Основной идентификатор у фильмов": "A movieek fő azonosítója",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ha a movieinformációkban nincs alapvető azonosító, az adatok nem kerülnek mentésre az adatbázisba"
 }

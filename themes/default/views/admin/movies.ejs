@@ -16,6 +16,14 @@
     <%- include('includes/head.ejs'); -%>
 
     <style>.tagify__input{margin:6px}</style>
+    <style>
+        .id_kp{color:#ff6600;}
+        .id_tmdb{color:#07b4e2;}
+        .id_imdb{color:#f5c511;}
+        .id_douban{color:#2d913b;}
+        .id_tvmaze{color:#3c948b;}
+        .id_wa{color:#990000;}
+    </style>
 
 </head>
 <body>
@@ -1034,27 +1042,27 @@
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.imdb_id</code>
-                                                                                                    <span>tt0944947</span>
+                                                                                                    <span class="id_imdb">tt0944947</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.tmdb_id</code>
-                                                                                                    <span>1399</span>
+                                                                                                    <span class="id_tmdb">1399</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.douban_id</code>
-                                                                                                    <span>26584183</span>
+                                                                                                    <span class="id_douban">26584183</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.tvmaze_id</code>
-                                                                                                    <span>82</span>
+                                                                                                    <span class="id_tvmaze">82</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.wa_id</code>
-                                                                                                    <span>36896</span>
+                                                                                                    <span class="id_wa">36896</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.movie_id</code>
-                                                                                                    <span>[number]</span>
+                                                                                                    <span class="text-muted">[number]</span>
                                                                                                 </div>
                                                                                                 <div>
                                                                                                     <code>custom.other_key</code>
@@ -1127,6 +1135,102 @@
                                                                                     <div class="row">
                                                                                         <div class="col-sm-12">
                                                                                             <textarea class="form-control custom" name="config.movies.skip" placeholder="<%= __('Список идентификаторов фильмов') %>" style="height:300px;"><%- config.movies.skip.join(',') %></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </article>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-sm-12 col-xs-12">
+                                                                        <div class="faq">
+                                                                            <article class="faq-group">
+                                                                                <header class="text-muted text-left">
+                                                                                    <i class="fa fa-plus"></i>
+                                                                                    <h3>
+                                                                                        <span class="fas fa-fingerprint"></span> <%= __('Основной идентификатор у фильмов') %>
+                                                                                    </h3>
+                                                                                </header>
+                                                                                <div class="faq-content clearfix">
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-12">
+                                                                                            <div class="cinema-box">
+                                                                                                <div class="cinema-box-header">
+                                                                                                    <div class="cinema-label">
+                                                                                                        <i class="fas fa-id-card-alt"></i>&nbsp;&nbsp;&nbsp;<%= __('Основной идентификатор у фильмов') %>
+                                                                                                    </div>
+                                                                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                                                           class="csstip"
+                                                                                                           data-title="<%= __('Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных') %>"
+                                                                                                           target="_blank">
+                                                                                                            <i class="fa fa-info-circle"></i>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="inner-padding">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label>
+                                                                                                                    <input name="config.movies.id" value="" <% if (config.movies.id === '') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;<%= __('Нет') %></span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_kp">
+                                                                                                                    <input name="config.movies.id" value="kp_id" <% if (config.movies.id === 'kp_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;kp_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_tmdb">
+                                                                                                                    <input name="config.movies.id" value="custom.tmdb_id" <% if (config.movies.id === 'custom.tmdb_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.tmdb_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_imdb">
+                                                                                                                    <input name="config.movies.id" value="custom.imdb_id" <% if (config.movies.id === 'custom.imdb_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.imdb_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_wa">
+                                                                                                                    <input name="config.movies.id" value="custom.wa_id" <% if (config.movies.id === 'custom.wa_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.wa_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_douban">
+                                                                                                                    <input name="config.movies.id" value="custom.douban_id" <% if (config.movies.id === 'custom.douban_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.douban_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="id_tvmaze">
+                                                                                                                    <input name="config.movies.id" value="custom.tvmaze_id" <% if (config.movies.id === 'custom.tvmaze_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.tvmaze_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-3 col-xs-3 text-center">
+                                                                                                            <div class="inline-labels">
+                                                                                                                <label class="text-muted">
+                                                                                                                    <input name="config.movies.id" value="custom.movie_id" <% if (config.movies.id === 'custom.movie_id') { %> checked=""<% } %> type="radio"><span></span><span>&nbsp;custom.movie_id</span>
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1458,14 +1562,6 @@
                                         </tr>
                                         </tfoot>
                                         <tbody>
-                                        <style>
-                                            .id_kp{color:#ff6600;}
-                                            .id_tmdb{color:#07b4e2;}
-                                            .id_imdb{color:#f5c511;}
-                                            .id_douban{color:#2d913b;}
-                                            .id_tvmaze{color:#3c948b;}
-                                            .id_wa{color:#990000;}
-                                        </style>
                                         <% movies.forEach(function(movie) { %>
                                             <% var id_key = 'id_movie'; %>
                                             <% if (movie.id > 0 && movie.id <= 100000000) {id_key = 'id_kp';} %>

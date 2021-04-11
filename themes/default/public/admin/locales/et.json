@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Foto osalistest:",
 	"Домен для фото актеров:": "Domeen fotos osalejate jaoks:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Määrake domeeninimi, millest kuvatakse osaliste foto",
-	"Фильтрация фильмов": "Filtri filtrid"
+	"Фильтрация фильмов": "Filtri filtrid",
+	"Основной идентификатор у фильмов": "Movieide peamine identifikaator",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Kui movieiteabe põhjal puudub põhifunktsiooni, ei salvestata andmebaasi"
 }

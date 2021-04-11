@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Picha ya watendaji:",
 	"Домен для фото актеров:": "Domain kwa watendaji wa picha:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Taja jina la kikoa ambalo picha ya watendaji itaonyeshwa",
-	"Фильтрация фильмов": "Futa filters"
+	"Фильтрация фильмов": "Futa filters",
+	"Основной идентификатор у фильмов": "Kitambulisho kikuu cha filamu",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ikiwa hakuna kitambulisho cha msingi katika maelezo ya filamu, data haijahifadhiwa kwenye databana"
 }

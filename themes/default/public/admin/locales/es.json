@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Foto de actores:",
 	"Домен для фото актеров:": "Dominio para los actores de fotos:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Especifique el nombre de dominio de donde se mostrará la foto de los actores",
-	"Фильтрация фильмов": "Filtros de filtro"
+	"Фильтрация фильмов": "Filtros de filtro",
+	"Основной идентификатор у фильмов": "El identificador principal para películas",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Si no hay un identificador básico en la información de la película, los datos no se guardan en la base de datos"
 }

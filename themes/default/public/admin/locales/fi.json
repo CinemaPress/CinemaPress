@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Kuva näyttelijöistä:",
 	"Домен для фото актеров:": "Valokuvien toimijoiden verkkotunnus:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Määritä verkkotunnus, josta näyttelijöiden kuva näytetään",
-	"Фильтрация фильмов": "Suodatin suodattimet"
+	"Фильтрация фильмов": "Suodatin suodattimet",
+	"Основной идентификатор у фильмов": "Elokuvien tärkein tunniste",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jos elokuvatiedoissa ei ole perustunnistetta, tietoja ei tallenneta tietokantaan"
 }

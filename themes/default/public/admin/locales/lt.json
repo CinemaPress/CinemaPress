@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Aktorių nuotrauka:",
 	"Домен для фото актеров:": "Nuotraukų veikėjų domenas:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Nurodykite domeno vardą, iš kurio bus rodoma veikėjų nuotrauka",
-	"Фильтрация фильмов": "Filtrų filtrai"
+	"Фильтрация фильмов": "Filtrų filtrai",
+	"Основной идентификатор у фильмов": "Pagrindinis movieų identifikatorius",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jei moviee nėra pagrindinio identifikatoriaus, duomenys neišsaugomi į duomenų bazę"
 }

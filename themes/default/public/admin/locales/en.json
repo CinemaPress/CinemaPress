@@ -1023,5 +1023,7 @@
   "Фото актеров:": "Photo of actors:",
   "Домен для фото актеров:": "Domain for photo actors:",
   "Укажите доменное имя с которого будут показаны фото актеров": "Specify the domain name from which the photo of the actors will be shown",
-  "Фильтрация фильмов": "Filtering movies"
+  "Фильтрация фильмов": "Filtering movies",
+  "Основной идентификатор у фильмов": "The main identifier for movies",
+  "Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "If there is no main identifier in the movie information, the data is not saved to the database"
 }

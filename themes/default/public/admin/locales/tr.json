@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Aktörlerin fotoğrafı:",
 	"Домен для фото актеров:": "Fotoğraf aktörlerinin etki alanı:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Aktörlerin fotoğrafının gösterileceği etki alanı adını belirtin",
-	"Фильтрация фильмов": "Filtre filtreleri"
+	"Фильтрация фильмов": "Filtre filtreleri",
+	"Основной идентификатор у фильмов": "Movieler için ana tanımlayıcı",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Movie bilgilerinde temel bir tanımlayıcı yoksa, veriler veritabanına kaydedilmez"
 }

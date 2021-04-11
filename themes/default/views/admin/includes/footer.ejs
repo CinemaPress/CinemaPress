@@ -608,6 +608,7 @@
           'config.geolite2.ips',
           'config.l.legal',
           'config.cache.ver',
+          'config.movies.id',
           'config.movies.cron',
           'config.movies.proxy',
           'config.movies.skip',
@@ -1461,6 +1462,7 @@
         .replace(/(^-*)|(-*)$/g, '');
       var content_url = document.querySelector('input[name="content.content_url"]');
       if (!content_url) return;
+      if (content_url.disabled) return;
       document.querySelector('input[name="content.content_url"]').value = link;
       document.querySelector('[data-renamed]').dataset.renamed = link;
       document.querySelector('#rss_content_url').setAttribute('href', '<%- config.protocol %><%- config.subdomain %><%- config.domain %>/rss.xml?collection=' + link);

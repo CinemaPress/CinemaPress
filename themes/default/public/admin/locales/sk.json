@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Foto hercov:",
 	"Домен для фото актеров:": "Doména pre hercov fotografií:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Zadajte názov domény, z ktorého sa zobrazí fotografia hercov",
-	"Фильтрация фильмов": "Filtračné filtre"
+	"Фильтрация фильмов": "Filtračné filtre",
+	"Основной идентификатор у фильмов": "Hlavný identifikátor movieov",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ak nie je v informáciách o movieoch žiadny základný identifikátor, údaje sa neuložia do databázy"
 }

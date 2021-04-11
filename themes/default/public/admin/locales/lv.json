@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Foto dalībnieku:",
 	"Домен для фото актеров:": "Domēns foto aktieriem:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Norādiet domēna nosaukumu, no kura tiks parādīts dalībnieku fotoattēls",
-	"Фильтрация фильмов": "Filtru filtri"
+	"Фильтрация фильмов": "Filtru filtri",
+	"Основной идентификатор у фильмов": "Galvenais movieu identifikators",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ja movieas informācijā nav pamata identifikatora, dati netiek saglabāti datubāzē"
 }

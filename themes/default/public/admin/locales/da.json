@@ -1024,5 +1024,7 @@
 	"Фото актеров:": "Foto af skuespillere:",
 	"Домен для фото актеров:": "Domæne til fotoaktører:",
 	"Укажите доменное имя с которого будут показаны фото актеров": "Angiv domænenavnet, hvorfra billedet af skuespillerne vil blive vist",
-	"Фильтрация фильмов": "Filtrer filtre"
+	"Фильтрация фильмов": "Filtrer filtre",
+	"Основной идентификатор у фильмов": "Hovedidentifikatoren for movie",
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Hvis der ikke er nogen grundlæggende identifikator i movieoplysningerne, gemmes dataene ikke på databasen"
 }

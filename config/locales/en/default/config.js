@@ -166,7 +166,8 @@ module.exports = {
     ],
     "proxy": [],
     "cookies": "",
-    "skip": []
+    "skip": [],
+    "id": ""
   },
   "codes": {
     "head": "",
