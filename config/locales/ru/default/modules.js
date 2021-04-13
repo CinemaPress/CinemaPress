@@ -326,7 +326,9 @@ module.exports = {
           "https://api.tvmaze.com/schedule ~ 0.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
         ]
       },
-      "custom": [],
+      "custom": [
+        "http://api.tvmaze.com/shows/[tvmaze_id]?embed=episodes ~ _embedded.episodes.0.season ~ _embedded.episodes.0.number"
+      ],
       "translations": ""
     }
   },
