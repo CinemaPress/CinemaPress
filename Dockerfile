@@ -34,7 +34,6 @@ RUN set -o pipefail \
     && npm i cinematheme@0.0.13 -g \
     && npm i \
     && mkdir -p \
-        /var/ngx_pagespeed_cache \
         /var/lib/sphinx/data \
         /var/local/balancer \
     && npm cache clean --force \

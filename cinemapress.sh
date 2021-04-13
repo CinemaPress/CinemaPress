@@ -72,15 +72,6 @@ post_commands() {
         echo "0 23 * * * root /usr/bin/cinemapress renew \"${LOCAL_DOMAIN}\" >>\"/home/${LOCAL_DOMAIN}/log/renew_\$(date '+\%d_\%m_\%Y').log\" 2>&1" >>/etc/crontab
         echo "# ----- ${LOCAL_DOMAIN}_renew --------------------------------------" >>/etc/crontab
     fi
-#    if [ -f "/home/${LOCAL_DOMAIN}/config/production/config.js" ]; then
-#        CP_SPEED=`grep "\"pagespeed\"" /home/${LOCAL_DOMAIN}/config/production/config.js | sed 's/.*"pagespeed":\s*\([0-9]\{1\}\).*/\1/'`
-#        if [ "${CP_SPEED}" != "" ]; then
-#            sed -E -i "s/\"pagespeed\":\s*[0-9]*/\"pagespeed\":${CP_SPEED}/" \
-#                /home/${LOCAL_DOMAIN}/config/production/config.js
-#            docker exec ${LOCAL_DOMAIN_} /usr/bin/cinemapress container speed "${CP_SPEED}" >/dev/null
-#            docker exec nginx nginx -s reload >/dev/null
-#        fi
-#    fi
 }
 docker_install() {
     if [ "${CP_OS}" != "alpine" ] && [ "${CP_OS}" != "\"alpine\"" ]; then
@@ -298,7 +289,6 @@ ip_install() {
         -w /home/"${LOCAL_DOMAIN}" \
         --restart always \
         --network cinemapress \
-        -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
         -v /var/lib/sphinx/data:/var/lib/sphinx/data \
         -v /var/local/balancer:/var/local/balancer \
         -v /home/"${LOCAL_DOMAIN}":/home/"${LOCAL_DOMAIN}" \
@@ -357,7 +347,6 @@ ip_install() {
                 --network cinemapress \
                 -v /var/log/nginx:/var/log/nginx \
                 -v /var/local/balancer:/var/local/balancer \
-                -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                 -v /home:/home \
                 "${BOTS[@]}" \
                 -p 80:80 \
@@ -2205,7 +2194,6 @@ docker_run() {
         cp -rf /home/"${CP_DOMAIN}"/config/default/* /home/"${CP_DOMAIN}"/config/production/
         cp -rf /home/"${CP_DOMAIN}"/files/bbb.mp4 /var/local/balancer/bbb.mp4
         sed -Ei "s/127.0.0.1:3000/${CP_DOMAIN_}:3000/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
-        sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
@@ -2215,7 +2203,6 @@ docker_run() {
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /home/"${CP_DOMAIN}"/process.json
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /etc/sphinx/sphinx.conf
         sed -Ei "s/example_com/${CP_DOMAIN_}/g" /etc/sphinx/source.xml
-        sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/pagespeed.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/conf.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/error.d/default.conf
         sed -Ei "s/example\.com/${CP_DOMAIN}/g" /home/"${CP_DOMAIN}"/config/production/nginx/ssl.d/default.conf
@@ -2603,14 +2590,6 @@ docker_passwd() {
     echo "admin:${OPENSSL}" > "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
     echo "${CP_DOMAIN}:${OPENSSL}" >> "/home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass"
 }
-docker_speed_on() {
-    sed -Ei "s/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
-        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
-}
-docker_speed_off() {
-    sed -Ei "s/    include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed\.d\/default\.conf;/    #pagespeed include \/home\/${CP_DOMAIN}\/config\/production\/nginx\/pagespeed.d\/default.conf;/" \
-        "/home/${CP_DOMAIN}/config/production/nginx/conf.d/default.conf"
-}
 docker_ssl_on() {
     if [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/live/${CP_DOMAIN}/" ] || \
     [ -d "/home/${CP_DOMAIN}/config/production/nginx/ssl.d/self-signed/${CP_DOMAIN}/" ]; then
@@ -2996,12 +2975,6 @@ while [ "${WHILE}" -lt "2" ]; do
                     docker_backup "${4}"
                 elif [ "${3}" = "restore" ] || [ "${3}" = "2" ]; then
                     docker_restore "${4}" "${5}"
-                fi
-            elif [ "${2}" = "speed" ]; then
-                if [ "${3}" = "off" ] || [ "${3}" = "0" ]; then
-                    docker_speed_off
-                else
-                    docker_speed_on
                 fi
             elif [ "${2}" = "protocol" ]; then
                 if [ "${3}" = "http://" ]; then
@@ -3494,8 +3467,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~/home/${CP_BOMAIN}/config/production/nginx/error.d/default.conf~/home/${CP_DOMAIN}/config/production/nginx/error.d/default.conf~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
-#            sed -i "s~#pagespeed include /home/${CP_BOMAIN}/config/production/nginx/pagespeed.d/default.conf~include /home/${CP_DOMAIN}/config/production/nginx/pagespeed.d/default.conf~g" \
-#                /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sed -i "s~server ${CP_BOMAIN_}:3000~server ${CP_DOMAIN_}:3000~g" \
                 /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf
             sh_progress
@@ -3911,7 +3882,6 @@ while [ "${WHILE}" -lt "2" ]; do
                         --network cinemapress \
                         -v /var/log/nginx:/var/log/nginx \
                         -v /var/local/balancer:/var/local/balancer \
-                        -v /var/ngx_pagespeed_cache:/var/ngx_pagespeed_cache \
                         -v /home:/home \
                         -p 80:80 \
                         -p 443:443 \

@@ -1136,19 +1136,6 @@ router.post('/change', function(req, res) {
           return err ? callback(err) : callback(null, result);
         });
       },
-      pagespeed: function(callback) {
-        if (!form.config || typeof form.config.pagespeed === 'undefined')
-          return callback(null, 'Null');
-        exec(
-          '/usr/bin/cinemapress container speed ' + form.config.pagespeed,
-          function(err) {
-            setTimeout(function() {
-              form.flush = true;
-              return err ? callback(err) : callback(null, 'PageSpeed');
-            }, 5000);
-          }
-        );
-      },
       movies_cron: function(callback) {
         if (!form.movies_cron) return callback(null, 'Null');
         exec(
@@ -1228,18 +1215,8 @@ router.post('/change', function(req, res) {
       },
       flush: function(callback) {
         if (!form.flush) return callback(null, 'Null');
-        form.flush_static = true;
         form.flush_memcached = true;
         return callback(null, 'Flush');
-      },
-      flush_static: function(callback) {
-        if (!form.flush_static) return callback(null, 'Null');
-        exec('touch /var/ngx_pagespeed_cache/cache.flush', function(err) {
-          process.env.CP_VER = process.env.CP_VER
-            ? parseInt(process.env.CP_VER) + 1
-            : new Date().getTime().toString();
-          return err ? callback(err) : callback(null, 'FlushStatic');
-        });
       },
       flush_memcached: function(callback) {
         if (!form.flush_memcached) return callback(null, 'Null');

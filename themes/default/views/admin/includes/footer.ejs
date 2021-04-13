@@ -39,10 +39,6 @@
     if (flush)
       flush.addEventListener('click', flushData);
 
-    var flush_static = document.querySelector('#flush_static');
-    if (flush_static)
-      flush_static.addEventListener('click', flushStaticData);
-
     var flush_memcached = document.querySelector('#flush_memcached');
     if (flush_memcached)
       flush_memcached.addEventListener('click', flushMemcachedData);
@@ -170,35 +166,6 @@
       if (stop) return;
       window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
     }, 25000);
-  }
-
-  function flushStaticData() {
-
-    var self = this;
-    self.removeEventListener('click', flushStaticData);
-    self.innerHTML = '<i class="fa fa-sync-alt fa-spin"></i>';
-
-    var data = {
-      'flush_static': true
-    };
-
-    var stop = false;
-
-    sendServer(data, function(err, result) {
-      stop = true;
-      if (err) {
-        self.innerHTML = '<i class="fa fa-bug"></i>';
-      } else {
-        self.innerHTML = '<i class="fa fa-images"></i>';
-        self.addEventListener('click', flushStaticData);
-      }
-    });
-
-    setTimeout(function() {
-      if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
-    }, 25000);
-
   }
 
   function flushMemcachedData() {
