@@ -1882,48 +1882,6 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
-                                        <i class="fa fa-space-shuttle"></i>&nbsp;&nbsp;&nbsp;<%= __('Google PageSpeed оптимизация') %>
-                                    </div>
-                                    <div class="cinema-label hidden-xs" style="float: right">
-                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
-                                           class="csstip"
-                                           data-title="<%= __('PageSpeed модуль предназначен для автоматической оптимизации работы сайта путём сокращения времени загрузки сайта в браузере') %>"
-                                           target="_blank">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="inner-padding">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xs-12 text-center">
-                                            <div class="inline-labels">
-                                                <label>
-                                                    <input name="config.pagespeed" value="1"
-                                                    <% if (config.pagespeed) { %> checked=""
-                                                            <% } %>
-                                                           type="radio"><span></span>
-                                                    <span><%= __('PageSpeed включен') %></span>
-                                                </label>
-                                                <label>
-                                                    <input name="config.pagespeed" value="0"
-                                                    <% if (!config.pagespeed) { %> checked=""
-                                                            <% } %>
-                                                           type="radio"><span></span>
-                                                    <span><%= __('PageSpeed отключен') %></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="spacer-10"></div>
-
-                        <div class="col-sm-12">
-                            <div class="cinema-box">
-                                <div class="cinema-box-header">
-                                    <div class="cinema-label">
                                         <i class="fas fa-photo-video"></i>&nbsp;&nbsp;&nbsp;<%= __('Зафиксировать кэш') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">

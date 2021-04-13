@@ -14,4 +14,4 @@ for NGINX_DIR in /home/*/config/production/nginx/conf.d/default.conf; do
     sleep 60
   done &
 done
-/usr/sbin/nginx -g 'daemon off;'
+crond && /usr/sbin/nginx -g 'daemon off;'

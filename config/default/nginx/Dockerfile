@@ -1,4 +1,4 @@
-FROM pagespeed/nginx-pagespeed:1.13.35.2-alpine3.8-ngx1.15
+FROM nginx:1.19-alpine
 RUN mkdir -p /var/log/nginx /etc/nginx /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
@@ -12,7 +12,7 @@ RUN apk add bash dos2unix gzip curl \
         /etc/nginx/cloudflare.ini \
         /etc/nginx/Dockerfile \
     && echo -e \
-        "#!/bin/bash\n\nD=\$(date +%m-%d-%Y)\n\n" \
+        "#!/bin/bash\n\nD=\$(date +%d-%m-%Y)\n\n" \
         "find /var/log/nginx -type f -name '*.log' -size +102400 -exec mv {} {}-\${D}.old \; >/dev/null 2>&1\n" \
         "find /var/log/nginx -type f -name '*.old' -exec gzip {} \; >/dev/null 2>&1\n" \
         "find /var/log/nginx -type f -name '*.gz' -mtime +10 -exec rm -rf {} \; >/dev/null 2>&1\n" \
