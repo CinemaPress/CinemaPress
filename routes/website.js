@@ -109,8 +109,10 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
   var options = {};
   options.query = {};
   options.userinfo = req.userinfo;
-  options.origin = req.userinfo.origin;
-  options.domain = req.userinfo.domain;
+  options.protocol = req.userinfo.protocol || config.protocol;
+  options.domain = req.userinfo.domain || config.subdomain + '' + config.domain;
+  options.origin =
+    req.userinfo.origin || options.protocol + '' + options.domain;
   options.port = req.userinfo.port;
   options.subscribe = req.cookies.CP_subscribe || '';
   options.debug =
@@ -460,7 +462,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
     var parts = req.originalUrl.split('?');
 
     var url =
-      config.protocol +
+      options.protocol +
       options.domain +
       parts[0].replace(/\/tv-version|\/mobile-version/, '');
 

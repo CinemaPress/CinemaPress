@@ -72,6 +72,7 @@ function dataIndex(options, callback) {
   if (arguments.length === 1) {
     callback = options;
     options = {};
+    options.protocol = config.protocol;
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
@@ -524,7 +525,7 @@ function dataIndex(options, callback) {
                                         )
                                       : [];
                                   block.url = contents[0].title
-                                    ? config.protocol +
+                                    ? options.protocol +
                                       options.domain +
                                       '/' +
                                       modules.content.data.url +

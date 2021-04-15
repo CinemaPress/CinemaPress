@@ -68,6 +68,7 @@ function fullMovieSchema(page, movie, movies, comments, options) {
     (config.bomain || config.domain);
   if (arguments.length === 4) {
     options = {};
+    options.protocol = config.protocol;
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
       '' +
@@ -380,6 +381,7 @@ function onlyMovieSchema(movie, comments, options) {
     (config.bomain || config.domain);
   if (arguments.length === 2) {
     options = {};
+    options.protocol = config.protocol;
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
       '' +
@@ -505,6 +507,7 @@ function categorySchema(page, movies, query, options) {
     (config.bomain || config.domain);
   if (arguments.length === 3) {
     options = {};
+    options.protocol = config.protocol;
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
       '' +
@@ -699,6 +702,7 @@ function generalSchema(page, options) {
     (config.bomain || config.domain);
   if (arguments.length === 1) {
     options = {};
+    options.protocol = config.protocol;
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
       '' +
@@ -880,6 +884,7 @@ function contentSchema(content, options) {
     (config.bomain || config.domain);
   if (arguments.length === 1) {
     options = {};
+    options.protocol = config.protocol;
     options.domain =
       (config.bomain ? config.botdomain : config.subdomain) +
       '' +

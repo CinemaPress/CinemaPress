@@ -244,7 +244,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Настройка доменов только для России') %></h3>
+                                                        <h3><span class="fas fa-search-location"></span>&nbsp;&nbsp;&nbsp;<%= __('Настройка доменов только для России') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -338,7 +338,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Поддомены для ботов') %></h3>
+                                                        <h3><span class="fas fa-robot"></span>&nbsp;&nbsp;&nbsp;<%= __('Поддомены для ботов') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -381,7 +381,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Автоматическое изменение поддомена') %></h3>
+                                                        <h3><span class="fas fa-sort-numeric-down"></span>&nbsp;&nbsp;&nbsp;<%= __('Автоматическое изменение поддомена') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -459,7 +459,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Автоматическое прописывание поддомена в DNS') %></h3>
+                                                        <h3><span class="far fa-keyboard"></span>&nbsp;&nbsp;&nbsp;<%= __('Автоматическое прописывание поддомена в DNS') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -537,7 +537,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Проверка поискового робота (rDNS)') %></h3>
+                                                        <h3><span class="fab fa-android"></span>&nbsp;&nbsp;&nbsp;<%= __('Проверка поискового робота (rDNS)') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -705,7 +705,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Проверка подозрительной активности') %></h3>
+                                                        <h3><span class="fas fa-fighter-jet"></span>&nbsp;&nbsp;&nbsp;<%= __('Проверка подозрительной активности') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -882,7 +882,7 @@
                                                 <article class="faq-group">
                                                     <header class="text-muted text-left">
                                                         <i class="fa fa-plus"></i>
-                                                        <h3><%= __('Ежедневная ротация доменов') %></h3>
+                                                        <h3><span class="fas fa-history"></span>&nbsp;&nbsp;&nbsp;<%= __('Ежедневная ротация доменов') %></h3>
                                                     </header>
                                                     <div class="faq-content clearfix">
                                                         <div class="row">
@@ -922,6 +922,58 @@
                                                                               document.addEventListener('DOMContentLoaded', function() {
                                                                                 var cgs = document.querySelector('[name="config.rotate.area"]');
                                                                                 var cg = new Tagify(cgs, { whitelist: [ "domain.for.bots", "domain2.for.bots", "domain.for.ru.people", "domain.for.ru.bots",  ] });
+                                                                                cg.DOM.input.classList.add('form-control');
+                                                                              });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-10"></div>
+
+                                        <div class="col-sm-12">
+                                            <div class="faq">
+                                                <article class="faq-group">
+                                                    <header class="text-muted text-left">
+                                                        <i class="fa fa-plus"></i>
+                                                        <h3><span class="fas fa-network-wired"></span>&nbsp;&nbsp;&nbsp;<%= __('Независимые дополнительные домены') %></h3>
+                                                    </header>
+                                                    <div class="faq-content clearfix">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="cinema-box">
+                                                                    <div class="cinema-box-header">
+                                                                        <div class="cinema-label"><i class="fas fa-network-wired"></i>&nbsp;&nbsp;&nbsp;<%= __('Список доменов') %>
+                                                                        </div>
+                                                                        <div class="cinema-label hidden-xs" style="float: right">
+                                                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                                                               class="csstip"
+                                                                               data-title="<%= __('Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)') %>"
+                                                                               target="_blank">
+                                                                                <i class="fa fa-info-circle"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="inner-padding">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <input type="text" name="config.mirrors" value="<%- config.mirrors.join(',') %>" placeholder="...">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <script>
+                                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                                var cgs = document.querySelector('[name="config.mirrors"]');
+                                                                                var cg = new Tagify(cgs);
                                                                                 cg.DOM.input.classList.add('form-control');
                                                                               });
                                                                             </script>

@@ -55,6 +55,7 @@ setInterval(function() {
 function codePlayer(type, movie, options) {
   if (arguments.length === 2) {
     options = {};
+    options.protocol = config.protocol;
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;

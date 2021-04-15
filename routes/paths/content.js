@@ -72,6 +72,7 @@ function allContents(tag, options, callback) {
   if (arguments.length === 1) {
     callback = options;
     options = {};
+    options.protocol = config.protocol;
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
@@ -273,6 +274,7 @@ function oneContent(url, page, sorting, options, callback) {
   if (arguments.length === 4) {
     callback = options;
     options = {};
+    options.protocol = config.protocol;
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;
@@ -562,7 +564,7 @@ function oneContent(url, page, sorting, options, callback) {
         return modules.comments.data.disqus.api_key ||
           modules.comments.data.hypercomments.sekretkey
           ? CP_comments.indexer(
-              config.protocol +
+              options.protocol +
                 options.domain +
                 '/' +
                 modules.content.data.url +

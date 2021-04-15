@@ -56,6 +56,7 @@ setInterval(function() {
 function blockingPlayer(code, movie, options, display) {
   if (arguments.length === 1) {
     options = {};
+    options.protocol = config.protocol;
     options.domain = config.subdomain + '' + config.domain;
     options.origin =
       config.protocol + '' + config.subdomain + '' + config.domain;

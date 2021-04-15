@@ -1026,5 +1026,7 @@
 	"Укажите доменное имя с которого будут показаны фото актеров": "Aktörlerin fotoğrafının gösterileceği etki alanı adını belirtin",
 	"Фильтрация фильмов": "Filtre filtreleri",
 	"Основной идентификатор у фильмов": "Movieler için ana tanımlayıcı",
-	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Movie bilgilerinde temel bir tanımlayıcı yoksa, veriler veritabanına kaydedilmez"
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Movie bilgilerinde temel bir tanımlayıcı yoksa, veriler veritabanına kaydedilmez",
+	"Независимые дополнительные домены": "Bağımsız ek alanlar",
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Websitesinin kullanıcı tarayıcısında açılacağı ek alanların listesi (ana alanları yönlendirmeden ve ana protokolü yönlendirmeden)"
 }

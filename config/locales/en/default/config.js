@@ -20,6 +20,7 @@ module.exports = {
     "botdomain": "",
     "random": 0
   },
+  "mirrors": [],
   "rotate": {
     "list": [],
     "area": [ "domain.for.bots", "domain2.for.bots", "domain.for.ru.bots" ]

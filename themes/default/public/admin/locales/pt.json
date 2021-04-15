@@ -1026,5 +1026,7 @@
 	"Укажите доменное имя с которого будут показаны фото актеров": "Especifique o nome de domínio do qual a foto dos atores será mostrada",
 	"Фильтрация фильмов": "Filtros de filtro",
 	"Основной идентификатор у фильмов": "O identificador principal para moviees",
-	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Se não houver identificador básico nas informações do moviee, os dados não serão salvos no banco de dados"
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Se não houver identificador básico nas informações do moviee, os dados não serão salvos no banco de dados",
+	"Независимые дополнительные домены": "Domínios adicionais independentes",
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Uma lista de domínios adicionais nos quais o site será aberto no navegador do usuário (sem redirecionar para os principais domínios e sem redirecionar para o protocolo principal)"
 }

@@ -1026,5 +1026,7 @@
 	"Укажите доменное имя с которого будут показаны фото актеров": "Ange domännamnet från vilket aktörens foto kommer att visas",
 	"Фильтрация фильмов": "Filterfilter",
 	"Основной идентификатор у фильмов": "Huvudidentifieraren för movieer",
-	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Om det inte finns någon grundläggande identifierare i movieinformationen sparas inte data till databasen"
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Om det inte finns någon grundläggande identifierare i movieinformationen sparas inte data till databasen",
+	"Независимые дополнительные домены": "Oberoende ytterligare domäner",
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "En lista över ytterligare domäner där webbplatsen öppnas i användarbrowser (utan omdirigering till huvuddomänerna och utan omdirigering till huvudprotokollet)"
 }

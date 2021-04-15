@@ -1026,5 +1026,7 @@
 	"Укажите доменное имя с которого будут показаны фото актеров": "Määrake domeeninimi, millest kuvatakse osaliste foto",
 	"Фильтрация фильмов": "Filtri filtrid",
 	"Основной идентификатор у фильмов": "Movieide peamine identifikaator",
-	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Kui movieiteabe põhjal puudub põhifunktsiooni, ei salvestata andmebaasi"
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Kui movieiteabe põhjal puudub põhifunktsiooni, ei salvestata andmebaasi",
+	"Независимые дополнительные домены": "Sõltumatud täiendavad domeenid",
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Loetelu täiendavatest valdkondadest, millele veebisait avaneb kasutaja brauseris (ilma peamiste domeenide suunamata ja ilma peaprotokolli suunamata)"
 }

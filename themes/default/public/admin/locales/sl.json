@@ -1026,5 +1026,7 @@
 	"Укажите доменное имя с которого будут показаны фото актеров": "Določite ime domene, iz katere bo prikazana fotografija igralcev",
 	"Фильтрация фильмов": "Filtrirni filtri",
 	"Основной идентификатор у фильмов": "Glavni identifikator za moviee",
-	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Če v informacijah o movieu ni osnovnega identifikatorja, se podatki ne shranijo v bazo podatkov"
+	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Če v informacijah o movieu ni osnovnega identifikatorja, se podatki ne shranijo v bazo podatkov",
+	"Независимые дополнительные домены": "Neodvisne dodatne domene",
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Seznam dodatnih domen, na katerih se bo spletna stran odprla v uporabniškem brskalniku (brez preusmeritve na glavne domene in brez preusmeritve na glavni protokol)"
 }

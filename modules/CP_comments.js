@@ -392,7 +392,7 @@ function recentComments(service, options, callback) {
   var movie = require('../routes/paths/movie');
 
   var hash = md5(
-    config.protocol +
+    options.protocol +
       options.domain +
       'comments' +
       JSON.stringify(service) +
@@ -474,7 +474,7 @@ function recentComments(service, options, callback) {
                       .attr('href')
                       .replace(
                         /(https?:\/\/[a-z0-9._\-]*)/i,
-                        config.protocol + options.domain
+                        options.protocol + options.domain
                       );
                     r['user'] = $(elem)
                       .find('.dsq-widget-user')
@@ -605,7 +605,7 @@ function recentComments(service, options, callback) {
                 r['url'] = comment.link
                   ? comment.link.replace(
                       /(https?:\/\/[a-z0-9._\-]*)/i,
-                      config.protocol + options.domain
+                      options.protocol + options.domain
                     )
                   : '';
                 r['user'] = comment.nick ? comment.nick : '';

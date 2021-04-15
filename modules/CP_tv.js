@@ -186,10 +186,9 @@ function tvIndex(data, options) {
   payload.categories.push({
     title: config.l.full,
     ok:
-      config.protocol +
-      config.subdomain +
-      config.domain +
-      options.port +
+      (options && options.origin
+        ? options.origin
+        : config.protocol + config.subdomain + config.domain + options.port) +
       '?desktop'
   });
   return payload;
@@ -253,10 +252,9 @@ function tvCategories(data, options) {
   payload.categories.push({
     title: config.l.full,
     ok:
-      config.protocol +
-      config.subdomain +
-      config.domain +
-      options.port +
+      (options && options.origin
+        ? options.origin
+        : config.protocol + config.subdomain + config.domain + options.port) +
       '?desktop'
   });
   return payload;
@@ -338,10 +336,9 @@ function tvCategory(data, page, options) {
   payload.categories.push({
     title: config.l.full,
     ok:
-      config.protocol +
-      config.subdomain +
-      config.domain +
-      options.port +
+      (options && options.origin
+        ? options.origin
+        : config.protocol + config.subdomain + config.domain + options.port) +
       '?desktop'
   });
   return payload;
@@ -379,7 +376,11 @@ function tvEpisode(data, options) {
   };
   payload.categories.push({
     title: config.l.home,
-    ok: config.protocol + config.subdomain + config.domain + '/tv-version'
+    ok:
+      (options && options.origin
+        ? options.origin
+        : config.protocol + config.subdomain + config.domain + options.port) +
+      '/tv-version'
   });
 
   if (typeof data === 'object') {
@@ -423,10 +424,9 @@ function tvEpisode(data, options) {
   payload.categories.push({
     title: config.l.full,
     ok:
-      config.protocol +
-      config.subdomain +
-      config.domain +
-      options.port +
+      (options && options.origin
+        ? options.origin
+        : config.protocol + config.subdomain + config.domain + options.port) +
       '?desktop'
   });
   return payload;

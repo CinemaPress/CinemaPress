@@ -98,26 +98,28 @@ router.get('/?', function(req, res) {
       ? ':' + host.split(':')[1]
       : '';
 
+  var options = {};
+  options.protocol = (req.userinfo && req.userinfo.protocol) || config.protocol;
+  options.domain =
+    (req.userinfo && req.userinfo.domain) || config.subdomain + config.domain;
+  options.origin = options.protocol + options.domain;
+  options.port = port;
+
   if (/^\/tv-version/i.test(req.originalUrl)) {
     req.userinfo.domain =
       (modules.tv.data.subdomain ? 'tv.' : config.subdomain) +
-      config.domain +
+      options.domain +
       port +
       (modules.tv.data.subdomain ? '' : '/tv-version');
   } else if (/^\/mobile-version/i.test(req.originalUrl)) {
     req.userinfo.domain =
       (modules.mobile.data.subdomain ? 'm.' : config.subdomain) +
-      config.domain +
+      options.domain +
       port +
       (modules.mobile.data.subdomain ? '' : '/mobile-version');
   } else {
-    req.userinfo.domain = config.subdomain + config.domain + port;
+    req.userinfo.domain = options.domain + port;
   }
-
-  var options = {};
-  options.origin = config.protocol + req.userinfo.domain;
-  options.domain = req.userinfo.domain;
-  options.port = port;
 
   var serials = {};
 

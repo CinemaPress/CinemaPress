@@ -60,9 +60,9 @@ var router = express.Router();
 
 router.get('/?', function(req, res, next) {
   var url =
-    (req.userinfo && req.userinfo.origin
+    req.userinfo && req.userinfo.origin
       ? req.userinfo.origin + req.originalUrl
-      : config.protocol + config.subdomain + config.domain) + req.originalUrl;
+      : config.protocol + config.subdomain + config.domain + req.originalUrl;
   var urlHash = md5(url.toLowerCase() + process.env['CP_VER']);
 
   getRender(function(err, render) {

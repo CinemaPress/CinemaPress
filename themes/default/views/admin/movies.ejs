@@ -23,6 +23,7 @@
         .id_douban{color:#2d913b;}
         .id_tvmaze{color:#3c948b;}
         .id_wa{color:#990000;}
+        .tagify__input.form-control {margin:6px 0}
     </style>
 
 </head>
@@ -324,7 +325,7 @@
                             <div class="t">
                                 <%= __('Качество:') %>
                             </div>
-                            <input type="text" class="form-control" name="movie.quality"
+                            <input type="text" name="movie.quality"
                                    value="<% if (movie.quality) { %><%- movie.quality %><% } %>"
                                    placeholder="<% if (!movie.quality) { %><%= __('Например:') %> <%= __('1080p') %><% } %>"
                                    style="font-weight: normal; font-size: 14px;">
@@ -332,6 +333,7 @@
                               document.addEventListener('DOMContentLoaded', function() {
                                 var mqs = document.querySelector('[name="movie.quality"]');
                                 var mq = new Tagify(mqs, { whitelist: ['8K', '4K', '2K', '1080p', '720p', '480p', '360p', '240p', 'CAM', 'CAMRip', 'TS', 'TC', 'SCR', 'DVDScr', 'DVDRip', 'VHSRip', 'HDTV', 'PDTV', 'DTH', 'TVRip', 'WP', 'DivX', 'R5', 'WEB-DL', 'WEBRip', 'Watermarks', 'PDVD', 'BDRip', 'BRRip', 'BD', 'HD', 'SD', 'UHD', 'BlueRay', 'HDTS', 'HDRip', 'DSR', 'DSRip', 'SATRip', 'DTHRip', 'DVBRip', 'HDTVRip'] });
+                                mq.DOM.input.classList.add('form-control');
                               });
                             </script>
                         </div>
@@ -339,7 +341,7 @@
                             <div class="t">
                                 <%= __('Перевод / язык:') %>
                             </div>
-                            <input type="text" class="form-control" name="movie.translate"
+                            <input type="text" name="movie.translate"
                                    value="<% if (movie.translate) { %><%- movie.translate %><% } %>"
                                    placeholder="<% if (!movie.translate) { %><%= __('Например:') %> <%= __('Субтитры') %><% } %>"
                                    style="font-weight: normal; font-size: 14px;">
@@ -349,6 +351,7 @@
                                 var mt = new Tagify(mts, {
                                   whitelist: ['2x2', 'Agatha Studdio', 'Alexfilm', 'AlFair Studio', 'Alt Pro', 'AMC', 'Amedia', 'Ancord', 'AniDUB', 'AniLibria', 'Animedia', 'AveBrasil', 'AvePremier', 'AveTurk', 'AXN Sci-fi', 'BaibaKo', 'Coldfilm', 'CTC', 'D1', 'datynet', 'den904', 'Discovery', 'Diva Universal', 'DreamRecords', 'Filiza Studio', 'Flux-Team', 'FocusStudio', 'Fox', 'F-TRAIN', 'Gears Media', 'GladiolusTV', 'Good People', 'GREEN TEA', 'HamsterStudio ', 'HDrezka Studio', 'HTB', 'IdeaFilm', 'JAM', 'Jaskier', 'Jetvis Studio', 'Jimmy J.', 'JWA Project', 'KANSAI', 'Levelin', 'Lord32x', 'LostFilm', 'Lw13pro', 'MC Entertainment', 'napaBo3uk', 'Narkom Pro', 'Newstudio', 'Nice-Media', 'Novafilm', 'Novamedia', 'OMSKBIRD records', 'Onibaku', 'Ozz', 'Paramount Comedy', 'PashaUp', 'Portugal', 'Prichudiki', 'ProjektorShow', 'R.A.I.M', 'SDI Media', 'SET Russia', 'SHIZA Project', 'SoftBox', 'Sony Sci-Fi', 'Sony Turbo', 'STEPonee', 'StudioBand', 'Sunshine Studio', 'To4ka', 'Tycoon', 'Universal Russia', 'Victory-Films', 'ViruseProject', 'VO-production', 'xaros', 'xixidok', 'Zamez', 'АРК ТВ', 'Гаврилов', 'Гоблин', 'Дасевич', 'двухголосый закадровый', 'Дубляж', 'Есарев', 'Живов', 'Кравец', 'Кубик в Кубе', 'Кураж-бамбей', 'Матвеев', 'многоголосый закадровый', 'Невафильм', 'Несмертельное оружие', 'Не требуется', 'одноголосый закадровый', 'Первый канал', 'Сербин', 'Студия Райдо', 'Субтитры', 'Субтитры PhysKids', 'Сыендук', 'ТВ-3', 'Украинский', 'Шадинский', 'Subtitles', 'Albanian', 'Arabic', 'Bengali', 'Big 5 Code', 'B.Portuguese', 'Bulgarian', 'Chinese', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Farsi/Persian', 'Finnish', 'French', 'German', 'Greek', 'Hebrew', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Lithuanian', 'Macedonian', 'Malay', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Serbian', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Urdu', 'Vietnamese', 'Latino', 'Hindi']
                                 });
+                                mt.DOM.input.classList.add('form-control');
                               });
                             </script>
                         </div>
