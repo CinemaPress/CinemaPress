@@ -1182,14 +1182,12 @@ option() {
     _line
     _logo
     _header "MAKE A CHOICE"
-    printf "${C}---- ${G}1)${NC} install ${S}------------------ Create Movies / TV Website ${C}----\n"
-    printf "${C}---- ${G}2)${NC} update ${S}------------------- Upgrade CinemaPress System ${C}----\n"
-    printf "${C}---- ${G}3)${NC} backup ${S}-------------------- Backup System Master Data ${C}----\n"
-    printf "${C}---- ${G}4)${NC} theme ${S}------------- Install / Update Website Template ${C}----\n"
-    # printf "${C}---- ${G}5)${NC} database ${S}------------- Import All Movies In The World ${C}----\n"
-    printf "${C}---- ${G}6)${NC} https ${S}-------------- Getting Wildcard SSL Certificate ${C}----\n"
-    # printf "${C}---- ${G}7)${NC} mirror ${S}------------------------- Moving To New Domain ${C}----\n"
-    printf "${C}---- ${G}8)${NC} remove ${S}---------------------------- Uninstall Website ${C}----\n"
+    printf "${C}---- ${G}i)${NC} install ${S}------------------ Create Movies / TV Website ${C}----\n"
+    printf "${C}---- ${G}u)${NC} update ${S}------------------- Upgrade CinemaPress System ${C}----\n"
+    printf "${C}---- ${G}b)${NC} backup ${S}-------------------- Backup System Master Data ${C}----\n"
+    printf "${C}---- ${G}t)${NC} theme ${S}------------- Install / Update Website Template ${C}----\n"
+    printf "${C}---- ${G}h)${NC} https ${S}-------------- Getting Wildcard SSL Certificate ${C}----\n"
+    printf "${C}---- ${G}r)${NC} remove ${S}---------------------------- Uninstall Website ${C}----\n"
     _s
     AGAIN=1
     while [ "${AGAIN}" -lt "10" ]
@@ -1197,9 +1195,9 @@ option() {
         if [ ${1} ]
         then
             OPTION=${1}
-            echo "OPTION [1-8]: ${OPTION}"
+            echo "OPTION: ${OPTION}"
         else
-            read -e -p 'OPTION [1-8]: ' OPTION
+            read -e -p 'OPTION: ' OPTION
             OPTION=`echo ${OPTION} | iconv -c -t UTF-8`
         fi
         if [ "${OPTION}" != "" ]
@@ -1208,7 +1206,7 @@ option() {
             then
                AGAIN=10
             else
-                printf "${R}WARNING:${NC} Enter the number of the option. \n"
+                printf "${R}WARNING:${NC} Enter the letter of the option. \n"
                 AGAIN=$((${AGAIN}+1))
             fi
         else
