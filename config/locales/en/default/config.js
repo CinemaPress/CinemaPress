@@ -76,9 +76,9 @@ module.exports = {
   },
   "pagespeed": 0,
   "loadavg": {
-    "one": 1200,
-    "five": 960,
-    "fifteen": 720,
+    "one": 2400,
+    "five": 1800,
+    "fifteen": 1200,
     "message": "The server is overloaded by [percent] please come back later."
   },
   "publish": {
