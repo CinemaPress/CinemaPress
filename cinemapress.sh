@@ -3630,10 +3630,12 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             exit 0
         ;;
-        "splash" )
+        "splash" ) # example.com git_login git_token github "http://app.com"
             if [ "${4}" = "" ]; then exit 0; fi
             _br
             sh_progress
+            SPLASH_DOMAIN="${PROTOCOL}:\/\/app.${2}"
+            if [ "${6}" != "" ]; then SPLASH_DOMAIN="${6}"; fi
             GIT=${5:-github}
             PROTOCOLS=$(grep "\"protocol\"" /home/"${2}"/config/production/config.js)
             PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
@@ -3643,7 +3645,7 @@ while [ "${WHILE}" -lt "2" ]; do
             git init >/dev/null 2>&1; \
             cp -rf config .git/config; \
             cp -rf screen.html index.html; \
-            sed -Ei "s/\/\/example\.com/${PROTOCOL}:\/\/app.${2}/g" index.html; \
+            sed -Ei "s/\/\/example\.com/${SPLASH_DOMAIN}/g" index.html; \
             sed -Ei "s/config_name/${3}/g" .git/config; \
             sed -Ei "s/config_password/${4}/g" .git/config; \
             if [ "${GIT}" != "github" ]; then
