@@ -10,7 +10,7 @@ NC='\033[0m'
 
 OPTION=${1:-}
 GIT_SERVER="github.com"
-CP_VER="4.0.0"
+CP_VER="4.0.1"
 PRC_=0
 
 CP_DOMAIN=${CP_DOMAIN:-}
@@ -3599,7 +3599,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0 CinemaPress App" \
                 --ignore-certificate \
                 --insecure \
-                --internal-urls ".*?\.?${CP_DOMAIN}|.*?\.github\.io|.*?\.gitlab\.io|.*?\.bitbucket\.io|.*?\.netlify\.com|.*?\.appspot\.com|.*?\.surge\.sh|.*?\.updog\.co|.*?\.neocities\.org|.*?\.herokuapp\.com" \
+                --internal-urls ".*" \
                 --disable-context-menu \
                 --disable-dev-tools \
                 --single-instance \
