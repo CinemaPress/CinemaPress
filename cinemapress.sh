@@ -2228,8 +2228,10 @@ docker_run() {
         searchd
         sleep 5
         node /home/"${CP_DOMAIN}"/config/update/default.js
-        nohup /usr/bin/cinemapress container cron run >/home/"${CP_DOMAIN}"/log/nohup.log 2>&1 &
-        echo $! >/home/"${CP_DOMAIN}"/log/nohup.pid
+        if [ ! -f "/var/log/${CP_DOMAIN_}.pid" ]; then
+            nohup /usr/bin/cinemapress container cron run >"/var/log/${CP_DOMAIN_}.log" 2>&1 &
+            echo $! >"/var/log/${CP_DOMAIN_}.pid"
+        fi
     else
         searchd
         node /home/"${CP_DOMAIN}"/config/update/config.js
@@ -2239,14 +2241,6 @@ docker_run() {
     cd /home/"${CP_DOMAIN}" && pm2-runtime start process.json
 }
 docker_stop() {
-    if [ -f /home/"${CP_DOMAIN}"/log/nohup.pid ]; then
-        NOHUP_PID=$(cat /home/"${CP_DOMAIN}"/log/nohup.pid)
-        if [ "${NOHUP_PID}" != "" ]; then
-            kill -9 "${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
-            echo "KILL PID ${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
-            rm -f /home/"${CP_DOMAIN}"/log/nohup.pid
-        fi
-    fi
     sed -Ei "s/\/\/app\.use\(rebooting\(\)\);/app\.use\(rebooting\(\)\);/" "/home/${CP_DOMAIN}/app.js"
     touch "/home/${CP_DOMAIN}/.uptimerobot"
     pm2 reload all
@@ -2389,12 +2383,11 @@ docker_backup() {
     T=$(grep "\"theme\"" /home/"${CP_DOMAIN}"/config/production/config.js)
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
-    if [ -f /home/"${CP_DOMAIN}"/log/nohup.pid ]; then
-        NOHUP_PID=$(cat /home/"${CP_DOMAIN}"/log/nohup.pid)
+    if [ -f "/var/log/${CP_DOMAIN_}.pid" ]; then
+        NOHUP_PID=$(cat "/var/log/${CP_DOMAIN_}.pid")
         if [ "${NOHUP_PID}" != "" ]; then
-            kill -9 "${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
-            echo "KILL PID ${NOHUP_PID}" >>/home/"${CP_DOMAIN}"/log/nohup.log
-            rm -f /home/"${CP_DOMAIN}"/log/nohup.pid
+            kill -9 "${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
+            echo "KILL PID ${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
         fi
     fi
     PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
@@ -3630,15 +3623,15 @@ while [ "${WHILE}" -lt "2" ]; do
             _br
             exit 0
         ;;
-        "splash" ) # example.com git_login git_token github "http://app.com"
+        "splash" )
             if [ "${4}" = "" ]; then exit 0; fi
             _br
             sh_progress
-            SPLASH_DOMAIN="${PROTOCOL}:\/\/app.${2}"
-            if [ "${6}" != "" ]; then SPLASH_DOMAIN="${6}"; fi
-            GIT=${5:-github}
             PROTOCOLS=$(grep "\"protocol\"" /home/"${2}"/config/production/config.js)
             PROTOCOL=$(echo "${PROTOCOLS}" | sed 's/.*"protocol":\s*"\(https\|http\).*/\1/')
+            SPLASH_DOMAIN="${PROTOCOL}:\/\/app.${2}"
+            if [ "${6}" != "" ]; then SPLASH_DOMAIN="${6//\//\\\/}"; fi
+            GIT=${5:-github}
             cd /home/"${2}"/files/splash && \
             echo "config" >> .gitignore && \
             echo "screen.html" >> .gitignore && \
@@ -4847,7 +4840,7 @@ while [ "${WHILE}" -lt "2" ]; do
             printf "               is offline, the server will be rebooted"; _br;
             printf " redirect movie.co hd.movie.com     - Redirect from movie.co to hd.movie.com"; _br;
             printf " redirect movie.co hd.movie.com bot - Redirect only for bots (Googlebot, etc.)"; _br;
-            printf " splash example.com github_login github_token"; _br;
+            printf " splash example.com git_login git_token [github,gitlab] [http://app-movies.com]"; _br;
             printf " static example.com mega_login mega_pass [create,restore]"; _br; _br;
             printf " combine install_https_restore_mirror"; _br;
             printf " combine install_restore_mirror"; _br;
