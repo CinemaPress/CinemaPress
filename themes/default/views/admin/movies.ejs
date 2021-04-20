@@ -1583,16 +1583,16 @@
                                                         <%- movie.lastmod ? movie.lastmod : '-' %>
                                                     </span>
                                                     <span class="table-content-t">
-                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><% if (movie.title) { %><%- movie.title %><% } else { %><%= __('Фильм с ID') %> <%- movie.kp_id %><% } %>
+                                                        <a href="/<%- config.urls.admin %>/movies?id=<%- parseInt(movie.id) - parseInt(config.urls.unique_id) %>"><% if (movie.title) { %><%- movie.title %><% } else { %><%= __('Фильм с ID') %> <%- movie.kp_id %><% } %>
                                                         </a><br>
                                                         <%- movie.year ? '<code class="text-muted">' + movie.year + '</code>' : '' %>
                                                     </span>
                                                 </td>
                                                 <td class="table-settings">
-                                                    <a href="javascript:void(0)" data-type="movie" data-id="<%- movie.id %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
+                                                    <a href="javascript:void(0)" data-type="movie" data-id="<%- parseInt(movie.id) - parseInt(config.urls.unique_id) %>" class="del"><i class="fa fa-trash-alt text-danger"></i></a>
                                                 </td>
                                                 <td class="table-settings">
-                                                    <a href="/<%- config.urls.admin %>/movies?id=<%- movie.id %>"><i class="fa fa-edit text-warning"></i></a>
+                                                    <a href="/<%- config.urls.admin %>/movies?id=<%- parseInt(movie.id) - parseInt(config.urls.unique_id) %>"><i class="fa fa-edit text-warning"></i></a>
                                                 </td>
                                                 <td class="table-settings">
                                                     <a href="<%- config.protocol + config.subdomain + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie.id %>" target="_blank"><span class="fa fa-external-link-square-alt text-info"></span></a>

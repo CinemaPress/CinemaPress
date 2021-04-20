@@ -323,15 +323,6 @@
                             </a>
                         </li>
                         <li
-                        <% if (type === 'rewrite') { %> class="page-arrow active-page"
-                                <% } %>
-                        >
-                            <a href="/<%- config.urls.admin %>/rewrite">
-                                <i class="far fa-hand-rock"></i> <%= __('Рерайт описаний') %>
-                                <i class="fa fa-power-off pull-right <% if (modules.rewrite.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
-                            </a>
-                        </li>
-                        <li
                         <% if (type === 'app') { %> class="page-arrow active-page"
                                 <% } %>
                         >

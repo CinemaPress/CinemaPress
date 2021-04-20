@@ -4812,7 +4812,6 @@ while [ "${WHILE}" -lt "2" ]; do
             printf " reload    - Reload website (PM2)"; _br;
             printf " zero      - Delete all data from the automatic database"; _br;
             printf " zero_rt   - Delete all data from the realtime database"; _br;
-            printf " speed     - Enabled Nginx PageSpeed module"; _br;
             printf " logs      - Show all logs"; _br;
             printf " logs live - Show all logs realtime"; _br;
             printf " logs bot  - Show logs for fake and true bots"; _br;
