@@ -2953,7 +2953,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_actual
             elif [ "${2}" = "mirror" ]; then
                 docker_mirror
-            elif [ "${2}" = "available" ] [ "${2}" = "reindex" ]; then
+            elif [ "${2}" = "available" ] || [ "${2}" = "reindex" ]; then
                 docker_available "${3}"
             elif [ "${2}" = "passwd" ]; then
                 docker_passwd "${3}"
