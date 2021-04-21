@@ -2496,10 +2496,10 @@ docker_backup() {
                     files/windows \
                     files/linux \
                     files/osx &>/dev/null
-                sleep 3; rclone -vv --rmdirs delete CINEMASTATIC:"${CP_DOMAIN}"/app.tar
+                sleep 3; rclone -vv delete CINEMASTATIC:"${CP_DOMAIN}"/app.tar
                 sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
             fi
-            sleep 3; rclone -vv --rmdirs delete CINEMASTATIC:"${CP_DOMAIN}"/static.tar
+            sleep 3; rclone -vv delete CINEMASTATIC:"${CP_DOMAIN}"/static.tar
             sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
@@ -4224,11 +4224,11 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/windows \
                         files/linux \
                         files/osx &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --rmdirs delete CINEMASTATIC:${CP_DOMAIN}/app.tar
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv delete CINEMASTATIC:${CP_DOMAIN}/app.tar
                     sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                     sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --rmdirs delete CINEMASTATIC:${CP_DOMAIN}/static.tar
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv delete CINEMASTATIC:${CP_DOMAIN}/static.tar
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
