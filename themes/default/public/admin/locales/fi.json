@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Elokuvien tärkein tunniste",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jos elokuvatiedoissa ei ole perustunnistetta, tietoja ei tallenneta tietokantaan",
 	"Независимые дополнительные домены": "Riippumattomat ylimääräiset verkkotunnukset",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Luettelo ylimääräisistä verkkotunnuksista, joilla verkkosivusto avautuu käyttäjän selaimessa (ilman uudelleenohjausta pääalueelle ja ilman pääprotokollaa)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Luettelo ylimääräisistä verkkotunnuksista, joilla verkkosivusto avautuu käyttäjän selaimessa (ilman uudelleenohjausta pääalueelle ja ilman pääprotokollaa)",
+	"Дополнительные домены добавляются командой:": "Muita verkkotunnuksia lisätään komento:"
 }

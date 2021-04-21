@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Identificatorul principal pentru moviee",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Dacă nu există un identificator de bază în informațiile despre movie, datele nu sunt salvate în baza de date",
 	"Независимые дополнительные домены": "Domenii suplimentare independente",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "O listă de domenii suplimentare pe care site-ul web se va deschide în browserul utilizatorului (fără a redirecționa domeniile principale și fără redirecționarea către protocolul principal)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "O listă de domenii suplimentare pe care site-ul web se va deschide în browserul utilizatorului (fără a redirecționa domeniile principale și fără redirecționarea către protocolul principal)",
+	"Дополнительные домены добавляются командой:": "Domeniile suplimentare sunt adăugate de comandă:"
 }

@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Kitambulisho kikuu cha filamu",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ikiwa hakuna kitambulisho cha msingi katika maelezo ya filamu, data haijahifadhiwa kwenye databana",
 	"Независимые дополнительные домены": "Domains za ziada za kujitegemea",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Orodha ya vikoa vya ziada ambavyo tovuti itafungua kwenye kivinjari cha mtumiaji (bila kuelekeza kwenye vikoa vikuu na bila kuelekeza kwa itifaki kuu)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Orodha ya vikoa vya ziada ambavyo tovuti itafungua kwenye kivinjari cha mtumiaji (bila kuelekeza kwenye vikoa vikuu na bila kuelekeza kwa itifaki kuu)",
+	"Дополнительные домены добавляются командой:": "Majina ya ziada yanaongezwa na amri:"
 }

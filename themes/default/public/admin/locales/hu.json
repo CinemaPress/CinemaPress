@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "A movieek fő azonosítója",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ha a movieinformációkban nincs alapvető azonosító, az adatok nem kerülnek mentésre az adatbázisba",
 	"Независимые дополнительные домены": "Független kiegészítő tartományok",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Olyan kiegészítő tartományok listája, amelyeken a weboldal megnyílik a felhasználói böngészőben (anélkül, hogy átirányítaná a fő tartományok átirányítását és a fő protokoll átirányítását)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Olyan kiegészítő tartományok listája, amelyeken a weboldal megnyílik a felhasználói böngészőben (anélkül, hogy átirányítaná a fő tartományok átirányítását és a fő protokoll átirányítását)",
+	"Дополнительные домены добавляются командой:": "További domaineket adnak hozzá a parancs:"
 }

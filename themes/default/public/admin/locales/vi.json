@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Mã định danh chính cho phim",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Nếu không có định danh cơ bản trong thông tin phim, dữ liệu sẽ không được lưu vào cơ sở dữ liệu",
 	"Независимые дополнительные домены": "Tên miền bổ sung độc lập",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Một danh sách các tên miền bổ sung mà trang web sẽ mở trong trình duyệt người dùng (mà không chuyển hướng đến các tên miền chính và mà không chuyển hướng đến giao thức chính)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Một danh sách các tên miền bổ sung mà trang web sẽ mở trong trình duyệt người dùng (mà không chuyển hướng đến các tên miền chính và mà không chuyển hướng đến giao thức chính)",
+	"Дополнительные домены добавляются командой:": "Tên miền bổ sung được thêm vào bởi lệnh:"
 }

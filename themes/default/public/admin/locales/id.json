@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Pengidentifikasi utama untuk movie",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jika tidak ada pengidentifikasi dasar dalam informasi movie, data tidak disimpan ke database",
 	"Независимые дополнительные домены": "Domain tambahan independen",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Daftar domain tambahan di mana situs web akan terbuka di browser pengguna (tanpa mengarahkan ke domain utama dan tanpa mengarahkan ke protokol utama)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Daftar domain tambahan di mana situs web akan terbuka di browser pengguna (tanpa mengarahkan ke domain utama dan tanpa mengarahkan ke protokol utama)",
+	"Дополнительные домены добавляются командой:": "Domain tambahan ditambahkan oleh perintah:"
 }

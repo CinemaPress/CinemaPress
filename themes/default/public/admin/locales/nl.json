@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "De belangrijkste identificator voor movies",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Als er geen basis-ID is in de movieinformatie, worden de gegevens niet opgeslagen in de database",
 	"Независимые дополнительные домены": "Onafhankelijke extra domeinen",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Een lijst met extra domeinen waarop de website wordt geopend in de gebruikersbrowser (zonder doorverwijzing naar de hoofddomeinen en zonder doorverwijzing naar het hoofdprotocol)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Een lijst met extra domeinen waarop de website wordt geopend in de gebruikersbrowser (zonder doorverwijzing naar de hoofddomeinen en zonder doorverwijzing naar het hoofdprotocol)",
+	"Дополнительные домены добавляются командой:": "Extra domeinen worden door de opdracht toegevoegd:"
 }

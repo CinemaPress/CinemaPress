@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Główny identyfikator movieów",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jeśli w informacjach movieowych nie ma podstawowego identyfikatora, dane nie są zapisywane w bazie danych",
 	"Независимые дополнительные домены": "Niezależne dodatkowe domeny",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Lista dodatkowych domen, na których strona zostanie otwarta w przeglądarce użytkownika (bez przekierowania do głównych domen i bez przekierowania do głównego protokołu)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Lista dodatkowych domen, na których strona zostanie otwarta w przeglądarce użytkownika (bez przekierowania do głównych domen i bez przekierowania do głównego protokołu)",
+	"Дополнительные домены добавляются командой:": "Dodatkowe domeny są dodawane przez polecenie:"
 }

@@ -1028,5 +1028,6 @@
 	"Основной идентификатор у фильмов": "Galvenais movieu identifikators",
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ja movieas informācijā nav pamata identifikatora, dati netiek saglabāti datubāzē",
 	"Независимые дополнительные домены": "Neatkarīgi papildu domēni",
-	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Papildu domēnu saraksts, kurās tīmekļa vietne atvērs lietotāju pārlūkprogrammā (bez novirzīšanas uz galvenajiem domēniem un bez novirzīšanas uz galveno protokolu)"
+	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Papildu domēnu saraksts, kurās tīmekļa vietne atvērs lietotāju pārlūkprogrammā (bez novirzīšanas uz galvenajiem domēniem un bez novirzīšanas uz galveno protokolu)",
+	"Дополнительные домены добавляются командой:": "Papildu domēni pievieno komanda:"
 }
