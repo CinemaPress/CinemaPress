@@ -1,4 +1,4 @@
-FROM nginx:1.19-alpine
+FROM nginx:1.20-alpine
 RUN mkdir -p /var/log/nginx /etc/nginx /var/run
 WORKDIR /etc/nginx
 COPY . /etc/nginx
