@@ -94,6 +94,7 @@ async.series(
             i,
             false,
             function(err, movies) {
+              console.log('PAGE', i, '(', (i - 1) * 500, '-', i * 500, ')');
               i++;
               if (err) {
                 console.error(err);
@@ -105,7 +106,10 @@ async.series(
                   1,
                   function(movie, key, callback) {
                     CP_get.movies(
-                      { query_id: movie.query_id },
+                      {
+                        from: process.env.CP_RT,
+                        ids: movie.query_id
+                      },
                       1,
                       '',
                       1,
@@ -122,7 +126,7 @@ async.series(
                               return callback(err);
                             });
                           } else {
-                            console.log('NOT AVAILABLE:', movie.query_id);
+                            console.log('NOT INDEX ID:', movie.query_id);
                             not_available++;
                             return callback();
                           }
@@ -134,6 +138,9 @@ async.series(
                   },
                   function(err) {
                     if (err) console.error(err);
+                    if (movies.length !== 500) {
+                      return next('STOP');
+                    }
                     return next();
                   }
                 );
@@ -145,9 +152,11 @@ async.series(
         },
         function() {
           if (not_available) {
-            console.log('NOT AVAILABLE', not_available, 'MOVIES');
+            console.log('');
+            console.log('NOT AVAILABLE', not_available, 'IDs');
           } else {
-            console.log('ALL MOVIES AVAILABLE');
+            console.log('');
+            console.log('ALL MOVIES INDEXED');
           }
           return callback();
         }

@@ -2917,13 +2917,13 @@ while [ "${WHILE}" -lt "2" ]; do
             docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container movies
             exit 0
         ;;
-        "reload"|"actual"|"available"|"speed"|"cron" )
+        "reload"|"actual"|"available"|"reindex"|"speed"|"cron" )
             _br "${2}"
             read_domain "${2}"
             sh_not
             _s "${2}"
-            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container "${1}" "${3}" \
-                >>/var/log/docker_"${1}"_"$(date '+%d_%m_%Y')".log 2>&1
+            docker exec "${CP_DOMAIN_}" /usr/bin/cinemapress container "${1}" "${3}"
+            _br
             exit 0
         ;;
         "container" )
@@ -2953,7 +2953,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 docker_actual
             elif [ "${2}" = "mirror" ]; then
                 docker_mirror
-            elif [ "${2}" = "available" ]; then
+            elif [ "${2}" = "available" ] [ "${2}" = "reindex" ]; then
                 docker_available "${3}"
             elif [ "${2}" = "passwd" ]; then
                 docker_passwd "${3}"
