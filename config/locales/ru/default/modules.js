@@ -226,49 +226,13 @@ module.exports = {
   "player": {
     "status": true,
     "data": {
-      "display": "cinemaplayer",
+      "display": "custom",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
         "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
-      ],
-      "cinemaplayer": {
-        "information": {
-          "dataset": [],
-          "api": []
-        },
-        "online": {
-          "dataset": [
-            "data-cinemaplayer-api=\"/cinemaplayer-api/online\""
-          ],
-          "api": [
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_"
-          ]
-        },
-        "trailer": {
-          "dataset": [
-            "data-cinemaplayer-api=\"/cinemaplayer-api/trailer\""
-          ],
-          "api": [
-            "Трейлер ~ https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
-          ]
-        },
-        "download": {
-          "dataset": [
-            "data-cinemaplayer-api=\"/cinemaplayer-api/download\""
-          ],
-          "api": [
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=watch/providers&api_key=269890f657dddf4635473cf4cf456576~ watch/providers.results.RU.free.0.logo_path ~ watch/providers.results.RU.free.0.provider_name ~ ~ \"Download\" ~ watch/providers.results.RU.link"
-          ]
-        },
-        "picture": {
-          "dataset": [
-            "data-cinemaplayer-api=\"/cinemaplayer-api/picture\""
-          ],
-          "api": []
-        },
-      }
+      ]
     }
   },
   "blocking": {
