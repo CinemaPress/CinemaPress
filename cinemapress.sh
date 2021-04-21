@@ -660,8 +660,8 @@ ip_install() {
             sleep 10
             CHECK_MKDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
             sleep 3
-            CHECK_PURGE=$(docker exec -t "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
-            if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+            CHECK_RMDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone rmdir CINEMAPRESS:/check-connection 2>/dev/null)
+            if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_RMDIR}" != "" ]; then
                 _header "ERROR"
                 _content
                 _content "Cannot connect to backup storage."
@@ -726,8 +726,8 @@ ip_install() {
 
         CHECK_MKDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
         sleep 3
-        CHECK_PURGE=$(docker exec -t "${LOCAL_DOMAIN_}" rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
-        if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+        CHECK_RMDIR=$(docker exec -t "${LOCAL_DOMAIN_}" rclone rmdir CINEMAPRESS:/check-connection 2>/dev/null)
+        if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_RMDIR}" != "" ]; then
             _header "ERROR"
             _content
             _content "Cannot connect to backup storage."
@@ -2473,9 +2473,9 @@ docker_backup() {
         themes/default/views/mobile \
         themes/"${THEME_NAME}" \
         files
-    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone purge CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
-    sleep 3; rclone purge CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
+    sleep 3; rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
+    sleep 3; rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/
@@ -2486,8 +2486,8 @@ docker_backup() {
     if [ "${1}" = "" ] && [ "${RCST}" != "" ] && [ "${BACKUP_DAY}" = "10" ] && [ "${KILOBYTE_ALL}" -gt "${KILOBYTE_DIR}" ]; then
         CHECK_MKDIR=$(rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
         sleep 3
-        CHECK_PURGE=$(rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
-        if [ "${CHECK_MKDIR}" = "" ] && [ "${CHECK_PURGE}" = "" ]; then
+        CHECK_RMDIR=$(rclone rmdir CINEMASTATIC:/check-connection 2>/dev/null)
+        if [ "${CHECK_MKDIR}" = "" ] && [ "${CHECK_RMDIR}" = "" ]; then
             cd /home/"${CP_DOMAIN}" && tar -uf /home/"${CP_DOMAIN}"/static.tar \
                 files/poster \
                 files/picture
@@ -2496,18 +2496,18 @@ docker_backup() {
                     files/windows \
                     files/linux \
                     files/osx &>/dev/null
-                sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/app.tar
+                sleep 3; rclone -vv --rmdirs delete CINEMASTATIC:"${CP_DOMAIN}"/app.tar
                 sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/app.tar CINEMASTATIC:"${CP_DOMAIN}"/
             fi
-            sleep 3; rclone -vv purge CINEMASTATIC:"${CP_DOMAIN}"/static.tar
+            sleep 3; rclone -vv --rmdirs delete CINEMASTATIC:"${CP_DOMAIN}"/static.tar
             sleep 3; rclone -vv --ignore-size copy /home/"${CP_DOMAIN}"/static.tar CINEMASTATIC:"${CP_DOMAIN}"/
             rm -rf /home/"${CP_DOMAIN}"/static.tar /home/"${CP_DOMAIN}"/app.tar
         fi
     fi
     CHECK_MKDIR=$(rclone mkdir CINEMAPRESS:/check-connection 2>/dev/null)
     sleep 3
-    CHECK_PURGE=$(rclone purge CINEMAPRESS:/check-connection 2>/dev/null)
-    if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+    CHECK_RMDIR=$(rclone rmdir CINEMAPRESS:/check-connection 2>/dev/null)
+    if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_RMDIR}" != "" ]; then
         _header "ERROR"
         _content
         _content "Cannot connect to backup storage."
@@ -4195,8 +4195,8 @@ while [ "${WHILE}" -lt "2" ]; do
                 sleep 10
                 CHECK_MKDIR=$(docker exec -t "${CP_DOMAIN_}" rclone mkdir CINEMASTATIC:/check-connection 2>/dev/null)
                 sleep 3
-                CHECK_PURGE=$(docker exec -t "${CP_DOMAIN_}" rclone purge CINEMASTATIC:/check-connection 2>/dev/null)
-                if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_PURGE}" != "" ]; then
+                CHECK_RMDIR=$(docker exec -t "${CP_DOMAIN_}" rclone rmdir CINEMASTATIC:/check-connection 2>/dev/null)
+                if [ "${CHECK_MKDIR}" != "" ] || [ "${CHECK_RMDIR}" != "" ]; then
                     _header "ERROR"
                     _content
                     _content "Cannot connect to backup storage."
@@ -4224,11 +4224,11 @@ while [ "${WHILE}" -lt "2" ]; do
                         files/windows \
                         files/linux \
                         files/osx &>/dev/null
-                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/app.tar
+                    sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --rmdirs delete CINEMASTATIC:${CP_DOMAIN}/app.tar
                     sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                     sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/app.tar CINEMASTATIC:${CP_DOMAIN}/
                 fi
-                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv purge CINEMASTATIC:${CP_DOMAIN}/static.tar
+                sleep 3; docker exec "${CP_DOMAIN_}" rclone -vv --rmdirs delete CINEMASTATIC:${CP_DOMAIN}/static.tar
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv cleanup CINEMASTATIC:
                 sleep 10; docker exec "${CP_DOMAIN_}" rclone -vv copy /home/${CP_DOMAIN}/static.tar CINEMASTATIC:${CP_DOMAIN}/
                 rm -rf /home/${CP_DOMAIN}/static.tar /home/${CP_DOMAIN}/app.tar
