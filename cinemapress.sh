@@ -2306,18 +2306,35 @@ docker_hand() {
 }
 docker_movies() {
     if [ -n "${1}" ]; then
+        if [ -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
+            MOVIES_PID=$(cat /home/"${CP_DOMAIN}"/log/cron_movies.pid)
+            kill -9 "${MOVIES_PID}"
+            rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
+        fi
         node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
     else
-        node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+        if [ ! -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
+            echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
+            node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+            rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
+        else
+            echo "[SKIP] The autocomplete movies of the previous task has not finished yet!"
+        fi
     fi
 }
 docker_cron() {
     nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload \
         >/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
-    if [ -n "${1}" ]; then
-        node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
+    if [ ! -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
+        echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
+        if [ -n "${1}" ]; then
+            node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
+        else
+            node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+        fi
+        rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
     else
-        node /home/"${CP_DOMAIN}"/lib/CP_movies.js
+        echo "[SKIP] The autocomplete movies of the previous task has not finished yet!"
     fi
     node /home/"${CP_DOMAIN}"/lib/CP_cron.js
 }
