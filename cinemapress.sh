@@ -2490,9 +2490,12 @@ docker_backup() {
         themes/default/views/mobile \
         themes/"${THEME_NAME}" \
         files
-    sleep 3; rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
-    if [ "${BACKUP_DAY}" != "10" ]; then rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null; fi
-    sleep 3; rclone --rmdirs delete CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
+    sleep 3; rclone delete --rmdirs CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}" &> /dev/null
+    if [ "${BACKUP_DAY}" != "10" ]; then
+        rclone delete --rmdirs CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null;
+        rclone rmdirs CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_DELETE}" &> /dev/null;
+    fi
+    sleep 3; rclone delete --rmdirs CINEMAPRESS:"${CP_DOMAIN}"/latest &> /dev/null
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/themes.tar CINEMAPRESS:"${CP_DOMAIN}"/"${BACKUP_NOW}"/
     sleep 3; rclone -vv --ignore-size copy /var/mega/"${CP_DOMAIN}"/config.tar CINEMAPRESS:"${CP_DOMAIN}"/latest/

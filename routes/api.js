@@ -52,12 +52,15 @@ var Avatars = require('@dicebear/avatars').default;
 var sprites = require('@dicebear/avatars-avataaars-sprites').default;
 var avatars = new Avatars(sprites, {});
 var request = require('request');
+var sphinx = require('sphinx');
 var fs = require('fs');
 var md5 = require('md5');
 var path = require('path');
 var express = require('express');
 var async = require('async');
 var router = express.Router();
+
+var pool = sphinx.createPool({});
 
 var first = require(path.join(
   path.dirname(__filename),
@@ -448,6 +451,64 @@ router.post('/comments', function(req, res) {
       return res.json({ status: 'success' });
     }
   );
+});
+
+router.get('/', function(req, res) {
+  var ip = getIp(req);
+  var q = {};
+  [
+    'year',
+    'genre',
+    'country',
+    'actor',
+    'director',
+    'kp_id',
+    'imdb_id',
+    'tmdb_id',
+    'douban_id',
+    'wa_id',
+    'tvmaze_id',
+    'movie_id',
+    'type'
+  ].forEach(function(key) {
+    if (typeof req.query[key] !== 'undefined' && req.query[key]) {
+      q[key] = req.query[key];
+    }
+  });
+  pool.getConnection(function(err, connection) {
+    if (err) {
+      if (typeof connection !== 'undefined' && connection) {
+        connection.release();
+      }
+      console.error(err);
+      return res
+        .status(404)
+        .json({ status: 'error', message: 'Error connection.' });
+    }
+    connection.query(
+      'SELECT * FROM rt_' +
+        config.domain.replace(/[^a-z0-9]/g, '_') +
+        ' WHERE ' +
+        w +
+        ' LIMIT 0,1 OPTION max_matches = 1',
+      function(err, results) {
+        if (typeof connection !== 'undefined' && connection) {
+          connection.release();
+        }
+        if (err) {
+          console.error(err);
+          return res
+            .status(404)
+            .json({ status: 'error', message: 'Error query.' });
+        }
+        if (!results || !results.length) {
+          return res
+            .status(404)
+            .json({ status: 'error', message: 'Empty result.' });
+        }
+      }
+    );
+  });
 });
 
 router.all('/', function(req, res) {
