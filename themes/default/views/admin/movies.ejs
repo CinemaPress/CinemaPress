@@ -939,7 +939,7 @@
                                                             <header class="text-muted text-left">
                                                                 <i class="fa fa-plus"></i>
                                                                 <h3>
-                                                                    <span class="fas fa-list-ol"></span> <%= __('Редактировать список') %>
+                                                                    <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
                                                                 </h3>
                                                             </header>
                                                             <div class="faq-content clearfix">
@@ -1579,7 +1579,7 @@
                                                 </td>
                                                 <td class="table-content">
                                                     <span class="table-content-id" style="text-align: center;opacity: .6">
-                                                        <span class="<%- id_key %>">ID: <%- movie.id %></span><br>
+                                                        <span class="<%- id_key %>">ID: <%- movie.id - parseInt(config.urls.unique_id) %></span><br>
                                                         <%- movie.lastmod ? movie.lastmod : '-' %>
                                                     </span>
                                                     <span class="table-content-t">

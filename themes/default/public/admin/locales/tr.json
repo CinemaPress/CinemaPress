@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Movie bilgilerinde temel bir tanımlayıcı yoksa, veriler veritabanına kaydedilmez",
 	"Независимые дополнительные домены": "Bağımsız ek alanlar",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Websitesinin kullanıcı tarayıcısında açılacağı ek alanların listesi (ana alanları yönlendirmeden ve ana protokolü yönlendirmeden)",
-	"Дополнительные домены добавляются командой:": "Ek alanlar komut tarafından eklenir:"
+	"Дополнительные домены добавляются командой:": "Ek alanlar komut tarafından eklenir:",
+	"API": "API",
+	"Модуль API веб-сайта": "Websitesi API Modülü",
+	"Информация о параметрах модуля API веб-сайта": "Websitesi API Modülü Parametreleri Hakkında Bilgi",
+	"Список API токенов": "Listesi API Tokenov",
+	"Список токенов для доступа к API веб-сайта": "Websitesinin websitesine erişmek için belirteçlerin listesi",
+	"Добавьте в список хотя бы один токен": "Listeye en az bir belirteç ekleyin",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modül, JSON formatındaki movieler hakkında bilgi almanızı sağlar."
 }

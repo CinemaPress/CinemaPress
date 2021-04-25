@@ -191,7 +191,8 @@ router.get('/:type?', function(req, res) {
     random: 'fa fa-dice',
     rewrite: 'far fa-hand-rock',
     app: 'fas fa-desktop',
-    ftp: 'fas fa-cloud-upload-alt'
+    ftp: 'fas fa-cloud-upload-alt',
+    api: 'fab fa-dev'
   };
 
   render.icon = render.icons[render.type];
@@ -399,6 +400,10 @@ router.get('/:type?', function(req, res) {
     case 'ftp':
       render.title = res.__('Файловый менеджер');
       res.render('admin/modules/ftp', render);
+      break;
+    case 'api':
+      render.title = res.__('API');
+      res.render('admin/modules/api', render);
       break;
 
     case 'poster':

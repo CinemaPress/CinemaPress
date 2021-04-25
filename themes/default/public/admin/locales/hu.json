@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ha a movieinformációkban nincs alapvető azonosító, az adatok nem kerülnek mentésre az adatbázisba",
 	"Независимые дополнительные домены": "Független kiegészítő tartományok",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Olyan kiegészítő tartományok listája, amelyeken a weboldal megnyílik a felhasználói böngészőben (anélkül, hogy átirányítaná a fő tartományok átirányítását és a fő protokoll átirányítását)",
-	"Дополнительные домены добавляются командой:": "További domaineket adnak hozzá a parancs:"
+	"Дополнительные домены добавляются командой:": "További domaineket adnak hozzá a parancs:",
+	"API": "API",
+	"Модуль API веб-сайта": "Webhely API modul",
+	"Информация о параметрах модуля API веб-сайта": "Információk az API modul paramétereire vonatkozó információk",
+	"Список API токенов": "Listája api tokenov",
+	"Список токенов для доступа к API веб-сайта": "A tokenek listája a weboldal honlapjának eléréséhez",
+	"Добавьте в список хотя бы один токен": "Add hozzá a listához legalább egy token",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "A modul lehetővé teszi, hogy információt kapjon a JSON formátumú movieekről."
 }

@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Als er geen basis-ID is in de movieinformatie, worden de gegevens niet opgeslagen in de database",
 	"Независимые дополнительные домены": "Onafhankelijke extra domeinen",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Een lijst met extra domeinen waarop de website wordt geopend in de gebruikersbrowser (zonder doorverwijzing naar de hoofddomeinen en zonder doorverwijzing naar het hoofdprotocol)",
-	"Дополнительные домены добавляются командой:": "Extra domeinen worden door de opdracht toegevoegd:"
+	"Дополнительные домены добавляются командой:": "Extra domeinen worden door de opdracht toegevoegd:",
+	"API": "API",
+	"Модуль API веб-сайта": "Website API-module",
+	"Информация о параметрах модуля API веб-сайта": "Informatie over de API-parameters van de website API-module",
+	"Список API токенов": "Lijst van API Tokenov",
+	"Список токенов для доступа к API веб-сайта": "Lijst met tokens om toegang te krijgen tot de website van de website",
+	"Добавьте в список хотя бы один токен": "Voeg toe aan de lijst ten minste één token",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Met de module kunt u informatie ontvangen over movies in JSON-indeling."
 }

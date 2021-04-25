@@ -703,7 +703,8 @@
           'modules.schema.data.faq.movie.answer1',
           'modules.schema.data.faq.movie.answer2',
           'modules.schema.data.faq.movie.answer3',
-          'modules.schema.data.faq.movie.answer4'
+          'modules.schema.data.faq.movie.answer4',
+          'modules.api.data.tokens'
         ];
         if (
           configs[i].name === 'collection.image'
@@ -1014,6 +1015,10 @@
 
     if (data.modules && data.modules.episode && data.modules.episode.data.index.custom) {
       data.modules.episode.data.index.custom = data.modules.episode.data.index.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.api && data.modules.api.data.tokens) {
+      data.modules.api.data.tokens = data.modules.api.data.tokens.split(/(\n\n|\n)/ig).filter(Boolean);
     }
 
     if (data.comment && data.comment.comment_text) {
@@ -1498,7 +1503,7 @@
     }, false);
   }
 
-  ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper'].forEach(function(ca) {
+  ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper', 'modules.api.data.tokens'].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);
     }

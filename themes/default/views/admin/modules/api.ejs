@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>
+<html class="no-js">                       <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <%- include('../includes/head.ejs'); -%>
+
+    <style>
+        .id_kp{color:#ff6600;}
+        .id_tmdb{color:#07b4e2;}
+        .id_imdb{color:#f5c511;}
+        .id_douban{color:#2d913b;}
+        .id_tvmaze{color:#3c948b;}
+        .id_wa{color:#990000;}
+    </style>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <%- include('../includes/left.ejs'); -%>
+
+    <%- include('../includes/right.ejs'); -%>
+
+    <div id="main" class="clearfix">
+
+        <%- include('../includes/header-main.ejs'); -%>
+
+        <div id="content" class="clearfix">
+
+            <%- include('../includes/header-sec.ejs'); -%>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/api" class="btn hidden-xs">
+                            <%= __('Модуль API веб-сайта') %>
+                        </a>
+                        <a href="https://CinemaPress.io/<%- config.language %>/admin/api.html" class="btn"
+                           title="<%= __('Информация о параметрах модуля API веб-сайта') %>" target="_blank">
+                            <i class="fa fa-info-circle text-muted"></i>
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.api.status) { %>
+                            <a href="javascript:void(0)" data-module="api" data-status="false"
+                               class="btn btn-danger module-status power-off">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Отключить') %>
+                            </a>
+                        <% } else { %>
+                            <a href="javascript:void(0)" data-module="api" data-status="true"
+                               class="btn btn-success module-status power-on">
+                                <i class="fa fa-power-off"></i>&nbsp;<%= __('Активировать') %>
+                            </a>
+                        <% } %>
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.api.status) { %>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="cinema-box-header">
+                                        <div class="cinema-label">
+                                            <i class="fas fa-key"></i>&nbsp;&nbsp;&nbsp;<%= __('Список API токенов') %>
+                                        </div>
+                                        <div class="cinema-label hidden-xs" style="float: right">
+                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/api.html" class="csstip"
+                                               data-title="<%= __('Список токенов для доступа к API веб-сайта') %>"
+                                               target="_blank">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.api.data.tokens && modules.api.data.tokens.length) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.api.data.tokens.forEach(function(data, num) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d.length < 1) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- num + 1 %>.</span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div>
+                                                                        <code>
+                                                                            <span class="url"><%= d[0] %></span> ~ <span class="season"><%= d[1] || '10req/1sec' %></span> ~ <span class="episode"><%= d[2] || 1000 %></span>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.api.data.tokens"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.api.data.tokens"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example"
+                                                         style="padding-top: 0 !important; text-align: center">
+                                                        <code><%= __('Добавьте в список хотя бы один токен') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.api.data.tokens"
+                                                                              placeholder="token ~ limit ~ max"
+                                                                              style="height:300px;"><%- modules.api.data.tokens.join('\n\n') %></textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">token</span> ~
+                                                                                <span class="season">limit</span> ~
+                                                                                <span class="episode">max per hour</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="url">
+                                                                            9b24679ee2abc8ca012ca4b07223739f
+                                                                        </code><br>
+                                                                        <code class="season">
+                                                                            3req/1sec
+                                                                        </code>
+                                                                        <code class="episode">
+                                                                            1000
+                                                                        </code>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">9b24679ee2abc8ca012ca4b07223739f</span>
+                                                                                ~
+                                                                                <span class="season">3req/1sec</span>
+                                                                                ~
+                                                                                <span class="episode">1000</span>
+                                                                            </code>
+                                                                        </p>
+                                                                        <code class="text-muted">
+                                                                            &nbsp;&nbsp;<%- config.protocol %><%- config.subdomain %><%- config.domain %>/api?token=9b24679ee2abc8ca012ca4b07223739f&<span class="id_kp">id</span>=54321
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;<span class="id_kp">id</span> - ID website
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;<span class="id_imdb">imdb_id</span> - ID imdb.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;<span class="id_tmdb">tmdb_id</span> - ID tmdb.org
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;<span class="id_douban">douban_id</span> - ID movie.douban.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;<span class="id_tvmaze">tvmaze_id</span> - ID tvmaze.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;<span class="id_wa">wa_id</span> - ID world-art.ru
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;<span>movie_id</span> - ID custom field
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;type - movie or tv
+                                                                        </code><br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% } else { %>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="attention-box attention-danger">
+                                    <h4><%= __('Модуль') %> «<%- title %>» <%= __('отключен') %></h4>
+                                    <div class="spacer-20"></div>
+                                    <p class="text-muted">
+                                        <%= __('Модуль позволяет получать информацию о фильмах в JSON формате.') %>
+                                        <br>
+                                        <%= __('Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.') %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <%- include('../includes/footer.ejs'); -%>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

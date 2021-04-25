@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Če v informacijah o movieu ni osnovnega identifikatorja, se podatki ne shranijo v bazo podatkov",
 	"Независимые дополнительные домены": "Neodvisne dodatne domene",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Seznam dodatnih domen, na katerih se bo spletna stran odprla v uporabniškem brskalniku (brez preusmeritve na glavne domene in brez preusmeritve na glavni protokol)",
-	"Дополнительные домены добавляются командой:": "Ukaz doda dodatne domene:"
+	"Дополнительные домены добавляются командой:": "Ukaz doda dodatne domene:",
+	"API": "API",
+	"Модуль API веб-сайта": "Spletna stran API modula",
+	"Информация о параметрах модуля API веб-сайта": "Informacije o spletni strani API modul Parametri",
+	"Список API токенов": "Seznam API Tokenov",
+	"Список токенов для доступа к API веб-сайта": "Seznam žetonov za dostop do spletne strani spletne strani",
+	"Добавьте в список хотя бы один токен": "Dodaj na seznam vsaj en žeton",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul vam omogoča, da prejemate informacije o movieih v formatu JSON."
 }

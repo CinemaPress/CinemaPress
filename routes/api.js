@@ -52,12 +52,16 @@ var Avatars = require('@dicebear/avatars').default;
 var sprites = require('@dicebear/avatars-avataaars-sprites').default;
 var avatars = new Avatars(sprites, {});
 var request = require('request');
+var sphinx = require('sphinx');
 var fs = require('fs');
 var md5 = require('md5');
 var path = require('path');
 var express = require('express');
 var async = require('async');
 var router = express.Router();
+var LRU = require('lru-cache');
+var cache = new LRU({ maxAge: 3600000, max: 1000 });
+var tokens = new LRU({ maxAge: 3600000, max: 1000 });
 
 var first = require(path.join(
   path.dirname(__filename),
@@ -450,6 +454,430 @@ router.post('/comments', function(req, res) {
   );
 });
 
+router.get('/', function(req, res) {
+  var ip = getIp(req);
+  var token = req.query['token'] && req.query['token'].trim();
+  if (
+    !modules.api.status ||
+    !modules.api.data ||
+    !modules.api.data.tokens.length
+  ) {
+    console.error('[ERROR API]', 'TOKEN:', token, 'IP:', ip);
+    return res.status(404).json({
+      status: 'error',
+      message: 'API is not activated.'
+    });
+  }
+  if (!tokens.has('CP_VER') || tokens.get('CP_VER') !== process.env['CP_VER']) {
+    tokens.reset();
+    tokens.set('CP_VER', process.env['CP_VER']);
+    modules.api.data.tokens.forEach(function(t) {
+      var token = t
+        .replace(/(^\s*)|(\s*)$/g, '')
+        .replace(/\s*~\s*/g, '~')
+        .split('~');
+      if (token[0].charAt(0) === '#') return;
+      var req_sec = token[1]
+        ? token[1]
+            .replace(/(^\s*)|(\s*)$/g, '')
+            .replace(/\s*\/\s*/g, '/')
+            .split('/')
+        : ['10', '1'];
+      var max = token[2] ? parseInt(token[2].replace(/[^0-9]/g, '')) : 1000;
+      tokens.set(token[0], {
+        req: parseInt(req_sec[0].replace(/[^0-9]/g, '') || '10'),
+        sec: parseInt(req_sec[1].replace(/[^0-9]/g, '') || '1') * 1000,
+        max: max
+      });
+    });
+  }
+  if (tokens.has(token)) {
+    var token_data = tokens.get(token);
+    if (token_data.max <= 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'API token is out of the request limit per hour.'
+      });
+    }
+    if (token_data.date) {
+      var curr_ms = new Date() - token_data.date;
+      var limit_ms = token_data.sec / token_data.req;
+      if (curr_ms < limit_ms) {
+        console.error(
+          '[ERROR LIMIT]',
+          'TOKEN:',
+          token,
+          'IP:',
+          ip,
+          curr_ms + 'ms',
+          '<',
+          limit_ms + 'ms'
+        );
+        return res.status(404).json({
+          status: 'error',
+          message:
+            'API token is out of the request limit ' +
+            (token_data.req + 'req/' + token_data.sec / 1000 + 'sec') +
+            '.'
+        });
+      }
+    }
+    token_data.date = new Date();
+    token_data.max = token_data.max - 1;
+    tokens.set(token, token_data);
+  } else {
+    console.error('[ERROR NOT]', 'TOKEN:', token, 'IP:', ip);
+    return res
+      .status(404)
+      .json({ status: 'error', message: 'API token does not exist.' });
+  }
+  var q = {};
+  var as = [];
+  ['imdb_id', 'tmdb_id', 'douban_id', 'wa_id', 'tvmaze_id', 'movie_id'].forEach(
+    function(key) {
+      if (req.query[key] && req.query[key].replace(/[^0-9]/g, '')) {
+        as.push('custom.' + key + ' AS ' + key);
+        q[key] =
+          "'" + decodeURIComponent(req.query[key].replace(/[^0-9]/g, '')) + "'";
+      }
+    }
+  );
+  ['id', 'kp_id'].forEach(function(key) {
+    if (req.query[key] && req.query[key].replace(/[^0-9]/g, '')) {
+      q[key] = decodeURIComponent(req.query[key].replace(/[^0-9]/g, ''));
+    }
+  });
+  if (req.query['type'] && req.query['type'].replace(/[^0-9]/g, '')) {
+    q['type'] = decodeURIComponent(req.query['type'].replace(/[^0-9]/g, ''));
+  } else if (
+    req.query['type'] &&
+    (req.query['type'] === 'tv' || req.query['type'] === 'movie')
+  ) {
+    q['type'] = req.query['type'] === 'tv' ? 1 : 0;
+  }
+  if (Object.keys(q).length <= 0) {
+    console.error('[ERROR PARAMS]', 'TOKEN:', token, 'IP:', ip);
+    return res
+      .status(404)
+      .json({ status: 'error', message: 'Your request is empty.' });
+  }
+  if (!cache.has('CP_VER') || cache.get('CP_VER') !== process.env['CP_VER']) {
+    cache.reset();
+    cache.set('CP_VER', process.env['CP_VER']);
+  }
+  var hash = JSON.stringify(q);
+  if (cache.has(hash)) {
+    return res.json(cache.get(hash));
+  }
+  var connection = sphinx.createConnection({});
+  connection.connect(function(err) {
+    if (err) {
+      if (typeof connection !== 'undefined' && connection) {
+        connection.end();
+      }
+      console.error(err);
+      return res
+        .status(404)
+        .json({ status: 'error', message: 'Error connection.' });
+    }
+    connection.query(
+      'SELECT * ' +
+        (as && as.length ? ', ' + as.join(',') : '') +
+        ' FROM rt_' +
+        config.domain.replace(/[^a-z0-9]/g, '_') +
+        ' WHERE ' +
+        Object.keys(q)
+          .map(function(key) {
+            return '`' + key + '` = ' + q[key] + '';
+          })
+          .filter(Boolean)
+          .join(' AND ') +
+        ' LIMIT 0,1 OPTION max_matches = 1; SHOW META',
+      function(err, results) {
+        if (typeof connection !== 'undefined' && connection) {
+          connection.end();
+        }
+        if (err) {
+          console.error(err);
+          return res
+            .status(404)
+            .json({ status: 'error', message: 'Error query.' });
+        }
+        if (!results || !results[0] || !results[0][0] || !results[0][0].id) {
+          return res
+            .status(404)
+            .json({ status: 'error', message: 'Empty result.' });
+        }
+        var movie = results[0][0];
+        var time = results[1] && results[1][2];
+        var custom = JSON.parse(movie.custom);
+        var poster =
+          !movie.poster || /^([01])$/.test(movie.poster)
+            ? '' + (parseInt(movie.id) % 1000000000)
+            : '' + movie.poster;
+        var players = movie.player
+          ? movie.player
+              .replace(/(^\s*)|(\s*)$/g, '')
+              .replace(/\s*,\s*/g, ',')
+              .split(',')
+              .map(function(p) {
+                if (/\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.test(p.trim())) {
+                  var name_iframe = /\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.exec(
+                    p.trim()
+                  );
+                  var name = name_iframe[1];
+                  var iframe = name_iframe[2];
+                  var season, episode;
+                  if (/([0-9]+)\s+сезон\s+([0-9]+)\s+серия/i.test(name)) {
+                    var season_episode1 = /([0-9]+)\s+сезон\s+([0-9]+)\s+серия/i.exec(
+                      name
+                    );
+                    season = parseInt(season_episode1[1]);
+                    episode = parseInt(season_episode1[2]);
+                    name = name
+                      .replace(
+                        /\s*([0-9]+)\s+сезон\s+([0-9]+)\s+серия\s*/i,
+                        ' '
+                      )
+                      .trim();
+                  }
+                  if (/сезон\s+([0-9]+)\s+серия\s+([0-9]+)/i.test(name)) {
+                    var season_episode2 = /сезон\s+([0-9]+)\s+серия\s+([0-9]+)/i.exec(
+                      name
+                    );
+                    season = parseInt(season_episode2[1]);
+                    episode = parseInt(season_episode2[2]);
+                    name = name
+                      .replace(
+                        /\s*сезон\s+([0-9]+)\s+серия\s+([0-9]+)\s*/i,
+                        ' '
+                      )
+                      .trim();
+                  }
+                  if (/s([0-9]+)e([0-9]+)/i.test(name)) {
+                    var season_episode3 = /s([0-9]+)e([0-9]+)/i.exec(name);
+                    season = parseInt(season_episode3[1]);
+                    episode = parseInt(season_episode3[2]);
+                    name = name
+                      .replace(/\s*s([0-9]+)e([0-9]+)\s*/i, ' ')
+                      .trim();
+                  }
+                  if (!name) {
+                    var name2 = iframe
+                      .trim()
+                      .match(/^.+?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+                    name = (name2 && name2[1]) || '';
+                  }
+                  if (
+                    typeof season !== 'undefined' &&
+                    typeof episode !== 'undefined'
+                  ) {
+                    return {
+                      name: name,
+                      season: season,
+                      episode: episode,
+                      iframe: iframe
+                    };
+                  }
+                  return {
+                    name: name,
+                    iframe: iframe
+                  };
+                } else if (/http|\/\//i.test(p.trim())) {
+                  var matches = p
+                    .trim()
+                    .match(/^.+?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+                  return {
+                    name: (matches && matches[1]) || '',
+                    iframe: p.trim()
+                  };
+                }
+                return false;
+              })
+              .filter(Boolean)
+          : [];
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(function(i) {
+          if (custom['player' + i]) {
+            if (
+              /\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.test(
+                custom['player' + i].trim()
+              )
+            ) {
+              var name_iframe = /\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.exec(
+                custom['player' + i].trim()
+              );
+              var name = name_iframe[1];
+              var iframe = name_iframe[2];
+              players.push({
+                name: name,
+                iframe: iframe
+              });
+            } else {
+              var matches = custom['player' + i]
+                .trim()
+                .match(/^.+?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+              players.push({
+                name: (matches && matches[1]) || '',
+                iframe: custom['player' + i]
+              });
+            }
+          }
+        });
+        Object.keys(custom)
+          .reverse()
+          .forEach(function(e) {
+            if (/s([0-9]+)e([0-9]+)/i.test(e)) {
+              var season_episode = /s([0-9]+)e([0-9]+)/i.exec(e);
+              var season = parseInt(season_episode[1]);
+              var episode = parseInt(season_episode[2]);
+              [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(function(i) {
+                if (custom[e]['player' + i]) {
+                  if (
+                    /\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.test(
+                      custom[e]['player' + i].trim()
+                    )
+                  ) {
+                    var name_iframe = /\s*([^h\/]+?)\s+(http.+|\/\/.+)\s*/i.exec(
+                      custom[e]['player' + i].trim()
+                    );
+                    var name = name_iframe[1];
+                    var iframe = name_iframe[2];
+                    players.push({
+                      name: name,
+                      season: season,
+                      episode: episode,
+                      iframe: iframe
+                    });
+                  } else {
+                    var matches = custom[e]['player' + i]
+                      .trim()
+                      .match(/^.+?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+                    players.push({
+                      name: (matches && matches[1]) || '',
+                      season: season,
+                      episode: episode,
+                      iframe: custom[e]['player' + i]
+                    });
+                  }
+                }
+              });
+            }
+          });
+        var data = {
+          status: 'success',
+          time: time.Value,
+          result: {
+            id: movie.id,
+            imdb_id: (custom && custom.imdb_id) || null,
+            tmdb_id: (custom && custom.tmdb_id) || null,
+            tvmaze_id: (custom && custom.tvmaze_id) || null,
+            wa_id: (custom && custom.wa_id) || null,
+            douban_id: (custom && custom.douban_id) || null,
+            movie_id: (custom && custom.movie_id) || null,
+            original_title: movie.title_en || null,
+            translated_title: movie.title_ru || null,
+            type: movie.type === 0 ? 'movie' : 'tv',
+            realise:
+              movie.premiere && parseInt(movie.premiere)
+                ? new Date(
+                    (parseInt(movie.premiere) - 719528) * 1000 * 60 * 60 * 24
+                  )
+                    .toJSON()
+                    .substr(0, 10)
+                : null,
+            year: movie.year || null,
+            country: movie.country
+              ? movie.country
+                  .replace(/(^\s*)|(\s*)$/g, '')
+                  .replace(/\s*,\s*/g, ',')
+                  .split(',')
+              : null,
+            genre: movie.genre
+              ? movie.genre
+                  .replace(/(^\s*)|(\s*)$/g, '')
+                  .replace(/\s*,\s*/g, ',')
+                  .split(',')
+              : null,
+            director: movie.director
+              ? movie.director
+                  .replace(/(^\s*)|(\s*)$/g, '')
+                  .replace(/\s*,\s*/g, ',')
+                  .split(',')
+              : null,
+            actor: movie.actor
+              ? movie.actor
+                  .replace(/(^\s*)|(\s*)$/g, '')
+                  .replace(/\s*,\s*/g, ',')
+                  .split(',')
+              : null,
+            overview: movie.description || null,
+            poster: {
+              small: createImgUrl('poster', 'small', poster),
+              medium: createImgUrl('poster', 'medium', poster),
+              original: createImgUrl('poster', 'original', poster)
+            },
+            photos: movie.pictures
+              ? movie.pictures.split(',').map(function(picture) {
+                  return {
+                    small: createImgUrl('picture', 'small', picture),
+                    medium: createImgUrl('picture', 'medium', picture),
+                    original: createImgUrl('picture', 'original', picture)
+                  };
+                })
+              : null,
+            players:
+              players && players.length
+                ? players
+                    .sort(function(a, b) {
+                      if (
+                        typeof a.season === 'undefined' ||
+                        typeof a.episode === 'undefined'
+                      ) {
+                        return -1;
+                      }
+                      return parseFloat(a.season) - parseFloat(b.season);
+                    })
+                    .sort(function(a, b) {
+                      if (
+                        typeof a.season === 'undefined' ||
+                        typeof a.episode === 'undefined'
+                      ) {
+                        return -1;
+                      }
+                      if (b.season === a.season) {
+                        return parseFloat(a.episode) - parseFloat(b.episode);
+                      }
+                      return 0;
+                    })
+                : null,
+            imdb: {
+              rating: movie.imdb_rating,
+              votes: movie.imdb_vote
+            },
+            kp: {
+              rating: movie.kp_rating,
+              votes: movie.kp_vote
+            },
+            web: {
+              rating: movie.rating,
+              votes: movie.vote
+            },
+            lastmod: (custom && custom.lastmod) || null
+          }
+        };
+        if (movie.quality) {
+          data.result.quality = movie.quality;
+        }
+        if (movie.translate) {
+          data.result.sound = movie.translate;
+        }
+        cache.set(hash, data);
+        return res.json(data);
+      }
+    );
+  });
+});
+
 router.all('/', function(req, res) {
   var player = typeof req.query['player'] !== 'undefined';
   var type = typeof req.query['type'] !== 'undefined' ? req.query['type'] : '';
@@ -802,6 +1230,64 @@ function getIp(req) {
     }
   });
   return ip;
+}
+
+function createImgUrl(type, size, id) {
+  id = id ? ('' + id).trim() : '';
+  var image = '/files/poster/no.jpg';
+  var source = 'not';
+
+  var url_url = /^(http|\/)/.test(id);
+  var url_kp = /^[0-9]*$/.test(id);
+  var url_ya = /^\/(get-kinopoisk-image|get-kino-vod-films-gallery)[a-z0-9\-]*$/i.test(
+    id
+  );
+  var url_shikimori = /^\/(animes|mangas|screenshots)-[a-z0-9]+-[a-z0-9]+\.(jpg|jpeg|gif|png)$/i.test(
+    id
+  );
+  var url_tvmaze = /^\/[0-9]{1,3}-[0-9]*\.(jpg|png)$/.test(id);
+  var url_tmdb = /^\/[a-z0-9]*\.(jpg|png)$/i.test(id);
+  var url_imdb = /^\/[a-z0-9\-_.,@]*\.(jpg|png)$/i.test(id);
+
+  if (url_tmdb) {
+    source = 'tmdb';
+  } else if (url_tvmaze) {
+    source = 'tvmaze';
+  } else if (url_imdb) {
+    source = 'imdb';
+  } else if (url_kp) {
+    source = 'kinopoisk';
+  } else if (url_ya) {
+    source = 'yandex';
+  } else if (url_shikimori) {
+    source = 'shikimori';
+  } else if (url_url) {
+    source = 'url';
+  }
+
+  switch (source) {
+    case 'kinopoisk':
+      image = '/files/' + type + '/' + size + '/' + id + '.jpg';
+      break;
+    case 'yandex':
+      image = '/files/' + type + '/' + size + id + '.jpg';
+      break;
+    case 'imdb':
+    case 'tmdb':
+    case 'tvmaze':
+    case 'shikimori':
+      image = '/files/' + type + '/' + size + id;
+      break;
+    case 'url':
+      image = id;
+      break;
+  }
+
+  return (
+    (config.language === 'ru' && config.ru.subdomain && config.ru.domain
+      ? config.protocol + config.ru.subdomain + config.ru.domain
+      : config.protocol + config.subdomain + config.domain) + image
+  );
 }
 
 module.exports = router;

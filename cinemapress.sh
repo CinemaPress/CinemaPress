@@ -597,6 +597,10 @@ ip_install() {
     fi
     docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
+    for all_server in /home/*/config/production/nginx/conf.d/default.conf; do
+        [ -f "${all_server}" ] || continue
+        sed -i '/pagespeed/d' "${all_server}"
+    done
     sleep 10
 }
 3_backup() {
@@ -969,7 +973,7 @@ ip_install() {
             sed -Ei "s/ssl_stapling off;/ssl_stapling on;/g" "${NGX}/ssl.d/default.conf"
             sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
             sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
-                "/home/${LOCAL_DOMAIN}/config/production/config.js"
+                "/home/${LOCAL_DOMAIN}/config/production/config.js" >/dev/null
             docker restart "${LOCAL_DOMAIN_}" \
                 >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
             _header "Generating wildcard certificate, completed successfully!"
@@ -1000,7 +1004,7 @@ ip_install() {
         sed -Ei "s/ssl_stapling on;/ssl_stapling off;/g" "${NGX}/ssl.d/default.conf"
         sed -Ei "s/#ssl //g" "${NGX}/conf.d/default.conf"
         sed -Ei "s/\"protocol\":\s*\"http:/\"protocol\":\"https:/" \
-            /home/"${LOCAL_DOMAIN}"/config/production/config.js
+            "/home/${LOCAL_DOMAIN}/config/production/config.js" >/dev/null
         docker restart "${LOCAL_DOMAIN_}" \
             >>/var/log/docker_https_"$(date '+%d_%m_%Y')".log 2>&1
         _header "Generating self-signed certificate, completed successfully!"
@@ -3330,12 +3334,12 @@ while [ "${WHILE}" -lt "2" ]; do
             else
                 _content "Network: stopped"
             fi
-            if [ "$(docker ps -aq -f status=running -f name=^/${CP_DOMAIN_}\$ 2>/dev/null)" != "" ]; then
+            if [ "$(docker ps -aq -f health=healthy -f name=^/${CP_DOMAIN_}\$ 2>/dev/null)" != "" ]; then
                 _content "Website: runnind"
             else
                 _content "Website: stopped"
             fi
-            if [ "$(docker ps -aq -f status=running -f name=^/nginx\$ 2>/dev/null)" != "" ]; then
+            if [ "$(docker ps -aq -f health=healthy -f name=^/nginx\$ 2>/dev/null)" != "" ]; then
                 NGINX_STATUS=$(docker exec -t nginx nginx -t | grep successful)
                 if [ "${NGINX_STATUS}" != "" ]; then
                     _content "Nginx: runnind"
@@ -3346,7 +3350,7 @@ while [ "${WHILE}" -lt "2" ]; do
             else
                 _content "Nginx: stopped"
             fi
-            if [ "$(docker ps -aq -f status=running -f name=^/fail2ban\$ 2>/dev/null)" != "" ]; then
+            if [ "$(docker ps -aq -f health=healthy -f name=^/fail2ban\$ 2>/dev/null)" != "" ]; then
                 _content "Fail2ban: runnind"
             else
                 _content "Fail2ban: stopped"

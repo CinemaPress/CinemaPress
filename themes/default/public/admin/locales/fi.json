@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Jos elokuvatiedoissa ei ole perustunnistetta, tietoja ei tallenneta tietokantaan",
 	"Независимые дополнительные домены": "Riippumattomat ylimääräiset verkkotunnukset",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Luettelo ylimääräisistä verkkotunnuksista, joilla verkkosivusto avautuu käyttäjän selaimessa (ilman uudelleenohjausta pääalueelle ja ilman pääprotokollaa)",
-	"Дополнительные домены добавляются командой:": "Muita verkkotunnuksia lisätään komento:"
+	"Дополнительные домены добавляются командой:": "Muita verkkotunnuksia lisätään komento:",
+	"API": "API",
+	"Модуль API веб-сайта": "Verkkosivuston API-moduuli",
+	"Информация о параметрах модуля API веб-сайта": "Tietoa verkkosivuston API-moduulin parametreista",
+	"Список API токенов": "Luettelo API Tokenov",
+	"Список токенов для доступа к API веб-сайта": "Luettelo merkkeistä päästä verkkosivuston verkkosivustolle",
+	"Добавьте в список хотя бы один токен": "Lisää luetteloon vähintään yksi merkki",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduulin avulla voit vastaanottaa tietoja JSON-muodossa elokuvista."
 }

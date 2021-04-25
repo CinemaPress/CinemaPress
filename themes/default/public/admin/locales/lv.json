@@ -1029,5 +1029,12 @@
 	"Если в информации о фильме не будет основного идентификатора, данные не сохранятся в базу данных": "Ja movieas informācijā nav pamata identifikatora, dati netiek saglabāti datubāzē",
 	"Независимые дополнительные домены": "Neatkarīgi papildu domēni",
 	"Список дополнительных доменов, на которых будет открываться веб-сайт в браузере пользователей (без перенаправления на основные домены и без перенаправления на основной протокол)": "Papildu domēnu saraksts, kurās tīmekļa vietne atvērs lietotāju pārlūkprogrammā (bez novirzīšanas uz galvenajiem domēniem un bez novirzīšanas uz galveno protokolu)",
-	"Дополнительные домены добавляются командой:": "Papildu domēni pievieno komanda:"
+	"Дополнительные домены добавляются командой:": "Papildu domēni pievieno komanda:",
+	"API": "API",
+	"Модуль API веб-сайта": "Tīmekļa vietnes api modulis",
+	"Информация о параметрах модуля API веб-сайта": "Informācija par tīmekļa vietnes api moduļa parametriem",
+	"Список API токенов": "API Tokenova saraksts",
+	"Список токенов для доступа к API веб-сайта": "Tīmekļa sarakstu, lai piekļūtu tīmekļa vietnes tīmekļa vietnei",
+	"Добавьте в список хотя бы один токен": "Pievienojiet sarakstam vismaz vienu marķieri",
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulis ļauj saņemt informāciju par movieām JSON formātā."
 }

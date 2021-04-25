@@ -379,6 +379,19 @@
                                                     </div>
                                                 </a>
                                             </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                                                <a href="/<%- config.urls.admin %>/api">
+                                                    <div class="button-settings">
+                                                        <i class="fab fa-dev"></i>
+                                                        <span class="corner-label <% if (modules.api.status) { %> green <% } else { %> red <% } %>">
+                                                        <i class="fa fa-power-off"></i>
+                                                    </span>
+                                                        <p class="hidden-xs">
+                                                            <%= __('API') %>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

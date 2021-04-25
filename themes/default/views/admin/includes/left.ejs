@@ -340,6 +340,15 @@
                                 <i class="fa fa-power-off pull-right <% if (modules.ftp.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
                             </a>
                         </li>
+                        <li
+                        <% if (type === 'api') { %> class="page-arrow active-page"
+                                <% } %>
+                        >
+                            <a href="/<%- config.urls.admin %>/api">
+                                <i class="fab fa-dev"></i> <%= __('API веб-сайта') %>
+                                <i class="fa fa-power-off pull-right <% if (modules.api.status) { %>text-success<% } else { %>text-danger<% } %>"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
