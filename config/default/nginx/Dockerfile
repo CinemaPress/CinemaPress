@@ -21,4 +21,4 @@ RUN apk add bash dos2unix gzip curl \
     && chmod a+x /etc/periodic/daily/nginx
 EXPOSE 80 443
 CMD ["/etc/nginx/nginx.sh"]
-HEALTHCHECK --interval=30s --timeout=30s --retries=10 CMD curl -s --fail http://127.0.0.1:8080/ping || exit 1
+HEALTHCHECK --interval=60s --timeout=30s --start-period=30s --retries=10 CMD curl -s --fail http://127.0.0.1:8080/ping || exit 1
