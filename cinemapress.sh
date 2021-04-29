@@ -595,12 +595,12 @@ ip_install() {
         mv -f /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/disabled.conf \
          /home/"${CP_BOMAIN}"/config/production/nginx/conf.d/default.conf 2>/dev/null
     fi
-    docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
-    docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     for all_server in /home/*/config/production/nginx/conf.d/default.conf; do
         [ -f "${all_server}" ] || continue
         sed -i '/pagespeed/d' "${all_server}"
     done
+    docker exec nginx nginx -s reload >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
+    docker restart "${LOCAL_DOMAIN_}" >>/var/log/docker_update_"$(date '+%d_%m_%Y')".log 2>&1
     sleep 10
 }
 3_backup() {
