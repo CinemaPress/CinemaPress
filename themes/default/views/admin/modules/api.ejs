@@ -113,7 +113,7 @@
                                                                 <td class="table-content help-example">
                                                                     <div>
                                                                         <code>
-                                                                            <span class="url"><%= d[0] %></span> ~ <span class="season"><%= d[1] || '10req/1sec' %></span> ~ <span class="episode"><%= d[2] || 1000 %></span>
+                                                                            <span class="url"><%= d[0] %></span> ~ <span class="season"><%= d[1] || '10req/1sec' %></span> ~ <span class="episode"><%= d[2] || 1000 %></span> ~ <span class="translate"><%= d[3] || '1req/1sec' %></span> ~ <span class="quality"><%= d[4] || 100 %></span>
                                                                         </code>
                                                                     </div>
                                                                 </td>
@@ -155,7 +155,7 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea class="form-control custom"
                                                                               name="modules.api.data.tokens"
-                                                                              placeholder="token ~ limit ~ max"
+                                                                              placeholder="token ~ limit token ~ max ~ limit ip ~ max"
                                                                               style="height:300px;"><%- modules.api.data.tokens.join('\n\n') %></textarea>
                                                                 </div>
 
@@ -166,8 +166,10 @@
                                                                         <p>
                                                                             <code>
                                                                                 <span class="url">token</span> ~
-                                                                                <span class="season">limit</span> ~
-                                                                                <span class="episode">max per hour</span>
+                                                                                <span class="season">limit token</span> ~
+                                                                                <span class="episode">max per hour</span> ~
+                                                                                <span class="translate">limit ip</span> ~
+                                                                                <span class="quality">max per hour</span>
                                                                             </code>
                                                                         </p>
                                                                         <code class="url">
@@ -175,9 +177,15 @@
                                                                         </code><br>
                                                                         <code class="season">
                                                                             3req/1sec
-                                                                        </code>
+                                                                        </code><br>
                                                                         <code class="episode">
                                                                             1000
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            1req/1sec
+                                                                        </code>
+                                                                        <code class="quality">
+                                                                            100
                                                                         </code>
                                                                         <p>
                                                                             <code>
@@ -186,6 +194,10 @@
                                                                                 <span class="season">3req/1sec</span>
                                                                                 ~
                                                                                 <span class="episode">1000</span>
+                                                                                ~
+                                                                                <span class="translate">1req/1sec</span>
+                                                                                ~
+                                                                                <span class="quality">100</span>
                                                                             </code>
                                                                         </p>
                                                                         <code class="text-muted">
