@@ -80,6 +80,7 @@ app.use('/flush-cache-' + config.urls.admin, function(req, res) {
  */
 
 var files = require('./routes/files');
+var embed = require('./routes/embed');
 var iframe = require('./routes/iframe');
 var player = require('./routes/player');
 var episode = require('./routes/episode');
@@ -134,8 +135,8 @@ app.use(
   /^(?:\/mobile-version|\/tv-version|)?\//,
   express.static(path.join(path.dirname(__filename), '/'))
 );
-app.use('/telegram', telegram);
-app.use('/files', files);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/telegram/, telegram);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/files/, files);
 app.use(bots());
 app.use(defence());
 app.use(userinfo(lookup));
@@ -143,6 +144,7 @@ app.use(/^(?:\/mobile-version|\/tv-version|)?\/player.*$/, player);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/episode.*$/, episode);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/robots\.txt$/, robots);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/opensearch\.xml$/, opensearch);
+app.use(/^(?:\/mobile-version|\/tv-version|)?\/embed/, embed);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/iframe/, iframe);
 app.use(/^(?:\/mobile-version|\/tv-version|)?\/rss\.xml.*$/, rss);
 app.use('/' + config.urls.admin, admin);
