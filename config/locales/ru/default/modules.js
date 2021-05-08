@@ -232,7 +232,109 @@ module.exports = {
       "custom": [
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
         "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
-      ]
+      ],
+      "cinemaplayer": {
+        "information": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/trailer\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\""
+          ],
+          "api": [
+            "Трейлер ~ /api?id=[id] ~ result.trailer",
+            "Трейлер TMDb ~ https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
+            "Трейлер YouTube ~ https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
+          ]
+        },
+        "online": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/online\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\""
+          ],
+          "api": [
+            "/api?id=[id] ~ result.players.0.name ~ result.players.0.iframe ~ result.players.0.season ~ result.players.0.episode ~ result.photos.0.medium",
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.name ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_"
+          ]
+        },
+        "trailer": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/trailer\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\""
+          ],
+          "api": [
+            "Трейлер ~ /api?id=[id] ~ result.trailer",
+            "Трейлер TMDb ~ https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
+            "Трейлер YouTube ~ https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
+          ]
+        },
+        "download": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/download\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\""
+          ],
+          "api": [
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=watch/providers&api_key=269890f657dddf4635473cf4cf456576~ watch/providers.results.RU.free.0.logo_path ~ watch/providers.results.RU.free.0.provider_name ~ ~ \"Download\" ~ watch/providers.results.RU.link"
+          ]
+        },
+        "picture": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/picture\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\""
+          ],
+          "api": [
+            "/api?id=[id] ~ result.photos.0.original"
+          ]
+        },
+      }
     }
   },
   "blocking": {
@@ -603,7 +705,7 @@ module.exports = {
     "status": true,
     "data": {
       "tokens": [
-        "TEST ~ 2req/1sec ~ 100"
+        "TEST ~ 2req/1sec ~ 1000 ~ 1req/1sec ~ 100"
       ]
     }
   }
