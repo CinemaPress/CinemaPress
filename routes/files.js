@@ -99,6 +99,16 @@ router.get(
       '/no.jpg';
     var source = false;
 
+    if (config.ru && config.ru.domain) {
+      no_image =
+        config.protocol +
+        config.ru.subdomain +
+        config.ru.domain +
+        '/files/' +
+        type +
+        '/no.jpg';
+    }
+
     if (url_kp) {
       source = 'kinopoisk';
     } else if (url_ya) {
