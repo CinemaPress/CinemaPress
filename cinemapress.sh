@@ -1349,13 +1349,13 @@ read_theme() {
                 CP_THEME='tarly'
                 echo ": ${CP_THEME}"
             else
-                if [ "${CP_THEME}" = "default" ] || [ "${CP_THEME}" = "hodor" ] || [ "${CP_THEME}" = "sansa" ] || [ "${CP_THEME}" = "robb" ] || [ "${CP_THEME}" = "ramsay" ] || [ "${CP_THEME}" = "tyrion" ] || [ "${CP_THEME}" = "cersei" ] || [ "${CP_THEME}" = "joffrey" ] || [ "${CP_THEME}" = "drogo" ] || [ "${CP_THEME}" = "bran" ] || [ "${CP_THEME}" = "arya" ] || [ "${CP_THEME}" = "mormont" ] || [ "${CP_THEME}" = "tarly" ] || [ "${CP_THEME}" = "daenerys" ] || [ "${CP_THEME}" = "tormund" ] || [ "${CP_THEME}" = "snow" ]
+                if [ "${CP_THEME}" = "default" ] || [ "${CP_THEME}" = "hodor" ] || [ "${CP_THEME}" = "sansa" ] || [ "${CP_THEME}" = "robb" ] || [ "${CP_THEME}" = "ramsay" ] || [ "${CP_THEME}" = "tyrion" ] || [ "${CP_THEME}" = "cersei" ] || [ "${CP_THEME}" = "joffrey" ] || [ "${CP_THEME}" = "drogo" ] || [ "${CP_THEME}" = "bran" ] || [ "${CP_THEME}" = "arya" ] || [ "${CP_THEME}" = "mormont" ] || [ "${CP_THEME}" = "tarly" ] || [ "${CP_THEME}" = "daenerys" ] || [ "${CP_THEME}" = "tormund" ] || [ "${CP_THEME}" = "snow" ] || [ "${CP_THEME}" = "dustin" ]
                 then
                     AGAIN=10
                 else
                     printf "%b         There is no such theme! \n" "${NC}"
                     printf "%bWARNING:%b Currently there are theme: hodor, sansa, robb, ramsay, tyrion, cersei \n" "${R}" "${NC}"
-                    printf "%b         joffrey, drogo, bran, arya, mormont, tarly и daenerys, tormund, snow \n" "${NC}"
+                    printf "%b         joffrey, drogo, bran, arya, mormont, tarly и daenerys, tormund, snow, dustin \n" "${NC}"
                     AGAIN=$(("${AGAIN}"+1))
                 fi
             fi
