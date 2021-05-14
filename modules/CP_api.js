@@ -1,6 +1,12 @@
 'use strict';
 
 /**
+ * Module dependencies.
+ */
+
+var CP_cache = require('../lib/CP_cache');
+
+/**
  * Configuration dependencies.
  */
 
@@ -42,6 +48,127 @@ setInterval(function() {
  */
 
 var md5 = require('md5');
+var sphinx = require('sphinx');
+
+/**
+ * Get movie.
+ *
+ * @return {Object}
+ */
+
+function movieApi(query, ip, callback) {
+  var as = [];
+  var hash = md5(JSON.stringify(query));
+  if (CP_cache.getSync(hash)) {
+    var data_cache = CP_cache.getSync(hash);
+    var data = JSON.parse(JSON.stringify(data_cache));
+    if (
+      ip &&
+      data.result &&
+      data.result.players &&
+      data.result.players.length
+    ) {
+      secretIframe(data, ip);
+    }
+    return callback(null, data);
+  }
+  var connection = sphinx.createConnection({});
+  connection.connect(function(err) {
+    if (err) {
+      if (typeof connection !== 'undefined' && connection) {
+        connection.end();
+      }
+      console.error(err);
+      return callback('Error connection.');
+    }
+    [
+      'imdb_id',
+      'tmdb_id',
+      'douban_id',
+      'wa_id',
+      'tvmaze_id',
+      'movie_id'
+    ].forEach(function(key) {
+      if (query[key]) {
+        as.push('custom.' + key + ' AS ' + key);
+      }
+    });
+    connection.query(
+      'SELECT * ' +
+        (as && as.length ? ', ' + as.join(',') : '') +
+        ' FROM rt_' +
+        config.domain.replace(/[^a-z0-9]/g, '_') +
+        ' WHERE ' +
+        Object.keys(query)
+          .map(function(key) {
+            if (!query[key]) return false;
+            return '`' + key + '` = ' + query[key] + '';
+          })
+          .filter(Boolean)
+          .join(' AND ') +
+        ' LIMIT 0,1 OPTION max_matches = 1; SHOW META',
+      function(err, results) {
+        if (typeof connection !== 'undefined' && connection) {
+          connection.end();
+        }
+        if (err) {
+          console.error(err);
+          return callback('Error query.');
+        }
+        if (!results || !results[0] || !results[0][0] || !results[0][0].id) {
+          return callback('Error result.');
+        }
+        var movie = results[0][0];
+        var time = results[1] && results[1][2];
+        var api_result = structureMovieApi(movie);
+        var data_cache = {
+          status: 'success',
+          time: time.Value,
+          result: api_result
+        };
+        CP_cache.setSync(hash, data_cache);
+        var data = JSON.parse(JSON.stringify(data_cache));
+        if (
+          ip &&
+          data.result &&
+          data.result.players &&
+          data.result.players.length
+        ) {
+          CP_cache.setSync(movie.id + '', hash);
+          secretIframe(data, ip);
+        }
+        callback(null, data);
+      }
+    );
+  });
+}
+
+/**
+ * Generate secret iframe link.
+ *
+ * @return {Object}
+ */
+
+function secretIframe(data, ip) {
+  data.result.players.forEach(function(m, i) {
+    data.result.players[i].id = md5(
+      data.result.players[i].src +
+        '.' +
+        ip +
+        '.' +
+        new Date().toJSON().substr(0, 10)
+    );
+    data.result.players[i].iframe =
+      (config.language === 'ru' && config.ru.subdomain && config.ru.domain
+        ? config.protocol + config.ru.subdomain + config.ru.domain
+        : config.protocol + config.subdomain + config.domain) +
+      '/embed/' +
+      data.result.id +
+      '/' +
+      data.result.players[i].id;
+    delete data.result.players[i].src;
+  });
+}
 
 /**
  * API structure.
@@ -49,7 +176,7 @@ var md5 = require('md5');
  * @return {Object}
  */
 
-function movieApi(movie) {
+function structureMovieApi(movie) {
   var custom = JSON.parse(movie.custom);
   var poster =
     !movie.poster || /^([01])$/.test(movie.poster)
@@ -216,30 +343,34 @@ function movieApi(movie) {
             .substr(0, 10)
         : null,
     year: movie.year || null,
-    country: movie.country
-      ? movie.country
-          .replace(/(^\s*)|(\s*)$/g, '')
-          .replace(/\s*,\s*/g, ',')
-          .split(',')
-      : null,
-    genre: movie.genre
-      ? movie.genre
-          .replace(/(^\s*)|(\s*)$/g, '')
-          .replace(/\s*,\s*/g, ',')
-          .split(',')
-      : null,
-    director: movie.director
-      ? movie.director
-          .replace(/(^\s*)|(\s*)$/g, '')
-          .replace(/\s*,\s*/g, ',')
-          .split(',')
-      : null,
-    actor: movie.actor
-      ? movie.actor
-          .replace(/(^\s*)|(\s*)$/g, '')
-          .replace(/\s*,\s*/g, ',')
-          .split(',')
-      : null,
+    country:
+      movie.country && movie.country !== '_empty'
+        ? movie.country
+            .replace(/(^\s*)|(\s*)$/g, '')
+            .replace(/\s*,\s*/g, ',')
+            .split(',')
+        : null,
+    genre:
+      movie.genre && movie.genre !== '_empty'
+        ? movie.genre
+            .replace(/(^\s*)|(\s*)$/g, '')
+            .replace(/\s*,\s*/g, ',')
+            .split(',')
+        : null,
+    director:
+      movie.director && movie.director !== '_empty'
+        ? movie.director
+            .replace(/(^\s*)|(\s*)$/g, '')
+            .replace(/\s*,\s*/g, ',')
+            .split(',')
+        : null,
+    actor:
+      movie.actor && movie.actor !== '_empty'
+        ? movie.actor
+            .replace(/(^\s*)|(\s*)$/g, '')
+            .replace(/\s*,\s*/g, ',')
+            .split(',')
+        : null,
     overview: movie.description || null,
     poster: {
       small: createImgUrl('poster', 'small', poster),
