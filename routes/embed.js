@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var CP_cache = require('../lib/CP_cache');
+var CP_api = require('../modules/CP_api');
 
 /**
  * Configuration dependencies.
@@ -58,19 +58,11 @@ var embeds = new LRU({ maxAge: 3600000, max: 1000 });
  */
 
 var err_top =
-  '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);width:300px}</style></head><body><div class="container">';
+  '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet"> <style>*{margin:30px 0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:"Play",sans-serif;}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);width:300px}</style></head><body><div class="container">';
 var err_bottom = '</div></body></html>';
 
-router.get('/:id/?:hash?', function(req, res) {
+router.get('/:id/:hash?', function(req, res) {
   var err = '';
-  if (
-    typeof req === 'undefined' ||
-    typeof req.headers === 'undefined' ||
-    typeof req.headers.referer === 'undefined'
-  ) {
-    err = 'Viewing is possible only from the player embedded on the website.';
-    return res.send(err_top + err + err_bottom);
-  }
   var ip = getIp(req);
   var id =
     req.params.id && ('' + req.params.id).replace(/[^0-9]/g, '')
@@ -80,48 +72,82 @@ router.get('/:id/?:hash?', function(req, res) {
     req.params.hash && ('' + req.params.hash).replace(/[^a-z0-9]/gi, '')
       ? ('' + req.params.hash).replace(/[^a-z0-9]/gi, '')
       : '';
-  if (typeof req.query.api === 'undefined') {
-    var api_hash = id + '.' + ip + '.' + config.urls.admin;
-    embeds.set(api_hash, '');
-    return res.send(
-      '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
-        id +
-        '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><div id="cinemaplayer" data-cinemaplayer-api="/embed/' +
-        id +
-        '/' +
-        api_hash +
-        '"></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js"></script></body></html>'
-    );
-  }
+  var api_hash = md5(id + '.' + ip + '.' + config.urls.admin);
   if (!id) {
-    err = 'ID or hash is incorrect.';
+    err = 'ID is incorrect.';
   }
-  var cache_id = CP_cache.getSyncLong(id);
-  var players = CP_cache.getSyncLong(cache_id);
-  if (!cache_id || !players) {
-    err = 'Your player link is outdated, please update the page.';
+  if (typeof req.query.api !== 'undefined' && api_hash !== hash) {
+    err = 'HASH is incorrect.';
   }
-  if (!players || !players.length) {
-    err = 'There are no players.';
+  if (err) {
+    return res.status(404).send(err_top + err + err_bottom);
   }
-  var name = '';
-  var src = '';
-  if (!err) {
-    players.forEach(function(p) {
-      var id = md5(p.src + '.' + ip + '.' + new Date().toJSON().substr(0, 10));
-      if (hash && id === hash) {
-        name = p.name;
-        src = p.src;
+  if (typeof req.query.api === 'undefined') {
+    if (hash) {
+      CP_api.movie({ id: id }, null, function(err, result) {
+        if (err) {
+          return res.status(404).send(err_top + err + err_bottom);
+        }
+        if (
+          !result ||
+          !result.result ||
+          !result.result.players ||
+          !result.result.players.length
+        ) {
+          return res.status(404).send(err_top + 'Not player!' + err_bottom);
+        }
+        var name = '';
+        var src = '';
+        result.result.players.forEach(function(p) {
+          var id = md5(
+            p.src + '.' + ip + '.' + new Date().toJSON().substr(0, 10)
+          );
+          if (id && hash && id === hash && p.name && p.src) {
+            name = p.name;
+            src = p.src;
+          }
+        });
+        if (name && src) {
+          return res.send(
+            '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
+              name +
+              '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><iframe src="' +
+              src +
+              '" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowtransparency="true" scrolling="no" style="margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000"></iframe></body></html>'
+          );
+        } else {
+          return res.status(404).send(err_top + 'Not player!' + err_bottom);
+        }
+      });
+    } else {
+      return res.send(
+        '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
+          id +
+          '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><div id="cinemaplayer" data-cinemaplayer-api="/embed/' +
+          id +
+          '/' +
+          api_hash +
+          '?api"></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js"></script></body></html>'
+      );
+    }
+  } else {
+    CP_api.movie({ id: id }, ip, function(err, result) {
+      if (err) {
+        return res.status(404).json({ status: 'error', message: err });
+      }
+      if (
+        result &&
+        result.result &&
+        result.result.players &&
+        result.result.players.length
+      ) {
+        return res.json({ 'simple-api': result.result.players });
+      } else {
+        return res
+          .status(404)
+          .json({ status: 'error', message: 'Not players!' });
       }
     });
-    res.send(
-      '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
-        name +
-        '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><iframe src="' +
-        src +
-        '" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowtransparency="true" scrolling="no" style="margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000"></iframe></body></html>'
-    );
-  } else {
   }
 });
 
