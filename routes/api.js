@@ -587,11 +587,9 @@ router.get('/', function(req, res) {
     ips.set(ip, tokens.get(token).ip);
   }
   var q = {};
-  var as = [];
   ['imdb_id', 'tmdb_id', 'douban_id', 'wa_id', 'tvmaze_id', 'movie_id'].forEach(
     function(key) {
       if (req.query[key] && req.query[key].replace(/[^0-9]/g, '')) {
-        as.push('custom.' + key + ' AS ' + key);
         q[key] =
           "'" + decodeURIComponent(req.query[key].replace(/[^0-9]/g, '')) + "'";
       }
@@ -616,104 +614,11 @@ router.get('/', function(req, res) {
       .status(404)
       .json({ status: 'error', message: 'Your request is empty.' });
   }
-  var hash = md5(JSON.stringify(q));
-  if (CP_cache.getSync(hash)) {
-    var cache_movies = CP_cache.getSync(hash);
-    cache_movies.result.players.forEach(function(m, i) {
-      cache_movies.result.players[i].id = md5(
-        cache_movies.result.players[i].src +
-          '.' +
-          ip +
-          '.' +
-          new Date().toJSON().substr(0, 10)
-      );
-      cache_movies.result.players[i].iframe =
-        (config.language === 'ru' && config.ru.subdomain && config.ru.domain
-          ? config.protocol + config.ru.subdomain + config.ru.domain
-          : config.protocol + config.subdomain + config.domain) +
-        '/embed/' +
-        cache_movies.result.id +
-        '/' +
-        cache_movies.result.players[i].id;
-      delete cache_movies.result.players[i].src;
-    });
-    return res.json(cache_movies);
-  }
-  var connection = sphinx.createConnection({});
-  connection.connect(function(err) {
+  CP_api.movie(q, ip, function(err, result) {
     if (err) {
-      if (typeof connection !== 'undefined' && connection) {
-        connection.end();
-      }
-      console.error(err);
-      return res
-        .status(404)
-        .json({ status: 'error', message: 'Error connection.' });
+      return res.status(404).json({ status: 'error', message: err });
     }
-    connection.query(
-      'SELECT * ' +
-        (as && as.length ? ', ' + as.join(',') : '') +
-        ' FROM rt_' +
-        config.domain.replace(/[^a-z0-9]/g, '_') +
-        ' WHERE ' +
-        Object.keys(q)
-          .map(function(key) {
-            return '`' + key + '` = ' + q[key] + '';
-          })
-          .filter(Boolean)
-          .join(' AND ') +
-        ' LIMIT 0,1 OPTION max_matches = 1; SHOW META',
-      function(err, results) {
-        if (typeof connection !== 'undefined' && connection) {
-          connection.end();
-        }
-        if (err) {
-          console.error(err);
-          return res
-            .status(404)
-            .json({ status: 'error', message: 'Error query.' });
-        }
-        if (!results || !results[0] || !results[0][0] || !results[0][0].id) {
-          return res
-            .status(404)
-            .json({ status: 'error', message: 'Empty result.' });
-        }
-        var movie = results[0][0];
-        var time = results[1] && results[1][2];
-        var api_result = CP_api.movie(movie);
-        var data_cache = {
-          status: 'success',
-          time: time.Value,
-          result: api_result
-        };
-        var data = JSON.parse(JSON.stringify(data_cache));
-        CP_cache.setSync(hash, data_cache);
-        if (data_cache.result.players && data_cache.result.players.length) {
-          CP_cache.setSyncLing(hash, data_cache.result.players);
-          CP_cache.setSyncLing(movie.id + '', hash);
-          CP_cache.setSync(movie.id + '', hash);
-        }
-        data.result.players.forEach(function(m, i) {
-          data.result.players[i].id = md5(
-            data.result.players[i].src +
-              '.' +
-              ip +
-              '.' +
-              new Date().toJSON().substr(0, 10)
-          );
-          data.result.players[i].iframe =
-            (config.language === 'ru' && config.ru.subdomain && config.ru.domain
-              ? config.protocol + config.ru.subdomain + config.ru.domain
-              : config.protocol + config.subdomain + config.domain) +
-            '/embed/' +
-            data.result.id +
-            '/' +
-            data.result.players[i].id;
-          delete data.result.players[i].src;
-        });
-        return res.json(data);
-      }
-    );
+    return res.json(result);
   });
 });
 
