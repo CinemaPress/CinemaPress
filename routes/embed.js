@@ -63,6 +63,14 @@ var err_bottom = '</div></body></html>';
 
 router.get('/:id/:hash?', function(req, res) {
   var err = '';
+  if (
+    typeof req === 'undefined' ||
+    typeof req.headers === 'undefined' ||
+    typeof req.headers.referer === 'undefined'
+  ) {
+    err = 'Viewing is possible only from the player embedded on the website.';
+    return res.status(404).send(err_top + err + err_bottom);
+  }
   var ip = getIp(req);
   var id =
     req.params.id && ('' + req.params.id).replace(/[^0-9]/g, '')
