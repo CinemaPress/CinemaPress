@@ -119,7 +119,7 @@ router.get('/:id/:hash?', function(req, res) {
           return res.send(
             '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
               name +
-              '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><iframe src="' +
+              '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><iframe src="' +
               src +
               '" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowtransparency="true" scrolling="no" style="margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000"></iframe></body></html>'
           );
@@ -131,7 +131,7 @@ router.get('/:id/:hash?', function(req, res) {
       return res.send(
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
           id +
-          '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>*{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><div id="cinemaplayer" data-cinemaplayer-api="/embed/' +
+          '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><div id="cinemaplayer" data-cinemaplayer-api="/embed/' +
           id +
           '/' +
           api_hash +
