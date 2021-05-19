@@ -58,7 +58,9 @@ var embeds = new LRU({ maxAge: 3600000, max: 1000 });
  */
 
 var err_top =
-  '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet"> <style>*{margin:30px 0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:"Play",sans-serif;}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);width:300px}</style></head><body><div class="container">';
+  '<!DOCTYPE html><html lang="' +
+  config.language +
+  '"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet"> <style>*{margin:30px 0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:"Play",sans-serif;}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);width:300px}</style></head><body><div class="container">';
 var err_bottom = '</div></body></html>';
 
 router.get('/:id/:hash?', function(req, res) {
@@ -117,7 +119,9 @@ router.get('/:id/:hash?', function(req, res) {
         });
         if (name && src) {
           return res.send(
-            '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
+            '<!DOCTYPE html><html lang="' +
+              config.language +
+              '"><head><meta charset="utf-8"><title>' +
               name +
               '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><iframe src="' +
               src +
@@ -129,13 +133,20 @@ router.get('/:id/:hash?', function(req, res) {
       });
     } else {
       return res.send(
-        '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' +
+        '<!DOCTYPE html><html lang="' +
+          config.language +
+          '"><head><meta charset="utf-8"><title>' +
           id +
           '</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden}</style></head><body><div id="cinemaplayer" data-cinemaplayer-api="/embed/' +
           id +
           '/' +
           api_hash +
-          '?api"></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js"></script></body></html>'
+          '?api" ' +
+          (modules.player.data.embed.dataset &&
+          modules.player.data.embed.dataset.length
+            ? modules.player.data.embed.dataset.join(' ')
+            : '') +
+          '></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js"></script></body></html>'
       );
     }
   } else {
@@ -158,6 +169,12 @@ router.get('/:id/:hash?', function(req, res) {
     });
   }
 });
+
+/**
+ * Get user IP.
+ *
+ * @param {Object} req
+ */
 
 function getIp(req) {
   var ips = req.ips || [];
