@@ -457,6 +457,8 @@ router.post('/comments', function(req, res) {
 });
 
 router.get('/', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
   var ip = (req.query['ip'] && req.query['ip'].trim()) || getIp(req);
   var token = req.query['token'] && req.query['token'].trim();
   if (
