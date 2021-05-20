@@ -226,13 +226,121 @@ module.exports = {
   "player": {
     "status": true,
     "data": {
-      "display": "custom",
+      "display": "cinemaplayer",
       "js": "https://cdn.jsdelivr.net/gh/4h0y/4h0y.github.io/yo.js",
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
         "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCL85Aun0K58V1YhjUtm0fryvRoBHNUREE&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
-      ]
+      ],
+      "cinemaplayer": {
+        "information": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/information\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\"",
+            "data-cinemaplayer-query-api-hash=\"[hash]\""
+          ],
+          "api": [
+            "/api?token=TEST&id=[id] ~ \"Trailer\" ~ result.trailer",
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+          ]
+        },
+        "online": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/online\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\"",
+            "data-cinemaplayer-query-api-hash=\"[hash]\""
+          ],
+          "api": [
+            "/api?token=TEST&id=[id] ~ \"\" ~ result.embed",
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.name ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+          ]
+        },
+        "trailer": {
+          "dataset": [
+            "data-cinemaplayer-api=\"/cinemaplayer/trailer\"",
+            "data-cinemaplayer-query-api-id=\"[id]\"",
+            "data-cinemaplayer-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-query-api-type=\"[type]\"",
+            "data-cinemaplayer-query-api-title=\"[title]\"",
+            "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-ip=\"[ip]\"",
+            "data-cinemaplayer-query-api-hash=\"[hash]\""
+          ],
+          "api": [
+            "/api?token=TEST&id=[id] ~ \"Трейлер\" ~ result.trailer",
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+          ]
+        },
+        "download": {
+          "dataset": [
+            "data-cinemaplayer-list-api=\"/cinemaplayer/download\"",
+            "data-cinemaplayer-list-query-api-id=\"[id]\"",
+            "data-cinemaplayer-list-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-list-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-list-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-list-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-list-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-list-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-list-query-api-type=\"[type]\"",
+            "data-cinemaplayer-list-query-api-title=\"[title]\"",
+            "data-cinemaplayer-list-query-api-year=\"[year]\"",
+            "data-cinemaplayer-list-query-api-ip=\"[ip]\"",
+            "data-cinemaplayer-list-query-api-hash=\"[hash]\"",
+            "data-cinemaplayer-list-blank=\"true\""
+          ],
+          "api": [
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=watch/providers&api_key=269890f657dddf4635473cf4cf456576~ watch/providers.results.US.free.0.provider_name ~ watch/providers.results.US.link ~ watch/providers.results.US.free.0.logo_path <> https://image.tmdb.org/t/p/original_VALUE_ ~ \"Download\" ~ \"Free\""
+          ]
+        },
+        "picture": {
+          "dataset": [
+            "data-cinemaplayer-slider-api=\"/cinemaplayer/picture\"",
+            "data-cinemaplayer-slider-query-api-id=\"[id]\"",
+            "data-cinemaplayer-slider-query-api-imdb_id=\"[imdb_id]\"",
+            "data-cinemaplayer-slider-query-api-tmdb_id=\"[tmdb_id]\"",
+            "data-cinemaplayer-slider-query-api-douban_id=\"[douban_id]\"",
+            "data-cinemaplayer-slider-query-api-tvmaze_id=\"[tvmaze_id]\"",
+            "data-cinemaplayer-slider-query-api-wa_id=\"[wa_id]\"",
+            "data-cinemaplayer-slider-query-api-movie_id=\"[movie_id]\"",
+            "data-cinemaplayer-slider-query-api-type=\"[type]\"",
+            "data-cinemaplayer-slider-query-api-title=\"[title]\"",
+            "data-cinemaplayer-slider-query-api-year=\"[year]\"",
+            "data-cinemaplayer-slider-query-api-ip=\"[ip]\"",
+            "data-cinemaplayer-slider-query-api-hash=\"[hash]\""
+          ],
+          "api": [
+            "/api?token=TEST&id=[id] ~ result.photos.0.original ~ result.photos.1.original ~ result.photos.3.original"
+          ]
+        },
+      }
     }
   },
   "blocking": {
