@@ -10,7 +10,7 @@ NC='\033[0m'
 
 OPTION=${1:-}
 GIT_SERVER="github.com"
-CP_VER="4.0.1"
+CP_VER="5.0.0"
 PRC_=0
 
 CP_DOMAIN=${CP_DOMAIN:-}
