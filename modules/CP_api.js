@@ -161,6 +161,9 @@ function secretIframe(data, ip) {
     data.result.players[i].iframe =
       (config.language === 'ru' && config.ru.subdomain && config.ru.domain
         ? config.protocol + config.ru.subdomain + config.ru.domain
+        : config.mirrors && config.mirrors.length
+        ? config.protocol +
+          config.mirrors[Math.floor(Math.random() * config.mirrors.length)]
         : config.protocol + config.subdomain + config.domain) +
       '/embed/' +
       data.result.id +
@@ -492,11 +495,11 @@ function createImgUrl(type, size, id) {
       break;
   }
 
-  return (
-    (config.language === 'ru' && config.ru.subdomain && config.ru.domain
-      ? config.protocol + config.ru.subdomain + config.ru.domain
-      : config.protocol + config.subdomain + config.domain) + image
-  );
+  return source === 'url'
+    ? image
+    : (config.language === 'ru' && config.ru.subdomain && config.ru.domain
+        ? config.protocol + config.ru.subdomain + config.ru.domain
+        : config.protocol + config.subdomain + config.domain) + image;
 }
 
 module.exports = {
