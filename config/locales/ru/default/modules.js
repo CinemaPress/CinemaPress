@@ -105,7 +105,7 @@ module.exports = {
       "status_code_country": "200",
       "status_code_list": "404",
       "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",
-      "movies": ["840372"],
+      "movies": ["400944947"],
       "status_code_whois": "404",
       "whois": [],
       "ips": [],
@@ -259,9 +259,10 @@ module.exports = {
             "data-cinemaplayer-query-api-hash=\"[hash]\""
           ],
           "api": [
+            "/api?token=TEST&id=[id] ~ \"Плеер\" ~ result.embed",
             "/api?token=TEST&id=[id] ~ \"Трейлер\" ~ result.trailer",
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Трейлер TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
-            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ \"Трейлер YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=ru&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Трейлер (TMDb)\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80 ~ \"Трейлер (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
           ]
         },
         "online": {
@@ -347,7 +348,7 @@ module.exports = {
           "api": [
             "/api?token=TEST&id=[id] ~ result.photos.0.original ~ result.photos.1.original ~ result.photos.3.original"
           ]
-        },
+        }
       }
     }
   },

@@ -1037,5 +1037,6 @@
 	"Список токенов для доступа к API веб-сайта": "Danh sách các token để truy cập trang web của trang web",
 	"Добавьте в список хотя бы один токен": "Thêm vào danh sách ít nhất một mã thông báo",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Mô-đun cho phép bạn nhận thông tin về các bộ phim ở định dạng JSON.",
-	"Настройка встраиваемого плеера": "Thiết lập trình phát nhúng"
+	"Настройка встраиваемого плеера": "Thiết lập trình phát nhúng",
+	"Добавьте в список хотя бы один API-сервис": "Thêm vào danh sách ít nhất một dịch vụ API"
 }

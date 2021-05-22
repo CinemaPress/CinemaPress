@@ -1037,5 +1037,6 @@
 	"Список токенов для доступа к API веб-сайта": "Orodha ya ishara kufikia tovuti ya tovuti",
 	"Добавьте в список хотя бы один токен": "Ongeza kwenye orodha angalau ishara moja",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduli inakuwezesha kupokea habari kuhusu filamu katika muundo wa JSON.",
-	"Настройка встраиваемого плеера": "Kuanzisha mchezaji aliyeingia"
+	"Настройка встраиваемого плеера": "Kuanzisha mchezaji aliyeingia",
+	"Добавьте в список хотя бы один API-сервис": "Ongeza kwenye orodha angalau huduma moja ya API"
 }

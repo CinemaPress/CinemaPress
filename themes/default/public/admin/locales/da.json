@@ -1037,5 +1037,6 @@
 	"Список токенов для доступа к API веб-сайта": "Liste over tokens for at få adgang til hjemmesiden på hjemmesiden",
 	"Добавьте в список хотя бы один токен": "Tilføj til listen mindst et token",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulet giver dig mulighed for at modtage oplysninger om movie i JSON-format.",
-	"Настройка встраиваемого плеера": "Opsætning af den indlejrede spiller"
+	"Настройка встраиваемого плеера": "Opsætning af den indlejrede spiller",
+	"Добавьте в список хотя бы один API-сервис": "Tilføj til listen mindst en API-tjeneste"
 }

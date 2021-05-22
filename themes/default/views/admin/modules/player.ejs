@@ -119,6 +119,13 @@
 
                                             <div class="col-lg-12 col-xs-12">
                                                 <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.information.api && modules.player.data.cinemaplayer.information.api.length) { %>
+                                                    <table class="table table-bordered" style="border-bottom:0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th colspan="4" style="border-bottom:0">CinemaPlayer API:&nbsp;&nbsp;<code>/cinemaplayer/information</code></th>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <table class="table table-bordered table-striped">
                                                         <tbody>
                                                         <% modules.player.data.cinemaplayer.information.api.forEach(function(data, num) { %>
@@ -170,7 +177,7 @@
                                                     </table>
                                                 <% } else { %>
                                                     <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                        <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис') %></code>
                                                     </div>
                                                 <% } %>
                                             </div>
@@ -278,7 +285,7 @@
                                                                 class="hidden-xs"><a
                                                                     href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Онлайн»') %>"
                                                                     target="_blank"><i
-                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                        class="fa fa-info-circle text-muted"></i></a>&nbsp;&nbsp;<%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
                                                                 class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                     <input class="form-control input_url"
                                                            name="config.urls.movies.online"
@@ -329,6 +336,13 @@
 
                                             <div class="col-lg-12 col-xs-12">
                                                 <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.online.api && modules.player.data.cinemaplayer.online.api.length) { %>
+                                                    <table class="table table-bordered" style="border-bottom:0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th colspan="4" style="border-bottom:0">CinemaPlayer API:&nbsp;&nbsp;<code>/cinemaplayer/online</code></th>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <table class="table table-bordered table-striped">
                                                         <tbody>
                                                         <% modules.player.data.cinemaplayer.online.api.forEach(function(data, num) { %>
@@ -380,7 +394,7 @@
                                                     </table>
                                                 <% } else { %>
                                                     <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                        <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис') %></code>
                                                     </div>
                                                 <% } %>
                                             </div>
@@ -490,7 +504,7 @@
                                                                 class="hidden-xs"><a
                                                                     href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Трейлер»') %>"
                                                                     target="_blank"><i
-                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                        class="fa fa-info-circle text-muted"></i></a>&nbsp;&nbsp;<%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
                                                                 class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                     <input class="form-control input_url"
                                                            name="config.urls.movies.trailer"
@@ -541,6 +555,13 @@
 
                                                 <div class="col-lg-12 col-xs-12">
                                                     <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.trailer.api && modules.player.data.cinemaplayer.trailer.api.length) { %>
+                                                        <table class="table table-bordered" style="border-bottom:0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th colspan="4" style="border-bottom:0">CinemaPlayer API:&nbsp;&nbsp;<code>/cinemaplayer/trailer</code></th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                         <table class="table table-bordered table-striped">
                                                             <tbody>
                                                             <% modules.player.data.cinemaplayer.trailer.api.forEach(function(data, num) { %>
@@ -592,7 +613,7 @@
                                                         </table>
                                                     <% } else { %>
                                                         <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис') %></code>
                                                         </div>
                                                     <% } %>
                                                 </div>
@@ -702,7 +723,7 @@
                                                                 class="hidden-xs"><a
                                                                     href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Скачать»') %>"
                                                                     target="_blank"><i
-                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                        class="fa fa-info-circle text-muted"></i></a>&nbsp;&nbsp;<%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
                                                                 class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                     <input class="form-control input_url"
                                                            name="config.urls.movies.download"
@@ -753,6 +774,13 @@
 
                                                 <div class="col-lg-12 col-xs-12">
                                                     <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.download.api && modules.player.data.cinemaplayer.download.api.length) { %>
+                                                        <table class="table table-bordered" style="border-bottom:0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th colspan="4" style="border-bottom:0">CinemaPlayer API:&nbsp;&nbsp;<code>/cinemaplayer/download</code></th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                         <table class="table table-bordered table-striped">
                                                             <tbody>
                                                             <% modules.player.data.cinemaplayer.download.api.forEach(function(data, num) { %>
@@ -804,7 +832,7 @@
                                                         </table>
                                                     <% } else { %>
                                                         <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис') %></code>
                                                         </div>
                                                     <% } %>
                                                 </div>
@@ -950,7 +978,7 @@
                                                                 class="hidden-xs"><a
                                                                     href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Кадры»') %>"
                                                                     target="_blank"><i
-                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                        class="fa fa-info-circle text-muted"></i></a>&nbsp;&nbsp;<%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
                                                                 class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
                                                     <input class="form-control input_url"
                                                            name="config.urls.movies.picture"
@@ -1001,6 +1029,13 @@
 
                                                 <div class="col-lg-12 col-xs-12">
                                                     <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.picture.api && modules.player.data.cinemaplayer.picture.api.length) { %>
+                                                        <table class="table table-bordered" style="border-bottom:0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th colspan="4" style="border-bottom:0">CinemaPlayer API:&nbsp;&nbsp;<code>/cinemaplayer/picture</code></th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                         <table class="table table-bordered table-striped">
                                                             <tbody>
                                                             <% modules.player.data.cinemaplayer.picture.api.forEach(function(data, num) { %>
@@ -1052,7 +1087,7 @@
                                                         </table>
                                                     <% } else { %>
                                                         <div class="help-example" style="padding-top: 0 !important; text-align: center">
-                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис') %></code>
                                                         </div>
                                                     <% } %>
                                                 </div>
@@ -1153,7 +1188,7 @@
                                     <article class="faq-group">
                                         <header class="text-muted text-left">
                                             <i class="fa fa-plus"></i>
-                                            <h3><%= __('Настройка встраиваемого плеера') %> <code class="code-url">/[id]/embed</code></h3>
+                                            <h3><%= __('Настройка встраиваемого плеера') %> <code class="code-url">/embed/[id]</code></h3>
                                         </header>
                                         <div class="faq-content clearfix">
                                             <div class="cinema-box">
@@ -1193,6 +1228,15 @@
                                                             %>
                                                             <textarea class="form-control custom" name="modules.player.data.embed.dataset"
                                                                       placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_embed) { %><%- dataset_embed %><% } %></textarea>
+                                                            <div class="spacer-10"></div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-md-12">
+                                                                    <a href="https://github.com/CinemaPress/CinemaPlayer" class="btn btn-link btn-block" target="_blank">
+                                                                        <code class="visible-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;CinemaPlayer</code>
+                                                                        <code class="hidden-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;https://github.com/CinemaPress/CinemaPlayer</code>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                             <script>
                                                               document.addEventListener('DOMContentLoaded', function() {
                                                                 var json = document.querySelector('[name="modules.player.data.embed.dataset"]');
