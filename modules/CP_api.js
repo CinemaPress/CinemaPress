@@ -391,11 +391,13 @@ function structureMovieApi(movie) {
       : null,
     trailer: (custom && custom.trailer) || null,
     embed:
-      (config.language === 'ru' && config.ru.subdomain && config.ru.domain
-        ? config.protocol + config.ru.subdomain + config.ru.domain
-        : config.protocol + config.subdomain + config.domain) +
-      '/embed/' +
-      movie.id,
+      players && players.length
+        ? (config.language === 'ru' && config.ru.subdomain && config.ru.domain
+            ? config.protocol + config.ru.subdomain + config.ru.domain
+            : config.protocol + config.subdomain + config.domain) +
+          '/embed/' +
+          movie.id
+        : null,
     players:
       players && players.length
         ? players
