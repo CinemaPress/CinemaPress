@@ -146,7 +146,9 @@ router.get('/:id/:hash?', function(req, res) {
           modules.player.data.embed.dataset.length
             ? modules.player.data.embed.dataset.join(' ')
             : '') +
-          '></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js"></script></body></html>'
+          '></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
+          process.env['CP_VER'] +
+          '"></script></body></html>'
       );
     }
   } else {
