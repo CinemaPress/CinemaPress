@@ -1038,5 +1038,6 @@
 	"Добавьте в список хотя бы один токен": "Lisage loendisse vähemalt üks sümbol",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moodul võimaldab teil saada teavet movieide kohta JSON-vormingus.",
 	"Настройка встраиваемого плеера": "Sisseehitatud mängija seadistamine",
-	"Добавьте в список хотя бы один API-сервис": "Lisage loendisse vähemalt üks API-teenus"
+	"Добавьте в список хотя бы один API-сервис": "Lisage loendisse vähemalt üks API-teenus",
+	"Просмотр плеера только в iframe": "Vaata mängijat ainult iframe'is"
 }

@@ -1228,13 +1228,43 @@
                                                             %>
                                                             <textarea class="form-control custom" name="modules.player.data.embed.dataset"
                                                                       placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_embed) { %><%- dataset_embed %><% } %></textarea>
+
                                                             <div class="spacer-10"></div>
+
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-md-12">
                                                                     <a href="https://github.com/CinemaPress/CinemaPlayer" class="btn btn-link btn-block" target="_blank">
                                                                         <code class="visible-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;CinemaPlayer</code>
                                                                         <code class="hidden-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;https://github.com/CinemaPress/CinemaPlayer</code>
                                                                     </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="cinema-box">
+                                                                        <div class="cinema-box-header">
+                                                                            <div class="cinema-label">
+                                                                                <i class="fas fa-columns"></i>&nbsp;&nbsp;&nbsp;<%= __('Просмотр плеера только в iframe') %>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="inner-padding">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 col-xs-12 text-center">
+                                                                                    <div class="inline-labels">
+                                                                                        <label>
+                                                                                            <input name="modules.player.data.embed.iframe" value="1" <% if (modules.player.data.embed.iframe) { %> checked=""<% } %> type="radio"><span></span> <%= __('Да') %>
+                                                                                        </label>
+                                                                                        <label>
+                                                                                            <input name="modules.player.data.embed.iframe" value="0" <% if (!modules.player.data.embed.iframe) { %> checked="" <% } %> type="radio"><span></span> <%= __('Нет') %>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <script>
@@ -1694,7 +1724,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>

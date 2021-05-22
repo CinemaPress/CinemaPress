@@ -1038,5 +1038,6 @@
 	"Добавьте в список хотя бы один токен": "Dodaj na seznam vsaj en žeton",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul vam omogoča, da prejemate informacije o movieih v formatu JSON.",
 	"Настройка встраиваемого плеера": "Nastavitev vgrajenega predvajalnika",
-	"Добавьте в список хотя бы один API-сервис": "Dodaj na seznam vsaj ene storitve API"
+	"Добавьте в список хотя бы один API-сервис": "Dodaj na seznam vsaj ene storitve API",
+	"Просмотр плеера только в iframe": "Oglejte si igralca samo v iFRAME"
 }

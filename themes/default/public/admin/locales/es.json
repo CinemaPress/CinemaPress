@@ -1038,5 +1038,6 @@
 	"Добавьте в список хотя бы один токен": "Añadir a la lista al menos un token",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "El módulo le permite recibir información sobre películas en formato JSON.",
 	"Настройка встраиваемого плеера": "Configuración del jugador incrustado",
-	"Добавьте в список хотя бы один API-сервис": "Añadir a la lista al menos un servicio de API"
+	"Добавьте в список хотя бы один API-сервис": "Añadir a la lista al menos un servicio de API",
+	"Просмотр плеера только в iframe": "Ver jugador solo en iframe"
 }

@@ -239,7 +239,8 @@ module.exports = {
           "data-cinemaplayer-tabs-left=\"15px\"",
           "data-cinemaplayer-tabs-right=\"\"",
           "data-cinemaplayer-loader-display=\"none\""
-        ]
+        ],
+        "iframe": 0
       },
       "cinemaplayer": {
         "information": {

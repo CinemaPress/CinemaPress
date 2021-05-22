@@ -1038,5 +1038,6 @@
 	"Добавьте в список хотя бы один токен": "Lägg till listan minst ett token",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulen gör att du kan ta emot information om movieer i JSON-format.",
 	"Настройка встраиваемого плеера": "Ställa in den inbäddade spelaren",
-	"Добавьте в список хотя бы один API-сервис": "Lägg till i listan minst en API-tjänst"
+	"Добавьте в список хотя бы один API-сервис": "Lägg till i listan minst en API-tjänst",
+	"Просмотр плеера только в iframe": "Visa spelare endast i iframe"
 }

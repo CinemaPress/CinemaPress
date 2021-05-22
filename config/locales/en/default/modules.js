@@ -233,6 +233,15 @@ module.exports = {
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
         "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCL85Aun0K58V1YhjUtm0fryvRoBHNUREE&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ],
+      "embed": {
+        "dataset": [
+          "data-cinemaplayer-tabs-top=\"15px\"",
+          "data-cinemaplayer-tabs-left=\"15px\"",
+          "data-cinemaplayer-tabs-right=\"\"",
+          "data-cinemaplayer-loader-display=\"none\""
+        ],
+        "iframe": 0
+      },
       "cinemaplayer": {
         "information": {
           "dataset": [

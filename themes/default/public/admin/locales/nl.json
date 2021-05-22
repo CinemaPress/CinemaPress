@@ -1038,5 +1038,6 @@
 	"Добавьте в список хотя бы один токен": "Voeg toe aan de lijst ten minste één token",
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Met de module kunt u informatie ontvangen over movies in JSON-indeling.",
 	"Настройка встраиваемого плеера": "De ingebouwde speler instellen",
-	"Добавьте в список хотя бы один API-сервис": "Voeg toe aan de lijst Ten minste één API-service"
+	"Добавьте в список хотя бы один API-сервис": "Voeg toe aan de lijst Ten minste één API-service",
+	"Просмотр плеера только в iframe": "Bekijk speler alleen in iFRAME"
 }
