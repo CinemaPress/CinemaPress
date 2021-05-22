@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Daftar API Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Daftar token untuk mengakses situs web situs web",
 	"Добавьте в список хотя бы один токен": "Tambahkan ke daftar setidaknya satu token",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul ini memungkinkan Anda untuk menerima informasi tentang movie dalam format JSON."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul ini memungkinkan Anda untuk menerima informasi tentang movie dalam format JSON.",
+	"Настройка встраиваемого плеера": "Menyiapkan pemain tertanam"
 }

@@ -645,6 +645,17 @@
           'modules.related.data.types.actor.name',
           'modules.related.data.types.director.name',
           'modules.player.data.custom',
+          'modules.player.data.embed.dataset',
+          'modules.player.data.cinemaplayer.information.dataset',
+          'modules.player.data.cinemaplayer.information.api',
+          'modules.player.data.cinemaplayer.online.dataset',
+          'modules.player.data.cinemaplayer.online.api',
+          'modules.player.data.cinemaplayer.trailer.dataset',
+          'modules.player.data.cinemaplayer.trailer.api',
+          'modules.player.data.cinemaplayer.download.dataset',
+          'modules.player.data.cinemaplayer.download.api',
+          'modules.player.data.cinemaplayer.picture.dataset',
+          'modules.player.data.cinemaplayer.picture.api',
           'modules.content.data.custom',
           'modules.episode.data.custom',
           'modules.episode.data.index.custom',
@@ -983,6 +994,98 @@
 
     if (data.modules && data.modules.player && data.modules.player.data.custom) {
       data.modules.player.data.custom = data.modules.player.data.custom.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.embed && data.modules.player.data.embed.dataset) {
+      try {
+        var d_embed = JSON.parse(data.modules.player.data.embed.dataset + '');
+        data.modules.player.data.embed.dataset = Object.keys(d_embed).map(function(d) {
+          return d + '="' + d_embed[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.embed.dataset;
+      }
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.information && data.modules.player.data.cinemaplayer.information.api) {
+      data.modules.player.data.cinemaplayer.information.api = data.modules.player.data.cinemaplayer.information.api.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.information && data.modules.player.data.cinemaplayer.information.dataset) {
+      try {
+        var d_information = JSON.parse(data.modules.player.data.cinemaplayer.information.dataset);
+        data.modules.player.data.cinemaplayer.information.dataset = Object.keys(d_information).map(function(d) {
+          return d + '="' + d_information[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.cinemaplayer.information.dataset;
+      }
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.online && data.modules.player.data.cinemaplayer.online.api) {
+      data.modules.player.data.cinemaplayer.online.api = data.modules.player.data.cinemaplayer.online.api.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.online && data.modules.player.data.cinemaplayer.online.dataset) {
+      try {
+        var d_online = JSON.parse(data.modules.player.data.cinemaplayer.online.dataset);
+        data.modules.player.data.cinemaplayer.online.dataset = Object.keys(d_online).map(function(d) {
+          return d + '="' + d_online[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.cinemaplayer.online.dataset;
+      }
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.trailer && data.modules.player.data.cinemaplayer.trailer.api) {
+      data.modules.player.data.cinemaplayer.trailer.api = data.modules.player.data.cinemaplayer.trailer.api.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.trailer && data.modules.player.data.cinemaplayer.trailer.dataset) {
+      try {
+        var d_trailer = JSON.parse(data.modules.player.data.cinemaplayer.trailer.dataset);
+        data.modules.player.data.cinemaplayer.trailer.dataset = Object.keys(d_trailer).map(function(d) {
+          return d + '="' + d_trailer[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.cinemaplayer.trailer.dataset;
+      }
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.download && data.modules.player.data.cinemaplayer.download.api) {
+      data.modules.player.data.cinemaplayer.download.api = data.modules.player.data.cinemaplayer.download.api.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.download && data.modules.player.data.cinemaplayer.download.dataset) {
+      try {
+        var d_download = JSON.parse(data.modules.player.data.cinemaplayer.download.dataset);
+        data.modules.player.data.cinemaplayer.download.dataset = Object.keys(d_download).map(function(d) {
+          return d + '="' + d_download[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.cinemaplayer.download.dataset;
+      }
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.picture && data.modules.player.data.cinemaplayer.picture.api) {
+      data.modules.player.data.cinemaplayer.picture.api = data.modules.player.data.cinemaplayer.picture.api.split(/(\n\n|\n)/ig).filter(Boolean);
+    }
+
+    if (data.modules && data.modules.player && data.modules.player.data.cinemaplayer && data.modules.player.data.cinemaplayer.picture && data.modules.player.data.cinemaplayer.picture.dataset) {
+      try {
+        var d_picture = JSON.parse(data.modules.player.data.cinemaplayer.picture.dataset);
+        data.modules.player.data.cinemaplayer.picture.dataset = Object.keys(d_picture).map(function(d) {
+          return d + '="' + d_picture[d] + '"';
+        });
+      } catch (e) {
+        console.error(e);
+        delete data.modules.player.data.cinemaplayer.picture.dataset;
+      }
     }
 
     if (data.config && data.config.movies && data.config.movies.cron) {

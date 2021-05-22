@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Seznam API Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Seznam žetonov za dostop do spletne strani spletne strani",
 	"Добавьте в список хотя бы один токен": "Dodaj na seznam vsaj en žeton",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul vam omogoča, da prejemate informacije o movieih v formatu JSON."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul vam omogoča, da prejemate informacije o movieih v formatu JSON.",
+	"Настройка встраиваемого плеера": "Nastavitev vgrajenega predvajalnika"
 }

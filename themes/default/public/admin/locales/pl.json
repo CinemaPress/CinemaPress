@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Lista API Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Lista żetonów, aby uzyskać dostęp do strony internetowej",
 	"Добавьте в список хотя бы один токен": "Dodaj do listy co najmniej jeden token",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduł umożliwia odbieranie informacji o movieach w formacie JSON."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduł umożliwia odbieranie informacji o movieach w formacie JSON.",
+	"Настройка встраиваемого плеера": "Konfigurowanie wbudowanego gracza"
 }

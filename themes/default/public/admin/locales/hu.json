@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Listája api tokenov",
 	"Список токенов для доступа к API веб-сайта": "A tokenek listája a weboldal honlapjának eléréséhez",
 	"Добавьте в список хотя бы один токен": "Add hozzá a listához legalább egy token",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "A modul lehetővé teszi, hogy információt kapjon a JSON formátumú movieekről."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "A modul lehetővé teszi, hogy információt kapjon a JSON formátumú movieekről.",
+	"Настройка встраиваемого плеера": "A beágyazott lejátszó beállítása"
 }

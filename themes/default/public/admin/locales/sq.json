@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Lista e API Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Lista e argumenteve për të hyrë në faqen e internetit të faqes së internetit",
 	"Добавьте в список хотя бы один токен": "Shtoni në listë të paktën një shenjë",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduli ju lejon të merrni informacion rreth movieave në formatin JSON."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduli ju lejon të merrni informacion rreth movieave në formatin JSON.",
+	"Настройка встраиваемого плеера": "Ngritjen e lojtarit të ngulitur"
 }

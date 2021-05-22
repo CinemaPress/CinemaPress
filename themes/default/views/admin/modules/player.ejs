@@ -68,149 +68,11 @@
                     <% if (modules.player.status) { %>
 
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="cinema-box">
-                                    <div class="cinema-box-header">
-                                        <div class="cinema-label">
-                                            <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через скрипт') %>
-                                        </div>
-                                        <div class="cinema-label hidden-xs" style="float: right">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html" class="csstip"
-                                               data-title="<%= __('Параметры скрипта для получения видео-плееров с различных источников') %>"
-                                               target="_blank">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="inner-padding">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-xs-12 text-center">
-                                                <div class="inline-labels">
-                                                    <label>
-                                                        <input name="modules.player.data.display" value="script"
-                                                        <% if (modules.player.data.display === 'script') { %> checked=""
-                                                                <% } %>
-                                                               type="radio"><span></span> <%= __('сделать основным') %>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="spacer-10"></div>
-
-                                            <div class="col-lg-12 col-xs-12">
-                                                <div class="col-xs-4 custom-field">
-                                                    <input type="text" class="form-control" placeholder="data-player"
-                                                           style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0"
-                                                           id="customKey">
-                                                </div>
-                                                <div class="col-xs-1 double-dot">:</div>
-                                                <div class="col-xs-5 custom-field">
-                                                    <input type="text" class="form-control" placeholder="trailer"
-                                                           style="font-weight: normal; font-size: 14px; margin-bottom: 0"
-                                                           id="customValue">
-                                                </div>
-                                                <div class="col-xs-2" style="padding-right: 0;">
-                                                    <a href="javascript:void(0)" class="btn btn-default btn-block"
-                                                       id="customAdd"><span class="fa fa-plus"></span></a>
-                                                </div>
-                                                <div class="spacer-10"></div>
-                                                <%
-                                                    var c;
-                                                    if (modules.player.data.script) {
-                                                        try {
-                                                            c = JSON.parse(modules.player.data.script);
-                                                            c = Object.keys(c).length ? JSON.stringify(c) : '';
-                                                        } catch (e) {
-                                                            console.error(e);
-                                                        }
-                                                    }
-                                                %>
-                                                <textarea class="form-control custom" name="modules.player.data.script"
-                                                          placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
-                                                <div class="spacer-10"></div>
-                                                <div class="col-xs-6">
-                                                    <label><%= __('JavaScript:') %></label>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <input type="text" class="form-control" name="modules.player.data.js" placeholder="https://example.com/script.js" value="<%- modules.player.data.js %>">
-                                                </div>
-                                                <script>
-                                                  document.addEventListener('DOMContentLoaded', function() {
-                                                    var json = document.querySelector('[name="modules.player.data.script"]');
-                                                    if (json) {
-                                                      jsonPretty();
-                                                      json.oninput = function() {
-                                                        jsonPretty();
-                                                      };
-                                                    }
-
-                                                    var customAdd = document.querySelector('#customAdd');
-                                                    customAdd.addEventListener('click', function() {
-                                                      var customKey = document.querySelector('#customKey');
-                                                      var customValue = document.querySelector('#customValue');
-                                                      if (customKey && customKey.value && customValue && customValue.value) {
-                                                        var customString = document.querySelector('[name="modules.player.data.script"]').value;
-                                                        var customJson = JSON.parse(customString || '{}');
-                                                        document.querySelector('[name="modules.player.data.script"]').value =
-                                                          JSON.stringify(expand(
-                                                            customJson,
-                                                            customKey.value,
-                                                            (customValue.value === 'true')
-                                                              ? true
-                                                              : (customValue.value === 'false')
-                                                              ? false
-                                                              : (!customValue.value.replace(/[0-9]/g, ''))
-                                                                ? parseInt(customValue.value)
-                                                                : /^\[.*]$/.test(customValue.value)
-                                                                  ? JSON.parse(customValue.value.replace(/'/g, '"'))
-                                                                  : customValue.value
-                                                            )
-                                                          );
-                                                        jsonPretty();
-                                                        customKey.value = '';
-                                                        customValue.value = '';
-                                                      }
-                                                    });
-                                                  });
-
-                                                  function jsonPretty() {
-                                                    var ugly = document.querySelector('[name="modules.player.data.script"]').value;
-                                                    if (!ugly) return;
-                                                    ugly = JSON.parse(ugly);
-                                                    var cnt = 0;
-                                                    c(ugly);
-                                                    document.querySelector('[name="modules.player.data.script"]').style.height = (50 + cnt * 20) + 'px';
-                                                    document.querySelector('[name="modules.player.data.script"]').value =
-                                                      JSON.stringify(ugly, undefined, 4);
-
-                                                    function c(obj) {
-                                                      Object.keys(obj).forEach(function(val) {
-                                                        if (typeof obj[val] === 'object') {
-                                                          c(obj[val]);
-                                                          cnt++;
-                                                        }
-                                                        cnt++;
-                                                      });
-                                                    }
-                                                  }
-
-                                                  function expand(model, name, value) {
-                                                    var items = name.split('.');
-                                                    var output = model;
-                                                    var ref = output;
-                                                    for (var i = 0; i < items.length - 1; i++) {
-                                                      ref[items[i]] = (ref[items[i]])
-                                                        ? ref[items[i]]
-                                                        : {};
-                                                      ref = ref[items[i]];
-                                                    }
-                                                    ref[items[items.length - 1]] = value;
-                                                    return output;
-                                                  }
-                                                </script>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-lg-12 col-xs-12 text-center">
+                                <div class="inline-labels">
+                                    <label>
+                                        <input name="modules.player.data.display" value="cinemaplayer" <% if (modules.player.data.display === 'cinemaplayer') { %> checked=""<% } %> type="radio"><span></span> <%= __('сделать основным') %>
+                                    </label>
                                 </div>
                             </div>
 
@@ -218,40 +80,50 @@
 
                             <div class="col-sm-12">
                                 <div class="cinema-box">
-                                    <div class="cinema-box-header">
-                                        <div class="cinema-label">
-                                            <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через API') %>
-                                        </div>
-                                        <div class="cinema-label hidden-xs" style="float: right">
-                                            <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html" class="csstip"
-                                               data-title="<%= __('Получение видео-плееров из нескольких API источников') %>"
-                                               target="_blank">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                        </div>
-                                    </div>
                                     <div class="inner-padding">
                                         <div class="row">
-                                            <div class="col-lg-12 col-xs-12 text-center">
-                                                <div class="inline-labels">
-                                                    <label>
-                                                        <input name="modules.player.data.display" value="custom"
-                                                        <% if (modules.player.data.display === 'custom') { %> checked=""
-                                                                <% } %>
-                                                               type="radio"><span></span> <%= __('сделать основным') %>
-                                                    </label>
-                                                </div>
+                                            <div class="col-lg-12 col-xs-12">
+                                            <div class="col-xs-4 custom-field">
+                                                <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="informationKey">
+                                            </div>
+                                            <div class="col-xs-1 double-dot">:</div>
+                                            <div class="col-xs-5 custom-field">
+                                                <input type="text" class="form-control" placeholder="red" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="informationValue">
+                                            </div>
+                                            <div class="col-xs-2" style="padding-right: 0;">
+                                                <a href="javascript:void(0)" class="btn btn-default btn-block" id="informationAdd"><span class="fa fa-plus"></span></a>
+                                            </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+                                            <%
+                                                var dataset_information;
+                                                if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.information && modules.player.data.cinemaplayer.information.dataset && modules.player.data.cinemaplayer.information.dataset.length) {
+                                                    try {
+                                                        var j = '{' + modules.player.data.cinemaplayer.information.dataset.map(function(d) {
+                                                          var da = d.split('=');
+                                                          return '"' + da.shift() + '":' + da.join('=');
+                                                        }).join(',') + '}'
+                                                        dataset_information = JSON.parse(j);
+                                                        dataset_information = Object.keys(dataset_information).length ? JSON.stringify(dataset_information) : '';
+                                                    } catch (e) {
+                                                        console.error(e);
+                                                    }
+                                                }
+                                            %>
+                                            <div class="col-lg-12 col-xs-12">
+                                                <textarea class="form-control custom" name="modules.player.data.cinemaplayer.information.dataset" placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_information) { %><%- dataset_information %><% } %></textarea>
                                             </div>
 
                                             <div class="spacer-10"></div>
 
                                             <div class="col-lg-12 col-xs-12">
-                                                <% if (modules.player.data.custom && modules.player.data.custom.length) { %>
+                                                <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.information.api && modules.player.data.cinemaplayer.information.api.length) { %>
                                                     <table class="table table-bordered table-striped">
                                                         <tbody>
-                                                        <% modules.player.data.custom.forEach(function(data, num) { %>
+                                                        <% modules.player.data.cinemaplayer.information.api.forEach(function(data, num) { %>
                                                             <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
-                                                            <% if (d.length < 2) return; %>
+                                                            <% if (d && d.length < 2) return; %>
                                                             <% if (data.charAt(0) === '#') {
                                                                 var custom_div = 'no-active';
                                                             } %>
@@ -265,15 +137,19 @@
                                                                 <td class="table-content help-example">
                                                                     <div class="<%- custom_div %>">
                                                                         <code>
-                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
                                                                             ~ <span class="iframe"><%= d[1] %></span>
                                                                             <% if (typeof d[2] !== 'undefined') { %>
-                                                                                ~
-                                                                                <span class="translate"><%= d[2] || '' %></span>
+                                                                                ~ <span class="translate"><%= d[2] || '' %></span>
                                                                             <% } %>
                                                                             <% if (typeof d[3] !== 'undefined') { %>
-                                                                                ~
-                                                                                <span class="quality"><%= d[3] || '' %></span>
+                                                                                ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[4] !== 'undefined') { %>
+                                                                                ~ <span class="season"><%= d[4] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[5] !== 'undefined') { %>
+                                                                                ~ <span class="episode"><%= d[5] || '' %></span>
                                                                             <% } %>
                                                                         </code>
                                                                     </div>
@@ -281,20 +157,19 @@
                                                                 <td class="table-settings">
                                                                     <span><i class="fa fa-circle <%- custom_i %> activate-api"
                                                                              data-parser="<%- encodeURIComponent(data) %>"
-                                                                             data-activate-api="modules.player.data.custom"></i></span>
+                                                                             data-activate-api="modules.player.data.cinemaplayer.information.dataset"></i></span>
                                                                 </td>
                                                                 <td class="table-settings">
                                                                     <span><i class="fa fa-trash-alt text-danger delete-api"
                                                                              data-parser="<%- encodeURIComponent(data) %>"
-                                                                             data-delete-api="modules.player.data.custom"></i></span>
+                                                                             data-delete-api="modules.player.data.cinemaplayer.information.dataset"></i></span>
                                                                 </td>
                                                             </tr>
                                                         <% }); %>
                                                         </tbody>
                                                     </table>
                                                 <% } else { %>
-                                                    <div class="help-example"
-                                                         style="padding-top: 0 !important; text-align: center">
+                                                    <div class="help-example" style="padding-top: 0 !important; text-align: center">
                                                         <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
                                                     </div>
                                                 <% } %>
@@ -315,9 +190,9 @@
                                                             <div class="row">
                                                                 <div class="col-sm-12">
                                                                     <textarea class="form-control custom"
-                                                                              name="modules.player.data.custom"
-                                                                              placeholder="url ~ iframe ~ translate ~ quality"
-                                                                              style="height:300px;"><%- modules.player.data.custom.join('\n\n') %></textarea>
+                                                                              name="modules.player.data.cinemaplayer.information.api"
+                                                                              placeholder="url ~ name ~ iframe ~ image"
+                                                                              style="height:300px;"><%- modules.player.data.cinemaplayer.information.api.join('\n\n') %></textarea>
                                                                 </div>
 
                                                                 <div class="spacer-10"></div>
@@ -327,19 +202,18 @@
                                                                         <p>
                                                                             <code>
                                                                                 <span class="url">url</span> ~
-                                                                                <span class="iframe">iframe <> <span class="text-muted">format</span></span> ~
-                                                                                <span class="translate">translate</span> ~
-                                                                                <span class="quality">quality</span>
+                                                                                <span class="iframe">name</span> ~
+                                                                                <span class="translate">iframe <span class="text-muted"><> format</span></span> ~
+                                                                                <span class="quality">image <span class="text-muted"><> format</span></span>
                                                                             </code>
-                                                                        </p>
+                                                                        </p><code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[id] - ID website
+                                                                        </code><br>
                                                                         <code class="text-muted" style="margin:1px 0 0 0">
                                                                             &nbsp;&nbsp;[imdb_id] - ID imdb.com
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
                                                                             &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
-                                                                        </code><br>
-                                                                        <code class="text-muted" style="margin:0 0 1px 0">
-                                                                            &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0 0 1px 0">
                                                                             &nbsp;&nbsp;[douban_id] - ID movie.douban.com
@@ -351,7 +225,7 @@
                                                                             &nbsp;&nbsp;[wa_id] - ID world-art.ru
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0 0 1px 0">
-                                                                            &nbsp;&nbsp;[title] [year] [season] [episode] [ip]
+                                                                            &nbsp;&nbsp;[title] [year] [ip] [hash]
                                                                         </code><br>
                                                                         <code class="url">
                                                                             https://example.com/api?imdb_id=[imdb_id]
@@ -362,60 +236,22 @@
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
                                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iframe":
-                                                                            "<span class="iframe">https://example.com/iframe</span>",
-                                                                        </code><br>
-                                                                        <code class="text-muted" style="margin:0">
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate":
-                                                                            "<span class="translate">Subtitle</span>",
-                                                                        </code><br>
-                                                                        <code class="text-muted" style="margin:0">
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quality":
-                                                                            "<span class="quality">4K</span>"
+                                                                            "<span class="translate">https://example.com/iframe</span>",
                                                                         </code><br>
                                                                         <code class="text-muted"
                                                                               style="margin:0 0 1px 0">
                                                                             &nbsp;&nbsp;} ] }
                                                                         </code><br>
-                                                                        <code class="iframe">
+                                                                        <code class="translate">
                                                                             results.0.iframe
                                                                         </code><br>
-                                                                        <code class="translate">
-                                                                            results.0.translate
-                                                                        </code><br>
-                                                                        <code class="quality">
-                                                                            results.0.quality
-                                                                        </code>
                                                                         <p>
                                                                             <code>
                                                                                 <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
                                                                                 ~
-                                                                                <span class="iframe">results.0.iframe</span>
-                                                                            </code>
-                                                                        </p>
-                                                                        <code class="url">
-                                                                            https://example.com/get?imdb_id=[imdb_id]
-                                                                        </code><br>
-                                                                        <code class="text-muted" style="margin:1px 0 0 0">
-                                                                            &nbsp;&nbsp;https://example.com/iframe
-                                                                        </code>
-                                                                        <p>
-                                                                            <code>
-                                                                                <span class="url">https://example.com/get?imdb_id=[imdb_id]</span>
+                                                                                <span class="iframe">"Player"</span>
                                                                                 ~
-                                                                                <span class="iframe">body</span>
-                                                                            </code>
-                                                                        </p>
-                                                                        <code class="url">
-                                                                            https://example.com/iframe?imdb_id=[imdb_id]
-                                                                        </code><br>
-                                                                        <code class="text-muted" style="margin:1px 0 0 0">
-                                                                            &nbsp;&nbsp;Movie/TV player
-                                                                        </code>
-                                                                        <p>
-                                                                            <code>
-                                                                                <span class="url">https://example.com/iframe?imdb_id=[imdb_id]</span>
-                                                                                ~
-                                                                                <span class="iframe">iframe</span>
+                                                                                <span class="translate">results.0.iframe</span>
                                                                             </code>
                                                                         </p>
                                                                     </div>
@@ -430,7 +266,1484 @@
                                 </div>
                             </div>
 
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><span
+                                                                class="hidden-xs"><a
+                                                                    href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Онлайн»') %>"
+                                                                    target="_blank"><i
+                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                    <input class="form-control input_url"
+                                                           name="config.urls.movies.online"
+                                                           value="<%= config.urls.movies.online %>"
+                                                           placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Онлайн»') %>"
+                                                           type="text">
+                                                </div>
+                                            </div>
+
+                                            <% if (config.urls.movies.online) { %>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="col-xs-4 custom-field">
+                                                    <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="onlineKey">
+                                                </div>
+                                                <div class="col-xs-1 double-dot">:</div>
+                                                <div class="col-xs-5 custom-field">
+                                                    <input type="text" class="form-control" placeholder="red" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="onlineValue">
+                                                </div>
+                                                <div class="col-xs-2" style="padding-right: 0;">
+                                                    <a href="javascript:void(0)" class="btn btn-default btn-block" id="onlineAdd"><span class="fa fa-plus"></span></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+                                            <%
+                                                var dataset_online;
+                                                if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.online && modules.player.data.cinemaplayer.online.dataset && modules.player.data.cinemaplayer.online.dataset.length) {
+                                                    try {
+                                                        var j = '{' + modules.player.data.cinemaplayer.online.dataset.map(function(d) {
+                                                            var da = d.split('=');
+                                                            return '"' + da.shift() + '":' + da.join('=');
+                                                        }).join(',') + '}'
+                                                        dataset_online = JSON.parse(j);
+                                                        dataset_online = Object.keys(dataset_online).length ? JSON.stringify(dataset_online) : '';
+                                                    } catch (e) {
+                                                        console.error(e);
+                                                    }
+                                                }
+                                            %>
+                                            <div class="col-lg-12 col-xs-12">
+                                                <textarea class="form-control custom" name="modules.player.data.cinemaplayer.online.dataset" placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_online) { %><%- dataset_online %><% } %></textarea>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.online.api && modules.player.data.cinemaplayer.online.api.length) { %>
+                                                    <table class="table table-bordered table-striped">
+                                                        <tbody>
+                                                        <% modules.player.data.cinemaplayer.online.api.forEach(function(data, num) { %>
+                                                            <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                            <% if (d && d.length < 2) return; %>
+                                                            <% if (data.charAt(0) === '#') {
+                                                                var custom_div = 'no-active';
+                                                            } %>
+                                                            <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                custom_i = 'text-success';
+                                                            } %>
+                                                            <tr class="<%- custom_div %>">
+                                                                <td class="table-settings">
+                                                                    <span><%- num + 1 %>.</span>
+                                                                </td>
+                                                                <td class="table-content help-example">
+                                                                    <div class="<%- custom_div %>">
+                                                                        <code>
+                                                                            <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
+                                                                            ~ <span class="iframe"><%= d[1] %></span>
+                                                                            <% if (typeof d[2] !== 'undefined') { %>
+                                                                                ~ <span class="translate"><%= d[2] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[3] !== 'undefined') { %>
+                                                                                ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[4] !== 'undefined') { %>
+                                                                                ~ <span class="season"><%= d[4] || '' %></span>
+                                                                            <% } %>
+                                                                            <% if (typeof d[5] !== 'undefined') { %>
+                                                                                ~ <span class="episode"><%= d[5] || '' %></span>
+                                                                            <% } %>
+                                                                        </code>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.player.data.cinemaplayer.online.dataset"></i></span>
+                                                                </td>
+                                                                <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.player.data.cinemaplayer.online.dataset"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                <% } else { %>
+                                                    <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                        <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="faq">
+                                                    <article class="faq-group">
+                                                        <header class="text-muted text-left">
+                                                            <i class="fa fa-plus"></i>
+                                                            <h3>
+                                                                <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                            </h3>
+                                                        </header>
+                                                        <div class="faq-content clearfix">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.player.data.cinemaplayer.online.api"
+                                                                              placeholder="url ~ name ~ iframe ~ image"
+                                                                              style="height:300px;"><%- modules.player.data.cinemaplayer.online.api.join('\n\n') %></textarea>
+                                                                </div>
+
+                                                                <div class="spacer-10"></div>
+
+                                                                <div class="col-sm-12">
+                                                                    <div class="helper-text-box text-left help-example-code">
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">url</span> ~
+                                                                                <span class="iframe">name</span> ~
+                                                                                <span class="translate">iframe <span class="text-muted"><> format</span></span> ~
+                                                                                <span class="quality">image <span class="text-muted"><> format</span></span>
+                                                                            </code>
+                                                                        </p><code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[id] - ID website
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[wa_id] - ID world-art.ru
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;[title] [year] [ip] [hash]
+                                                                        </code><br>
+                                                                        <code class="url">
+                                                                            https://example.com/api?imdb_id=[imdb_id]
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:1px 0 0 0">
+                                                                            &nbsp;&nbsp;{ "results": [ {
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0">
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iframe":
+                                                                            "<span class="translate">https://example.com/iframe</span>",
+                                                                        </code><br>
+                                                                        <code class="text-muted"
+                                                                              style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;} ] }
+                                                                        </code><br>
+                                                                        <code class="translate">
+                                                                            results.0.iframe
+                                                                        </code><br>
+                                                                        <p>
+                                                                            <code>
+                                                                                <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
+                                                                                ~
+                                                                                <span class="iframe">"Stream"</span>
+                                                                                ~
+                                                                                <span class="translate">results.0.iframe</span>
+                                                                            </code>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </div>
+
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><span
+                                                                class="hidden-xs"><a
+                                                                    href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Трейлер»') %>"
+                                                                    target="_blank"><i
+                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                    <input class="form-control input_url"
+                                                           name="config.urls.movies.trailer"
+                                                           value="<%= config.urls.movies.trailer %>"
+                                                           placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Трейлер»') %>"
+                                                           type="text">
+                                                </div>
+                                            </div>
+
+                                            <% if (config.urls.movies.trailer) { %>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="col-xs-4 custom-field">
+                                                        <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="trailerKey">
+                                                    </div>
+                                                    <div class="col-xs-1 double-dot">:</div>
+                                                    <div class="col-xs-5 custom-field">
+                                                        <input type="text" class="form-control" placeholder="red" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="trailerValue">
+                                                    </div>
+                                                    <div class="col-xs-2" style="padding-right: 0;">
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-block" id="trailerAdd"><span class="fa fa-plus"></span></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+                                                <%
+                                                    var dataset_trailer;
+                                                    if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.trailer && modules.player.data.cinemaplayer.trailer.dataset && modules.player.data.cinemaplayer.trailer.dataset.length) {
+                                                        try {
+                                                            var j = '{' + modules.player.data.cinemaplayer.trailer.dataset.map(function(d) {
+                                                                var da = d.split('=');
+                                                                return '"' + da.shift() + '":' + da.join('=');
+                                                            }).join(',') + '}'
+                                                            dataset_trailer = JSON.parse(j);
+                                                            dataset_trailer = Object.keys(dataset_trailer).length ? JSON.stringify(dataset_trailer) : '';
+                                                        } catch (e) {
+                                                            console.error(e);
+                                                        }
+                                                    }
+                                                %>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <textarea class="form-control custom" name="modules.player.data.cinemaplayer.trailer.dataset" placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_trailer) { %><%- dataset_trailer %><% } %></textarea>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.trailer.api && modules.player.data.cinemaplayer.trailer.api.length) { %>
+                                                        <table class="table table-bordered table-striped">
+                                                            <tbody>
+                                                            <% modules.player.data.cinemaplayer.trailer.api.forEach(function(data, num) { %>
+                                                                <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                <% if (d && d.length < 2) return; %>
+                                                                <% if (data.charAt(0) === '#') {
+                                                                    var custom_div = 'no-active';
+                                                                } %>
+                                                                <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                    custom_i = 'text-success';
+                                                                } %>
+                                                                <tr class="<%- custom_div %>">
+                                                                    <td class="table-settings">
+                                                                        <span><%- num + 1 %>.</span>
+                                                                    </td>
+                                                                    <td class="table-content help-example">
+                                                                        <div class="<%- custom_div %>">
+                                                                            <code>
+                                                                                <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
+                                                                                ~ <span class="iframe"><%= d[1] %></span>
+                                                                                <% if (typeof d[2] !== 'undefined') { %>
+                                                                                    ~ <span class="translate"><%= d[2] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[3] !== 'undefined') { %>
+                                                                                    ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[4] !== 'undefined') { %>
+                                                                                    ~ <span class="season"><%= d[4] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[5] !== 'undefined') { %>
+                                                                                    ~ <span class="episode"><%= d[5] || '' %></span>
+                                                                                <% } %>
+                                                                            </code>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.player.data.cinemaplayer.trailer.dataset"></i></span>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.player.data.cinemaplayer.trailer.dataset"></i></span>
+                                                                    </td>
+                                                                </tr>
+                                                            <% }); %>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } else { %>
+                                                        <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="faq">
+                                                        <article class="faq-group">
+                                                            <header class="text-muted text-left">
+                                                                <i class="fa fa-plus"></i>
+                                                                <h3>
+                                                                    <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                                </h3>
+                                                            </header>
+                                                            <div class="faq-content clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.player.data.cinemaplayer.trailer.api"
+                                                                              placeholder="url ~ name ~ iframe ~ image"
+                                                                              style="height:300px;"><%- modules.player.data.cinemaplayer.trailer.api.join('\n\n') %></textarea>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-sm-12">
+                                                                        <div class="helper-text-box text-left help-example-code">
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">url</span> ~
+                                                                                    <span class="iframe">name</span> ~
+                                                                                    <span class="translate">iframe <span class="text-muted"><> format</span></span> ~
+                                                                                    <span class="quality">image <span class="text-muted"><> format</span></span>
+                                                                                </code>
+                                                                            </p><code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[id] - ID website
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[wa_id] - ID world-art.ru
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[title] [year] [ip] [hash]
+                                                                            </code><br>
+                                                                            <code class="url">
+                                                                                https://example.com/api?imdb_id=[imdb_id]
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;{ "results": [ {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iframe":
+                                                                                "<span class="translate">https://example.com/iframe</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;} ] }
+                                                                            </code><br>
+                                                                            <code class="translate">
+                                                                                results.0.iframe
+                                                                            </code><br>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
+                                                                                    ~
+                                                                                    <span class="iframe">"Trailer"</span>
+                                                                                    ~
+                                                                                    <span class="translate">results.0.iframe</span>
+                                                                                </code>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </div>
+
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><span
+                                                                class="hidden-xs"><a
+                                                                    href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Скачать»') %>"
+                                                                    target="_blank"><i
+                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                    <input class="form-control input_url"
+                                                           name="config.urls.movies.download"
+                                                           value="<%= config.urls.movies.download %>"
+                                                           placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Скачать»') %>"
+                                                           type="text">
+                                                </div>
+                                            </div>
+
+                                            <% if (config.urls.movies.download) { %>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="col-xs-4 custom-field">
+                                                        <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="downloadKey">
+                                                    </div>
+                                                    <div class="col-xs-1 double-dot">:</div>
+                                                    <div class="col-xs-5 custom-field">
+                                                        <input type="text" class="form-control" placeholder="red" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="downloadValue">
+                                                    </div>
+                                                    <div class="col-xs-2" style="padding-right: 0;">
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-block" id="downloadAdd"><span class="fa fa-plus"></span></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+                                                <%
+                                                    var dataset_download;
+                                                    if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.download && modules.player.data.cinemaplayer.download.dataset && modules.player.data.cinemaplayer.download.dataset.length) {
+                                                        try {
+                                                            var j = '{' + modules.player.data.cinemaplayer.download.dataset.map(function(d) {
+                                                                var da = d.split('=');
+                                                                return '"' + da.shift() + '":' + da.join('=');
+                                                            }).join(',') + '}'
+                                                            dataset_download = JSON.parse(j);
+                                                            dataset_download = Object.keys(dataset_download).length ? JSON.stringify(dataset_download) : '';
+                                                        } catch (e) {
+                                                            console.error(e);
+                                                        }
+                                                    }
+                                                %>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <textarea class="form-control custom" name="modules.player.data.cinemaplayer.download.dataset" placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_download) { %><%- dataset_download %><% } %></textarea>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.download.api && modules.player.data.cinemaplayer.download.api.length) { %>
+                                                        <table class="table table-bordered table-striped">
+                                                            <tbody>
+                                                            <% modules.player.data.cinemaplayer.download.api.forEach(function(data, num) { %>
+                                                                <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                <% if (d && d.length < 2) return; %>
+                                                                <% if (data.charAt(0) === '#') {
+                                                                    var custom_div = 'no-active';
+                                                                } %>
+                                                                <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                    custom_i = 'text-success';
+                                                                } %>
+                                                                <tr class="<%- custom_div %>">
+                                                                    <td class="table-settings">
+                                                                        <span><%- num + 1 %>.</span>
+                                                                    </td>
+                                                                    <td class="table-content help-example">
+                                                                        <div class="<%- custom_div %>">
+                                                                            <code>
+                                                                                <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
+                                                                                ~ <span class="iframe"><%= d[1] %></span>
+                                                                                <% if (typeof d[2] !== 'undefined') { %>
+                                                                                    ~ <span class="translate"><%= d[2] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[3] !== 'undefined') { %>
+                                                                                    ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[4] !== 'undefined') { %>
+                                                                                    ~ <span class="season"><%= d[4] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[5] !== 'undefined') { %>
+                                                                                    ~ <span class="episode"><%= d[5] || '' %></span>
+                                                                                <% } %>
+                                                                            </code>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.player.data.cinemaplayer.download.dataset"></i></span>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.player.data.cinemaplayer.download.dataset"></i></span>
+                                                                    </td>
+                                                                </tr>
+                                                            <% }); %>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } else { %>
+                                                        <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="faq">
+                                                        <article class="faq-group">
+                                                            <header class="text-muted text-left">
+                                                                <i class="fa fa-plus"></i>
+                                                                <h3>
+                                                                    <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                                </h3>
+                                                            </header>
+                                                            <div class="faq-content clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.player.data.cinemaplayer.download.api"
+                                                                              placeholder="url ~ title ~ link ~ image ~ badge ~ description"
+                                                                              style="height:300px;"><%- modules.player.data.cinemaplayer.download.api.join('\n\n') %></textarea>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-sm-12">
+                                                                        <div class="helper-text-box text-left help-example-code">
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">url</span> ~
+                                                                                    <span class="iframe">title</span> ~
+                                                                                    <span class="translate">link <span class="text-muted"><> format</span></span> ~
+                                                                                    <span class="quality">image <span class="text-muted"><> format</span></span> ~
+                                                                                    <span class="season">badge</span> ~
+                                                                                    <span class="episode">description</span>
+                                                                                </code>
+                                                                            </p><code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[id] - ID website
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[wa_id] - ID world-art.ru
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[title] [year] [ip] [hash]
+                                                                            </code><br>
+                                                                            <code class="url">
+                                                                                https://example.com/api?imdb_id=[imdb_id]
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;{ "results": [ {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name":
+                                                                                "<span class="iframe">Cobra Kai</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":
+                                                                                "<span class="translate">https://example.com/download</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pic":
+                                                                                "<span class="quality">https://example.com/pic.jpg</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price":
+                                                                                "<span class="season">14,99 USD</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"full":
+                                                                                "<span class="episode">Cobra Kai (English) HD</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;} ] }
+                                                                            </code><br>
+                                                                            <code class="iframe">
+                                                                                results.0.name
+                                                                            </code><br>
+                                                                            <code class="translate">
+                                                                                results.0.url
+                                                                            </code><br>
+                                                                            <code class="quality">
+                                                                                results.0.pic
+                                                                            </code><br>
+                                                                            <code class="season">
+                                                                                results.0.price
+                                                                            </code><br>
+                                                                            <code class="episode">
+                                                                                results.0.full
+                                                                            </code><br>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
+                                                                                    ~
+                                                                                    <span class="iframe">results.0.name</span>
+                                                                                    ~
+                                                                                    <span class="translate">results.0.url</span>
+                                                                                    ~
+                                                                                    <span class="quality">results.0.pic</span>
+                                                                                    ~
+                                                                                    <span class="season">results.0.price</span>
+                                                                                    ~
+                                                                                    <span class="episode">results.0.full</span>
+                                                                                </code>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </div>
+
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="cinema-box">
+                                    <div class="inner-padding">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon text-muted"><span
+                                                                class="hidden-xs"><a
+                                                                    href="https://CinemaPress.io/<%- config.language %>/admin/urls.html" class="csstip" data-title="<%= __('«Кадры»') %>"
+                                                                    target="_blank"><i
+                                                                        class="fa fa-info-circle text-muted"></i></a> <%- config.domain %>/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span><span
+                                                                class="visible-xs">/<%- config.urls.movie %><%- config.urls.slash %><%- config.urls.prefix_id %>299-the-matrix/</span></span>
+                                                    <input class="form-control input_url"
+                                                           name="config.urls.movies.picture"
+                                                           value="<%= config.urls.movies.picture %>"
+                                                           placeholder="<%= __('URL для активации веб-страницы') %> <%= __('«Кадры»') %>"
+                                                           type="text">
+                                                </div>
+                                            </div>
+
+                                            <% if (config.urls.movies.picture) { %>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="col-xs-4 custom-field">
+                                                        <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color" style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0" id="pictureKey">
+                                                    </div>
+                                                    <div class="col-xs-1 double-dot">:</div>
+                                                    <div class="col-xs-5 custom-field">
+                                                        <input type="text" class="form-control" placeholder="red" style="font-weight: normal; font-size: 14px; margin-bottom: 0" id="pictureValue">
+                                                    </div>
+                                                    <div class="col-xs-2" style="padding-right: 0;">
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-block" id="pictureAdd"><span class="fa fa-plus"></span></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+                                                <%
+                                                    var dataset_picture;
+                                                    if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.picture && modules.player.data.cinemaplayer.picture.dataset && modules.player.data.cinemaplayer.picture.dataset.length) {
+                                                        try {
+                                                            var j = '{' + modules.player.data.cinemaplayer.picture.dataset.map(function(d) {
+                                                                var da = d.split('=');
+                                                                return '"' + da.shift() + '":' + da.join('=');
+                                                            }).join(',') + '}'
+                                                            dataset_picture = JSON.parse(j);
+                                                            dataset_picture = Object.keys(dataset_picture).length ? JSON.stringify(dataset_picture) : '';
+                                                        } catch (e) {
+                                                            console.error(e);
+                                                        }
+                                                    }
+                                                %>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <textarea class="form-control custom" name="modules.player.data.cinemaplayer.picture.dataset" placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_picture) { %><%- dataset_picture %><% } %></textarea>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <% if (modules.player.data.cinemaplayer && modules.player.data.cinemaplayer.picture.api && modules.player.data.cinemaplayer.picture.api.length) { %>
+                                                        <table class="table table-bordered table-striped">
+                                                            <tbody>
+                                                            <% modules.player.data.cinemaplayer.picture.api.forEach(function(data, num) { %>
+                                                                <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                <% if (d && d.length < 2) return; %>
+                                                                <% if (data.charAt(0) === '#') {
+                                                                    var custom_div = 'no-active';
+                                                                } %>
+                                                                <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                    custom_i = 'text-success';
+                                                                } %>
+                                                                <tr class="<%- custom_div %>">
+                                                                    <td class="table-settings">
+                                                                        <span><%- num + 1 %>.</span>
+                                                                    </td>
+                                                                    <td class="table-content help-example">
+                                                                        <div class="<%- custom_div %>">
+                                                                            <code>
+                                                                                <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
+                                                                                ~ <span class="iframe"><%= d[1] %></span>
+                                                                                <% if (typeof d[2] !== 'undefined') { %>
+                                                                                    ~ <span class="translate"><%= d[2] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[3] !== 'undefined') { %>
+                                                                                    ~ <span class="quality"><%= d[3] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[4] !== 'undefined') { %>
+                                                                                    ~ <span class="season"><%= d[4] || '' %></span>
+                                                                                <% } %>
+                                                                                <% if (typeof d[5] !== 'undefined') { %>
+                                                                                    ~ <span class="episode"><%= d[5] || '' %></span>
+                                                                                <% } %>
+                                                                            </code>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.player.data.cinemaplayer.picture.dataset"></i></span>
+                                                                    </td>
+                                                                    <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.player.data.cinemaplayer.picture.dataset"></i></span>
+                                                                    </td>
+                                                                </tr>
+                                                            <% }); %>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } else { %>
+                                                        <div class="help-example" style="padding-top: 0 !important; text-align: center">
+                                                            <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+
+                                                <div class="spacer-10"></div>
+
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="faq">
+                                                        <article class="faq-group">
+                                                            <header class="text-muted text-left">
+                                                                <i class="fa fa-plus"></i>
+                                                                <h3>
+                                                                    <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                                </h3>
+                                                            </header>
+                                                            <div class="faq-content clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.player.data.cinemaplayer.picture.api"
+                                                                              placeholder="url ~ image"
+                                                                              style="height:300px;"><%- modules.player.data.cinemaplayer.picture.api.join('\n\n') %></textarea>
+                                                                    </div>
+
+                                                                    <div class="spacer-10"></div>
+
+                                                                    <div class="col-sm-12">
+                                                                        <div class="helper-text-box text-left help-example-code">
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">url</span> ~
+                                                                                    <span class="translate">image</span>
+                                                                                </code>
+                                                                            </p><code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[id] - ID website
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[wa_id] - ID world-art.ru
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;[title] [year] [ip] [hash]
+                                                                            </code><br>
+                                                                            <code class="url">
+                                                                                https://example.com/api?imdb_id=[imdb_id]
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:1px 0 0 0">
+                                                                                &nbsp;&nbsp;{ "results": [ {
+                                                                            </code><br>
+                                                                            <code class="text-muted" style="margin:0">
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"still":
+                                                                                "<span class="translate">https://example.com/still.jpg</span>",
+                                                                            </code><br>
+                                                                            <code class="text-muted"
+                                                                                  style="margin:0 0 1px 0">
+                                                                                &nbsp;&nbsp;} ] }
+                                                                            </code><br>
+                                                                            <code class="translate">
+                                                                                results.0.still
+                                                                            </code><br>
+                                                                            <p>
+                                                                                <code>
+                                                                                    <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
+                                                                                    ~
+                                                                                    <span class="translate">results.0.still</span>
+                                                                                </code>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </div>
+
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="faq">
+                                    <article class="faq-group">
+                                        <header class="text-muted text-left">
+                                            <i class="fa fa-plus"></i>
+                                            <h3><%= __('Настройка встраиваемого плеера') %> <code class="code-url">/[id]/embed</code></h3>
+                                        </header>
+                                        <div class="faq-content clearfix">
+                                            <div class="cinema-box">
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-xs-12">
+                                                            <div class="col-xs-4 custom-field">
+                                                                <input type="text" class="form-control" placeholder="data-cinemaplayer-play-color"
+                                                                       style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0"
+                                                                       id="embedKey">
+                                                            </div>
+                                                            <div class="col-xs-1 double-dot">:</div>
+                                                            <div class="col-xs-5 custom-field">
+                                                                <input type="text" class="form-control" placeholder="red"
+                                                                       style="font-weight: normal; font-size: 14px; margin-bottom: 0"
+                                                                       id="embedValue">
+                                                            </div>
+                                                            <div class="col-xs-2" style="padding-right: 0;">
+                                                                <a href="javascript:void(0)" class="btn btn-default btn-block"
+                                                                   id="embedAdd"><span class="fa fa-plus"></span></a>
+                                                            </div>
+                                                            <div class="spacer-10"></div>
+                                                            <%
+                                                                var dataset_embed;
+                                                                if (modules.player.data.embed && modules.player.data.embed.dataset && modules.player.data.embed.dataset.length) {
+                                                                    try {
+                                                                        var j = '{' + modules.player.data.embed.dataset.map(function(d) {
+                                                                            var da = d.split('=');
+                                                                            return '"' + da.shift() + '":' + da.join('=');
+                                                                        }).join(',') + '}'
+                                                                        dataset_embed = JSON.parse(j);
+                                                                        dataset_embed = Object.keys(dataset_embed).length ? JSON.stringify(dataset_embed) : '';
+                                                                    } catch (e) {
+                                                                        console.error(e);
+                                                                    }
+                                                                }
+                                                            %>
+                                                            <textarea class="form-control custom" name="modules.player.data.embed.dataset"
+                                                                      placeholder='{"data-cinemaplayer-play-color": "<%= __('Текст к этому полю') %>", "data-cinemaplayer-tabs-border-color": "<%= __('Текст к этому полю') %>"}'><% if (dataset_embed) { %><%- dataset_embed %><% } %></textarea>
+                                                            <script>
+                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                var json = document.querySelector('[name="modules.player.data.embed.dataset"]');
+                                                                if (json) {
+                                                                  jsonPrettyEmbed();
+                                                                  json.oninput = function() {
+                                                                    jsonPrettyEmbed();
+                                                                  };
+                                                                }
+
+                                                                var customAdd = document.querySelector('#embedAdd');
+                                                                customAdd.addEventListener('click', function() {
+                                                                  var customKey = document.querySelector('#embedKey');
+                                                                  var customValue = document.querySelector('#embedValue');
+                                                                  if (customKey && customKey.value && customValue && customValue.value) {
+                                                                    var customString = document.querySelector('[name="modules.player.data.embed.dataset"]').value;
+                                                                    var customJson = JSON.parse(customString || '{}');
+                                                                    document.querySelector('[name="modules.player.data.embed.dataset"]').value =
+                                                                      JSON.stringify(expandEmbed(
+                                                                        customJson,
+                                                                        customKey.value,
+                                                                        (customValue.value === 'true')
+                                                                          ? true
+                                                                          : (customValue.value === 'false')
+                                                                          ? false
+                                                                          : (!customValue.value.replace(/[0-9]/g, ''))
+                                                                            ? parseInt(customValue.value)
+                                                                            : /^\[.*]$/.test(customValue.value)
+                                                                              ? JSON.parse(customValue.value.replace(/'/g, '"'))
+                                                                              : customValue.value
+                                                                        )
+                                                                      );
+                                                                    jsonPrettyEmbed();
+                                                                    customKey.value = '';
+                                                                    customValue.value = '';
+                                                                  }
+                                                                });
+                                                              });
+
+                                                              function jsonPrettyEmbed() {
+                                                                var ugly = document.querySelector('[name="modules.player.data.embed.dataset"]').value;
+                                                                if (!ugly) return;
+                                                                ugly = JSON.parse(ugly);
+                                                                var cnt = 0;
+                                                                c(ugly);
+                                                                document.querySelector('[name="modules.player.data.embed.dataset"]').style.height = (50 + cnt * 20) + 'px';
+                                                                document.querySelector('[name="modules.player.data.embed.dataset"]').value =
+                                                                  JSON.stringify(ugly, undefined, 4);
+
+                                                                function c(obj) {
+                                                                  Object.keys(obj).forEach(function(val) {
+                                                                    if (typeof obj[val] === 'object') {
+                                                                      c(obj[val]);
+                                                                      cnt++;
+                                                                    }
+                                                                    cnt++;
+                                                                  });
+                                                                }
+                                                              }
+
+                                                              function expandEmbed(model, name, value) {
+                                                                var items = name.split('.');
+                                                                var output = model;
+                                                                var ref = output;
+                                                                for (var i = 0; i < items.length - 1; i++) {
+                                                                  ref[items[i]] = (ref[items[i]])
+                                                                    ? ref[items[i]]
+                                                                    : {};
+                                                                  ref = ref[items[i]];
+                                                                }
+                                                                ref[items[items.length - 1]] = value;
+                                                                return output;
+                                                              }
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="col-sm-12">
+                                <div class="faq">
+                                    <article class="faq-group">
+                                        <header class="text-muted text-left">
+                                            <i class="fa fa-plus"></i>
+                                            <h3><%= __('Устаревшие функции') %></h3>
+                                        </header>
+                                        <div class="faq-content clearfix">
+                                            <div class="cinema-box">
+                                                <div class="inner-padding">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fa fa-play-circle"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через скрипт') %>
+                                                                    </div>
+                                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html" class="csstip"
+                                                                           data-title="<%= __('Параметры скрипта для получения видео-плееров с различных источников') %>"
+                                                                           target="_blank">
+                                                                            <i class="fa fa-info-circle"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                                            <div class="inline-labels">
+                                                                                <label>
+                                                                                    <input name="modules.player.data.display" value="script"
+                                                                                    <% if (modules.player.data.display === 'script') { %> checked=""
+                                                                                            <% } %>
+                                                                                           type="radio"><span></span> <%= __('сделать основным') %>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-12 col-xs-12">
+                                                                            <div class="col-xs-4 custom-field">
+                                                                                <input type="text" class="form-control" placeholder="data-player"
+                                                                                       style="font-weight: normal; font-size: 14px; text-align: right; margin-bottom: 0"
+                                                                                       id="customKey">
+                                                                            </div>
+                                                                            <div class="col-xs-1 double-dot">:</div>
+                                                                            <div class="col-xs-5 custom-field">
+                                                                                <input type="text" class="form-control" placeholder="trailer"
+                                                                                       style="font-weight: normal; font-size: 14px; margin-bottom: 0"
+                                                                                       id="customValue">
+                                                                            </div>
+                                                                            <div class="col-xs-2" style="padding-right: 0;">
+                                                                                <a href="javascript:void(0)" class="btn btn-default btn-block"
+                                                                                   id="customAdd"><span class="fa fa-plus"></span></a>
+                                                                            </div>
+                                                                            <div class="spacer-10"></div>
+                                                                            <%
+                                                                                var c;
+                                                                                if (modules.player.data.script) {
+                                                                                    try {
+                                                                                        c = JSON.parse(modules.player.data.script);
+                                                                                        c = Object.keys(c).length ? JSON.stringify(c) : '';
+                                                                                    } catch (e) {
+                                                                                        console.error(e);
+                                                                                    }
+                                                                                }
+                                                                            %>
+                                                                            <textarea class="form-control custom" name="modules.player.data.script"
+                                                                                      placeholder='{"data-player": "<%= __('Текст к этому полю') %>", "data-bg": "<%= __('Текст к этому полю') %>"}'><% if (c) { %><%- c %><% } %></textarea>
+                                                                            <div class="spacer-10"></div>
+                                                                            <div class="col-xs-6">
+                                                                                <label><%= __('JavaScript:') %></label>
+                                                                            </div>
+                                                                            <div class="col-xs-6">
+                                                                                <input type="text" class="form-control" name="modules.player.data.js" placeholder="https://example.com/script.js" value="<%- modules.player.data.js %>">
+                                                                            </div>
+                                                                            <script>
+                                                                              document.addEventListener('DOMContentLoaded', function() {
+                                                                                var json = document.querySelector('[name="modules.player.data.script"]');
+                                                                                if (json) {
+                                                                                  jsonPretty();
+                                                                                  json.oninput = function() {
+                                                                                    jsonPretty();
+                                                                                  };
+                                                                                }
+
+                                                                                var customAdd = document.querySelector('#customAdd');
+                                                                                customAdd.addEventListener('click', function() {
+                                                                                  var customKey = document.querySelector('#customKey');
+                                                                                  var customValue = document.querySelector('#customValue');
+                                                                                  if (customKey && customKey.value && customValue && customValue.value) {
+                                                                                    var customString = document.querySelector('[name="modules.player.data.script"]').value;
+                                                                                    var customJson = JSON.parse(customString || '{}');
+                                                                                    document.querySelector('[name="modules.player.data.script"]').value =
+                                                                                      JSON.stringify(expand(
+                                                                                        customJson,
+                                                                                        customKey.value,
+                                                                                        (customValue.value === 'true')
+                                                                                          ? true
+                                                                                          : (customValue.value === 'false')
+                                                                                          ? false
+                                                                                          : (!customValue.value.replace(/[0-9]/g, ''))
+                                                                                            ? parseInt(customValue.value)
+                                                                                            : /^\[.*]$/.test(customValue.value)
+                                                                                              ? JSON.parse(customValue.value.replace(/'/g, '"'))
+                                                                                              : customValue.value
+                                                                                        )
+                                                                                      );
+                                                                                    jsonPretty();
+                                                                                    customKey.value = '';
+                                                                                    customValue.value = '';
+                                                                                  }
+                                                                                });
+                                                                              });
+
+                                                                              function jsonPretty() {
+                                                                                var ugly = document.querySelector('[name="modules.player.data.script"]').value;
+                                                                                if (!ugly) return;
+                                                                                ugly = JSON.parse(ugly);
+                                                                                var cnt = 0;
+                                                                                c(ugly);
+                                                                                document.querySelector('[name="modules.player.data.script"]').style.height = (50 + cnt * 20) + 'px';
+                                                                                document.querySelector('[name="modules.player.data.script"]').value =
+                                                                                  JSON.stringify(ugly, undefined, 4);
+
+                                                                                function c(obj) {
+                                                                                  Object.keys(obj).forEach(function(val) {
+                                                                                    if (typeof obj[val] === 'object') {
+                                                                                      c(obj[val]);
+                                                                                      cnt++;
+                                                                                    }
+                                                                                    cnt++;
+                                                                                  });
+                                                                                }
+                                                                              }
+
+                                                                              function expand(model, name, value) {
+                                                                                var items = name.split('.');
+                                                                                var output = model;
+                                                                                var ref = output;
+                                                                                for (var i = 0; i < items.length - 1; i++) {
+                                                                                  ref[items[i]] = (ref[items[i]])
+                                                                                    ? ref[items[i]]
+                                                                                    : {};
+                                                                                  ref = ref[items[i]];
+                                                                                }
+                                                                                ref[items[items.length - 1]] = value;
+                                                                                return output;
+                                                                              }
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="spacer-10"></div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="cinema-box">
+                                                                <div class="cinema-box-header">
+                                                                    <div class="cinema-label">
+                                                                        <i class="fab fa-youtube"></i>&nbsp;&nbsp;&nbsp;<%= __('Получение видео-плееров через API') %>
+                                                                    </div>
+                                                                    <div class="cinema-label hidden-xs" style="float: right">
+                                                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/player.html" class="csstip"
+                                                                           data-title="<%= __('Получение видео-плееров из нескольких API источников') %>"
+                                                                           target="_blank">
+                                                                            <i class="fa fa-info-circle"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="inner-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-xs-12 text-center">
+                                                                            <div class="inline-labels">
+                                                                                <label>
+                                                                                    <input name="modules.player.data.display" value="custom"
+                                                                                    <% if (modules.player.data.display === 'custom') { %> checked=""
+                                                                                            <% } %>
+                                                                                           type="radio"><span></span> <%= __('сделать основным') %>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-12 col-xs-12">
+                                                                            <% if (modules.player.data.custom && modules.player.data.custom.length) { %>
+                                                                                <table class="table table-bordered table-striped">
+                                                                                    <tbody>
+                                                                                    <% modules.player.data.custom.forEach(function(data, num) { %>
+                                                                                        <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
+                                                                                        <% if (d.length < 2) return; %>
+                                                                                        <% if (data.charAt(0) === '#') {
+                                                                                            var custom_div = 'no-active';
+                                                                                        } %>
+                                                                                        <% var custom_i = 'text-muted'; if (data.charAt(0) !== '#') {
+                                                                                            custom_i = 'text-success';
+                                                                                        } %>
+                                                                                        <tr class="<%- custom_div %>">
+                                                                                            <td class="table-settings">
+                                                                                                <span><%- num + 1 %>.</span>
+                                                                                            </td>
+                                                                                            <td class="table-content help-example">
+                                                                                                <div class="<%- custom_div %>">
+                                                                                                    <code>
+                                                                                                        <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                                                        ~ <span class="iframe"><%= d[1] %></span>
+                                                                                                        <% if (typeof d[2] !== 'undefined') { %>
+                                                                                                            ~
+                                                                                                            <span class="translate"><%= d[2] || '' %></span>
+                                                                                                        <% } %>
+                                                                                                        <% if (typeof d[3] !== 'undefined') { %>
+                                                                                                            ~
+                                                                                                            <span class="quality"><%= d[3] || '' %></span>
+                                                                                                        <% } %>
+                                                                                                    </code>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td class="table-settings">
+                                                                    <span><i class="fa fa-circle <%- custom_i %> activate-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-activate-api="modules.player.data.custom"></i></span>
+                                                                                            </td>
+                                                                                            <td class="table-settings">
+                                                                    <span><i class="fa fa-trash-alt text-danger delete-api"
+                                                                             data-parser="<%- encodeURIComponent(data) %>"
+                                                                             data-delete-api="modules.player.data.custom"></i></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    <% }); %>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            <% } else { %>
+                                                                                <div class="help-example"
+                                                                                     style="padding-top: 0 !important; text-align: center">
+                                                                                    <code><%= __('Добавьте в список хотя бы один API-сервис видео-плееров') %></code>
+                                                                                </div>
+                                                                            <% } %>
+                                                                        </div>
+
+                                                                        <div class="spacer-10"></div>
+
+                                                                        <div class="col-lg-12 col-xs-12">
+                                                                            <div class="faq">
+                                                                                <article class="faq-group">
+                                                                                    <header class="text-muted text-left">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                        <h3>
+                                                                                            <span class="fas fa-list-ol"></span>&nbsp;&nbsp;&nbsp;<%= __('Редактировать список') %>
+                                                                                        </h3>
+                                                                                    </header>
+                                                                                    <div class="faq-content clearfix">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+                                                                    <textarea class="form-control custom"
+                                                                              name="modules.player.data.custom"
+                                                                              placeholder="url ~ iframe ~ translate ~ quality"
+                                                                              style="height:300px;"><%- modules.player.data.custom.join('\n\n') %></textarea>
+                                                                                            </div>
+
+                                                                                            <div class="spacer-10"></div>
+
+                                                                                            <div class="col-sm-12">
+                                                                                                <div class="helper-text-box text-left help-example-code">
+                                                                                                    <p>
+                                                                                                        <code>
+                                                                                                            <span class="url">url</span> ~
+                                                                                                            <span class="translate">iframe <span class="text-muted"><> format</span></span> ~
+                                                                                                            <span class="translate">translate</span> ~
+                                                                                                            <span class="quality">quality</span>
+                                                                                                        </code>
+                                                                                                    </p>
+                                                                                                    <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                                        &nbsp;&nbsp;[imdb_id] - ID imdb.com
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0">
+                                                                                                        &nbsp;&nbsp;[tmdb_id] - ID tmdb.org
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;[kp_id] - ID kinopoisk.ru
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;[douban_id] - ID movie.douban.com
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;[tvmaze_id] - ID tvmaze.com
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;[wa_id] - ID world-art.ru
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;[title] [year] [season] [episode] [ip]
+                                                                                                    </code><br>
+                                                                                                    <code class="url">
+                                                                                                        https://example.com/api?imdb_id=[imdb_id]
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted"
+                                                                                                          style="margin:1px 0 0 0">
+                                                                                                        &nbsp;&nbsp;{ "results": [ {
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0">
+                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iframe":
+                                                                                                        "<span class="translate">https://example.com/iframe</span>",
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0">
+                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translate":
+                                                                                                        "<span class="translate">Subtitle</span>",
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:0">
+                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quality":
+                                                                                                        "<span class="quality">4K</span>"
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted"
+                                                                                                          style="margin:0 0 1px 0">
+                                                                                                        &nbsp;&nbsp;} ] }
+                                                                                                    </code><br>
+                                                                                                    <code class="translate">
+                                                                                                        results.0.iframe
+                                                                                                    </code><br>
+                                                                                                    <code class="translate">
+                                                                                                        results.0.translate
+                                                                                                    </code><br>
+                                                                                                    <code class="quality">
+                                                                                                        results.0.quality
+                                                                                                    </code>
+                                                                                                    <p>
+                                                                                                        <code>
+                                                                                                            <span class="url">https://example.com/api?imdb_id=[imdb_id]</span>
+                                                                                                            ~
+                                                                                                            <span class="translate">results.0.iframe</span>
+                                                                                                        </code>
+                                                                                                    </p>
+                                                                                                    <code class="url">
+                                                                                                        https://example.com/get?imdb_id=[imdb_id]
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                                        &nbsp;&nbsp;https://example.com/iframe
+                                                                                                    </code>
+                                                                                                    <p>
+                                                                                                        <code>
+                                                                                                            <span class="url">https://example.com/get?imdb_id=[imdb_id]</span>
+                                                                                                            ~
+                                                                                                            <span class="iframe">body</span>
+                                                                                                        </code>
+                                                                                                    </p>
+                                                                                                    <code class="url">
+                                                                                                        https://example.com/iframe?imdb_id=[imdb_id]
+                                                                                                    </code><br>
+                                                                                                    <code class="text-muted" style="margin:1px 0 0 0">
+                                                                                                        &nbsp;&nbsp;Movie/TV player
+                                                                                                    </code>
+                                                                                                    <p>
+                                                                                                        <code>
+                                                                                                            <span class="url">https://example.com/iframe?imdb_id=[imdb_id]</span>
+                                                                                                            ~
+                                                                                                            <span class="iframe">iframe</span>
+                                                                                                        </code>
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </article>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
                         </div>
+
+                        <script>
+                          document.addEventListener('DOMContentLoaded', function() {
+                            [
+                              'information',
+                              'trailer',
+                              'online',
+                              'trailer',
+                              'download',
+                              'picture'
+                            ].forEach(function(tab) {
+                              var json = document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]');
+                              if (json) {
+                                jsonPrettyTab(tab);
+                                json.oninput = function() {
+                                  jsonPrettyTab(tab);
+                                };
+                              }
+
+                              var customAdd = document.querySelector('#' + tab + 'Add');
+                              if (!customAdd) return;
+                              customAdd.addEventListener('click', function() {
+                                var customKey = document.querySelector('#' + tab + 'Key');
+                                var customValue = document.querySelector('#' + tab + 'Value');
+                                if (customKey && customKey.value && customValue && customValue.value) {
+                                  var customString = document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]').value;
+                                  var customJson = JSON.parse(customString || '{}');
+                                  document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]').value =
+                                    JSON.stringify(expandTab(
+                                      customJson,
+                                      customKey.value,
+                                      (customValue.value === 'true')
+                                        ? true
+                                        : (customValue.value === 'false')
+                                        ? false
+                                        : (!customValue.value.replace(/[0-9]/g, ''))
+                                          ? parseInt(customValue.value)
+                                          : /^\[.*]$/.test(customValue.value)
+                                            ? JSON.parse(customValue.value.replace(/'/g, '"'))
+                                            : customValue.value
+                                      )
+                                    );
+                                  jsonPrettyTab(tab);
+                                  customKey.value = '';
+                                  customValue.value = '';
+                                }
+                              });
+                            });
+                          });
+
+                          function jsonPrettyTab(tab) {
+                            var ugly = document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]').value;
+                            if (!ugly) return;
+                            ugly = JSON.parse(ugly);
+                            var cnt = 0;
+                            c(ugly);
+                            document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]').style.height = (50 + cnt * 20) + 'px';
+                            document.querySelector('[name="modules.player.data.cinemaplayer.' + tab + '.dataset"]').value =
+                              JSON.stringify(ugly, undefined, 4);
+
+                            function c(obj) {
+                              Object.keys(obj).forEach(function(val) {
+                                if (typeof obj[val] === 'object') {
+                                  c(obj[val]);
+                                  cnt++;
+                                }
+                                cnt++;
+                              });
+                            }
+                          }
+
+                          function expandTab(model, name, value) {
+                            var items = name.split('.');
+                            var output = model;
+                            var ref = output;
+                            for (var i = 0; i < items.length - 1; i++) {
+                              ref[items[i]] = (ref[items[i]])
+                                ? ref[items[i]]
+                                : {};
+                              ref = ref[items[i]];
+                            }
+                            ref[items[items.length - 1]] = value;
+                            return output;
+                          }
+                        </script>
 
                     <% } else { %>
 

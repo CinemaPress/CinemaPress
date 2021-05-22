@@ -1036,5 +1036,6 @@
 	"Список API токенов": "API Tokenova saraksts",
 	"Список токенов для доступа к API веб-сайта": "Tīmekļa sarakstu, lai piekļūtu tīmekļa vietnes tīmekļa vietnei",
 	"Добавьте в список хотя бы один токен": "Pievienojiet sarakstam vismaz vienu marķieri",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulis ļauj saņemt informāciju par movieām JSON formātā."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulis ļauj saņemt informāciju par movieām JSON formātā.",
+	"Настройка встраиваемого плеера": "Iegultā atskaņotāja iestatīšana"
 }

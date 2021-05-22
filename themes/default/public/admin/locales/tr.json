@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Listesi API Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Websitesinin websitesine erişmek için belirteçlerin listesi",
 	"Добавьте в список хотя бы один токен": "Listeye en az bir belirteç ekleyin",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modül, JSON formatındaki movieler hakkında bilgi almanızı sağlar."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modül, JSON formatındaki movieler hakkında bilgi almanızı sağlar.",
+	"Настройка встраиваемого плеера": "Gömülü oynatıcıyı ayarlama"
 }

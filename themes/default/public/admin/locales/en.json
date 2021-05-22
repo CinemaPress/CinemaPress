@@ -1035,5 +1035,6 @@
   "Список API токенов": "List of tokens API",
   "Список токенов для доступа к API веб-сайта": "List of tokens to access the website API",
   "Добавьте в список хотя бы один токен": "Add at least one token to the list",
-  "Модуль позволяет получать информацию о фильмах в JSON формате.": "The module allows you to receive information about movies in JSON format."
+  "Модуль позволяет получать информацию о фильмах в JSON формате.": "The module allows you to receive information about movies in JSON format.",
+  "Настройка встраиваемого плеера": "Setting the embedded player"
 }

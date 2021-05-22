@@ -1036,5 +1036,6 @@
 	"Список API токенов": "API Tombovi nimekiri",
 	"Список токенов для доступа к API веб-сайта": "Veebisaidi veebilehe juurde pääsemiseks mõeldud märkide nimekiri",
 	"Добавьте в список хотя бы один токен": "Lisage loendisse vähemalt üks sümbol",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moodul võimaldab teil saada teavet movieide kohta JSON-vormingus."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moodul võimaldab teil saada teavet movieide kohta JSON-vormingus.",
+	"Настройка встраиваемого плеера": "Sisseehitatud mängija seadistamine"
 }

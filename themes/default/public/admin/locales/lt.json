@@ -1036,5 +1036,6 @@
 	"Список API токенов": "Sąrašas Api Tokenov",
 	"Список токенов для доступа к API веб-сайта": "Sąrašas žetonų, kad galėtumėte pasiekti svetainės svetainę",
 	"Добавьте в список хотя бы один токен": "Įdėkite į sąrašą bent vieną raktą",
-	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulis leidžia gauti informaciją apie movieus JSON formatu."
+	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modulis leidžia gauti informaciją apie movieus JSON formatu.",
+	"Настройка встраиваемого плеера": "Įterpto žaidėjo nustatymas"
 }
