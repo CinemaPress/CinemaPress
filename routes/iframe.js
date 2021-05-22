@@ -49,6 +49,7 @@ setInterval(function() {
  */
 
 var express = require('express');
+var md5 = require('md5');
 var router = express.Router();
 
 /**
@@ -61,8 +62,54 @@ router.get('/:id', function(req, res) {
   var season = (req.query.season || '').replace(/[^0-9]/g, '');
   var episode = (req.query.episode || '').replace(/[^0-9]/g, '');
 
+  var origin =
+    config.protocol +
+    '' +
+    (config.bomain ? config.botdomain : config.subdomain) +
+    '' +
+    (config.bomain || config.domain);
+
   var id_key = id.replace(/[0-9]/g, '');
   var id_value = id.replace(/[^0-9]/g, '');
+
+  if (modules.player.data.display === 'cinemaplayer') {
+    var ip = getIp(req);
+    return res.send(
+      '<!DOCTYPE html><html lang="' +
+        config.language +
+        '">' +
+        '<head>' +
+        '<title>' +
+        id_value +
+        '</title>' +
+        '<link rel="canonical" href="' +
+        origin +
+        '/' +
+        config.urls.movie +
+        config.urls.slash +
+        config.urls.prefix_id +
+        id_value +
+        '"/>' +
+        '</head>' +
+        '<body>' +
+        '<style>body,html{border:0;padding:0;margin:0;width:100%;height:100%;overflow:hidden}</style>' +
+        '<div id="cinemaplayer" ' +
+        'data-cinemaplayer-api="/cinemaplayer/information" ' +
+        'data-cinemaplayer-query-api-id="' +
+        id_value +
+        '" ' +
+        'data-cinemaplayer-query-api-ip="' +
+        ip +
+        '" ' +
+        'data-cinemaplayer-query-api-hash="' +
+        md5(ip + '.' + config.urls.admin) +
+        '"></div>' +
+        '<script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
+        process.env['CP_VER'] +
+        '"></script>' +
+        '</body></html>'
+    );
+  }
 
   var query = {};
   var data = {};
@@ -94,13 +141,6 @@ router.get('/:id', function(req, res) {
   } catch (e) {
     console.error(e);
   }
-
-  var origin =
-    config.protocol +
-    '' +
-    (config.bomain ? config.botdomain : config.subdomain) +
-    '' +
-    (config.bomain || config.domain);
 
   var parameters = '';
   if (season) {
@@ -284,5 +324,56 @@ router.get('/:id', function(req, res) {
     res.status(404).send('');
   }
 });
+
+/**
+ * Get user IP.
+ *
+ * @param {Object} req
+ */
+
+function getIp(req) {
+  var ips = req.ips || [];
+  var ip = '';
+  if (req.header('x-forwarded-for')) {
+    req
+      .header('x-forwarded-for')
+      .split(',')
+      .forEach(function(one_ip) {
+        if (ips.indexOf(one_ip.trim()) === -1) {
+          ips.push(one_ip.trim());
+        }
+      });
+  }
+  if (req.header('x-real-ip')) {
+    req
+      .header('x-real-ip')
+      .split(',')
+      .forEach(function(one_ip) {
+        if (ips.indexOf(one_ip.trim()) === -1) {
+          ips.push(one_ip.trim());
+        }
+      });
+  }
+  if (req.connection.remoteAddress) {
+    req.connection.remoteAddress.split(',').forEach(function(one_ip) {
+      if (ips.indexOf(one_ip.trim()) === -1) {
+        ips.push(one_ip.trim());
+      }
+    });
+  }
+  ips.forEach(function(one_ip) {
+    if (ip) return;
+    one_ip = one_ip.replace('::ffff:', '');
+    if (
+      one_ip !== '127.0.0.1' &&
+      /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/.test(
+        one_ip
+      )
+    ) {
+      ip = one_ip;
+    }
+  });
+  return ip;
+}
 
 module.exports = router;
