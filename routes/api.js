@@ -54,7 +54,6 @@ var Avatars = require('@dicebear/avatars').default;
 var sprites = require('@dicebear/avatars-avataaars-sprites').default;
 var avatars = new Avatars(sprites, {});
 var request = require('request');
-var sphinx = require('sphinx');
 var fs = require('fs');
 var md5 = require('md5');
 var path = require('path');
@@ -487,14 +486,24 @@ router.get('/', function(req, res) {
             .replace(/\s*\/\s*/g, '/')
             .split('/')
         : ['10', '1'];
-      var max = token[2] ? parseInt(token[2].replace(/[^0-9]/g, '')) : 1000;
+      var max = token[2]
+        ? token[2].toLowerCase() === 'infinity' ||
+          token[2].toLowerCase() === 'unlimited'
+          ? Infinity
+          : parseInt(token[2].replace(/[^0-9]/g, ''))
+        : 1000;
       var req_sec_ip = token[3]
         ? token[3]
             .replace(/(^\s*)|(\s*)$/g, '')
             .replace(/\s*\/\s*/g, '/')
             .split('/')
-        : ['1', '1'];
-      var max_ip = token[4] ? parseInt(token[4].replace(/[^0-9]/g, '')) : 100;
+        : ['2', '1'];
+      var max_ip = token[4]
+        ? token[4].toLowerCase() === 'infinity' ||
+          token[4].toLowerCase() === 'unlimited'
+          ? Infinity
+          : parseInt(token[4].replace(/[^0-9]/g, ''))
+        : Infinity;
       tokens.set(token[0], {
         req: parseInt(req_sec[0].replace(/[^0-9]/g, '') || '10'),
         sec: parseInt(req_sec[1].replace(/[^0-9]/g, '') || '1') * 1000,
