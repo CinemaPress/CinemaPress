@@ -210,10 +210,9 @@ function codePlayer(type, movie, options) {
         options.userinfo &&
         options.userinfo.bot &&
         options.userinfo.bot.all
-          ? '' +
-            '<video id="cinemaplayer" controls  ' +
-            dataset +
-            '>' +
+          ? '<video controls style="width:100%;height:100%" poster="' +
+            config.default.image +
+            '">' +
             '  <source src="/balancer/' +
             movie.id +
             '.mp4" type="video/mp4">' +
