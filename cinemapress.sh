@@ -1967,15 +1967,7 @@ read_ftp_password() {
             fi
             if [ "${FTP_PASSWORD}" != "" ]
             then
-                if echo "${FTP_PASSWORD}" | grep -qE ^[.a-zA-Z0-9@_-!?]+$
-                then
-                    AGAIN=10
-                else
-                    printf "${NC}         You entered: ${R}${FTP_PASSWORD}${NC} \n"
-                    printf "${R}WARNING:${NC} Only latin characters \n"
-                    printf "${NC}         and numbers are allowed! \n"
-                    AGAIN=$((${AGAIN}+1))
-                fi
+                AGAIN=10
             fi
         done
         if [ "${FTP_PASSWORD}" = "" ]; then exit 1; fi
@@ -4670,8 +4662,9 @@ while [ "${WHILE}" -lt "2" ]; do
                 printf "${C}---- ${G}1)${NC} run ${S}------------------------ Run Torrent Cloud Client ${C}----\n"
                 printf "${C}---- ${G}2)${NC} ftp ${S}---------------------- Configuration FTP Storages ${C}----\n"
                 printf "${C}---- ${G}3)${NC} show ${S}-------------------------- Show FTP Storage List ${C}----\n"
+                printf "${C}---- ${G}4)${NC} delete ${S}--------------------------- Delete FTP Storage ${C}----\n"
                 _s
-                read -e -p 'OPTION [1-3]: ' LOCAL_ACTION
+                read -e -p 'OPTION [1-4]: ' LOCAL_ACTION
                 LOCAL_ACTION=$(echo "${LOCAL_ACTION}" | iconv -c -t UTF-8)
                 _br
             fi
@@ -4722,9 +4715,11 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content
                 _content "Torrent client is running!"
                 _content
-                _content "torrent.${CP_DOMAIN}"
+                _content "torrent.${CP_DOMAIN}/index.html"
                 _content
+                _content "RPC ADDRESS: torrent.${CP_DOMAIN}:80/jsonrpc"
                 _content "RPC SECRET: ${RPC_SECRET}"
+                _content "RPC METHOD: POST"
                 _content
                 _content "Configure your video storage."
                 _content
@@ -4738,7 +4733,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_ftp_username "${6}"
                 read_ftp_password "${7}"
                 TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${FTP_HOSTNAME}")
-                docker exec "${CP_DOMAIN_}" rclone config create "CINEMATORRENT${N}" "${TORRENT_STORAGE[@]}" \
+                docker exec "${CP_DOMAIN_}" rclone config create "${FTP_NAME}" "${TORRENT_STORAGE[@]}" \
                     >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
                 _s
             elif [ "${LOCAL_ACTION}" = "show" ] || [ "${LOCAL_ACTION}" = "3" ]; then
@@ -4747,7 +4742,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 else
                     docker exec -t "${CP_DOMAIN_}" rclone config show
                 fi
-            elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "4" ]; then
+            elif [ "${LOCAL_ACTION}" = "delete" ] || [ "${LOCAL_ACTION}" = "4" ]; then
+                read_ftp_name "${4}"
+                docker exec -t "${CP_DOMAIN_}" rclone config delete "${FTP_NAME}"
+            elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "5" ]; then
                 if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ] || \
                    [ ! -d "/home/${CP_DOMAIN}/files/torrent/uploads" ] || \
                    [ -d "/home/${CP_DOMAIN}/files/torrent/.process" ]; then
