@@ -220,6 +220,16 @@
 
 [![Template «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
 
+## Theme «dustin»
+
+> Install via FTP: [GitHub](https://github.com/CinemaPress/Theme-Dustin/) / [GitLab](https://gitlab.com/CinemaPress/Theme-Dustin/) / [BitBucket](https://bitbucket.org/cinemapress/theme-dustin/)
+
+> Install via CLI: `cinemapress theme example.com dustin`
+
+> **DEMO:** [Dustin.CinemaPress.io](https://Dustin.CinemaPress.io)
+
+[![Template «dustin»](https://raw.githubusercontent.com/CinemaPress/Theme-Dustin/master/screenshot.png)](https://Dustin.CinemaPress.io)
+
 ## Options and modules CinemaPress
 
 Detailed information on all options and system modules can be found in the [documentation](https://CInemaPress.io/ru/admin).
