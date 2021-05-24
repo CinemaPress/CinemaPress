@@ -65,7 +65,8 @@
     "https-proxy-agent": "5.0.0",
     "tough-cookie": "4.0.0",
     "axios-cookiejar-support": "1.0.1",
-    "episode-parser": "2.0.2"
+    "episode-parser": "2.0.2",
+    "deepmerge": "4.2.2"
   },
   "devDependencies": {
     "prettier": "2.3.0"

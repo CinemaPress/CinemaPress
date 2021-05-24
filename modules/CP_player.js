@@ -204,7 +204,9 @@ function codePlayer(type, movie, options) {
               '.' +
               config.urls.admin
           )
-        );
+        )
+        .replace(/\[season]/gi, serial.season || '')
+        .replace(/\[episode]/gi, serial.episode || '');
       code.player =
         options &&
         options.userinfo &&

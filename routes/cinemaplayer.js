@@ -121,6 +121,16 @@ router.get('/:tab', function(req, res) {
     ('' + req.query.year).replace(/[^0-9]/g, '')
       ? ('' + req.query.year).replace(/[^0-9]/g, '')
       : '';
+  var season =
+    typeof req.query.season !== 'undefined' &&
+    ('' + req.query.season).replace(/[^0-9]/g, '')
+      ? ('' + req.query.season).replace(/[^0-9]/g, '')
+      : '';
+  var episode =
+    typeof req.query.episode !== 'undefined' &&
+    ('' + req.query.episode).replace(/[^0-9]/g, '')
+      ? ('' + req.query.episode).replace(/[^0-9]/g, '')
+      : '';
   var ip =
     typeof req.query.ip !== 'undefined' &&
     ('' + req.query.ip).replace(/[^0-9.:]/g, '')
@@ -260,6 +270,20 @@ router.get('/:tab', function(req, res) {
       if (p.url.indexOf('[year]') + 1) {
         if (year) {
           p.url = p.url.replace(/\[year]/gi, year ? year : '');
+        } else {
+          return callback();
+        }
+      }
+      if (p.url.indexOf('[season]') + 1) {
+        if (season) {
+          p.url = p.url.replace(/\[season]/gi, season ? season : '');
+        } else {
+          return callback();
+        }
+      }
+      if (p.url.indexOf('[episode]') + 1) {
+        if (episode) {
+          p.url = p.url.replace(/\[episode]/gi, episode ? episode : '');
         } else {
           return callback();
         }
