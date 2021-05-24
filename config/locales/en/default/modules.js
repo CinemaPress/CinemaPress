@@ -133,7 +133,7 @@ module.exports = {
       "facebook": "https://gitlab.com/CinemaPress/CinemaPress",
       "twitter": "https://bitbucket.org/CinemaPress/CinemaPress",
       "telegram": "https://hub.docker.com/r/cinemapress/docker",
-      "instagram": "https://enota.club/forums/help",
+      "instagram": "https://github.com/CinemaPress/CinemaPress",
       "youtube": "https://www.youtube.com/CinemaPressOrg"
     }
   },
