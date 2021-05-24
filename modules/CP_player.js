@@ -145,15 +145,6 @@ function codePlayer(type, movie, options) {
             '</div>';
         }
       }
-      if (
-        !(
-          ((options.userinfo && options.userinfo.device === 'app') ||
-            modules.blocking.data.app.abuse) &&
-          country_block_app <= 0
-        )
-      ) {
-        code = CP_blocking.code(code, movie, options);
-      }
     }
     if (code.player) {
       return code;
@@ -224,6 +215,15 @@ function codePlayer(type, movie, options) {
         '<script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
         process.env['CP_VER'] +
         '"></script>';
+    }
+    if (
+      !(
+        ((options.userinfo && options.userinfo.device === 'app') ||
+          modules.blocking.data.app.abuse) &&
+        country_block_app <= 0
+      )
+    ) {
+      code = CP_blocking.code(code, movie, options);
     }
   } else {
     if (type === 'picture') {
