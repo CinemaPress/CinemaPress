@@ -1039,5 +1039,7 @@
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Modul ini memungkinkan Anda untuk menerima informasi tentang movie dalam format JSON.",
 	"Настройка встраиваемого плеера": "Menyiapkan pemain tertanam",
 	"Добавьте в список хотя бы один API-сервис": "Tambahkan ke daftar setidaknya satu layanan API",
-	"Просмотр плеера только в iframe": "Lihat pemain hanya di iFRAME"
+	"Просмотр плеера только в iframe": "Lihat pemain hanya di iFRAME",
+	"Устаревшие функции": "Fungsi yang sudah ketinggalan zaman",
+	"API веб-сайта": "API situs web"
 }

@@ -1039,5 +1039,7 @@
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Moduli inakuwezesha kupokea habari kuhusu filamu katika muundo wa JSON.",
 	"Настройка встраиваемого плеера": "Kuanzisha mchezaji aliyeingia",
 	"Добавьте в список хотя бы один API-сервис": "Ongeza kwenye orodha angalau huduma moja ya API",
-	"Просмотр плеера только в iframe": "Tazama mchezaji tu katika iframe"
+	"Просмотр плеера только в iframe": "Tazama mchezaji tu katika iframe",
+	"Устаревшие функции": "Kazi zilizopita",
+	"API веб-сайта": "Tovuti ya aPI"
 }

@@ -721,7 +721,7 @@ module.exports = {
     "status": true,
     "data": {
       "tokens": [
-        "TEST ~ 2req/1sec ~ 1000 ~ 1req/1sec ~ 100"
+        "TEST ~ 10req/1sec ~ 1000 ~ 10req/1sec ~ 1000"
       ]
     }
   }

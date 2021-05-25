@@ -1039,5 +1039,7 @@
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "Mit dem Modul können Sie Informationen über moviee im JSON-Format empfangen.",
 	"Настройка встраиваемого плеера": "Einrichten des eingebetteten spielers",
 	"Добавьте в список хотя бы один API-сервис": "Fügen Sie der Liste mindestens einen API-Service hinzu",
-	"Просмотр плеера только в iframe": "Spieler nur in iframe anzeigen"
+	"Просмотр плеера только в iframe": "Spieler nur in iframe anzeigen",
+	"Устаревшие функции": "Veraltete funktionen",
+	"API веб-сайта": "Website-API"
 }

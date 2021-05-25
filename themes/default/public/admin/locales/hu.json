@@ -1039,5 +1039,7 @@
 	"Модуль позволяет получать информацию о фильмах в JSON формате.": "A modul lehetővé teszi, hogy információt kapjon a JSON formátumú movieekről.",
 	"Настройка встраиваемого плеера": "A beágyazott lejátszó beállítása",
 	"Добавьте в список хотя бы один API-сервис": "Adja hozzá a listához legalább egy API szolgáltatás",
-	"Просмотр плеера только в iframe": "Csak az iframe-ben"
+	"Просмотр плеера только в iframe": "Csak az iframe-ben",
+	"Устаревшие функции": "Elavult funkciók",
+	"API веб-сайта": "Webhely aPI"
 }

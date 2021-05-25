@@ -90,31 +90,16 @@ function allSitemap(options, callback) {
         if (categories[year].title === y) y = 0;
         render.sitemaps[render.sitemaps.length] = categories[year].url
           .replace(
-            config.subdomain + config.domain ||
-              config.botdomain + config.bomain,
-            config.botdomain + config.bomain || config.subdomain + config.domain
+            /^(https?:\/\/|\/\/)[^\/]+(.+)$/i,
+            config.protocol +
+              (config.botdomain + config.bomain ||
+                config.ru.botdomain + config.ru.bomain ||
+                config.subdomain + config.domain) +
+              '$2'
           )
           .replace(
-            config.ru.subdomain + config.ru.domain ||
-              config.subdomain + config.domain ||
-              config.botdomain + config.bomain,
-            config.ru.botdomain + config.ru.bomain ||
-              config.botdomain + config.bomain ||
-              config.subdomain + config.domain
-          )
-          .replace(
-            config.botdomain +
-              (config.bomain || config.domain) +
-              '/' +
-              config.urls.year +
-              config.urls.slash,
-            config.botdomain +
-              (config.bomain || config.domain) +
-              '/' +
-              config.urls.sitemap +
-              '/' +
-              config.urls.year +
-              '/'
+            '/' + config.urls.year + config.urls.slash,
+            '/' + config.urls.sitemap + '/' + config.urls.year + '/'
           );
       }
     }
@@ -122,8 +107,9 @@ function allSitemap(options, callback) {
     if (y) {
       render.sitemaps.unshift(
         config.protocol +
-          (config.bomain ? config.botdomain : config.subdomain) +
-          (config.bomain || config.domain) +
+          (config.botdomain + config.bomain ||
+            config.ru.botdomain + config.ru.bomain ||
+            config.subdomain + config.domain) +
           '/' +
           config.urls.sitemap +
           '/' +
@@ -148,8 +134,9 @@ function allSitemap(options, callback) {
       if (c.hasOwnProperty(cat) && c[cat]) {
         render.sitemaps[render.sitemaps.length] =
           config.protocol +
-          (config.bomain ? config.botdomain : config.subdomain) +
-          (config.bomain || config.domain) +
+          (config.botdomain + config.bomain ||
+            config.ru.botdomain + config.ru.bomain ||
+            config.subdomain + config.domain) +
           '/' +
           config.urls.sitemap +
           '/' +
@@ -250,8 +237,9 @@ function oneSitemap(type, year, options, callback) {
       render.urls[render.urls.length] = {
         loc:
           config.protocol +
-          (config.bomain ? config.botdomain : config.subdomain) +
-          (config.bomain || config.domain) +
+          (config.botdomain + config.bomain ||
+            config.ru.botdomain + config.ru.bomain ||
+            config.subdomain + config.domain) +
           '/' +
           config.urls.type +
           config.urls.slash +
@@ -279,21 +267,14 @@ function oneSitemap(type, year, options, callback) {
       for (var year in categories) {
         if (categories.hasOwnProperty(year)) {
           render.urls[render.urls.length] = {
-            loc: categories[year].url
-              .replace(
-                config.ru.subdomain + config.ru.domain ||
-                  config.subdomain + config.domain ||
-                  config.botdomain + config.bomain,
-                config.ru.botdomain + config.ru.bomain ||
-                  config.botdomain + config.bomain ||
-                  config.subdomain + config.domain
-              )
-              .replace(
-                (config.subdomain || config.botdomain) +
-                  (config.domain || config.bomain),
-                (config.bomain ? config.botdomain : config.subdomain) +
-                  (config.bomain || config.domain)
-              )
+            loc: categories[year].url.replace(
+              /^(https?:\/\/|\/\/)[^\/]+(.+)$/i,
+              config.protocol +
+                (config.botdomain + config.bomain ||
+                  config.ru.botdomain + config.ru.bomain ||
+                  config.subdomain + config.domain) +
+                '$2'
+            )
           };
         }
       }
@@ -332,30 +313,27 @@ function oneSitemap(type, year, options, callback) {
       for (var content in contents) {
         if (contents.hasOwnProperty(content)) {
           render.urls[render.urls.length] = {
-            loc: contents[content].url
-              .replace(
-                config.ru.subdomain + config.ru.domain ||
-                  config.subdomain + config.domain ||
-                  config.botdomain + config.bomain,
-                config.ru.botdomain + config.ru.bomain ||
-                  config.botdomain + config.bomain ||
-                  config.subdomain + config.domain
-              )
-              .replace(
-                (config.subdomain || config.botdomain) +
-                  (config.domain || config.bomain),
-                (config.bomain ? config.botdomain : config.subdomain) +
-                  (config.bomain || config.domain)
-              ),
+            loc: contents[content].url.replace(
+              /^(https?:\/\/|\/\/)[^\/]+(.+)$/i,
+              config.protocol +
+                (config.botdomain + config.bomain ||
+                  config.ru.botdomain + config.ru.bomain ||
+                  config.subdomain + config.domain) +
+                '$2'
+            ),
             lastmod: moment(
               contents[content].publish,
               config.default.moment
             ).format('YYYY-MM-DD'),
-            image:
-              config.protocol +
-                (config.botdomain + config.bomain ||
-                  config.subdomain + config.domain) +
-                contents[content].image || '',
+            image: contents[content].image
+              ? /^(http|\/\/)/i.test(contents[content].image)
+                ? contents[content].image
+                : config.protocol +
+                    (config.botdomain + config.bomain ||
+                      config.ru.botdomain + config.ru.bomain ||
+                      config.subdomain + config.domain) +
+                    contents[content].image || ''
+              : '',
             title: (contents[content].title || '')
               .replace(/&/g, '&amp;')
               .replace(/'/g, '&apos;')
@@ -440,23 +418,25 @@ function oneSitemap(type, year, options, callback) {
                 continue;
               }
               render.urls[render.urls.length] = {
-                loc: movies[i].url.replace(
-                  config.ru.subdomain + config.ru.domain ||
-                    config.subdomain + config.domain ||
-                    config.botdomain + config.bomain,
-                  config.ru.botdomain + config.ru.bomain ||
-                    config.botdomain + config.bomain ||
-                    config.subdomain + config.domain
-                ),
+                loc:
+                  config.protocol +
+                  (config.botdomain + config.bomain ||
+                    config.ru.botdomain + config.ru.bomain ||
+                    config.subdomain + config.domain) +
+                  movies[i].pathname,
                 lastmod:
                   movies[i].custom && movies[i].custom.lastmod
                     ? movies[i].custom.lastmod.substr(0, 10)
                     : '',
-                image:
-                  config.protocol +
-                    (config.botdomain + config.bomain ||
-                      config.subdomain + config.domain) +
-                    movies[i].poster || '',
+                image: movies[i].poster
+                  ? /^(http|\/\/)/i.test(movies[i].poster)
+                    ? movies[i].poster
+                    : config.protocol +
+                      (config.botdomain + config.bomain ||
+                        config.ru.botdomain + config.ru.bomain ||
+                        config.subdomain + config.domain) +
+                      movies[i].poster
+                  : '',
                 title: (movies[i].title || '')
                   .replace(/&/g, '&amp;')
                   .replace(/'/g, '&apos;')
@@ -495,12 +475,12 @@ function oneSitemap(type, year, options, callback) {
         for (var i = 0, l = comments.length; i < l; i++) {
           render.urls[render.urls.length] = {
             loc: (options.origin + comments[i].comment_url).replace(
-              config.ru.subdomain + config.ru.domain ||
-                config.subdomain + config.domain ||
-                config.botdomain + config.bomain,
-              config.ru.botdomain + config.ru.bomain ||
-                config.botdomain + config.bomain ||
-                config.subdomain + config.domain
+              /^(https?:\/\/|\/\/)[^\/]+(.+)$/i,
+              config.protocol +
+                (config.botdomain + config.bomain ||
+                  config.ru.botdomain + config.ru.bomain ||
+                  config.subdomain + config.domain) +
+                '$2'
             ),
             lastmod: moment(
               new Date(
@@ -511,6 +491,7 @@ function oneSitemap(type, year, options, callback) {
             image:
               config.protocol +
                 (config.botdomain + config.bomain ||
+                  config.ru.botdomain + config.ru.bomain ||
                   config.subdomain + config.domain) +
                 comments[i].comment_avatar || '',
             title: (comments[i].comment_anonymous || '')
