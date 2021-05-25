@@ -52,6 +52,7 @@ setInterval(function() {
 
 var fs = require('fs');
 var md5 = require('md5');
+var url_parse = require('url');
 var path = require('path');
 var _eval = require('eval');
 var express = require('express');
@@ -578,6 +579,24 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
         status: 404,
         message: 'The sitemap is available only to search bots.'
       });
+    }
+
+    if (template === 'sitemap') {
+      var host = req.get('host');
+      var host_domain = url_parse.parse(config.protocol + '://' + host)
+        .hostname;
+      if (
+        (config.bomain && host_domain === config.subdomain + config.domain) ||
+        (config.bomain &&
+          host_domain === config.ru.subdomain + config.ru.domain) ||
+        (config.bomain && config.mirrors.indexOf(host_domain) + 1) ||
+        (!req.userinfo.bot.main && !config.user_bot)
+      ) {
+        return next({
+          status: 404,
+          message: 'The sitemap is available only to search bots.'
+        });
+      }
     }
 
     if (req.userinfo.bot.main) {

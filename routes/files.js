@@ -99,7 +99,7 @@ router.get(
       '/no.jpg';
     var source = false;
 
-    if (config.ru && config.ru.domain) {
+    if (config.language === 'ru' && config.ru && config.ru.domain) {
       no_image =
         config.protocol +
         config.ru.subdomain +
