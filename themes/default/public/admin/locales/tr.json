@@ -1041,5 +1041,6 @@
 	"Добавьте в список хотя бы один API-сервис": "Listeye en az bir API hizmeti ekleyin",
 	"Просмотр плеера только в iframe": "Yalnızca iFrame'da oynatıcıyı görüntüleyin",
 	"Устаревшие функции": "Eski fonksiyonlar",
-	"API веб-сайта": "Websitesi aPI"
+	"API веб-сайта": "Websitesi aPI",
+	"Показывать только первый успешный результат": "Sadece ilk başarılı sonucu göster"
 }

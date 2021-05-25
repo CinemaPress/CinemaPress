@@ -163,6 +163,9 @@ router.get('/:tab', function(req, res) {
     modules.player.data.cinemaplayer[tab].api,
     1,
     function(task, index, callback) {
+      if (results.length && modules.player.data.cinemaplayer[tab].first) {
+        return callback('stop');
+      }
       var parse = task.replace(/\s*~\s*/g, '~').split('~');
       if (task.charAt(0) === '#' || parse.length < 2) {
         return callback();

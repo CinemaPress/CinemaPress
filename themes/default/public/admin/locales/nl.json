@@ -1041,5 +1041,6 @@
 	"Добавьте в список хотя бы один API-сервис": "Voeg toe aan de lijst Ten minste één API-service",
 	"Просмотр плеера только в iframe": "Bekijk speler alleen in iFRAME",
 	"Устаревшие функции": "Verouderde functies",
-	"API веб-сайта": "Website api"
+	"API веб-сайта": "Website api",
+	"Показывать только первый успешный результат": "Toon alleen het eerste succesvolle resultaat"
 }

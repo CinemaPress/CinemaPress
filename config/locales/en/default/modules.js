@@ -264,7 +264,8 @@ module.exports = {
             "/api?token=TEST&id=[id] ~ \"Trailer\" ~ result.trailer",
             "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer (TMDb)\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
             "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
-          ]
+          ],
+          "first": 1
         },
         "online": {
           "dataset": [
@@ -285,7 +286,8 @@ module.exports = {
           "api": [
             "/api?token=TEST&id=[id] ~ \"\" ~ result.embed",
             "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.name ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
-          ]
+          ],
+          "first": 0
         },
         "trailer": {
           "dataset": [
@@ -307,7 +309,8 @@ module.exports = {
             "/api?token=TEST&id=[id] ~ \"Трейлер\" ~ result.trailer",
             "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
             "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
-          ]
+          ],
+          "first": 1
         },
         "download": {
           "dataset": [
@@ -328,7 +331,8 @@ module.exports = {
           ],
           "api": [
             "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=watch/providers&api_key=269890f657dddf4635473cf4cf456576~ watch/providers.results.US.free.0.provider_name ~ watch/providers.results.US.link ~ watch/providers.results.US.free.0.logo_path <> https://image.tmdb.org/t/p/original_VALUE_ ~ \"Download\" ~ \"Free\""
-          ]
+          ],
+          "first": 0
         },
         "picture": {
           "dataset": [
@@ -348,7 +352,8 @@ module.exports = {
           ],
           "api": [
             "/api?token=TEST&id=[id] ~ result.photos.0.original ~ result.photos.1.original ~ result.photos.3.original"
-          ]
+          ],
+          "first": 0
         }
       }
     }

@@ -1041,5 +1041,6 @@
 	"Добавьте в список хотя бы один API-сервис": "Ongeza kwenye orodha angalau huduma moja ya API",
 	"Просмотр плеера только в iframe": "Tazama mchezaji tu katika iframe",
 	"Устаревшие функции": "Kazi zilizopita",
-	"API веб-сайта": "Tovuti ya aPI"
+	"API веб-сайта": "Tovuti ya aPI",
+	"Показывать только первый успешный результат": "Onyesha matokeo ya kwanza ya mafanikio"
 }

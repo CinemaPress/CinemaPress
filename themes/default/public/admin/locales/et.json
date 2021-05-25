@@ -1041,5 +1041,6 @@
 	"Добавьте в список хотя бы один API-сервис": "Lisage loendisse vähemalt üks API-teenus",
 	"Просмотр плеера только в iframe": "Vaata mängijat ainult iframe'is",
 	"Устаревшие функции": "Vananenud funktsioonid",
-	"API веб-сайта": "Veebisait aPI"
+	"API веб-сайта": "Veebisait aPI",
+	"Показывать только первый успешный результат": "Näita ainult esimese eduka tulemuse"
 }

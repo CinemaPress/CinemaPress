@@ -1041,5 +1041,6 @@
 	"Добавьте в список хотя бы один API-сервис": "Ajouter à la liste au moins un service API",
 	"Просмотр плеера только в iframe": "Visualiser le joueur seulement dans iframe",
 	"Устаревшие функции": "Fonctions obsolètes",
-	"API веб-сайта": "Site web aPI"
+	"API веб-сайта": "Site web aPI",
+	"Показывать только первый успешный результат": "Afficher uniquement le premier résultat réussi"
 }
