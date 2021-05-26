@@ -74,6 +74,16 @@ router.get('/:id', function(req, res) {
 
   if (modules.player.data.display === 'cinemaplayer') {
     var ip = getIp(req);
+    var d = modules.player.data.cinemaplayer['information'].dataset;
+    if (d && d.length) {
+      var dataset = d.join(' ');
+      dataset = dataset
+        .replace(/\[id]/gi, id_value)
+        .replace(/\[kp_id]/gi, id_value)
+        .replace(/\[ip]/gi, ip || '')
+        .replace(/\[hash]/gi, md5(ip + '.' + config.urls.admin))
+        .replace(/\[[^\]]+]/gi, '');
+    }
     return res.send(
       '<!DOCTYPE html><html lang="' +
         config.language +
@@ -94,16 +104,8 @@ router.get('/:id', function(req, res) {
         '<body>' +
         '<style>body,html{border:0;padding:0;margin:0;width:100%;height:100%;overflow:hidden}</style>' +
         '<div id="cinemaplayer" ' +
-        'data-cinemaplayer-api="/cinemaplayer/information" ' +
-        'data-cinemaplayer-query-api-id="' +
-        id_value +
-        '" ' +
-        'data-cinemaplayer-query-api-ip="' +
-        ip +
-        '" ' +
-        'data-cinemaplayer-query-api-hash="' +
-        md5(ip + '.' + config.urls.admin) +
-        '"></div>' +
+        dataset +
+        '></div>' +
         '<script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
         process.env['CP_VER'] +
         '"></script>' +
