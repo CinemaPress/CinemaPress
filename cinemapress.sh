@@ -4732,7 +4732,12 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_ftp_hostname "${5}"
                 read_ftp_username "${6}"
                 read_ftp_password "${7}"
-                TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${FTP_HOSTNAME}")
+                IFS=':' read -r -a HOST_PORT <<< "${FTP_HOSTNAME}"
+                if [ "${HOST_PORT[1]}" = "" ]; then
+                    TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${HOST_PORT[0]}")
+                else
+                    TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${HOST_PORT[0]}" port "${HOST_PORT[1]}")
+                fi
                 docker exec "${CP_DOMAIN_}" rclone config create "${FTP_NAME}" "${TORRENT_STORAGE[@]}" \
                     >>/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1
                 _s
