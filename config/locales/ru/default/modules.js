@@ -456,7 +456,7 @@ module.exports = {
         ]
       },
       "custom": [
-        "http://api.tvmaze.com/shows/[tvmaze_id]?embed=episodes ~ _embedded.episodes.0.season ~ _embedded.episodes.0.number"
+        "# http://api.tvmaze.com/shows/[tvmaze_id]?embed=episodes ~ _embedded.episodes.0.season ~ _embedded.episodes.0.number"
       ],
       "translations": ""
     }
