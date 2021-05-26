@@ -147,7 +147,18 @@ router.get('/:id/:hash?', function(req, res) {
           (modules.player.data.embed.dataset &&
           modules.player.data.embed.dataset.length
             ? modules.player.data.embed.dataset.join(' ')
-            : '') +
+            : ''
+          )
+            .replace(
+              /\[season]/gi,
+              (req.query.season && req.query.season.replace(/[^0-9]/i, '')) ||
+                ''
+            )
+            .replace(
+              /\[episode]/gi,
+              (req.query.episode && req.query.episode.replace(/[^0-9]/i, '')) ||
+                ''
+            ) +
           '></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
           process.env['CP_VER'] +
           '"></script></body></html>'

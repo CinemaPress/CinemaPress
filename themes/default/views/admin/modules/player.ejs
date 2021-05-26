@@ -1364,8 +1364,8 @@
                                                             <div class="row">
                                                                 <div class="col-xs-12 col-md-12">
                                                                     <a href="https://github.com/CinemaPress/CinemaPlayer" class="btn btn-link btn-block" target="_blank">
-                                                                        <code class="visible-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;CinemaPlayer</code>
-                                                                        <code class="hidden-xs"><i class="fa fa-info-circle text-muted" style="font-size:12px"></i>&nbsp;&nbsp;https://github.com/CinemaPress/CinemaPlayer</code>
+                                                                        <code class="visible-xs"><i class="fa fa-info-circle text-muted" style="font-size:10px"></i>&nbsp;&nbsp;CinemaPlayer</code>
+                                                                        <code class="hidden-xs"><i class="fa fa-info-circle text-muted" style="font-size:10px"></i>&nbsp;&nbsp;https://github.com/CinemaPress/CinemaPlayer</code>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -1424,7 +1424,7 @@
                                                                           ? false
                                                                           : (!customValue.value.replace(/[0-9]/g, ''))
                                                                             ? parseInt(customValue.value)
-                                                                            : /^\[.*]$/.test(customValue.value)
+                                                                            : /^\[.*]$/.test(customValue.value) && customValue.value.replace(/[a-z0-9\]\[_]/g, '')
                                                                               ? JSON.parse(customValue.value.replace(/'/g, '"'))
                                                                               : customValue.value
                                                                         )
@@ -1586,7 +1586,7 @@
                                                                                           ? false
                                                                                           : (!customValue.value.replace(/[0-9]/g, ''))
                                                                                             ? parseInt(customValue.value)
-                                                                                            : /^\[.*]$/.test(customValue.value)
+                                                                                            : /^\[.*]$/.test(customValue.value) && customValue.value.replace(/[a-z0-9\]\[_]/g, '')
                                                                                               ? JSON.parse(customValue.value.replace(/'/g, '"'))
                                                                                               : customValue.value
                                                                                         )
@@ -1899,7 +1899,7 @@
                                         ? false
                                         : (!customValue.value.replace(/[0-9]/g, ''))
                                           ? parseInt(customValue.value)
-                                          : /^\[.*]$/.test(customValue.value)
+                                          : /^\[.*]$/.test(customValue.value) && customValue.value.replace(/[a-z0-9\]\[_]/g, '')
                                             ? JSON.parse(customValue.value.replace(/'/g, '"'))
                                             : customValue.value
                                       )

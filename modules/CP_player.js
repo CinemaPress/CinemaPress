@@ -180,10 +180,10 @@ function codePlayer(type, movie, options) {
         )
         .replace(/\[wa_id]/gi, movie.custom.wa_id ? movie.custom.wa_id : '')
         .replace(/\[type]/gi, movie.type ? 'tv' : 'movie')
-        .replace(/\[season]/gi, serial.season)
-        .replace(/\[episode]/gi, serial.episode)
-        .replace(/\[title]/gi, movie.title)
-        .replace(/\[year]/gi, movie.year)
+        .replace(/\[season]/gi, serial.season || '')
+        .replace(/\[episode]/gi, serial.episode || '')
+        .replace(/\[title]/gi, (movie.title || '').replace(/"/g, "'"))
+        .replace(/\[year]/gi, movie.year || '')
         .replace(
           /\[ip]/gi,
           (options && options.userinfo && options.userinfo.ip) || ''

@@ -238,7 +238,9 @@ module.exports = {
           "data-cinemaplayer-tabs-top=\"15px\"",
           "data-cinemaplayer-tabs-left=\"15px\"",
           "data-cinemaplayer-tabs-right=\"\"",
-          "data-cinemaplayer-loader-display=\"none\""
+          "data-cinemaplayer-loader-display=\"none\"",
+          "data-cinemaplayer-select-season=\"[season]\"",
+          "data-cinemaplayer-select-episode=\"[episode]\""
         ],
         "iframe": 0
       },
@@ -256,14 +258,16 @@ module.exports = {
             "data-cinemaplayer-query-api-type=\"[type]\"",
             "data-cinemaplayer-query-api-title=\"[title]\"",
             "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-season=\"[season]\"",
+            "data-cinemaplayer-query-api-episode=\"[episode]\"",
             "data-cinemaplayer-query-api-ip=\"[ip]\"",
             "data-cinemaplayer-query-api-hash=\"[hash]\""
           ],
           "api": [
-            "/api?token=TEST&id=[id] ~ \"Player\" ~ result.embed",
+            "/api?token=TEST&id=[id] ~ \"Player\" ~ result.embed <> _VALUE_?season=[season]&episode=[episode]",
             "/api?token=TEST&id=[id] ~ \"Trailer\" ~ result.trailer",
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer (TMDb)\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
-            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer (TMDb)\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg",
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg"
           ],
           "first": 1
         },
@@ -280,12 +284,14 @@ module.exports = {
             "data-cinemaplayer-query-api-type=\"[type]\"",
             "data-cinemaplayer-query-api-title=\"[title]\"",
             "data-cinemaplayer-query-api-year=\"[year]\"",
+            "data-cinemaplayer-query-api-season=\"[season]\"",
+            "data-cinemaplayer-query-api-episode=\"[episode]\"",
             "data-cinemaplayer-query-api-ip=\"[ip]\"",
             "data-cinemaplayer-query-api-hash=\"[hash]\""
           ],
           "api": [
-            "/api?token=TEST&id=[id] ~ \"\" ~ result.embed",
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.name ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+            "/api?token=TEST&id=[id] ~ \"\" ~ result.embed <> _VALUE_?season=[season]&episode=[episode]",
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.name ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg"
           ],
           "first": 0
         },
@@ -307,8 +313,8 @@ module.exports = {
           ],
           "api": [
             "/api?token=TEST&id=[id] ~ \"Трейлер\" ~ result.trailer",
-            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg",
-            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/maxresdefault.jpg"
+            "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer TMDb\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg",
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer YouTube\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg"
           ],
           "first": 1
         },

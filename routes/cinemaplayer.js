@@ -121,12 +121,12 @@ router.get('/:tab', function(req, res) {
     ('' + req.query.year).replace(/[^0-9]/g, '')
       ? ('' + req.query.year).replace(/[^0-9]/g, '')
       : '';
-  var season =
+  var query_season =
     typeof req.query.season !== 'undefined' &&
     ('' + req.query.season).replace(/[^0-9]/g, '')
       ? ('' + req.query.season).replace(/[^0-9]/g, '')
       : '';
-  var episode =
+  var query_episode =
     typeof req.query.episode !== 'undefined' &&
     ('' + req.query.episode).replace(/[^0-9]/g, '')
       ? ('' + req.query.episode).replace(/[^0-9]/g, '')
@@ -278,18 +278,13 @@ router.get('/:tab', function(req, res) {
         }
       }
       if (p.url.indexOf('[season]') + 1) {
-        if (season) {
-          p.url = p.url.replace(/\[season]/gi, season ? season : '');
-        } else {
-          return callback();
-        }
+        p.url = p.url.replace(/\[season]/gi, query_season ? query_season : '');
       }
       if (p.url.indexOf('[episode]') + 1) {
-        if (episode) {
-          p.url = p.url.replace(/\[episode]/gi, episode ? episode : '');
-        } else {
-          return callback();
-        }
+        p.url = p.url.replace(
+          /\[episode]/gi,
+          query_episode ? query_episode : ''
+        );
       }
       if (p.url.indexOf('[ip]') + 1) {
         if (ip) {
@@ -348,7 +343,10 @@ router.get('/:tab', function(req, res) {
               : op.get(json, p.episode)
             : '';
           if (iframe && p.format_iframe) {
-            iframe = p.format_iframe.replace(/_VALUE_/gi, iframe);
+            iframe = p.format_iframe
+              .replace(/_VALUE_/gi, iframe)
+              .replace(/\[season]/gi, query_season || '')
+              .replace(/\[episode]/gi, query_episode || '');
           }
           if (image && p.format_image) {
             image = p.format_image.replace(/_VALUE_/gi, image);
