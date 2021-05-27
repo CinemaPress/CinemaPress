@@ -1991,7 +1991,7 @@ read_ftp_hostname() {
             fi
             if [ "${FTP_HOSTNAME}" != "" ]
             then
-                if echo "${FTP_HOSTNAME}" | grep -qE ^[.a-zA-Z0-9-]+$
+                if echo "${FTP_HOSTNAME}" | grep -qE ^[.:a-zA-Z0-9-]+$
                 then
                     AGAIN=10
                 else
