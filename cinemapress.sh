@@ -2320,7 +2320,7 @@ docker_movies() {
 }
 docker_cron() {
     nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload \
-        >/var/log/docker_torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
+        >/home/"${CP_DOMAIN}"/log/torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
     if [ ! -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
         echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
         if [ -n "${1}" ]; then
@@ -4732,6 +4732,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_ftp_hostname "${5}"
                 read_ftp_username "${6}"
                 read_ftp_password "${7}"
+                FTP_PASSWORD="$(echo "${FTP_PASSWORD}" | rclone obscure -)"
                 IFS=':' read -r -a HOST_PORT <<< "${FTP_HOSTNAME}"
                 if [ "${HOST_PORT[1]}" = "" ]; then
                     TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${HOST_PORT[0]}")
