@@ -94,8 +94,11 @@ function mobileVersion(url) {
     data +=
       '<link rel="alternate" media="only screen and (max-width: 768px)" href="' +
       (modules.mobile.data.subdomain
-        ? url.replace('://' + config.subdomain, '://m.')
-        : url.replace(config.domain, config.domain + '/mobile-version')
+        ? url.replace(
+            /:\/\/.*?(\/|$)/i,
+            '://m.' + (config.bomain || config.domain) + '$1'
+          )
+        : url.replace(/(:\/\/.*?)(\/|$)/i, '$1/mobile-version$2')
       )
         .replace('://tv.', '://')
         .replace('/tv-version', '') +

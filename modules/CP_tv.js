@@ -58,7 +58,13 @@ function tvVersion(url) {
     data +=
       '<link rel="canonical" href="' +
       url
-        .replace('://tv.', '://' + (config.botdomain || config.subdomain))
+        .replace(
+          /:\/\/tv\..*?(\/|$)/i,
+          '://' +
+            (config.botdomain + config.bomain ||
+              config.subdomain + config.domain) +
+            '$1'
+        )
         .replace('/tv-version', '') +
       '">';
 
