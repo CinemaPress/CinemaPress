@@ -4794,11 +4794,11 @@ while [ "${WHILE}" -lt "2" ]; do
                                 if [ -f "${FILE}" ]; then
                                     echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        rclone -vv --ignore-size copy \
+                                        rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
                                             "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
                                             "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                                     else
-                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
                                             "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
                                             "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                                     fi
@@ -4808,11 +4808,11 @@ while [ "${WHILE}" -lt "2" ]; do
                             FILE_NAME="${DIR##*/}"
                             echo "UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone -vv --ignore-size copy \
+                                rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
                                     "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
                                     "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             else
-                                docker exec -t "${CP_DOMAIN_}" rclone -vv --ignore-size copy \
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
                                     "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
                                     "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             fi
