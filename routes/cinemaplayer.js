@@ -309,11 +309,16 @@ router.get('/:tab', function(req, res) {
         },
         function(error, response, body) {
           if (error || response.statusCode !== 200 || !body) {
-            // console.error(
-            //   p.url,
-            //   error && error.code,
-            //   response && response.statusCode
-            // );
+            if (
+              p.url.index('api.themoviedb.org') === -1 &&
+              p.url.index('www.googleapis.com') === -1
+            ) {
+              console.error(
+                p.url,
+                error && error.code,
+                response && response.statusCode
+              );
+            }
             return callback();
           }
           var json = tryParseJSON(body);
