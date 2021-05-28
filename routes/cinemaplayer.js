@@ -310,8 +310,8 @@ router.get('/:tab', function(req, res) {
         function(error, response, body) {
           if (error || response.statusCode !== 200 || !body) {
             if (
-              p.url.index('api.themoviedb.org') === -1 &&
-              p.url.index('www.googleapis.com') === -1
+              p.url.indexOf('api.themoviedb.org') === -1 &&
+              p.url.indexOf('www.googleapis.com') === -1
             ) {
               console.error(
                 p.url,
