@@ -2645,8 +2645,7 @@ success_install(){
     _content "setting up automatic backup!"
     _content "root@vps:~# cinemapress backup"
     _content
-    _content "You have questions?"
-    _content "Forum: enota.club"
+    _content "Issues: github.com/CinemaPress"
     _content
     _s
 }
@@ -4722,9 +4721,6 @@ while [ "${WHILE}" -lt "2" ]; do
                 _content "RPC METHOD: POST"
                 _content
                 _content "Configure your video storage."
-                _content
-                _content "You have questions?"
-                _content "Forum: enota.club"
                 _content
                 _s
             elif [ "${LOCAL_ACTION}" = "ftp" ] || [ "${LOCAL_ACTION}" = "2" ]; then
