@@ -2399,12 +2399,19 @@ docker_backup() {
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
     if [ -f "/var/log/${CP_DOMAIN_}.pid" ]; then
-        rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
         NOHUP_PID=$(cat "/var/log/${CP_DOMAIN_}.pid")
         if [ "${NOHUP_PID}" != "" ]; then
             kill -9 "${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
-            echo "KILL PID ${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
+            echo "KILL NOHUP PID ${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
         fi
+    fi
+    if [ -f "/home/${CP_DOMAIN}/log/cron_movies.pid" ]; then
+        CRON_PID=$(cat "/home/${CP_DOMAIN}/log/cron_movies.pid")
+        if [ "${CRON_PID}" != "" ]; then
+            kill -9 "${CRON_PID}" >>"/var/log/${CP_DOMAIN_}.log"
+            echo "KILL CRON PID ${CRON_PID}" >>"/var/log/${CP_DOMAIN_}.log"
+        fi
+        rm -f "/home/${CP_DOMAIN}/log/cron_movies.pid"
     fi
     PORT_DOMAIN=$(grep "mysql41" /etc/sphinx/sphinx.conf | sed 's/.*:\([0-9]*\):mysql41.*/\1/')
 #    echo "FLUSH RAMCHUNK"
