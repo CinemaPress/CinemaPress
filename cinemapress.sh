@@ -2307,7 +2307,9 @@ docker_movies() {
             kill -9 "${MOVIES_PID}"
             rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
         fi
+        echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
         node /home/"${CP_DOMAIN}"/lib/CP_movies.js "run"
+        rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
     else
         if [ ! -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
             echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
@@ -2397,6 +2399,7 @@ docker_backup() {
     THEME_NAME=$(echo "${T}" | sed 's/.*"theme":\s*"\([a-zA-Z0-9-]*\)".*/\1/')
     if [ "${THEME_NAME}" = "" ] || [ "${THEME_NAME}" = "${T}" ]; then exit 0; fi
     if [ -f "/var/log/${CP_DOMAIN_}.pid" ]; then
+        rm -f /home/"${CP_DOMAIN}"/log/cron_movies.pid
         NOHUP_PID=$(cat "/var/log/${CP_DOMAIN_}.pid")
         if [ "${NOHUP_PID}" != "" ]; then
             kill -9 "${NOHUP_PID}" >>"/var/log/${CP_DOMAIN_}.log"
