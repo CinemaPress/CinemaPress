@@ -4758,9 +4758,13 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_ftp_name "${4}"
                 docker exec -t "${CP_DOMAIN_}" rclone config delete "${FTP_NAME}"
             elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "5" ]; then
-                if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ] || \
-                   [ ! -d "/home/${CP_DOMAIN}/files/torrent/uploads" ] || \
-                   [ -d "/home/${CP_DOMAIN}/files/torrent/.process" ]; then
+                if [ ! -d "/home/${CP_DOMAIN}/files/torrent/uploads" ]; then
+                    exit 0
+                fi
+                if [ -d "/home/${CP_DOMAIN}/files/torrent/.process" ]; then
+                    exit 0
+                fi
+                if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ]; then
                     exit 0
                 fi
                 mv "/home/${CP_DOMAIN}/files/torrent/uploads" "/home/${CP_DOMAIN}/files/torrent/.process"
