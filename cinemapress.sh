@@ -4738,7 +4738,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 read_ftp_hostname "${5}"
                 read_ftp_username "${6}"
                 read_ftp_password "${7}"
-                FTP_PASSWORD="$(echo "${FTP_PASSWORD}" | rclone obscure -)"
+                FTP_PASSWORD="$(docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress rclone_obscure "${FTP_PASSWORD}")"
                 IFS=':' read -r -a HOST_PORT <<< "${FTP_HOSTNAME}"
                 if [ "${HOST_PORT[1]}" = "" ]; then
                     TORRENT_STORAGE=(ftp user "${FTP_USERNAME}" pass "${FTP_PASSWORD}" host "${HOST_PORT[0]}")
@@ -4757,7 +4757,7 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${LOCAL_ACTION}" = "delete" ] || [ "${LOCAL_ACTION}" = "4" ]; then
                 read_ftp_name "${4}"
                 docker exec -t "${CP_DOMAIN_}" rclone config delete "${FTP_NAME}"
-            elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "5" ]; then
+            elif [ "${LOCAL_ACTION}" = "upload" ] || [ "${LOCAL_ACTION}" = "uploads" ] || [ "${LOCAL_ACTION}" = "5" ]; then
                 if [ ! -d "/home/${CP_DOMAIN}/files/torrent/uploads" ]; then
                     exit 0
                 fi
@@ -4832,6 +4832,10 @@ while [ "${WHILE}" -lt "2" ]; do
                 rm -rf "/home/${CP_DOMAIN}/files/torrent/.process"
             fi
             exit 0
+        ;;
+        "rclone_obscure" )
+          echo "$(echo "${2}" | rclone obscure -)"
+          exit 0
         ;;
         "help"|"H"|"--help"|"-h"|"-H" )
             clear
