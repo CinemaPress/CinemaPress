@@ -149,6 +149,33 @@ function codePlayer(type, movie, options) {
     if (code.player) {
       return code;
     }
+    if (movie.player) {
+      if (/\.(mp4)$/i.test(movie.player)) {
+        code.player =
+          '<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>' +
+          '<video id="cinemapress-cdn"><source src="' +
+          movie.player +
+          '" type="video/mp4"/></video>';
+        code.footer =
+          '<script>var cinemapress_player = fluidPlayer("cinemapress-cdn");</script>';
+      } else if (/\.(m3u8)$/i.test(movie.player)) {
+        code.player =
+          '<script src="/files/playerjs.js"></script>' +
+          '<div id="cinemapress-cdn"></div>';
+        code.footer =
+          '<script>var cinemapress_player = new Playerjs({id:"cinemapress-cdn", file:"' +
+          movie.player +
+          '"});</script>';
+      } else if (/^[^\n,]*$/.test(movie.player)) {
+        code.player =
+          '<iframe id="cinemapress-cdn" src="' +
+          movie.player.replace(/^.*?(http|\/\/)(.*$)/i, '$1$2') +
+          '" frameborder="0"></iframe>';
+      }
+    }
+    if (code.player) {
+      return code;
+    }
     var d = (
       modules.player.data.cinemaplayer[type] ||
       modules.player.data.cinemaplayer['information']
