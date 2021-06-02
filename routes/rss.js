@@ -190,12 +190,17 @@ router.get('/?', function(req, res, next) {
       )
         .split(',')
         .map(function(key) {
-          return parseInt(key.trim());
-        });
+          return key ? parseInt(key.trim()) : '';
+        })
+        .filter(Boolean);
       if (items && items.length) {
         var query_id = [];
         items.forEach(function(item, i, arr) {
-          query_id.push(item + '^' + (arr.length - i));
+          if (arr.length >= 2) {
+            query_id.push(item + '^' + (arr.length - i));
+          } else {
+            query_id.push(item);
+          }
         });
         var query = { query_id: query_id.join('|') };
         CP_get.movies(query, items.length, '', 1, true, options, function(
