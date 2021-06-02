@@ -603,6 +603,22 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       res.header('X-Robots-Tag', 'noarchive');
     }
 
+    if (
+      req.userinfo.bot.main &&
+      (level1 === config.urls.year ||
+        level1 === config.urls.genre ||
+        level1 === config.urls.country ||
+        level1 === config.urls.actor ||
+        level1 === config.urls.director ||
+        level1 === config.urls.type) &&
+      (!render.movies || render.movies.length <= 0)
+    ) {
+      return next({
+        status: 404,
+        message: config.l.notFound
+      });
+    }
+
     if (typeof render === 'object') {
       if (
         config.theme === 'default' ||
