@@ -194,8 +194,10 @@ function tvIndex(data, options) {
     ok:
       (options && options.origin
         ? options.origin
-        : config.protocol + config.subdomain + config.domain + options.port) +
-      '?desktop'
+        : config.protocol + config.subdomain + config.domain + options.port
+      )
+        .replace('/tv-version', '')
+        .replace('://tv.', '://') + '?desktop'
   });
   return payload;
 }
@@ -260,8 +262,10 @@ function tvCategories(data, options) {
     ok:
       (options && options.origin
         ? options.origin
-        : config.protocol + config.subdomain + config.domain + options.port) +
-      '?desktop'
+        : config.protocol + config.subdomain + config.domain + options.port
+      )
+        .replace('/tv-version', '')
+        .replace('://tv.', '://') + '?desktop'
   });
   return payload;
 }
@@ -344,8 +348,10 @@ function tvCategory(data, page, options) {
     ok:
       (options && options.origin
         ? options.origin
-        : config.protocol + config.subdomain + config.domain + options.port) +
-      '?desktop'
+        : config.protocol + config.subdomain + config.domain + options.port
+      )
+        .replace('/tv-version', '')
+        .replace('://tv.', '://') + '?desktop'
   });
   return payload;
 }
@@ -432,8 +438,10 @@ function tvEpisode(data, options) {
     ok:
       (options && options.origin
         ? options.origin
-        : config.protocol + config.subdomain + config.domain + options.port) +
-      '?desktop'
+        : config.protocol + config.subdomain + config.domain + options.port
+      )
+        .replace('/tv-version', '')
+        .replace('://tv.', '://') + '?desktop'
   });
   return payload;
 }
