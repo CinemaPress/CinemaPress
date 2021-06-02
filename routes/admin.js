@@ -1033,7 +1033,7 @@ router.post('/change', function(req, res) {
         configs.config = parseData(configs.config, form.config);
         CP_save.save(configs.config, 'config', function(err, result) {
           if (dns_cloudflare) {
-            CP_sub.all(function() {
+            CP_sub.full(function() {
               return err ? callback(err) : callback(null, result);
             });
           } else {
