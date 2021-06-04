@@ -210,7 +210,7 @@
                                                                             &nbsp;&nbsp;<span class="id_imdb">imdb_id</span> - ID imdb.com
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
-                                                                            &nbsp;&nbsp;<span class="id_tmdb">tmdb_id</span> - ID tmdb.org
+                                                                            &nbsp;&nbsp;<span class="id_tmdb">tmdb_id</span> - ID tmdb.org (type=movie|tv)
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0">
                                                                             &nbsp;&nbsp;<span class="id_douban">douban_id</span> - ID movie.douban.com
@@ -226,6 +226,18 @@
                                                                         </code><br>
                                                                         <code class="text-muted" style="margin:0 0 1px 0">
                                                                             &nbsp;&nbsp;type - movie or tv
+                                                                        </code><br>
+                                                                        <code class="text-muted">
+                                                                            &nbsp;&nbsp;<%- config.protocol %><%- config.subdomain %><%- config.domain %>/api?token=9b24679ee2abc8ca012ca4b07223739f&<span class="id_kp">type</span>=tv
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;type - movie or tv
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;limit - movies per page (max 100)
+                                                                        </code><br>
+                                                                        <code class="text-muted" style="margin:0 0 1px 0">
+                                                                            &nbsp;&nbsp;page - number page (max 1000 movies)
                                                                         </code><br>
                                                                     </div>
                                                                 </div>

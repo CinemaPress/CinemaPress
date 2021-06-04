@@ -144,6 +144,85 @@ function movieApi(query, ip, callback) {
 }
 
 /**
+ * Get movies.
+ *
+ * @return {Object}
+ */
+
+function moviesApi(query, ip, callback) {
+  var hash = md5(JSON.stringify(query));
+  if (CP_cache.getSync(hash)) {
+    return callback(null, CP_cache.getSync(hash));
+  }
+  var page = query['page'] || 1;
+  var limit = query['limit'] || 20;
+  var max_matches = page * limit;
+  if (limit > 100) {
+    return callback('Max 100 movies per page');
+  }
+  if (max_matches > 1000) {
+    return callback('Max 1 000 movies');
+  }
+  delete query['page'];
+  delete query['limit'];
+  var connection = sphinx.createConnection({});
+  connection.connect(function(err) {
+    if (err) {
+      if (typeof connection !== 'undefined' && connection) {
+        connection.end();
+      }
+      console.error(err);
+      return callback('Error connection.');
+    }
+    connection.query(
+      'SELECT *, 1 AS movie, custom.lastmod AS lastmod FROM rt_' +
+        config.domain.replace(/[^a-z0-9]/g, '_') +
+        ' WHERE ' +
+        Object.keys(Object.assign(query, { movie: '1' }))
+          .map(function(key) {
+            if (!query[key]) return false;
+            return '`' + key + '` = ' + query[key] + '';
+          })
+          .filter(Boolean)
+          .join(' AND ') +
+        ' ORDER BY lastmod DESC' +
+        ' LIMIT ' +
+        (page * limit - limit) +
+        ',' +
+        limit +
+        ' OPTION max_matches = ' +
+        max_matches +
+        '; SHOW META',
+      function(err, results) {
+        if (typeof connection !== 'undefined' && connection) {
+          connection.end();
+        }
+        if (err) {
+          console.error(err);
+          return callback('Error query.');
+        }
+        if (!results || !results[0] || !results[0][0] || !results[0][0].id) {
+          return callback('Error result.');
+        }
+        var time = results[1] && results[1][2];
+        var api_result = results[0].map(function(movie) {
+          var m = structureMovieApi(movie);
+          delete m.players;
+          return m;
+        });
+        var data = {
+          status: 'success',
+          time: time.Value,
+          result: api_result
+        };
+        CP_cache.setSync(hash, data);
+        callback(null, data);
+      }
+    );
+  });
+}
+
+/**
  * Generate secret iframe link.
  *
  * @return {Object}
@@ -328,6 +407,31 @@ function structureMovieApi(movie) {
         });
       }
     });
+  players =
+    players && players.length
+      ? players
+          .sort(function(a, b) {
+            if (
+              typeof a.season === 'undefined' ||
+              typeof a.episode === 'undefined'
+            ) {
+              return -1;
+            }
+            return parseFloat(a.season) - parseFloat(b.season);
+          })
+          .sort(function(a, b) {
+            if (
+              typeof a.season === 'undefined' ||
+              typeof a.episode === 'undefined'
+            ) {
+              return -1;
+            }
+            if (b.season === a.season) {
+              return parseFloat(a.episode) - parseFloat(b.episode);
+            }
+            return 0;
+          })
+      : null;
   var data = {
     id: movie.id,
     imdb_id: (custom && custom.imdb_id) || null,
@@ -390,39 +494,14 @@ function structureMovieApi(movie) {
         })
       : null,
     trailer: (custom && custom.trailer) || null,
-    embed:
-      players && players.length
-        ? (config.language === 'ru' && config.ru.subdomain && config.ru.domain
-            ? config.protocol + config.ru.subdomain + config.ru.domain
-            : config.protocol + config.subdomain + config.domain) +
-          '/embed/' +
-          movie.id
-        : null,
-    players:
-      players && players.length
-        ? players
-            .sort(function(a, b) {
-              if (
-                typeof a.season === 'undefined' ||
-                typeof a.episode === 'undefined'
-              ) {
-                return -1;
-              }
-              return parseFloat(a.season) - parseFloat(b.season);
-            })
-            .sort(function(a, b) {
-              if (
-                typeof a.season === 'undefined' ||
-                typeof a.episode === 'undefined'
-              ) {
-                return -1;
-              }
-              if (b.season === a.season) {
-                return parseFloat(a.episode) - parseFloat(b.episode);
-              }
-              return 0;
-            })
-        : null,
+    embed: players
+      ? (config.language === 'ru' && config.ru.subdomain && config.ru.domain
+          ? config.protocol + config.ru.subdomain + config.ru.domain
+          : config.protocol + config.subdomain + config.domain) +
+        '/embed/' +
+        movie.id
+      : null,
+    players: players,
     imdb: {
       rating: movie.imdb_rating,
       votes: movie.imdb_vote
@@ -434,15 +513,19 @@ function structureMovieApi(movie) {
     web: {
       rating: movie.rating,
       votes: movie.vote
-    },
-    lastmod: (custom && custom.lastmod) || null
+    }
   };
+  if (players && players[0] && players[0].season && players[0].episode) {
+    data.season = players[0].season;
+    data.episode = players[0].episode;
+  }
   if (movie.quality) {
     data.quality = movie.quality;
   }
   if (movie.translate) {
     data.sound = movie.translate;
   }
+  data.lastmod = (custom && custom.lastmod) || null;
   return data;
 }
 
@@ -505,5 +588,6 @@ function createImgUrl(type, size, id) {
 }
 
 module.exports = {
-  movie: movieApi
+  movie: movieApi,
+  movies: moviesApi
 };

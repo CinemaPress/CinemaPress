@@ -597,18 +597,21 @@ router.get('/', function(req, res) {
   } else {
     ips.set(ip, tokens.get(token).ip);
   }
+  var movie = false;
   var q = {};
   ['imdb_id', 'tmdb_id', 'douban_id', 'wa_id', 'tvmaze_id', 'movie_id'].forEach(
     function(key) {
       if (req.query[key] && req.query[key].replace(/[^0-9]/g, '')) {
         q[key] =
           "'" + decodeURIComponent(req.query[key].replace(/[^0-9]/g, '')) + "'";
+        movie = true;
       }
     }
   );
   ['id', 'kp_id'].forEach(function(key) {
     if (req.query[key] && req.query[key].replace(/[^0-9]/g, '')) {
       q[key] = decodeURIComponent(req.query[key].replace(/[^0-9]/g, ''));
+      movie = true;
     }
   });
   if (req.query['type'] && req.query['type'].replace(/[^0-9]/g, '')) {
@@ -619,18 +622,38 @@ router.get('/', function(req, res) {
   ) {
     q['type'] = req.query['type'] === 'tv' ? 1 : 0;
   }
-  if (Object.keys(q).length <= 0) {
-    console.error('[ERROR PARAMS]', 'TOKEN:', token, 'IP:', ip);
-    return res
-      .status(404)
-      .json({ status: 'error', message: 'Your request is empty.' });
-  }
-  CP_api.movie(q, ip, function(err, result) {
-    if (err) {
-      return res.status(404).json({ status: 'error', message: err });
+  if (
+    req.query['limit'] &&
+    req.query['limit'].replace(/[^0-9]/g, '') &&
+    parseInt(req.query['limit'].replace(/[^0-9]/g, ''))
+  ) {
+    q['limit'] = parseInt(req.query['limit'].replace(/[^0-9]/g, ''));
+    if (q['limit'] <= 0 || q['limit'] > 100) {
+      q['limit'] = 100;
     }
-    return res.json(result);
-  });
+  }
+  if (
+    req.query['page'] &&
+    req.query['page'].replace(/[^0-9]/g, '') &&
+    parseInt(req.query['page'].replace(/[^0-9]/g, ''))
+  ) {
+    q['page'] = parseInt(req.query['page'].replace(/[^0-9]/g, ''));
+  }
+  if (movie) {
+    CP_api.movie(q, ip, function(err, result) {
+      if (err) {
+        return res.status(404).json({ status: 'error', message: err });
+      }
+      return res.json(result);
+    });
+  } else {
+    CP_api.movies(q, ip, function(err, result) {
+      if (err) {
+        return res.status(404).json({ status: 'error', message: err });
+      }
+      return res.json(result);
+    });
+  }
 });
 
 router.all('/', function(req, res) {
