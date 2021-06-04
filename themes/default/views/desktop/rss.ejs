@@ -10,9 +10,21 @@
                 ]]>...
             </description>
             <% movies.forEach(function (movie) { %>
-                <% var poster = (movie.poster || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster || movie.image) : ''; %>
-                <% var poster_big = (movie.poster_big || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster_big || movie.image) : ''; %>
-                <% var picture = (movie.picture || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.picture || movie.image) : ''; %>
+                <% var poster = (movie.poster || movie.image)
+                        ? /(http|\/\/)/i.test(movie.poster || movie.image)
+                                ? (movie.poster || movie.image)
+                                : config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster || movie.image)
+                        : ''; %>
+                <% var poster_big = (movie.poster_big || movie.image)
+                        ? /(http|\/\/)/i.test(movie.poster_big || movie.image)
+                                ? (movie.poster_big || movie.image)
+                                : config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster_big || movie.image)
+                        : ''; %>
+                <% var picture = (movie.picture || movie.image)
+                        ? /(http|\/\/)/i.test(movie.picture || movie.image)
+                                ? (movie.picture || movie.image)
+                                : config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.picture || movie.image)
+                        : ''; %>
                 <item <% if (movie.turbo_false) { %>turbo="false"<% } else { %>turbo="true"<% } %>>
                     <title><%= movie.title %></title>
                     <link><%- movie.url %></link>
