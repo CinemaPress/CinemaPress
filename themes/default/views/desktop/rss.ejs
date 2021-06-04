@@ -4,15 +4,15 @@
     <% if (typeof movies === 'object') { %>
         <channel>
             <title><%= config.titles.index %></title>
-            <link><%- config.protocol %><%- (config.bomain ? config.botdomain : config.subdomain) %><%- (config.bomain || config.domain) %></link>
+            <link><%- config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) %></link>
             <description>
                 <![CDATA[<%- config.descriptions.index.replace(/<\/?[^>]+>/g, '').replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '').substr(0, 200).replace(/"([^"]*?)"/gi, '«$1»').replace('"', '&quot;') %>
                 ]]>...
             </description>
             <% movies.forEach(function (movie) { %>
-                <% var poster = (movie.poster || movie.image) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + (movie.poster || movie.image) : ''; %>
-                <% var poster_big = (movie.poster_big || movie.image) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + (movie.poster_big || movie.image) : ''; %>
-                <% var picture = (movie.picture || movie.image) ? config.protocol + (config.bomain ? config.botdomain : config.subdomain) + (config.bomain || config.domain) + (movie.picture || movie.image) : ''; %>
+                <% var poster = (movie.poster || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster || movie.image) : ''; %>
+                <% var poster_big = (movie.poster_big || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.poster_big || movie.image) : ''; %>
+                <% var picture = (movie.picture || movie.image) ? config.protocol + (config.ru.bomain ? config.ru.botdomain + config.ru.bomain : config.botdomain + config.bomain) + (movie.picture || movie.image) : ''; %>
                 <item <% if (movie.turbo_false) { %>turbo="false"<% } else { %>turbo="true"<% } %>>
                     <title><%= movie.title %></title>
                     <link><%- movie.url %></link>

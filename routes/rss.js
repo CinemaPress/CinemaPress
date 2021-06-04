@@ -118,11 +118,18 @@ router.get('/?', function(req, res, next) {
         ? req.userinfo.protocol
         : config.protocol;
     options.domain =
-      req.userinfo && req.userinfo.domain ? req.userinfo.domain : config.domain;
+      req.userinfo && req.userinfo.domain
+        ? req.userinfo.domain
+        : config.ru.bomain
+        ? config.ru.bomain
+        : config.bomain;
     options.origin =
       req.userinfo && req.userinfo.origin
         ? req.userinfo.origin
-        : config.protocol + config.subdomain + config.domain;
+        : config.protocol +
+          (config.ru.bomain
+            ? config.ru.botdomain + config.ru.bomain
+            : config.botdomain + config.bomain);
     options.content_image = config.default.image;
 
     var render = {};
