@@ -29,7 +29,7 @@
 
 > #### Sakinisha kupitia terminal
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![Sakinisha kupitia terminal](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

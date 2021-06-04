@@ -29,7 +29,7 @@
 
 > #### Cài đặt qua thiết bị đầu cuối
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![Cài đặt qua thiết bị đầu cuối](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

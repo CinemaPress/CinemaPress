@@ -29,7 +29,7 @@
 
 > #### 터미널을 통해 설치
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![터미널을 통해 설치](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

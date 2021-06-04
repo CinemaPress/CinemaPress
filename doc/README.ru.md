@@ -29,7 +29,7 @@
 
 > #### Установка через терминал
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![Установка через терминал](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

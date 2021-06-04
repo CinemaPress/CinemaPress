@@ -29,7 +29,7 @@
 
 > #### Terminal aracılığıyla yükleyin
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![Terminal aracılığıyla yükleyin](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 

@@ -29,7 +29,7 @@
 
 > #### Εγκαταστήστε μέσω τερματικού
 
-`bash <(wget cinemapress.sh -qO-)`
+`bash <(wget git.io/JGKNq -qO-)`
 
 ![Εγκαταστήστε μέσω τερματικού](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/cli.png)
 
