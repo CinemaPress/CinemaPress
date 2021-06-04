@@ -451,11 +451,13 @@ module.exports = {
         "order": 2,
         "latest": 0,
         "custom": [
+          "/api?token=TEST&type=tv ~ result.id ~ result.0.season ~ result.0.episode",
           "https://api.tvmaze.com/schedule/web ~ 0._embedded.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number",
           "https://api.tvmaze.com/schedule ~ 0.show.externals.imdb <> custom.imdb_id ~ 0.season ~ 0.number"
         ]
       },
       "custom": [
+        "# /api?token=TEST&id=[id] ~ result.players.0.season ~ result.players.0.episode",
         "# http://api.tvmaze.com/shows/[tvmaze_id]?embed=episodes ~ _embedded.episodes.0.season ~ _embedded.episodes.0.number"
       ],
       "translations": ""
