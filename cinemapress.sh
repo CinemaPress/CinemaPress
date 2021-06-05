@@ -818,6 +818,15 @@ ip_install() {
 
     echo "${PRC_}% database" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
+    _header "MOVIES"
+    _content
+    _content "Update movies information"
+    _content "using the instructions:"
+    _content "https://enota.club/threads/3043"
+    _content
+    _s
+    exit 0
+
     if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
         touch "/home/.uptimerobot" &>/dev/null
     fi
@@ -2789,6 +2798,13 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "images" )
+            _header "IMAGES"
+            _content
+            _content "No images!"
+            _content
+            _s
+            exit 0
+
             _br "${3}"
             read_domain "${2}"
             sh_not
@@ -2817,6 +2833,13 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "premium" )
+            _header "PREMIUM"
+            _content
+            _content "No premium themes!"
+            _content
+            _s
+            exit 0
+
             _br "${4}"
             read_domain "${2}"
             sh_not
@@ -4895,7 +4918,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
             echo "CinemaPress ${CP_VER}"
             _br
-            echo "Copyright (c) 2014-2020, CinemaPress (https://cinemapress.io)"
+            echo "Copyright (c) 2014-..., CinemaPress"
             _br
             exit 0
         ;;
