@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Lihat pemain hanya di iFRAME",
 	"Устаревшие функции": "Fungsi yang sudah ketinggalan zaman",
 	"API веб-сайта": "API situs web",
-	"Показывать только первый успешный результат": "Hanya menunjukkan hasil yang sukses pertama"
+	"Показывать только первый успешный результат": "Hanya menunjukkan hasil yang sukses pertama",
+	"Сервер информации о фильмах": "Server informasi movie",
+	"Настройка подключения удаленного сервера информации о фильмах": "Mengkonfigurasi server informasi movie jarak jauh"
 }

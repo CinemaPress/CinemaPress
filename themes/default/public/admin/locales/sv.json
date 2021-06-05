@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Visa spelare endast i iframe",
 	"Устаревшие функции": "Föråldrade funktioner",
 	"API веб-сайта": "Hemsida api",
-	"Показывать только первый успешный результат": "Visa endast det första framgångsrika resultatet"
+	"Показывать только первый успешный результат": "Visa endast det första framgångsrika resultatet",
+	"Сервер информации о фильмах": "Movieinformationsserver",
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurera fjärrmoviesinformationsservern"
 }

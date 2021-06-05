@@ -82,7 +82,11 @@
                                 <% if (line.days) { %>
                                     <p><%= __('Автопубликация на %s дней', line.days) %></p>
                                 <% } %>
-                                <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
+                                <% if (line.counts.pub !== line.counts.all) { %>
+                                    <span><strong><%- line.counts.pub %></strong>&nbsp;/&nbsp;<%- line.counts.fil %>&nbsp;/&nbsp;<%- line.counts.all %></span>
+                                <% } else { %>
+                                    <span><strong><%- line.counts.pub %></strong></span>
+                                <% } %>
                             </div>
                         <% } else { %>
                             <div class="progress-project-footer">

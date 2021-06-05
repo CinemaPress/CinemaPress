@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Yalnızca iFrame'da oynatıcıyı görüntüleyin",
 	"Устаревшие функции": "Eski fonksiyonlar",
 	"API веб-сайта": "Websitesi aPI",
-	"Показывать только первый успешный результат": "Sadece ilk başarılı sonucu göster"
+	"Показывать только первый успешный результат": "Sadece ilk başarılı sonucu göster",
+	"Сервер информации о фильмах": "Movie bilgi sunucusu",
+	"Настройка подключения удаленного сервера информации о фильмах": "Uzaktan movie bilgi sunucusunu yapılandırma"
 }

@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Tazama mchezaji tu katika iframe",
 	"Устаревшие функции": "Kazi zilizopita",
 	"API веб-сайта": "Tovuti ya aPI",
-	"Показывать только первый успешный результат": "Onyesha matokeo ya kwanza ya mafanikio"
+	"Показывать только первый успешный результат": "Onyesha matokeo ya kwanza ya mafanikio",
+	"Сервер информации о фильмах": "Taarifa ya filamu server",
+	"Настройка подключения удаленного сервера информации о фильмах": "Inasanidi seva ya habari ya kijijini"
 }

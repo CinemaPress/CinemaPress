@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Csak az iframe-ben",
 	"Устаревшие функции": "Elavult funkciók",
 	"API веб-сайта": "Webhely aPI",
-	"Показывать только первый успешный результат": "Csak az első sikeres eredmény megjelenítése"
+	"Показывать только первый успешный результат": "Csak az első sikeres eredmény megjelenítése",
+	"Сервер информации о фильмах": "Movieinformációs szerver",
+	"Настройка подключения удаленного сервера информации о фильмах": "A távoli movieinformációs szerver konfigurálása"
 }

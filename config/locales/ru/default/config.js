@@ -1,5 +1,8 @@
 module.exports = {
   "database": {
+    "host": "localhost",
+    "port": 3306,
+    "all_movies": "example.com",
     "key": "FREE",
     "date": ""
   },
@@ -186,7 +189,7 @@ module.exports = {
     },
     "year": {
       "name": "Фильмы [year] года",
-      "keys": "2020",
+      "keys": "2021",
       "sorting": "premiere-up",
       "count": 15,
       "order": 3
@@ -227,7 +230,7 @@ module.exports = {
     },
     "count": {
       "type": "year",
-      "key": "2020",
+      "key": "2021",
       "sorting": "premiere-up"
     },
     "link": 0

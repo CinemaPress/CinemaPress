@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Se afspiller kun i iframe",
 	"Устаревшие функции": "Forældede funktioner",
 	"API веб-сайта": "Website api",
-	"Показывать только первый успешный результат": "Vis kun det første succesfulde resultat"
+	"Показывать только первый успешный результат": "Vis kun det første succesfulde resultat",
+	"Сервер информации о фильмах": "Movieinformationsserver",
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguration af fjernmovieinformationsserveren"
 }

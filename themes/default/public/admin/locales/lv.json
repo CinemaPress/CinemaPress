@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Skatīt spēlētāju tikai iFRAME",
 	"Устаревшие функции": "Novecojušas funkcijas",
 	"API веб-сайта": "Tīmekļa vietne aPI",
-	"Показывать только первый успешный результат": "Parādīt tikai pirmo veiksmīgo rezultātu"
+	"Показывать только первый успешный результат": "Parādīt tikai pirmo veiksmīgo rezultātu",
+	"Сервер информации о фильмах": "Movieu informācijas serveris",
+	"Настройка подключения удаленного сервера информации о фильмах": "Attālās movieu informācijas servera konfigurēšana"
 }

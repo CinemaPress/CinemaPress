@@ -72,7 +72,7 @@ function movieApi(query, ip, callback) {
     }
     return callback(null, data);
   }
-  var connection = sphinx.createConnection({});
+  var connection = sphinx.createConnection(config.database);
   connection.connect(function(err) {
     if (err) {
       if (typeof connection !== 'undefined' && connection) {
@@ -165,7 +165,7 @@ function moviesApi(query, ip, callback) {
   }
   delete query['page'];
   delete query['limit'];
-  var connection = sphinx.createConnection({});
+  var connection = sphinx.createConnection(config.database);
   connection.connect(function(err) {
     if (err) {
       if (typeof connection !== 'undefined' && connection) {

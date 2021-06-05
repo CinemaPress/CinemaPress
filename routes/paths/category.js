@@ -255,30 +255,24 @@ function allCategory(type, options, callback) {
         },
         soon: function(callback) {
           return modules.soon.status
-            ? CP_get.additional(
-                { all_movies: process.env.CP_SPB },
-                'soon',
-                options,
-                function(err, movies) {
-                  if (options.debug) {
-                    options.debug.detail.push({
-                      type: 'soon',
-                      mem:
-                        Math.round(
-                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
-                        ) / 100,
-                      duration:
-                        new Date() - options.debug.duration.current + 'ms'
-                    });
-                    options.debug.duration.current = new Date();
-                  }
-                  if (err) return callback(err);
-
-                  return movies && movies.length
-                    ? callback(null, movies)
-                    : callback(null, []);
+            ? CP_get.additional({}, 'soon', options, function(err, movies) {
+                if (options.debug) {
+                  options.debug.detail.push({
+                    type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
+                    duration: new Date() - options.debug.duration.current + 'ms'
+                  });
+                  options.debug.duration.current = new Date();
                 }
-              )
+                if (err) return callback(err);
+
+                return movies && movies.length
+                  ? callback(null, movies)
+                  : callback(null, []);
+              })
             : callback(null, []);
         },
         news: function(callback) {
@@ -561,30 +555,24 @@ function oneCategory(type, key, page, sorting, options, callback) {
         },
         soon: function(callback) {
           return modules.soon.status
-            ? CP_get.additional(
-                { all_movies: process.env.CP_SPB },
-                'soon',
-                options,
-                function(err, movies) {
-                  if (options.debug) {
-                    options.debug.detail.push({
-                      type: 'soon',
-                      mem:
-                        Math.round(
-                          (process.memoryUsage().heapUsed / 1024 / 1024) * 100
-                        ) / 100,
-                      duration:
-                        new Date() - options.debug.duration.current + 'ms'
-                    });
-                    options.debug.duration.current = new Date();
-                  }
-                  if (err) return callback(err);
-
-                  return movies && movies.length
-                    ? callback(null, movies)
-                    : callback(null, []);
+            ? CP_get.additional({}, 'soon', options, function(err, movies) {
+                if (options.debug) {
+                  options.debug.detail.push({
+                    type: 'soon',
+                    mem:
+                      Math.round(
+                        (process.memoryUsage().heapUsed / 1024 / 1024) * 100
+                      ) / 100,
+                    duration: new Date() - options.debug.duration.current + 'ms'
+                  });
+                  options.debug.duration.current = new Date();
                 }
-              )
+                if (err) return callback(err);
+
+                return movies && movies.length
+                  ? callback(null, movies)
+                  : callback(null, []);
+              })
             : callback(null, []);
         },
         news: function(callback) {

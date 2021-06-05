@@ -231,7 +231,7 @@ module.exports = {
       "script": "{\"data-player\":\"trailer\",\"data-bg\":\"#2b2b2b\",\"data-resize\":\"1\"}",
       "custom": [
         "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_",
-        "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCL85Aun0K58V1YhjUtm0fryvRoBHNUREE&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
+        "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_"
       ],
       "embed": {
         "dataset": [
@@ -267,7 +267,7 @@ module.exports = {
             "/api?token=TEST&id=[id] ~ \"\" ~ result.embed <> _VALUE_?season=[season]&episode=[episode]",
             "/api?token=TEST&id=[id] ~ \"Trailer\" ~ result.trailer",
             "https://api.themoviedb.org/3/[type]/[tmdb_id]?language=en&append_to_response=videos&api_key=269890f657dddf4635473cf4cf456576 ~ \"Trailer (TMDb)\" ~ videos.results.0.key <> https://www.youtube.com/embed/_VALUE_ ~ videos.results.0.key <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg",
-            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyDcr11tMC1PDGyLAyWP7K2XYD9FeWARPnA&q=[title]%20[year]%20trailer ~ \"Trailer (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg"
+            "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=1&key=AIzaSyCsT5C4pBFWpzyP4hEOen2ZBhn26AhMCkM&q=[title]%20[year]%20trailer ~ \"Trailer (YouTube)\" ~ items.0.id.videoId <> https://www.youtube.com/embed/_VALUE_ ~ items.0.id.videoId <> https://img.youtube.com/vi/_VALUE_/sddefault.jpg"
           ],
           "first": 1
         },
@@ -414,7 +414,7 @@ module.exports = {
     }
   },
   "mobile": {
-    "status": false,
+    "status": true,
     "data": {
       "theme": "custom",
       "custom": {
@@ -695,7 +695,7 @@ module.exports = {
     }
   },
   "tv": {
-    "status": false,
+    "status": true,
     "data": {
       "theme": "default",
       "custom": {
@@ -734,7 +734,7 @@ module.exports = {
     "status": true,
     "data": {
       "tokens": [
-        "TEST ~ 10req/1sec ~ 1000 ~ 10req/1sec ~ 1000"
+        "TEST ~ 50req/1sec ~ 10000 ~ 50req/1sec ~ unlimited"
       ]
     }
   }

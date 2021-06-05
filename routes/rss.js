@@ -62,7 +62,11 @@ router.get('/?', function(req, res, next) {
   var url =
     req.userinfo && req.userinfo.origin
       ? req.userinfo.origin + req.originalUrl
-      : config.protocol + config.subdomain + config.domain + req.originalUrl;
+      : config.protocol +
+        (config.ru.bomain
+          ? config.ru.botdomain + config.ru.bomain
+          : config.botdomain + config.bomain) +
+        req.originalUrl;
   var urlHash = md5(url.toLowerCase() + process.env['CP_VER']);
 
   getRender(function(err, render) {
@@ -121,8 +125,8 @@ router.get('/?', function(req, res, next) {
       req.userinfo && req.userinfo.domain
         ? req.userinfo.domain
         : config.ru.bomain
-        ? config.ru.bomain
-        : config.bomain;
+        ? config.ru.botdomain + config.ru.bomain
+        : config.botdomain + config.bomain;
     options.origin =
       req.userinfo && req.userinfo.origin
         ? req.userinfo.origin
@@ -134,6 +138,7 @@ router.get('/?', function(req, res, next) {
 
     var render = {};
     render.config = config;
+    render.origin = options.origin;
     render.movies = [];
     var collection = req.query.collection
       ? CP_regexp.str(req.query.collection)

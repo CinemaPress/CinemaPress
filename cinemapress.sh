@@ -31,7 +31,7 @@ FTP_NAME=${FTP_NAME:-}
 CP_DOMAIN_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 CP_MIRROR_=$(echo "${CP_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
 
-CP_SPB="_${CP_DOMAIN_}_"
+CP_SPB=""
 
 CP_IP="domain"
 
@@ -2176,8 +2176,6 @@ _s() {
 }
 
 docker_run() {
-    sed -Ei "s/options.host/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
-    sed -Ei "s/options.port/0/" /home/"${CP_DOMAIN}"/node_modules/sphinx/lib/ConnectionConfig.js
     if [ ! -d "/home/${CP_DOMAIN}/config/production" ]; then
         find /var/cinemapress -maxdepth 1 -type f -iname '\.gitkeep' -delete
         cp -rf /var/cinemapress/* /home/"${CP_DOMAIN}"
@@ -2574,7 +2572,7 @@ docker_spb() {
     SPB="/var/lib/sphinx/data/movies_${CP_DOMAIN_}.spb"
     CNF="/home/${CP_DOMAIN}/config/production/config.js"
     PRC="/home/${CP_DOMAIN}/process.json"
-    CP_SPB="_${CP_DOMAIN_}_"
+    CP_SPB=""
     if [ ! -f "${SPB}" ] && [ -f "${CNF}" ] && [ -f "${PRC}" ]; then
         AA=$(grep "\"CP_ALL\"" "${PRC}")
         KK=$(grep "\"key\"" "${CNF}")
@@ -2597,7 +2595,7 @@ docker_spb() {
         if [ "${#KKK}" -eq "32" ]; then
             AAA=$(openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -in "${SPB}" -out - -k "${CP_DOMAIN}/${KKK}" -d 2>/dev/null)
             if [ "${#AAA}" -eq "7" ]; then
-                CP_SPB="${CP_SPB} | _${AAA}_"
+                CP_SPB="_${CP_DOMAIN_}_ | _${AAA}_"
             fi
         fi
     fi
@@ -3470,7 +3468,7 @@ while [ "${WHILE}" -lt "2" ]; do
             sh_progress
             if [ ! -f /home/"${CP_BOMAIN}"/process.json ]; then
                 sh_progress
-                1_install "${CP_BOMAIN}" "ru" "default" "pass"
+                1_install "${CP_BOMAIN}" "en" "default" "pass"
             fi
             if [ "${CLOUDFLARE_EMAIL}" != "" ] && [ "${CLOUDFLARE_API_KEY}" != "" ]; then
                 sh_progress

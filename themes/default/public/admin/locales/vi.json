@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Xem trình phát chỉ trong iframe",
 	"Устаревшие функции": "Chức năng lỗi thời",
 	"API веб-сайта": "Api trang web",
-	"Показывать только первый успешный результат": "Chỉ hiển thị kết quả thành công đầu tiên"
+	"Показывать только первый успешный результат": "Chỉ hiển thị kết quả thành công đầu tiên",
+	"Сервер информации о фильмах": "Máy chủ thông tin phim",
+	"Настройка подключения удаленного сервера информации о фильмах": "Cấu hình máy chủ thông tin phim từ xa"
 }

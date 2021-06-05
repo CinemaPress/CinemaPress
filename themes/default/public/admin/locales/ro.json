@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Vizualizați jucătorul numai în iframe",
 	"Устаревшие функции": "Funcții depășite",
 	"API веб-сайта": "API site",
-	"Показывать только первый успешный результат": "Arată doar primul rezultat de succes"
+	"Показывать только первый успешный результат": "Arată doar primul rezultat de succes",
+	"Сервер информации о фильмах": "Movie iNFORMATION sERVER",
+	"Настройка подключения удаленного сервера информации о фильмах": "Configurarea serverului de informații de la distanță"
 }

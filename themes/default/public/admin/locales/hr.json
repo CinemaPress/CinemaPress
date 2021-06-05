@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Prikaz playera samo u iframe",
 	"Устаревшие функции": "Zastarjele funkcije",
 	"API веб-сайта": "Web stranica aPI",
-	"Показывать только первый успешный результат": "Prikaži samo prvi uspješan rezultat"
+	"Показывать только первый успешный результат": "Prikaži samo prvi uspješan rezultat",
+	"Сервер информации о фильмах": "Movieski informacijski poslužitelj",
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguriranje poslužitelja za daljinsko movieova"
 }

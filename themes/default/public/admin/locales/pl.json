@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Wyświetl gracz tylko w iFRame",
 	"Устаревшие функции": "Przestarzałe funkcje",
 	"API веб-сайта": "Strona internetowa aPI",
-	"Показывать только первый успешный результат": "Pokaż tylko pierwszy udany wynik"
+	"Показывать только первый успешный результат": "Pokaż tylko pierwszy udany wynik",
+	"Сервер информации о фильмах": "Serwer informacji movieowej",
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurowanie serwera informacji zdalnego movieu"
 }

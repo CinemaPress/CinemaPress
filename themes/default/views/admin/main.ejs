@@ -1949,6 +1949,40 @@
                             <div class="cinema-box">
                                 <div class="cinema-box-header">
                                     <div class="cinema-label">
+                                        <i class="fas fa-tape"></i>&nbsp;&nbsp;&nbsp;<%= __('Сервер информации о фильмах') %>
+                                    </div>
+                                    <div class="cinema-label hidden-xs" style="float: right">
+                                        <a href="https://CinemaPress.io/<%- config.language %>/admin/main.html"
+                                           class="csstip"
+                                           data-title="<%= __('Настройка подключения удаленного сервера информации о фильмах') %>"
+                                           target="_blank">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="inner-padding">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-xs-8">
+                                            <div class="input-group">
+                                                <input name="config.database.host" value="<%= config.database.host %>" class="form-control input_url text-right" type="text" placeholder="localhost">
+                                                <span class="input-group-addon text-muted">:</span>
+                                                <input name="config.database.port" value="<%= config.database.port %>" class="form-control input_number" type="text" placeholder="3306">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-xs-4">
+                                            <input name="config.database.all_movies" value="<%= config.database.all_movies %>" class="form-control input_url" type="text" placeholder="example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-12">
+                            <div class="cinema-box">
+                                <div class="cinema-box-header">
+                                    <div class="cinema-label">
                                         <i class="fas fa-photo-video"></i>&nbsp;&nbsp;&nbsp;<%= __('Зафиксировать кэш') %>
                                     </div>
                                     <div class="cinema-label hidden-xs" style="float: right">

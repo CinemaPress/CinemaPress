@@ -1042,5 +1042,7 @@
 	"Просмотр плеера только в iframe": "Vaata mängijat ainult iframe'is",
 	"Устаревшие функции": "Vananenud funktsioonid",
 	"API веб-сайта": "Veebisait aPI",
-	"Показывать только первый успешный результат": "Näita ainult esimese eduka tulemuse"
+	"Показывать только первый успешный результат": "Näita ainult esimese eduka tulemuse",
+	"Сервер информации о фильмах": "Movieiteabe server",
+	"Настройка подключения удаленного сервера информации о фильмах": "Kaugmovieide infoserveri seadistamine"
 }

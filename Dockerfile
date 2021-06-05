@@ -56,6 +56,6 @@ RUN set -o pipefail \
     && echo -e "#!/bin/bash\n/usr/bin/cinemapress container cron >> /home/\${CP_DOMAIN}/log/cron_\$(date '+%d_%m_%Y').log" \
         > /etc/periodic/hourly/cron \
     && chmod a+x /etc/periodic/hourly/cron
-EXPOSE 3000
+EXPOSE 3000 3306
 CMD ["/usr/bin/cinemapress", "container", "run"]
 HEALTHCHECK --interval=60s --timeout=30s --start-period=30s --retries=10 CMD curl --fail http://localhost:3000/ping || exit 1
