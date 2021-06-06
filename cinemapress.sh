@@ -415,6 +415,8 @@ ip_install() {
         fi
     fi
 
+    sleep 20
+
     if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
         touch "/home/.uptimerobot" &>/dev/null
     fi

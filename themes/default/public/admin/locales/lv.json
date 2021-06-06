@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Tīmekļa vietne aPI",
 	"Показывать только первый успешный результат": "Parādīt tikai pirmo veiksmīgo rezultātu",
 	"Сервер информации о фильмах": "Movieu informācijas serveris",
-	"Настройка подключения удаленного сервера информации о фильмах": "Attālās movieu informācijas servera konfigurēšana"
+	"Настройка подключения удаленного сервера информации о фильмах": "Attālās movieu informācijas servera konfigurēšana",
+	"Защита iframe ссылок": "Iframe saite aizsardzība"
 }

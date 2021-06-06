@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Veebisait aPI",
 	"Показывать только первый успешный результат": "Näita ainult esimese eduka tulemuse",
 	"Сервер информации о фильмах": "Movieiteabe server",
-	"Настройка подключения удаленного сервера информации о фильмах": "Kaugmovieide infoserveri seadistamine"
+	"Настройка подключения удаленного сервера информации о фильмах": "Kaugmovieide infoserveri seadistamine",
+	"Защита iframe ссылок": "Iframe lingi kaitse"
 }

@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "API situs web",
 	"Показывать только первый успешный результат": "Hanya menunjukkan hasil yang sukses pertama",
 	"Сервер информации о фильмах": "Server informasi movie",
-	"Настройка подключения удаленного сервера информации о фильмах": "Mengkonfigurasi server informasi movie jarak jauh"
+	"Настройка подключения удаленного сервера информации о фильмах": "Mengkonfigurasi server informasi movie jarak jauh",
+	"Защита iframe ссылок": "IFrame link protection"
 }

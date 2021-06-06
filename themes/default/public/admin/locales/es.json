@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "API del sitio web",
 	"Показывать только первый успешный результат": "Mostrar solo el primer resultado exitoso",
 	"Сервер информации о фильмах": "Servidor de información de película",
-	"Настройка подключения удаленного сервера информации о фильмах": "Configuración del servidor de información de película remota"
+	"Настройка подключения удаленного сервера информации о фильмах": "Configuración del servidor de información de película remota",
+	"Защита iframe ссылок": "Protección de enlaces iframe"
 }

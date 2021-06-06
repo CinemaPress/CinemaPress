@@ -60,7 +60,7 @@ var embeds = new LRU({ maxAge: 3600000, max: 1000 });
 var err_top =
   '<!DOCTYPE html><html lang="' +
   config.language +
-  '"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet"> <style>*{margin:30px 0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:"Play",sans-serif;}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);width:300px}</style></head><body><div class="container">';
+  '"><head><meta charset="utf-8"><title>Error embed</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet"> <style>*{margin:100px auto;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:"Play",sans-serif;}.container{text-align:center;position:absolute;top:50%;left:50%;-moz-transform:translateX(-50%) translateY(-50%);-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);}</style></head><body><div class="container">';
 var err_bottom = '</div></body></html>';
 
 router.get('/:id/:hash?', function(req, res) {
@@ -110,9 +110,20 @@ router.get('/:id/:hash?', function(req, res) {
         }
         var name = '';
         var src = '';
+        var simple_ip = modules.player.data.embed.protected
+          ? ip.indexOf('.') + 1
+            ? ip
+                .split('.')
+                .slice(0, 2)
+                .join('.')
+            : ip
+                .split(':')
+                .slice(0, 4)
+                .join(':')
+          : '';
         result.result.players.forEach(function(p) {
           var id = md5(
-            p.src + '.' + ip + '.' + new Date().toJSON().substr(0, 10)
+            p.src + '.' + simple_ip + '.' + new Date().toJSON().substr(0, 10)
           );
           if (id && hash && id === hash && p.name && p.src) {
             name = p.name;
@@ -130,7 +141,13 @@ router.get('/:id/:hash?', function(req, res) {
               '" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowtransparency="true" scrolling="no" style="margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;background:#000"></iframe></body></html>'
           );
         } else {
-          return res.status(404).send(err_top + 'Not player!' + err_bottom);
+          return res
+            .status(404)
+            .send(
+              err_top +
+                'Your IP has changed, please refresh the page!' +
+                err_bottom
+            );
         }
       });
     } else {

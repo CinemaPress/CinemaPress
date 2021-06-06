@@ -1043,5 +1043,6 @@
   "API веб-сайта": "Website API",
   "Показывать только первый успешный результат": "Show only the first successful result",
   "Сервер информации о фильмах": "Movie information server",
-  "Настройка подключения удаленного сервера информации о фильмах": "Configuring the remote movie information server"
+  "Настройка подключения удаленного сервера информации о фильмах": "Configuring the remote movie information server",
+  "Защита iframe ссылок": "Protection of iframe links"
 }

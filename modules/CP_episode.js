@@ -135,7 +135,12 @@ function codeEpisode() {
 
   var li = '<style>.cinemapress_li:hover{opacity:1 !important}</style>';
 
-  return modules.episode.status
+  return modules.episode.status &&
+    modules.episode.data.custom &&
+    modules.episode.data.custom.length &&
+    modules.episode.data.custom.filter(function(e) {
+      return e && e.trim().charAt(0) !== '#';
+    }).length
     ? '<script>' + code.episodes + '</script>' + li
     : '';
 }

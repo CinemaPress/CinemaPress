@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Hemsida api",
 	"Показывать только первый успешный результат": "Visa endast det första framgångsrika resultatet",
 	"Сервер информации о фильмах": "Movieinformationsserver",
-	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurera fjärrmoviesinformationsservern"
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurera fjärrmoviesinformationsservern",
+	"Защита iframe ссылок": "Iframe länkskydd"
 }

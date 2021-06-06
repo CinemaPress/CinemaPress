@@ -229,11 +229,22 @@ function moviesApi(query, ip, callback) {
  */
 
 function secretIframe(data, ip) {
+  var simple_ip = modules.player.data.embed.protected
+    ? ip.indexOf('.') + 1
+      ? ip
+          .split('.')
+          .slice(0, 2)
+          .join('.')
+      : ip
+          .split(':')
+          .slice(0, 4)
+          .join(':')
+    : '';
   data.result.players.forEach(function(m, i) {
     data.result.players[i].id = md5(
       data.result.players[i].src +
         '.' +
-        ip +
+        simple_ip +
         '.' +
         new Date().toJSON().substr(0, 10)
     );
@@ -241,8 +252,7 @@ function secretIframe(data, ip) {
       (config.language === 'ru' && config.ru.subdomain && config.ru.domain
         ? config.protocol + config.ru.subdomain + config.ru.domain
         : config.mirrors && config.mirrors.length
-        ? config.protocol +
-          config.mirrors[Math.floor(Math.random() * config.mirrors.length)]
+        ? config.protocol + config.mirrors[0]
         : config.protocol + config.subdomain + config.domain) +
       '/embed/' +
       data.result.id +

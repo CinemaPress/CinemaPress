@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Verkkosivusto aPI",
 	"Показывать только первый успешный результат": "Näytä vain ensimmäinen onnistunut tulos",
 	"Сервер информации о фильмах": "Elokuvatietopalvelin",
-	"Настройка подключения удаленного сервера информации о фильмах": "Etäkalvon tietopalvelimen määrittäminen"
+	"Настройка подключения удаленного сервера информации о фильмах": "Etäkalvon tietopalvelimen määrittäminen",
+	"Защита iframe ссылок": "Iframe-linkin suoja"
 }

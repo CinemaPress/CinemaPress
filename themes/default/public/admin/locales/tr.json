@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Websitesi aPI",
 	"Показывать только первый успешный результат": "Sadece ilk başarılı sonucu göster",
 	"Сервер информации о фильмах": "Movie bilgi sunucusu",
-	"Настройка подключения удаленного сервера информации о фильмах": "Uzaktan movie bilgi sunucusunu yapılandırma"
+	"Настройка подключения удаленного сервера информации о фильмах": "Uzaktan movie bilgi sunucusunu yapılandırma",
+	"Защита iframe ссылок": "İframe link koruması"
 }

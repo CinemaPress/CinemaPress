@@ -1397,6 +1397,34 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="spacer-10"></div>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="cinema-box">
+                                                                        <div class="cinema-box-header">
+                                                                            <div class="cinema-label">
+                                                                                <i class="fas fa-columns"></i>&nbsp;&nbsp;&nbsp;<%= __('Защита iframe ссылок') %>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="inner-padding">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 col-xs-12 text-center">
+                                                                                    <div class="inline-labels">
+                                                                                        <label>
+                                                                                            <input name="modules.player.data.embed.protected" value="1" <% if (modules.player.data.embed.protected) { %> checked=""<% } %> type="radio"><span></span> IP + 1 day
+                                                                                        </label>
+                                                                                        <label>
+                                                                                            <input name="modules.player.data.embed.protected" value="0" <% if (!modules.player.data.embed.protected) { %> checked="" <% } %> type="radio"><span></span> 1 day
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <script>
                                                               document.addEventListener('DOMContentLoaded', function() {
                                                                 var json = document.querySelector('[name="modules.player.data.embed.dataset"]');

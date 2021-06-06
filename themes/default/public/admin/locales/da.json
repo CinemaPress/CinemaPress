@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Website api",
 	"Показывать только первый успешный результат": "Vis kun det første succesfulde resultat",
 	"Сервер информации о фильмах": "Movieinformationsserver",
-	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguration af fjernmovieinformationsserveren"
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguration af fjernmovieinformationsserveren",
+	"Защита iframe ссылок": "Iframe link beskyttelse"
 }

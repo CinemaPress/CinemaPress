@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Web stranica aPI",
 	"Показывать только первый успешный результат": "Prikaži samo prvi uspješan rezultat",
 	"Сервер информации о фильмах": "Movieski informacijski poslužitelj",
-	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguriranje poslužitelja za daljinsko movieova"
+	"Настройка подключения удаленного сервера информации о фильмах": "Konfiguriranje poslužitelja za daljinsko movieova",
+	"Защита iframe ссылок": "Iframe zaštite veze"
 }

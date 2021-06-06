@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "API do site",
 	"Показывать только первый успешный результат": "Mostrar apenas o primeiro resultado bem-sucedido",
 	"Сервер информации о фильмах": "Movie information server",
-	"Настройка подключения удаленного сервера информации о фильмах": "Configurando o servidor de informações do moviee remoto"
+	"Настройка подключения удаленного сервера информации о фильмах": "Configurando o servidor de informações do moviee remoto",
+	"Защита iframe ссылок": "IFRAME lINK protection"
 }

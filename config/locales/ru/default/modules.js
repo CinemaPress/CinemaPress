@@ -242,7 +242,8 @@ module.exports = {
           "data-cinemaplayer-select-season=\"[season]\"",
           "data-cinemaplayer-select-episode=\"[episode]\""
         ],
-        "iframe": 0
+        "iframe": 0,
+        "protected": 1
       },
       "cinemaplayer": {
         "information": {

@@ -1044,5 +1044,6 @@
 	"API веб-сайта": "Tovuti ya aPI",
 	"Показывать только первый успешный результат": "Onyesha matokeo ya kwanza ya mafanikio",
 	"Сервер информации о фильмах": "Taarifa ya filamu server",
-	"Настройка подключения удаленного сервера информации о фильмах": "Inasanidi seva ya habari ya kijijini"
+	"Настройка подключения удаленного сервера информации о фильмах": "Inasanidi seva ya habari ya kijijini",
+	"Защита iframe ссылок": "Ulinzi wa kiungo cha iframe"
 }
