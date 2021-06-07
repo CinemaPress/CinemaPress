@@ -4812,8 +4812,10 @@ while [ "${WHILE}" -lt "2" ]; do
                         CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
                     fi
                     if [ "${CINEMATORRENT}" = "" ]; then continue; fi
+                    CFOLDER="/home/${CP_DOMAIN}/files/torrent/.process/${CINEMATORRENT_NAME}"
+                    if [ ! -d "${CFOLDER}" ]; then continue; fi
                     echo "UPLOAD TO ${CINEMATORRENT_NAME}"
-                    for DIR in "/home/${CP_DOMAIN}/files/torrent/.process"/*; do
+                    for DIR in "${CFOLDER}"/*; do
                         DIR_NAME="${DIR##*/}"
                         if [ -d "${DIR}" ]; then
                             echo "CREATE DIR ${DIR_NAME}"
@@ -4822,18 +4824,16 @@ while [ "${WHILE}" -lt "2" ]; do
                             else
                                 docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
                             fi
-                            for FILE in "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}"/*; do
+                            for FILE in "${CFOLDER}/${DIR_NAME}"/*; do
                                 FILE_NAME="${FILE##*/}"
                                 if [ -f "${FILE}" ]; then
                                     echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
-                                            "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
-                                            "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                                     else
-                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
-                                            "/home/${CP_DOMAIN}/files/torrent/.process/${DIR_NAME}/${FILE_NAME}" \
-                                            "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                                     fi
                                 fi
                             done
@@ -4841,13 +4841,57 @@ while [ "${WHILE}" -lt "2" ]; do
                             FILE_NAME="${DIR##*/}"
                             echo "UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
-                                    "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
-                                    "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             else
-                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 1 --low-level-retries 1 --ignore-size copy \
-                                    "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_NAME}" \
-                                    "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                            fi
+                        fi
+                    done
+                    rm -rf "${CFOLDER}"
+                done
+                PFOLDER="/home/${CP_DOMAIN}/files/torrent/.process"
+                for N in {1..9}; do
+                    CINEMATORRENT_NAME="CINEMATORRENT${N}"
+                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                        CINEMATORRENT=$(rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    else
+                        CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    fi
+                    if [ "${CINEMATORRENT}" = "" ]; then continue; fi
+                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
+                    for DIR in "${PFOLDER}"/*; do
+                        DIR_NAME="${DIR##*/}"
+                        if [ -d "${DIR}" ]; then
+                            echo "CREATE DIR ${DIR_NAME}"
+                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            else
+                                docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            fi
+                            for FILE in "${PFOLDER}/${DIR_NAME}"/*; do
+                                FILE_NAME="${FILE##*/}"
+                                if [ -f "${FILE}" ]; then
+                                    echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                        rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                    else
+                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                    fi
+                                fi
+                            done
+                        elif [ -f "${DIR}" ]; then
+                            FILE_NAME="${DIR##*/}"
+                            echo "UPLOAD FILE ${FILE_NAME}"
+                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                            else
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
                             fi
                         fi
                     done
