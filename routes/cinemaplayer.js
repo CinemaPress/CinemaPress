@@ -300,6 +300,26 @@ router.get('/:tab', function(req, res) {
           return callback();
         }
       }
+      if (p.iframe === '[iframe]') {
+        var result = {};
+        if (p.name && p.name.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+          result['name'] = p.name.replace(/^"\s*(.*?)\s*"$/i, '$1');
+        }
+        if (p.url) {
+          result['iframe'] = p.url;
+        }
+        if (p.image && p.image.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+          result['image'] = p.image.replace(/^"\s*(.*?)\s*"$/i, '$1');
+        }
+        if (p.season && p.season.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+          result['season'] = p.season.replace(/^"\s*(.*?)\s*"$/i, '$1');
+        }
+        if (p.episode && p.episode.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+          result['episode'] = p.episode.replace(/^"\s*(.*?)\s*"$/i, '$1');
+        }
+        results.push(result);
+        return callback();
+      }
       request(
         {
           url: p.url,
@@ -319,6 +339,26 @@ router.get('/:tab', function(req, res) {
                 response && response.statusCode
               );
             }
+            return callback();
+          }
+          var result = {};
+          if (p.iframe === '[body]') {
+            if (p.name && p.name.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+              result['name'] = p.name.replace(/^"\s*(.*?)\s*"$/i, '$1');
+            }
+            if (body) {
+              result['iframe'] = body;
+            }
+            if (p.image && p.image.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+              result['image'] = p.image.replace(/^"\s*(.*?)\s*"$/i, '$1');
+            }
+            if (p.season && p.season.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+              result['season'] = p.season.replace(/^"\s*(.*?)\s*"$/i, '$1');
+            }
+            if (p.episode && p.episode.replace(/^"\s*(.*?)\s*"$/i, '$1')) {
+              result['episode'] = p.episode.replace(/^"\s*(.*?)\s*"$/i, '$1');
+            }
+            results.push(result);
             return callback();
           }
           var json = tryParseJSON(body);
@@ -356,7 +396,6 @@ router.get('/:tab', function(req, res) {
           if (image && p.format_image) {
             image = p.format_image.replace(/_VALUE_/gi, image);
           }
-          var result = {};
           if (tab === 'download') {
             if (name && iframe) {
               if (name) {
