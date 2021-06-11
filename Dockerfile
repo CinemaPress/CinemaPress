@@ -50,7 +50,7 @@ RUN set -o pipefail \
     && cp -rf themes/default/public/admin/favicon.ico favicon.ico \
     && cp -rf themes/default/public/desktop/img/player$(( ( RANDOM % 7 ) + 1 )).png \
         themes/default/public/desktop/img/player.png \
-    && echo -e "#!/bin/bash\n/usr/bin/cinemapress container backup create >> /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log" \
+    && echo -e "#!/bin/bash\nsleep \$((60 + RANDOM % 60));\n/usr/bin/cinemapress container reindex save >> /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log;\nsleep \$((30 + RANDOM % 60));\n/usr/bin/cinemapress container backup create >> /home/\${CP_DOMAIN}/log/backup_\$(date '+%d_%m_%Y').log;\nrm -f /home/\${CP_DOMAIN}/log/cron_movies.pid;\nfind /home/\${CP_DOMAIN}/log -mindepth 1 -mtime +14 -delete;" \
         > /etc/periodic/daily/backup \
     && chmod a+x /etc/periodic/daily/backup \
     && echo -e "#!/bin/bash\n/usr/bin/cinemapress container cron >> /home/\${CP_DOMAIN}/log/cron_\$(date '+%d_%m_%Y').log" \

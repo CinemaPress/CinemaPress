@@ -2331,7 +2331,7 @@ docker_movies() {
 }
 docker_cron() {
     nohup /usr/bin/cinemapress torrent "${CP_DOMAIN}" upload \
-        >/home/"${CP_DOMAIN}"/log/torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
+        >> /home/"${CP_DOMAIN}"/log/torrent_"$(date '+%d_%m_%Y')".log 2>&1 &
     if [ ! -f /home/"${CP_DOMAIN}"/log/cron_movies.pid ]; then
         echo $$ >/home/"${CP_DOMAIN}"/log/cron_movies.pid
         if [ -n "${1}" ]; then
