@@ -30,7 +30,7 @@ RUN set -o pipefail \
     && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
     && echo "Europe/Moscow" > /etc/timezone \
     && npm i node-gyp -g \
-    && npm i pm2@4.5.6 -g \
+    && npm i pm2@5.1.0 -g \
     && npm i cinematheme@0.0.13 -g \
     && npm i \
     && mkdir -p \
