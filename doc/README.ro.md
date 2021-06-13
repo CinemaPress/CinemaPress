@@ -222,6 +222,6 @@
 
 ## Opțiuni și module CinemaPress
 
-Informații detaliate despre toate opțiunile și modulele de sistem pot fi găsite în [documentație](https://CInemaPress.io/ru/admin).
+Informații detaliate despre toate opțiunile și modulele de sistem pot fi găsite în [documentație](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

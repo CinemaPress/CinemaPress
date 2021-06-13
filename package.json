@@ -3,7 +3,7 @@
   "version": "5.0.0",
   "description": "CinemaPress - Watch Movies and TV Shows Online Streaming Portal CMS Open Source Script",
   "license": "MIT",
-  "author": "CinemaPress <support@cinemapress.io>",
+  "author": "CinemaPress",
   "scripts": {
     "start": "node app.js"
   },
@@ -14,38 +14,38 @@
   "bugs": {
     "url": "https://github.com/CinemaPress/CinemaPress/issues"
   },
-  "homepage": "https://CinemaPress.io/",
+  "homepage": "https://github.com/CinemaPress/CinemaPress",
   "dependencies": {
-    "pm2": "4.5.6",
-    "whois": "2.13.3",
+    "pm2": "5.1.0",
+    "whois": "2.13.5",
     "async": "3.2.0",
     "base64-stream": "1.0.0",
     "body-parser": "1.19.0",
-    "cheerio": "1.0.0-rc.9",
+    "cheerio": "1.0.0-rc.10",
     "cookie-parser": "1.4.5",
     "ejs": "3.1.6",
     "eval": "0.1.6",
     "express": "4.17.1",
-    "html-entities": "1.3.1",
+    "html-entities": "2.3.2",
     "html-minifier": "4.0.0",
     "i18n": "0.13.3",
     "imap": "0.8.19",
     "ip-range-check": "0.2.0",
     "isbot": "3.0.26",
-    "limax": "2.1.0",
+    "limax": "3.0.0",
     "mailparser-mit": "1.0.0",
     "mimemessage": "1.0.5",
-    "maxmind": "4.3.1",
+    "maxmind": "4.3.2",
     "md5": "2.3.0",
     "moment": "2.29.1",
     "multer": "1.4.2",
     "mysql": "2.18.1",
     "os-utils": "0.0.14",
     "request": "2.88.2",
-    "sharp": "0.28.2",
+    "sharp": "0.28.3",
     "sinoni": "1.2.5",
     "ua-parser-js": "0.7.28",
-    "nodemailer": "6.6.0",
+    "nodemailer": "6.6.1",
     "lru-cache": "6.0.0",
     "adop": "2.3.0",
     "object-path": "0.11.5",
@@ -69,6 +69,6 @@
     "deepmerge": "4.2.2"
   },
   "devDependencies": {
-    "prettier": "2.3.0"
+    "prettier": "2.3.1"
   }
 }

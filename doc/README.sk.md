@@ -222,6 +222,6 @@
 
 ## Možnosti a moduly CinemaPress
 
-Podrobné informácie o všetkých možnostiach a systémových moduloch nájdete v [dokumentácii](https://CInemaPress.io/ru/admin).
+Podrobné informácie o všetkých možnostiach a systémových moduloch nájdete v [dokumentácii](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

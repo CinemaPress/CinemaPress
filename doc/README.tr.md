@@ -222,6 +222,6 @@
 
 ## Seçenekler ve modüller CinemaPress
 
-Tüm seçeneklere ve sistem modüllerine ilişkin ayrıntılı bilgileri [belgelerde](https://CInemaPress.io/ru/admin) bulabilirsiniz.
+Tüm seçeneklere ve sistem modüllerine ilişkin ayrıntılı bilgileri [belgelerde](https://github.com/CinemaPress/CinemaPress) bulabilirsiniz.
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

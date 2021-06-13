@@ -222,6 +222,6 @@
 
 ## Opsi dan modul CinemaPress
 
-Informasi terperinci tentang semua opsi dan modul sistem dapat ditemukan dalam [dokumentasi](https://CInemaPress.io/ru/admin).
+Informasi terperinci tentang semua opsi dan modul sistem dapat ditemukan dalam [dokumentasi](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

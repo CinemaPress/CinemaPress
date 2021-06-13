@@ -222,6 +222,6 @@
 
 ## Valikud ja moodulid CinemaPress
 
-Üksikasjalik teave kõigi valikute ja süsteemimoodulite kohta on [dokumentatsioonis](https://CInemaPress.io/ru/admin).
+Üksikasjalik teave kõigi valikute ja süsteemimoodulite kohta on [dokumentatsioonis](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

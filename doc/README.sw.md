@@ -222,6 +222,6 @@
 
 ## Chaguzi na modules CinemaPress
 
-Taarifa kamili juu ya chaguzi zote na modules za mfumo zinaweza kupatikana katika [nyaraka](https://CInemaPress.io/ru/admin).
+Taarifa kamili juu ya chaguzi zote na modules za mfumo zinaweza kupatikana katika [nyaraka](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

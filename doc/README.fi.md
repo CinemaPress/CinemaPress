@@ -222,6 +222,6 @@
 
 ## Vaihtoehdot ja moduulit CinemaPress
 
-Yksityiskohtaiset tiedot kaikista vaihtoehdoista ja järjestelmän moduuleista löytyvät [dokumenteista](https://CInemaPress.io/ru/admin).
+Yksityiskohtaiset tiedot kaikista vaihtoehdoista ja järjestelmän moduuleista löytyvät [dokumenteista](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

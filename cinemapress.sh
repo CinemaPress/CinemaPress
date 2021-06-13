@@ -816,7 +816,6 @@ ip_install() {
 5_database() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
     LOCAL_DOMAIN_=$(echo "${LOCAL_DOMAIN}" | sed -r "s/[^A-Za-z0-9]/_/g")
-    LOCAL_KEY=${2:-${CP_KEY}}
 
     echo "${PRC_}% database" >>/var/log/docker_log_"$(date '+%d_%m_%Y')".log
 
@@ -828,105 +827,6 @@ ip_install() {
     _content
     _s
     exit 0
-
-    if [ "$(grep "_uptimerobot" /etc/crontab)" != "" ]; then
-        touch "/home/.uptimerobot" &>/dev/null
-    fi
-
-    STS="http://d.cinemapress.io/${LOCAL_KEY}/${LOCAL_DOMAIN}?lang=${CP_LANG}"
-    CHECK=$(wget -qO- "${STS}&status=CHECK")
-    if [ "${CHECK}" = "" ]; then
-        _header "ERROR"
-        _content
-        _content "Import is a one-time procedure,"
-        _content "the key is no longer available."
-        _content
-        _s
-        exit 0
-    else
-        for ((io=0;io<=10;io++));
-        do
-            sh_progress "$(("${io}" * 10))"
-            sleep 30
-        done
-    fi
-    mkdir -p /var/lib/sphinx/tmp /var/lib/sphinx/data /var/lib/sphinx/old
-    _line
-    _content "Downloading ..."
-    wget -qO "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" "${STS}" || \
-    rm -rf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar"
-    if [ -f "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" ]; then
-        _content "Unpacking ..."
-        NOW=$(date +%Y-%m-%d)
-        tar -xf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar" -C "/var/lib/sphinx/tmp" &> \
-            /var/lib/sphinx/data/"${NOW}".log
-        rm -rf "/var/lib/sphinx/tmp/${LOCAL_KEY}.tar"
-        FILE_SPA=$(find /var/lib/sphinx/tmp/*.* -type f | grep spa)
-        FILE_SPD=$(find /var/lib/sphinx/tmp/*.* -type f | grep spd)
-        FILE_SPI=$(find /var/lib/sphinx/tmp/*.* -type f | grep spi)
-        FILE_SPS=$(find /var/lib/sphinx/tmp/*.* -type f | grep sps)
-        if [ -f "${FILE_SPA}" ] && [ -f "${FILE_SPD}" ] && [ -f "${FILE_SPI}" ] && [ -f "${FILE_SPS}" ]; then
-            _content "Installing ..."
-            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
-                docker_stop >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            else
-                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container stop >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            fi
-            rm -rf /var/lib/sphinx/old/movies_"${LOCAL_DOMAIN_}".*
-            cp -R /var/lib/sphinx/data/movies_"${LOCAL_DOMAIN_}".* /var/lib/sphinx/old/
-            rm -rf /var/lib/sphinx/data/movies_"${LOCAL_DOMAIN_}".*
-            # shellcheck disable=SC2044
-            for file in $(find /var/lib/sphinx/tmp/*.* -type f)
-            do
-                mv "${file}" "/var/lib/sphinx/data/movies_${LOCAL_DOMAIN_}.${file##*.}"
-            done
-            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
-                /home/"${LOCAL_DOMAIN}"/config/production/config.js
-            sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/"${LOCAL_DOMAIN}"/config/production/config.js
-            sed -E -i "s/\"key\":\s*\"(FREE|[a-zA-Z0-9-]{32})\"/\"key\":\"${LOCAL_KEY}\"/" \
-                /home/"${LOCAL_DOMAIN}"/config/default/config.js
-            sed -E -i "s/\"date\":\s*\"[0-9-]*\"/\"date\":\"${NOW}\"/" \
-                /home/"${LOCAL_DOMAIN}"/config/default/config.js
-            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
-                docker_actual >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            else
-                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container actual >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            fi
-            _content "Starting ..."
-            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
-                docker_start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            else
-                docker exec "${LOCAL_DOMAIN_}" /usr/bin/cinemapress container start >>/var/lib/sphinx/data/"${NOW}".log 2>&1
-            fi
-            wget -qO /dev/null -o /dev/null "${STS}&status=SUCCESS"
-            _content "Success ..."
-            _s
-            if [ "$(docker -v 2>/dev/null | grep "version")" = "" ]; then
-              pm2-runtime stop process.json
-            fi
-            exit 0
-        else
-            wget -qO /dev/null -o /dev/null "${STS}&status=FAIL"
-            _header "ERROR"
-            _content
-            _content "The downloaded database archive turned out to be empty,"
-            _content "please try again later."
-            _content
-            _s
-            exit 0
-        fi
-    else
-        wget -qO /dev/null -o /dev/null "${STS}&status=FAIL"
-        _header "ERROR"
-        _content
-        _content "The movie database has not been downloaded,"
-        _content "please try again later."
-        _content
-        _s
-        exit 0
-    fi
-    sleep 10
 }
 6_https() {
     LOCAL_DOMAIN=${1:-${CP_DOMAIN}}
@@ -2806,33 +2706,6 @@ while [ "${WHILE}" -lt "2" ]; do
             _content
             _s
             exit 0
-
-            _br "${3}"
-            read_domain "${2}"
-            sh_not
-            read_key "${3}"
-            _s "${3}"
-            if [ -f "/home/${CP_DOMAIN}/files/poster/.latest" ]; then
-                wget --progress=bar:force -O /var/images.tar \
-                    "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=LATEST" 2>&1 | sh_wget
-                if [ -f "/var/images.tar" ]; then
-                    tar -xf /var/images.tar -C /home/"${CP_DOMAIN}"/files >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1
-                fi
-            else
-                wget --progress=bar:force -O /var/images.tar \
-                    "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?lang=${CP_LANG}&status=IMAGES" 2>&1 | sh_wget
-                if [ -f "/var/images.tar" ]; then
-                    _header "UNPACKING"
-                    _content
-                    _content "Unpacking may take several hours ..."
-                    _content
-                    _s
-                    mkdir -p /home/"${CP_DOMAIN}"/files/poster/
-                    touch /home/"${CP_DOMAIN}"/files/poster/.latest
-                    nohup tar -xf /var/images.tar -C /home/"${CP_DOMAIN}"/files >>/var/log/docker_images_"$(date '+%d_%m_%Y')".log 2>&1 &
-                fi
-            fi
-            exit 0
         ;;
         "premium" )
             _header "PREMIUM"
@@ -2840,29 +2713,6 @@ while [ "${WHILE}" -lt "2" ]; do
             _content "No premium themes!"
             _content
             _s
-            exit 0
-
-            _br "${4}"
-            read_domain "${2}"
-            sh_not
-            if [ "${4}" = "" ]; then exit 0; fi
-            CP_THEME="${3}"
-            CP_KEY="${4}"
-            _br
-            wget --progress=bar:force -O /var/"${CP_THEME}".tar \
-                "http://d.cinemapress.io/${CP_KEY}/${CP_DOMAIN}?theme=${CP_THEME}" 2>&1 | sh_wget
-            if [ -f "/var/${CP_THEME}.tar" ]; then
-                _header "UNPACKING"
-                _content
-                _content "Unpacking may take several seconds ..."
-                _content
-                _s
-                tar -xf /var/"${CP_THEME}".tar -C /home/"${CP_DOMAIN}"/themes 2>/dev/null
-                sed -Ei "s/\"theme\":\s*\"[a-zA-Z0-9-]*\"/\"theme\":\"${CP_THEME}\"/" \
-                    /home/"${CP_DOMAIN}"/config/production/config.js
-                docker exec -t "${CP_DOMAIN_}" node optimal.js
-                docker restart "${CP_DOMAIN_}" >/dev/null
-            fi
             exit 0
         ;;
         "upd" )

@@ -222,6 +222,6 @@
 
 ## Opciók és modulok CinemaPress
 
-Az összes opcióról és rendszermodulról részletes információkat talál a [dokumentációban](https://CInemaPress.io/ru/admin).
+Az összes opcióról és rendszermodulról részletes információkat talál a [dokumentációban](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

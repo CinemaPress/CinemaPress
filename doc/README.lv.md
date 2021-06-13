@@ -222,6 +222,6 @@
 
 ## Iespējas un moduļi CinemaPress
 
-Detalizēta informācija par visām iespējām un sistēmas moduļiem atrodama [dokumentācijā](https://CInemaPress.io/ru/admin).
+Detalizēta informācija par visām iespējām un sistēmas moduļiem atrodama [dokumentācijā](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

@@ -222,6 +222,6 @@
 
 ## Parinktys ir moduliai CinemaPress
 
-Išsamią informaciją apie visas parinktis ir sistemos modulius galima rasti [dokumentuose](https://CInemaPress.io/ru/admin).
+Išsamią informaciją apie visas parinktis ir sistemos modulius galima rasti [dokumentuose](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

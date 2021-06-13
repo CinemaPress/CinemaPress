@@ -222,6 +222,6 @@
 
 ## Alternativ och moduler CinemaPress
 
-Detaljerad information om alla alternativ och systemmoduler finns i [dokumentationen](https://CInemaPress.io/ru/admin).
+Detaljerad information om alla alternativ och systemmoduler finns i [dokumentationen](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)

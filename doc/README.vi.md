@@ -222,6 +222,6 @@
 
 ## Tùy chọn và mô-đun CinemaPress
 
-Thông tin chi tiết về tất cả các tùy chọn và mô-đun hệ thống có thể được tìm thấy [trong tài liệu](https://CInemaPress.io/ru/admin).
+Thông tin chi tiết về tất cả các tùy chọn và mô-đun hệ thống có thể được tìm thấy [trong tài liệu](https://github.com/CinemaPress/CinemaPress).
 
 > Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
