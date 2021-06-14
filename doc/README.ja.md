@@ -224,4 +224,4 @@
 
 すべてのオプションとシステムモジュールに関する詳細な情報は[ドキュメント](https://github.com/CinemaPress/CinemaPress)にあります。
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

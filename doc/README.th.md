@@ -224,4 +224,4 @@
 
 ข้อมูลรายละเอียดเกี่ยวกับตัวเลือกทั้งหมดและโมดูลระบบสามารถพบได้ในเอกสารประกอบ
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

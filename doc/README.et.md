@@ -224,4 +224,4 @@
 
 Üksikasjalik teave kõigi valikute ja süsteemimoodulite kohta on [dokumentatsioonis](https://github.com/CinemaPress/CinemaPress).
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

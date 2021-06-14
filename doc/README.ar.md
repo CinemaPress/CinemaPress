@@ -226,6 +226,6 @@
 
 يمكن الاطلاع على معلومات مفصلة عن جميع الخيارات ووحدات النظام في الوثائق.
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)
 
 </div>

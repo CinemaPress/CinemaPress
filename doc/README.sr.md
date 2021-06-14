@@ -224,4 +224,4 @@
 
 Детаљне информације о свим опцијама и системским модулима можете наћи у [документацији](https://github.com/CinemaPress/CinemaPress).
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

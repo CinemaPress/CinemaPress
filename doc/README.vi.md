@@ -224,4 +224,4 @@
 
 Thông tin chi tiết về tất cả các tùy chọn và mô-đun hệ thống có thể được tìm thấy [trong tài liệu](https://github.com/CinemaPress/CinemaPress).
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

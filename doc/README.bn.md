@@ -224,4 +224,4 @@
 
 সমস্ত বিকল্প এবং সিস্টেম মডিউল বিস্তারিত তথ্য ডকুমেন্টেশন পাওয়া যাবে।
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

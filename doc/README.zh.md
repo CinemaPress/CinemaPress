@@ -224,4 +224,4 @@
 
 有关所有选件和系统模块的详细信息，请参阅文档。
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

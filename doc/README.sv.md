@@ -224,4 +224,4 @@
 
 Detaljerad information om alla alternativ och systemmoduler finns i [dokumentationen](https://github.com/CinemaPress/CinemaPress).
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

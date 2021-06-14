@@ -224,4 +224,4 @@
 
 सभी विकल्पों और सिस्टम मॉड्यूल की विस्तृत जानकारी प्रलेखन में पाई जा सकती है।
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)

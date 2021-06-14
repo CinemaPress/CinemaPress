@@ -224,4 +224,4 @@
 
 Informații detaliate despre toate opțiunile și modulele de sistem pot fi găsite în [documentație](https://github.com/CinemaPress/CinemaPress).
 
-> Copyright (c) 2014 - ···· [CinemaPress](https://cinemapress.io)
+> Copyright (c) 2014 - ···· [CinemaPress](https://github.com/CinemaPress/CinemaPress)
