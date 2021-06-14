@@ -96,8 +96,9 @@ function movieApi(query, ip, callback) {
     connection.query(
       'SELECT * ' +
         (as && as.length ? ', ' + as.join(',') : '') +
-        ' FROM rt_' +
-        config.domain.replace(/[^a-z0-9]/g, '_') +
+        ' FROM ' +
+        ' rt_' +
+        config.database.all_movies.replace(/[^a-z0-9]/gi, '_') +
         ' WHERE ' +
         Object.keys(query)
           .map(function(key) {
@@ -176,7 +177,7 @@ function moviesApi(query, ip, callback) {
     }
     connection.query(
       'SELECT *, 1 AS movie, custom.lastmod AS lastmod FROM rt_' +
-        config.domain.replace(/[^a-z0-9]/g, '_') +
+        config.database.all_movies.replace(/[^a-z0-9]/gi, '_') +
         ' WHERE ' +
         Object.keys(Object.assign(query, { movie: '1' }))
           .map(function(key) {
