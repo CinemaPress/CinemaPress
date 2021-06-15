@@ -14,10 +14,8 @@
 
 ![Admin-panel](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/screenshot.png)
 
-· | Admin :factory: | Website :computer: | Mobile :iphone: | TV :tv:
-:---: | :---: | :---: | :---: | :---:
-![RU](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/ru.svg?sanitize=true)|[RU Admin](http://RU.CinemaPress.io/admin)|[RU Website](http://RU.CinemaPress.io)|[RU Mobile](http://RU.CinemaPress.io/mobile-version)|[RU TV](http://RU.CinemaPress.io/tv-version)
-![EN](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/locales/en.svg?sanitize=true)|[EN Admin](http://EN.CinemaPress.io/admin)|[EN Website](http://EN.CinemaPress.io)|[EN Mobile](http://EN.CinemaPress.io/mobile-version)|[EN TV](http://EN.CinemaPress.io/tv-version)
+- **Default languages**: English, Russian
+- **Supported devices**: PC :computer:, Mobile :iphone:, TV :tv:
 
 ## Како инсталирати CinemaPress?
 
