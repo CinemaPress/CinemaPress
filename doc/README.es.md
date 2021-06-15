@@ -36,7 +36,7 @@
 :rocket: | `4GB` | `2GB` | `4GB` | `4GB`
 :floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
 :dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
-···· | **[SELECCIONAR](https://cinemapress.io/ref/ua-hosting.html)** | **[SELECCIONAR](https://cinemapress.io/ref/inferno.html)** | **[SELECCIONAR](https://cinemapress.io/ref/pq.html)** | **[SELECCIONAR](https://cinemapress.io/ref/zomro.html)**
+···· | **[SELECCIONAR](https://cinemapressio.github.io/ref/ua-hosting.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/inferno.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/pq.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/zomro.html)**
 
 > `*` - **15%** de descuento, codigo promocional: `CinemaPress15`
 
@@ -48,7 +48,7 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[SELECCIONAR](https://cinemapress.io/ref/tonic.html)** | **[SELECCIONAR](https://cinemapress.io/ref/internetbs.html)** | **[SELECCIONAR](https://cinemapress.io/ref/pananames.html)** | **[SELECCIONAR](https://cinemapress.io/ref/namecheap.html)**
+···· | **[SELECCIONAR](https://cinemapressio.github.io/ref/tonic.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/internetbs.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/pananames.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/namecheap.html)**
 
 > `*` - Los datos no son enviados a la base de datos de WHOIS pública
 
@@ -60,7 +60,7 @@
 :moneybag: | `Bitcoin` | `PayPal` | `QIWI`
 :see_no_evil: | :lock: | :lock: | :lock:
 :dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
-···· | **[SELECCIONAR](https://cinemapress.io/ref/surfshark.html)** | **[SELECCIONAR](https://cinemapress.io/ref/cyberghost.html)** | **[SELECCIONAR](https://cinemapress.io/ref/purevpn.html)**
+···· | **[SELECCIONAR](https://cinemapressio.github.io/ref/surfshark.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/cyberghost.html)** | **[SELECCIONAR](https://cinemapressio.github.io/ref/purevpn.html)**
 
 ## Tema «hodor»
 

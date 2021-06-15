@@ -36,7 +36,7 @@
 :rocket: | `4GB` | `2GB` | `4GB` | `4GB`
 :floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
 :dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
-···· | **[VÄLJ](https://cinemapress.io/ref/ua-hosting.html)** | **[VÄLJ](https://cinemapress.io/ref/inferno.html)** | **[VÄLJ](https://cinemapress.io/ref/pq.html)** | **[VÄLJ](https://cinemapress.io/ref/zomro.html)**
+···· | **[VÄLJ](https://cinemapressio.github.io/ref/ua-hosting.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/inferno.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/pq.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/zomro.html)**
 
 > `*` - **15%** rabatt, promo-kod: `CinemaPress15`
 
@@ -48,7 +48,7 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[VÄLJ](https://cinemapress.io/ref/tonic.html)** | **[VÄLJ](https://cinemapress.io/ref/internetbs.html)** | **[VÄLJ](https://cinemapress.io/ref/pananames.html)** | **[VÄLJ](https://cinemapress.io/ref/namecheap.html)**
+···· | **[VÄLJ](https://cinemapressio.github.io/ref/tonic.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/internetbs.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/pananames.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/namecheap.html)**
 
 > `*` - data skickas inte till den offentliga WHOIS-databasen
 
@@ -60,7 +60,7 @@
 :moneybag: | `Bitcoin` | `PayPal` | `QIWI`
 :see_no_evil: | :lock: | :lock: | :lock:
 :dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
-···· | **[VÄLJ](https://cinemapress.io/ref/surfshark.html)** | **[VÄLJ](https://cinemapress.io/ref/cyberghost.html)** | **[VÄLJ](https://cinemapress.io/ref/purevpn.html)**
+···· | **[VÄLJ](https://cinemapressio.github.io/ref/surfshark.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/cyberghost.html)** | **[VÄLJ](https://cinemapressio.github.io/ref/purevpn.html)**
 
 ## Tema «hodor»
 

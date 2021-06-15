@@ -36,7 +36,7 @@
 :rocket: | `4GB` | `2GB` | `4GB` | `4GB`
 :floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
 :dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
-···· | **[IZBRATI](https://cinemapress.io/ref/ua-hosting.html)** | **[IZBRATI](https://cinemapress.io/ref/inferno.html)** | **[IZBRATI](https://cinemapress.io/ref/pq.html)** | **[IZBRATI](https://cinemapress.io/ref/zomro.html)**
+···· | **[IZBRATI](https://cinemapressio.github.io/ref/ua-hosting.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/inferno.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/pq.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/zomro.html)**
 
 > `*` - **15%** popust, promocijska koda: `CinemaPress15`
 
@@ -48,7 +48,7 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[IZBRATI](https://cinemapress.io/ref/tonic.html)** | **[IZBRATI](https://cinemapress.io/ref/internetbs.html)** | **[IZBRATI](https://cinemapress.io/ref/pananames.html)** | **[IZBRATI](https://cinemapress.io/ref/namecheap.html)**
+···· | **[IZBRATI](https://cinemapressio.github.io/ref/tonic.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/internetbs.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/pananames.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/namecheap.html)**
 
 > `*` - podatki niso poslani v javno podatkovno bazo WHOIS
 
@@ -60,7 +60,7 @@
 :moneybag: | `Bitcoin` | `PayPal` | `QIWI`
 :see_no_evil: | :lock: | :lock: | :lock:
 :dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
-···· | **[IZBRATI](https://cinemapress.io/ref/surfshark.html)** | **[IZBRATI](https://cinemapress.io/ref/cyberghost.html)** | **[IZBRATI](https://cinemapress.io/ref/purevpn.html)**
+···· | **[IZBRATI](https://cinemapressio.github.io/ref/surfshark.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/cyberghost.html)** | **[IZBRATI](https://cinemapressio.github.io/ref/purevpn.html)**
 
 ## Tema «hodor»
 

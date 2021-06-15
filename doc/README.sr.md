@@ -36,7 +36,7 @@
 :rocket: | `4GB` | `2GB` | `4GB` | `4GB`
 :floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
 :dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
-···· | **[ИЗАБРАТИ](https://cinemapress.io/ref/ua-hosting.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/inferno.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/pq.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/zomro.html)**
+···· | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/ua-hosting.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/inferno.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/pq.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/zomro.html)**
 
 > `*` - **15%** попуста, промо код: `CinemaPress15`
 
@@ -48,7 +48,7 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[ИЗАБРАТИ](https://cinemapress.io/ref/tonic.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/internetbs.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/pananames.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/namecheap.html)**
+···· | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/tonic.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/internetbs.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/pananames.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/namecheap.html)**
 
 > `*` - подаци се не шаљу у јавну WHOIS базу података
 
@@ -60,7 +60,7 @@
 :moneybag: | `Bitcoin` | `PayPal` | `QIWI`
 :see_no_evil: | :lock: | :lock: | :lock:
 :dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
-···· | **[ИЗАБРАТИ](https://cinemapress.io/ref/surfshark.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/cyberghost.html)** | **[ИЗАБРАТИ](https://cinemapress.io/ref/purevpn.html)**
+···· | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/surfshark.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/cyberghost.html)** | **[ИЗАБРАТИ](https://cinemapressio.github.io/ref/purevpn.html)**
 
 ## Theme «hodor»
 

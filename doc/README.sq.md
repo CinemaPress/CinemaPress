@@ -36,7 +36,7 @@
 :rocket: | `4GB` | `2GB` | `4GB` | `4GB`
 :floppy_disk: | `60GB` |  `30GB` | `50GB` | `40GB`
 :dollar: | `$9.9` | `$8.5*` | `$7.3` | `$5.9`
-···· | **[ZGJEDH](https://cinemapress.io/ref/ua-hosting.html)** | **[ZGJEDH](https://cinemapress.io/ref/inferno.html)** | **[ZGJEDH](https://cinemapress.io/ref/pq.html)** | **[ZGJEDH](https://cinemapress.io/ref/zomro.html)**
+···· | **[ZGJEDH](https://cinemapressio.github.io/ref/ua-hosting.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/inferno.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/pq.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/zomro.html)**
 
 > `*` - **15%** zbritje, kodi promo: `CinemaPress15`
 
@@ -48,7 +48,7 @@
 :moneybag: | `Card` | `PayPal` | `WebMoney` | `Bitcoin`
 :see_no_evil: | :lock:* | :unlock: | :unlock: | :unlock:
 :dollar: | `> $50/year` | `> $1/year` | `> $1/year` | `> $1/year`
-···· | **[ZGJEDH](https://cinemapress.io/ref/tonic.html)** | **[ZGJEDH](https://cinemapress.io/ref/internetbs.html)** | **[ZGJEDH](https://cinemapress.io/ref/pananames.html)** | **[ZGJEDH](https://cinemapress.io/ref/namecheap.html)**
+···· | **[ZGJEDH](https://cinemapressio.github.io/ref/tonic.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/internetbs.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/pananames.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/namecheap.html)**
 
 > `*` - të dhënat nuk dërgohen në bazën publike të WHOIS
 
@@ -60,7 +60,7 @@
 :moneybag: | `Bitcoin` | `PayPal` | `QIWI`
 :see_no_evil: | :lock: | :lock: | :lock:
 :dollar: | `$47/2 years` | `$99/3 years` | `$99/5 years`
-···· | **[ZGJEDH](https://cinemapress.io/ref/surfshark.html)** | **[ZGJEDH](https://cinemapress.io/ref/cyberghost.html)** | **[ZGJEDH](https://cinemapress.io/ref/purevpn.html)**
+···· | **[ZGJEDH](https://cinemapressio.github.io/ref/surfshark.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/cyberghost.html)** | **[ZGJEDH](https://cinemapressio.github.io/ref/purevpn.html)**
 
 ## Temë «hodor»
 
