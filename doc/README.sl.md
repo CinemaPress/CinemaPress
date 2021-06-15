@@ -21,12 +21,6 @@
 
 ## Kako namestiti CinemaPress?
 
-> #### Namestite prek spletnega mesta
-
-[cinemapress.sh#sl](https://cinemapress.sh/#sl)
-
-[![Namestite prek spletnega mesta](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#sl)
-
 > #### Namestite prek terminala
 
 `bash <(wget git.io/JGKNq -qO-)`

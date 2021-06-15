@@ -21,12 +21,6 @@
 
 ## Hogyan kell telepíteni CinemaPress?
 
-> #### Telepítse a webhelyen keresztül
-
-[cinemapress.sh#hu](https://cinemapress.sh/#hu)
-
-[![Telepítse a webhelyen keresztül](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#hu)
-
 > #### Telepítse terminálon keresztül
 
 `bash <(wget git.io/JGKNq -qO-)`

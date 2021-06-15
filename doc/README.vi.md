@@ -21,12 +21,6 @@
 
 ## Cài đặt thế nào CinemaPress?
 
-> #### Cài đặt qua trang web
-
-[cinemapress.sh#vi](https://cinemapress.sh/#vi)
-
-[![Cài đặt qua trang web](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#vi)
-
 > #### Cài đặt qua thiết bị đầu cuối
 
 `bash <(wget git.io/JGKNq -qO-)`

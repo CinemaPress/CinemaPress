@@ -21,12 +21,6 @@
 
 ## Wie installiere ich CinemaPress?
 
-> #### Installieren Sie über die Website
-
-[cinemapress.sh#de](https://cinemapress.sh/#de)
-
-[![Installieren Sie über die Website](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#de)
-
 > #### Über Terminal installieren
 
 `bash <(wget git.io/JGKNq -qO-)`

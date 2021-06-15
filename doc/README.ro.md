@@ -21,12 +21,6 @@
 
 ## Cum să instalați CinemaPress?
 
-> #### Instalați prin intermediul site-ului
-
-[cinemapress.sh#ro](https://cinemapress.sh/#ro)
-
-[![Instalați prin intermediul site-ului](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#ro)
-
 > #### Instalați prin terminal
 
 `bash <(wget git.io/JGKNq -qO-)`

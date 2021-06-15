@@ -21,12 +21,6 @@
 
 ## ติดตั้งอย่างไร  CinemaPress?
 
-> #### ติดตั้งผ่านเว็บไซต์
-
-[cinemapress.sh#th](https://cinemapress.sh/#th)
-
-[![ติดตั้งผ่านเว็บไซต์](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#th)
-
 > #### ติดตั้งผ่านเทอร์มินัล
 
 `bash <(wget git.io/JGKNq -qO-)`

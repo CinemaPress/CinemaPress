@@ -21,12 +21,6 @@
 
 ## কিভাবে CinemaPress ইনস্টল করবেন?
 
-> #### ওয়েবসাইট মাধ্যমে ইনস্টল করুন
-
-[cinemapress.sh#bn](https://cinemapress.sh/#bn)
-
-[![ওয়েবসাইট মাধ্যমে ইনস্টল করুন](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#bn)
-
 > #### টার্মিনাল মাধ্যমে ইনস্টল করুন
 
 `bash <(wget git.io/JGKNq -qO-)`

@@ -21,12 +21,6 @@
 
 ## स्थापित कैसे करें CinemaPress?
 
-> #### वेबसाइट के माध्यम से स्थापित करें
-
-[cinemapress.sh#hi](https://cinemapress.sh/#hi)
-
-[![वेबसाइट के माध्यम से स्थापित करें](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#hi)
-
 > #### टर्मिनल के माध्यम से स्थापित करें
 
 `bash <(wget git.io/JGKNq -qO-)`

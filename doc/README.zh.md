@@ -21,12 +21,6 @@
 
 ## 如何安装 CinemaPress?
 
-> #### 通过网站安装
-
-[cinemapress.sh#zh](https://cinemapress.sh/#zh)
-
-[![通过网站安装](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#zh)
-
 > #### 通过终端安装
 
 `bash <(wget git.io/JGKNq -qO-)`

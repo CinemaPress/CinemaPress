@@ -21,12 +21,6 @@
 
 ## Nasıl kurulur CinemaPress?
 
-> #### Web sitesi üzerinden yükle
-
-[cinemapress.sh#tr](https://cinemapress.sh/#tr)
-
-[![Web sitesi üzerinden yükle](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#tr)
-
 > #### Terminal aracılığıyla yükleyin
 
 `bash <(wget git.io/JGKNq -qO-)`

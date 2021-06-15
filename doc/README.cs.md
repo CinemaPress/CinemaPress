@@ -21,12 +21,6 @@
 
 ## Jak nainstalovat CinemaPress?
 
-> #### Nainstalujte prostřednictvím webu
-
-[cinemapress.sh#cs](https://cinemapress.sh/#cs)
-
-[![Nainstalujte prostřednictvím webu](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#cs)
-
 > #### Instalujte přes terminál
 
 `bash <(wget git.io/JGKNq -qO-)`

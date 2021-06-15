@@ -21,12 +21,6 @@
 
 ## 설치하는 방법 CinemaPress?
 
-> #### 웹 사이트를 통해 설치
-
-[cinemapress.sh#ko](https://cinemapress.sh/#ko)
-
-[![웹 사이트를 통해 설치](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#ko)
-
 > #### 터미널을 통해 설치
 
 `bash <(wget git.io/JGKNq -qO-)`

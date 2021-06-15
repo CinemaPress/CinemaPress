@@ -21,12 +21,6 @@
 
 ## Як встановити CinemaPress?
 
-> #### Встановіть через веб-сайт
-
-[cinemapress.sh#uk](https://cinemapress.sh/#uk)
-
-[![Встановіть через веб-сайт](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#uk)
-
 > #### Встановіть через термінал
 
 `bash <(wget git.io/JGKNq -qO-)`

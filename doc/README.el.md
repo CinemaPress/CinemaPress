@@ -21,12 +21,6 @@
 
 ## Πώς να εγκαταστήσω CinemaPress?
 
-> #### Εγκατάσταση μέσω ιστότοπου
-
-[cinemapress.sh#el](https://cinemapress.sh/#el)
-
-[![Εγκατάσταση μέσω ιστότοπου](https://raw.githubusercontent.com/CinemaPress/CinemaPress/master/themes/default/public/admin/images/min/web.png)](https://cinemapress.sh/#el)
-
 > #### Εγκαταστήστε μέσω τερματικού
 
 `bash <(wget git.io/JGKNq -qO-)`
