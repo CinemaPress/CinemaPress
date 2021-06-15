@@ -68,9 +68,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com hodor`
 
-> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
+> **DEMO:** `«hodor»`
 
-[![Πρότυπο «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
+[![Πρότυπο «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://github.com/CinemaPress/Theme-Hodor/)
 
 ## Θέμα «sansa»
 
@@ -78,9 +78,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com sansa`
 
-> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
+> **DEMO:** `«sansa»`
 
-[![Πρότυπο «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
+[![Πρότυπο «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://github.com/CinemaPress/Theme-Sansa/)
 
 ## Θέμα «robb»
 
@@ -88,9 +88,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com robb`
 
-> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
+> **DEMO:** `«robb»`
 
-[![Πρότυπο «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
+[![Πρότυπο «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://github.com/CinemaPress/Theme-Robb/)
 
 ## Θέμα «ramsay»
 
@@ -98,9 +98,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com ramsay`
 
-> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
+> **DEMO:** `«ramsay»`
 
-[![Πρότυπο «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
+[![Πρότυπο «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://github.com/CinemaPress/Theme-Ramsay/)
 
 ## Θέμα «tyrion»
 
@@ -108,9 +108,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com tyrion`
 
-> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
+> **DEMO:** `«tyrion»`
 
-[![Πρότυπο «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
+[![Πρότυπο «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tyrion/)
 
 ## Θέμα «cersei»
 
@@ -118,9 +118,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com cersei`
 
-> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
+> **DEMO:** `«cersei»`
 
-[![Πρότυπο «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
+[![Πρότυπο «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://github.com/CinemaPress/Theme-Cersei/)
 
 ## Θέμα «joffrey»
 
@@ -128,9 +128,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com joffrey`
 
-> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
+> **DEMO:** `«joffrey»`
 
-[![Πρότυπο «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
+[![Πρότυπο «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://github.com/CinemaPress/Theme-Joffrey/)
 
 ## Θέμα «drogo»
 
@@ -138,9 +138,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com drogo`
 
-> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
+> **DEMO:** `«drogo»`
 
-[![Πρότυπο «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
+[![Πρότυπο «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://github.com/CinemaPress/Theme-Drogo/)
 
 ## Θέμα «bran»
 
@@ -148,9 +148,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com bran`
 
-> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
+> **DEMO:** `«bran»`
 
-[![Πρότυπο «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
+[![Πρότυπο «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://github.com/CinemaPress/Theme-Bran/)
 
 ## Θέμα «arya»
 
@@ -158,9 +158,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com arya`
 
-> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
+> **DEMO:** `«arya»`
 
-[![Πρότυπο «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
+[![Πρότυπο «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://github.com/CinemaPress/Theme-Arya/)
 
 ## Θέμα «mormont»
 
@@ -168,9 +168,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com mormont`
 
-> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
+> **DEMO:** `«mormont»`
 
-[![Πρότυπο «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
+[![Πρότυπο «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://github.com/CinemaPress/Theme-Mormont/)
 
 ## Θέμα «tarly»
 
@@ -178,9 +178,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com tarly`
 
-> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
+> **DEMO:** `«tarly»`
 
-[![Πρότυπο «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
+[![Πρότυπο «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tarly/)
 
 ## Θέμα «daenerys»
 
@@ -188,9 +188,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com daenerys`
 
-> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
+> **DEMO:** `«daenerys»`
 
-[![Πρότυπο «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
+[![Πρότυπο «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://github.com/CinemaPress/Theme-Daenerys/)
 
 ## Θέμα «tormund»
 
@@ -198,9 +198,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com tormund`
 
-> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+> **DEMO:** `«tormund»`
 
-[![Πρότυπο «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+[![Πρότυπο «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tormund/)
 
 ## Θέμα «snow»
 
@@ -208,9 +208,9 @@
 
 > Εγκατάσταση μέσω CLI: `cinemapress theme example.com snow`
 
-> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+> **DEMO:** `«snow»`
 
-[![Πρότυπο «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+[![Πρότυπο «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://github.com/CinemaPress/Theme-Snow/)
 
 ## Επιλογές και ενότητες CinemaPress
 

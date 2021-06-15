@@ -68,9 +68,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com hodor`
 
-> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
+> **DEMO:** `«hodor»`
 
-[![Predloga «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
+[![Predloga «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://github.com/CinemaPress/Theme-Hodor/)
 
 ## Tema «sansa»
 
@@ -78,9 +78,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com sansa`
 
-> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
+> **DEMO:** `«sansa»`
 
-[![Predloga «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
+[![Predloga «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://github.com/CinemaPress/Theme-Sansa/)
 
 ## Tema «robb»
 
@@ -88,9 +88,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com robb`
 
-> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
+> **DEMO:** `«robb»`
 
-[![Predloga «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
+[![Predloga «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://github.com/CinemaPress/Theme-Robb/)
 
 ## Tema «ramsay»
 
@@ -98,9 +98,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com ramsay`
 
-> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
+> **DEMO:** `«ramsay»`
 
-[![Predloga «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
+[![Predloga «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://github.com/CinemaPress/Theme-Ramsay/)
 
 ## Tema «tyrion»
 
@@ -108,9 +108,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com tyrion`
 
-> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
+> **DEMO:** `«tyrion»`
 
-[![Predloga «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
+[![Predloga «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tyrion/)
 
 ## Tema «cersei»
 
@@ -118,9 +118,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com cersei`
 
-> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
+> **DEMO:** `«cersei»`
 
-[![Predloga «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
+[![Predloga «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://github.com/CinemaPress/Theme-Cersei/)
 
 ## Tema «joffrey»
 
@@ -128,9 +128,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com joffrey`
 
-> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
+> **DEMO:** `«joffrey»`
 
-[![Predloga «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
+[![Predloga «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://github.com/CinemaPress/Theme-Joffrey/)
 
 ## Tema «drogo»
 
@@ -138,9 +138,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com drogo`
 
-> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
+> **DEMO:** `«drogo»`
 
-[![Predloga «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
+[![Predloga «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://github.com/CinemaPress/Theme-Drogo/)
 
 ## Tema «bran»
 
@@ -148,9 +148,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com bran`
 
-> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
+> **DEMO:** `«bran»`
 
-[![Predloga «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
+[![Predloga «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://github.com/CinemaPress/Theme-Bran/)
 
 ## Tema «arya»
 
@@ -158,9 +158,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com arya`
 
-> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
+> **DEMO:** `«arya»`
 
-[![Predloga «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
+[![Predloga «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://github.com/CinemaPress/Theme-Arya/)
 
 ## Tema «mormont»
 
@@ -168,9 +168,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com mormont`
 
-> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
+> **DEMO:** `«mormont»`
 
-[![Predloga «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
+[![Predloga «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://github.com/CinemaPress/Theme-Mormont/)
 
 ## Tema «tarly»
 
@@ -178,9 +178,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com tarly`
 
-> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
+> **DEMO:** `«tarly»`
 
-[![Predloga «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
+[![Predloga «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tarly/)
 
 ## Tema «daenerys»
 
@@ -188,9 +188,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com daenerys`
 
-> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
+> **DEMO:** `«daenerys»`
 
-[![Predloga «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
+[![Predloga «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://github.com/CinemaPress/Theme-Daenerys/)
 
 ## Tema «tormund»
 
@@ -198,9 +198,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com tormund`
 
-> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+> **DEMO:** `«tormund»`
 
-[![Predloga «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+[![Predloga «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tormund/)
 
 ## Tema «snow»
 
@@ -208,9 +208,9 @@
 
 > Namestite prek CLI: `cinemapress theme example.com snow`
 
-> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+> **DEMO:** `«snow»`
 
-[![Predloga «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+[![Predloga «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://github.com/CinemaPress/Theme-Snow/)
 
 ## Možnosti in moduli CinemaPress
 

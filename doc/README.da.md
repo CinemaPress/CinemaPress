@@ -68,9 +68,9 @@
 
 > Installer via CLI: `cinemapress theme example.com hodor`
 
-> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
+> **DEMO:** `«hodor»`
 
-[![Skabelon «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
+[![Skabelon «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://github.com/CinemaPress/Theme-Hodor/)
 
 ## Tema «sansa»
 
@@ -78,9 +78,9 @@
 
 > Installer via CLI: `cinemapress theme example.com sansa`
 
-> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
+> **DEMO:** `«sansa»`
 
-[![Skabelon «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
+[![Skabelon «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://github.com/CinemaPress/Theme-Sansa/)
 
 ## Tema «robb»
 
@@ -88,9 +88,9 @@
 
 > Installer via CLI: `cinemapress theme example.com robb`
 
-> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
+> **DEMO:** `«robb»`
 
-[![Skabelon «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
+[![Skabelon «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://github.com/CinemaPress/Theme-Robb/)
 
 ## Tema «ramsay»
 
@@ -98,9 +98,9 @@
 
 > Installer via CLI: `cinemapress theme example.com ramsay`
 
-> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
+> **DEMO:** `«ramsay»`
 
-[![Skabelon «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
+[![Skabelon «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://github.com/CinemaPress/Theme-Ramsay/)
 
 ## Tema «tyrion»
 
@@ -108,9 +108,9 @@
 
 > Installer via CLI: `cinemapress theme example.com tyrion`
 
-> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
+> **DEMO:** `«tyrion»`
 
-[![Skabelon «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
+[![Skabelon «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tyrion/)
 
 ## Tema «cersei»
 
@@ -118,9 +118,9 @@
 
 > Installer via CLI: `cinemapress theme example.com cersei`
 
-> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
+> **DEMO:** `«cersei»`
 
-[![Skabelon «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
+[![Skabelon «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://github.com/CinemaPress/Theme-Cersei/)
 
 ## Tema «joffrey»
 
@@ -128,9 +128,9 @@
 
 > Installer via CLI: `cinemapress theme example.com joffrey`
 
-> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
+> **DEMO:** `«joffrey»`
 
-[![Skabelon «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
+[![Skabelon «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://github.com/CinemaPress/Theme-Joffrey/)
 
 ## Tema «drogo»
 
@@ -138,9 +138,9 @@
 
 > Installer via CLI: `cinemapress theme example.com drogo`
 
-> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
+> **DEMO:** `«drogo»`
 
-[![Skabelon «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
+[![Skabelon «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://github.com/CinemaPress/Theme-Drogo/)
 
 ## Tema «bran»
 
@@ -148,9 +148,9 @@
 
 > Installer via CLI: `cinemapress theme example.com bran`
 
-> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
+> **DEMO:** `«bran»`
 
-[![Skabelon «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
+[![Skabelon «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://github.com/CinemaPress/Theme-Bran/)
 
 ## Tema «arya»
 
@@ -158,9 +158,9 @@
 
 > Installer via CLI: `cinemapress theme example.com arya`
 
-> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
+> **DEMO:** `«arya»`
 
-[![Skabelon «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
+[![Skabelon «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://github.com/CinemaPress/Theme-Arya/)
 
 ## Tema «mormont»
 
@@ -168,9 +168,9 @@
 
 > Installer via CLI: `cinemapress theme example.com mormont`
 
-> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
+> **DEMO:** `«mormont»`
 
-[![Skabelon «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
+[![Skabelon «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://github.com/CinemaPress/Theme-Mormont/)
 
 ## Tema «tarly»
 
@@ -178,9 +178,9 @@
 
 > Installer via CLI: `cinemapress theme example.com tarly`
 
-> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
+> **DEMO:** `«tarly»`
 
-[![Skabelon «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
+[![Skabelon «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tarly/)
 
 ## Tema «daenerys»
 
@@ -188,9 +188,9 @@
 
 > Installer via CLI: `cinemapress theme example.com daenerys`
 
-> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
+> **DEMO:** `«daenerys»`
 
-[![Skabelon «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
+[![Skabelon «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://github.com/CinemaPress/Theme-Daenerys/)
 
 ## Tema «tormund»
 
@@ -198,9 +198,9 @@
 
 > Installer via CLI: `cinemapress theme example.com tormund`
 
-> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+> **DEMO:** `«tormund»`
 
-[![Skabelon «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+[![Skabelon «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tormund/)
 
 ## Tema «snow»
 
@@ -208,9 +208,9 @@
 
 > Installer via CLI: `cinemapress theme example.com snow`
 
-> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+> **DEMO:** `«snow»`
 
-[![Skabelon «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+[![Skabelon «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://github.com/CinemaPress/Theme-Snow/)
 
 ## Valg og moduler CinemaPress
 

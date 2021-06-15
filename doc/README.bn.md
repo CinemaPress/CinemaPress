@@ -68,9 +68,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com hodor`
 
-> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
+> **DEMO:** `«hodor»`
 
-[![টেমপ্লেট «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
+[![টেমপ্লেট «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://github.com/CinemaPress/Theme-Hodor/)
 
 ## বিষয় «sansa»
 
@@ -78,9 +78,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com sansa`
 
-> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
+> **DEMO:** `«sansa»`
 
-[![টেমপ্লেট «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
+[![টেমপ্লেট «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://github.com/CinemaPress/Theme-Sansa/)
 
 ## বিষয় «robb»
 
@@ -88,9 +88,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com robb`
 
-> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
+> **DEMO:** `«robb»`
 
-[![টেমপ্লেট «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
+[![টেমপ্লেট «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://github.com/CinemaPress/Theme-Robb/)
 
 ## বিষয় «ramsay»
 
@@ -98,9 +98,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com ramsay`
 
-> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
+> **DEMO:** `«ramsay»`
 
-[![টেমপ্লেট «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
+[![টেমপ্লেট «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://github.com/CinemaPress/Theme-Ramsay/)
 
 ## বিষয় «tyrion»
 
@@ -108,9 +108,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com tyrion`
 
-> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
+> **DEMO:** `«tyrion»`
 
-[![টেমপ্লেট «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
+[![টেমপ্লেট «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tyrion/)
 
 ## বিষয় «cersei»
 
@@ -118,9 +118,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com cersei`
 
-> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
+> **DEMO:** `«cersei»`
 
-[![টেমপ্লেট «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
+[![টেমপ্লেট «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://github.com/CinemaPress/Theme-Cersei/)
 
 ## বিষয় «joffrey»
 
@@ -128,9 +128,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com joffrey`
 
-> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
+> **DEMO:** `«joffrey»`
 
-[![টেমপ্লেট «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
+[![টেমপ্লেট «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://github.com/CinemaPress/Theme-Joffrey/)
 
 ## বিষয় «drogo»
 
@@ -138,9 +138,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com drogo`
 
-> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
+> **DEMO:** `«drogo»`
 
-[![টেমপ্লেট «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
+[![টেমপ্লেট «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://github.com/CinemaPress/Theme-Drogo/)
 
 ## বিষয় «bran»
 
@@ -148,9 +148,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com bran`
 
-> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
+> **DEMO:** `«bran»`
 
-[![টেমপ্লেট «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
+[![টেমপ্লেট «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://github.com/CinemaPress/Theme-Bran/)
 
 ## বিষয় «arya»
 
@@ -158,9 +158,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com arya`
 
-> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
+> **DEMO:** `«arya»`
 
-[![টেমপ্লেট «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
+[![টেমপ্লেট «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://github.com/CinemaPress/Theme-Arya/)
 
 ## বিষয় «mormont»
 
@@ -168,9 +168,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com mormont`
 
-> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
+> **DEMO:** `«mormont»`
 
-[![টেমপ্লেট «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
+[![টেমপ্লেট «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://github.com/CinemaPress/Theme-Mormont/)
 
 ## বিষয় «tarly»
 
@@ -178,9 +178,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com tarly`
 
-> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
+> **DEMO:** `«tarly»`
 
-[![টেমপ্লেট «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
+[![টেমপ্লেট «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tarly/)
 
 ## বিষয় «daenerys»
 
@@ -188,9 +188,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com daenerys`
 
-> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
+> **DEMO:** `«daenerys»`
 
-[![টেমপ্লেট «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
+[![টেমপ্লেট «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://github.com/CinemaPress/Theme-Daenerys/)
 
 ## বিষয় «tormund»
 
@@ -198,9 +198,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com tormund`
 
-> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+> **DEMO:** `«tormund»`
 
-[![টেমপ্লেট «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+[![টেমপ্লেট «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tormund/)
 
 ## বিষয় «snow»
 
@@ -208,9 +208,9 @@
 
 > CLI মাধ্যমে ইনস্টল করুন: `cinemapress theme example.com snow`
 
-> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+> **DEMO:** `«snow»`
 
-[![টেমপ্লেট «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+[![টেমপ্লেট «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://github.com/CinemaPress/Theme-Snow/)
 
 ## বিকল্প এবং মডিউল CinemaPress
 

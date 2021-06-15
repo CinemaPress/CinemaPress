@@ -68,9 +68,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com hodor`
 
-> **DEMO:** [Hodor.CinemaPress.io](https://Hodor.CinemaPress.io)
+> **DEMO:** `«hodor»`
 
-[![Sapluuna «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://Hodor.CinemaPress.io)
+[![Sapluuna «hodor»](https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png)](https://github.com/CinemaPress/Theme-Hodor/)
 
 ## Teema «sansa»
 
@@ -78,9 +78,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com sansa`
 
-> **DEMO:** [Sansa.CinemaPress.io](https://Sansa.CinemaPress.io)
+> **DEMO:** `«sansa»`
 
-[![Sapluuna «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://Sansa.CinemaPress.io)
+[![Sapluuna «sansa»](https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png)](https://github.com/CinemaPress/Theme-Sansa/)
 
 ## Teema «robb»
 
@@ -88,9 +88,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com robb`
 
-> **DEMO:** [Robb.CinemaPress.io](https://Robb.CinemaPress.io)
+> **DEMO:** `«robb»`
 
-[![Sapluuna «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://Robb.CinemaPress.io)
+[![Sapluuna «robb»](https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png)](https://github.com/CinemaPress/Theme-Robb/)
 
 ## Teema «ramsay»
 
@@ -98,9 +98,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com ramsay`
 
-> **DEMO:** [Ramsay.CinemaPress.io](https://Ramsay.CinemaPress.io)
+> **DEMO:** `«ramsay»`
 
-[![Sapluuna «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://Ramsay.CinemaPress.io)
+[![Sapluuna «ramsay»](https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png)](https://github.com/CinemaPress/Theme-Ramsay/)
 
 ## Teema «tyrion»
 
@@ -108,9 +108,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com tyrion`
 
-> **DEMO:** [Tyrion.CinemaPress.io](https://Tyrion.CinemaPress.io)
+> **DEMO:** `«tyrion»`
 
-[![Sapluuna «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://Tyrion.CinemaPress.io)
+[![Sapluuna «tyrion»](https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tyrion/)
 
 ## Teema «cersei»
 
@@ -118,9 +118,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com cersei`
 
-> **DEMO:** [Cersei.CinemaPress.io](https://Cersei.CinemaPress.io)
+> **DEMO:** `«cersei»`
 
-[![Sapluuna «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://Cersei.CinemaPress.io)
+[![Sapluuna «cersei»](https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png)](https://github.com/CinemaPress/Theme-Cersei/)
 
 ## Teema «joffrey»
 
@@ -128,9 +128,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com joffrey`
 
-> **DEMO:** [Joffrey.CinemaPress.io](https://Joffrey.CinemaPress.io)
+> **DEMO:** `«joffrey»`
 
-[![Sapluuna «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://Joffrey.CinemaPress.io)
+[![Sapluuna «joffrey»](https://raw.githubusercontent.com/CinemaPress/Theme-Joffrey/master/screenshot.png)](https://github.com/CinemaPress/Theme-Joffrey/)
 
 ## Teema «drogo»
 
@@ -138,9 +138,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com drogo`
 
-> **DEMO:** [Drogo.CinemaPress.io](https://Drogo.CinemaPress.io)
+> **DEMO:** `«drogo»`
 
-[![Sapluuna «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://Drogo.CinemaPress.io)
+[![Sapluuna «drogo»](https://raw.githubusercontent.com/CinemaPress/Theme-Drogo/master/screenshot.png)](https://github.com/CinemaPress/Theme-Drogo/)
 
 ## Teema «bran»
 
@@ -148,9 +148,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com bran`
 
-> **DEMO:** [Bran.CinemaPress.io](https://Bran.CinemaPress.io)
+> **DEMO:** `«bran»`
 
-[![Sapluuna «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://Bran.CinemaPress.io)
+[![Sapluuna «bran»](https://raw.githubusercontent.com/CinemaPress/Theme-Bran/master/screenshot.png)](https://github.com/CinemaPress/Theme-Bran/)
 
 ## Teema «arya»
 
@@ -158,9 +158,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com arya`
 
-> **DEMO:** [Arya.CinemaPress.io](https://Arya.CinemaPress.io)
+> **DEMO:** `«arya»`
 
-[![Sapluuna «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://Arya.CinemaPress.io)
+[![Sapluuna «arya»](https://raw.githubusercontent.com/CinemaPress/Theme-Arya/master/screenshot.png)](https://github.com/CinemaPress/Theme-Arya/)
 
 ## Teema «mormont»
 
@@ -168,9 +168,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com mormont`
 
-> **DEMO:** [Mormont.CinemaPress.io](https://Mormont.CinemaPress.io)
+> **DEMO:** `«mormont»`
 
-[![Sapluuna «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://Mormont.CinemaPress.io)
+[![Sapluuna «mormont»](https://raw.githubusercontent.com/CinemaPress/Theme-Mormont/master/screenshot.png)](https://github.com/CinemaPress/Theme-Mormont/)
 
 ## Teema «tarly»
 
@@ -178,9 +178,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com tarly`
 
-> **DEMO:** [Tarly.CinemaPress.io](https://Tarly.CinemaPress.io)
+> **DEMO:** `«tarly»`
 
-[![Sapluuna «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://Tarly.CinemaPress.io)
+[![Sapluuna «tarly»](https://raw.githubusercontent.com/CinemaPress/Theme-Tarly/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tarly/)
 
 ## Teema «daenerys»
 
@@ -188,9 +188,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com daenerys`
 
-> **DEMO:** [Daenerys.CinemaPress.io](https://Daenerys.CinemaPress.io)
+> **DEMO:** `«daenerys»`
 
-[![Sapluuna «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://Daenerys.CinemaPress.io)
+[![Sapluuna «daenerys»](https://raw.githubusercontent.com/CinemaPress/Theme-Daenerys/master/screenshot.png)](https://github.com/CinemaPress/Theme-Daenerys/)
 
 ## Teema «tormund»
 
@@ -198,9 +198,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com tormund`
 
-> **DEMO:** [Tormund.CinemaPress.io](https://Tormund.CinemaPress.io)
+> **DEMO:** `«tormund»`
 
-[![Sapluuna «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://Tormund.CinemaPress.io)
+[![Sapluuna «tormund»](https://raw.githubusercontent.com/CinemaPress/Theme-Tormund/master/screenshot.png)](https://github.com/CinemaPress/Theme-Tormund/)
 
 ## Teema «snow»
 
@@ -208,9 +208,9 @@
 
 > Asenna CLI: n kautta `cinemapress theme example.com snow`
 
-> **DEMO:** [Snow.CinemaPress.io](https://Snow.CinemaPress.io)
+> **DEMO:** `«snow»`
 
-[![Sapluuna «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://Snow.CinemaPress.io)
+[![Sapluuna «snow»](https://raw.githubusercontent.com/CinemaPress/Theme-Snow/master/screenshot.png)](https://github.com/CinemaPress/Theme-Snow/)
 
 ## Vaihtoehdot ja moduulit CinemaPress
 
