@@ -3,7 +3,7 @@
 =====================================================
  Script export data from DLE to CinemaPress
 -----------------------------------------------------
- https://cinemapress.io/
+ https://github.com/CinemaPress/CinemaPress
 -----------------------------------------------------
  Copyright (c) 2020 CinemaPress
 =====================================================

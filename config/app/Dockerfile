@@ -17,9 +17,9 @@ RUN npm install && npm run build && npm link
 RUN mkdir /app
 WORKDIR /app
 
-RUN nativefier https://cinemapress.io /tmp/nativefier \
-    && nativefier -p osx https://cinemapress.io /tmp/nativefier \
-    && nativefier -p windows https://cinemapress.io /tmp/nativefier \
+RUN nativefier https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
+    && nativefier -p osx https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
+    && nativefier -p windows https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
     && rm -rf /tmp/nativefier
 
 ENTRYPOINT ["nativefier"]

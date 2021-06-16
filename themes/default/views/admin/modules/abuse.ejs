@@ -525,25 +525,6 @@
                                     <div class="inner-padding">
                                         <div class="row">
                                             <div class="col-lg-12 col-xs-12 text-center">
-                                                <div class="input-group">
-                                                    <input class="form-control" type="text" placeholder="<%= __('Название организации для поиска всех её IP') %>" data-add-ip="modules.abuse.data.ips" autocomplete="off" autocapitalize="off" spellcheck="false">
-                                                    <span class="input-group-btn">
-                                                        <a href="javascript:void(0)" class="btn btn-default" data-add-ip-name="modules.abuse.data.ips">
-                                                            <span class="fa fa-plus"></span>&nbsp;&nbsp;<%= __('Добавить все IP') %>
-                                                        </a>
-                                                    </span>
-                                                </div>
-
-                                                <div class="search-ips"></div>
-                                                <style>.search-ips {width: 100%; margin: 10px auto} .search-ips a {
-                                                        margin: 1px;
-                                                        padding: 0;
-                                                        border: 1px #2f374b solid;
-                                                        border-radius: 3px;
-                                                        font-size: 9px;
-                                                        display: inline-block;
-                                                    }</style>
-
                                                 <textarea class="form-control" name="modules.abuse.data.ips" placeholder="<%= __('IP адреса для блокировки') %>"><% if (modules.abuse.data.ips) { %><%- modules.abuse.data.ips.join(',') %><% } %></textarea>
                                             </div>
 

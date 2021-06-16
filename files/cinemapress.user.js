@@ -6,7 +6,7 @@
 // @description:ru Кнопка автозаполнения информации о фильме в CinemaPress.
 // @description:zh CinemaPress电影信息自动完成按钮。
 // @author CinemaPress
-// @homepageURL https://cinemapress.io/
+// @homepageURL https://github.com/CinemaPress
 // @supportURL https://enota.club/
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT

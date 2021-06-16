@@ -1,0 +1,6 @@
+[
+  {
+    "selector":"#alertCP",
+    "html":"<a href=\"https://hub.docker.com/r/cinemapress/docker\" target=\"_blank\"><i class=\"fab fa-docker\"></i></a>&nbsp;&nbsp;&nbsp;<a href=\"https://github.com/CinemaPress/CinemaPress\" target=\"_blank\"><i class=\"fab fa-github\"></i></a>&nbsp;&nbsp;&nbsp;<a href=\"https://gitlab.com/CinemaPress/CinemaPress\" target=\"_blank\"><i class=\"fab fa-gitlab\"></i></a>&nbsp;&nbsp;&nbsp;<a href=\"https://bitbucket.org/cinemapress/cinemapress/src/master/\" target=\"_blank\"><i class=\"fab fa-bitbucket\"></i></a>"
+  }
+]

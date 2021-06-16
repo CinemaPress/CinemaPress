@@ -78,11 +78,6 @@
       for (i = 0; i < addId.length; i++)
         addId[i].addEventListener('click', addIdList);
 
-    var addIp = document.querySelectorAll('a[data-add-ip-name]');
-    if (addIp)
-      for (i = 0; i < addIp.length; i++)
-        addIp[i].addEventListener('click', addIpList);
-
     var delId = document.querySelectorAll('li[data-delete-name]');
     if (delId)
       for (i = 0; i < delId.length; i++)
@@ -427,54 +422,6 @@
     }
 
     id.value = '';
-  }
-
-  function addIpList() {
-    var self = this;
-    var company_input = document.querySelector('input[data-add-ip="' + self.dataset.addIpName + '"]');
-    var company_name = company_input.value.trim().split(',');
-    company_input.value = '';
-
-    self.removeEventListener('click', addIpList);
-    self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
-
-    if (company_name && company_name.length) {
-      var name = [];
-      company_name.forEach(function(cn) {
-        name.push('name[]=' + encodeURIComponent(cn));
-      });
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200 && xhr.responseText) {
-            var new_ips = JSON.parse(xhr.responseText);
-            var searchIps = document.querySelector('.search-ips');
-            new_ips.forEach(function(ni) {
-              var a = document.createElement('a');
-              a.setAttribute('href', 'https://whois.cinemapress.io/' + ni.split('/')[0] + '#' + company_name.join(','));
-              a.setAttribute('target', '_blank');
-              a.innerHTML = '&nbsp;' + ni + '&nbsp;';
-              searchIps.appendChild(a);
-            });
-            var addList = document.querySelector('textarea[name="' + self.dataset.addIpName + '"]');
-            var before_ips = addList.value.split(',').length;
-            var ips = arrayUnique(new_ips.concat(addList.value.split(',')));
-            var after_ips = ips.length - before_ips;
-            self.innerHTML = '<span class="fa fa-plus"></span>&nbsp;&nbsp;' + after_ips + '&nbsp;IPs';
-            addList.value = ips.join(',');
-            setTimeout(function() {
-              self.innerHTML = '<span class="fa fa-plus"></span>&nbsp;&nbsp;<%= __('Добавить все IP') %>';
-              self.addEventListener('click', addIpList);
-            }, 10000);
-          } else {
-            self.innerHTML = '<span class="fa fa-plus"></span>&nbsp;&nbsp;<%= __('Добавить все IP') %>';
-            self.addEventListener('click', addIpList);
-          }
-        }
-      }
-      xhr.open('GET', 'https://company.cinemapress.io/<%- config.domain %>?' + name.join('&'), true);
-      xhr.send(null);
-    }
   }
 
   function arrayUnique(array) {
@@ -1378,7 +1325,7 @@
 
   function alertCP() {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://a.cinemapress.io', true);
+    xhr.open('GET', 'https://cinemapress.github.io/CinemaPress/files/alert.json', true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var alerts = JSON.parse(xhr.responseText);
@@ -1393,7 +1340,7 @@
         }
       }
     };
-    xhr.send();
+    xhr.send(null);
   }
 
   function inputData() {
