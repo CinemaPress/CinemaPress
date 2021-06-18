@@ -725,7 +725,7 @@
                                                                 <td class="table-content help-example">
                                                                     <div class="<%- custom_div %>">
                                                                         <code>
-                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
                                                                             ~ <span class="kinopoisk_id"><%= d[1] %></span>
                                                                             ~ <span class="season"><%= d[2] %></span>
                                                                             ~ <span class="episode"><%= d[3] || '' %></span>
@@ -894,7 +894,7 @@
                                                                 <td class="table-content help-example">
                                                                     <div>
                                                                         <code>
-                                                                            <span class="url"><%= d[0].split('/')[2] %></span>
+                                                                            <span class="url"><%= (/^\/[a-z0-9]/i.test(d[0]) ? config.domain : d[0].split('/')[2]) %></span>
                                                                             ~ <span class="season"><%= d[1] %></span>
                                                                             ~
                                                                             <span class="episode"><%= d[2] || '' %></span>
