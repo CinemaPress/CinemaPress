@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
       curl \
       git \
       zip unzip \
+      sshpass \
     && install-php-extensions \
       bcmath \
       bz2 \
@@ -29,7 +30,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
       soap \
       xsl \
       zip \
-      sockets
+      sockets \
+      ssh2
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && ln -s $(composer config --global home) /root/composer

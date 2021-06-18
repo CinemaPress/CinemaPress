@@ -4,7 +4,7 @@
 
     <div class="sidebar-module">
         <div class="btn-group-justified change-lang">
-            <a href="https://enota.club/forums/translate/" class="btn btn-default" target="_blank"><i
+            <a href="https://enota.club/forums/help-and-support-<% if (typeof language !== 'undefined') { %><%- language %><% } else { %>en<% } %>/" class="btn btn-default" target="_blank"><i
                         class="fa fa-language"
                         style="float: left; font-size: 18px;opacity: .5;"></i> <%= __('Ошибки в переводе?') %></a>
         </div>
@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <a href="https://enota.club/forums/help/" target="_blank" class="btn btn-block btn-default"
+                <a href="https://enota.club/forums/help-and-support-<% if (typeof language !== 'undefined') { %><%- language %><% } else { %>en<% } %>/" target="_blank" class="btn btn-block btn-default"
                    style="text-align: center; display: inline-table; margin: 150px auto; padding: 20px">
                     <span class="fa fa-question-circle" style="font-size: 28px; width: 100%"></span>
                     <p style="font-size: 11px;"><%= __('Есть вопросы?') %></p>
