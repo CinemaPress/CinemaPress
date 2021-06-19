@@ -879,6 +879,7 @@
                                                     <table class="table table-bordered table-striped">
                                                         <tbody>
                                                         <% modules.episode.data.custom.forEach(function(data, num) { %>
+                                                            <% var iter = num + 1; %>
                                                             <% var d = data.replace(/\s*~\s*/g, '~').split('~'); %>
                                                             <% if (d.length < 3) return; %>
                                                             <% if (data.charAt(0) === '#') {
@@ -889,7 +890,7 @@
                                                             } %>
                                                             <tr class="<%- custom_div %>">
                                                                 <td class="table-settings">
-                                                                    <span><%- num + 1 %>.</span>
+                                                                    <span><%- iter %>.</span>
                                                                 </td>
                                                                 <td class="table-content help-example">
                                                                     <div>
