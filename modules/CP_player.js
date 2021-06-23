@@ -170,7 +170,7 @@ function codePlayer(type, movie, options) {
         code.player =
           '<iframe id="cinemapress-cdn" src="' +
           movie.player.replace(/^.*?(http|\/\/)(.*$)/i, '$1$2') +
-          '" frameborder="0"></iframe>';
+          '" frameborder="0" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>';
       }
     }
     if (code.player) {
