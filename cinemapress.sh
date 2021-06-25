@@ -3332,8 +3332,10 @@ while [ "${WHILE}" -lt "2" ]; do
             exit 0
         ;;
         "bot"|"bot_https"|"domain"|"domain_https" )
+            _br "${2}"
             read_domain "${2}"
             sh_not
+            _s "${2}"
             read_bomain "${3}"
             if [ "${1}" = "bot_https" ] || [ "${1}" = "domain_https" ]; then
                 read_cloudflare_email "${4}"
@@ -3398,6 +3400,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 _line
             fi
             post_commands "${CP_BOMAIN}"
+            _br
             exit 0
         ;;
         "bench"|"benchmark"|"speedtest" )

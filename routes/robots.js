@@ -55,25 +55,30 @@ router.get('/?', function(req, res) {
   var host = req.get('host');
   var host_domain = url.parse(protocol + '://' + host).hostname;
 
-  if (
-    (config.bomain && host_domain === config.subdomain + config.domain) ||
-    (config.bomain && host_domain === config.ru.subdomain + config.ru.domain) ||
-    (config.bomain && config.mirrors.indexOf(host_domain) + 1) ||
-    (!req.userinfo.bot.main && !config.user_bot)
-  ) {
-    res.send('User-agent: *\nDisallow: /');
-  } else {
-    res.send(
-      config.codes.robots +
-        '\n\n' +
-        'Sitemap: ' +
-        (req.userinfo && req.userinfo.origin
-          ? req.userinfo.origin
-          : config.protocol + config.subdomain + config.domain) +
-        '/' +
-        config.urls.sitemap
-    );
+  if (!config.user_bot) {
+    if (!req.userinfo.bot.main) {
+      return res.send('User-agent: *\nDisallow: /');
+    }
+    if (
+      (config.bomain || config.ru.bomain) &&
+      (host_domain === config.subdomain + config.domain ||
+        host_domain === config.ru.subdomain + config.ru.domain ||
+        config.mirrors.indexOf(host_domain) + 1)
+    ) {
+      return res.send('User-agent: *\nDisallow: /');
+    }
   }
+
+  res.send(
+    config.codes.robots +
+      '\n\n' +
+      'Sitemap: ' +
+      (req.userinfo && req.userinfo.origin
+        ? req.userinfo.origin
+        : config.protocol + config.subdomain + config.domain) +
+      '/' +
+      config.urls.sitemap
+  );
 });
 
 module.exports = router;

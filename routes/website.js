@@ -574,28 +574,28 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function(req, res, next) {
       }
     }
 
-    if (!req.userinfo.bot.main && !config.user_bot && template === 'sitemap') {
-      return next({
-        status: 404,
-        message: 'The sitemap is available only to search bots.'
-      });
-    }
-
     if (template === 'sitemap') {
-      var host = req.get('host');
-      var host_domain = url_parse.parse(config.protocol + '://' + host)
-        .hostname;
-      if (
-        (config.bomain && host_domain === config.subdomain + config.domain) ||
-        (config.bomain &&
-          host_domain === config.ru.subdomain + config.ru.domain) ||
-        (config.bomain && config.mirrors.indexOf(host_domain) + 1) ||
-        (!req.userinfo.bot.main && !config.user_bot)
-      ) {
-        return next({
-          status: 404,
-          message: 'The sitemap is available only to search bots.'
-        });
+      if (!config.user_bot) {
+        if (!req.userinfo.bot.main) {
+          return next({
+            status: 404,
+            message: 'The sitemap is available only to search bots.'
+          });
+        }
+        var host = req.get('host');
+        var host_domain = url_parse.parse(config.protocol + '://' + host)
+          .hostname;
+        if (
+          (config.bomain || config.ru.bomain) &&
+          (host_domain === config.subdomain + config.domain ||
+            host_domain === config.ru.subdomain + config.ru.domain ||
+            config.mirrors.indexOf(host_domain) + 1)
+        ) {
+          return next({
+            status: 404,
+            message: 'The sitemap is available only to search bots.'
+          });
+        }
       }
     }
 
