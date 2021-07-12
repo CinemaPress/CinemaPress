@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Zobraziť iba prvý úspešný výsledok",
 	"Сервер информации о фильмах": "Movieový informačný server",
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurácia informačného servera diaľkového movieu",
-	"Защита iframe ссылок": "Iframe link ochrana"
+	"Защита iframe ссылок": "Iframe link ochrana",
+	"Сообщение на странице блокировки": "Správa na stránke uzamknutia",
+	"агент(ов)": "agent (y)"
 }

@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Onyesha matokeo ya kwanza ya mafanikio",
 	"Сервер информации о фильмах": "Taarifa ya filamu server",
 	"Настройка подключения удаленного сервера информации о фильмах": "Inasanidi seva ya habari ya kijijini",
-	"Защита iframe ссылок": "Ulinzi wa kiungo cha iframe"
+	"Защита iframe ссылок": "Ulinzi wa kiungo cha iframe",
+	"Сообщение на странице блокировки": "Ujumbe kwenye ukurasa wa kufuli",
+	"агент(ов)": "agent(s)"
 }

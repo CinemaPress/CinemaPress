@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Sadece ilk başarılı sonucu göster",
 	"Сервер информации о фильмах": "Movie bilgi sunucusu",
 	"Настройка подключения удаленного сервера информации о фильмах": "Uzaktan movie bilgi sunucusunu yapılandırma",
-	"Защита iframe ссылок": "İframe link koruması"
+	"Защита iframe ссылок": "İframe link koruması",
+	"Сообщение на странице блокировки": "Kilit sayfasındaki mesaj",
+	"агент(ов)": "ajan (lar)"
 }

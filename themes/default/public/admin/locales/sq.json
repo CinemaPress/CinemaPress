@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Tregojnë vetëm rezultatin e parë të suksesshëm",
 	"Сервер информации о фильмах": "Serveri i informacionit të movieit",
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurimi i serverit të informacionit të largët të movieit",
-	"Защита iframe ссылок": "Mbrojtja e lidhjes së iFRAME"
+	"Защита iframe ссылок": "Mbrojtja e lidhjes së iFRAME",
+	"Сообщение на странице блокировки": "Mesazh në faqen e bllokimit",
+	"агент(ов)": "agjent(s)"
 }

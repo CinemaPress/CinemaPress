@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Näita ainult esimese eduka tulemuse",
 	"Сервер информации о фильмах": "Movieiteabe server",
 	"Настройка подключения удаленного сервера информации о фильмах": "Kaugmovieide infoserveri seadistamine",
-	"Защита iframe ссылок": "Iframe lingi kaitse"
+	"Защита iframe ссылок": "Iframe lingi kaitse",
+	"Сообщение на странице блокировки": "Sõnum lukustuse lehel",
+	"агент(ов)": "agent (id)"
 }

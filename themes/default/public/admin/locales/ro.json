@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Arată doar primul rezultat de succes",
 	"Сервер информации о фильмах": "Movie iNFORMATION sERVER",
 	"Настройка подключения удаленного сервера информации о фильмах": "Configurarea serverului de informații de la distanță",
-	"Защита iframe ссылок": "Protecția legăturii iFrame"
+	"Защита iframe ссылок": "Protecția legăturii iFrame",
+	"Сообщение на странице блокировки": "Mesaj pe pagina de blocare",
+	"агент(ов)": "agent (e)"
 }

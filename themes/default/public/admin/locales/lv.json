@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Parādīt tikai pirmo veiksmīgo rezultātu",
 	"Сервер информации о фильмах": "Movieu informācijas serveris",
 	"Настройка подключения удаленного сервера информации о фильмах": "Attālās movieu informācijas servera konfigurēšana",
-	"Защита iframe ссылок": "Iframe saite aizsardzība"
+	"Защита iframe ссылок": "Iframe saite aizsardzība",
+	"Сообщение на странице блокировки": "Ziņojums uz slēdzenes lapas",
+	"агент(ов)": "aģents (-i)"
 }

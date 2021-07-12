@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Chỉ hiển thị kết quả thành công đầu tiên",
 	"Сервер информации о фильмах": "Máy chủ thông tin phim",
 	"Настройка подключения удаленного сервера информации о фильмах": "Cấu hình máy chủ thông tin phim từ xa",
-	"Защита iframe ссылок": "Bảo vệ liên kết iframe"
+	"Защита iframe ссылок": "Bảo vệ liên kết iframe",
+	"Сообщение на странице блокировки": "Tin nhắn trên trang khóa",
+	"агент(ов)": "đẠI lÝ(s)"
 }

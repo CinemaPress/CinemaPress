@@ -243,7 +243,8 @@ module.exports = {
           "data-cinemaplayer-select-episode=\"[episode]\""
         ],
         "iframe": 0,
-        "protected": 1
+        "protected": 1,
+        "js": "https://CinemaPlayer.github.io/cinemaplayer.js"
       },
       "cinemaplayer": {
         "information": {
@@ -735,7 +736,7 @@ module.exports = {
     "status": true,
     "data": {
       "tokens": [
-        "TEST ~ 50req/1sec ~ 10000 ~ 50req/1sec ~ unlimited"
+        "TEST ~ 100req/1sec ~ 10000 ~ 100req/1sec ~ unlimited"
       ]
     }
   }

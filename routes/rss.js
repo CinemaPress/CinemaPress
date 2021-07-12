@@ -65,7 +65,9 @@ router.get('/?', function(req, res, next) {
       : config.protocol +
         (config.ru.bomain
           ? config.ru.botdomain + config.ru.bomain
-          : config.botdomain + config.bomain) +
+          : config.bomain
+          ? config.botdomain + config.bomain
+          : config.subdomain + config.domain) +
         req.originalUrl;
   var urlHash = md5(url.toLowerCase() + process.env['CP_VER']);
 
@@ -126,14 +128,18 @@ router.get('/?', function(req, res, next) {
         ? req.userinfo.domain
         : config.ru.bomain
         ? config.ru.botdomain + config.ru.bomain
-        : config.botdomain + config.bomain;
+        : config.bomain
+        ? config.botdomain + config.bomain
+        : config.subdomain + config.domain;
     options.origin =
       req.userinfo && req.userinfo.origin
         ? req.userinfo.origin
         : config.protocol +
           (config.ru.bomain
             ? config.ru.botdomain + config.ru.bomain
-            : config.botdomain + config.bomain);
+            : config.bomain
+            ? config.botdomain + config.bomain
+            : config.subdomain + config.domain);
     options.content_image = config.default.image;
 
     var render = {};

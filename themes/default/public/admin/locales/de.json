@@ -1045,5 +1045,7 @@
 	"Показывать только первый успешный результат": "Zeigen sie nur das erste erfolgreiche ergebnis",
 	"Сервер информации о фильмах": "Movieinformationsserver",
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurieren des remote-movieinformationsservers",
-	"Защита iframe ссылок": "IFRAME link protection"
+	"Защита iframe ссылок": "IFRAME link protection",
+	"Сообщение на странице блокировки": "Nachricht auf der sperrseite",
+	"агент(ов)": "agent(s)"
 }

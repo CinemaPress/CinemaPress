@@ -176,7 +176,9 @@ router.get('/:id/:hash?', function(req, res) {
               (req.query.episode && req.query.episode.replace(/[^0-9]/i, '')) ||
                 ''
             ) +
-          '></div><script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
+          '></div><script src="' +
+          modules.player.data.embed.js +
+          '?v=' +
           process.env['CP_VER'] +
           '"></script></body></html>'
       );

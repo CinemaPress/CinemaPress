@@ -106,7 +106,9 @@ router.get('/:id', function(req, res) {
         '<div id="cinemaplayer" ' +
         dataset +
         '></div>' +
-        '<script src="https://CinemaPlayer.github.io/cinemaplayer.js?v=' +
+        '<script src="' +
+        modules.player.data.embed.js +
+        '?v=' +
         process.env['CP_VER'] +
         '"></script>' +
         '</body></html>'
