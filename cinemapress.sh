@@ -83,15 +83,95 @@ docker_install() {
             echo -n "☐ Installing packages ..."
             if [ "${CP_OS}" = "debian" ] || [ "${CP_OS}" = "\"debian\"" ]; then
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install wget >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install curl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install nano >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install htop >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install lsb-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install ca-certificates >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git-core >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install openssl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install netcat >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install cron >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install zip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install bzip2 >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install unzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gcc >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install make >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install libssl-dev >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install locales >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools syslog-ng >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install sudo >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install wget >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install curl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install nano >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install htop >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install lsb-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install ca-certificates >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git-core >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install openssl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install netcat >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install cron >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install zip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install bzip2 >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install unzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gcc >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install make >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install libssl-dev >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install locales >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install syslog-ng >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
-                dnf -y install sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install sudo >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install wget >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install curl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install nano >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install htop >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install lsb-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install ca-certificates >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install git-core >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install openssl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install netcat >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install cron >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install zip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install gzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install bzip2 >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install unzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install gcc >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install make >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install libssl-dev >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install locales >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                dnf -y install lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             elif [ "${CP_OS}" = "centos" ] || [ "${CP_OS}" = "\"centos\"" ]; then
                 yum install -y epel-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
-                yum install -y sudo wget curl nano htop lsb-release ca-certificates git-core openssl netcat cron zip gzip bzip2 unzip gcc make libssl-dev locales lsof net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y sudo >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y wget >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y curl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y nano >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y htop >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y lsb-release >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y ca-certificates >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y git-core >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y openssl >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y netcat >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y net-tools >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y cron >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y zip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y gzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y bzip2 >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y unzip >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y gcc >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y make >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y libssl-dev >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y locales >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
+                yum install -y lsof >>/var/log/docker_install_"$(date '+%d_%m_%Y')".log 2>&1
             fi
             echo -e "\\r${G}✓ Installing packages ...${NC}"
             echo ""
