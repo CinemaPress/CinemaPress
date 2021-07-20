@@ -110,7 +110,8 @@
       if (err) {
         self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;&nbsp;' + err;
       } else {
-        window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+        var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+        window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
       }
     });
 
@@ -159,7 +160,8 @@
 
     setTimeout(function() {
       if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+      var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+      window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
     }, 25000);
   }
 
@@ -187,7 +189,8 @@
 
     setTimeout(function() {
       if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+      var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+      window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
     }, 25000);
 
   }
@@ -211,13 +214,15 @@
       } else {
         self.innerHTML = '<i class="fa fa-sync-alt"></i>';
         self.addEventListener('click', reloadMoviesData);
-        window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+        var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+        window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
       }
     });
 
     setTimeout(function() {
       if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+      var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+      window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
     }, 25000);
 
   }
@@ -249,7 +254,8 @@
 
     setTimeout(function() {
       if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+      var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+      window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
     }, 25000);
 
   }
@@ -281,7 +287,8 @@
 
     setTimeout(function() {
       if (stop) return;
-      window.location.href += (window.location.href.indexOf('?') + 1 ? '&' : '?') + 'reload';
+      var href = window.location.href.replace(/\?reload=.*/ig,'').replace(/&reload=.*/ig,'');
+      window.location.href = href + (href.indexOf('?') + 1 ? '&' : '?') + 'reload=' + Math.random().toString(36).substr(2, 5);
     }, 25000);
 
   }
