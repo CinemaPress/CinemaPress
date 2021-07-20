@@ -202,14 +202,20 @@ router.get('/:tab', function(req, res) {
       };
       if (p.url.indexOf('[id]') + 1) {
         if (id) {
-          p.url = p.url.replace(/\[id]/gi, id ? id : '');
+          p.url = p.url.replace(
+            /\[id]/gi,
+            id ? parseInt(id) - parseInt('' + config.urls.unique_id || '0') : ''
+          );
         } else {
           return callback();
         }
       }
       if (p.url.indexOf('[kp_id]') + 1) {
         if (id) {
-          p.url = p.url.replace(/\[kp_id]/gi, id ? id : '');
+          p.url = p.url.replace(
+            /\[kp_id]/gi,
+            id ? parseInt(id) - parseInt('' + config.urls.unique_id || '0') : ''
+          );
         } else {
           return callback();
         }
