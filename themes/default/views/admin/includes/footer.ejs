@@ -1562,7 +1562,7 @@
     }, false);
   }
 
-  ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper', 'modules.api.data.tokens'].forEach(function(ca) {
+  ['config.movies.cron', 'config.bots', 'modules.content.data.custom', 'modules.player.data.custom', 'modules.episode.data.custom', 'modules.episode.data.index.custom', 'modules.content.data.scraper', 'modules.api.data.tokens', "modules.player.data.cinemaplayer.picture.api", "modules.player.data.cinemaplayer.trailer.api", "modules.player.data.cinemaplayer.online.api", "modules.player.data.cinemaplayer.download.api", "modules.player.data.cinemaplayer.information.api"].forEach(function(ca) {
     if (document.querySelector('[data-activate-api="' + ca + '"]') && document.querySelector('[data-delete-api="' + ca + '"]')) {
       changeApi(ca);
     }
