@@ -133,8 +133,8 @@ router.get('/:tab', function(req, res) {
       : '';
   var ip =
     typeof req.query.ip !== 'undefined' &&
-    ('' + req.query.ip).replace(/[^0-9.:]/g, '')
-      ? ('' + req.query.ip).replace(/[^0-9.:]/g, '')
+    decodeURIComponent('' + req.query.ip).replace(/[^0-9.:]/g, '')
+      ? decodeURIComponent('' + req.query.ip).replace(/[^0-9.:]/g, '')
       : '';
   var hash =
     typeof req.query.hash !== 'undefined' &&

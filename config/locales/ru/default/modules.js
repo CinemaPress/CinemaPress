@@ -243,7 +243,7 @@ module.exports = {
           "data-cinemaplayer-select-episode=\"[episode]\""
         ],
         "iframe": 0,
-        "protected": 1,
+        "protected": 0,
         "js": "https://CinemaPlayer.github.io/cinemaplayer.js"
       },
       "cinemaplayer": {

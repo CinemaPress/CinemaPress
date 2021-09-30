@@ -7,7 +7,7 @@
 // @description:zh CinemaPress电影信息自动完成按钮。
 // @author CinemaPress
 // @homepageURL https://github.com/CinemaPress
-// @supportURL https://enota.club/
+// @supportURL https://github.com/CinemaPress/CinemaPress/issues
 // @icon https://avatars3.githubusercontent.com/u/16612433?s=200
 // @license MIT
 // @version 2021.01
