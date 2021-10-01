@@ -1,4 +1,4 @@
-FROM node:8-stretch
+FROM node:14-stretch
 LABEL description="Create CinemaPress movie application"
 
 RUN dpkg --add-architecture i386
@@ -7,7 +7,7 @@ RUN apt-get update \
     && apt-get --yes install wine32 imagemagick git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN git clone "https://github.com/jiahaog/nativefier.git" "/nativefier"
+RUN git clone "https://github.com/jiahaog/nativefier.git" -b v44.0.4 "/nativefier"
 
 WORKDIR /nativefier/app
 RUN npm install
