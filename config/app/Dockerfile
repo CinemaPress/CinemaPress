@@ -1,26 +1,52 @@
-FROM node:14-stretch
-LABEL description="Create CinemaPress movie application"
+FROM node:12-alpine
+LABEL description="Alpine image to build Nativefier apps"
 
-RUN dpkg --add-architecture i386
+# Install dependencies and cleanup extraneous files
+RUN apk update \
+    && apk add bash wine imagemagick dos2unix git \
+    && rm -rf /var/cache/apk/*
 
-RUN apt-get update \
-    && apt-get --yes install wine32 imagemagick git \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Use node (1000) as default user not root
+USER node
 
-RUN git clone "https://github.com/jiahaog/nativefier.git" -b v44.0.4 "/nativefier"
+ENV NPM_PACKAGES="/home/node/npm-packages"
+ENV PATH="$PATH:$NPM_PACKAGES/bin"
+ENV MANPATH="$MANPATH:$NPM_PACKAGES/share/man"
 
-WORKDIR /nativefier/app
-RUN npm install
+# Setup a global packages location for "node" user so we can npm link
+RUN mkdir $NPM_PACKAGES \
+    && npm config set prefix $NPM_PACKAGES
+
+# Add sources with node as the owner so that it has the power it needs to build in /nativefier
+RUN git clone "https://github.com/jiahaog/nativefier.git" -b v44.0.4 "/nativefier" \
+    && chown node:node /nativefier
+
 WORKDIR /nativefier
-RUN npm install && npm run build && npm link
 
-RUN mkdir /app
-WORKDIR /app
+# Fix line endings that may have gotten mangled in Windows
+RUN find ./icon-scripts ./src ./app -type f -print0 | xargs -0 dos2unix
 
-RUN nativefier https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
-    && nativefier -p osx https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
-    && nativefier -p windows https://github.com/CinemaPress/CinemaPress /tmp/nativefier \
+# Link (which will install and build)
+# Run tests (to ensure we don't Docker build & publish broken stuff)
+# Cleanup leftover files in this step to not waste Docker layer space
+# Make sure nativefier is executable
+RUN npm link \
+    && npm test \
+    && rm -rf /tmp/nativefier* ~/.npm/_cacache ~/.cache/electron \
+    && chmod +x $NPM_PACKAGES/bin/nativefier
+
+# Run a {lin,mac,win} build
+# 1. to check installation was sucessful
+# 2. to cache electron distributables and avoid downloads at runtime
+# Also delete generated apps so they don't get added to the Docker layer
+# !Important! The `rm -rf` command must be in the same `RUN` command (using an `&&`), to not waste Docker layer space
+RUN nativefier https://github.com/nativefier/nativefier /tmp/nativefier \
+    && nativefier -p osx https://github.com/nativefier/nativefier /tmp/nativefier \
+    && nativefier -p windows https://github.com/nativefier/nativefier /tmp/nativefier \
     && rm -rf /tmp/nativefier
+
+RUN echo Generated Electron cache size: $(du -sh ~/.cache/electron) \
+    && echo Final image size: $(du -sh / 2>/dev/null)
 
 ENTRYPOINT ["nativefier"]
 CMD ["--help"]
