@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurera fjärrmoviesinformationsservern",
 	"Защита iframe ссылок": "Iframe länkskydd",
 	"Сообщение на странице блокировки": "Meddelande på låssidan",
-	"агент(ов)": "agent (er)"
+	"агент(ов)": "agent (er)",
+	"Изменить с": "Ändringar",
+	"Изменить на": "Ändra till"
 }

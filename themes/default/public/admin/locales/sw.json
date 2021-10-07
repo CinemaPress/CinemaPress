@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Inasanidi seva ya habari ya kijijini",
 	"Защита iframe ссылок": "Ulinzi wa kiungo cha iframe",
 	"Сообщение на странице блокировки": "Ujumbe kwenye ukurasa wa kufuli",
-	"агент(ов)": "agent(s)"
+	"агент(ов)": "agent(s)",
+	"Изменить с": "Badilisha s",
+	"Изменить на": "Badilisha"
 }

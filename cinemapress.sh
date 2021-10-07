@@ -194,14 +194,12 @@ docker_install() {
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
-                    apt-transport-https \
-                    ca-certificates \
-                    curl \
-                    gnupg2 \
-                    software-properties-common
-                curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-                apt-key fingerprint 0EBFCD88
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install apt-transport-https
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install ca-certificates
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install curl
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gnupg2
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install software-properties-common
+                curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
                 if [ "${CP_ARCH}" = "amd64" ] || [ "${CP_ARCH}" = "x86_64" ] || [ "${CP_ARCH}" = "i386" ]
                 then
                     CP_ARCH="amd64"
@@ -212,23 +210,23 @@ docker_install() {
                 then
                     CP_ARCH="arm64"
                 fi
-                add-apt-repository \
-                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+                sed -i "s~.*docker.com.*~~g" /etc/apt/sources.list &> /dev/null
+                echo "deb [arch=${CP_ARCH} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce-cli
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install containerd.io
                 systemctl restart ssh
             elif [ "${CP_OS}" = "ubuntu" ] || [ "${CP_OS}" = "\"ubuntu\"" ]; then
                 CP_ARCH="`dpkg --print-architecture`"
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq remove docker docker-engine docker.io containerd runc
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install \
-                    apt-transport-https \
-                    ca-certificates \
-                    curl \
-                    gnupg-agent \
-                    software-properties-common
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-                apt-key fingerprint 0EBFCD88
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install apt-transport-https
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install ca-certificates
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install curl
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install gnupg-agent
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install software-properties-common
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
                 if [ "${CP_ARCH}" = "amd64" ] || [ "${CP_ARCH}" = "x86_64" ] || [ "${CP_ARCH}" = "i386" ]
                 then
                     CP_ARCH="amd64"
@@ -245,10 +243,12 @@ docker_install() {
                 then
                     CP_ARCH="s390x"
                 fi
-                add-apt-repository \
-                    "deb [arch=${CP_ARCH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                sed -i "s~.*docker.com.*~~g" /etc/apt/sources.list &> /dev/null
+                echo "deb [arch=${CP_ARCH} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
                 DEBIAN_FRONTEND=noninteractive apt-get -y -qq update
-                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce docker-ce-cli containerd.io
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install docker-ce-cli
+                DEBIAN_FRONTEND=noninteractive apt-get -y -qq install containerd.io
                 systemctl restart ssh
             elif [ "${CP_OS}" = "fedora" ] || [ "${CP_OS}" = "\"fedora\"" ]; then
                 dnf -y remove docker \
@@ -265,7 +265,9 @@ docker_install() {
                 dnf config-manager \
                     --add-repo \
                     https://download.docker.com/linux/fedora/docker-ce.repo
-                dnf -y install docker-ce docker-ce-cli containerd.io
+                dnf -y install docker-ce
+                dnf -y install docker-ce-cli
+                dnf -y install containerd.io
                 systemctl start docker
                 systemctl enable docker
                 systemctl restart sshd
@@ -284,7 +286,9 @@ docker_install() {
                 yum-config-manager \
                     --add-repo \
                     https://download.docker.com/linux/centos/docker-ce.repo
-                yum install -y docker-ce docker-ce-cli containerd.io
+                yum install -y docker-ce
+                yum install -y docker-ce-cli
+                yum install -y containerd.io
                 systemctl start docker
                 systemctl enable docker
                 systemctl restart sshd

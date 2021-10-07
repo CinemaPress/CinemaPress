@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Attālās movieu informācijas servera konfigurēšana",
 	"Защита iframe ссылок": "Iframe saite aizsardzība",
 	"Сообщение на странице блокировки": "Ziņojums uz slēdzenes lapas",
-	"агент(ов)": "aģents (-i)"
+	"агент(ов)": "aģents (-i)",
+	"Изменить с": "Mainīt s",
+	"Изменить на": "Mainīt uz"
 }

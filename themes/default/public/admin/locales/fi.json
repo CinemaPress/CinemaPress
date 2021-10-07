@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Etäkalvon tietopalvelimen määrittäminen",
 	"Защита iframe ссылок": "Iframe-linkin suoja",
 	"Сообщение на странице блокировки": "Viesti lukitussivulla",
-	"агент(ов)": "agent (t)"
+	"агент(ов)": "agent (t)",
+	"Изменить с": "Muuta s",
+	"Изменить на": "Muuttaa"
 }

@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "De externe movieinformatieserver configureren",
 	"Защита iframe ссылок": "IFRAME lINKBESCHERMING",
 	"Сообщение на странице блокировки": "Bericht op de vergrendelingspagina",
-	"агент(ов)": "agent(s)"
+	"агент(ов)": "agent(s)",
+	"Изменить с": "Veranderingen",
+	"Изменить на": "Veranderen naar"
 }

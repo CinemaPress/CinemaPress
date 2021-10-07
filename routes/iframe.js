@@ -82,6 +82,55 @@ router.get('/:id', function(req, res) {
         .replace(/\[kp_id]/gi, id_value)
         .replace(/\[ip]/gi, ip || '')
         .replace(/\[hash]/gi, md5(ip + '.' + config.urls.admin))
+        .replace(
+          /\[title]/gi,
+          (
+            (typeof req.query.title !== 'undefined' && '' + req.query.title) ||
+            ''
+          ).replace(/"/gi, '&quot;')
+        )
+        .replace(
+          /\[year]/gi,
+          (typeof req.query.year !== 'undefined' &&
+            ('' + req.query.year).replace(/[^0-9]/g, '')) ||
+            ''
+        )
+        .replace(
+          /\[type]/gi,
+          (req.query.type && ['tv', 'movie'].indexOf('' + req.query.type) + 1
+            ? '' + req.query.type
+            : '') || ''
+        )
+        .replace(
+          /\[imdb_id]/gi,
+          (typeof req.query.imdb_id !== 'undefined' &&
+            ('' + req.query.imdb_id).replace(/[^0-9]/g, '')) ||
+            ''
+        )
+        .replace(
+          /\[tmdb_id]/gi,
+          (typeof req.query.tmdb_id !== 'undefined' &&
+            ('' + req.query.tmdb_id).replace(/[^0-9]/g, '')) ||
+            ''
+        )
+        .replace(
+          /\[douban_id]/gi,
+          (typeof req.query.douban_id !== 'undefined' &&
+            ('' + req.query.douban_id).replace(/[^0-9]/g, '')) ||
+            ''
+        )
+        .replace(
+          /\[tvmaze_id]/gi,
+          (typeof req.query.tvmaze_id !== 'undefined' &&
+            ('' + req.query.tvmaze_id).replace(/[^0-9]/g, '')) ||
+            ''
+        )
+        .replace(
+          /\[movie_id]/gi,
+          (typeof req.query.movie_id !== 'undefined' &&
+            ('' + req.query.movie_id).replace(/[^0-9]/g, '')) ||
+            ''
+        )
         .replace(/\[[^\]]+]/gi, '');
     }
     return res.send(

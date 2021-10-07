@@ -350,6 +350,8 @@ module.exports = {
     "unique_id": 0,
     "separator": "-",
     "translit": 0,
+    "translit_from": "щ ш ч ц ю я ё ж ъ ы э а б в г д е з и й к л м н о п р с т у ф х ь",
+    "translit_to": "shh sh ch c yu ya yo zh 1 y 3 a b v g d e z i j k l m n o p r s t u f x 6",
     "movie_url": "[prefix_id][separator][title]",
     "movie": "movie",
     "year" : "year",

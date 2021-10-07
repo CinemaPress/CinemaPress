@@ -349,6 +349,8 @@ module.exports = {
     "unique_id": 0,
     "separator": "-",
     "translit": 0,
+    "translit_from": "",
+    "translit_to": "",
     "movie_url": "[prefix_id][separator][title]",
     "movie": "movie",
     "year" : "year",

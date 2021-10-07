@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurace informačního serveru vzdáleného movieu",
 	"Защита iframe ссылок": "Ochrana proti propojení iFRAME",
 	"Сообщение на странице блокировки": "Zpráva na stránce zámku",
-	"агент(ов)": "agent (y)"
+	"агент(ов)": "agent (y)",
+	"Изменить с": "Změny",
+	"Изменить на": "Změnit"
 }

@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/CinemaPress/CinemaPress",
   "dependencies": {
-    "pm2": "5.1.0",
+    "pm2": "5.1.2",
     "whois": "2.13.5",
     "async": "3.2.0",
     "base64-stream": "1.0.0",

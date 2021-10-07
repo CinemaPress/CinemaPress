@@ -1046,5 +1046,7 @@
   "Настройка подключения удаленного сервера информации о фильмах": "Configuring the remote movie information server",
   "Защита iframe ссылок": "Protection of iframe links",
   "Сообщение на странице блокировки": "Message on the lock page",
-  "агент(ов)": "agent(s)"
+  "агент(ов)": "agent(s)",
+  "Изменить с": "Change from",
+  "Изменить на": "Change to"
 }

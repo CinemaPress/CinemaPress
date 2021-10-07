@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Configuration du serveur d'informations sur le movie distant",
 	"Защита iframe ссылок": "Protection de lien iframe",
 	"Сообщение на странице блокировки": "Message sur la page de verrouillage",
-	"агент(ов)": "agents)"
+	"агент(ов)": "agents)",
+	"Изменить с": "Changements",
+	"Изменить на": "Changer"
 }

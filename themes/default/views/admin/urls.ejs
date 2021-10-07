@@ -382,6 +382,38 @@
                                                 </div>
                                             </div>
 
+                                            <% if (
+                                              typeof config.urls.translit !== 'undefined' &&
+                                              config.urls.translit &&
+                                              config.urls.translit === 2
+                                            ) { %>
+                                            <div class="spacer-10"></div>
+
+                                            <div class="col-sm-12">
+                                                <div class="cinema-box">
+                                                    <div class="inner-padding">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon text-muted">
+                                                                        <%= __('Изменить с') %>
+                                                                    </span>
+                                                                    <input class="form-control" name="config.urls.translit_from" value="<%= config.urls.translit_from %>" placeholder="é è ê à ç ù" type="text">
+                                                                </div>
+                                                                <div class="spacer-10"></div>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon text-muted">
+                                                                        <%= __('Изменить на') %>
+                                                                    </span>
+                                                                    <input class="form-control" name="config.urls.translit_to" value="<%= config.urls.translit_to %>" placeholder="e 3 8 a c u" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %>
+
                                             <div class="spacer-10"></div>
 
                                             <div class="col-sm-12">

@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Kaugmovieide infoserveri seadistamine",
 	"Защита iframe ссылок": "Iframe lingi kaitse",
 	"Сообщение на странице блокировки": "Sõnum lukustuse lehel",
-	"агент(ов)": "agent (id)"
+	"агент(ов)": "agent (id)",
+	"Изменить с": "Muuda s",
+	"Изменить на": "Muutu"
 }

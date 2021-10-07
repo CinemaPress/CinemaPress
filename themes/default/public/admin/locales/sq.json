@@ -1047,5 +1047,7 @@
 	"Настройка подключения удаленного сервера информации о фильмах": "Konfigurimi i serverit të informacionit të largët të movieit",
 	"Защита iframe ссылок": "Mbrojtja e lidhjes së iFRAME",
 	"Сообщение на странице блокировки": "Mesazh në faqen e bllokimit",
-	"агент(ов)": "agjent(s)"
+	"агент(ов)": "agjent(s)",
+	"Изменить с": "Ndryshimi s",
+	"Изменить на": "Ndryshoj"
 }
