@@ -1048,5 +1048,6 @@
   "Сообщение на странице блокировки": "Message on the lock page",
   "агент(ов)": "agent(s)",
   "Изменить с": "Change from",
-  "Изменить на": "Change to"
+  "Изменить на": "Change to",
+  "Изменить на нижний регистр": "Change to lowercase"
 }

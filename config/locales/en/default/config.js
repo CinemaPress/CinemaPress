@@ -351,6 +351,7 @@ module.exports = {
     "translit": 0,
     "translit_from": "",
     "translit_to": "",
+    "translit_lower_case": 0,
     "movie_url": "[prefix_id][separator][title]",
     "movie": "movie",
     "year" : "year",

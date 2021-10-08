@@ -1049,5 +1049,6 @@
 	"Сообщение на странице блокировки": "Viesti lukitussivulla",
 	"агент(ов)": "agent (t)",
 	"Изменить с": "Muuta s",
-	"Изменить на": "Muuttaa"
+	"Изменить на": "Muuttaa",
+	"Изменить на нижний регистр": "Vaihda pienet kirjaimet"
 }
