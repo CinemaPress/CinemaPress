@@ -4722,9 +4722,66 @@ while [ "${WHILE}" -lt "2" ]; do
                     exit 0
                 fi
                 if [ -d "/home/${CP_DOMAIN}/files/torrent/.process" ]; then
-                    exit 0
+                    if [ -f "/home/${CP_DOMAIN}/files/torrent/.1hour" ]; then
+                        if [ -f "/home/${CP_DOMAIN}/files/torrent/.2hours" ]; then
+                            if [ -f "/home/${CP_DOMAIN}/files/torrent/.3hours" ]; then
+                                if [ -f "/home/${CP_DOMAIN}/files/torrent/.4hours" ]; then
+                                    if [ -f "/home/${CP_DOMAIN}/files/torrent/.5hours" ]; then
+                                        /usr/bin/cinemapress kill_rclone "${CP_DOMAIN}"
+                                        rm -rf \
+                                            "/home/${CP_DOMAIN}/files/torrent/.1hour" \
+                                            "/home/${CP_DOMAIN}/files/torrent/.2hours" \
+                                            "/home/${CP_DOMAIN}/files/torrent/.3hours" \
+                                            "/home/${CP_DOMAIN}/files/torrent/.4hours" \
+                                            "/home/${CP_DOMAIN}/files/torrent/.5hours"
+                                        mkdir -p "/home/${CP_DOMAIN}/files/torrent/uploads"
+                                        cp -rf \
+                                            /home/"${CP_DOMAIN}"/files/torrent/.process/* \
+                                            /home/"${CP_DOMAIN}"/files/torrent/uploads/
+                                        rm -rf /home/"${CP_DOMAIN}"/files/torrent/.process
+                                    else
+                                        echo "Uploading video files takes 5 hours."
+                                        touch "/home/${CP_DOMAIN}/files/torrent/.5hours"
+                                        exit 0
+                                    fi
+                                else
+                                    echo "Uploading video files takes 4 hours."
+                                    touch "/home/${CP_DOMAIN}/files/torrent/.4hours"
+                                    exit 0
+                                fi
+                            else
+                                echo "Uploading video files takes 3 hours."
+                                touch "/home/${CP_DOMAIN}/files/torrent/.3hours"
+                                exit 0
+                            fi
+                        else
+                            echo "Uploading video files takes 2 hours."
+                            touch "/home/${CP_DOMAIN}/files/torrent/.2hours"
+                            exit 0
+                        fi
+                    else
+                        echo "Uploading video files takes 1 hour."
+                        touch "/home/${CP_DOMAIN}/files/torrent/.1hour"
+                        exit 0
+                    fi
                 fi
                 if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ]; then
+                    echo "The folder /home/${CP_DOMAIN}/files/torrent/uploads is empty."
+                    exit 0
+                fi
+                CINEMATORRENT_ACTIVE="false"
+                for N in {1..9}; do
+                    CINEMATORRENT_NAME="CINEMATORRENT${N}"
+                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                        CINEMATORRENT=$(rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    else
+                        CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
+                    fi
+                    if [ "${CINEMATORRENT}" = "" ]; then continue; fi
+                    CINEMATORRENT_ACTIVE="true"
+                done
+                if [ "${CINEMATORRENT_ACTIVE}" = "false" ]; then
+                    echo "You don't have an FTP server configuration."
                     exit 0
                 fi
                 mv "/home/${CP_DOMAIN}/files/torrent/uploads" "/home/${CP_DOMAIN}/files/torrent/.process"
@@ -4766,11 +4823,13 @@ while [ "${WHILE}" -lt "2" ]; do
                                 if [ -f "${FILE}" ]; then
                                     echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                        rm -rf "${FILE}"
                                     else
-                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                        rm -rf "${FILE}"
                                     fi
                                 fi
                             done
@@ -4778,11 +4837,13 @@ while [ "${WHILE}" -lt "2" ]; do
                             FILE_NAME="${DIR##*/}"
                             echo "UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                rm -rf "${DIR}"
                             else
-                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                rm -rf "${DIR}"
                             fi
                         fi
                     done
@@ -4812,11 +4873,13 @@ while [ "${WHILE}" -lt "2" ]; do
                                 if [ -f "${FILE}" ]; then
                                     echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                        rm -rf "${FILE}"
                                     else
-                                        docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                            "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                        rm -rf "${FILE}"
                                     fi
                                 fi
                             done
@@ -4824,16 +4887,36 @@ while [ "${WHILE}" -lt "2" ]; do
                             FILE_NAME="${DIR##*/}"
                             echo "UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                rm -rf "${DIR}"
                             else
-                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
-                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"
+                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                    "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
+                                rm -rf "${DIR}"
                             fi
                         fi
                     done
                 done
                 rm -rf "/home/${CP_DOMAIN}/files/torrent/.process"
+                rm -rf \
+                    "/home/${CP_DOMAIN}/files/torrent/.1hour" \
+                    "/home/${CP_DOMAIN}/files/torrent/.2hours" \
+                    "/home/${CP_DOMAIN}/files/torrent/.3hours" \
+                    "/home/${CP_DOMAIN}/files/torrent/.4hours" \
+                    "/home/${CP_DOMAIN}/files/torrent/.5hours"
+            fi
+            exit 0
+        ;;
+        "kill_rclone" )
+            _br "${2}"
+            read_domain "${2}"
+            sh_not
+            _s "${2}"
+            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                ps -ef | grep "rclone" | grep -v 'grep' | awk '{ print $1 }' | xargs kill
+            else
+                docker exec -t "${CP_DOMAIN_}" /usr/bin/cinemapress kill_rclone "${CP_DOMAIN}"
             fi
             exit 0
         ;;
