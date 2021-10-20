@@ -4769,6 +4769,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     echo "The folder /home/${CP_DOMAIN}/files/torrent/uploads is empty."
                     exit 0
                 fi
+                CINEMATORRENT_ARRAY=()
                 CINEMATORRENT_ACTIVE="false"
                 for N in {1..9}; do
                     CINEMATORRENT_NAME="CINEMATORRENT${N}"
@@ -4779,6 +4780,7 @@ while [ "${WHILE}" -lt "2" ]; do
                     fi
                     if [ "${CINEMATORRENT}" = "" ]; then continue; fi
                     CINEMATORRENT_ACTIVE="true"
+                    CINEMATORRENT_ARRAY+=("${CINEMATORRENT_NAME}")
                 done
                 if [ "${CINEMATORRENT_ACTIVE}" = "false" ]; then
                     echo "You don't have an FTP server configuration."
@@ -4798,14 +4800,7 @@ while [ "${WHILE}" -lt "2" ]; do
                              "/home/${CP_DOMAIN}/files/torrent/.process/${FILE_ARR[0]}/${DIR##*/${FILE_ARR[0]}.${FILE_ARR[1]}.}"
                     fi
                 done
-                for N in {1..9}; do
-                    CINEMATORRENT_NAME="CINEMATORRENT${N}"
-                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                        CINEMATORRENT=$(rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
-                    else
-                        CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
-                    fi
-                    if [ "${CINEMATORRENT}" = "" ]; then continue; fi
+                for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
                     CFOLDER="/home/${CP_DOMAIN}/files/torrent/.process/${CINEMATORRENT_NAME}"
                     if [ ! -d "${CFOLDER}" ]; then continue; fi
                     echo "UPLOAD TO ${CINEMATORRENT_NAME}"
@@ -4850,53 +4845,58 @@ while [ "${WHILE}" -lt "2" ]; do
                     rm -rf "${CFOLDER}"
                 done
                 PFOLDER="/home/${CP_DOMAIN}/files/torrent/.process"
-                for N in {1..9}; do
-                    CINEMATORRENT_NAME="CINEMATORRENT${N}"
-                    if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                        CINEMATORRENT=$(rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
-                    else
-                        CINEMATORRENT=$(docker exec -t "${CP_DOMAIN_}" rclone config show 2>/dev/null | grep "${CINEMATORRENT_NAME}")
-                    fi
-                    if [ "${CINEMATORRENT}" = "" ]; then continue; fi
-                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
-                    for DIR in "${PFOLDER}"/*; do
-                        DIR_NAME="${DIR##*/}"
-                        if [ -d "${DIR}" ]; then
-                            echo "CREATE DIR ${DIR_NAME}"
-                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                            else
-                                docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                            fi
-                            for FILE in "${PFOLDER}/${DIR_NAME}"/*; do
-                                FILE_NAME="${FILE##*/}"
-                                if [ -f "${FILE}" ]; then
-                                    echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                for DIR in "${PFOLDER}"/*; do
+                    DIR_NAME="${DIR##*/}"
+                    if [ -d "${DIR}" ]; then
+                        echo "CREATE DIR ${DIR_NAME}"
+                        if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                            rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                        else
+                            docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                        fi
+                        for FILE in "${PFOLDER}/${DIR_NAME}"/*; do
+                            FILE_NAME="${FILE##*/}"
+                            if [ -f "${FILE}" ]; then
+                                echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                FILE_UPLOADED="false"
+                                for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
+                                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
                                         { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
                                             "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
-                                        rm -rf "${FILE}"
+                                        FILE_UPLOADED="true"
                                     else
                                         { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
                                             "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
-                                        rm -rf "${FILE}"
+                                        FILE_UPLOADED="true"
                                     fi
+                                done
+                                if [ "${FILE_UPLOADED}" = "true" ]; then
+                                    echo "Delete file ${FILE}"
+                                    rm -rf "${FILE}"
                                 fi
-                            done
-                        elif [ -f "${DIR}" ]; then
+                            fi
+                        done
+                    elif [ -f "${DIR}" ]; then
+                        FILE_UPLOADED="false"
+                        for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
                             FILE_NAME="${DIR##*/}"
                             echo "UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
                                 { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
                                     "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
-                                rm -rf "${DIR}"
+                                FILE_UPLOADED="true"
                             else
                                 { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
                                     "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
-                                rm -rf "${DIR}"
+                                FILE_UPLOADED="true"
                             fi
+                        done
+                        if [ "${FILE_UPLOADED}" = "true" ]; then
+                            echo "Delete file ${DIR}"
+                            rm -rf "${DIR}"
                         fi
-                    done
+                    fi
                 done
                 rm -rf "/home/${CP_DOMAIN}/files/torrent/.process"
                 rm -rf \
