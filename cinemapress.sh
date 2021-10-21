@@ -4740,33 +4740,33 @@ while [ "${WHILE}" -lt "2" ]; do
                                             /home/"${CP_DOMAIN}"/files/torrent/uploads/
                                         rm -rf /home/"${CP_DOMAIN}"/files/torrent/.process
                                     else
-                                        echo "Uploading video files takes 5 hours."
+                                        echo "$(date '+%Y/%m/%d %H:%M:%S') Uploading video files takes 5 hours."
                                         touch "/home/${CP_DOMAIN}/files/torrent/.5hours"
                                         exit 0
                                     fi
                                 else
-                                    echo "Uploading video files takes 4 hours."
+                                    echo "$(date '+%Y/%m/%d %H:%M:%S') Uploading video files takes 4 hours."
                                     touch "/home/${CP_DOMAIN}/files/torrent/.4hours"
                                     exit 0
                                 fi
                             else
-                                echo "Uploading video files takes 3 hours."
+                                echo "$(date '+%Y/%m/%d %H:%M:%S') Uploading video files takes 3 hours."
                                 touch "/home/${CP_DOMAIN}/files/torrent/.3hours"
                                 exit 0
                             fi
                         else
-                            echo "Uploading video files takes 2 hours."
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') Uploading video files takes 2 hours."
                             touch "/home/${CP_DOMAIN}/files/torrent/.2hours"
                             exit 0
                         fi
                     else
-                        echo "Uploading video files takes 1 hour."
+                        echo "$(date '+%Y/%m/%d %H:%M:%S') Uploading video files takes 1 hour."
                         touch "/home/${CP_DOMAIN}/files/torrent/.1hour"
                         exit 0
                     fi
                 fi
                 if [ -z "$(ls -A "/home/${CP_DOMAIN}/files/torrent/uploads")" ]; then
-                    echo "The folder /home/${CP_DOMAIN}/files/torrent/uploads is empty."
+                    echo "$(date '+%Y/%m/%d %H:%M:%S') The folder /home/${CP_DOMAIN}/files/torrent/uploads is empty."
                     exit 0
                 fi
                 CINEMATORRENT_ARRAY=()
@@ -4780,10 +4780,11 @@ while [ "${WHILE}" -lt "2" ]; do
                     fi
                     if [ "${CINEMATORRENT}" = "" ]; then continue; fi
                     CINEMATORRENT_ACTIVE="true"
+                    echo "$(date '+%Y/%m/%d %H:%M:%S') ✓ ${CINEMATORRENT_NAME}"
                     CINEMATORRENT_ARRAY+=("${CINEMATORRENT_NAME}")
                 done
                 if [ "${CINEMATORRENT_ACTIVE}" = "false" ]; then
-                    echo "You don't have an FTP server configuration."
+                    echo "$(date '+%Y/%m/%d %H:%M:%S') You don't have an FTP server configuration."
                     exit 0
                 fi
                 mv "/home/${CP_DOMAIN}/files/torrent/uploads" "/home/${CP_DOMAIN}/files/torrent/.process"
@@ -4803,26 +4804,26 @@ while [ "${WHILE}" -lt "2" ]; do
                 for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
                     CFOLDER="/home/${CP_DOMAIN}/files/torrent/.process/${CINEMATORRENT_NAME}"
                     if [ ! -d "${CFOLDER}" ]; then continue; fi
-                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
+                    echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD TO ${CINEMATORRENT_NAME}"
                     for DIR in "${CFOLDER}"/*; do
                         DIR_NAME="${DIR##*/}"
                         if [ -d "${DIR}" ]; then
-                            echo "CREATE DIR ${DIR_NAME}"
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') CREATE DIR ${DIR_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                                rclone -vv --retries 2 --low-level-retries 2 mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
                             else
-                                docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
                             fi
                             for FILE in "${CFOLDER}/${DIR_NAME}"/*; do
                                 FILE_NAME="${FILE##*/}"
                                 if [ -f "${FILE}" ]; then
-                                    echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                    echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                        { rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                             "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                         rm -rf "${FILE}"
                                     else
-                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                             "${CFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                         rm -rf "${FILE}"
                                     fi
@@ -4830,13 +4831,13 @@ while [ "${WHILE}" -lt "2" ]; do
                             done
                         elif [ -f "${DIR}" ]; then
                             FILE_NAME="${DIR##*/}"
-                            echo "UPLOAD FILE ${FILE_NAME}"
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                { rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                     "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                 rm -rf "${DIR}"
                             else
-                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                     "${CFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                 rm -rf "${DIR}"
                             fi
@@ -4848,31 +4849,33 @@ while [ "${WHILE}" -lt "2" ]; do
                 for DIR in "${PFOLDER}"/*; do
                     DIR_NAME="${DIR##*/}"
                     if [ -d "${DIR}" ]; then
-                        echo "CREATE DIR ${DIR_NAME}"
-                        if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                            rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                        else
-                            docker exec -t "${CP_DOMAIN_}" rclone mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
-                        fi
+                        for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') CREATE DIR ${CINEMATORRENT_NAME}:${DIR_NAME}"
+                            if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
+                                rclone -vv --retries 2 --low-level-retries 2 mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            else
+                                docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 mkdir "${CINEMATORRENT_NAME}":"${DIR_NAME}"
+                            fi
+                        done
                         for FILE in "${PFOLDER}/${DIR_NAME}"/*; do
                             FILE_NAME="${FILE##*/}"
                             if [ -f "${FILE}" ]; then
-                                echo "UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
+                                echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD FILE ${DIR_NAME}/${FILE_NAME}"
                                 FILE_UPLOADED="false"
                                 for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
-                                    echo "UPLOAD TO ${CINEMATORRENT_NAME}"
+                                    echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD TO ${CINEMATORRENT_NAME}"
                                     if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                        { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                        { rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                             "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                         FILE_UPLOADED="true"
                                     else
-                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                        { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                             "${PFOLDER}/${DIR_NAME}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                         FILE_UPLOADED="true"
                                     fi
                                 done
                                 if [ "${FILE_UPLOADED}" = "true" ]; then
-                                    echo "Delete file ${FILE}"
+                                    echo "$(date '+%Y/%m/%d %H:%M:%S') DELETE FILE ${FILE}"
                                     rm -rf "${FILE}"
                                 fi
                             fi
@@ -4881,19 +4884,19 @@ while [ "${WHILE}" -lt "2" ]; do
                         FILE_UPLOADED="false"
                         for CINEMATORRENT_NAME in "${CINEMATORRENT_ARRAY[@]}"; do
                             FILE_NAME="${DIR##*/}"
-                            echo "UPLOAD FILE ${FILE_NAME}"
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') UPLOAD FILE ${FILE_NAME}"
                             if [ "${CP_OS}" = "alpine" ] || [ "${CP_OS}" = "\"alpine\"" ]; then
-                                { rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                { rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                     "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                 FILE_UPLOADED="true"
                             else
-                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 3 --low-level-retries 3 --ignore-size copy \
+                                { docker exec -t "${CP_DOMAIN_}" rclone -vv --retries 2 --low-level-retries 2 --ignore-size copy \
                                     "${PFOLDER}/${FILE_NAME}" "${CINEMATORRENT_NAME}:${DIR_NAME}/"; } && \
                                 FILE_UPLOADED="true"
                             fi
                         done
                         if [ "${FILE_UPLOADED}" = "true" ]; then
-                            echo "Delete file ${DIR}"
+                            echo "$(date '+%Y/%m/%d %H:%M:%S') DELETE FILE ${DIR}"
                             rm -rf "${DIR}"
                         fi
                     fi
