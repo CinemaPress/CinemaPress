@@ -1147,6 +1147,7 @@ ip_install() {
     fi
     docker stop ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     docker rm -f ${LOCAL_DOMAIN_} >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+    # docker build -t cinemapress/docker https://github.com/CinemaPress/CinemaPress.git
     docker pull cinemapress/docker:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     sed -i "s/.*${LOCAL_DOMAIN}.*//g" /etc/crontab &> /dev/null
     rm -rf /home/${LOCAL_DOMAIN:?}
@@ -1157,18 +1158,21 @@ ip_install() {
         echo "RM NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         docker rm -f nginx >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
         echo "PULL NGINX" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+        # docker build -t cinemapress/nginx https://github.com/CinemaPress/CinemaPress.git#:config/default/nginx
         docker pull cinemapress/nginx:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "STOP FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker stop fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "RM FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker rm -f fail2ban >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "PULL FAIL2BAN" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        # docker build -t cinemapress/fail2ban https://github.com/CinemaPress/CinemaPress.git#:config/default/fail2ban
 #        docker pull cinemapress/fail2ban:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "STOP FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker stop filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "RM FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        docker rm -f filestash >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
 #        echo "PULL FILESTASH" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
+#        # docker build -t cinemapress/filestash https://github.com/CinemaPress/CinemaPress.git#:config/default/filestash
 #        docker pull cinemapress/filestash:latest >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
     fi
     echo "RMI OLD" >>/var/log/docker_remove_"$(date '+%d_%m_%Y')".log 2>&1
@@ -3914,6 +3918,8 @@ while [ "${WHILE}" -lt "2" ]; do
                     adminer:fastcgi
                 OPENSSL=`echo "${ADMIN_PASSWORD}" | openssl passwd -1 -stdin -salt CP`
                 echo "cinemaadmin:${OPENSSL}" > /home/${CP_DOMAIN}/config/production/nginx/pass.d/${CP_DOMAIN}.pass
+            else
+                ADMIN_PASSWORD=""
             fi
             if [ "${NAME_CMS}" = "wordpress" ]; then
                 wget -qO "wordpress.tar.gz" "https://wordpress.org/wordpress-latest.tar.gz"
@@ -3946,11 +3952,18 @@ while [ "${WHILE}" -lt "2" ]; do
             elif [ "${NAME_CMS}" = "drupal" ]; then
                 wget -qO "drupal.tar.gz" "https://www.drupal.org/download-latest/tar.gz"
                 tar -xzf "drupal.tar.gz" -C /var
+                mv /var/drupal-*/* /var/drupal-*/.htaccess /var/drupal-*/.csslintrc /var/drupal-*/.editorconfig /var/drupal-*/.eslintignore /var/drupal-*/.eslintrc.json /var/drupal-*/.gitattributes /home/${CP_DOMAIN}/
+                mkdir -p /home/${CP_DOMAIN}/sites/default/files/translations
+                chmod a+w /home/${CP_DOMAIN}/sites/default/files
+                chmod a+w /home/${CP_DOMAIN}/sites/default/files/translations
+                cp /home/${CP_DOMAIN}/sites/default/default.settings.php /home/${CP_DOMAIN}/sites/default/settings.php
+                chmod a+w /home/${CP_DOMAIN}/sites/default/settings.php
                 rm -rf "drupal.tar.gz"
-                cp -rf /var/drupal-*/* /home/${CP_DOMAIN}/
             elif [ "${NAME_CMS}" = "joomla" ]; then
-                wget -qO "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-9-14/Joomla_3-9-14-Stable-Full_Package.tar.gz?format=gz"
+                wget -qO "joomla3.tar.gz" "https://downloads.joomla.org/cms/joomla3/3-10-3/Joomla_3-10-3-Stable-Full_Package.tar.gz?format=gz"
                 tar -xzf "joomla3.tar.gz" -C /home/${CP_DOMAIN}/
+                touch /home/${CP_DOMAIN}/configuration.php
+                chmod 644 /home/${CP_DOMAIN}/configuration.php
                 rm -rf "joomla3.tar.gz"
             elif [ "${NAME_CMS}" = "dle" ]; then
                 wget -qO "dle_trial.zip" "https://dle-news.ru/files/dle_trial.zip"
@@ -4090,9 +4103,11 @@ while [ "${WHILE}" -lt "2" ]; do
             if [ "${MYSQL_DATABASE}" != "" ]; then echo "MYSQL DATABASE: ${MYSQL_DATABASE}"; fi;
             if [ "${MYSQL_USER}" != "" ]; then echo "MYSQL USER: ${MYSQL_USER}"; fi;
             if [ "${MYSQL_PASSWORD}" != "" ]; then echo "MYSQL PASSWORD: ${MYSQL_PASSWORD}"; fi;
-            echo "Adminer: http://${CP_DOMAIN}/cinemaadmin"
-            if [ "${ADMIN_USER}" != "" ]; then echo "USER: ${ADMIN_USER}"; fi;
-            if [ "${ADMIN_PASSWORD}" != "" ]; then echo "PASSWORD: ${ADMIN_PASSWORD}"; fi;
+            if [ "${ADMIN_PASSWORD}" != "" ]; then
+                echo "Adminer: http://${CP_DOMAIN}/cinemaadmin"
+                if [ "${ADMIN_USER}" != "" ]; then echo "USER: ${ADMIN_USER}"; fi;
+                if [ "${ADMIN_PASSWORD}" != "" ]; then echo "PASSWORD: ${ADMIN_PASSWORD}"; fi;
+            fi
             _line
             exit 0
         ;;
@@ -4924,6 +4939,15 @@ while [ "${WHILE}" -lt "2" ]; do
             fi
             exit 0
         ;;
+        "local" )
+            echo ""; echo -n "☐ Change to a local build cinemapress.sh ...";
+            sed -Ei "s/# docker build/docker build/g" /usr/bin/cinemapress >/dev/null
+            sed -Ei "s/docker pull/# docker pull/g" /usr/bin/cinemapress >/dev/null
+            sleep 1
+            echo -e "\\r${G}✓ Change to a local build cinemapress.sh ...${NC}"
+            echo ""
+            exit 0
+        ;;
         "rclone_obscure" )
           echo "$(echo "${2}" | rclone obscure -)"
           exit 0
@@ -4988,7 +5012,7 @@ while [ "${WHILE}" -lt "2" ]; do
         "version"|"ver"|"v"|"V"|"--version"|"--ver"|"-v"|"-V" )
             echo "CinemaPress ${CP_VER}"
             _br
-            echo "Copyright (c) 2014-..., CinemaPress"
+            echo "Copyright (c) 2014 - ... CinemaPress"
             _br
             exit 0
         ;;
