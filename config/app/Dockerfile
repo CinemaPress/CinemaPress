@@ -1,3 +1,3 @@
-FROM nativefier/nativefier:latest
+FROM cinemapress/nativefier:latest
 ENTRYPOINT ["nativefier"]
 CMD ["--help"]

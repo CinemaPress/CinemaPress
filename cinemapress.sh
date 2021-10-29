@@ -3562,7 +3562,7 @@ while [ "${WHILE}" -lt "2" ]; do
             docker run \
                 --rm \
                 -v /home/"${CP_DOMAIN}"/config/app/icons:/icons \
-                -v /home/"${CP_DOMAIN}"/config/app/"${NAME_OS}":/app \
+                -v /home/"${CP_DOMAIN}"/config/app/"${NAME_OS}":/cinemaapp \
                 cinemapress/app:latest \
                 --name "${CP_DOMAIN_}" \
                 --platform "${NAME_OS}" \
@@ -3586,6 +3586,7 @@ while [ "${WHILE}" -lt "2" ]; do
                 --verbose \
                 --win32metadata "{\"CompanyName\": \"${CP_DOMAIN}\",\"FileDescription\": \"${CP_DOMAIN}\",\"OriginalFilename\": \"${CP_DOMAIN}\",\"ProductName\": \"${CP_DOMAIN}\",\"InternalName\": \"${CP_DOMAIN}\"}" \
                 "${PROTOCOL}://${APP_DOMAIN}" \
+                "/cinemaapp/" \
                 >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sleep 10
             sh_progress
@@ -3600,7 +3601,7 @@ while [ "${WHILE}" -lt "2" ]; do
             cd /home/${CP_DOMAIN}/config/app/"${NAME_OS}" && \
             zip -rq /home/${CP_DOMAIN}/files/"${NAME_OS}"/app_"${CP_VER}".zip app
             rm -rf /home/${CP_DOMAIN}/config/app/"${NAME_OS}"
-            docker image prune -af 2>&1
+            docker image prune -af >>/var/log/docker_app_"$(date '+%d_%m_%Y')".log 2>&1
             sh_progress 100
             _line
             _header "/files/${NAME_OS}/app_${CP_VER}.zip"
