@@ -1050,5 +1050,7 @@
 	"агент(ов)": "agent (t)",
 	"Изменить с": "Muuta s",
 	"Изменить на": "Muuttaa",
-	"Изменить на нижний регистр": "Vaihda pienet kirjaimet"
+	"Изменить на нижний регистр": "Vaihda pienet kirjaimet",
+	"В это году": "Tämä vuosi",
+	"Любой год": "Jokainen vuosi"
 }

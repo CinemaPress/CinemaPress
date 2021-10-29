@@ -102,6 +102,7 @@ module.exports = {
         "message": "Greetings! Thank you for your appeal, we have fulfilled all the requirements and removed the indicated materials. ID movies: [id]. We were glad to cooperate!"
       },
       "country": 0,
+      "country_year": 1,
       "status_code_country": "200",
       "status_code_list": "404",
       "message": "Viewing is prohibited, the site is subject<br>to copyright law in the digital age!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",

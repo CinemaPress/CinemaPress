@@ -102,6 +102,7 @@ module.exports = {
         "message": "Приветствуем! Спасибо за ваше обращение, мы выполнили все требования и удалили указанные материалы. ID фильмов: [id]. Были рады сотрудничеству!"
       },
       "country": 0,
+      "country_year": 1,
       "status_code_country": "200",
       "status_code_list": "404",
       "message": "Просмотр запрещен, сайт соблюдает<br>закон об авторском праве в цифровую эпоху!<br><br><img src=\"/themes/default/public/desktop/img/dmca.png\" alt=\"DMCA\" style=\"display:inline\">",

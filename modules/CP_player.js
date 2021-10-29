@@ -87,15 +87,28 @@ function codePlayer(type, movie, options) {
       : '';
   }
 
+  var movie_year = modules.abuse.data.country_year
+    ? movie.year && '' + movie.year === new Date().getFullYear() + ''
+    : true;
   var whois_abuse = options && options.userinfo && options.userinfo.whois;
   var list_abuse = modules.abuse.data.movies.indexOf('' + movie.kp_id) + 1;
-  var country_abuse =
+  var country_abuse = !!(
     modules.abuse.data.country &&
-    movie.year &&
-    '' + movie.year === new Date().getFullYear() + '' &&
+    movie_year &&
     movie.countries_arr.filter(function(c) {
       return new RegExp(options.userinfo.country, 'i').test(c);
+    }).length
+  );
+  if (
+    country_abuse === false &&
+    movie.custom &&
+    movie.custom.abuse &&
+    typeof movie.custom.abuse === 'string'
+  ) {
+    country_abuse = movie.custom.abuse.split(',').filter(function(c) {
+      return new RegExp(options.userinfo.country_en, 'i').test(c.trim());
     }).length;
+  }
   var country_block_app =
     options.userinfo &&
     modules.blocking.data.app.countries &&

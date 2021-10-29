@@ -588,13 +588,19 @@
                                     </div>
                                     <div class="inner-padding">
                                         <div class="row">
-                                            <div class="col-lg-6 col-xs-6">
+                                            <div class="col-lg-4 col-xs-4">
                                                 <label><%= __('В стране фильма') %></label>
                                             </div>
-                                            <div class="col-lg-6 col-xs-6 text-center">
+                                            <div class="col-lg-4 col-xs-4 text-center">
                                                 <select name="modules.abuse.data.country" class="form-control">
                                                     <option value="1" <% if (modules.abuse.data.country) { %>selected="selected"<% } %>><%= __('Не показывать') %></option>
                                                     <option value="0" <% if (!modules.abuse.data.country) { %>selected="selected"<% } %>><%= __('Показывать') %></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4 col-xs-4 text-center">
+                                                <select name="modules.abuse.data.country_year" class="form-control">
+                                                    <option value="1" <% if (modules.abuse.data.country_year) { %>selected="selected"<% } %>><%= __('В это году') %></option>
+                                                    <option value="0" <% if (!modules.abuse.data.country_year) { %>selected="selected"<% } %>><%= __('Любой год') %></option>
                                                 </select>
                                             </div>
                                         </div>
