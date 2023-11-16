@@ -42,7 +42,7 @@
     "mysql": "2.18.1",
     "os-utils": "0.0.14",
     "request": "2.88.2",
-    "sharp": "0.28.3",
+    "sharp": "0.32.6",
     "sinoni": "1.2.5",
     "ua-parser-js": "0.7.28",
     "nodemailer": "6.6.1",
